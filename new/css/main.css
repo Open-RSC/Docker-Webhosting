@@ -58,7 +58,7 @@ body {
 
 body {
   background: #111111;
-  font-family: "metropolis-regular", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 1.7rem;
   font-style: normal;
   font-weight: normal;
@@ -95,7 +95,7 @@ a:active {
  * 
  * ------------------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "domine-regular", serif;
+  font-family: 'Exo', sans-serif;
   color: #000000;
   font-style: normal;
   font-weight: normal;
@@ -171,7 +171,7 @@ p img {
 }
 
 p.lead {
-  font-family: "metropolis-light", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 2rem;
   font-weight: 300;
   line-height: 1.8;
@@ -198,12 +198,12 @@ b {
 
 em,
 i {
-  font-family: "metropolis-italic", sans-serif;
+  font-family: 'Exo', sans-serif;
 }
 
 strong,
 b {
-  font-family: "metropolis-bold", sans-serif;
+  font-family: 'Exo', sans-serif;
 }
 
 small {
@@ -223,14 +223,14 @@ blockquote:before {
   line-height: 0px;
   margin: 0;
   color: rgba(0, 0, 0, 0.25);
-  font-family: arial, sans-serif;
+  font-family: 'Exo', sans-serif;
   position: absolute;
   top: 3.6rem;
   left: 0;
 }
 
 blockquote p {
-  font-family: "domine-regular", serif;
+  font-family: 'Exo', sans-serif;
   padding: 0;
   font-size: 2.1rem;
   line-height: 1.857;
@@ -239,7 +239,7 @@ blockquote p {
 
 blockquote cite {
   display: block;
-  font-family: "domine-regular", serif;
+  font-family: 'Exo', sans-serif;
   font-size: 1.4rem;
   font-style: normal;
   line-height: 1.5;
@@ -256,7 +256,7 @@ blockquote cite a:visited {
 }
 
 abbr {
-  font-family: "metropolis-bold", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-variant: small-caps;
   text-transform: lowercase;
   letter-spacing: .05rem;
@@ -268,7 +268,7 @@ kbd,
 samp,
 code,
 pre {
-  font-family: Consolas, "Andale Mono", Courier, "Courier New", monospace;
+  font-family: 'Exo', sans-serif;
 }
 
 pre {
@@ -422,7 +422,7 @@ table {
   border-width: 0;
   width: 100%;
   max-width: 100%;
-  font-family: "metropolis-regular", sans-serif;
+  font-family: 'Exo', sans-serif;
 }
 
 th,
@@ -434,7 +434,7 @@ td {
 
 th {
   color: #000000;
-  font-family: "domine-bold", serif;
+  font-family: 'Exo', sans-serif;
 }
 
 td {
@@ -630,7 +630,7 @@ select {
   border: 0;
   outline: none;
   color: #151515;
-  font-family: "metropolis-regular", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
   line-height: 3rem;
   max-width: 100%;
@@ -711,7 +711,7 @@ select:focus {
 
 label,
 legend {
-  font-family: "metropolis-semibold", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 1.4rem;
   font-weight: normal;
   margin-bottom: .9rem;
@@ -728,7 +728,7 @@ input[type="radio"] {
 label > .label-text {
   display: inline-block;
   margin-left: 1rem;
-  font-family: "metropolis-regular", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-weight: normal;
   line-height: inherit;
 }
@@ -793,7 +793,7 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"] {
   display: inline-block;
-  font-family: "metropolis-semibold", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: .3rem;
@@ -920,7 +920,7 @@ input::-moz-focus-inner {
   margin: 0;
   padding: 1.5rem .6rem 0 0;
   font-size: 8.4rem;
-  font-family: "metropolis-bold", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-weight: normal;
   line-height: 6rem;
   text-indent: 0;
@@ -998,7 +998,7 @@ input::-moz-focus-inner {
   height: 1em;
   position: absolute;
   font-size: 10rem;
-  font-family: Arial, Sans-Serif;
+  font-family: 'Exo', sans-serif;
   color: rgba(0, 0, 0, 0.25);
 }
 
@@ -1055,7 +1055,7 @@ input::-moz-focus-inner {
 .stats-tabs li a {
   display: inline-block;
   font-size: 2.5rem;
-  font-family: "metropolis-bold", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-weight: normal;
   border: none;
   color: #000000;
@@ -1069,7 +1069,7 @@ input::-moz-focus-inner {
   display: block;
   margin: .6rem 0 0 0;
   font-size: 1.4rem;
-  font-family: "metropolis-regular", sans-serif;
+  font-family: 'Exo', sans-serif;
   color: #828282;
 }
 
@@ -1262,7 +1262,7 @@ input::-moz-focus-inner {
 }
 
 .home-content h3 {
-  font-family: "metropolis-medium", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 1.4rem;
   line-height: 1.286;
   text-transform: uppercase;
@@ -1363,7 +1363,7 @@ input::-moz-focus-inner {
 
 #mc-form label {
   color: #FFFFFF;
-  font-family: "metropolis-regular", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 1.3rem;
   padding: 0 2rem;
 }
@@ -1384,7 +1384,7 @@ input::-moz-focus-inner {
 
 .home-content__counter .time {
   color: #FFFFFF;
-  font-family: "metropolis-light", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 3rem;
   line-height: 1;
   display: inline-block;
@@ -1403,7 +1403,7 @@ input::-moz-focus-inner {
 }
 
 .home-content__counter .days {
-  font-family: "metropolis-extralight", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 17.5rem;
   letter-spacing: -.5rem;
   padding-right: 6rem;
@@ -1412,7 +1412,7 @@ input::-moz-focus-inner {
 
 .home-content__counter .days span {
   display: inline-block;
-  font-family: "metropolis-regular", sans-serif;
+  font-family: 'Exo', sans-serif;
   letter-spacing: 0;
   background-color: #ff0000;
   color: #FFFFFF;
@@ -1436,7 +1436,7 @@ input::-moz-focus-inner {
  * ------------------------------------------------------------------- */
 .home-social {
   list-style: none;
-  font-family: "metropolis-regular", sans-serif;
+  font-family: 'Exo', sans-serif;
   margin: 0;
   position: absolute;
   top: 50%;
@@ -2064,7 +2064,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .s-info h3 {
-  font-family: "metropolis-regular", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 1.4rem;
   line-height: 1.286;
   color: #ff0000;
@@ -2161,7 +2161,7 @@ html.no-csstransitions .home-content__main {
   z-index: 502;
   background-color: #000000;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  font-family: "metropolis-medium", sans-serif;
+  font-family: 'Exo', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: .3rem;
