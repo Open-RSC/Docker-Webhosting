@@ -1,0 +1,11 @@
+services:
+    phpbb.mediaembed.listener:
+        class: phpbb\mediaembed\event\main_listener
+        arguments:
+            - '@auth'
+            - '@config'
+            - '@config_text'
+            - '@language'
+            - '@template'
+        tags:
+            - { name: event.listener }

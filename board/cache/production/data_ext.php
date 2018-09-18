@@ -1,0 +1,4 @@
+<?php exit; ?>
+1568397848
+920
+a:5:{s:21:"flerex/linkedaccounts";a:4:{s:8:"ext_name";s:21:"flerex/linkedaccounts";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:26:"ext/flerex/linkedaccounts/";}s:16:"phpbb/mediaembed";a:4:{s:8:"ext_name";s:16:"phpbb/mediaembed";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:21:"ext/phpbb/mediaembed/";}s:22:"phpbbmodders/banhammer";a:4:{s:8:"ext_name";s:22:"phpbbmodders/banhammer";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:27:"ext/phpbbmodders/banhammer/";}s:25:"rmcgirr83/activity24hours";a:4:{s:8:"ext_name";s:25:"rmcgirr83/activity24hours";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:30:"ext/rmcgirr83/activity24hours/";}s:24:"senky/userrecentactivity";a:4:{s:8:"ext_name";s:24:"senky/userrecentactivity";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:29:"ext/senky/userrecentactivity/";}}
