@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/board/vendor/symfony/proxy-manager-bridge" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/board/vendor/composer" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/board/vendor/marc1706/fast-image-size" />
+      <path value="$PROJECT_DIR$/board/vendor/guzzlehttp/streams" />
+      <path value="$PROJECT_DIR$/board/vendor/guzzlehttp/ringphp" />
+      <path value="$PROJECT_DIR$/board/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/board/vendor/patchwork/utf8" />
+      <path value="$PROJECT_DIR$/board/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/board/vendor/zendframework/zend-stdlib" />
+      <path value="$PROJECT_DIR$/board/vendor/bantu/ini-get-wrapper" />
+      <path value="$PROJECT_DIR$/board/vendor/zendframework/zend-code" />
+      <path value="$PROJECT_DIR$/board/vendor/zendframework/zend-eventmanager" />
+      <path value="$PROJECT_DIR$/board/vendor/lusitanian/oauth" />
+      <path value="$PROJECT_DIR$/board/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/board/vendor/s9e/text-formatter" />
+      <path value="$PROJECT_DIR$/board/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/board/vendor/google/recaptcha" />
+      <path value="$PROJECT_DIR$/board/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/board/vendor/ircmaxell/password-compat" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/polyfill-php54" />
+      <path value="$PROJECT_DIR$/board/vendor/symfony/polyfill-php55" />
+      <path value="$PROJECT_DIR$/board/vendor/paragonie/random_compat" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings load_method="CUSTOM_LOADER" custom_loader_path="$PROJECT_DIR$/board/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
+</project>
