@@ -2057,7 +2057,7 @@ html.no-csstransitions .home-content__main {
   content: "";
   width: 80px;
   height: 1px;
-  background-color: rgba(236, 0, 140, 0.6);
+  background-color: #ff0000;
   position: absolute;
   left: 3px;
   top: -3.6rem;
