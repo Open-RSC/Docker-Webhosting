@@ -47,8 +47,10 @@
 		"symfony/routing": "^2.8",
 		"symfony/twig-bridge": "^2.8",
 		"symfony/yaml": "^2.8",
-		"twig/twig": "^1.0"
-	},
+		"twig/twig": "^1.0",
+      "ext-mysql": "*",
+      "ext-mysqli": "*"
+    },
 	"require-dev": {
 		"fabpot/goutte": "~2.0",
 		"facebook/webdriver": "~1.1",

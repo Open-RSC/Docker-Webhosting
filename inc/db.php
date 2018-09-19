@@ -65,7 +65,7 @@ class Dbc extends OpenRSCDatabase {
             return mysqli_query($con, $query);
     }
 
-		function forumquery($query) {
+    function forumquery($query) {
             global $dbhost;
             global $dbuser;
             global $dbpasswd;
@@ -87,7 +87,7 @@ class Dbc extends OpenRSCDatabase {
             return mysqli_fetch_assoc($result);
     }
 
-		function fetchresult($result) {
+    function fetchresult($result) {
             return mysqli_result($result);
     }
 

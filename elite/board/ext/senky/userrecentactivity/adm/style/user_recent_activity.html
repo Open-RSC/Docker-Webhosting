@@ -1,0 +1,67 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_USER_RECENT_ACTIVITY_TITLE}</h1>
+
+<form id="acp_board" method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_SETTINGS}</legend>
+
+		<dl>
+			<dt>
+				<label for="allow_user_recent_activity">{L_ALLOW_USER_RECENT_ACTIVITY}{L_COLON}</label><br /><span>{L_ALLOW_USER_RECENT_ACTIVITY_EXPLAIN}</span>
+			</dt>
+			<dd>
+				<label><input type="radio" id="allow_user_recent_activity" class="radio" name="allow_user_recent_activity" value="1"<!-- IF ALLOW_USER_RECENT_ACTIVITY --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="allow_user_recent_activity" value="0"<!-- IF not ALLOW_USER_RECENT_ACTIVITY --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt>
+				<label for="senky_ura_only_mods">{L_ONLY_MODS}{L_COLON}</label><br /><span>{L_ONLY_MODS_EXPLAIN}</span>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" name="senky_ura_only_mods" value="1"<!-- IF ONLY_MODS --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" id="senky_ura_only_mods" class="radio" name="senky_ura_only_mods" value="0"<!-- IF not ONLY_MODS --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt>
+				<label for="number_user_recent_activity">{L_NUMBER_USER_RECENT_ACTIVITY}{L_COLON}</label><br /><span>{L_NUMBER_USER_RECENT_ACTIVITY_EXPLAIN}</span>
+			</dt>
+			<dd>
+				<input type="text" id="number_user_recent_activity" size="20" maxlength="100" name="number_user_recent_activity" value="{NUMBER_USER_RECENT_ACTIVITY}" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt>
+				<label for="show_user_recent_post">{L_SHOW_USER_RECENT_POST}{L_COLON}</label><br /><span>{L_SHOW_USER_RECENT_POST_EXPLAIN}</span>
+			</dt>
+			<dd>
+				<label><input type="radio" id="show_user_recent_post" class="radio" name="show_user_recent_post" value="1"<!-- IF SHOW_USER_RECENT_ACTIVITY --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+				<label><input type="radio" class="radio" name="show_user_recent_post" value="0"<!-- IF not SHOW_USER_RECENT_ACTIVITY --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt>
+				<label for="number_char_post">{L_NUMBER_CHAR_POST}{L_COLON}</label><br /><span>{L_NUMBER_CHAR_POST_EXPLAIN}</span>
+			</dt>
+			<dd>
+				<input type="text" id="number_char_post" size="20" maxlength="100" name="number_char_post" value="{NUMBER_CHAR_POST}" />
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<legend>{L_SUBMIT}</legend>
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</fieldset>
+
+	{S_FORM_TOKEN}
+</form>
+
+<!-- INCLUDE overall_footer.html -->
