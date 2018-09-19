@@ -33,7 +33,7 @@ $character = $connector->fetchArray($character_result);
 if($character) {
 ?>
 
-				<h4><?php echo $subpage;?>'s hero plaque</h4>
+				<h4><?php echo $subpage;?>'s player plaque</h4>
 				<p>View <?php echo $subpage;?>'s stats and achievements!</p>
 				<div id="stats">
 					<div id="character">

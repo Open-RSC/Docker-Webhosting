@@ -33,6 +33,7 @@ require_once './inc/charfunctions.php';
 function create_where_clauses($gen_id, $type)
 {
 global $db, $auth;
+
 $size_gen_id = sizeof($gen_id);
 
 switch($type)
@@ -144,9 +145,9 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 		<script type="text/javascript" src="/elite/js/flot/jquery.flot.js"></script>
 		<script type="text/javascript" src="/elite/js/flot/jquery.flot.pie.js"></script>
 		<script type="text/javascript">
-			function loadContent(id, username, owner, hc, hsprite, sc, tc, gender, pc, lvl, on) {
+			function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
 				var url = "/elite/js/account.php";
-					$.post(url, {id: id, username: username, owner: owner, hair: hc, head: hsprite, skin: sc, top: tc, gen: gender, pants: pc, combat: lvl, online: on} ,function(data) {
+					$.post(url, {username: user, userenc: userhash, owner: id, hair: hc, head: hsprite, skin: sc, top: tc, gen: gender, pants: pc, combat: lvl, online: on} ,function(data) {
 						$("#character-details").html(data).show();
 						$("a#inline").fancybox({
 						'hideOnContentClick': false,
