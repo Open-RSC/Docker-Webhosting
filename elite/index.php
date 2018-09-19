@@ -1,4 +1,4 @@
-<?php 
+<?php
 function curPageURL() {
 	$pageUrl = $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 	$page = explode("/",$pageUrl);
@@ -21,7 +21,7 @@ include($phpbb_root_path . 'includes/bbcode.' . $phpEx);
 include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 $user->session_begin();
 $auth->acl($user->data);
-$user->setup('viewforum'); 
+$user->setup('viewforum');
 
 require_once './inc/database_config.php';
 require_once './inc/charfunctions.php';
@@ -77,14 +77,14 @@ $gen_id = $topic_id_list;
 $size_gen_id = $gen_id;
 }
 
-$j = 0; 
+$j = 0;
 
 for ($i = 0; $i < $size_gen_id; $i++)
  {
 $id_check = (int) $gen_id[$i]; // If the type is topic, all checks have been made and the query can start to be built if( $type == 'topic_id' ) { $out_where .= ($j == 0) ? 'WHERE ' . $type . ' = ' . $id_check . ' ' : 'OR ' . $type . ' = ' . $id_check . ' '; } // If the type is forum, do the check to make sure the user has read permissions else if( $type == 'forum_id' && $auth->acl_get('f_read', $id_check) )
 {
 $out_where .= ($j == 0) ? 'WHERE ' . $type . ' = ' . $id_check . ' ' : 'OR ' . $type . ' = ' . $id_check . ' ';
-} 
+}
 
 $j++;
 }
@@ -130,7 +130,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 
 	<head>
 		<meta charset="utf-8"/>
-		<title>Lupus Regnum</title>
+		<title>Open RSC</title>
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -144,9 +144,9 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 		<script type="text/javascript" src="/elite/js/flot/jquery.flot.js"></script>
 		<script type="text/javascript" src="/elite/js/flot/jquery.flot.pie.js"></script>
 		<script type="text/javascript">
-			function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
+			function loadContent(id, username, owner, hc, hsprite, sc, tc, gender, pc, lvl, on) {
 				var url = "/elite/js/account.php";
-					$.post(url, {username: user, userenc: userhash, owner: id, hair: hc, head: hsprite, skin: sc, top: tc, gen: gender, pants: pc, combat: lvl, online: on} ,function(data) {
+					$.post(url, {id: id, username: username, owner: owner, hair: hc, head: hsprite, skin: sc, top: tc, gen: gender, pants: pc, combat: lvl, online: on} ,function(data) {
 						$("#character-details").html(data).show();
 						$("a#inline").fancybox({
 						'hideOnContentClick': false,
@@ -166,31 +166,31 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						var ui = $("#user-ui").val();
 						var y = $("#verification").val();
 						setTimeout(function(){
-						
+
 							$.post("/elite/js/account.php", {id: i, hash: ui, ver: y} ,function(data) {
 								$.fancybox.hideActivity();
 								$("#character-delete-form").hide();
 								window.location.reload()
 							});
-							
+
 						},5000);
 
 						return false;
 						});
 					});
 			}
-			
+
 			$(document).ready(function() {
 				$("#toggle:first").addClass('active');
 				$('#toggle').click(function(){
 					$('#toggle').removeClass('active');
 					$(this).toggleClass('active');
 				});
-				
+
 				$("a#single_image").fancybox();
-				
+
 				/* Using custom settings */
-				
+
 				$("a#inline").fancybox({
 					'hideOnContentClick': false,
 					'overlayColor': '#000000',
@@ -201,7 +201,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						$("#user-fails").hide();
 						$("#user-passes").hide();
 						$("#character-creation-form").show();
-					} 
+					}
 				});
 
 				$("#character-creation-form").bind("submit", function() {
@@ -217,13 +217,13 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						$.fancybox.resize();
 						return false;
 					}
-	
+
 					$.fancybox.showActivity();
 					var n = $("#name").val();
 				    var p = $("#password").val();
-					
+
 					setTimeout(function(){
-					
+
 						$.post("/elite/js/account.php", {nm: n, pw: p} ,function(data) {
 							if(data == 0){
 								$("#user-fails").show();
@@ -231,29 +231,29 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 								$("#user-passes").show();
 								$("#character-creation-form").hide();
 								window.location.reload()
-							}	
+							}
 							$.fancybox.hideActivity();
 						});
-						
+
 					},3000);
 
 					return false;
 				});
-				
+
 			});
 		</script>
-		
+
 
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 	</head>
-	
+
 	<body lang="en">
-	
+
 		<header>
 			<div class="large">Lupus Regnum</div>
 		</header>
-		<div class="body-wrapper">	
+		<div class="body-wrapper">
 			<div class="navigation">
 				<div class="navbar">
 					<ul>
@@ -279,13 +279,13 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						<span class="welcome-text">
 							<a href='<?php echo $script_directory; ?>board/ucp.php?mode=logout&amp;sid=<?php print $user->data['session_id'];?>'>Logout</a>
 						</span>
-						
+
 					<?php } else { ?>
 						<a id="inline" href="#data">
 							<span class="welcome-message">Initiate Command Module</span>
 							<span class="welcome-text">to gain access to member only features!</span>
 						</a>
-		
+
 					<?php } ?>
 						<div style="display:none">
 							<div id="data">
@@ -297,16 +297,16 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 								<label for="autologin">Remember Me?: </label><input type="checkbox" name="autologin" class="autologin"  id="autologin"/>
 								<input type="submit" value="Log In" name="login" class="submit"/>
 								<input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php" />
-								</form> 
-								<a class="submit" href="<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a> 
+								</form>
+								<a class="submit" href="<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 		<?php
-		
+
 			if(curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'){
 				if(file_exists("pages/".curPageURL().".php")) {
 					include("pages/".curPageURL().".php");
@@ -336,7 +336,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 
 						$post_text = nl2br($posts_row['post_text']);
 
-						$bbcode = new bbcode(base64_encode($bbcode_bitfield)); 
+						$bbcode = new bbcode(base64_encode($bbcode_bitfield));
 						$bbcode->bbcode_second_pass($post_text, $posts_row['bbcode_uid'], $posts_row['bbcode_bitfield']);
 
 						$post_text = smiley_text($post_text);
@@ -344,18 +344,18 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						echo '<h4><a href="'.$post_link.'">'.$topic_title.'</a></h4>';
 						echo '<div class="meta">posted by '.$post_author.' // '.$post_date.'</div>';
 						echo '<p>'.smiley_text($post_text).'</p>';
-						
+
 					}
 				?>
 				</article>
 			</div>
-			
+
 		</div>
-		
+
 		<?php
-		
+
 			}
-		
+
 		?>
 		<aside>
 			<div class="box">
@@ -370,7 +370,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 			</div>
 		</aside>
 		</div>
-		
+
 	</body>
-	
+
 </html>
