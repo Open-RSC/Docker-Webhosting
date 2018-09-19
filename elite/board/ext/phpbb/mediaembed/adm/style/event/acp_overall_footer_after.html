@@ -1,0 +1,11 @@
+{% if MEDIA_SITES %}
+<script>
+	$(function() {
+		$('#mediaembed_manage').on('click', 'label', function() {
+			if ($(this).children('input').prop('disabled')) {
+				phpbb.alert('{{ lang('GENERAL_ERROR')|escape('js') }}', $(this).attr('title'));
+			}
+		});
+	});
+</script>
+{% endif %}

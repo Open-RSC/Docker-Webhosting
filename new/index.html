@@ -5,9 +5,9 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Count - Slides</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Open RSC</title>
+    <meta name="description" content="Striving for a replica RSC game and more.">
+    <meta name="keywords" content="openrsc,open rsc,rsc,open-rsc,rs classic">
 
     <!-- mobile specific metas
     ================================================== -->
@@ -24,11 +24,39 @@
     ================================================== -->
     <script src="js/modernizr.js"></script>
     <script src="js/pace.min.js"></script>
+    <script src="js/parallax.js"></script>
+    <script>
+        function showPopup(form) {
+            $(form).css("height", $(document).height());
+            $(form).css("display", "block");
+            window.scrollTo(0, 0);
+        }
+
+        $(document).ready(function() {
+
+            $(".login").click(function() {
+                showPopup("#login_popup");
+            });
+
+            $(".popup_form .close_").click(function(e) {
+                e.preventDefault();
+                $(".popup_form").css("display", "none");
+            });
+
+        });
+    </script>
 
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
 </head>
 
@@ -37,6 +65,21 @@
     <!-- home
     ================================================== -->
     <main class="s-home s-home--slides">
+
+        <div id="login_popup" class="popup_form">
+            <form method="post" action="/board/ucp.php?mode=login">
+                <a class="close_" href="#">Close</a>
+                <h3 class="error"></h3>
+                <br />
+                <input type="text" name="username" class="name" id="username" placeholder="Username"/>
+                <input type="password" name="password" class="password" id="password" placeholder="Password"/>
+                <input type="hidden" checked="yes" name="autologin" class="autologin"  id="autologin"/>
+                <input type="submit" value="Log In" name="login" class="submit"/>
+                <input type="hidden" name="redirect" value="/index.php" />
+                <div class="sep"></div>
+                <h4>Don't have an account? <a href="/board/ucp.php?mode=register">Register Now</a></h4>
+            </form>
+        </div>
 
         <div class="home-slider">
             <div class="home-slider-img" style="background-image: url(images/slides/slide-01.jpg);"></div>
@@ -100,6 +143,7 @@
                 <li>
                     <a href="https://discord.gg/94vVKND" target="_blank"><i class="fab fa-discord" aria-hidden="true"></i><span>Discord</span></a>
                 </li>
+                <li><a class="login" href="#">Log In</a></li>
                 <li>
                     <a href="https://github.com/open-rsc/Game" target="_blank"><i class="fab fa-github-square" aria-hidden="true"></i><span>GitHub</span></a>
                 </li>
@@ -182,7 +226,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>  <!-- end info contact -->
 
         </div>  <!-- end info wrapper -->

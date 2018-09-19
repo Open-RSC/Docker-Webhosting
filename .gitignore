@@ -12,3 +12,7 @@ board/cache/production/
 \.idea/workspace\.xml
 
 \.idea/
+
+*.svn-base
+
+\.svn/
