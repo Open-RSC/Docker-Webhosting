@@ -92,14 +92,13 @@ if($_POST['nm']){
 
 $username = $_POST["username"];
 $combat = $_POST["combat"];
-$id = $_POST["id"];
-$owner = $_POST["owner"];
+$id = $_POST["owner"];
 $online = $_POST["online"];
 
 $usernamelink = preg_replace("/[^A-Za-z0-9]/","-",$username);
 
 $skills = buildSQLArray($skill_array);
-$user_check = $connector->gamequery("SELECT ".$skills.", openrsc_players.id FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.playerID = openrsc_experience.playerID WHERE openrsc_players.username=$username");
+$user_check = $connector->gamequery("SELECT ".$skills.", openrsc_players.owner FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.id = openrsc_experience.playerID WHERE openrsc_players.username=$username");
 $check = $connector->fetchArray($user_check);
 
 
