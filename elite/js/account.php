@@ -1,4 +1,5 @@
 <?php
+$script_directory = '/elite/';
 define('IN_PHPBB', true);
 $phpbb_root_path = '../board/';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
@@ -7,14 +8,14 @@ include($phpbb_root_path . 'includes/bbcode.' . $phpEx);
 include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 $user->session_begin();
 $auth->acl($user->data);
-$user->setup('viewforum'); 
+$user->setup('viewforum');
 
 if(!$_POST)
 {
 	die("You do not have permission to access this file.");
 }
 
-$skill_array = array(attack, strength, defense, hitpoints, ranged, prayer, magic, cooking, woodcut, fletching, fishing, firemaking, crafting, smithing, mining, herblaw, agility, thieving);
+$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
 
 function buildSQLArray($array) {
 	$SQLarray = '';
@@ -38,13 +39,13 @@ if($_POST['nm']){
 
 	$username = $_POST['nm'];
 	$password = $_POST['pw'];
-	
-	$username = mysql_real_escape_string($username);
+
+	$username = mysqli_real_escape_string($username);
 	$username = preg_replace("/[^A-Za-z0-9 ]/"," ",$username);
-	
-	$user_result = $connector->query("SELECT user FROM openrsc_players WHERE username='$username'");
-	$num_users_row = mysql_num_rows($user_result);
-	
+
+	$user_result = $connector->gamequery("SELECT username FROM openrsc_players WHERE username='$username'");
+	$num_users_row = mysqli_num_rows($user_result);
+
 	if($num_users_row != 0){
 		echo 0;
 	} else {
@@ -53,10 +54,10 @@ if($_POST['nm']){
 		if(strlen($username) >= 12 || strlen($username) <= 4 || strlen($password) <= 5){} else {
 			$time = time();
 			$gamepass = sha1($password);
-			$gamename = explode('.', encode_username($username));
-			$connector->query("INSERT INTO `openrsc_curstats`(`user`) VALUES ('" . $gamename[0] . "')");
-			$connector->query("INSERT INTO `openrsc_experience`(`user`) VALUES ('" . $gamename[0] . "')");
-			$connector->query("INSERT INTO `openrsc_players`(`user`, `username`, `phpbb_id`, `owner_username`, `pass`, `creation_date`, `creation_ip`) VALUES ('" . $gamename[0] . "', '" . $username . "', '" . $user->data['user_id'] . "', '" . $user->data['username'] . "', '" . $gamepass . "', '".$time."', '". $_SERVER['REMOTE_ADDR'] ."')");
+			$gamename = explode('.', $username);
+			$connector->gamequery("INSERT INTO `openrsc_curstats`(`playerID`) VALUES ('" . $gamename[0] . "')");
+			$connector->gamequery("INSERT INTO `openrsc_experience`(`playerID`) VALUES ('" . $gamename[0] . "')");
+			$connector->gamequery("INSERT INTO `openrsc_players`(`id`, `username`, `owner`, `pass`, `creation_date`, `creation_ip`) VALUES ('" . $gamename[0] . "', '" . $username . "', '" . $user->data['user_id'] . "', '" . $user->data['username'] . "', '" . $gamepass . "', '".$time."', '". $_SERVER['REMOTE_ADDR'] ."')");
 			echo 1;
 		}
 	}
@@ -64,25 +65,24 @@ if($_POST['nm']){
 } else if($_POST["ver"]){
 
 	$user_i = $_POST["id"];
-	$user_ui = $_POST["hash"];
+	$user_ui = $_POST["username"];
 	$ver = $_POST["ver"];
-	
+
 	if(strtolower($ver) != 'yes'){
 		echo 0;
 	} else {
-		$user_check = $connector->query("SELECT phpbb_id,group_id FROM openrsc_players WHERE user=$user_ui");
+		$user_check = $connector->gamequery("SELECT id, username, owner, group_id FROM openrsc_players WHERE username=$user_ui");
 		$check = $connector->fetchArray($user_check);
 		if($user_i == $user->data['user_id']){
 			if($check['group_id'] == 1){ echo 2; } else {
-				$connector->query("DELETE FROM openrsc_players WHERE user = '" . $user_ui . "'");
-				$connector->query("DELETE FROM openrsc_curstats WHERE user = '" . $user_ui . "'");
-				$connector->query("DELETE FROM openrsc_experience WHERE user = '" .  $user_ui . "'");
-				$connector->query("DELETE FROM openrsc_invitems WHERE user = '" .  $user_ui. "'");
-				$connector->query("DELETE FROM openrsc_quests WHERE user = '" .  $user_ui . "'");
-				$connector->query("DELETE FROM openrsc_friends WHERE user = '" .  $user_ui. "'");
-				$connector->query("DELETE FROM openrsc_ignores WHERE user = '" .  $user_ui . "'");
-				$connector->query("DELETE FROM openrsc_bank WHERE user = '" .  $user_ui . "'");
-				$connector->query("DELETE FROM openrsc_kills WHERE user = '" .  $user_ui . "'");
+				$connector->gamequery("DELETE FROM openrsc_players WHERE username = '" . $user_ui . "'");
+				$connector->gamequery("DELETE FROM openrsc_curstats WHERE playerID = '" . $user_i . "'");
+				$connector->gamequery("DELETE FROM openrsc_experience WHERE playerID = '" .  $user_i . "'");
+				$connector->gamequery("DELETE FROM openrsc_invitems WHERE playerID = '" .  $user_i. "'");
+				$connector->gamequery("DELETE FROM openrsc_quests WHERE playerID = '" .  $user_i . "'");
+				$connector->gamequery("DELETE FROM openrsc_friends WHERE playerID = '" .  $user_i. "'");
+				$connector->gamequery("DELETE FROM openrsc_ignores WHERE playerID = '" .  $user_i . "'");
+				$connector->gamequery("DELETE FROM openrsc_bank WHERE playerID = '" .  $user_i . "'");
 				echo 3;
 			}
 		} else { echo 1; }
@@ -91,19 +91,19 @@ if($_POST['nm']){
 } else if($_POST["username"]){
 
 $username = $_POST["username"];
-$userhash = $_POST["userenc"];
 $combat = $_POST["combat"];
-$id = $_POST["owner"];
+$id = $_POST["id"];
+$owner = $_POST["owner"];
 $online = $_POST["online"];
 
 $usernamelink = preg_replace("/[^A-Za-z0-9]/","-",$username);
 
 $skills = buildSQLArray($skill_array);
-$user_check = $connector->query("SELECT ".$skills.",openrsc_players.phpbb_id FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.user = openrsc_experience.user WHERE openrsc_players.user=$userhash");
+$user_check = $connector->gamequery("SELECT ".$skills.", openrsc_players.id FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.playerID = openrsc_experience.playerID WHERE openrsc_players.username=$username");
 $check = $connector->fetchArray($user_check);
 
 
-if($check['phpbb_id'] == $user->data['user_id']){
+if($check['owner'] == $user->data['user_id']){
 
 ?>
 	<div id="character">
@@ -123,7 +123,7 @@ if($check['phpbb_id'] == $user->data['user_id']){
 			<div id="pass">
 				<h4>Change Password</h4>
 				<p>Change <?php echo $username;?>'s password</p>
-				
+
 			</div>
 		</div>
 		<a id="inline" href="#<?php echo ($online == 1) ? 'error' : 'delete' ;?>" class="button">Delete Account</a>
@@ -135,9 +135,9 @@ if($check['phpbb_id'] == $user->data['user_id']){
 				<form method="post" action="" id="character-delete-form">
 					<label for="username">Verification: (Type 'yes' without quotations into the box below)</label><input type="text" name="verification" class="name" id="verification" />
 					<input type="hidden" id="user-i" value="<?php echo $id; ?>"/>
-					<input type="hidden" id="user-ui" value="<?php echo $userhash; ?>"/>
+					<input type="hidden" id="user-ui" value="<?php echo $username; ?>"/>
 					<input type="submit" value="Delete" name="create" class="submit"/>
-				</form> 
+				</form>
 			</div>
 		</div>
 	</div>
@@ -155,14 +155,14 @@ if($check['phpbb_id'] == $user->data['user_id']){
 						echo '{label: "'.ucwords($skill).'",  data: '.$check['exp_'.$skillc].'}, ';
 					}
 				} ?>
-				
+
 			];
-						
-							$.plot($("#donut"), graph, 
+
+							$.plot($("#donut"), graph,
 							{
 								series: {
-									pie: { 
-										
+									pie: {
+
 										show: true,
 										combine: {
 											color: '#999',
@@ -179,15 +179,15 @@ if($check['phpbb_id'] == $user->data['user_id']){
 								}
 							});
 			</script>
-	</div>		
+	</div>
 	<div style="display:none">
 		<div id="error">
 			<h4>Error</h4>
-			<p>You must be logged out before you can delete/modify this account</p> 
+			<p>You must be logged out before you can delete/modify this account</p>
 		</div>
 	</div>
 <?php
 	} else { echo "<p>Sorry this is not your account to modify</p>"; }
-	
+
 }
 ?>

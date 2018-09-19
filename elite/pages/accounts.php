@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 if(!defined('IN_PHPBB'))
 {
 	die("You do not have permission to access this file.");
@@ -7,9 +9,7 @@ if($user->data['is_registered']) {
 	$phpbb_user_id = $user->data['user_id'];
 	
 	$connector = new Dbc();
-	$characters_result = $connector->gamequery("SELECT * 
-											FROM openrsc_players
-											WHERE id=$phpbb_user_id");
+	$characters_result = $connector->gamequery("SELECT * FROM openrsc_players WHERE owner=$phpbb_user_id");
 ?>
 	<div class="main">
 		<div class="content">
@@ -24,12 +24,12 @@ if($user->data['is_registered']) {
 						$i=0;
 						while($row = $connector->fetchArray($characters_result)){ 
 					?>
-							<a href="#" onClick="javascript:loadContent('<?php echo $row['username']; ?>','<?php echo $row['id']; ?>','<?php echo $row['phpbb_id']; ?>','<?php echo $row['haircolour']; ?>','<?php echo $row['headsprite']; ?>','<?php echo $row['skincolour']; ?>','<?php echo $row['topcolour']; ?>','<?php echo $row['male']; ?>','<?php echo $row['trousercolour']; ?>','<?php echo $row['combat']; ?>','<?php echo $row['online']; ?>');"><li id="toggle"><?php echo $row['username']; ?></li></a>
+                            <a href="#" onClick="loadContent('<?php echo $row['username']; ?>','<?php echo $row['id']; ?>','<?php echo $row['owner']; ?>','<?php echo $row['haircolour']; ?>','<?php echo $row['headsprite']; ?>','<?php echo $row['skincolour']; ?>','<?php echo $row['topcolour']; ?>','<?php echo $row['male']; ?>','<?php echo $row['trousercolour']; ?>','<?php echo $row['combat']; ?>','<?php echo $row['online']; ?>');"><li id="toggle"><?php echo $row['username']; ?></li></a>
 					<?php
 						if($i==0){ 
 							$username=$row['username'];
-							$user=$row['id'];
-							$id=$row['phpbb_id'];
+                            $user=$row['owner'];
+							$id=$row['id'];
 							
 							$hc = $row['haircolour'];
 							$hsprite = $row['headsprite'];
@@ -48,7 +48,7 @@ if($user->data['is_registered']) {
 					</div>
 					<script type="text/javascript" language="JavaScript">
 						$(document).ready(function() {
-							$.post("/elite/js/account.php", {username: '<?php echo $username; ?>', userenc: '<?php echo $user; ?>', owner: '<?php echo $id; ?>', hair: <?php echo $hc; ?>, head: <?php echo $hsprite; ?>, skin: <?php echo $sc; ?>, top: <?php echo $tc; ?>, gen: <?php echo $gender; ?>, pants: <?php echo $pc; ?>, combat: <?php echo $combat; ?>, online: <?php echo $online; ?>} ,function(data) {
+                            $.post("/elite/js/account.php", {username: '<?php echo $username; ?>', userenc: '<?php echo $user; ?>', owner: '<?php echo $user; ?>', hair: <?php echo $hc; ?>, head: <?php echo $hsprite; ?>, skin: <?php echo $sc; ?>, top: <?php echo $tc; ?>, gen: <?php echo $gender; ?>, pants: <?php echo $pc; ?>, combat: <?php echo $combat; ?>, online: <?php echo $online; ?>} ,function(data) {
 								$("#character-details").html(data).show();
 								$("a#inline").fancybox({
 									'hideOnContentClick': false,

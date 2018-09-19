@@ -22,7 +22,7 @@ $connector = new Dbc();
 //$subpage = mysqli_real_escape_string($subpage);
 $subpage = preg_replace("/[^A-Za-z0-9 ]/"," ",$subpage);
 $skills = buildSQLArray($skill_array);
-$character_result = $connector->gamequery("SELECT ".$skills.",openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
+$character_result = $connector->gamequery("SELECT ".$skills.", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
 $character = $connector->fetchArray($character_result);
 
 ?>
@@ -53,7 +53,7 @@ if($character) {
 					<div id="sm-stats">
 						<span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
 						<span class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
-						<span class="sm-stats">Owner: <a href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['phpbb_id']; ?>"><?php echo $character['owner_username']; ?></a></span>
+						<span class="sm-stats">Owner: <a href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $character['username']; ?></a></span>
 						<?php if($character['online'] == 1) { echo '<span id="green">Online</span>'; } else { echo '<span id="red">Offline</span>'; } ?>
 					</div>
 				</div>

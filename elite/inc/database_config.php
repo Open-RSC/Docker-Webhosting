@@ -9,7 +9,7 @@ require_once($phpbb_root_path . 'includes/bbcode.' . $phpEx);
 require_once($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 require_once($phpbb_root_path . 'config.' . $phpEx);
 
-$phpbb_root_path = './board/';
+$phpbb_root_path = '../board/';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
 require($phpbb_root_path . 'config.' . $phpEx);
 
@@ -20,9 +20,9 @@ class OpenRSCDatabase {
     function getSettings() {
 
 // System variables
-        $settings['siteDir'] = $site;
+        //$settings['siteDir'] = $site;
 
-        return $settings;
+        //return $settings;
 
     }
 

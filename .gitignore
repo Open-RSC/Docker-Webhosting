@@ -16,3 +16,4 @@ board/cache/production/
 *.svn-base
 
 \.svn/
+elite/board/cache/production/
