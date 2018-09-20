@@ -4,7 +4,7 @@ if(!defined('IN_PHPBB'))
 	die("You do not have permission to access this file.");
 }
 
-$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
+$skill_array = array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
 
 function buildSQLArray($array) {
 	$SQLarray = '';
@@ -22,8 +22,25 @@ $connector = new Dbc();
 //$subpage = mysqli_real_escape_string($subpage);
 $subpage = preg_replace("/[^A-Za-z0-9 ]/"," ",$subpage);
 $skills = buildSQLArray($skill_array);
-$character_result = $connector->gamequery("SELECT ".$skills.", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
+
+$character_result = $connector->gamequery("SELECT '.$skills.', openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
 $character = $connector->fetchArray($character_result);
+
+$phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.owner, B.username FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
+$phpbb_user = $connector->fetchArray($phpbb_user_result);
+
+$player_rank_result = $connector->gamequery("SELECT group_id AS rank FROM openrsc_players WHERE username = '$subpage'");
+$player_rank = $connector->fetchArray($player_rank);
+
+if($player_rank['rank'] = 1) {
+    $player_rank_c = "<img src=\"../css/images/admin.gif\" height=\"20\" width=\"20\"> ";
+}
+else if($player_rank['rank'] = 2) {
+    $player_rank_c = "<img src=\"../css/images/mod.gif\" height=\"20\" width=\"20\"> ";
+}
+else {
+    $player_rank_c = NULL;
+}
 
 ?>
 <div class="main">
@@ -33,8 +50,8 @@ $character = $connector->fetchArray($character_result);
 if($character) {
 ?>
 
-				<h4><?php echo $subpage;?>'s player plaque</h4>
-				<p>View <?php echo $subpage;?>'s stats and achievements!</p>
+				<h4><?php echo $player_rank_c, $subpage;?></h4>
+				<p>You are viewing <?php echo ucwords($subpage);?>'s stats and achievements.</p>
 				<div id="stats">
 					<div id="character">
 						<?php echo drawCharacter($character['haircolour'],$character['headsprite'],$character['skincolour'],$character['topcolour'],$character['male'],$character['trousercolour']); ?>
@@ -53,7 +70,7 @@ if($character) {
 					<div id="sm-stats">
 						<span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
 						<span class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
-						<span class="sm-stats">Owner: <a href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $character['username']; ?></a></span>
+						<span class="sm-stats">Owner: <a href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $phpbb_user['player_name']; ?></a></span>
 						<?php if($character['online'] == 1) { echo '<span id="green">Online</span>'; } else { echo '<span id="red">Offline</span>'; } ?>
 					</div>
 				</div>
