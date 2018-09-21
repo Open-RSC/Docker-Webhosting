@@ -24,14 +24,13 @@ if(!$subpage || !in_array($subpage, $skill_array)){
 	<div class="main">
 		<div class="content">
 			<article>
-				<h4>Highscores</h4>
-				<p>Select one of the skills below to view the leaders in each.</p>
+				<h4 align="center">Highscores</h4>
 				<div class="skill">
-					<ul>
-						<?php foreach ($skill_array as $skill) { ?>
-							<li><a href="<?php echo $script_directory; ?>highscores/<?php print $skill;?>"><img src="<?php echo $script_directory; ?>css/images/skill_icons/<?php print $skill;?>-lg.png" alt="<?php print $skill;?>"/><?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/"," ",$skill));?></a></li>
-						<?php } ?>
-					</ul>
+                    <ul>
+                        <?php foreach ($skill_array as $skill) { ?>
+                            <li><a href="<?php echo $script_directory; ?>highscores/<?php print $skill;?>"><img src="<?php echo $script_directory; ?>css/images/skill_icons/skill_<?php print $skill;?>.gif" alt="<?php print $skill;?>"/><?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/"," ",$skill));?></a></li>
+                        <?php } ?>
+                    </ul>
 				</div>
 			</article>
 		</div>
@@ -51,36 +50,50 @@ if(!$subpage || !in_array($subpage, $skill_array)){
 ?>
 	<div class="main">
 		<div class="content">
-			<article>
-				<h4><?php print preg_replace("/[^A-Za-z0-9 ]/"," ",$subpage);?> Highscores</h4>
-				<p>View the current leaders for <?php print preg_replace("/[^A-Za-z0-9 ]/"," ",$subpage);?>.</p>
-				<div class="ranking">
-					<ul>
-						<li id="header">
-							<div id="rank">Rank</div>
-							<div id="username">Username</div>
-							<div id="level">Level</div>
-							<div id="experience">Experience</div>
-						</li>
-					</ul>
-					<ul>
-					<?php
-						$i = 1;
-						while($row = $connector->fetchArray($stat_result)) {
-							$usernameLink = preg_replace("/[^A-Za-z0-9]/","-",$row['username']);
-					?>
-						<li id="table">
-							<div id="rank"><?php echo $i; ?></div>
-							<div id="username"><a href="<?php echo $script_directory; ?>characters/<?php echo $usernameLink; ?>"><?php echo $row['username']; ?></a></div>
-							<div id="level"><?php echo ($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_'.$subpage]/4 -1); ?></div>
-							<div id="experience"><?php echo ($subpage == $skill_array[0]) ? intval(totalXP($row)/4) : intval($row['exp_'.$subpage]/4); ?></div>
-						</li>
-					<?php
-						$i++;
-						}
-					?>
-					</ul>
-				</div>
+            <article>
+                <h4 align="center"><?php print preg_replace("/[^A-Za-z0-9 ]/"," ",$subpage);?></h4>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="skill">
+                                <ul>
+                                    <?php foreach ($skill_array as $skill) { ?>
+                                        <li><a href="<?php echo $script_directory; ?>highscores/<?php print $skill;?>"><img src="<?php echo $script_directory; ?>css/images/skill_icons/skill_<?php print $skill;?>.gif" alt="<?php print $skill;?>"/><?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/"," ",$skill));?></a></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </td>
+                        <td valign="top">
+                            <div class="ranking">
+                                <ul>
+                                    <li id="header">
+                                        <div id="rank">Rank</div>
+                                        <div id="username">Username</div>
+                                        <div id="level">Level</div>
+                                        <div id="experience">Experience</div>
+                                    </li>
+                                </ul>
+                                <ul>
+                                <?php
+                                    $i = 1;
+                                    while($row = $connector->fetchArray($stat_result)) {
+                                        $usernameLink = preg_replace("/[^A-Za-z0-9]/","-",$row['username']);
+                                ?>
+                                    <li id="table">
+                                        <div id="rank"><?php echo $i; ?></div>
+                                        <div id="username"><a href="<?php echo $script_directory; ?>characters/<?php echo $usernameLink; ?>"><?php echo $row['username']; ?></a></div>
+                                        <div id="level"><?php echo ($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_'.$subpage]/4 -1); ?></div>
+                                        <div id="experience"><?php echo ($subpage == $skill_array[0]) ? intval(totalXP($row)/4) : intval($row['exp_'.$subpage]/4); ?></div>
+                                    </li>
+                                <?php
+                                    $i++;
+                                    }
+                                ?>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
 			</article>
 		</div>
 	</div>

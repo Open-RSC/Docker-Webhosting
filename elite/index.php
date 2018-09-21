@@ -148,7 +148,8 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 		<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/elite/js/flot/excanvas.min.js"></script><![endif]-->
 		<link rel="stylesheet" media="all" href="/elite/css/style.css"/>
 		<link rel="stylesheet" href="/elite/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
 		<script src="/elite/js/cufon.js" type="text/javascript"></script>
 		<script src="/elite/js/Aurulent_Sans.font.js" type="text/javascript"></script>
 		<script type="text/javascript" src="/elite/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
@@ -267,9 +268,10 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						<li><a href="<?php echo $script_directory; ?>">Home</a></li>
 						<li><a href="<?php echo $script_directory; ?>board/index.php">Forum</a></li>
 						<li><a href="<?php echo $script_directory; ?>playnow">Play Now</a></li>
-						<!--<li><a href="<?php echo $script_directory; ?>clans">Clans</a></li>-->
+						<li><a href="<?php echo $script_directory; ?>chat">Game Chat</a></li>
 						<li><a href="<?php echo $script_directory; ?>highscores">Highscores</a></li>
-						<li><a href="<?php echo $script_directory; ?>media">Media</a></li>
+						<li><a href="<?php echo $script_directory; ?>worldmap">Live Map</a></li>
+                        <li><a href="<?php echo $script_directory; ?>stats">Statistics</a></li>
 					</ul>
 				</div>
 				<div class="account-panel">
@@ -295,7 +297,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 					<?php } ?>
 						<div style="display:none">
 							<div id="data">
-								<h4>Member Login</h4>
+								<h4 style="margin-left: 10px;">Member Login</h4>
 								<form method="post" action="<?php echo $script_directory; ?>board/ucp.php?mode=login">
 								<input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
 								<input type="password" name="password" class="password" id="loginpass" placeholder="Password"/>
@@ -304,7 +306,6 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 								<input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php" />
 								</form>
 								<a class="submit" href="<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a>
-
 							</div>
 						</div>
 					</div>
@@ -367,10 +368,12 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 			<div class="box">
 				<div class="widget">
                     <h4>Statistics</h4>
-                    <p><strong>Players Online: <?php echo playersOnline(); ?><br />
+                    <p><strong>
+                            Players Online: <?php echo playersOnline(); ?><br />
                             Server Status: <?php echo checkStatus("localhost", "43594"); ?><br />
                             Total Players: <?php echo totalGameCharacters(); ?><br />
-                            Registrations today: <?php echo newRegistrationsToday(); ?><br /></strong></p>
+                            Registrations today: <?php echo newRegistrationsToday(); ?><br />
+                     </strong></p>
                 </div>
                 <iframe src="https://discordapp.com/widget?id=459699205674369025&theme=dark" width="220" height="500" allowtransparency="false" frameborder="0"></iframe>
 				</div>

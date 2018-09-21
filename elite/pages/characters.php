@@ -31,7 +31,7 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
 ?>
 
 <div class="main">
-	<div class="content">
+	<div class="content"">
 		<article>
             <?php if($character) { ?>
                 <h4><?php if ($character['group_id'] != 4): echo "<img src=\"../css/images/$character[group_id].gif\" width=\"20\" height=\"20\"> ";
