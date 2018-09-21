@@ -621,6 +621,7 @@ label {
 #stats {
 	float:left;
 	width:705px;
+    height: 135px;
 	padding:10px;
 	margin:10px 0px;
 	background:rgba(42,34,32,1);
@@ -629,26 +630,8 @@ label {
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
-#head {
-	display: block;
-	left: 10px;
-	position: relative;
-	top: 14px;
-}
-
-#body {
-	display:block;
-}
-
-#leg {
-	display: block;
-	left: 7px;
-	top:-3px;
-	position: relative;
-}
-
 #sm-skill {
-	float:left;
+	float:right;
 	width:330px;
 	-moz-column-width: 45px;
 	-webkit-column-width: 45px;
@@ -663,7 +646,7 @@ label {
 }
 
 #sm-stats {
-	width:170px;
+	width:200px;
 	display:inline;
 	float:left;
 	padding:5px 5px;
