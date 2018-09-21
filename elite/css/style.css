@@ -167,7 +167,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 body {
 	width: 1006px;
 	padding: 32px 48px 84px;
-	background: #000 url(http://i.imgur.com/S5gCL.jpg) fixed;
+	background: #000 url(/board/styles/pbwow3/theme/images/theme/wod.png) fixed;
 	color: rgb(60,60,60);
 	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
 }
@@ -226,14 +226,14 @@ header {
 
 article {
 	background: #201B18;
-	width: 630px;
+	width: 725px;
 	padding:10px;
 	float:left;
 }
 
 aside{
 	float:right;
-	width:316px;
+	width:220px;
 	margin:20px 0px;
 }
 
@@ -620,7 +620,7 @@ label {
 
 #stats {
 	float:left;
-	width:610px;
+	width:705px;
 	padding:10px;
 	margin:10px 0px;
 	background:rgba(42,34,32,1);
