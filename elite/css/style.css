@@ -167,7 +167,7 @@ px      68    160    252    344    436    528    620    712    804    896    */
 body {
 	width: 1006px;
 	padding: 32px 48px 84px;
-	background: #000 url(http://i.imgur.com/S5gCL.jpg) fixed;
+	background: #000 url(/board/styles/pbwow3/theme/images/theme/wod.png) fixed;
 	color: rgb(60,60,60);
 	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
 }
@@ -226,14 +226,14 @@ header {
 
 article {
 	background: #201B18;
-	width: 630px;
+	width: 725px;
 	padding:10px;
 	float:left;
 }
 
 aside{
 	float:right;
-	width:316px;
+	width:220px;
 	margin:20px 0px;
 }
 
@@ -620,7 +620,8 @@ label {
 
 #stats {
 	float:left;
-	width:610px;
+	width:705px;
+    height: 135px;
 	padding:10px;
 	margin:10px 0px;
 	background:rgba(42,34,32,1);
@@ -629,26 +630,8 @@ label {
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
-#head {
-	display: block;
-	left: 10px;
-	position: relative;
-	top: 14px;
-}
-
-#body {
-	display:block;
-}
-
-#leg {
-	display: block;
-	left: 7px;
-	top:-3px;
-	position: relative;
-}
-
 #sm-skill {
-	float:left;
+	float:right;
 	width:330px;
 	-moz-column-width: 45px;
 	-webkit-column-width: 45px;
@@ -663,7 +646,7 @@ label {
 }
 
 #sm-stats {
-	width:170px;
+	width:200px;
 	display:inline;
 	float:left;
 	padding:5px 5px;

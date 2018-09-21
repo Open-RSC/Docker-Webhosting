@@ -132,6 +132,16 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 	<head>
 		<meta charset="utf-8"/>
 		<title>Open RSC</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=9">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+        <link rel="manifest" href="img/site.webmanifest">
+        <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -243,16 +253,12 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 
 			});
 		</script>
-
-
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 	</head>
 
 	<body lang="en">
 
 		<header>
-			<div class="large">Lupus Regnum</div>
+			<div class="large">Open RSC</div>
 		</header>
 		<div class="body-wrapper">
 			<div class="navigation">
@@ -261,7 +267,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						<li><a href="<?php echo $script_directory; ?>">Home</a></li>
 						<li><a href="<?php echo $script_directory; ?>board/index.php">Forum</a></li>
 						<li><a href="<?php echo $script_directory; ?>playnow">Play Now</a></li>
-						<li><a href="<?php echo $script_directory; ?>clans">Clans</a></li>
+						<!--<li><a href="<?php echo $script_directory; ?>clans">Clans</a></li>-->
 						<li><a href="<?php echo $script_directory; ?>highscores">Highscores</a></li>
 						<li><a href="<?php echo $script_directory; ?>media">Media</a></li>
 					</ul>
@@ -282,24 +288,23 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						</span>
 
 					<?php } else { ?>
-						<a id="inline" href="#data">
-							<span class="welcome-message">Initiate Command Module</span>
-							<span class="welcome-text">to gain access to member only features!</span>
-						</a>
+
+                        <span class="welcome-message"><a id="inline" href="#data">Login</a></span>
+                        <span class="welcome-message"><a href="/board/ucp.php?mode=register">Register</a></span>
 
 					<?php } ?>
 						<div style="display:none">
 							<div id="data">
-								<h4>Login Module</h4>
-								<p>Use the form below to login!</p>
+								<h4>Member Login</h4>
 								<form method="post" action="<?php echo $script_directory; ?>board/ucp.php?mode=login">
-								<label for="loginname">Username: </label><input type="text" name="username" class="name" id="loginname"/>
-								<label for="loginpass">Password: </label><input type="password" name="password" class="password" id="loginpass"/>
-								<label for="autologin">Remember Me?: </label><input type="checkbox" name="autologin" class="autologin"  id="autologin"/>
-								<input type="submit" value="Log In" name="login" class="submit"/>
+								<input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
+								<input type="password" name="password" class="password" id="loginpass" placeholder="Password"/>
+                                <input type="hidden" checked="yes" name="autologin" class="autologin"  id="autologin"/>
+                                <input type="submit" value="Log In" name="login" class="submit"/>
 								<input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php" />
 								</form>
 								<a class="submit" href="<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a>
+
 							</div>
 						</div>
 					</div>
@@ -361,12 +366,13 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 		<aside>
 			<div class="box">
 				<div class="widget">
-					<h3><a href="playnow">Play now!</a></h3>
-				</div>
-			</div>
-			<div class="box">
-				<div class="widget">
-					<h3><a href="/elite/board">Visit Forum</a></h3>
+                    <h4>Statistics</h4>
+                    <p><strong>Players Online: <?php echo playersOnline(); ?><br />
+                            Server Status: <?php echo checkStatus("localhost", "43594"); ?><br />
+                            Total Players: <?php echo totalGameCharacters(); ?><br />
+                            Registrations today: <?php echo newRegistrationsToday(); ?><br /></strong></p>
+                </div>
+                <iframe src="https://discordapp.com/widget?id=459699205674369025&theme=dark" width="220" height="500" allowtransparency="false" frameborder="0"></iframe>
 				</div>
 			</div>
 		</aside>

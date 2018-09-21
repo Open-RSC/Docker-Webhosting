@@ -92,7 +92,7 @@ if($_POST['nm']){
 
 $username = $_POST["username"];
 $combat = $_POST["combat"];
-$id = $_POST["owner"];
+$owner = $_POST["owner"];
 $online = $_POST["online"];
 
 $usernamelink = preg_replace("/[^A-Za-z0-9]/","-",$username);
