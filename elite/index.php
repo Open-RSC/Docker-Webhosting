@@ -269,7 +269,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						<li><a href="<?php echo $script_directory; ?>board/index.php">Forum</a></li>
 						<li><a href="<?php echo $script_directory; ?>playnow">Play Now</a></li>
 						<li><a href="<?php echo $script_directory; ?>chat">Game Chat</a></li>
-						<li><a href="<?php echo $script_directory; ?>highscores">Highscores</a></li>
+						<li><a href="<?php echo $script_directory; ?>highscores/skill_total">Highscores</a></li>
 						<li><a href="<?php echo $script_directory; ?>worldmap">Live Map</a></li>
                         <li><a href="<?php echo $script_directory; ?>stats">Statistics</a></li>
 					</ul>
