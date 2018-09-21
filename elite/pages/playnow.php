@@ -4,17 +4,22 @@ if(!defined('IN_PHPBB'))
 	die("You do not have permission to access this file.");
 }
 ?>
-	<div class="main">
-		<div class="content">
-			<article>
-				<h4>First</h4>
-				<p><a href="/elite/board/ucp.php?mode=register"/><b>Register a forum account</b></a></p>
-			
-				<h4>Second</h4>
-				<p><a href="/elite/accounts"/><b>Create a Hero</b></a></p>
-			
-				<h4>Third</h4>
-				<p><a href="/elite/launch"/><b>Open the game launcher!</b></a></p>
-			</article>
-		</div>
-	</div>
+<div class="main">
+    <div class="content">
+        <article>
+
+            <p align="center"><img class="logo" style="width:320px;height:300px;" src="css/images/logo.png"/></p>
+            <h4>
+                <b>
+                    <p align="center">
+                        <a href="/downloads/Open_RSC_Launcher.jar"/>Download</a> |
+                        <a href="/downloads/openrsc.apk"/>Android</a> |
+                        <a href="https://discordapp.com/invite/94vVKND"/>Discord</a> |
+                        <a href="/board/ucp.php?mode=register"/>Forum</a>
+                    </p>
+                </b>
+            </h4>
+
+        </article>
+    </div>
+</div>
