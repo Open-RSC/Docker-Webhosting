@@ -82,7 +82,7 @@ if(!$subpage || !in_array($subpage, $skill_array)){
                                     <li id="table">
                                         <div id="rank"><?php echo $i; ?></div>
                                         <div id="username"><a href="<?php echo $script_directory; ?>characters/<?php echo $usernameLink; ?>"><?php echo $row['username']; ?></a></div>
-                                        <div id="level"><?php echo ($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_'.$subpage]/4 -1); ?></div>
+                                        <div id="level"><?php echo ($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_'.$subpage]/4); ?></div>
                                         <div id="experience"><?php echo ($subpage == $skill_array[0]) ? intval(totalXP($row)/4) : intval($row['exp_'.$subpage]/4); ?></div>
                                     </li>
                                 <?php
