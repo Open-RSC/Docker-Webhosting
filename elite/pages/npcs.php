@@ -1,18 +1,7 @@
-<html>
-<head>
-<title>npcs</title>
-<style type='text/css'>
-table {
-	font-family:'arial','tahoma','verdana','sans serif';
-	font-size:15px;
-}
-td.a {
-	background-color:#dfdfdf;
-	font-size:13px;
-}
-</style>
-</head>
-<body>
+<div class="main">
+	<div class="content">
+		<article>
+
 <table cellspacing='5' cellpadding='2' align='center'>
 <tr><td>id</td><td>npc name</td><td>level</td><td>description</td><td>attackable</td></tr>
 
@@ -812,5 +801,7 @@ td.a {
 <tr><td class='a'>793</td><td class='a'>Lundail</td><td class='a'>15</td><td class='a'>He sells rune stones</td><td class='a'>-</td></tr>
 
 </table>
-</body>
-</html>
+
+</article>
+</div>
+</div>
