@@ -16,7 +16,7 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup('viewforum');
 
-$sec = "10"; //page refresh time in seconds
+$sec = "5"; //page refresh time in seconds
 ?>
 
 <!doctype html>
@@ -29,7 +29,7 @@ $sec = "10"; //page refresh time in seconds
 
 <?php
 $connector = new Dbc();
-$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_game.openrsc_players where online = 1 LIMIT 100");
+$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_game.openrsc_players where online != 2 LIMIT 100");
 $xs = $ys = array();
 
 function coords_to_image($x, $y) {
@@ -38,7 +38,7 @@ function coords_to_image($x, $y) {
     if($x < 0 || $x > 2152 || $y < 0 || $y > 1007) {
         return false;
     }
-    return array('x' => $x, 'y' => $y, 'id' => $ids);
+    return array('x' => $x, 'y' => $y);
 }
 
 while($char = $connector->fetchArray($playerPositions)) {
@@ -48,14 +48,14 @@ while($char = $connector->fetchArray($playerPositions)) {
     }
     $xs[] = $coords['x'];
     $ys[] = $coords['y'];
+    ?><img src="/avatars/<?php echo $char['id'] ?>.png" style="display: none;" /><?php
     $areaPlayer[] = 'ctx.drawImage(player,'.$coords['x'].', '.$coords['y'].', 17, 25);'
         . ' ctx.fillStyle="white"; '
         . ' ctx.font="8pt Arial"; '
-        . ' ctx.fillText("'.$coords['username'].'Player", '.$coords['x'].', '.$coords['y'].'); '
-    ?>
-    <?php
-}
-?>
+        . ' ctx.fillText("'.$char['username'].'", '.$coords['x'].', '.$coords['y'].'); '
+        . ' player.src ="/avatars/'.$char['id'].'.png"; '
+    ?><?php
+} ?>
 
 <body onload="drawPosition();" background="../css/images/worldmap.png" style="background-repeat: no-repeat;">
 <a href="../inc/worldmap.php" target="_parent">
@@ -65,9 +65,7 @@ while($char = $connector->fetchArray($playerPositions)) {
         var c=document.getElementById('canvas');
         var ctx =c.getContext('2d');
         var player = new Image();
-        player.src = '/avatars/1.png';
         <?php echo implode('', $areaPlayer); ?>
     }
 </script>
-<img src="/avatars/1.png" style="display: none;" />
 </a>
