@@ -186,10 +186,18 @@ header {
 }
 
 article {
-	background: #201B18;
 	width: 725px;
 	padding:10px;
 	float:left;
+    background: url("/elite/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
+                url("/elite/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
+                url("/elite/board/styles/pbwow3/theme/images/border-top-right.gif") no-repeat 100% 0,
+                url("/elite/board/styles/pbwow3/theme/images/border-top-left.gif") no-repeat 0 0,
+                url("/elite/board/styles/pbwow3/theme/images/border-bot.gif") repeat-x 0 100%,
+                url("/elite/board/styles/pbwow3/theme/images/border-top.gif") repeat-x 0 0,
+                url("/elite/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
+                url("/elite/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
+                rgba(20, 20, 20, 0.75);
 }
 
 aside{
@@ -318,10 +326,19 @@ p {
 }
 
 #data, #create, #pass, #delete, #error {
-	width:400px;
-    height: 180px;
-	padding:10px;
-	background:rgba(32,27,24,1);
+	width:355px;
+    height: 220px;
+    padding-top: 45px;
+    padding-left: 85px;
+    background: url("/elite/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
+    url("/elite/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
+    url("/elite/board/styles/pbwow3/theme/images/border-top-right.gif") no-repeat 100% 0,
+    url("/elite/board/styles/pbwow3/theme/images/border-top-left.gif") no-repeat 0 0,
+    url("/elite/board/styles/pbwow3/theme/images/border-bot.gif") repeat-x 0 100%,
+    url("/elite/board/styles/pbwow3/theme/images/border-top.gif") repeat-x 0 0,
+    url("/elite/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
+    url("/elite/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
+    rgba(20, 20, 20, 0.75);
 }
 
 label {
@@ -332,36 +349,36 @@ label {
 }
 
 .name, .password, textarea {
-	margin:10px;
+	margin:5px;
 	font: 14px 'Exo', sans-serif;
-	width: 368px;
-	background:rgba(42,34,32,1);
+	width: 250px;
+	background: rgba(42,34,32,1);
 	padding: 5px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
-	color:#C6A444;
-	border:none;
+	color: #C6A444;
+    border: 1px solid #444;
 	text-shadow: 0px 0px 2px #201B18;
 	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    background: #0D1A2D linear-gradient(to bottom, rgba(8, 17, 38, 1) 0, rgba(13, 26, 45, 0) 32px);
 }
 
 .autologin {
-	width: 368px;
+	width: 250px;
 	margin:10px 0px;
 }
 
-
 .submit {
-	float:left;
-	display:inline;
-	margin:10px 10px;
-	width:174px;
+	float: left;
+	display: inline;
+	margin: 5px 5px;
+	width: 121px;
 	font: 14px 'Exo', sans-serif;
-	color:#C6A444;
-	text-align:center;
+	color: #C6A444;
+	text-align: center;
 	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -379,13 +396,14 @@ label {
 	);
 	padding: 5px;
 	border:none;
-	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    border-color: #4A4A4A;
+    background-color: #1a1a1a;
+    background-image: linear-gradient(to top, #111, #333);
 }
 
 .submit:active {
 	color:white;
+    border: 1px solid #444;
 	background-image: -webkit-gradient(
     linear,
     left bottom,
@@ -405,6 +423,18 @@ label {
 	background: #201B18;
 }
 
+.panel {
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 21px;
+    background: #111;
+    background: rgba(20, 20, 20, 0.75);
+    border: 1px solid #444;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
+    color: #E1C492;
+}
+
 .content {
 	background: #201B18;
 	background-image: -webkit-gradient(
@@ -420,7 +450,18 @@ label {
 		rgba(42,34,32,1) 99%
 	);
 	float:left;
-	padding:10px;
+	padding:1px;
+}
+
+.hr {
+    margin-left: 15%;
+    width: 70%;
+    font-size: 1px;
+    color: rgba(0, 0, 0, 0);
+    line-height: .5px;
+    background-color: #C6A444;
+    margin-top: -6px;
+    margin-bottom: 10px;
 }
 
 .highscores {

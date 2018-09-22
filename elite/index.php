@@ -271,7 +271,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 					<?php } ?>
 						<div style="display:none">
 							<div id="data">
-								<h4 style="margin-left: 10px;">Member Login</h4>
+								<h4 style="margin-left: 40px;">Open RSC Login</h4>
 								<form method="post" action="<?php echo $script_directory; ?>board/ucp.php?mode=login">
 								<input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
 								<input type="password" name="password" class="password" id="loginpass" placeholder="Password"/>
@@ -308,8 +308,10 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 		?>
 		<div class="main">
 			<div class="content">
-                <article>
 
+                <article>
+                    <div class="panel">
+                    <br />
                     <p align="center"><img class="logo" style="width:320px;height:300px;" src="css/images/logo.png"/></p>
                     <h4>
                         <b>
@@ -322,6 +324,11 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
                         </b>
                     </h4>
 
+                    <br />
+                    <div class="hr">.</div>
+                    <br />
+
+                    <div style="margin-left: 30px; margin-right: 30px;">
 				<?php
 					while( $posts_row = $db->sql_fetchrow($posts_result) ){
 						$topic_title = $posts_row['topic_title'];
@@ -342,6 +349,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 
 					}
 				?>
+                    </div>
 				</article>
 			</div>
 
