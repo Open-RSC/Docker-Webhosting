@@ -64,10 +64,10 @@ if(!$subpage || !in_array($subpage, $skill_array)){
 					</h4>
 					<table>
 						<thead><tr>
-							<th id="rank">Rank</th>
-							<th id="username">Username</th>
-							<th id="level">Level</th>
-							<th id="experience">Experience</th>
+							<th class="rank">Rank</th>
+							<th class="username">Username</th>
+							<th class="level">Level</th>
+							<th class="experience">Experience</th>
 						</tr></thead>
             <tbody>
 							<?php
@@ -76,14 +76,14 @@ if(!$subpage || !in_array($subpage, $skill_array)){
 									$usernameLink = preg_replace("/[^A-Za-z0-9]/","-",$row['username']);
 							?>
               <tr id="table">
-								<td id="rank"><?php echo $i; ?></td>
-								<td id="username">
+								<td class="rank"><?php echo $i; ?></td>
+								<td class="username">
 									<a href="<?php echo $script_directory; ?>characters/<?php echo $usernameLink; ?>"><?php echo $row['username']; ?></a>
 								</td>
-								<td id="level">
+								<td class="level">
 									<?php echo ($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_'.$subpage]/4); ?>
 								</td>
-								<td id="experience">
+								<td class="experience">
 									<?php echo ($subpage == $skill_array[0]) ? intval(totalXP($row)/4) : intval($row['exp_'.$subpage]/4); ?>
 								</td>
 							</tr>
