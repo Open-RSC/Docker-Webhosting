@@ -6,13 +6,11 @@
                     <p align="center">
                         <a href="items"/>Items</a> |
                         <a href="npcs"/>NPCs</a> |
-                        <a href="itemprices"/>Item Prices</a>
-                        <br />
-                        <a href="objects"/>Objects</a> |
+                        <a href="itemprices"/>Prices</a> |
+                        <a href="objects"/>Objects</a><br />
                         <a href="spells"/>Spells</a> |
-                        <a href="prayers"/>Prayers</a>
-                        <br />
-                        <a href="stats"/>General Statistics</a>
+                        <a href="prayers"/>Prayers</a> |
+                        <a href="stats"/>General Stats</a>
                     </p>
                 </b>
             </h4>
