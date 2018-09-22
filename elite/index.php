@@ -12,6 +12,7 @@ function curPageURL() {
 	}
 	return $return;
 }
+
 $script_directory = '/elite/';
 define('IN_PHPBB', true);
 $phpbb_root_path = './board/';
@@ -30,132 +31,116 @@ require_once './inc/charfunctions.php';
 * This function outputs an SQL WHERE statement for use when grabbing
 * posts and topics */
 
-function create_where_clauses($gen_id, $type)
-{
-global $db, $auth;
+/**
+ * @param $gen_id
+ * @param $type
+ * @return string
+ */
+function create_where_clauses($gen_id, $type) {
+    global $db, $auth;
+    $size_gen_id = sizeof($gen_id);
+    switch($type) {
+        case 'forum':
+        $type = 'forum_id';
+        break;
+        case 'topic':
+        $type = 'topic_id';
+        break;
+        default:
+        trigger_error('No type defined');
+    }
 
-$size_gen_id = sizeof($gen_id);
+    // Set $out_where to nothing, this will be used of the gen_id
+    // size is empty, in other words "grab from anywhere" with
+    // no restrictions
+    $out_where = '';
 
-switch($type)
-{
-case 'forum':
-$type = 'forum_id';
-break;
-case 'topic':
-$type = 'topic_id';
-break;
-default:
-trigger_error('No type defined');
-}
+    if ($size_gen_id > 0) {
+        // Get a list of all forums the user has permissions to read
+        $auth_f_read = array_keys($auth->acl_getf('f_read', true));
 
-// Set $out_where to nothing, this will be used of the gen_id
-// size is empty, in other words "grab from anywhere" with
-// no restrictions
-$out_where = '';
+        if ($type == 'topic_id') {
+            $sql = 'SELECT topic_id FROM ' . TOPICS_TABLE . ' WHERE ' . $db->sql_in_set('topic_id', $gen_id) . ' AND ' . $db->sql_in_set('forum_id', $auth_f_read);
+            $result = $db->sql_query($sql);
 
-if ($size_gen_id > 0)
-{
-// Get a list of all forums the user has permissions to read
-$auth_f_read = array_keys($auth->acl_getf('f_read', true));
+            while ($row = $db->sql_fetchrow($result)) {
+                // Create an array with all acceptable topic ids
+                $topic_id_list[] = $row['topic_id'];
+            }
 
-if ($type == 'topic_id')
-{
-$sql = 'SELECT topic_id FROM ' . TOPICS_TABLE . '
-WHERE ' . $db->sql_in_set('topic_id', $gen_id) . '
-AND ' . $db->sql_in_set('forum_id', $auth_f_read);
+            unset($gen_id);
+            $gen_id = $topic_id_list;
+            $size_gen_id = $gen_id;
+        }
 
-$result = $db->sql_query($sql);
+        $j = 0;
 
-while ($row = $db->sql_fetchrow($result))
-{
-// Create an array with all acceptable topic ids
-$topic_id_list[] = $row['topic_id'];
-}
+        for ($i = 0; $i < $size_gen_id; $i++) {
+        $id_check = (int) $gen_id[$i]; { // If the type is topic, all checks have been made and the query can start to be built if( $type == 'topic_id' ) { $out_where .= ($j == 0) ? 'WHERE ' . $type . ' = ' . $id_check . ' ' : 'OR ' . $type . ' = ' . $id_check . ' '; } // If the type is forum, do the check to make sure the user has read permissions else if( $type == 'forum_id' && $auth->acl_get('f_read', $id_check) )
+            $out_where .= ($j == 0) ? 'WHERE ' . $type . ' = ' . $id_check . ' ' : 'OR ' . $type . ' = ' . $id_check . ' ';
+        }
 
-unset($gen_id);
+            $j++;
+        }
+    }
 
-$gen_id = $topic_id_list;
-$size_gen_id = $gen_id;
-}
+    if ($out_where == '' && $size_gen_id > 0) {
+        trigger_error('A list of topics/forums has not been created');
+    }
 
-$j = 0;
-
-for ($i = 0; $i < $size_gen_id; $i++)
- {
-$id_check = (int) $gen_id[$i]; // If the type is topic, all checks have been made and the query can start to be built if( $type == 'topic_id' ) { $out_where .= ($j == 0) ? 'WHERE ' . $type . ' = ' . $id_check . ' ' : 'OR ' . $type . ' = ' . $id_check . ' '; } // If the type is forum, do the check to make sure the user has read permissions else if( $type == 'forum_id' && $auth->acl_get('f_read', $id_check) )
-{
-$out_where .= ($j == 0) ? 'WHERE ' . $type . ' = ' . $id_check . ' ' : 'OR ' . $type . ' = ' . $id_check . ' ';
-}
-
-$j++;
-}
-}
-
-if ($out_where == '' && $size_gen_id > 0)
-{
-trigger_error('A list of topics/forums has not been created');
-}
-
-return $out_where;
+    return $out_where;
 }
 
 /*     News Code     */
-
 $search_limit = 5;
-$forum_id = array(7);
+$forum_id = array(18); // Forum ID for the news (/board/viewforum.php?f=18)
 $forum_id_where = create_where_clauses($forum_id, 'forum');
 $topic_id = array(0);
 $topic_id_where = create_where_clauses($topic_id, 'topic');
 $posts_ary = array(
-'SELECT' => 'p.*, t.*',
-'FROM' => array(
-POSTS_TABLE => 'p',
-),
-'LEFT_JOIN' => array(
-array(
-'FROM' => array(TOPICS_TABLE => 't'),
-'ON' => 't.topic_first_post_id = p.post_id'
-)
-),
-'WHERE' => str_replace( array('WHERE ', 'forum_id'), array('', 't.forum_id'), $forum_id_where) . '
-AND t.topic_status <> ' . ITEM_MOVED . '
-',
-'ORDER_BY' => 'p.post_id DESC',
+    'SELECT' => 'p.*, t.*', 'FROM' => array(POSTS_TABLE => 'p',), 'LEFT_JOIN' => array(array(
+    'FROM' => array(TOPICS_TABLE => 't'), 'ON' => 't.topic_first_post_id = p.post_id')),
+    'WHERE' => str_replace( array('WHERE ', 'forum_id'), array('', 't.forum_id'), $forum_id_where) . '
+    AND t.topic_status <> ' . ITEM_MOVED . '
+    ',
+    'ORDER_BY' => 'p.post_id DESC',
 );
 $posts = $db->sql_build_query('SELECT', $posts_ary);
 $posts_result = $db->sql_query_limit($posts, $search_limit);
-
 ?>
+
 <!doctype html>
 <html>
-
 	<head>
-		<meta charset="utf-8"/>
 		<title>Open RSC</title>
+
+        <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="X-UA-Compatible" content="IE=9">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
         <link rel="manifest" href="img/site.webmanifest">
         <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="theme-color" content="#ffffff">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/elite/js/flot/excanvas.min.js"></script><![endif]-->
-		<link rel="stylesheet" media="all" href="/elite/css/style.css"/>
+
+		<link rel="stylesheet" href="/elite/css/style.css" media="all"/>
 		<link rel="stylesheet" href="/elite/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
-        <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
+
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
-		<script src="/elite/js/cufon.js" type="text/javascript"></script>
 		<script src="/elite/js/Aurulent_Sans.font.js" type="text/javascript"></script>
-		<script type="text/javascript" src="/elite/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-		<script type="text/javascript" src="/elite/js/flot/jquery.flot.js"></script>
-		<script type="text/javascript" src="/elite/js/flot/jquery.flot.pie.js"></script>
-		<script type="text/javascript">
+        <script src="/elite/js/cufon.js" type="text/javascript"></script>
+		<script src="/elite/js/fancybox/jquery.fancybox-1.3.4.pack.js" type="text/javascript"></script>
+        <script src="/elite/js/flot/excanvas.min.js" type="text/javascript"></script>
+		<script src="/elite/js/flot/jquery.flot.js" type="text/javascript"></script>
+		<script src="/elite/js/flot/jquery.flot.pie.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
 			function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
 				var url = "/elite/js/account.php";
 					$.post(url, {username: user, userenc: userhash, owner: id, hair: hc, head: hsprite, skin: sc, top: tc, gen: gender, pants: pc, combat: lvl, online: on} ,function(data) {
@@ -166,6 +151,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						'overlayColor': '#000000',
 						'padding': 0,
 						});
+
 						$("#character-delete-form").bind("submit", function() {
 						$("#verification-fails").hide();
 						if ($("#verification").val() != 'yes') {
@@ -178,15 +164,12 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						var ui = $("#user-ui").val();
 						var y = $("#verification").val();
 						setTimeout(function(){
-
 							$.post("/elite/js/account.php", {id: i, hash: ui, ver: y} ,function(data) {
 								$.fancybox.hideActivity();
 								$("#character-delete-form").hide();
 								window.location.reload()
 							});
-
 						},5000);
-
 						return false;
 						});
 					});
@@ -200,9 +183,6 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 				});
 
 				$("a#single_image").fancybox();
-
-				/* Using custom settings */
-
 				$("a#inline").fancybox({
 					'hideOnContentClick': false,
 					'overlayColor': '#000000',
@@ -235,7 +215,6 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 				    var p = $("#password").val();
 
 					setTimeout(function(){
-
 						$.post("/elite/js/account.php", {nm: n, pw: p} ,function(data) {
 							if(data == 0){
 								$("#user-fails").show();
@@ -246,23 +225,21 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 							}
 							$.fancybox.hideActivity();
 						});
-
 					},3000);
-
 					return false;
 				});
-
 			});
 		</script>
 	</head>
-
 	<body lang="en">
 
 		<header>
 			<div class="large">Open RSC</div>
 		</header>
+
 		<div class="body-wrapper">
 			<div class="navigation">
+
 				<div class="navbar">
 					<ul>
 						<li><a href="<?php echo $script_directory; ?>">Home</a></li>
@@ -273,6 +250,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
                         <li><a href="<?php echo $script_directory; ?>database">Database</a></li>
 					</ul>
 				</div>
+
 				<div class="account-panel">
 					<div class="avatar-box">
 					<?php if($user->data['is_registered']){ ?>
@@ -287,12 +265,9 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						<span class="welcome-text">
 							<a href='<?php echo $script_directory; ?>board/ucp.php?mode=logout&amp;sid=<?php print $user->data['session_id'];?>'>Logout</a>
 						</span>
-
 					<?php } else { ?>
-
                         <span class="welcome-message"><a id="inline" href="#data">Login</a></span>
                         <span class="welcome-message"><a href="/board/ucp.php?mode=register">Register</a></span>
-
 					<?php } ?>
 						<div style="display:none">
 							<div id="data">
@@ -309,6 +284,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 						</div>
 					</div>
 				</div>
+
 			</div>
 
 		<?php
