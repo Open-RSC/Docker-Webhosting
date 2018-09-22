@@ -267,11 +267,10 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 					<ul>
 						<li><a href="<?php echo $script_directory; ?>">Home</a></li>
 						<li><a href="<?php echo $script_directory; ?>board/index.php">Forum</a></li>
-						<li><a href="<?php echo $script_directory; ?>playnow">Play Now</a></li>
 						<li><a href="<?php echo $script_directory; ?>chat">Game Chat</a></li>
 						<li><a href="<?php echo $script_directory; ?>highscores/skill_total">Highscores</a></li>
 						<li><a href="<?php echo $script_directory; ?>worldmap">Live Map</a></li>
-                        <li><a href="<?php echo $script_directory; ?>stats">Statistics</a></li>
+                        <li><a href="<?php echo $script_directory; ?>database">Database</a></li>
 					</ul>
 				</div>
 				<div class="account-panel">
@@ -333,7 +332,20 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 		?>
 		<div class="main">
 			<div class="content">
-				<article>
+                <article>
+
+                    <p align="center"><img class="logo" style="width:320px;height:300px;" src="css/images/logo.png"/></p>
+                    <h4>
+                        <b>
+                            <p align="center">
+                                <a href="/downloads/Open_RSC_Launcher.jar"/>Download</a> |
+                                <a href="/downloads/openrsc.apk"/>Android</a> |
+                                <a href="https://discordapp.com/invite/94vVKND"/>Discord</a> |
+                                <a href="/board/ucp.php?mode=register"/>Forum</a>
+                            </p>
+                        </b>
+                    </h4>
+
 				<?php
 					while( $posts_row = $db->sql_fetchrow($posts_result) ){
 						$topic_title = $posts_row['topic_title'];

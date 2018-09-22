@@ -90,7 +90,7 @@ panel-title {
 }
 
 .big, h4 {
-	font: 25px 'Exo Bold', sans-serif;
+	font: 25px 'Exo', sans-serif;
 	line-height: 36px;
 	color:white;
 	text-shadow: 0px 0px 2px #201B18;
@@ -325,10 +325,10 @@ p {
 }
 
 label {
-	font: 14px 'Exo Bold', sans-serif;
+	font: 14px 'Exo', sans-serif;
 	display: block;
-	color:white;
-	text-shadow: 0px 0px 2px #201B18;
+	color: #ffffff;
+	text-shadow: 0 0 2px #201B18;
 }
 
 .name, .password, textarea {
@@ -449,9 +449,8 @@ label {
 	padding: 7px 10px 3px;
 	text-shadow: 0px 0px 2px #201B18;
 	float: left;
-	font: 14px 'Exo Bold', sans-serif;
-	color: #C6A444;
-	text-shadow: 0px 0px 2px #201B18;
+	font: 14px 'Exo', sans-serif;
+    text-shadow: 0px 0px 2px #201B18;
 	text-transform: uppercase;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -511,8 +510,8 @@ label {
 
 .ranking th {
 	padding: 5px;
-	font: 1em 'Exo Bold', sans-serif;
-	font-weight 700;
+	font: 1em 'Exo', sans-serif;
+	font-weight: 700;
 }
 
 .ranking td {

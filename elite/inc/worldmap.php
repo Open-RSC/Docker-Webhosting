@@ -51,7 +51,7 @@ while($char = $connector->fetchArray($playerPositions)) {
     ?><img src="/avatars/<?php echo $char['id'] ?>.png" style="display: none;" /><?php
     $areaPlayer[] = 'ctx.drawImage(player,'.$coords['x'].', '.$coords['y'].', 17, 25);'
         . ' ctx.fillStyle="white"; '
-        . ' ctx.font="8pt Arial"; '
+        . ' ctx.font="8pt Exo"; '
         . ' ctx.fillText("'.$char['username'].'", '.$coords['x'].', '.$coords['y'].'); '
         . ' player.src ="/avatars/'.$char['id'].'.png"; '
     ?><?php
