@@ -423,6 +423,14 @@ label {
 	padding:10px;
 }
 
+.highscores {
+	display: flex;
+}
+
+.skill {
+	flex: 1 auto;
+}
+
 .skill ul {
     width: 89px;
     background: #2A2220;
@@ -470,37 +478,50 @@ label {
 	margin-right:4px;
 }
 
-.ranking ul {
-	list-style:none;
-	float:left;
-    margin-left: 30px;
+.ranking {
+	flex: 0 auto;
 }
 
-.ranking ul li {
-    width: 560px;
-	float:left;
-	padding: 10px 20px;
+.ranking h4 {
+	box-shadow: 0px 2px 2px black;
+	margin-bottom: 5px;
+	font-weight: 700;
+	text-transform: capitalize;
+	background-color: rgba(42,34,32,1);
+}
+
+.ranking tr {
+  width: 611px;
 	color: white;
 	text-shadow: 0px 0px 2px #201B18;
 	font: 14px 'Exo', sans-serif;
+	text-align: right;
 }
 
-.ranking ul li:first-child {
+.ranking th {
+	padding: 5px;
+}
+
+.ranking td {
+	padding: 4px;
+}
+
+.ranking tbody tr:first-child {
 	font: 14px 'Exo', sans-serif;
 	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
-.ranking ul li:nth-child(odd){
+.ranking tr:nth-child(odd){
 	background:rgba(42,34,32,1);
 }
 
-.ranking ul li a {
+.ranking tr a {
 	color:#C6A444;
 } 
 
-.ranking ul li a:hover {
+.ranking tr a:hover {
 	color:white;
 	text-decoration:none;
 	-webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out;
