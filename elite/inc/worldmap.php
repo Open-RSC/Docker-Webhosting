@@ -23,7 +23,7 @@ $sec = "5"; //page refresh time in seconds
 <html>
 
 <head>
-    <meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'">
+    <meta http-equiv="refresh" content="<?php echo $sec?>;">
     <title>Open RSC</title>
 </head>
 
