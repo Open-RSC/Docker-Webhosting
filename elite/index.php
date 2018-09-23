@@ -240,7 +240,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 		<div class="body-wrapper">
 			<div class="navigation">
 
-				<div class="navbar">
+                <div class="navbar">
 					<ul>
 						<li><a href="<?php echo $script_directory; ?>">Home</a></li>
 						<li><a href="<?php echo $script_directory; ?>board/index.php">Forum</a></li>
