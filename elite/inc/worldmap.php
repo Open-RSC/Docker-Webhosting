@@ -16,7 +16,7 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup('viewforum');
 
-$sec = "10"; //page refresh time in seconds
+$sec = "30"; //page refresh time in seconds
 ?>
 
 <!doctype html>
