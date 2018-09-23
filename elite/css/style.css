@@ -469,7 +469,7 @@ label {
 }
 
 .skill {
-	width: 130px;
+	width: 110px;
 	flex: 0 1 auto;
 }
 
@@ -520,14 +520,13 @@ label {
 }
 
 .ranking {
-	width: 565px;
 	flex: 0 auto;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .ranking h4 {
 	box-shadow: 0px 2px 2px black;
-	margin-bottom: 5px;
+	margin-bottom: 1px;
 	font-weight: 700;
 	text-transform: capitalize;
 	background-color: rgba(42,34,32,1);
