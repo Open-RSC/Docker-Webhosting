@@ -98,9 +98,9 @@ class Dbc extends OpenRSCDatabase {
 
 function checkStatus($ip, $port) {
     if(!$sock = @fsockopen($ip, "$port", $num, $error, 5)) {
-        echo('offline');
+        echo('<span style="color: red">Offline</span>');
     } else {
-        echo('online');
+        echo('<span style="color: lime">Online</span>');
     }
 }
 

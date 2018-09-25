@@ -131,14 +131,16 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 		<link rel="stylesheet" href="/elite/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
 
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
-		<script src="/elite/js/Aurulent_Sans.font.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.3/jquery.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.pack.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/excanvas.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.js" type="text/javascript"></script>
         <script src="/elite/js/cufon.js" type="text/javascript"></script>
-		<script src="/elite/js/fancybox/jquery.fancybox-1.3.4.pack.js" type="text/javascript"></script>
-        <script src="/elite/js/flot/excanvas.min.js" type="text/javascript"></script>
-		<script src="/elite/js/flot/jquery.flot.js" type="text/javascript"></script>
-		<script src="/elite/js/flot/jquery.flot.pie.js" type="text/javascript"></script>
+        <script src="/elite/js/jquery.rss.js" type="text/javascript"></script>
 
         <script type="text/javascript">
 			function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
@@ -230,6 +232,21 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 				});
 			});
 		</script>
+        <script type="text/javascript">
+            jQuery(function($) {
+                $("#rss-feeds").rss(
+                    "https://openrsc.com/blog/rss/",
+                    {
+                        limit: 4,
+                        layoutTemplate: "<div class='feed-container'>{entries}</div>",
+                        entryTemplate: '<h4><a href="{url}">{title}</a></h4><div class="meta">Posted by {author} // {date}</div>{shortBody}<br /><br />',
+                        // <img src="{teaserImageUrl}" width="99" height="56">
+                        dateFormat: 'MMMM Do, YYYY'
+                    },
+                    function callback() {}
+                )
+            })
+        </script>
 	</head>
 	<body lang="en">
 
@@ -316,10 +333,10 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
                     <h4>
                         <b>
                             <p align="center">
-                                <a href="/downloads/Open_RSC_Launcher.jar"/>Download</a> |
-                                <a href="/downloads/openrsc.apk"/>Android</a> |
-                                <a href="https://discordapp.com/invite/94vVKND"/>Discord</a> |
-                                <a href="/board/ucp.php?mode=register"/>Forum</a>
+                                <a href="board/ucp.php?mode=register"/>Register</a> |
+                                <a href="downloads/Open_RSC_Launcher.jar"/>Download</a> |
+                                <a href="downloads/openrsc.apk"/>Android</a> |
+                                <a href="https://discordapp.com/invite/94vVKND"/>Discord</a>
                             </p>
                         </b>
                     </h4>
@@ -329,26 +346,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
                     <br />
 
                     <div style="margin-left: 30px; margin-right: 30px;">
-				<?php
-					while( $posts_row = $db->sql_fetchrow($posts_result) ){
-						$topic_title = $posts_row['topic_title'];
-						$post_author = get_username_string('full', $posts_row['poster_id'], $posts_row['topic_first_poster_name'], $posts_row['topic_first_poster_colour']);
-						$post_date = $user->format_date($posts_row['post_time']);
-						$post_link = append_sid("{$phpbb_root_path}viewtopic.$phpEx", "p=" . $posts_row['post_id'] . "#p" . $posts_row['post_id']);
-
-						$post_text = nl2br($posts_row['post_text']);
-
-						$bbcode = new bbcode(base64_encode($bbcode_bitfield));
-						$bbcode->bbcode_second_pass($post_text, $posts_row['bbcode_uid'], $posts_row['bbcode_bitfield']);
-
-						$post_text = smiley_text($post_text);
-
-						echo '<h4><a href="'.$post_link.'">'.$topic_title.'</a></h4>';
-						echo '<div class="meta">posted by '.$post_author.' // '.$post_date.'</div>';
-						echo '<p>'.smiley_text($post_text).'</p>';
-
-					}
-				?>
+                        <div id="rss-feeds"></div>
                     </div>
 				</article>
 			</div>
@@ -366,7 +364,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
                     <h4>Statistics</h4>
                     <p><strong>
                             Players Online: <?php echo playersOnline(); ?><br />
-                            Server Status: <?php echo checkStatus("localhost", "43594"); ?><br />
+                            Server Status: <?php echo checkStatus("dev1.openrsc.com", "43594"); ?><br />
                             Total Players: <?php echo totalGameCharacters(); ?><br />
                             Registrations today: <?php echo newRegistrationsToday(); ?><br />
                      </strong></p>
