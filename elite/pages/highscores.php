@@ -55,7 +55,7 @@ if(!$subpage || !in_array($subpage, $skill_array)){
                     <div class="skill">
                         <ul>
                             <?php foreach ($skill_array as $skill) { ?>
-                            <li><a href="<?php echo $script_directory; ?>highscores/<?php print $skill;?>"><img src="<?php echo $script_directory; ?>css/images/skill_icons/skill_<?php print $skill;?>.gif" alt="<?php print $skill;?>"/><?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/"," ",$skill));?></a></li>
+                            <li><a href="<?php echo $script_directory; ?>highscores/<?php print $skill;?>"><img src="<?php echo $script_directory; ?>css/images/skill_icons/<?php print $skill;?>.svg" width="16px" height="16px" alt="<?php print $skill;?>"/><?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/"," ",$skill));?></a></li>
                             <?php } ?>
                         </ul>
                     </div>
