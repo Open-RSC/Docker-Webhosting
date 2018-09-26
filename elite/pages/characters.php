@@ -42,8 +42,12 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
 
                     <div id="stats">
                         <div id="character">
-                        <br /><img src="/avatars/<?php echo $character['id'] ?>.png"/>
+                            <?php
+                            $file = '/avatars/'.$character['id'].'.png';
+                            echo "<br /><img src=\"$file\"/>";
+                            ?>
                         </div>
+
                         <br />
                         <div id="sm-skill">
                             <?php foreach ($skill_array as $skill) {
