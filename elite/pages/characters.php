@@ -35,7 +35,7 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
 		<article>
             <div class="panel">
                 <?php if($character) { ?>
-                    <h4><?php if ($character['group_id'] != 4): echo "<img src=\"../css/images/$character[group_id].gif\" width=\"20\" height=\"20\"> ";
+                    <h4>&nbsp<?php if ($character['group_id'] != 4): echo "<img src=\"../css/images/$character[group_id].svg\" width=\"20\" height=\"20\"> ";
                         else: NULL;
                         endif;
                         echo $subpage; ?>'s player information</h4>
@@ -52,7 +52,7 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
                                 } else {
                                     $skillc=$skill;
                                 }
-                            ?><span class="sm-skill"><a href="<?php echo $script_directory; ?>highscores/<?php echo $skill; ?>"><img src="/elite/css/images/skill_icons/skill_<?php echo $skill; ?>.gif" alt="<?php echo $skill; ?>"/></a><?php echo experienceToLevel($character['exp_'.$skillc]); ?></span>
+                            ?><span class="sm-skill"><a href="<?php echo $script_directory; ?>highscores/<?php echo $skill; ?>"><img src="/elite/css/images/skill_icons/<?php echo $skill; ?>.svg" width="16px" height="16px" alt="<?php echo $skill; ?>"/></a><?php echo experienceToLevel($character['exp_'.$skillc]); ?></span>
                             <?php } ?>
                         </div>
 
