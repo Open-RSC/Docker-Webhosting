@@ -320,7 +320,7 @@ error_reporting(1);
 		<?php } ?>
 		<aside>
 			<div class="box">
-					<div class="panel" style="height: 284px;">
+					<div class="panel" style="height: 259px;">
 						<br />
 						<div style="padding-left: 20px; padding-top: 3px;">
 							<h5>Statistics</h5>

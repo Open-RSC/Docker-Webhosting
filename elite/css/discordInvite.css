@@ -57,15 +57,8 @@
     display:inline-block;
 }
 #discordInvite{
-    text-align:left;
-    box-sizing:border-box;
-    color:#fff;
-    background:rgba(47,49,54,.6);
-    border:1px solid rgba(47,49,54,.9);
-    margin:0;
-    padding:10px 15px 10px 10px;
-    display:inline-block
 }
+
 #offlineInd,#onlineInd{
     height:8px;
     width:8px;

@@ -189,7 +189,7 @@ header {
 }
 
 article {
-	width: 745px;
+	width: 770px;
 	padding: 10px;
 	float: left;
   background: url("/elite/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
@@ -205,11 +205,10 @@ article {
 
 aside{
 	float: right;
-	width: 295px;
-	height: 310px;
+	width: 270px;
+	height: 285px;
 	margin: 20px 0px;
 	padding: 10px;
-
   background: url("/elite/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
               url("/elite/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
               url("/elite/board/styles/pbwow3/theme/images/border-top-right.gif") no-repeat 100% 0,
