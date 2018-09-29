@@ -17,3 +17,5 @@ board/cache/production/
 
 \.svn/
 elite/board/cache/production/
+
+elite/feed-cache\.txt

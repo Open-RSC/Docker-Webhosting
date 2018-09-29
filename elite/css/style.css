@@ -1,9 +1,9 @@
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
-img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, 
-dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em,
+img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figure, figcaption, hgroup, 
+article, aside, canvas, details, figure, figcaption, hgroup,
 menu, footer, header, nav, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -97,6 +97,15 @@ panel-title {
 	text-transform:uppercase;
 }
 
+.bigger, h5 {
+	font: 29px 'Exo', sans-serif;
+	line-height: 36px;
+	color:#C6A444;
+	text-shadow: 0px 0px 2px #201B18;
+	text-transform:uppercase;
+	text-align: left;
+}
+
 body {
 	margin: 0 auto;
 	font: normal 14px/1.5 'Exo Bold', sans-serif;
@@ -117,7 +126,7 @@ body {-webkit-tap-highlight-color: rgb(255,255,158);}
 
 
 
-/*		Default Layout: 992px. 
+/*		Default Layout: 992px.
 		Gutters: 24px.
 		Outer margins: 48px.
 		Leftover space for scrollbars @1024px: 32px.
@@ -126,7 +135,7 @@ cols    1     2      3      4      5      6      7      8      9      10
 px      68    160    252    344    436    528    620    712    804    896    */
 
 body {
-	width: 1006px;
+	width: 1100px;
 	padding: 32px 48px 84px;
 	background: #000 url(/elite/board/styles/pbwow3/theme/images/theme/wod.png) fixed;
 	color: rgb(60,60,60);
@@ -134,13 +143,7 @@ body {
 }
 
 .body-wrapper {
-	background:#201B18;
-	position:relative;
-    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    -moz-border-radius: 10px / 100px;
-    border-radius: 10px / 100px;
+
 }
 
 header {
@@ -156,14 +159,14 @@ header {
 
 .meta a {
 	text-decoration:none;
-}	
+}
 
 .clear {
 	display:block;
 	position:relative;
 }
 .banner {
-	
+
 }
 
 .box {
@@ -186,34 +189,46 @@ header {
 }
 
 article {
-	width: 725px;
-	padding:10px;
-	float:left;
-    background: url("/elite/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
-                url("/elite/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
-                url("/elite/board/styles/pbwow3/theme/images/border-top-right.gif") no-repeat 100% 0,
-                url("/elite/board/styles/pbwow3/theme/images/border-top-left.gif") no-repeat 0 0,
-                url("/elite/board/styles/pbwow3/theme/images/border-bot.gif") repeat-x 0 100%,
-                url("/elite/board/styles/pbwow3/theme/images/border-top.gif") repeat-x 0 0,
-                url("/elite/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
-                url("/elite/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
-                rgba(20, 20, 20, 0.75);
+	width: 745px;
+	padding: 10px;
+	float: left;
+  background: url("/elite/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
+              url("/elite/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
+              url("/elite/board/styles/pbwow3/theme/images/border-top-right.gif") no-repeat 100% 0,
+              url("/elite/board/styles/pbwow3/theme/images/border-top-left.gif") no-repeat 0 0,
+              url("/elite/board/styles/pbwow3/theme/images/border-bot.gif") repeat-x 0 100%,
+              url("/elite/board/styles/pbwow3/theme/images/border-top.gif") repeat-x 0 0,
+              url("/elite/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
+              url("/elite/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
+              rgba(20, 20, 20, 0.75);
 }
 
 aside{
-	float:right;
-	width:220px;
-	margin:20px 0px;
+	float: right;
+	width: 295px;
+	height: 310px;
+	margin: 20px 0px;
+	padding: 10px;
+
+  background: url("/elite/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
+              url("/elite/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
+              url("/elite/board/styles/pbwow3/theme/images/border-top-right.gif") no-repeat 100% 0,
+              url("/elite/board/styles/pbwow3/theme/images/border-top-left.gif") no-repeat 0 0,
+              url("/elite/board/styles/pbwow3/theme/images/border-bot.gif") repeat-x 0 100%,
+              url("/elite/board/styles/pbwow3/theme/images/border-top.gif") repeat-x 0 0,
+              url("/elite/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
+              url("/elite/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
+              rgba(20, 20, 20, 0.75);
 }
 
 p {
-	color:white;
+	color: white;
 	text-shadow: 0px 0px 1px #000;
 	margin: 10px 0px 20px 0px;
 }
 
 .side {
-	width:100%;
+	width: 100%;
 	margin: 0px 0px 20px 20px;
 }
 
@@ -231,7 +246,7 @@ p {
     background: url("/elite/board/styles/pbwow3/theme/images/grey-bar-wide.gif") repeat-x;
     background-size: auto auto;
     background-size: auto 100%;
-	width: 670px;
+	width: 767px;
 	float: left;
 	height: 64px;
 }
@@ -277,7 +292,7 @@ p {
     background: url("/elite/board/styles/pbwow3/theme/images/grey-bar-wide.gif") repeat-x;
     background-size: auto auto;
     background-size: auto 100%;
-	width: 336px;
+	width: 333px;
 	height: 64px;
 	float: right;
 }
@@ -452,8 +467,8 @@ label {
 }
 
 .hr {
-    margin-left: 15%;
-    width: 70%;
+    margin-left: 75px;
+    margin-right: 75px;
     font-size: 1px;
     color: rgba(0, 0, 0, 0);
     line-height: .5px;
@@ -505,14 +520,14 @@ label {
 
 .skill ul li a {
 	color: #C6A444;
-} 
+}
 
 .skill ul li a:hover {
 	color:white;
 	text-decoration:none;
 	-webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out;
 	-o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;
-} 
+}
 
 .skill ul li img {
 	vertical-align: middle;
@@ -574,14 +589,14 @@ label {
 
 .ranking tr a {
 	color:#C6A444;
-} 
+}
 
 .ranking tr a:hover {
 	color:white;
 	text-decoration:none;
 	-webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out;
 	-o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;
-} 
+}
 
 #sm-list {
 	width: 200px;
@@ -797,7 +812,7 @@ td.username {
     width:580px; /* Change this to your images width */
     height:246px; /* Change this to your images height */
     background:url(images/loading.gif) no-repeat 50% 50%;
-	
+
 }
 #slider img {
     position:absolute;
@@ -879,4 +894,3 @@ td.username {
 footer{
 	position:relative;
 }
-

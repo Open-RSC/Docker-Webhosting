@@ -26,6 +26,7 @@ $user->setup('viewforum');
 require_once './inc/database_config.php';
 require_once './inc/charfunctions.php';
 
+error_reporting(1);
 ?>
 
 <!doctype html>
@@ -46,9 +47,11 @@ require_once './inc/charfunctions.php';
         <link rel="manifest" href="img/site.webmanifest">
         <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
 
-		<link rel="stylesheet" href="/elite/css/style.css" media="all"/>
-		<link rel="stylesheet" href="/elite/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/elite/css/style.css" media="all"/>
+        <link rel="stylesheet" href="/elite/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
+
+				<link rel="import" href="inc/discord.html">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js" type="text/javascript"></script>
@@ -59,7 +62,6 @@ require_once './inc/charfunctions.php';
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.js" type="text/javascript"></script>
         <script src="/elite/js/cufon.js" type="text/javascript"></script>
-        <script src="/elite/js/jquery.rss.js" type="text/javascript"></script>
 
         <script type="text/javascript">
 			function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
@@ -248,7 +250,7 @@ require_once './inc/charfunctions.php';
                 <article>
                     <div class="panel">
                     <br />
-                    <p align="center"><img class="logo" style="width:320px;height:300px;" src="css/images/logo.png"/></p>
+                    <p align="center"><img class="logo" style="width:320px; height:300px;" src="css/images/logo.png"/></p>
                     <h4>
                         <b>
                             <p align="center">
@@ -260,40 +262,83 @@ require_once './inc/charfunctions.php';
                         </b>
                     </h4>
 
-                    <br />
+										<br />
                     <div class="hr">.</div>
                     <br />
 
-                    <div style="margin-left: 30px; margin-right: 30px;">
-                        <div id="rss-feeds"></div>
-                    </div>
-				</article>
-			</div>
+										<div style="margin-left: 75px; margin-right: 75px;">
 
+										<?php
+										    function getContent() {
+		                        $file = "./feed-cache.txt";
+		                        $current_time = time();
+		                        $expire_time = 60 * 60; // 60 minute static cache of RSS feed
+		                        $file_time = filemtime($file);
+		                        if(file_exists($file) && ($current_time - $expire_time < $file_time)) {
+		                            return file_get_contents($file);
+		                        }
+		                        else {
+		                            $content = getFreshContent();
+		                            file_put_contents($file, $content);
+		                            return $content;
+		                        }
+		                    }
+		                    function getFreshContent() {
+		                        $html = "";
+		                        $newsSource = array(
+		                            array(
+		                                "url" => "https://openrsc.com/blog/rss/" // RSS feed URL
+		                            ),
+		                        );
+		                        function getFeed($url){
+		                            $rss = simplexml_load_file($url);
+		                            $count = 0;
+																date_default_timezone_set('America/New_York');
+		                            foreach($rss->channel->item as$item) {
+		                                $count++;
+		                                if($count > 4){
+		                                    break;
+		                                }
+		                                $html .= '<h4><a href="'.htmlspecialchars($item->link).'">'.htmlspecialchars($item->title).'</a></h4><div class="meta">Posted '.strftime("%A %B %d, %Y @ %I:%M %p", strtotime($item->pubDate)).'</div>'.strip_tags($item->description).'<br /><br />';
+		                            }
+		                            return $html;
+		                        }
+		                        foreach($newsSource as $source) {
+		                            $html .= getFeed($source["url"]);
+		                        }
+		                        return $html;
+		                    }
+		                    print getContent();
+		                ?>
+										<br />
+									</div>
+							</div>
+						</article>
+			</div>
 		</div>
 
-		<?php
-
-			}
-
-		?>
+		<?php } ?>
 		<aside>
 			<div class="box">
-				<div class="widget">
-                    <h4>Statistics</h4>
-                    <p><strong>
-                            Players Online: <?php echo playersOnline(); ?><br />
-                            Server Status: <?php echo checkStatus("dev1.openrsc.com", "43594"); ?><br />
-                            Total Players: <?php echo totalGameCharacters(); ?><br />
-                            Registrations today: <?php echo newRegistrationsToday(); ?><br />
-                     </strong></p>
-                </div>
-                <iframe src="https://discordapp.com/widget?id=459699205674369025&theme=dark" width="220" height="500" allowtransparency="false" frameborder="0"></iframe>
-				</div>
+					<div class="panel" style="height: 284px;">
+						<br />
+						<div style="padding-left: 20px; padding-top: 3px;">
+							<h5>Statistics</h5>
+	          	<p><strong>
+	              	Players Online: <?php echo playersOnline(); ?><br />
+	              	Server Status: <?php echo checkStatus("dev1.openrsc.com", "43594"); ?><br />
+	              	Total Players: <?php echo totalGameCharacters(); ?><br />
+	              	Registrations today: <?php echo newRegistrationsToday(); ?><br />
+						</div>
+						<div style="padding-left: 10px;">
+							<iframe src="/elite/inc/discord.html"></iframe>
+						</div>
+           	</strong></p>
+					</div>
 			</div>
 		</aside>
-		</div>
+
+		<?php include 'inc/footer.php'; ?>
 
 	</body>
-
 </html>
