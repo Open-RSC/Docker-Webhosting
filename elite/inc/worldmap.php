@@ -29,7 +29,7 @@ $sec = "30"; //page refresh time in seconds
 
 <?php
 $connector = new Dbc();
-$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_game.openrsc_players where online != 2 LIMIT 100");
+$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_game.openrsc_players where online = 1 LIMIT 100");
 $xs = $ys = array();
 
 function coords_to_image($x, $y) {
