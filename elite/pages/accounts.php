@@ -11,6 +11,11 @@ if($user->data['is_registered']) {
 ?>
 	<div class="main">
 		<div class="content">
+            <div class="navbar" style="height: 5px; width: 100%;">
+                <headerbar>
+                    <headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+                </headerbar>
+            </div>
 			<article>
 				<h4>Account Management</h4>
 				<p>Manage your player accounts, view their statistics, and change up your gear!</p>

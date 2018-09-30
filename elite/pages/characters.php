@@ -32,6 +32,11 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
 
 <div class="main">
 	<div class="content"">
+        <div class="navbar" style="height: 5px; width: 100%;">
+            <headerbar>
+                <headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+            </headerbar>
+        </div>
 		<article>
             <div class="panel">
                 <?php if($character) { ?>

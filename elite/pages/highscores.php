@@ -23,6 +23,11 @@ if(!$subpage || !in_array($subpage, $skill_array)){
 ?>
 	<div class="main">
 		<div class="content">
+            <div class="navbar" style="height: 5px; width: 100%;">
+                <headerbar>
+                    <headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+                </headerbar>
+            </div>
 			<article>
 				<h4 align="center">Highscores</h4>
 				<div class="skill">
@@ -35,21 +40,26 @@ if(!$subpage || !in_array($subpage, $skill_array)){
 			</article>
 		</div>
 	</div>
-<?php
-	} else {
-		//$subpage = mysqli_real_escape_string($subpage);
-		$subpage = preg_replace("/[^A-Za-z0-9 ]/","_",$subpage);
-		if($subpage == $skill_array[0]){
-			$query = array('openrsc_players.'.$subpage.', openrsc_experience.*','openrsc_players.'.$subpage);
-		} else {
-			$query = array('openrsc_experience.exp_'.$subpage,'exp_'.$subpage);
-		}
-		$args = $query[0];
-		$order = $query[1];
-		$stat_result = $connector->gamequery("SELECT openrsc_players.username,$args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id != '1' ORDER BY $order DESC LIMIT 30");
-?>
+    <?php
+        } else {
+            //$subpage = mysqli_real_escape_string($subpage);
+            $subpage = preg_replace("/[^A-Za-z0-9 ]/","_",$subpage);
+            if($subpage == $skill_array[0]){
+                $query = array('openrsc_players.'.$subpage.', openrsc_experience.*','openrsc_players.'.$subpage);
+            } else {
+                $query = array('openrsc_experience.exp_'.$subpage,'exp_'.$subpage);
+            }
+            $args = $query[0];
+            $order = $query[1];
+            $stat_result = $connector->gamequery("SELECT openrsc_players.username,$args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id != '1' ORDER BY $order DESC LIMIT 30");
+    ?>
 	<div class="main">
 		<div class="content">
+            <div class="navbar" style="height: 5px; width: 100%;">
+                <headerbar>
+                    <headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+                </headerbar>
+            </div>
 			<article class="highscores">
                 <div class="panel" style="margin-top: -3px; margin-left: 9px;">
                     <div class="skill">
