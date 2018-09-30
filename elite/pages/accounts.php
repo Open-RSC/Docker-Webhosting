@@ -17,52 +17,57 @@ if($user->data['is_registered']) {
                 </headerbar>
             </div>
 			<article>
-				<h4>Account Management</h4>
-				<p>Manage your player accounts, view their statistics, and change up your gear!</p>
-				<a id="inline" href="#create" class="button">Create Hero</a>
-				<?php if(mysqli_num_rows($characters_result) > 0){ ?>
-					<div id="sm-list">
-						<ul>
-					<?php
-						$i=0;
-						while($row = $connector->fetchArray($characters_result)){
-					?>
-            	<a href="#" onClick="javascript:loadContent('<?php echo $row['username']; ?>','<?php echo $row['owner']; ?>','<?php echo $row['haircolour']; ?>','<?php echo $row['headsprite']; ?>','<?php echo $row['skincolour']; ?>','<?php echo $row['topcolour']; ?>','<?php echo $row['male']; ?>','<?php echo $row['trousercolour']; ?>','<?php echo $row['combat']; ?>','<?php echo $row['online']; ?>');"><li id="toggle"><?php echo $row['username']; ?></li></a>
-					<?php
-						if($i==0){
-							$username=$row['username'];
-              $owner=$row['owner'];
+                <div class="panel">
+                    <div style="margin-left: 80px; margin-right: 80px; margin-top: 45px; margin-bottom: 45px; color: lightgrey;">
+                        <h4>Account Management</h4>
+                        <p>Manage your player accounts, view their statistics, and change up your gear!</p>
+                        <a id="inline" href="#create" class="button">Create Hero</a>
+                        <?php if(mysqli_num_rows($characters_result) > 0){ ?>
+                            <div id="sm-list">
+                                <ul>
+                            <?php
+                                $i=0;
+                                while($row = $connector->fetchArray($characters_result)){
+                            ?>
+                        <a href="#" onClick="javascript:loadContent('<?php echo $row['username']; ?>','<?php echo $row['owner']; ?>','<?php echo $row['haircolour']; ?>','<?php echo $row['headsprite']; ?>','<?php echo $row['skincolour']; ?>','<?php echo $row['topcolour']; ?>','<?php echo $row['male']; ?>','<?php echo $row['trousercolour']; ?>','<?php echo $row['combat']; ?>','<?php echo $row['online']; ?>');"><li id="toggle"><?php echo $row['username']; ?></li></a>
+                            <?php
+                                if($i==0){
+                                    $username=$row['username'];
+                      $owner=$row['owner'];
 
-							$hc = $row['haircolour'];
-							$hsprite = $row['headsprite'];
-							$sc = $row['skincolour'];
-							$tc = $row['topcolour'];
-							$gender = $row['male'];
-							$pc = $row['trousercolour'];
+                                    $hc = $row['haircolour'];
+                                    $hsprite = $row['headsprite'];
+                                    $sc = $row['skincolour'];
+                                    $tc = $row['topcolour'];
+                                    $gender = $row['male'];
+                                    $pc = $row['trousercolour'];
 
-							$combat = $row['combat'];
-							$online = $row['online'];
-						}
-						$i++;
-						}
-					?>
-						</ul>
-					</div>
-					<script type="text/javascript" language="JavaScript">
-						$(document).ready(function() {
-                                $.post("/elite/js/account.php", {username: '<?php echo $username; ?>', owner: '<?php echo $owner; ?>', hair: '<?php echo $hc; ?>', head: '<?php echo $hsprite; ?>', skin: '<?php echo $sc; ?>', top: '<?php echo $tc; ?>', gen: '<?php echo $gender; ?>', pants: '<?php echo $pc; ?>', combat: '<?php echo $combat; ?>', online: '<?php echo $online; ?>'} ,function(data) {
-								$("#character-details").html(data).show();
-								$("a#inline").fancybox({
-									'hideOnContentClick': false,
-									'overlayColor': '#000000',
-									'padding': 0,
-								});
-							});
-						});
-					</script>
-					<div id="character-details">
-					</div>
-				<?php } ?>
+                                    $combat = $row['combat'];
+                                    $online = $row['online'];
+                                }
+                                $i++;
+                                }
+                            ?>
+                                </ul>
+                            </div>
+                            <script type="text/javascript" language="JavaScript">
+                                $(document).ready(function() {
+                                        $.post("/elite/js/account.php", {username: '<?php echo $username; ?>', owner: '<?php echo $owner; ?>', hair: '<?php echo $hc; ?>', head: '<?php echo $hsprite; ?>', skin: '<?php echo $sc; ?>', top: '<?php echo $tc; ?>', gen: '<?php echo $gender; ?>', pants: '<?php echo $pc; ?>', combat: '<?php echo $combat; ?>', online: '<?php echo $online; ?>'} ,function(data) {
+                                        $("#character-details").html(data).show();
+                                        $("a#inline").fancybox({
+                                            'hideOnContentClick': false,
+                                            'overlayColor': '#000000',
+                                            'padding': 0,
+                                        });
+                                    });
+                                });
+                            </script>
+                            <div id="character-details">
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <br />
+                </div>
 			</article>
 		</div>
 	</div>
