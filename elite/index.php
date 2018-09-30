@@ -64,128 +64,112 @@ error_reporting(1);
         <script src="/elite/js/cufon.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-			function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
-				var url = "/elite/js/account.php";
-					$.post(url, {username: user, userenc: userhash, owner: id, hair: hc, head: hsprite, skin: sc, top: tc, gen: gender, pants: pc, combat: lvl, online: on} ,function(data) {
-						$("#character-details").html(data).show();
-						$("a#inline").fancybox({
-						'hideOnContentClick': false,
-						'hideOnOverlayClick': false,
-						'overlayColor': '#000000',
-						'padding': 0,
+					function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
+						var url = "/elite/js/account.php";
+							$.post(url, {username: user, userenc: userhash, owner: id, hair: hc, head: hsprite, skin: sc, top: tc, gen: gender, pants: pc, combat: lvl, online: on} ,function(data) {
+								$("#character-details").html(data).show();
+								$("a#inline").fancybox({
+								'hideOnContentClick': false,
+								'hideOnOverlayClick': false,
+								'overlayColor': '#000000',
+								'padding': 0,
+								});
+
+								$("#character-delete-form").bind("submit", function() {
+								$("#verification-fails").hide();
+								if ($("#verification").val() != 'yes') {
+									$("#verification-fails").show();
+									$.fancybox.resize();
+									return false;
+								}
+								$.fancybox.showActivity();
+								var i = $("#user-i").val();
+								var ui = $("#user-ui").val();
+								var y = $("#verification").val();
+								setTimeout(function(){
+									$.post("/elite/js/account.php", {id: i, hash: ui, ver: y} ,function(data) {
+										$.fancybox.hideActivity();
+										$("#character-delete-form").hide();
+										window.location.reload()
+									});
+								},5000);
+								return false;
+								});
+							});
+					}
+
+					$(document).ready(function() {
+						$("#toggle:first").addClass('active');
+						$('#toggle').click(function(){
+							$('#toggle').removeClass('active');
+							$(this).toggleClass('active');
 						});
 
-						$("#character-delete-form").bind("submit", function() {
-						$("#verification-fails").hide();
-						if ($("#verification").val() != 'yes') {
-							$("#verification-fails").show();
-							$.fancybox.resize();
+						$("a#single_image").fancybox();
+						$("a#inline").fancybox({
+							'hideOnContentClick': false,
+							'overlayColor': '#000000',
+							'padding': 0,
+							'onClosed': function() {
+								$("#name-fails").hide();
+								$("#pass-fails").hide();
+								$("#user-fails").hide();
+								$("#user-passes").hide();
+								$("#character-creation-form").show();
+							}
+						});
+
+						$("#character-creation-form").bind("submit", function() {
+							$("#name-fails").hide();
+							$("#pass-fails").hide();
+							if ($("#name").val().length >= 11 || $("#name").val().length <= 3) {
+								$("#name-fails").show();
+								$.fancybox.resize();
+								return false;
+							}
+							if ($("#password").val().length <= 4) {
+								$("#pass-fails").show();
+								$.fancybox.resize();
+								return false;
+							}
+
+							$.fancybox.showActivity();
+							var n = $("#name").val();
+						    var p = $("#password").val();
+
+							setTimeout(function(){
+								$.post("/elite/js/account.php", {nm: n, pw: p} ,function(data) {
+									if(data == 0){
+										$("#user-fails").show();
+									} else if(data == 1){
+										$("#user-passes").show();
+										$("#character-creation-form").hide();
+										window.location.reload()
+									}
+									$.fancybox.hideActivity();
+								});
+							},3000);
 							return false;
-						}
-						$.fancybox.showActivity();
-						var i = $("#user-i").val();
-						var ui = $("#user-ui").val();
-						var y = $("#verification").val();
-						setTimeout(function(){
-							$.post("/elite/js/account.php", {id: i, hash: ui, ver: y} ,function(data) {
-								$.fancybox.hideActivity();
-								$("#character-delete-form").hide();
-								window.location.reload()
-							});
-						},5000);
-						return false;
 						});
 					});
-			}
-
-			$(document).ready(function() {
-				$("#toggle:first").addClass('active');
-				$('#toggle').click(function(){
-					$('#toggle').removeClass('active');
-					$(this).toggleClass('active');
-				});
-
-				$("a#single_image").fancybox();
-				$("a#inline").fancybox({
-					'hideOnContentClick': false,
-					'overlayColor': '#000000',
-					'padding': 0,
-					'onClosed': function() {
-						$("#name-fails").hide();
-						$("#pass-fails").hide();
-						$("#user-fails").hide();
-						$("#user-passes").hide();
-						$("#character-creation-form").show();
-					}
-				});
-
-				$("#character-creation-form").bind("submit", function() {
-					$("#name-fails").hide();
-					$("#pass-fails").hide();
-					if ($("#name").val().length >= 11 || $("#name").val().length <= 3) {
-						$("#name-fails").show();
-						$.fancybox.resize();
-						return false;
-					}
-					if ($("#password").val().length <= 4) {
-						$("#pass-fails").show();
-						$.fancybox.resize();
-						return false;
-					}
-
-					$.fancybox.showActivity();
-					var n = $("#name").val();
-				    var p = $("#password").val();
-
-					setTimeout(function(){
-						$.post("/elite/js/account.php", {nm: n, pw: p} ,function(data) {
-							if(data == 0){
-								$("#user-fails").show();
-							} else if(data == 1){
-								$("#user-passes").show();
-								$("#character-creation-form").hide();
-								window.location.reload()
-							}
-							$.fancybox.hideActivity();
-						});
-					},3000);
-					return false;
-				});
-			});
 		</script>
-        <script type="text/javascript">
-            jQuery(function($) {
-                $("#rss-feeds").rss(
-                    "https://openrsc.com/blog/rss/",
-                    {
-                        limit: 4,
-                        layoutTemplate: "<div class='feed-container'>{entries}</div>",
-                        entryTemplate: '<h4><a href="{url}">{title}</a></h4><div class="meta">Posted by {author} // {date}</div>{shortBody}<br /><br />',
-                        // <img src="{teaserImageUrl}" width="99" height="56">
-                        dateFormat: 'MMMM Do, YYYY'
-                    },
-                    function callback() {}
-                )
-            })
-        </script>
 	</head>
 	<body lang="en">
 
 		<header>
 			<div class="large">Open RSC</div>
+			<div class="small"><font color="white">Striving for a replica RSC game and more</div>
 		</header>
 
-		<div class="body-wrapper">
 			<div class="navigation">
-
-                <div class="navbar">
+      	<div class="navbar">
 					<ul>
 						<li><a href="<?php echo $script_directory; ?>">Home</a></li>
 						<li><a href="<?php echo $script_directory; ?>board/index.php">Forum</a></li>
 						<li><a href="<?php echo $script_directory; ?>chat">Game Chat</a></li>
 						<li><a href="<?php echo $script_directory; ?>highscores/skill_total">Highscores</a></li>
 						<li><a href="<?php echo $script_directory; ?>worldmap">Live Map</a></li>
-                        <li><a href="<?php echo $script_directory; ?>database">Database</a></li>
+						<li><a href="<?php echo $script_directory; ?>database">Database</a></li>
 					</ul>
 				</div>
 
@@ -204,29 +188,36 @@ error_reporting(1);
 							<a href='<?php echo $script_directory; ?>board/ucp.php?mode=logout&amp;sid=<?php print $user->data['session_id'];?>'>Logout</a>
 						</span>
 					<?php } else { ?>
-                        <span class="welcome-message"><a id="inline" href="#data">Login</a></span>
-                        <span class="welcome-message"><a href="/board/ucp.php?mode=register">Register</a></span>
+						<span class="welcome-message"><a id="inline" href="#data">Login</a></span>
+						<span class="welcome-message"><a href="/board/ucp.php?mode=register">Register</a></span>
 					<?php } ?>
 						<div style="display:none">
 							<div id="data">
-								<h4 style="margin-left: 40px;">Open RSC Login</h4>
-								<form method="post" action="<?php echo $script_directory; ?>board/ucp.php?mode=login">
-								<input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
-								<input type="password" name="password" class="password" id="loginpass" placeholder="Password"/>
-                                <input type="hidden" checked="yes" name="autologin" class="autologin"  id="autologin"/>
-                                <input type="submit" value="Log In" name="login" class="submit"/>
-								<input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php" />
-								</form>
-								<a class="submit" href="<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a>
+								<div class="navbar" style="height: 5px; width: 455px;">
+									<headerbar>
+									<headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+								</headerbar>
+								</div>
+								<div class="panel-login">
+									<div class="popupbox">
+										<h4 style="margin-left: 40px;">Open RSC Login</h4>
+										<form method="post" action="<?php echo $script_directory; ?>board/ucp.php?mode=login">
+											<input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
+											<input type="password" name="password" class="password" id="loginpass" placeholder="Password"/>
+											<input type="hidden" checked="yes" name="autologin" class="autologin"  id="autologin"/>
+											<input type="submit" value="Log In" name="login" class="submit"/>
+											<input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php" />
+										</form>
+										<a class="submit" href="<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 
 		<?php
-
 			if(curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'){
 				if(file_exists("pages/".curPageURL().".php")) {
 					include("pages/".curPageURL().".php");
@@ -244,10 +235,15 @@ error_reporting(1);
 				}
 			} else {
 		?>
+
 		<div class="main">
 			<div class="content">
-
-                <article>
+				<div class="navbar" style="height: 5px; width: 100%;">
+					<headerbar>
+						<headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+					</headerbar>
+				</div>
+      						<article>
                     <div class="panel">
                     <br />
                     <p align="center"><img class="logo" style="width:320px; height:300px;" src="css/images/logo.png"/></p>
@@ -267,8 +263,7 @@ error_reporting(1);
                     <br />
 
 										<div style="margin-left: 75px; margin-right: 75px;">
-
-										<?php
+											<?php
 										    function getContent() {
 		                        $file = "./feed-cache.txt";
 		                        $current_time = time();
@@ -316,8 +311,15 @@ error_reporting(1);
 						</article>
 			</div>
 		</div>
-
 		<?php } ?>
+
+		<div class="sidenavbar" style="margin-top: 20px;">
+			<div class="navbar" style="height: 5px; width: 290px;">
+				<headerbar>
+					<headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+				</headerbar>
+			</div>
+		</div>
 		<aside>
 			<div class="box">
 					<div class="panel" style="height: 259px;">
@@ -325,10 +327,10 @@ error_reporting(1);
 						<div style="padding-left: 20px; padding-top: 3px;">
 							<h5>Statistics</h5>
 	          	<p><strong>
-	              	Players Online: <?php echo playersOnline(); ?><br />
-	              	Server Status: <?php echo checkStatus("dev1.openrsc.com", "43594"); ?><br />
-	              	Total Players: <?php echo totalGameCharacters(); ?><br />
-	              	Registrations today: <?php echo newRegistrationsToday(); ?><br />
+	          	Players Online: <?php echo playersOnline(); ?><br />
+	          	Server Status: <?php echo checkStatus("dev1.openrsc.com", "43594"); ?><br />
+	          	Total Players: <?php echo totalGameCharacters(); ?><br />
+	          	Registrations today: <?php echo newRegistrationsToday(); ?><br />
 						</div>
 						<div style="padding-left: 10px;">
 							<iframe src="/elite/inc/discord.html"></iframe>
@@ -339,6 +341,5 @@ error_reporting(1);
 		</aside>
 
 		<?php include 'inc/footer.php'; ?>
-
 	</body>
 </html>

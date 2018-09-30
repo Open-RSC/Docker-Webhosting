@@ -150,7 +150,7 @@ function gameChat() {
             <tbody>
             <?php while($row = $connector->fetchArray($game_accounts)) { ?>
                 <tr>
-                    <td class="tg-yw4l" width="700px">(<?php echo date("D G:i T", $row["time"]) ?>) <?php echo ucwords($row["sender"]) ?>: <?php echo $row["message"] ?></td>
+                    <td class="tg-yw4l">(<?php echo date("D G:i T", $row["time"]) ?>) <?php echo ucwords($row["sender"]) ?>: <?php echo $row["message"] ?></td>
                 </tr>
             <?php } ?>
             </tbody>

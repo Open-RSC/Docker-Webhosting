@@ -3,14 +3,14 @@ p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em,
 img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr,
 dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figure, figcaption, hgroup,
+article, aside, headerbar, headerbar-sides, canvas, details, figure, figcaption, hgroup,
 menu, footer, header, nav, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
 }
 
-article, aside, canvas, figure, figure img, figcaption, hgroup,
+article, aside, headerbar, headerbar-sides, canvas, figure, figure img, figcaption, hgroup,
 footer, header, nav, section, audio, video {
 	display: block;
 }
@@ -116,34 +116,26 @@ body {
 	line-height: 18px;
 }
 
-/* Selection colours (easy to forget) */
-
 ::selection 	 	{background: rgb(255,255,158);}
 ::-moz-selection 	{background: rgb(255,255,158);}
 img::selection 		{background: transparent;}
 img::-moz-selection	{background: transparent;}
 body {-webkit-tap-highlight-color: rgb(255,255,158);}
 
-
-
-/*		Default Layout: 992px.
-		Gutters: 24px.
-		Outer margins: 48px.
-		Leftover space for scrollbars @1024px: 32px.
--------------------------------------------------------------------------------
-cols    1     2      3      4      5      6      7      8      9      10
-px      68    160    252    344    436    528    620    712    804    896    */
-
 body {
 	width: 1100px;
 	padding: 32px 48px 84px;
+	overflow-y: scroll;
 	background: #000 url(/elite/board/styles/pbwow3/theme/images/theme/wod.png) fixed;
+	background-repeat:no-repeat;
+	background-position: center center;
+	background-size: 100%;
 	color: rgb(60,60,60);
-	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+	-webkit-text-size-adjust: 100%;
+	line-height: normal;
 }
 
 .body-wrapper {
-
 }
 
 header {
@@ -203,11 +195,10 @@ article {
               rgba(20, 20, 20, 0.75);
 }
 
-aside{
+aside {
 	float: right;
 	width: 270px;
 	height: 285px;
-	margin: 20px 0px;
 	padding: 10px;
   background: url("/elite/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
               url("/elite/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
@@ -218,6 +209,20 @@ aside{
               url("/elite/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
               url("/elite/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
               rgba(20, 20, 20, 0.75);
+}
+
+headerbar {
+    background: url("/elite/board/styles/pbwow3/theme/images/forumliner-top.png") repeat-x 0 0;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+headerbar-sides {
+    background: url("/elite/board/styles/pbwow3/theme/images/forumliner-fix-left2.gif") no-repeat,
+								url("/elite/board/styles/pbwow3/theme/images/forumliner-fix-right2.gif") repeat-y 100% 0;
 }
 
 p {
@@ -231,6 +236,10 @@ p {
 	margin: 0px 0px 20px 20px;
 }
 
+.sidenavbar {
+	float: right;
+}
+
 .navigation {
 	margin: 20px 0px 0px 0px;
 	float:left;
@@ -242,9 +251,9 @@ p {
 }
 
 .navbar {
-    background: url("/elite/board/styles/pbwow3/theme/images/grey-bar-wide.gif") repeat-x;
-    background-size: auto auto;
-    background-size: auto 100%;
+  background: url("/elite/board/styles/pbwow3/theme/images/grey-bar-wide.gif") repeat-x;
+  background-size: auto auto;
+  background-size: auto 100%;
 	width: 767px;
 	float: left;
 	height: 64px;
@@ -281,6 +290,31 @@ p {
 	text-decoration:none;
 	-webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out;
 	-o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;
+}
+
+/* navigation block right top */
+.navblock {
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    border: 1px solid;
+    padding: 1px 2px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.navblock > .inner {
+    border-radius: 0 0 6px 6px;
+    border-top: none;
+    padding: 10px;
+}
+
+.navblock .linklist {
+    padding: 2px 0;
+}
+
+.navblock .linklist > li {
+    height: 24px;
 }
 
 .block {
@@ -329,7 +363,7 @@ p {
 	height: 64px;
 	float: right;
 	padding-left: 5px;
-    padding-top: 6px;
+  padding-top: 6px;
 }
 
 .avatar-box img {
@@ -338,10 +372,8 @@ p {
 }
 
 #data, #create, #pass, #delete, #error {
-	width: 355px;
-    height: 220px;
-    padding-top: 45px;
-    padding-left: 85px;
+		width: 455px;
+    height: 280px;
     background: url("/elite/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
     url("/elite/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
     url("/elite/board/styles/pbwow3/theme/images/border-top-right.gif") no-repeat 100% 0,
@@ -351,6 +383,11 @@ p {
     url("/elite/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
     url("/elite/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
     rgba(20, 20, 20, 0.75);
+}
+
+.popupbox {
+		padding-top: 50px;
+		padding-left: 17%;
 }
 
 label {
@@ -370,7 +407,7 @@ label {
 	-moz-border-radius: 2px;
 	border-radius: 2px;
 	color: #C6A444;
-    border: 1px solid #444;
+  border: 1px solid #444;
 	text-shadow: 0px 0px 2px #201B18;
 	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -436,10 +473,23 @@ label {
 }
 
 .panel {
-    margin-top: 3px;
+	  margin-top: 3px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 21px;
+    background: #111;
+    background: rgba(20, 20, 20, 0.75);
+    border: 1px solid #444;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
+    color: #E1C492;
+}
+
+.panel-login {
+	  margin-top: 3px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 21px;
+		height: 247px;
     background: #111;
     background: rgba(20, 20, 20, 0.75);
     border: 1px solid #444;
