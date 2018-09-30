@@ -142,19 +142,13 @@ function newRegistrationsToday() {
 
 function gameChat() {
     $connector = new Dbc();
-    $game_accounts = $connector->logquery("SELECT sender, message, time FROM openrsc_chat_logs ORDER BY time DESC LIMIT 200");
+    $game_accounts = $connector->logquery("SELECT sender, message, time FROM openrsc_chat_logs ORDER BY time DESC LIMIT 1500");
     date_default_timezone_set('America/New_York');
     ?>
-    <div class="scroll">
-        <table class="tg" style="overflow-x:auto; border-collapse:collapse;">
-            <tbody>
+    <div style="font: 14px 'Exo', sans-serif; color: lightgrey;" >
             <?php while($row = $connector->fetchArray($game_accounts)) { ?>
-                <tr>
-                    <td class="tg-yw4l">(<?php echo date("D G:i T", $row["time"]) ?>) <?php echo ucwords($row["sender"]) ?>: <?php echo $row["message"] ?></td>
-                </tr>
+                [<i><?php echo strftime("%m/%d/%Y - %I:%M %p", $row["time"]) ?></i>] <b><?php echo ucwords($row["sender"]) ?>:</b> <?php echo $row["message"] ?><br />
             <?php } ?>
-            </tbody>
-        </table>
     </div>
     <?php
 }

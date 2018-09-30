@@ -485,11 +485,11 @@ label {
 }
 
 .panel-login {
-	  margin-top: 3px;
+	margin-top: 3px;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 21px;
-		height: 247px;
+	height: 247px;
     background: #111;
     background: rgba(20, 20, 20, 0.75);
     border: 1px solid #444;
@@ -500,11 +500,11 @@ label {
 .content {
 	background: #201B18;
 	background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.31, rgba(32,27,24,1)),
-    color-stop(0.99, rgba(42,34,32,1))
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.31, rgba(32,27,24,1)),
+		color-stop(0.99, rgba(42,34,32,1))
 	);
 	background-image: -moz-linear-gradient(
 		center bottom,
@@ -516,14 +516,12 @@ label {
 }
 
 .hr {
-    margin-left: 75px;
+	margin-bottom: 15px;
+	margin-left: 75px;
     margin-right: 75px;
-    font-size: 1px;
+	border-top: 1px solid;
     color: rgba(0, 0, 0, 0);
-    line-height: .5px;
     background-color: #C6A444;
-    margin-top: -6px;
-    margin-bottom: 10px;
 }
 
 .highscores {
@@ -572,15 +570,15 @@ label {
 }
 
 .skill ul li a:hover {
-	color:white;
-	text-decoration:none;
+	color: white;
+	text-decoration: none;
 	-webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out;
 	-o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;
 }
 
 .skill ul li img {
 	vertical-align: middle;
-	margin-right:5px;
+	margin-right: 5px;
 }
 
 .ranking {

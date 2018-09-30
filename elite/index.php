@@ -5,28 +5,32 @@ function curPageURL() {
 	$pos = strpos($page[2],'index.php');
 	if($pos !== false){
 		$return = 'index.php';
-	} else if($page[3]){
+	}
+	else if($page[3]){
 		$return = array($page[2],$page[3]);
-	} else {
+	}
+	else {
 		$return = $page[2];
 	}
 	return $return;
 }
 
-$script_directory = '/elite/';
 define('IN_PHPBB', true);
+error_reporting(1);
+
+$script_directory = '/elite/';
 $phpbb_root_path = './board/';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
-include($phpbb_root_path . 'common.' . $phpEx);
-include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
+
+require_once ($phpbb_root_path . 'common.' . $phpEx);
+require_once ($phpbb_root_path . 'includes/functions_display.' . $phpEx);
+require_once ('./inc/database_config.php');
+require_once ('./inc/charfunctions.php');
+
 $user->session_begin();
 $auth->acl($user->data);
 $user->setup('viewforum');
 
-require_once './inc/database_config.php';
-require_once './inc/charfunctions.php';
-
-error_reporting(1);
 ?>
 
 <!doctype html>
@@ -51,7 +55,7 @@ error_reporting(1);
         <link rel="stylesheet" href="/elite/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
 
-				<link rel="import" href="inc/discord.html">
+        <link rel="import" href="inc/discord.html">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js" type="text/javascript"></script>
@@ -153,16 +157,21 @@ error_reporting(1);
 						});
 					});
 		</script>
+
 	</head>
 	<body lang="en">
 
 		<header>
-			<div class="large">Open RSC</div>
-			<div class="small"><font color="white">Striving for a replica RSC game and more</div>
+			<div class="large">
+                Open RSC
+            </div>
+			<div class="small" style="color: white;">
+                Striving for a replica RSC game and more
+            </div>
 		</header>
 
 			<div class="navigation">
-      	<div class="navbar">
+      	        <div class="navbar">
 					<ul>
 						<li><a href="<?php echo $script_directory; ?>">Home</a></li>
 						<li><a href="<?php echo $script_directory; ?>board/index.php">Forum</a></li>
@@ -243,73 +252,71 @@ error_reporting(1);
 						<headerbar-sides><br /><br /></br /></br /></headerbar-sides>
 					</headerbar>
 				</div>
-      						<article>
+                <article>
                     <div class="panel">
                     <br />
                     <p align="center"><img class="logo" style="width:320px; height:300px;" src="css/images/logo.png"/></p>
-                    <h4>
-                        <b>
-                            <p align="center">
+                    <div style="margin-left: 75px; margin-right: 75px; word-spacing: 10px">
+                        <h4>
+                            <b>
                                 <a href="board/ucp.php?mode=register"/>Register</a> |
                                 <a href="downloads/Open_RSC_Launcher.jar"/>Download</a> |
                                 <a href="downloads/openrsc.apk"/>Android</a> |
                                 <a href="https://discordapp.com/invite/94vVKND"/>Discord</a>
-                            </p>
-                        </b>
-                    </h4>
-
-										<br />
-                    <div class="hr">.</div>
+                            </b>
+                        </h4>
+                    </div>
                     <br />
-
-										<div style="margin-left: 75px; margin-right: 75px;">
-											<?php
-										    function getContent() {
-		                        $file = "./feed-cache.txt";
-		                        $current_time = time();
-		                        $expire_time = 60 * 60; // 60 minute static cache of RSS feed
-		                        $file_time = filemtime($file);
-		                        if(file_exists($file) && ($current_time - $expire_time < $file_time)) {
-		                            return file_get_contents($file);
-		                        }
-		                        else {
-		                            $content = getFreshContent();
-		                            file_put_contents($file, $content);
-		                            return $content;
-		                        }
-		                    }
-		                    function getFreshContent() {
-		                        $html = "";
-		                        $newsSource = array(
-		                            array(
-		                                "url" => "https://openrsc.com/blog/rss/" // RSS feed URL
-		                            ),
-		                        );
-		                        function getFeed($url){
-		                            $rss = simplexml_load_file($url);
-		                            $count = 0;
-																date_default_timezone_set('America/New_York');
-		                            foreach($rss->channel->item as$item) {
-		                                $count++;
-		                                if($count > 4){
-		                                    break;
-		                                }
-		                                $html .= '<h4><a href="'.htmlspecialchars($item->link).'">'.htmlspecialchars($item->title).'</a></h4><div class="meta">Posted '.strftime("%A %B %d, %Y @ %I:%M %p", strtotime($item->pubDate)).'</div>'.strip_tags($item->description).'<br /><br />';
-		                            }
-		                            return $html;
-		                        }
-		                        foreach($newsSource as $source) {
-		                            $html .= getFeed($source["url"]);
-		                        }
-		                        return $html;
-		                    }
-		                    print getContent();
-		                ?>
-										<br />
-									</div>
-							</div>
-						</article>
-			</div>
+                    <div class="hr"></div>
+                    <br />
+                        <div style="margin-left: 75px; margin-right: 75px;">
+                            <?php
+                                function getContent() {
+                                    $file = "./feed-cache.txt";
+                                    $current_time = time();
+                                    $expire_time = 60 * 60; // 60 minute static cache of RSS feed
+                                    $file_time = filemtime($file);
+                                    if(file_exists($file) && ($current_time - $expire_time < $file_time)) {
+                                        return file_get_contents($file);
+                                    }
+                                    else {
+                                        $content = getFreshContent();
+                                        file_put_contents($file, $content);
+                                        return $content;
+                                    }
+                                }
+                                function getFreshContent() {
+                                    $html = "";
+                                    $newsSource = array(
+                                        array(
+                                            "url" => "https://openrsc.com/blog/rss/" // RSS feed URL
+                                        ),
+                                    );
+                                    function getFeed($url){
+                                        $rss = simplexml_load_file($url);
+                                        $count = 0;
+                                                                    date_default_timezone_set('America/New_York');
+                                        foreach($rss->channel->item as$item) {
+                                            $count++;
+                                            if($count > 4){
+                                                break;
+                                            }
+                                            $html .= '<h4><a href="'.htmlspecialchars($item->link).'">'.htmlspecialchars($item->title).'</a></h4><div class="meta">Posted '.strftime("%A %B %d, %Y @ %I:%M %p", strtotime($item->pubDate)).'</div>'.strip_tags($item->description).'<br /><br />';
+                                        }
+                                        return $html;
+                                    }
+                                    foreach($newsSource as $source) {
+                                        $html .= getFeed($source["url"]);
+                                    }
+                                    return $html;
+                                }
+                                print getContent();
+                            ?>
+                            <br />
+                        </div>
+                    </div>
+			    </article>
+		    </div>
 		</div>
 		<?php } ?>
 
