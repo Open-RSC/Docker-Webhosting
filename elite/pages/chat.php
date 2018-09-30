@@ -2,15 +2,9 @@
     <div class="content">
         <article>
             <div class="panel">
-                <h4>
-                    <b>
-                        <p align="center">
-                            <br />
-                            <?php echo gameChat(); ?>
-                            <br />
-                        </p>
-                    </b>
-                </h4>
+                <div style="margin-left: 25px;">
+                    <iframe src="/elite/inc/chat.php" style="width: 100%; height: 550px;"></iframe>
+                </div>
             </div>
         </article>
     </div>
