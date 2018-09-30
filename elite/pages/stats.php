@@ -1,5 +1,16 @@
+<?php
+if(!defined('IN_PHPBB'))
+{
+    die("You do not have permission to access this file.");
+}
+?>
 <div class="main">
     <div class="content">
+        <div class="navbar" style="height: 5px; width: 100%;">
+            <headerbar>
+                <headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+            </headerbar>
+        </div>
         <article>
                 <b><?php echo uniquePlayers(); ?></b> people have created <b><?php echo totalPlayers(); ?></b> players.<br />
                 The highest combat level is <b><?php echo topcombat(); ?>.</b><br />
