@@ -65,6 +65,11 @@ $user->setup('viewforum');
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/excanvas.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.js" type="text/javascript"></script>
+        <script src="/new/js/modernizr.js"></script>
+        <script src="/new/js/pace.min.js"></script>
+        <script src="/new/js/jquery-3.2.1.min.js"></script>
+        <script src="/new/js/plugins.js"></script>
+        <script src="/new/js/main.js"></script>
         <script src="/elite/js/cufon.js" type="text/javascript"></script>
 
         <script type="text/javascript">
@@ -329,23 +334,24 @@ $user->setup('viewforum');
 		</div>
 		<aside>
 			<div class="box">
-					<div class="panel" style="height: 259px;">
-						<br />
-						<div style="padding-left: 20px; padding-top: 3px;">
-							<h5>Statistics</h5>
-	          	<p><strong>
-	          	Players Online: <?php echo playersOnline(); ?><br />
-	          	Server Status: <?php echo checkStatus("dev1.openrsc.com", "43594"); ?><br />
-	          	Total Players: <?php echo totalGameCharacters(); ?><br />
-	          	Registrations today: <?php echo newRegistrationsToday(); ?><br />
-						</div>
-						<div style="padding-left: 10px;">
-							<iframe src="/elite/inc/discord.html"></iframe>
-						</div>
-           	</strong></p>
-					</div>
+                <div class="panel" style="height: 259px;">
+                    <br />
+                    <div style="padding-left: 20px; padding-top: 3px;">
+                        <h5>Statistics</h5>
+	          	            <p>
+                            Players Online: <?php echo playersOnline(); ?><br />
+                            Server Status: <strong><?php echo checkStatus("dev1.openrsc.com", "43594"); ?></strong><br />
+                            Registrations today: <?php echo newRegistrationsToday(); ?><br />
+                            Unique Players: <?php echo uniquePlayers(); ?><br />
+                            Total Players: <?php echo totalGameCharacters(); ?><br />
+                            Gold: <?php echo banktotalGold(); ?><br />
+                            Total Played: <?php echo totalTime(); ?><br />
+                            </p>
+                    </div>
+                    <div style="padding-left: 10px;"><iframe src="/elite/inc/discord.html"></iframe></div>
+                </div>
 			</div>
-		</aside>
+        </aside>
 
 		<?php include 'inc/footer.php'; ?>
 	</body>

@@ -171,7 +171,7 @@ function uniquePlayers() {
 
 function topcombat() {
     $connector = new Dbc();
-    $topcombat = $connector->gamequery("SELECT combat FROM openrsc_players ORDER BY openrsc_players.combat DESC LIMIT 1");
+    $topcombat = $connector->gamequery("SELECT combat FROM openrsc_players WHERE group_id = '4' AND banned = '0' ORDER BY openrsc_players.combat DESC LIMIT 1");
     while ($row = $connector->fetchArray($topcombat)) {
         echo $row["combat"];
     }
@@ -179,7 +179,7 @@ function topcombat() {
 
 function combat30() {
     $connector = new Dbc();
-    $combat30 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 30");
+    $combat30 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 30 AND group_id = '4' AND banned = '0'");
     while ($row = $connector->fetchArray($combat30)) {
         echo $row["COUNT(combat)"];
     }
@@ -187,7 +187,7 @@ function combat30() {
 
 function combat50() {
     $connector = new Dbc();
-    $combat50 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 50");
+    $combat50 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 50 AND group_id = '4' AND banned = '0'");
     while ($row = $connector->fetchArray($combat50)) {
         echo $row["COUNT(combat)"];
     }
@@ -195,7 +195,7 @@ function combat50() {
 
 function combat80() {
     $connector = new Dbc();
-    $combat80 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 80");
+    $combat80 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 80 AND group_id = '4' AND banned = '0'");
     while ($row = $connector->fetchArray($combat80)) {
         echo $row["COUNT(combat)"];
     }
@@ -203,7 +203,7 @@ function combat80() {
 
 function combat90() {
     $connector = new Dbc();
-    $combat90 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 90");
+    $combat90 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 90 AND group_id = '4' AND banned = '0'");
     while ($row = $connector->fetchArray($combat90)) {
         echo $row["COUNT(combat)"];
     }
@@ -211,7 +211,7 @@ function combat90() {
 
 function combat100() {
     $connector = new Dbc();
-    $combat100 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 100");
+    $combat100 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 100 AND group_id = '4' AND banned = '0'");
     while ($row = $connector->fetchArray($combat100)) {
         echo $row["COUNT(combat)"];
     }
@@ -219,7 +219,7 @@ function combat100() {
 
 function combat123() {
     $connector = new Dbc();
-    $combat123 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 123");
+    $combat123 = $connector->gamequery("SELECT COUNT(combat) FROM openrsc_players WHERE combat >= 123 AND group_id = '4' AND banned = '0'");
     while ($row = $connector->fetchArray($combat123)) {
         echo $row["COUNT(combat)"];
     }
@@ -235,7 +235,7 @@ function startedQuest() {
 
 function banktotalGold() {
     $connector = new Dbc();
-    $banktotalGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, format(SUM(B.amount), 0) AS count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 ORDER BY B.amount DESC ");
+    $banktotalGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, A.banned, B.playerID, B.id, format(SUM(B.amount), 0) AS count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($banktotalGold)) {
         echo $row["count"];
     }
@@ -243,7 +243,7 @@ function banktotalGold() {
 
 function maxGold() {
     $connector = new Dbc();
-    $maxGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, format(B.amount, 0) as count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND A.group_id = 4 ORDER BY B.amount DESC LIMIT 5");
+    $maxGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, format(B.amount, 0) as count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND A.group_id = '4' AND A.banned = '0' ORDER BY B.amount DESC LIMIT 5");
     while ($row = $connector->fetchArray($maxGold)) {
         echo $row["username"];
         echo ': ';
@@ -254,7 +254,7 @@ function maxGold() {
 
 function gold30() {
     $connector = new Dbc();
-    $gold30 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 30000");
+    $gold30 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 30000 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($gold30)) {
         echo $row["COUNT(B.amount)"];
     }
@@ -262,7 +262,7 @@ function gold30() {
 
 function gold50() {
     $connector = new Dbc();
-    $gold50 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 50000");
+    $gold50 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 50000 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($gold50)) {
         echo $row["COUNT(B.amount)"];
     }
@@ -270,7 +270,7 @@ function gold50() {
 
 function gold80() {
     $connector = new Dbc();
-    $gold80 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 80000");
+    $gold80 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 80000 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($gold80)) {
         echo $row["COUNT(B.amount)"];
     }
@@ -278,7 +278,7 @@ function gold80() {
 
 function gold120() {
     $connector = new Dbc();
-    $gold120 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 120000");
+    $gold120 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 120000 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($gold120)) {
         echo $row["COUNT(B.amount)"];
     }
@@ -286,7 +286,7 @@ function gold120() {
 
 function gold400() {
     $connector = new Dbc();
-    $gold400 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 400000");
+    $gold400 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 400000 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($gold400)) {
         echo $row["COUNT(B.amount)"];
     }
@@ -294,7 +294,7 @@ function gold400() {
 
 function gold1m() {
     $connector = new Dbc();
-    $gold1m = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 1000000");
+    $gold1m = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 1000000 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($gold1m)) {
         echo $row["COUNT(B.amount)"];
     }
@@ -302,7 +302,7 @@ function gold1m() {
 
 function gold12m() {
     $connector = new Dbc();
-    $gold12m = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 1200000");
+    $gold12m = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 1200000 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($gold12m)) {
         echo $row["COUNT(B.amount)"];
     }
@@ -310,9 +310,22 @@ function gold12m() {
 
 function gold15m() {
     $connector = new Dbc();
-    $gold15m = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 1500000");
+    $gold15m = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 1500000 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($gold15m)) {
         echo $row["COUNT(B.amount)"];
+    }
+}
+
+function totalTime() {
+    $connector = new Dbc();
+    $totalTime = $connector->gamequery("SELECT SUM(`value`) FROM `openrsc_player_cache` WHERE `openrsc_player_cache`.`key` = 'total_played'");
+    while ($row = $connector->fetchArray($totalTime)) {
+        $time = $row["SUM(`value`)"] / 1000;
+        $days = floor($time / (24*60*60));
+        $hours = floor(($time - ($days*24*60*60)) / (60*60));
+        $minutes = floor(($time - ($days*24*60*60)-($hours*60*60)) / 60);
+        $seconds = ($time - ($days*24*60*60) - ($hours*60*60) - ($minutes*60)) % 60;
+        echo $days.'d '.$hours.'h '.$minutes.'m '.$seconds.'s';
     }
 }
 ?>
