@@ -156,6 +156,19 @@ function newRegistrationsToday()
     }
 }
 
+function loginsToday()
+{
+    $connector = new Dbc();
+    $loginsToday = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE login_date >= '" . strtotime(date('Y-m-d', time()) . '00:00:00') . "'");
+    while ($row = $connector->fetchArray($loginsToday)) {
+        if ($row["countUsers"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["countUsers"];
+        }
+    }
+}
+
 function gameChat()
 {
     $connector = new Dbc();

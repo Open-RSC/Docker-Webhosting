@@ -358,7 +358,8 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
                 <p>
                     Players Online: <strong><?php echo playersOnline(); ?></strong><br/>
                     Server Status: <strong><?php echo checkStatus("dev1.openrsc.com", "43594"); ?></strong><br/>
-                    Registrations today: <strong><?php echo newRegistrationsToday(); ?></strong><br/>
+                    Registrations Today: <strong><?php echo newRegistrationsToday(); ?></strong><br/>
+                    Logins Today: <strong><?php echo loginsToday(); ?></strong><br/>
                     Unique Players: <strong><?php echo uniquePlayers(); ?></strong><br/>
                     Total Players: <strong><?php echo totalGameCharacters(); ?></strong><br/>
                     Gold: <strong><?php echo banktotalGold(); ?></strong><br/>
