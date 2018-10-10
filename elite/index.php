@@ -1,15 +1,14 @@
 <?php
-function curPageURL() {
-    $pageUrl = $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-    $page = explode("/",$pageUrl);
-    $pos = strpos($page[2],'index.php');
-    if($pos !== false){
+function curPageURL()
+{
+    $pageUrl = $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+    $page = explode("/", $pageUrl);
+    $pos = strpos($page[2], 'index.php');
+    if ($pos !== false) {
         $return = 'index.php';
-    }
-    else if($page[3]){
-        $return = array($page[2],$page[3]);
-    }
-    else {
+    } else if ($page[3]) {
+        $return = array($page[2], $page[3]);
+    } else {
         $return = $page[2];
     }
     return $return;
@@ -22,10 +21,10 @@ $script_directory = '/elite/';
 $phpbb_root_path = './board/';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
 
-require_once ($phpbb_root_path . 'common.' . $phpEx);
-require_once ($phpbb_root_path . 'includes/functions_display.' . $phpEx);
-require_once ('./inc/database_config.php');
-require_once ('./inc/charfunctions.php');
+require_once($phpbb_root_path . 'common.' . $phpEx);
+require_once($phpbb_root_path . 'includes/functions_display.' . $phpEx);
+require_once('./inc/database_config.php');
+require_once('./inc/charfunctions.php');
 
 $user->session_begin();
 $auth->acl($user->data);
@@ -52,7 +51,7 @@ $user->setup('viewforum');
     <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
 
     <link rel="stylesheet" href="/elite/css/style.css" media="all"/>
-    <link rel="stylesheet" href="/elite/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/elite/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
 
     <link rel="import" href="inc/discord.html">
@@ -61,7 +60,8 @@ $user->setup('viewforum');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.3/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.pack.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.pack.js"
+            type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/excanvas.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.js" type="text/javascript"></script>
@@ -70,7 +70,19 @@ $user->setup('viewforum');
     <script type="text/javascript">
         function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
             var url = "/elite/js/account.php";
-            $.post(url, {username: user, userenc: userhash, owner: id, hair: hc, head: hsprite, skin: sc, top: tc, gen: gender, pants: pc, combat: lvl, online: on} ,function(data) {
+            $.post(url, {
+                username: user,
+                userenc: userhash,
+                owner: id,
+                hair: hc,
+                head: hsprite,
+                skin: sc,
+                top: tc,
+                gen: gender,
+                pants: pc,
+                combat: lvl,
+                online: on
+            }, function (data) {
                 $("#character-details").html(data).show();
                 $("a#inline").fancybox({
                     'hideOnContentClick': false,
@@ -79,7 +91,7 @@ $user->setup('viewforum');
                     'padding': 0,
                 });
 
-                $("#character-delete-form").bind("submit", function() {
+                $("#character-delete-form").bind("submit", function () {
                     $("#verification-fails").hide();
                     if ($("#verification").val() != 'yes') {
                         $("#verification-fails").show();
@@ -90,21 +102,21 @@ $user->setup('viewforum');
                     var i = $("#user-i").val();
                     var ui = $("#user-ui").val();
                     var y = $("#verification").val();
-                    setTimeout(function(){
-                        $.post("/elite/js/account.php", {id: i, hash: ui, ver: y} ,function(data) {
+                    setTimeout(function () {
+                        $.post("/elite/js/account.php", {id: i, hash: ui, ver: y}, function (data) {
                             $.fancybox.hideActivity();
                             $("#character-delete-form").hide();
                             window.location.reload()
                         });
-                    },5000);
+                    }, 5000);
                     return false;
                 });
             });
         }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#toggle:first").addClass('active');
-            $('#toggle').click(function(){
+            $('#toggle').click(function () {
                 $('#toggle').removeClass('active');
                 $(this).toggleClass('active');
             });
@@ -114,7 +126,7 @@ $user->setup('viewforum');
                 'hideOnContentClick': false,
                 'overlayColor': '#000000',
                 'padding': 0,
-                'onClosed': function() {
+                'onClosed': function () {
                     $("#name-fails").hide();
                     $("#pass-fails").hide();
                     $("#user-fails").hide();
@@ -123,7 +135,7 @@ $user->setup('viewforum');
                 }
             });
 
-            $("#character-creation-form").bind("submit", function() {
+            $("#character-creation-form").bind("submit", function () {
                 $("#name-fails").hide();
                 $("#pass-fails").hide();
                 if ($("#name").val().length >= 11 || $("#name").val().length <= 3) {
@@ -141,18 +153,18 @@ $user->setup('viewforum');
                 var n = $("#name").val();
                 var p = $("#password").val();
 
-                setTimeout(function(){
-                    $.post("/elite/js/account.php", {nm: n, pw: p} ,function(data) {
-                        if(data == 0){
+                setTimeout(function () {
+                    $.post("/elite/js/account.php", {nm: n, pw: p}, function (data) {
+                        if (data == 0) {
                             $("#user-fails").show();
-                        } else if(data == 1){
+                        } else if (data == 1) {
                             $("#user-passes").show();
                             $("#character-creation-form").hide();
                             window.location.reload()
                         }
                         $.fancybox.hideActivity();
                     });
-                },3000);
+                }, 3000);
                 return false;
             });
         });
@@ -184,17 +196,20 @@ $user->setup('viewforum');
 
     <div class="account-panel">
         <div class="avatar-box">
-            <?php if($user->data['is_registered']){ ?>
-                <a href="<?php echo $script_directory; ?>board/ucp.php?i=profile&mode=avatar"><img src="/elite/board/download/file.php?avatar=<?php print $user->data['user_avatar']; ?>" /></a>
+            <?php if ($user->data['is_registered']) { ?>
+                <a href="<?php echo $script_directory; ?>board/ucp.php?i=profile&mode=avatar"><img
+                            src="/elite/board/download/file.php?avatar=<?php print $user->data['user_avatar']; ?>"/></a>
             <?php } ?>
         </div>
         <div class="account-text">
-            <?php if($user->data['is_registered']){ ?>
+            <?php if ($user->data['is_registered']) { ?>
                 <span class="welcome-message block">Welcome back, <?php print $user->data['username']; ?></span>
-                <span class="welcome-text"><a href="<?php echo $script_directory; ?>accounts">Account Management</a></span>
-                <span class="welcome-text"> | (<a href="<?php echo $script_directory; ?>board/ucp.php?i=pm&folder=inbox"><?php print $user->data['user_unread_privmsg']; ?></a>) | </span>
+                <span class="welcome-text"><a
+                            href="<?php echo $script_directory; ?>accounts">Account Management</a></span>
+                <span class="welcome-text"> | (<a
+                            href="<?php echo $script_directory; ?>board/ucp.php?i=pm&folder=inbox"><?php print $user->data['user_unread_privmsg']; ?></a>) | </span>
                 <span class="welcome-text">
-							<a href='<?php echo $script_directory; ?>board/ucp.php?mode=logout&amp;sid=<?php print $user->data['session_id'];?>'>Logout</a>
+							<a href='<?php echo $script_directory; ?>board/ucp.php?mode=logout&amp;sid=<?php print $user->data['session_id']; ?>'>Logout</a>
 						</span>
             <?php } else { ?>
                 <span class="welcome-message"><a id="inline" href="#data">Login</a></span>
@@ -204,7 +219,7 @@ $user->setup('viewforum');
                 <div id="data">
                     <div class="navbar" style="height: 5px; width: 455px;">
                         <headerbar>
-                            <headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+                            <headerbar-sides><br/><br/></br /></br /></headerbar-sides>
                         </headerbar>
                     </div>
                     <div class="panel-login">
@@ -212,10 +227,11 @@ $user->setup('viewforum');
                             <h4 style="margin-left: 40px;">Open RSC Login</h4>
                             <form method="post" action="<?php echo $script_directory; ?>board/ucp.php?mode=login">
                                 <input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
-                                <input type="password" name="password" class="password" id="loginpass" placeholder="Password"/>
-                                <input type="hidden" checked="yes" name="autologin" class="autologin"  id="autologin"/>
+                                <input type="password" name="password" class="password" id="loginpass"
+                                       placeholder="Password"/>
+                                <input type="hidden" checked="yes" name="autologin" class="autologin" id="autologin"/>
                                 <input type="submit" value="Log In" name="login" class="submit"/>
-                                <input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php" />
+                                <input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php"/>
                             </form>
                             <a class="submit" href="<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a>
                         </div>
@@ -227,18 +243,18 @@ $user->setup('viewforum');
 </div>
 
 <?php
-if(curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'){
-    if(file_exists("pages/".curPageURL().".php")) {
-        include("pages/".curPageURL().".php");
+if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php') {
+    if (file_exists("pages/" . curPageURL() . ".php")) {
+        include("pages/" . curPageURL() . ".php");
     } else {
         include("pages/error.php");
     }
-} else if(is_array(curPageURL()) && curPageURL() != 'index.php' ){
+} else if (is_array(curPageURL()) && curPageURL() != 'index.php') {
     $page = curPageURL();
     $subpage = $page[1];
     $page = $page[0];
-    if(file_exists("pages/".$page.".php")) {
-        include("pages/".$page.".php");
+    if (file_exists("pages/" . $page . ".php")) {
+        include("pages/" . $page . ".php");
     } else {
         include("pages/error.php");
     }
@@ -249,13 +265,14 @@ if(curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php')
         <div class="content">
             <div class="navbar" style="height: 5px; width: 100%;">
                 <headerbar>
-                    <headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+                    <headerbar-sides><br/><br/></br /></br /></headerbar-sides>
                 </headerbar>
             </div>
             <article>
                 <div class="panel">
-                    <br />
-                    <p align="center"><img class="logo" style="width:320px; height:300px;" src="css/images/logo.png"/></p>
+                    <br/>
+                    <p align="center"><img class="logo" style="width:320px; height:300px;" src="css/images/logo.png"/>
+                    </p>
                     <div style="margin-left: 75px; margin-right: 75px; word-spacing: 10px">
                         <h4>
                             <b>
@@ -266,53 +283,58 @@ if(curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php')
                             </b>
                         </h4>
                     </div>
-                    <br />
+                    <br/>
                     <div class="hr"></div>
-                    <br />
+                    <br/>
                     <div style="margin-left: 75px; margin-right: 75px;">
                         <?php
-                        function getContent() {
+                        function getContent()
+                        {
                             $file = "./feed-cache.txt";
                             $current_time = time();
                             $expire_time = 60 * 60; // 60 minute static cache of RSS feed
                             $file_time = filemtime($file);
-                            if(file_exists($file) && ($current_time - $expire_time < $file_time)) {
+                            if (file_exists($file) && ($current_time - $expire_time < $file_time)) {
                                 return file_get_contents($file);
-                            }
-                            else {
+                            } else {
                                 $content = getFreshContent();
                                 file_put_contents($file, $content);
                                 return $content;
                             }
                         }
-                        function getFreshContent() {
+
+                        function getFreshContent()
+                        {
                             $html = "";
                             $newsSource = array(
                                 array(
                                     "url" => "https://openrsc.com/blog/rss/" // RSS feed URL
                                 ),
                             );
-                            function getFeed($url){
+                            function getFeed($url)
+                            {
                                 $rss = simplexml_load_file($url);
                                 $count = 0;
                                 date_default_timezone_set('America/New_York');
-                                foreach($rss->channel->item as$item) {
+                                foreach ($rss->channel->item as $item) {
                                     $count++;
-                                    if($count > 4){
+                                    if ($count > 4) {
                                         break;
                                     }
-                                    $html .= '<h4><a href="'.htmlspecialchars($item->link).'">'.htmlspecialchars($item->title).'</a></h4><div class="meta">Posted '.strftime("%A %B %d, %Y @ %I:%M %p", strtotime($item->pubDate)).'</div>'.strip_tags($item->description).'<br /><br />';
+                                    $html .= '<h4><a href="' . htmlspecialchars($item->link) . '">' . htmlspecialchars($item->title) . '</a></h4><div class="meta">Posted ' . strftime("%A %B %d, %Y @ %I:%M %p", strtotime($item->pubDate)) . '</div>' . strip_tags($item->description) . '<br /><br />';
                                 }
                                 return $html;
                             }
-                            foreach($newsSource as $source) {
+
+                            foreach ($newsSource as $source) {
                                 $html .= getFeed($source["url"]);
                             }
                             return $html;
                         }
+
                         print getContent();
                         ?>
-                        <br />
+                        <br/>
                     </div>
                 </div>
             </article>
@@ -323,27 +345,29 @@ if(curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php')
 <div class="sidenavbar" style="margin-top: 20px;">
     <div class="navbar" style="height: 5px; width: 290px;">
         <headerbar>
-            <headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+            <headerbar-sides><br/><br/></br /></br /></headerbar-sides>
         </headerbar>
     </div>
 </div>
 <aside>
     <div class="box">
         <div class="panel" style="height: 259px;">
-            <br />
+            <br/>
             <div style="padding-left: 20px; padding-top: 3px;">
                 <h5>Statistics</h5>
                 <p>
-                    Players Online: <?php echo playersOnline(); ?><br />
-                    Server Status: <strong><?php echo checkStatus("dev1.openrsc.com", "43594"); ?></strong><br />
-                    Registrations today: <?php echo newRegistrationsToday(); ?><br />
-                    Unique Players: <?php echo uniquePlayers(); ?><br />
-                    Total Players: <?php echo totalGameCharacters(); ?><br />
-                    Gold: <?php echo banktotalGold(); ?><br />
-                    Total Played: <?php echo totalTime(); ?><br />
+                    Players Online: <strong><?php echo playersOnline(); ?></strong><br/>
+                    Server Status: <strong><?php echo checkStatus("dev1.openrsc.com", "43594"); ?></strong><br/>
+                    Registrations today: <strong><?php echo newRegistrationsToday(); ?></strong><br/>
+                    Unique Players: <strong><?php echo uniquePlayers(); ?></strong><br/>
+                    Total Players: <strong><?php echo totalGameCharacters(); ?></strong><br/>
+                    Gold: <strong><?php echo banktotalGold(); ?></strong><br/>
+                    Time Played: <strong><?php echo totalTime(); ?></strong><br/>
                 </p>
             </div>
-            <div style="padding-left: 10px;"><iframe src="/elite/inc/discord.html"></iframe></div>
+            <div style="padding-left: 10px;">
+                <iframe src="/elite/inc/discord.html"></iframe>
+            </div>
         </div>
     </div>
 </aside>

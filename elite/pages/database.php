@@ -1,6 +1,5 @@
 <?php
-if(!defined('IN_PHPBB'))
-{
+if (!defined('IN_PHPBB')) {
     die("You do not have permission to access this file.");
 }
 ?>
@@ -8,7 +7,7 @@ if(!defined('IN_PHPBB'))
     <div class="content">
         <div class="navbar" style="height: 5px; width: 100%;">
             <headerbar>
-                <headerbar-sides><br /><br /></br /></br /></headerbar-sides>
+                <headerbar-sides><br/><br/></br /></br /></headerbar-sides>
             </headerbar>
         </div>
         <article>
@@ -16,14 +15,14 @@ if(!defined('IN_PHPBB'))
                 <h4>
                     <b>
                         <p align="center">
-                            <br />
+                            <br/>
                             <a href="items"/>Items</a> |
                             <a href="npcs"/>NPCs</a> |
                             <a href="itemprices"/>Prices</a> |
-                            <a href="objects"/>Objects</a><br />
+                            <a href="objects"/>Objects</a><br/>
                             <a href="spells"/>Spells</a> |
                             <a href="prayers"/>Prayers</a> |
-                            <a href="stats"/>General Stats</a><br /><br />
+                            <a href="stats"/>General Stats</a><br/><br/>
                         </p>
                     </b>
                 </h4>
