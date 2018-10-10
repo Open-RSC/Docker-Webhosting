@@ -54,7 +54,7 @@ if ($user->data['is_registered']) {
                             </div>
                             <script type="text/javascript" language="JavaScript">
                                 $(document).ready(function () {
-                                    $.post("/elite/js/account.php", {
+                                    $.post("/elite/inc/account.php", {
                                         username: '<?php echo $username; ?>',
                                         owner: '<?php echo $owner; ?>',
                                         hair: '<?php echo $hc; ?>',

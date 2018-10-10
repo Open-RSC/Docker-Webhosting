@@ -69,7 +69,7 @@ $user->setup('viewforum');
 
     <script type="text/javascript">
         function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
-            var url = "/elite/js/account.php";
+            var url = "/elite/inc/account.php";
             $.post(url, {
                 username: user,
                 userenc: userhash,
@@ -103,7 +103,7 @@ $user->setup('viewforum');
                     var ui = $("#user-ui").val();
                     var y = $("#verification").val();
                     setTimeout(function () {
-                        $.post("/elite/js/account.php", {id: i, hash: ui, ver: y}, function (data) {
+                        $.post("/elite/inc/account.php", {id: i, hash: ui, ver: y}, function (data) {
                             $.fancybox.hideActivity();
                             $("#character-delete-form").hide();
                             window.location.reload()
@@ -154,7 +154,7 @@ $user->setup('viewforum');
                 var p = $("#password").val();
 
                 setTimeout(function () {
-                    $.post("/elite/js/account.php", {nm: n, pw: p}, function (data) {
+                    $.post("/elite/inc/account.php", {nm: n, pw: p}, function (data) {
                         if (data == 0) {
                             $("#user-fails").show();
                         } else if (data == 1) {
