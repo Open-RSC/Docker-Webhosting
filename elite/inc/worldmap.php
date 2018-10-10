@@ -1,22 +1,76 @@
 <?php
 define('IN_PHPBB', true);
+
 $phpbb_root_path = '../board/';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
-$page = $_SERVER['PHP_SELF'];
-
-require($phpbb_root_path . 'common.' . $phpEx);
-require($phpbb_root_path . 'includes/bbcode.' . $phpEx);
-require($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 require($phpbb_root_path . 'config.' . $phpEx);
-require 'database_config.php';
-require 'charfunctions.php';
-
-// Start session
-$user->session_begin();
-$auth->acl($user->data);
-$user->setup('viewforum');
+require_once($phpbb_root_path . 'common.' . $phpEx);
+require_once($phpbb_root_path . 'includes/bbcode.' . $phpEx);
+require_once($phpbb_root_path . 'includes/functions_display.' . $phpEx);
+require_once($phpbb_root_path . 'config.' . $phpEx);
+require_once 'charfunctions.php';
 
 $sec = "30"; //page refresh time in seconds
+
+class OpenRSCDatabase
+{
+    var $settings;
+
+    function getSettings()
+    {
+        // System variables
+        //$settings['siteDir'] = $site;
+        ////return $settings;
+    }
+}
+
+class Dbc extends OpenRSCDatabase
+{
+    var $theQuery;
+    var $link;
+
+    function Dbc()
+    {
+        global $dbhost;
+        global $dbuser;
+        global $dbpasswd;
+        global $dbname;
+        global $dbport;
+        global $table_prefix;
+        global $dbms;
+        $settings = OpenRSCDatabase::getSettings();
+        $con = mysqli_connect($dbhost, $dbuser, $dbpasswd, $dbname);
+        $this->link = mysqli_connect($dbhost, $dbuser, $dbpasswd);
+        mysqli_select_db($con, $dbname);
+        register_shutdown_function(array(&$this, 'close'));
+    }
+
+    function gamequery($query)
+    {
+        global $dbhost;
+        global $dbuser;
+        global $dbpasswd;
+        $this->theQuery = $query;
+        $con = mysqli_connect($dbhost, $dbuser, $dbpasswd, "openrsc_game");
+        return mysqli_query($con, $query);
+    }
+
+    function fetchArray($result)
+    {
+        return mysqli_fetch_assoc($result);
+    }
+
+    function fetchResult($result)
+    {
+        return mysqli_result($result);
+    }
+
+    function close()
+    {
+        mysqli_close($this->link);
+    }
+}
+
 ?>
 
 <!doctype html>
