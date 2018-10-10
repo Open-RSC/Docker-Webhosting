@@ -5,16 +5,19 @@
 #
 
 
-function getPostVar($varName, $varType) {
-   if ($varName){
-      if (array_key_exists($varName,$_POST)){
+function getPostVar($varName, $varType)
+{
+    if ($varName) {
+        if (array_key_exists($varName, $_POST)) {
             return $_POST[$varName];
-      }
-   }
-   return;
-   
+        }
+    }
+    return;
+
 }
-function printError ($message){
+
+function printError($message)
+{
     echo ERROR_PREAMBLE . "$message\n";
     return;
 }
