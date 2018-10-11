@@ -13,33 +13,17 @@ $phpbb_root_path = './board/';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
 require($phpbb_root_path . 'config.' . $phpEx);
 
-class OpenRSCDatabase
-{
-    var $settings;
-
-    function getSettings()
-    {
-        // System variables
-        //$settings['siteDir'] = $site;
-        ////return $settings;
-    }
-}
-
-class Dbc extends OpenRSCDatabase
+class Dbc
 {
     var $theQuery;
     var $link;
 
-    function Dbc()
+    function __construct()
     {
         global $dbhost;
         global $dbuser;
         global $dbpasswd;
         global $dbname;
-        global $dbport;
-        global $table_prefix;
-        global $dbms;
-        $settings = OpenRSCDatabase::getSettings();
         $con = mysqli_connect($dbhost, $dbuser, $dbpasswd, $dbname);
         $this->link = mysqli_connect($dbhost, $dbuser, $dbpasswd);
         mysqli_select_db($con, $dbname);

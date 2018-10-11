@@ -11,33 +11,17 @@ require_once($phpbb_root_path . 'config.' . $phpEx);
 require_once('charfunctions.php');
 require_once("peoplesignClient.php");
 
-class OpenRSCDatabase
-{
-    var $settings;
-
-    function getSettings()
-    {
-        // System variables
-        //$settings['siteDir'] = $site;
-        ////return $settings;
-    }
-}
-
-class Dbc extends OpenRSCDatabase
+class Dbc
 {
     var $theQuery;
     var $link;
 
-    function Dbc()
+    function __construct()
     {
         global $dbhost;
         global $dbuser;
         global $dbpasswd;
         global $dbname;
-        global $dbport;
-        global $table_prefix;
-        global $dbms;
-        $settings = OpenRSCDatabase::getSettings();
         $con = mysqli_connect($dbhost, $dbuser, $dbpasswd, $dbname);
         $this->link = mysqli_connect($dbhost, $dbuser, $dbpasswd);
         mysqli_select_db($con, $dbname);
