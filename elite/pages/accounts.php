@@ -29,7 +29,7 @@ if ($user->data['is_registered']) {
                                     while ($row = $connector->fetchArray($characters_result)) {
                                         ?>
                                         <a href="#"
-                                           onClick="javascript:loadContent('<?php echo $row['username']; ?>','<?php echo $row['owner']; ?>','<?php echo $row['haircolour']; ?>','<?php echo $row['headsprite']; ?>','<?php echo $row['skincolour']; ?>','<?php echo $row['topcolour']; ?>','<?php echo $row['male']; ?>','<?php echo $row['trousercolour']; ?>','<?php echo $row['combat']; ?>','<?php echo $row['online']; ?>');">
+                                           onClick="loadContent('<?php echo $row['username']; ?>','<?php echo $row['owner']; ?>','<?php echo $row['haircolour']; ?>','<?php echo $row['headsprite']; ?>','<?php echo $row['skincolour']; ?>','<?php echo $row['topcolour']; ?>','<?php echo $row['male']; ?>','<?php echo $row['trousercolour']; ?>','<?php echo $row['combat']; ?>','<?php echo $row['online']; ?>');">
                                             <li id="toggle"><?php echo $row['username']; ?></li>
                                         </a>
                                         <?php
