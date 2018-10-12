@@ -5,8 +5,8 @@ Wiki
 .*.swp
 .DS_Store
 
-nbproject/*
-\.idea/*
+nbproject/
+\.idea/
 *.svn-base
 \.svn/
 
