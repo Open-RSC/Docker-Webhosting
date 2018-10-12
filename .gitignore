@@ -5,17 +5,10 @@ Wiki
 .*.swp
 .DS_Store
 
-
-
-board/cache/production/
-
-\.idea/workspace\.xml
-
-\.idea/
-
+nbproject/*
+\.idea/*
 *.svn-base
-
 \.svn/
-elite/board/cache/production/
 
+elite/board/cache/production/
 elite/feed-cache\.txt
