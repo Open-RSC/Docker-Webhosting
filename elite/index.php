@@ -352,7 +352,7 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
 <div class="sidenavbar" style="margin-top: 20px;">
     <div class="navbar" style="height: 5px; width: 290px;">
         <headerbar>
-            <headerbar-sides><br/><br/></br /></br /></headerbar-sides>
+            <headerbar-sides><br /><br /><br /><br /></headerbar-sides>
         </headerbar>
     </div>
 </div>
