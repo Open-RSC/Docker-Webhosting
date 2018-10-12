@@ -201,8 +201,9 @@ $user->setup('viewforum');
                             src="/elite/board/download/file.php?avatar=<?php print $user->data['user_avatar']; ?>"/></a>
             <?php } ?>
         </div>
-        <div class="account-text">
-            <?php if ($user->data['is_registered']) { ?>
+        <?php if ($user->data['is_registered']) { ?>
+            <div class="account-text">
+
                 <span class="welcome-message block">Welcome back, <?php print $user->data['username']; ?></span>
                 <span class="welcome-text"><a
                             href="<?php echo $script_directory; ?>accounts">Account Management</a></span>
@@ -211,35 +212,41 @@ $user->setup('viewforum');
                 <span class="welcome-text">
 							<a href='<?php echo $script_directory; ?>board/ucp.php?mode=logout&amp;sid=<?php print $user->data['session_id']; ?>'>Logout</a>
 						</span>
-            <?php } else { ?>
-                <span class="welcome-message"><a id="inline" href="#data">Login</a></span>
-                <span class="welcome-message"><a href="/board/ucp.php?mode=register">Register</a></span>
-            <?php } ?>
-            <div style="display:none">
-                <div id="data">
-                    <div class="navbar" style="height: 5px; width: 455px;">
-                        <headerbar>
-                            <headerbar-sides><br/><br/></br /></br /></headerbar-sides>
-                        </headerbar>
-                    </div>
-                    <div class="panel-login">
-                        <div class="popupbox">
-                            <h4 style="margin-left: 40px;">Open RSC Login</h4>
-                            <form method="post" action="<?php echo $script_directory; ?>board/ucp.php?mode=login">
-                                <input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
-                                <input type="password" name="password" class="password" id="loginpass"
-                                       placeholder="Password"/>
-                                <input type="hidden" checked="yes" name="autologin" class="autologin" id="autologin"/>
-                                <input type="submit" value="Log In" name="login" class="submit"/>
-                                <input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php"/>
-                            </form>
-                            <a class="submit" href="<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a>
-                        </div>
+            </div>
+        <?php } else { ?>
+            <div class="sidenavbar">
+                <ul>
+                    <li><a id="inline" href="#data">Login</a></li>
+                    <li><a href="/board/ucp.php?mode=register">Register</a></li>
+                </ul>
+            </div>
+        <?php } ?>
+        <div style="display:none">
+            <div id="data">
+                <div class="navbar" style="height: 5px; width: 455px;">
+                    <headerbar>
+                        <headerbar-sides><br /><br /><br /><br /></headerbar-sides>
+                    </headerbar>
+                </div>
+                <div class="panel-login">
+                    <div class="popupbox">
+                        <h4 style="margin-left: 40px;">Open RSC Login</h4>
+                        <form method="post" action="<?php echo $script_directory; ?>board/ucp.php?mode=login">
+                            <input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
+                            <input type="password" name="password" class="password" id="loginpass"
+                                   placeholder="Password"/>
+                            <input type="hidden" name="autologin" class="autologin" id="autologin"/>
+                            <input type="submit" value="Log In" name="login" class="submit"/>
+                            <input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php"/>
+                        </form>
+                        <a class="submit"
+                           href="<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <?php
@@ -265,7 +272,7 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
         <div class="content">
             <div class="navbar" style="height: 5px; width: 100%;">
                 <headerbar>
-                    <headerbar-sides><br/><br/></br /></br /></headerbar-sides>
+                    <headerbar-sides><br /><br /><br /><br /></headerbar-sides>
                 </headerbar>
             </div>
             <article>
@@ -276,10 +283,10 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
                     <div style="margin-left: 75px; margin-right: 75px; word-spacing: 10px">
                         <h4>
                             <b>
-                                <a href="board/ucp.php?mode=register"/>Register</a> |
-                                <a href="/downloads/Open_RSC_Launcher.jar"/>Download</a> |
-                                <a href="/downloads/openrsc.apk"/>Android</a> |
-                                <a href="https://discordapp.com/invite/94vVKND"/>Discord</a>
+                                <a href="board/ucp.php?mode=register">Register</a> |
+                                <a href="/downloads/Open_RSC_Launcher.jar">Download</a> |
+                                <a href="/downloads/openrsc.apk">Android</a> |
+                                <a href="https://discordapp.com/invite/94vVKND">Discord</a>
                             </b>
                         </h4>
                     </div>
@@ -345,7 +352,7 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
 <div class="sidenavbar" style="margin-top: 20px;">
     <div class="navbar" style="height: 5px; width: 290px;">
         <headerbar>
-            <headerbar-sides><br/><br/></br /></br /></headerbar-sides>
+            <headerbar-sides><br /><br /><br /><br /></headerbar-sides>
         </headerbar>
     </div>
 </div>
@@ -373,6 +380,5 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
     </div>
 </aside>
 
-<?php include 'inc/footer.php'; ?>
 </body>
 </html>

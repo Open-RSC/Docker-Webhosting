@@ -42,14 +42,14 @@ a {
     font: 47px 'Exo', sans-serif;
     line-height: 48px;
     color: white;
-    text-shadow: 0px 0px 2px #000;
+    text-shadow: 0 0 2px #000;
 }
 
 .bigger, h3 {
     font: 29px 'Exo', sans-serif;
     line-height: 36px;
     color: #C6A444;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     text-transform: uppercase;
     text-align: center;
 }
@@ -90,7 +90,7 @@ panel-title {
     font: 25px 'Exo', sans-serif;
     line-height: 36px;
     color: white;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     text-transform: uppercase;
     border-bottom: 2px solid #C6A444;
 }
@@ -99,7 +99,7 @@ panel-title {
     font: 25px 'Exo', sans-serif;
     line-height: 36px;
     color: white;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     text-transform: uppercase;
 }
 
@@ -107,7 +107,7 @@ panel-title {
     font: 29px 'Exo', sans-serif;
     line-height: 36px;
     color: #C6A444;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     text-transform: uppercase;
     text-align: left;
 }
@@ -146,9 +146,7 @@ body {
     width: 1100px;
     padding: 32px 48px 84px;
     overflow-y: scroll;
-    background: #000 url("/elite/board/styles/pbwow3/theme/images/theme/wod.png") fixed;
-    background-repeat: no-repeat;
-    background-position: center center;
+    background: #000 url("/elite/board/styles/pbwow3/theme/images/theme/wod.png") no-repeat fixed center center;
     background-size: 100%;
     color: rgb(60, 60, 60);
     -webkit-text-size-adjust: 100%;
@@ -159,7 +157,7 @@ body {
 }
 
 header {
-    margin: 0px auto;
+    margin: 0 auto;
 }
 
 .meta {
@@ -193,7 +191,7 @@ header {
 
 .main {
     float: left;
-    margin: 20px 0px;
+    margin: 20px 0;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -248,21 +246,56 @@ headerbar-sides {
 
 p {
     color: white;
-    text-shadow: 0px 0px 1px #000;
-    margin: 10px 0px 20px 0px;
+    text-shadow: 0 0 1px #000;
+    margin: 10px 0 20px 0;
 }
 
 .side {
     width: 100%;
-    margin: 0px 0px 20px 20px;
+    margin: 0 0 20px 20px;
 }
 
 .sidenavbar {
     float: right;
 }
 
+.sidenavbar ul {
+    display: block;
+    list-style: none;
+    padding: 23px 7px;
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top
+    );
+}
+
+.sidenavbar ul li {
+    text-transform: uppercase;
+    padding: 0 7px;
+    color: white;
+    display: inline;
+    font: 14px 'Exo Bold', sans-serif;
+    text-shadow: 0 0 2px #201B18;
+
+}
+
+.sidenavbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidenavbar ul li a:hover {
+    color: #C6A444;
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
 .navigation {
-    margin: 20px 0px 0px 0px;
+    margin: 20px 0 0 0;
     float: left;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -273,7 +306,6 @@ p {
 
 .navbar {
     background: url("/elite/board/styles/pbwow3/theme/images/grey-bar-wide.gif") repeat-x;
-    background-size: auto auto;
     background-size: auto 100%;
     width: 767px;
     float: left;
@@ -293,11 +325,11 @@ p {
 
 .navbar ul li {
     text-transform: uppercase;
-    padding: 0px 7px;
+    padding: 0 7px;
     color: white;
     display: inline;
     font: 14px 'Exo Bold', sans-serif;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
 
 }
 
@@ -317,7 +349,6 @@ p {
 
 /* navigation block right top */
 .navblock {
-    border-top: none;
     border-radius: 0 0 6px 6px;
     border: 1px solid;
     padding: 1px 2px;
@@ -346,7 +377,6 @@ p {
 
 .account-panel {
     background: url("/elite/board/styles/pbwow3/theme/images/grey-bar-wide.gif") repeat-x;
-    background-size: auto auto;
     background-size: auto 100%;
     width: 333px;
     height: 64px;
@@ -360,13 +390,13 @@ p {
 .welcome-message {
     font: 14px 'Exo Bold', sans-serif;
     color: #C6A444;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     text-transform: uppercase;
 }
 
 .welcome-text {
     color: white;
-    text-shadow: 0px 0px 1px black;
+    text-shadow: 0 0 1px black;
 }
 
 .welcome-text a {
@@ -433,7 +463,7 @@ label {
     border-radius: 2px;
     color: #C6A444;
     border: 1px solid #444;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -442,7 +472,7 @@ label {
 
 .autologin {
     width: 250px;
-    margin: 10px 0px;
+    margin: 10px 0;
 }
 
 .submit {
@@ -469,8 +499,7 @@ label {
             rgba(42, 34, 32, 1) 99%
     );
     padding: 5px;
-    border: none;
-    border-color: #4A4A4A;
+    border: none #4A4A4A;
     background-color: #1a1a1a;
     background-image: linear-gradient(to top, #111, #333);
 }
@@ -498,10 +527,7 @@ label {
 }
 
 .panel {
-    margin-top: 3px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 21px;
+    margin: 3px 10px 21px;
     background: #111;
     background: rgba(20, 20, 20, 0.75);
     border: 1px solid #444;
@@ -510,10 +536,7 @@ label {
 }
 
 .panel-login {
-    margin-top: 3px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 21px;
+    margin: 3px 20px 21px;
     height: 247px;
     background: #111;
     background: rgba(20, 20, 20, 0.75);
@@ -573,10 +596,9 @@ label {
     display: inline;
     color: white;
     padding: 7px 10px 3px;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     float: left;
     font: 14px 'Exo', sans-serif;
-    text-shadow: 0px 0px 2px #201B18;
     text-transform: uppercase;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -614,7 +636,7 @@ label {
 }
 
 .ranking h4 {
-    box-shadow: 0px 2px 2px black;
+    box-shadow: 0 2px 2px black;
     margin-bottom: 1px;
     font-weight: 700;
     text-transform: capitalize;
@@ -627,7 +649,7 @@ label {
 
 .ranking tr {
     color: white;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     font: 16px 'Exo', sans-serif;
     text-align: right;
 }
@@ -691,9 +713,8 @@ label {
     width: 160px;
     padding: 10px 20px;
     color: white;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     font: 12px 'Exo', sans-serif;
-    text-shadow: 0px 0px 2px #201B18;
 }
 
 #sm-list ul li:hover {
@@ -751,8 +772,7 @@ td.username {
 #character {
     float: left;
     display: inline;
-    padding: 0px 20px;
-    padding-right: 30px;
+    padding: 0 30px 0 20px;
     margin-top: -10px;
 }
 
@@ -761,7 +781,7 @@ td.username {
     width: 705px;
     height: 135px;
     padding: 10px;
-    margin: 10px 0px;
+    margin: 10px 0;
     background: rgba(42, 34, 32, 1);
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -780,7 +800,7 @@ td.username {
     column-width: 45px;
     column-count: 5;
     column-gap: 20px;
-    padding: 5px 0px;
+    padding: 5px 0;
 }
 
 #sm-stats {
@@ -807,7 +827,7 @@ td.username {
     background: #a32d00;
     color: white;
     padding: 5px;
-    margin: -10px 0px 10px 0px;
+    margin: -10px 0 10px 0;
 }
 
 .graph {
@@ -825,7 +845,7 @@ td.username {
 .sm-skill {
     font: 12px 'Exo', sans-serif;
     color: #C6A444;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     text-transform: uppercase;
 }
 
@@ -852,9 +872,9 @@ td.username {
     display: block;
     font: 12px 'Exo', sans-serif;
     color: white;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     text-transform: uppercase;
-    padding: 2px 0px;
+    padding: 2px 0;
 }
 
 .sm-stats a {
@@ -875,17 +895,17 @@ td.username {
 #red {
     font: 12px 'Exo', sans-serif;
     color: red;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     text-transform: uppercase;
-    padding: 2px 0px;
+    padding: 2px 0;
 }
 
 #green {
     font: 12px 'Exo', sans-serif;
     color: green;
-    text-shadow: 0px 0px 2px #201B18;
+    text-shadow: 0 0 2px #201B18;
     text-transform: uppercase;
-    padding: 2px 0px;
+    padding: 2px 0;
 }
 
 #slider {
@@ -898,8 +918,8 @@ td.username {
 
 #slider img {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     display: none;
     width: 600px;
 }
@@ -911,7 +931,7 @@ td.username {
 
 .sidebar {
     width: 276px;
-    margin: 0px 0px 20px 0px;
+    margin: 0 0 20px 0;
 }
 
 .widget {
@@ -934,7 +954,7 @@ td.username {
     color: #C6A444;
     padding: 5px;
     display: block;
-    margin: 10px 0px;
+    margin: 10px 0;
     text-align: center;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
