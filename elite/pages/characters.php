@@ -11,7 +11,7 @@ function buildSQLArray($array)
     $size = sizeof($array) - 1;
     $i = 0;
     while ($i <= $size) {
-        $SQLarray .= ($array[$i] == 'total_lvl') ? '' : (($array[$i] == 'hits') ? 'exp_hits,' : 'exp_' . $array[$i] . '' . (($i == $size) ? '' : ',') . '');
+        $SQLarray .= ($array[$i] == 'total_lvl') ? '' : (($array[$i] == 'hitpoints') ? 'exp_hits,' : 'exp_' . $array[$i] . '' . (($i == $size) ? '' : ',') . '');
         $i++;
     }
     return $SQLarray;
@@ -23,7 +23,8 @@ $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $skills = buildSQLArray($skill_array);
 
-$character_result = $connector->gamequery("SELECT '.$skills.', openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
+//$character_result = $connector->gamequery("SELECT '.$skills.', openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
+$character_result = $connector->gamequery("SELECT " . $skills . ",openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
 $character = $connector->fetchArray($character_result);
 
 $phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.owner, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
@@ -35,7 +36,7 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
     ">
     <div class="navbar" style="height: 5px; width: 100%;">
         <headerbar>
-            <headerbar-sides><br /><br /><br /><br /></headerbar-sides>
+            <headerbar-sides><br/><br/><br/><br/></headerbar-sides>
         </headerbar>
     </div>
     <article>
@@ -62,7 +63,7 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
 
                     <div id="sm-skill">
                         <?php foreach ($skill_array as $skill) {
-                            if ($skill == 'hits') {
+                            if ($skill == 'hitpoints') {
                                 $skillc = 'hits';
                             } else {
                                 $skillc = $skill;
@@ -88,6 +89,46 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
                     </div>
 
                 </div>
+            </div>
+            <div id="pie-stats">
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        var data = [
+                            <?php foreach ($skill_array as $skill) {
+                            if ($skill == 'hitpoints') {
+                                $skillc = 'hits';
+                            } else {
+                                $skillc = $skill;
+                            }
+                            if (experienceToLevel($character['exp_' . $skillc]) >= 10) {
+                                echo '{label: "' . ucwords($skill) . '",  data: ' . $character['exp_' . $skillc] . '}, ';
+                            }
+                        } ?>
+                        ];
+
+                        $.plot($("#donut"), data,
+                            {
+                                series: {
+                                    pie: {
+
+                                        show: true,
+                                        combine: {
+                                            color: '#999',
+                                            threshold: 0.05,
+                                        }
+                                    }
+                                },
+                                grid: {
+                                    hoverable: false,
+                                    clickable: false
+                                },
+                                legend: {
+                                    show: false
+                                }
+                            });
+                    });
+                </script>
+                <div id="donut" class="graph"></div>
             </div>
             <?php } else {
                 echo "<br /><h4 align='center'>Player not found</h4><br />";
