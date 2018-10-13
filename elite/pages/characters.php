@@ -30,8 +30,9 @@ $phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS play
 $phpbb_user = $connector->fetchArray($phpbb_user_result);
 
 $player_logins = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
-
 $player_chatlogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+$player_tradelogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_trade_logs WHERE player1 = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+//$player_deathlogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_players WHERE username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
 ?>
 
 <div class="main">
@@ -100,15 +101,27 @@ $player_chatlogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONT
                     data: {
                         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                         datasets: [{
-                            data: [<?php while ($row = $connector->fetchArray($player_logins)) { echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"]; } ?>],
-                            label: "Logins per month",
+                            data: [<?php while ($row = $connector->fetchArray($player_logins)) {
+                                echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
+                            } ?>],
+                            label: "Logins",
                             borderColor: "#FF0000",
                             fill: false
                         },
                             {
-                                data: [<?php while ($row = $connector->fetchArray($player_chatlogs)) { echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"]; } ?>],
-                                label: "Chat messages per month",
+                                data: [<?php while ($row = $connector->fetchArray($player_chatlogs)) {
+                                    echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
+                                } ?>],
+                                label: "Chat Messages",
                                 borderColor: "#0000FF",
+                                fill: false
+                            },
+                            {
+                                data: [<?php while ($row = $connector->fetchArray($player_tradelogs)) {
+                                    echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
+                                } ?>],
+                                label: "Trades",
+                                borderColor: "#ffffff",
                                 fill: false
                             }
                         ]
@@ -194,11 +207,11 @@ $player_chatlogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONT
                     });
                 </script>
                 <div id="line" class="graph"></div>-->
-            </div>
-            <?php } else {
-                echo "<br /><h4 align='center'>Player not found</h4><br />";
-            } ?>
         </div>
-    </article>
+        <?php } else {
+            echo "<br /><h4 align='center'>Player not found</h4><br />";
+        } ?>
+</div>
+</article>
 </div>
 </div>
