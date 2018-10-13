@@ -8,8 +8,7 @@ require_once($phpbb_root_path . 'common.' . $phpEx);
 require_once($phpbb_root_path . 'includes/bbcode.' . $phpEx);
 require_once($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 require_once($phpbb_root_path . 'config.' . $phpEx);
-require_once('charfunctions.php');
-require_once("peoplesignClient.php");
+require_once 'charfunctions.php';
 
 class Dbc
 {
@@ -58,7 +57,7 @@ if (!$_POST) {
     die("You do not have permission to access this file.");
 }
 
-$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
+$skill_array = array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
 
 function buildSQLArray($array)
 {
@@ -73,6 +72,7 @@ function buildSQLArray($array)
 }
 
 $connector = new Dbc();
+
 if ($_POST['nm']) {
 
     $username = $_POST['nm'];
@@ -140,21 +140,23 @@ if ($_POST['nm']) {
     $owner = $_POST["owner"];
     $online = $_POST["online"];
 
-    $usernamelink = preg_replace("/[^A-Za-z0-9]/", "-", $username);
+    $username = preg_replace("/[^A-Za-z0-9]/", "-", $username);
 
     $skills = buildSQLArray($skill_array);
     $user_check = $connector->gamequery("SELECT " . $skills . ", openrsc_players.owner FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.id = openrsc_experience.playerID WHERE openrsc_players.username=$username");
     $check = $connector->fetchArray($user_check);
-
 
     if ($check['owner'] == $user->data['user_id']) {
 
         ?>
         <div id="character">
             <?php
-            //echo drawCharacter($_POST['hair'], $_POST['head'], $_POST['skin'], $_POST['top'], $_POST['gen'], $_POST['pants']);
+            $file = '/avatars/' . $character['id'] . '.png';
+            echo "<br /><img src=\"$file\"/>";
             ?>
         </div>
+
+        <br/>
         <div id="hero-page-details">
             <span class="sm-stats"><?php echo $username; ?></span>
             <span class="sm-stats">Combat Level: <?php echo $combat; ?></span>
@@ -191,43 +193,44 @@ if ($_POST['nm']) {
             </div>
         </div>
         <div id="pie-stats">
-            <div id="donut" class="graph2"></div>
-            <script>
-                var graph = [
-                    <?php foreach ($skill_array as $skill) {
-                    if ($skill == 'hitpoints') {
-                        $skillc = 'hits';
-                    } else {
-                        $skillc = $skill;
-                    }
-                    if (experienceToLevel($check['exp_' . $skillc]) >= 10) {
-                        echo '{label: "' . ucwords($skill) . '",  data: ' . $check['exp_' . $skillc] . '}, ';
-                    }
-                } ?>
-
-                ];
-
-                $.plot($("#donut"), graph,
-                    {
-                        series: {
-                            pie: {
-
-                                show: true,
-                                combine: {
-                                    color: '#999',
-                                    threshold: 0.05
-                                }
-                            }
-                        },
-                        grid: {
-                            hoverable: true,
-                            clickable: true
-                        },
-                        legend: {
-                            show: false
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var data = [
+                        <?php foreach ($skill_array as $skill) {
+                        if ($skill == 'hitpoints') {
+                            $skillc = 'hits';
+                        } else {
+                            $skillc = $skill;
                         }
-                    });
+                        if (experienceToLevel($character['exp_' . $skillc]) >= 10) {
+                            echo '{label: "' . ucwords($skill) . '",  data: ' . $character['exp_' . $skillc] . '}, ';
+                        }
+                    } ?>
+                    ];
+
+                    $.plot($("#donut"), data,
+                        {
+                            series: {
+                                pie: {
+
+                                    show: true,
+                                    combine: {
+                                        color: '#999',
+                                        threshold: 0.05,
+                                    }
+                                }
+                            },
+                            grid: {
+                                hoverable: true,
+                                clickable: false
+                            },
+                            legend: {
+                                show: false
+                            }
+                        });
+                });
             </script>
+            <div id="donut" class="graph"></div>
         </div>
         <div style="display:none">
             <div id="error">
