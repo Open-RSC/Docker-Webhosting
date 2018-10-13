@@ -67,7 +67,7 @@ class Dbc
 
 <?php
 $connector = new Dbc();
-$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 week )");
+$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
 $xs = $ys = array();
 
 function coords_to_image($x, $y)
