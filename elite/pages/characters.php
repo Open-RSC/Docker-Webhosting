@@ -26,6 +26,8 @@ $skills = buildSQLArray($skill_array);
 $character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
 $character = $connector->fetchArray($character_result);
 
+$totalTime = $connector->gamequery("SELECT SUM(`value`) FROM openrsc_player_cache LEFT JOIN openrsc_players ON openrsc_player_cache.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' AND `openrsc_player_cache`.`key` = 'total_played'");
+
 $phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.owner, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
 $phpbb_user = $connector->fetchArray($phpbb_user_result);
 
@@ -85,8 +87,18 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                     <div id="sm-stats">
                         <span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
                         <span class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
-                        <span class="sm-stats">Owner: <a
-                                    href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $phpbb_user['player_name']; ?></a></span>
+                        <span class="sm-stats">Time Played: <?php
+                            while ($row = $connector->fetchArray($totalTime)) {
+                                $time = $row["SUM(`value`)"] / 1000;
+                                $days = floor($time / (24 * 60 * 60));
+                                $hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
+                                $minutes = floor(($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60)) / 60);
+                                $seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
+                                echo $days . 'd ' . $hours . 'h ' . $minutes . 'm ';
+                            }
+                            ?></span>
+                        <!--<span class="sm-stats">Owner: <a
+                                    href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $phpbb_user['player_name']; ?></a></span>-->
                         <span class="sm-stats">Status: <?php if ($character['online'] == 1) {
                                 echo '<span id="green">Online</span>';
                             } else {
