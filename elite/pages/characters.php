@@ -28,12 +28,12 @@ $character = $connector->fetchArray($character_result);
 
 $totalTime = $connector->gamequery("SELECT SUM(`value`) FROM openrsc_player_cache LEFT JOIN openrsc_players ON openrsc_player_cache.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' AND `openrsc_player_cache`.`key` = 'total_played'");
 
-$phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.owner, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
+$phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
 $phpbb_user = $connector->fetchArray($phpbb_user_result);
 
-$player_logins = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
-$player_chatlogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
-$player_tradelogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_trade_logs WHERE player1 = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+$player_logins = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+$player_chatlogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+$player_tradelogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_trade_logs WHERE player1 = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
 
 $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE username = '$subpage' LIMIT 8");
 
@@ -113,7 +113,7 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                 new Chart(document.getElementById("line-chart"), {
                     type: 'line',
                     data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
                         datasets: [{
                             data: [<?php while ($row = $connector->fetchArray($player_logins)) {
                                 echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
@@ -148,14 +148,14 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                     }
                 });
             </script>
-<br />
+            <br/>
             <div style="margin-left: 15px; margin-right: 15px;">
                 <h4>Recent Accomplishments: </h4>
                 <?php while ($row = $connector->fetchArray($player_feed)) {
                     echo '[<b>' . strftime("%d %b / %I:%M:%S %p", $row["time"]) . '</b>] <b>' . $row["username"] . '</b> ' . $row["message"] . '<br />';
                 } ?>
             </div>
-<br />
+            <br/>
             <div id="pie-stats">
                 <script type="text/javascript">
                     $(document).ready(function () {
@@ -185,7 +185,7 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                                     }
                                 },
                                 grid: {
-                                    hoverable: false,
+                                    hoverable: true,
                                     clickable: false
                                 },
                                 legend: {
