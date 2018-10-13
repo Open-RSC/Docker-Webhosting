@@ -35,7 +35,7 @@ $player_logins = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT
 $player_chatlogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
 $player_tradelogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_trade_logs WHERE player1 = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
 
-$player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE username = '$subpage' LIMIT 8");
+$player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE username = '$subpage' ORDER BY `time` DESC LIMIT 8");
 
 ?>
 
