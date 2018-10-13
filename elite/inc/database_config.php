@@ -156,7 +156,7 @@ function gameChat()
     ?>
     <div style="font: 14px 'Exo', sans-serif; color: lightgrey;">
         <?php while ($row = $connector->fetchArray($game_accounts)) { ?>
-            [ <i><?php echo strftime("%d %b | %I:%M:%S %p", $row["time"]) ?></i> ]
+            [<?php echo strftime("%d %b | %I:%M:%S %p", $row["time"]) ?>]
             <b><?php echo ucwords($row["sender"]) ?>:</b> <?php echo $row["message"] ?><br/>
         <?php } ?>
     </div>

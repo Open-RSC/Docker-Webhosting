@@ -32,7 +32,9 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
 $player_logins = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
 $player_chatlogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
 $player_tradelogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_trade_logs WHERE player1 = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
-//$player_deathlogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_players WHERE username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+
+$player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE username = '$subpage' LIMIT 8");
+
 ?>
 
 <div class="main">
@@ -44,7 +46,7 @@ $player_tradelogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MON
         </headerbar>
     </div>
     <article>
-        <div class="panel" style="height: 770px;">
+        <div class="panel" style="height: 900px;">
             <div style="margin-left: 20px; margin-right: 20px; margin-top: 45px; margin-bottom: 45px; color: lightgrey;">
                 <?php if ($character) { ?>
                 <div>
@@ -134,6 +136,14 @@ $player_tradelogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MON
                     }
                 });
             </script>
+<br />
+            <div style="margin-left: 15px; margin-right: 15px;">
+                <h4>Recent Accomplishments: </h4>
+                <?php while ($row = $connector->fetchArray($player_feed)) {
+                    echo '[<b>' . strftime("%d %b / %I:%M:%S %p", $row["time"]) . '</b>] <b>' . $row["username"] . '</b> ' . $row["message"] . '<br />';
+                } ?>
+            </div>
+<br />
             <div id="pie-stats">
                 <script type="text/javascript">
                     $(document).ready(function () {
@@ -174,39 +184,6 @@ $player_tradelogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MON
                 </script>
                 <div id="donut" class="graph"></div>
             </div>
-            <!--<div id="line-stats">
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        var time = [
-                            <?php //echo '{label: "' . ucwords($time_result['time']) . '",  time: ' . $time_result['time'] . '} '; ?>
-                        ];
-
-                        $.plot($("#line"), time,
-                            {
-                                series: {
-                                    line: {
-
-                                        show: true,
-                                        combine: {
-                                            color: '#999',
-                                            threshold: 0.05,
-                                        }
-                                    }
-                                },
-                                lines: {show: true},
-                                points: {show: true},
-                                xaxis: {mode: "time", timeformat: "%m/%d/%y", minTickSize: [1, "day"]},
-                                grid: {
-                                    hoverable: false,
-                                    clickable: false
-                                },
-                                legend: {
-                                    show: false
-                                }
-                            });
-                    });
-                </script>
-                <div id="line" class="graph"></div>-->
         </div>
         <?php } else {
             echo "<br /><h4 align='center'>Player not found</h4><br />";
