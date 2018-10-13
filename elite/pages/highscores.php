@@ -54,7 +54,7 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
     }
     $args = $query[0];
     $order = $query[1];
-    $stat_result = $connector->gamequery("SELECT openrsc_players.username,$args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id != '1' ORDER BY $order DESC LIMIT 30");
+    $stat_result = $connector->gamequery("SELECT openrsc_players.username,$args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id = '4' AND openrsc_players.login_date >= unix_timestamp( current_date - interval 3 month ) ORDER BY $order DESC LIMIT 30");
     ?>
     <div class="main">
         <div class="content">
