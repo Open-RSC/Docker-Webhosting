@@ -190,7 +190,7 @@ $user->setup('viewforum');
             <li><a href="<?php echo $script_directory; ?>board/index.php">Forum</a></li>
             <li><a href="<?php echo $script_directory; ?>chat">Game Chat</a></li>
             <li><a href="<?php echo $script_directory; ?>highscores/skill_total">Highscores</a></li>
-            <li><a href="<?php echo $script_directory; ?>worldmap">Live Map</a></li>
+            <li><a href="<?php echo $script_directory; ?>worldmap">Player Map</a></li>
             <li><a href="<?php echo $script_directory; ?>database">Database</a></li>
         </ul>
     </div>

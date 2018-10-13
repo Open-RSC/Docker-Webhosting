@@ -125,7 +125,7 @@ function totalGameCharacters()
 function newRegistrationsToday()
 {
     $connector = new Dbc();
-    $registrations_today = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM users WHERE registered >= '" . strtotime(date('Y-m-d', time()) . '00:00:00') . "'");
+    $registrations_today = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM users WHERE registered >= unix_timestamp( current_date - interval 1 day )");
     while ($row = $connector->fetchArray($registrations_today)) {
         if ($row["countUsers"] == NULL) {
             echo "0";
@@ -138,7 +138,7 @@ function newRegistrationsToday()
 function loginsToday()
 {
     $connector = new Dbc();
-    $loginsToday = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE login_date >= '" . strtotime(date('Y-m-d', time()) . '00:00:00') . "'");
+    $loginsToday = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
     while ($row = $connector->fetchArray($loginsToday)) {
         if ($row["countUsers"] == NULL) {
             echo "0";

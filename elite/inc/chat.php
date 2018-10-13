@@ -51,7 +51,7 @@ class Dbc
 function gameChat()
 {
     $connector = new Dbc();
-    $game_accounts = $connector->logquery("SELECT sender, message, time FROM openrsc_chat_logs ORDER BY time DESC LIMIT 10000");
+    $game_accounts = $connector->logquery("SELECT sender, message, time FROM openrsc_chat_logs WHERE time >= unix_timestamp( current_date - interval 1 month ) ORDER BY time DESC LIMIT 10000");
     date_default_timezone_set('America/New_York');
     ?>
     <div style="font: 14px 'Exo', sans-serif; color: lightgrey;">
