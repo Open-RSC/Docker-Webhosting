@@ -100,9 +100,9 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                         <!--<span class="sm-stats">Owner: <a
                                     href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $phpbb_user['player_name']; ?></a></span>-->
                         <span class="sm-stats">Status: <?php if ($character['online'] == 1) {
-                                echo '<span id="green">Online</span>';
+                                echo '<span style="color: #00FF00;"><b>Online</b></span>';
                             } else {
-                                echo '<span id="red">Offline</span>';
+                                echo '<span style="color: #FF0000;"><b>Offline</b></span>';
                             } ?></span>
                     </div>
 
