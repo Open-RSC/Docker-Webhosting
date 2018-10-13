@@ -23,12 +23,18 @@ $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $skills = buildSQLArray($skill_array);
 
-//$character_result = $connector->gamequery("SELECT '.$skills.', openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
-$character_result = $connector->gamequery("SELECT " . $skills . ",openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
+$character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
 $character = $connector->fetchArray($character_result);
 
 $phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.owner, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
 $phpbb_user = $connector->fetchArray($phpbb_user_result);
+
+$player_logins = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+$player_chatlogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+$player_tradelogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_trade_logs WHERE player1 = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+
+$player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE username = '$subpage' LIMIT 8");
+
 ?>
 
 <div class="main">
@@ -40,7 +46,7 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
         </headerbar>
     </div>
     <article>
-        <div class="panel" style="height: 600px;">
+        <div class="panel" style="height: 900px;">
             <div style="margin-left: 20px; margin-right: 20px; margin-top: 45px; margin-bottom: 45px; color: lightgrey;">
                 <?php if ($character) { ?>
                 <div>
@@ -90,6 +96,54 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
 
                 </div>
             </div>
+            <canvas id="line-chart" style="width: 650px; height: 150px;"></canvas>
+            <script>
+                new Chart(document.getElementById("line-chart"), {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                            data: [<?php while ($row = $connector->fetchArray($player_logins)) {
+                                echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
+                            } ?>],
+                            label: "Logins",
+                            borderColor: "#FF0000",
+                            fill: false
+                        },
+                            {
+                                data: [<?php while ($row = $connector->fetchArray($player_chatlogs)) {
+                                    echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
+                                } ?>],
+                                label: "Chat Messages",
+                                borderColor: "#0000FF",
+                                fill: false
+                            },
+                            {
+                                data: [<?php while ($row = $connector->fetchArray($player_tradelogs)) {
+                                    echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
+                                } ?>],
+                                label: "Trades",
+                                borderColor: "#ffffff",
+                                fill: false
+                            }
+                        ]
+                    },
+                    options: {
+                        title: {
+                            display: false,
+                            text: 'Logins'
+                        }
+                    }
+                });
+            </script>
+<br />
+            <div style="margin-left: 15px; margin-right: 15px;">
+                <h4>Recent Accomplishments: </h4>
+                <?php while ($row = $connector->fetchArray($player_feed)) {
+                    echo '[<b>' . strftime("%d %b / %I:%M:%S %p", $row["time"]) . '</b>] <b>' . $row["username"] . '</b> ' . $row["message"] . '<br />';
+                } ?>
+            </div>
+<br />
             <div id="pie-stats">
                 <script type="text/javascript">
                     $(document).ready(function () {
@@ -130,10 +184,11 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
                 </script>
                 <div id="donut" class="graph"></div>
             </div>
-            <?php } else {
-                echo "<br /><h4 align='center'>Player not found</h4><br />";
-            } ?>
         </div>
-    </article>
+        <?php } else {
+            echo "<br /><h4 align='center'>Player not found</h4><br />";
+        } ?>
+</div>
+</article>
 </div>
 </div>
