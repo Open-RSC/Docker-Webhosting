@@ -23,12 +23,15 @@ $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $skills = buildSQLArray($skill_array);
 
-//$character_result = $connector->gamequery("SELECT '.$skills.', openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
-$character_result = $connector->gamequery("SELECT " . $skills . ",openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
+$character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
 $character = $connector->fetchArray($character_result);
 
 $phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.owner, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
 $phpbb_user = $connector->fetchArray($phpbb_user_result);
+
+$player_logins = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+
+$player_chatlogs = $connector->gamequery("SELECT FROM_UNIXTIME(time), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
 ?>
 
 <div class="main">
@@ -40,7 +43,7 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
         </headerbar>
     </div>
     <article>
-        <div class="panel" style="height: 600px;">
+        <div class="panel" style="height: 770px;">
             <div style="margin-left: 20px; margin-right: 20px; margin-top: 45px; margin-bottom: 45px; color: lightgrey;">
                 <?php if ($character) { ?>
                 <div>
@@ -90,6 +93,34 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
 
                 </div>
             </div>
+            <canvas id="line-chart" style="width: 650px; height: 150px;"></canvas>
+            <script>
+                new Chart(document.getElementById("line-chart"), {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                            data: [<?php while ($row = $connector->fetchArray($player_logins)) { echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"]; } ?>],
+                            label: "Logins per month",
+                            borderColor: "#FF0000",
+                            fill: false
+                        },
+                            {
+                                data: [<?php while ($row = $connector->fetchArray($player_chatlogs)) { echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"]; } ?>],
+                                label: "Chat messages per month",
+                                borderColor: "#0000FF",
+                                fill: false
+                            }
+                        ]
+                    },
+                    options: {
+                        title: {
+                            display: false,
+                            text: 'Logins'
+                        }
+                    }
+                });
+            </script>
             <div id="pie-stats">
                 <script type="text/javascript">
                     $(document).ready(function () {
@@ -129,6 +160,40 @@ $phpbb_user = $connector->fetchArray($phpbb_user_result);
                     });
                 </script>
                 <div id="donut" class="graph"></div>
+            </div>
+            <!--<div id="line-stats">
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        var time = [
+                            <?php //echo '{label: "' . ucwords($time_result['time']) . '",  time: ' . $time_result['time'] . '} '; ?>
+                        ];
+
+                        $.plot($("#line"), time,
+                            {
+                                series: {
+                                    line: {
+
+                                        show: true,
+                                        combine: {
+                                            color: '#999',
+                                            threshold: 0.05,
+                                        }
+                                    }
+                                },
+                                lines: {show: true},
+                                points: {show: true},
+                                xaxis: {mode: "time", timeformat: "%m/%d/%y", minTickSize: [1, "day"]},
+                                grid: {
+                                    hoverable: false,
+                                    clickable: false
+                                },
+                                legend: {
+                                    show: false
+                                }
+                            });
+                    });
+                </script>
+                <div id="line" class="graph"></div>-->
             </div>
             <?php } else {
                 echo "<br /><h4 align='center'>Player not found</h4><br />";
