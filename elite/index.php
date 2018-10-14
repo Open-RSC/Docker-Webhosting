@@ -69,18 +69,11 @@ $user->setup('viewforum');
     <script src="/elite/js/cufon.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-        function loadContent(user, userhash, id, hc, hsprite, sc, tc, gender, pc, lvl, on) {
+        function loadContent(user, id, lvl, on) {
             var url = "/elite/inc/account.php";
             $.post(url, {
                 username: user,
-                userenc: userhash,
                 owner: id,
-                hair: hc,
-                head: hsprite,
-                skin: sc,
-                top: tc,
-                gen: gender,
-                pants: pc,
                 combat: lvl,
                 online: on
             }, function (data) {

@@ -9,6 +9,7 @@ require_once($phpbb_root_path . 'includes/bbcode.' . $phpEx);
 require_once($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 require_once($phpbb_root_path . 'config.' . $phpEx);
 require_once 'charfunctions.php';
+require_once 'peoplesignClient.php';
 
 class Dbc
 {
@@ -98,7 +99,7 @@ if ($_POST['nm']) {
             $gamename = explode('.', $username);
             $connector->gamequery("INSERT INTO `openrsc_curstats`(`playerID`) VALUES ('" . $gamename[0] . "')");
             $connector->gamequery("INSERT INTO `openrsc_experience`(`playerID`) VALUES ('" . $gamename[0] . "')");
-            $connector->gamequery("INSERT INTO `openrsc_players`(`id`, `username`, `owner`, `pass`, `creation_date`, `creation_ip`) VALUES ('" . $gamename[0] . "', '" . $username . "', '" . $user->data['user_id'] . "', '" . $user->data['username'] . "', '" . $gamepass . "', '" . $time . "', '" . $_SERVER['REMOTE_ADDR'] . "')");
+            $connector->gamequery("INSERT INTO `openrsc_players`(`id`, `username`, `owner`, `pass`, `creation_date`, `creation_ip`) VALUES ('" . $username . "', '" . $user->data['user_id'] . "', '" . $gamepass . "', '" . $time . "', '" . $_SERVER['REMOTE_ADDR'] . "')");
             echo 1;
         }
     }
@@ -145,6 +146,9 @@ if ($_POST['nm']) {
     $skills = buildSQLArray($skill_array);
     $user_check = $connector->gamequery("SELECT " . $skills . ", openrsc_players.owner FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.id = openrsc_experience.playerID WHERE openrsc_players.username=$username");
     $check = $connector->fetchArray($user_check);
+
+    $character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$username'");
+    $character = $connector->fetchArray($character_result);
 
     if ($check['owner'] == $user->data['user_id']) {
 
