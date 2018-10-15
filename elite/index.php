@@ -87,7 +87,7 @@ function create_where_clauses($gen_id, $type) {
 
 /*     News Code     */
 $search_limit = 5;
-$forum_id = array(18); // Forum ID for the news (/board/viewforum.php?f=18)
+$forum_id = array(7); // Forum ID for the news (/board/viewforum.php?f=18)
 $forum_id_where = create_where_clauses($forum_id, 'forum');
 $topic_id = array(0);
 $topic_id_where = create_where_clauses($topic_id, 'topic');
