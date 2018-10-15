@@ -271,7 +271,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
 
                 <span class="welcome-message block">Welcome back, <?php print $user->data['username']; ?></span>
                 <span class="welcome-text"><a
-                            href="<?php echo $script_directory; ?>accounts">Account Management</a></span>
+                            href="#<?php echo $script_directory; ?>accounts">Account Management</a></span>
                 <span class="welcome-text"> | (<a
                             href="<?php echo $script_directory; ?>board/ucp.php?i=pm&folder=inbox"><?php print $user->data['user_unread_privmsg']; ?></a>) | </span>
                 <span class="welcome-text">
