@@ -83,6 +83,9 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
                         <h4 align="center">
                             <?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?> Rankings
                         </h4>
+                        <h6 align="center">
+                            Note: Only players that have logged in within the last 3 months are shown.
+                        </h6>
                         <table>
                             <thead>
                             <tr>
