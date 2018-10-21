@@ -67,7 +67,8 @@ class Dbc
 
 <?php
 $connector = new Dbc();
-$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
+//$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )"); // Shows players logged in within the last 1 day
+$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_players WHERE online = '1'"); // shows players currently logged in only
 $xs = $ys = array();
 
 function coords_to_image($x, $y)
@@ -88,12 +89,11 @@ while ($char = $connector->fetchArray($playerPositions)) {
     $xs[] = $coords['x'];
     $ys[] = $coords['y'];
     ?><img src="/avatars/<?php echo $char['id'] ?>.png" style="display: none;" /><?php
-    $pic = $char['id'];
     $areaPlayer[] = 'ctx.drawImage(player,' . $coords['x'] . ', ' . $coords['y'] . ', 17, 25);'
         . ' ctx.fillStyle="white"; '
         . ' ctx.font="8pt Exo"; '
         . ' ctx.fillText("' . $char['username'] . '", ' . $coords['x'] . ', ' . $coords['y'] . '); '
-        . ' player.src ="/avatars/' . $pic . '.png"; '
+        . ' player.src ="/avatars/' . $char['id'] . '.png"; '
     ?><?php
 } ?>
 
