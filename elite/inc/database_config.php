@@ -130,7 +130,7 @@ function onlinePlayers()
         if ($row["username"] == NULL) {
             echo "No players currently online.";
         } else {
-            echo ucfirst($row["username"]);
+            echo '<a href="/elite/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
             echo '<br />';
         }
     }
