@@ -403,7 +403,7 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
             <div style="padding-left: 20px; padding-top: 3px;">
                 <h5>Statistics</h5>
                 <p>
-                    Players Online: <strong><?php echo playersOnline(); ?></strong><br/>
+                    Players Online: <strong><a href="/elite/online"><?php echo playersOnline(); ?></a></strong><br/>
                     Server Status: <strong><?php echo checkStatus("game.openrsc.com", "43594"); ?></strong><br/>
                     Registrations Today: <strong><?php echo newRegistrationsToday(); ?></strong><br/>
                     Logins Today: <strong><?php echo loginsToday(); ?></strong><br/>

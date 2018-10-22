@@ -122,6 +122,20 @@ function totalGameCharacters()
     }
 }
 
+function onlinePlayers()
+{
+    $connector = new Dbc();
+    $game_accounts = $connector->gamequery("SELECT username FROM openrsc_players WHERE online = '1'");
+    while ($row = $connector->fetchArray($game_accounts)) {
+        if ($row["username"] == NULL) {
+            echo "No players currently online.";
+        } else {
+            echo ucfirst($row["username"]);
+            echo '<br />';
+        }
+    }
+}
+
 function newRegistrationsToday()
 {
     $connector = new Dbc();
