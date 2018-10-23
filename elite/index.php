@@ -30,10 +30,11 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup('viewforum');
 
-function create_where_clauses($gen_id, $type) {
+function create_where_clauses($gen_id, $type)
+{
     global $db, $auth;
     $size_gen_id = sizeof($gen_id);
-    switch($type) {
+    switch ($type) {
         case 'forum':
             $type = 'forum_id';
             break;
@@ -70,7 +71,8 @@ function create_where_clauses($gen_id, $type) {
         $j = 0;
 
         for ($i = 0; $i < $size_gen_id; $i++) {
-            $id_check = (int) $gen_id[$i]; { // If the type is topic, all checks have been made and the query can start to be built if( $type == 'topic_id' ) { $out_where .= ($j == 0) ? 'WHERE ' . $type . ' = ' . $id_check . ' ' : 'OR ' . $type . ' = ' . $id_check . ' '; } // If the type is forum, do the check to make sure the user has read permissions else if( $type == 'forum_id' && $auth->acl_get('f_read', $id_check) )
+            $id_check = (int)$gen_id[$i];
+            { // If the type is topic, all checks have been made and the query can start to be built if( $type == 'topic_id' ) { $out_where .= ($j == 0) ? 'WHERE ' . $type . ' = ' . $id_check . ' ' : 'OR ' . $type . ' = ' . $id_check . ' '; } // If the type is forum, do the check to make sure the user has read permissions else if( $type == 'forum_id' && $auth->acl_get('f_read', $id_check) )
                 $out_where .= ($j == 0) ? 'WHERE ' . $type . ' = ' . $id_check . ' ' : 'OR ' . $type . ' = ' . $id_check . ' ';
             }
 
@@ -94,7 +96,7 @@ $topic_id_where = create_where_clauses($topic_id, 'topic');
 $posts_ary = array(
     'SELECT' => 'p.*, t.*', 'FROM' => array(POSTS_TABLE => 'p',), 'LEFT_JOIN' => array(array(
         'FROM' => array(TOPICS_TABLE => 't'), 'ON' => 't.topic_first_post_id = p.post_id')),
-    'WHERE' => str_replace( array('WHERE ', 'forum_id'), array('', 't.forum_id'), $forum_id_where) . '
+    'WHERE' => str_replace(array('WHERE ', 'forum_id'), array('', 't.forum_id'), $forum_id_where) . '
     AND t.topic_status <> ' . ITEM_MOVED . '
     ',
     'ORDER_BY' => 'p.post_id DESC',
@@ -300,7 +302,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
                             <input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
                             <input type="password" name="password" class="password" id="loginpass"
                                    placeholder="Password"/>
-                            <input type="hidden" name="autologin" class="autologin" id="autologin"/>
+                            <input type="hidden" checked="yes" name="autologin" class="autologin" id="autologin"/>
                             <input type="submit" value="Log In" name="login" class="submit"/>
                             <input type="hidden" name="redirect" value="<?php echo $script_directory; ?>index.php"/>
                         </form>
@@ -360,7 +362,7 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
                     <br/>
                     <div style="margin-left: 75px; margin-right: 75px;">
                         <?php
-                        while( $posts_row = $db->sql_fetchrow($posts_result) ){
+                        while ($posts_row = $db->sql_fetchrow($posts_result)) {
                             $topic_title = $posts_row['topic_title'];
                             $post_author = get_username_string('full', $posts_row['poster_id'], $posts_row['topic_first_poster_name'], $posts_row['topic_first_poster_colour']);
                             $post_date = $user->format_date($posts_row['post_time']);
@@ -373,9 +375,9 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
 
                             $post_text = smiley_text($post_text);
 
-                            echo '<h4><a href="'.$post_link.'">'.$topic_title.'</a></h4>';
-                            echo '<div class="meta">posted by '.$post_author.' // '.$post_date.'</div>';
-                            echo '<p>'.smiley_text($post_text).'</p>';
+                            echo '<h4><a href="' . $post_link . '">' . $topic_title . '</a></h4>';
+                            echo '<div class="meta">posted by ' . $post_author . ' // ' . $post_date . '</div>';
+                            echo '<p>' . smiley_text($post_text) . '</p>';
 
                         }
                         ?>
@@ -401,10 +403,10 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
             <div style="padding-left: 20px; padding-top: 3px;">
                 <h5>Statistics</h5>
                 <p>
-                    Players Online: <strong><?php echo playersOnline(); ?></strong><br/>
+                    Players Online: <strong><a href="/elite/online"><?php echo playersOnline(); ?></a></strong><br/>
                     Server Status: <strong><?php echo checkStatus("game.openrsc.com", "43594"); ?></strong><br/>
-                    Registrations Today: <strong><?php echo newRegistrationsToday(); ?></strong><br/>
-                    Logins Today: <strong><?php echo loginsToday(); ?></strong><br/>
+                    Registrations Today: <strong><a href="/elite/registrationstoday"><?php echo newRegistrationsToday(); ?></a></strong><br/>
+                    Logins Today: <strong><a href="/elite/loginstoday"><?php echo loginsToday(); ?></a></strong><br/>
                     Unique Players: <strong><?php echo uniquePlayers(); ?></strong><br/>
                     Total Players: <strong><?php echo totalGameCharacters(); ?></strong><br/>
                     Gold: <strong><?php echo banktotalGold(); ?></strong><br/>

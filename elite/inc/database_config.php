@@ -122,15 +122,43 @@ function totalGameCharacters()
     }
 }
 
+function onlinePlayers()
+{
+    $connector = new Dbc();
+    $game_accounts = $connector->gamequery("SELECT username FROM openrsc_players WHERE online = '1'");
+    while ($row = $connector->fetchArray($game_accounts)) {
+        if ($row["username"] == NULL) {
+            echo "No players currently online.";
+        } else {
+            echo '<a href="/elite/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
+            echo '<br />';
+        }
+    }
+}
+
 function newRegistrationsToday()
 {
     $connector = new Dbc();
-    $registrations_today = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM users WHERE registered >= unix_timestamp( current_date - interval 1 day )");
+    $registrations_today = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 1 day )");
     while ($row = $connector->fetchArray($registrations_today)) {
         if ($row["countUsers"] == NULL) {
             echo "0";
         } else {
             echo $row["countUsers"];
+        }
+    }
+}
+
+function listregistrationsToday()
+{
+    $connector = new Dbc();
+    $registrations_today = $connector->gamequery("SELECT username FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 1 day )");
+    while ($row = $connector->fetchArray($registrations_today)) {
+        if ($row["username"] == NULL) {
+            echo "No players have been created today.";
+        } else {
+            echo '<a href="/elite/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
+            echo '<br />';
         }
     }
 }
@@ -144,6 +172,20 @@ function loginsToday()
             echo "0";
         } else {
             echo $row["countUsers"];
+        }
+    }
+}
+
+function listloginsToday()
+{
+    $connector = new Dbc();
+    $loginsToday = $connector->gamequery("SELECT username FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
+    while ($row = $connector->fetchArray($loginsToday)) {
+        if ($row["username"] == NULL) {
+            echo "No players have logged in today.";
+        } else {
+            echo '<a href="/elite/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
+            echo '<br />';
         }
     }
 }
