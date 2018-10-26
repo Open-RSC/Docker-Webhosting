@@ -351,7 +351,7 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
                         <h4>
                             <b>
                                 <a href="board/ucp.php?mode=register">Register</a> |
-                                <a href="/downloads/OpenRSC.jar">Download</a> |
+                                <a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a> |
                                 <a href="/downloads/openrsc.apk">Android</a> |
                                 <a href="https://discordapp.com/invite/94vVKND">Discord</a>
                             </b>
