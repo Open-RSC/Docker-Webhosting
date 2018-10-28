@@ -17,7 +17,7 @@ $cfg['Servers'][$i]['socket'] = '';
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['user'] = '';
 $cfg['Servers'][$i]['password'] = '';
-$cfg['Servers'][$i]['AllowRoot'] = false;
+$cfg['Servers'][$i]['AllowRoot'] = true;
 $cfg['Servers'][$i]['ssl'] = false;
 $cfg['Servers'][$i]['compress'] = true;
 
