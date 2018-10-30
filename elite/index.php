@@ -284,7 +284,7 @@ $posts_result = $db->sql_query_limit($posts, $search_limit);
             <div class="sidenavbar">
                 <ul>
                     <li><a id="inline" href="#data">Login</a></li>
-                    <li><a href="/board/ucp.php?mode=register">Register</a></li>
+                    <li><a href="/elite/board/ucp.php?mode=register">Register</a></li>
                 </ul>
             </div>
         <?php } ?>
