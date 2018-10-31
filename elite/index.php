@@ -403,17 +403,22 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
             <div style="padding-left: 20px; padding-top: 3px;">
                 <h5>Statistics</h5>
                 <p>
-                    Players Online: <strong><a href="/elite/online"><?php echo playersOnline(); ?></a></strong><br/>
-                    Server Status: <strong><?php echo checkStatus("game.openrsc.com", "43594"); ?></strong><br/>
-                    Registrations Today: <strong><a href="/elite/registrationstoday"><?php echo newRegistrationsToday(); ?></a></strong><br/>
-                    Logins Today: <strong><a href="/elite/loginstoday"><?php echo loginsToday(); ?></a></strong><br/>
+		    <?php 
+			if (playersOnline() > 0)
+                            echo "Players Online: <strong><a style='color: lime' href='/elite/online'>" . playersOnline() . "</a></strong><br/>";
+                        else 
+	    		    echo "Players Online: <strong><a style='color: white' href='/elite/online'>" . playersOnline() . "</a></strong><br/>";
+                    ?>
+	            Server Status: <strong><?php echo checkStatus("game.openrsc.com", "43594"); ?></strong><br/>
+                    Registrations Today: <strong><a style="color: lime" href="/elite/registrationstoday"><?php echo newRegistrationsToday(); ?></a></strong><br/>
+                    Logins Today: <strong><a style="color: lime" href="/elite/loginstoday"><?php echo loginsToday(); ?></a></strong><br/>
                     Unique Players: <strong><?php echo uniquePlayers(); ?></strong><br/>
                     Total Players: <strong><?php echo totalGameCharacters(); ?></strong><br/>
                     Gold: <strong><?php echo banktotalGold(); ?></strong><br/>
                     Time Played: <strong><?php echo totalTime(); ?></strong><br/>
                 </p>
             </div>
-            <div style="padding-left: 10px;">
+            <div style="padding-left: 10px; margin-top: -20px">
                 <iframe src="/elite/inc/discord.html"></iframe>
             </div>
         </div>
