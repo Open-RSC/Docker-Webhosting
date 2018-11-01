@@ -298,12 +298,10 @@ function startedQuest()
 function banktotalGold()
 {
     $connector = new Dbc();
-    echo 0;
-    /*
     $banktotalGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, A.banned, B.playerID, B.id, format(SUM(B.amount), 0) AS count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($banktotalGold)) {
         echo $row["count"];
-    }*/
+    }
 }
 
 function maxGold()
