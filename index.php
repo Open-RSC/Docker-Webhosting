@@ -54,9 +54,9 @@
     <nav class="navbar">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/board/index.php">Forum</a></li>
+            <li><a href="/board/index">Forum</a></li>
             <li><a href="/chat">Game Chat</a></li>
-            <li><a href="/highscores/skill_total">Highscores</a></li>
+            <li><a href="/highscores">Highscores</a></li>
             <li><a href="/worldmap">Player Map</a></li>
             <li><a href="/database">Database</a></li>
         </ul>
@@ -71,17 +71,17 @@
                 <ul>
                     <li class="welcome-text"><a href="/accounts">Account Management</a></li>
                     <li class="welcome-text">
-                        <a href="/board/ucp.php?i=pm&folder=inbox">
+                        <a href="/board/ucp?i=pm&folder=inbox">
                             <?php print $user->data['user_unread_privmsg']; ?>
                         </a>
                     </li>
                     <li class="welcome-text">
-                        <a href="/board/ucp.php?mode=logout&amp;sid=<?php print $user->data['session_id']; ?>">Logout</a>
+                        <a href="/board/ucp?mode=logout&amp;sid=<?php print $user->data['session_id']; ?>">Logout</a>
                     </li>
                 </ul>
             </div>
             <div class="avatar-box">
-                <a href="/board/ucp.php?i=profile&mode=avatar">
+                <a href="/board/ucp?i=profile&mode=avatar">
                     <img src="/board/download/file.php?avatar=<?php print $user->data['user_avatar']; ?>"/>
                 </a>
             </div>
@@ -89,7 +89,7 @@
             <div class="sidenavbar">
                 <ul>
                     <li><a id="inline" href="#data">Login</a></li>
-                    <li><a href="/board/ucp.php?mode=register">Register</a></li>
+                    <li><a href="/board/ucp?mode=register">Register</a></li>
                 </ul>
             </div>
         <?php } ?>
@@ -98,7 +98,7 @@
                 <div class="panel-login">
                     <div class="popupbox">
                         <h4 style="margin-left: 40px;">Open RSC Login</h4>
-                        <form method="post" action="/board/ucp.php?mode=login">
+                        <form method="post" action="/board/ucp?mode=login">
                             <input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
                             <input type="password" name="password" class="password" id="loginpass"
                                    placeholder="Password"/>
@@ -107,7 +107,7 @@
                             <input type="hidden" name="redirect" value="/"/>
                         </form>
                         <a class="submit"
-                           href="/board/ucp.php?mode=register">Register</a>
+                           href="/board/ucp?mode=register">Register</a>
                     </div>
                 </div>
             </div>
@@ -117,13 +117,13 @@
 </div>
 
 <?php
-if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php') {
+if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
     if (file_exists("pages/" . curPageURL() . ".php")) {
         include("pages/" . curPageURL() . ".php");
     } else {
         include("pages/error.php");
     }
-} else if (is_array(curPageURL()) && curPageURL() != 'index.php') {
+} else if (is_array(curPageURL()) && curPageURL() != 'index') {
     $page = curPageURL();
     $subpage = $page[1];
     $page = $page[0];
@@ -142,7 +142,7 @@ if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index.php'
                     <img class="logo" src="css/images/logo.png" alt="Open RSC Logo"/>
                     <div class="main-links">
                         <ul>
-                            <li><a href="board/ucp.php?mode=register">Register</a></li>
+                            <li><a href="board/ucp?mode=register">Register</a></li>
                             <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a></li>
                             <li><a href="/downloads/openrsc.apk">Android</a></li>
                             <li><a href="https://discordapp.com/invite/94vVKND">Discord</a></li>

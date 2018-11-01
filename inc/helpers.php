@@ -1,15 +1,15 @@
 <?php
 function curPageURL()
 {
-	$pageUrl = $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-	$page = explode("/", $pageUrl);
-	$pos = strpos($page[2], 'index.php');
+    $pageUrl = $_SERVER["REQUEST_URI"];
+    $page = explode("/", $pageUrl);
+	$pos = strpos($page[1], 'index.php');
 	if ($pos !== false) {
 		$return = 'index.php';
-	} else if ($page[3]) {
-		$return = array($page[2], $page[3]);
+	} else if ($page[2]) {
+		$return = array($page[1], $page[2]);
 	} else {
-		$return = $page[2];
+		$return = $page[1];
 	}
 	return $return;
 }

@@ -23,18 +23,13 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
     ?>
     <div class="main">
         <div class="content">
-            <div class="navbar" style="height: 5px; width: 100%;">
-                <headerbar>
-                    <headerbar-sides><br/><br/><br/><br/></headerbar-sides>
-                </headerbar>
-            </div>
             <article>
                 <h4 align="center">Highscores</h4>
                 <div class="skill">
                     <ul>
                         <?php foreach ($skill_array as $skill) { ?>
-                            <li><a href="<?php echo $script_directory; ?>highscores/<?php print $skill; ?>"><img
-                                            src="<?php echo $script_directory; ?>css/images/skill_icons/skill_<?php print $skill; ?>.gif"
+                            <li><a href="/highscores/<?php print $skill; ?>"><img
+                                            src="/css/images/skill_icons/<?php print $skill; ?>.svg"
                                             alt="<?php print $skill; ?>"/><?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
                                 </a></li>
                         <?php } ?>
@@ -58,19 +53,14 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
     ?>
     <div class="main">
         <div class="content">
-            <div class="navbar" style="border: #000000; height: 5px; width: 100%; z-index: 3;">
-                <headerbar>
-                    <headerbar-sides style="z-index: 3;"><br/><br/></br /></br /></headerbar-sides>
-                </headerbar>
-            </div>
             <article class="highscores">
                 <div class="panel"
                      style="width: 150px; margin-right: 0px; margin-top: 0px; margin-left: 9px; z-index: 4;">
                     <div class="skill">
                         <ul>
                             <?php foreach ($skill_array as $skill) { ?>
-                                <li><a href="<?php echo $script_directory; ?>highscores/<?php print $skill; ?>"><img
-                                                src="<?php echo $script_directory; ?>css/images/skill_icons/<?php print $skill; ?>.svg"
+                                <li><a href="/highscores/<?php print $skill; ?>"><img
+                                                src="/css/images/skill_icons/<?php print $skill; ?>.svg"
                                                 width="16px" height="16px"
                                                 alt="<?php print $skill; ?>"/><?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
                                     </a></li>
@@ -104,7 +94,7 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
                                 <tr id="table">
                                     <td class="rank"><?php echo $i; ?></td>
                                     <td class="username">
-                                        <a href="<?php echo $script_directory; ?>characters/<?php echo $usernameLink; ?>"><?php echo $row['username']; ?></a>
+                                        <a href="/characters/<?php echo $usernameLink; ?>"><?php echo $row['username']; ?></a>
                                     </td>
                                     <td class="level">
                                         <?php echo ($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_' . $subpage] / 4); ?>
