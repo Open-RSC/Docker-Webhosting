@@ -40,164 +40,173 @@
 
 </head>
 <body lang="en">
+<div class="wrapper">
 
-<header>
-    <div class="large">
-        Open RSC
-    </div>
-    <div class="small white">
-        Striving for a replica RSC game and more
-    </div>
-</header>
+    <header>
+        <h1 class="large">
+            Open RSC
+        </h1>
+        <h2 class="small white">
+            Striving for a replica RSC game and more
+        </h2>
+    </header>
 
-<div class="navigation">
-    <nav class="navbar">
-        <ul>
+    <nav class="navigation">
+        <ul class="navbar">
             <li><a href="/">Home</a></li>
             <li><a href="/board/index">Forum</a></li>
             <li><a href="/chat">Game Chat</a></li>
-            <li><a href="/highscores">Highscores</a></li>
+            <li><a href="/highscores/skill_total">Highscores</a></li>
             <li><a href="/worldmap">Player Map</a></li>
             <li><a href="/database">Database</a></li>
         </ul>
+
+        <div class="account-panel">
+            <?php if ($user->data['is_registered']) { ?>
+                <div class="account-text">
+                    <span class="welcome-message block">
+                        Welcome back, <?php print $user->data['username']; ?>
+                    </span>
+                    <ul>
+                        <li class="welcome-text"><a href="/accounts">Account Management</a></li>
+                        <li class="welcome-text">
+                            <a href="/board/ucp?i=pm&folder=inbox">
+                                (<?php print $user->data['user_unread_privmsg']; ?>)
+                            </a>
+                        </li>
+                        <li class="welcome-text">
+                            <a href="/board/ucp?mode=logout&amp;sid=<?php print $user->data['session_id']; ?>">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="avatar-box">
+                    <a href="/board/ucp?i=profile&mode=avatar">
+                        <img src="/board/download/file.php?avatar=<?php print $user->data['user_avatar']; ?>"/>
+                    </a>
+                </div>
+            <?php } else { ?>
+                <div class="sidenavbar">
+                    <ul>
+                        <li><a class="trigger">Login</a></li>
+                        <li><a href="/board/ucp?mode=register">Register</a></li>
+                    </ul>
+                </div>
+            <?php } ?>
+
+
+        </div>
     </nav>
 
-    <div class="account-panel">
-        <?php if ($user->data['is_registered']) { ?>
-            <div class="account-text">
-                <span class="welcome-message block">
-                    Welcome back, <?php print $user->data['username']; ?>
-                </span>
-                <ul>
-                    <li class="welcome-text"><a href="/accounts">Account Management</a></li>
-                    <li class="welcome-text">
-                        <a href="/board/ucp?i=pm&folder=inbox">
-                            <?php print $user->data['user_unread_privmsg']; ?>
-                        </a>
-                    </li>
-                    <li class="welcome-text">
-                        <a href="/board/ucp?mode=logout&amp;sid=<?php print $user->data['session_id']; ?>">Logout</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="avatar-box">
-                <a href="/board/ucp?i=profile&mode=avatar">
-                    <img src="/board/download/file.php?avatar=<?php print $user->data['user_avatar']; ?>"/>
-                </a>
-            </div>
-        <?php } else { ?>
-            <div class="sidenavbar">
-                <ul>
-                    <li><a id="inline" href="#data">Login</a></li>
-                    <li><a href="/board/ucp?mode=register">Register</a></li>
-                </ul>
-            </div>
-        <?php } ?>
-        <div style="display:none">
-            <div id="data">
-                <div class="panel-login">
-                    <div class="popupbox">
-                        <h4 style="margin-left: 40px;">Open RSC Login</h4>
-                        <form method="post" action="/board/ucp?mode=login">
-                            <input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
-                            <input type="password" name="password" class="password" id="loginpass"
-                                   placeholder="Password"/>
-                            <input type="hidden" checked="yes" name="autologin" class="autologin" id="autologin"/>
-                            <input type="submit" value="Log In" name="login" class="submit"/>
-                            <input type="hidden" name="redirect" value="/"/>
-                        </form>
-                        <a class="submit"
-                           href="/board/ucp?mode=register">Register</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-<?php
-if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
-    if (file_exists("pages/" . curPageURL() . ".php")) {
-        include("pages/" . curPageURL() . ".php");
-    } else {
-        include("pages/error.php");
-    }
-} else if (is_array(curPageURL()) && curPageURL() != 'index') {
-    $page = curPageURL();
-    $subpage = $page[1];
-    $page = $page[0];
-    if (file_exists("pages/" . $page . ".php")) {
-        include("pages/" . $page . ".php");
-    } else {
-        include("pages/error.php");
-    }
-} else {
+    <div class="container">
+    <?php
+        if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
+            if (file_exists("pages/" . curPageURL() . ".php")) {
+                include("pages/" . curPageURL() . ".php");
+            } else {
+                include("pages/error.php");
+            }
+        } else if (is_array(curPageURL()) && curPageURL() != 'index') {
+            $page = curPageURL();
+            $subpage = $page[1];
+            $page = $page[0];
+            if (file_exists("pages/" . $page . ".php")) {
+                include("pages/" . $page . ".php");
+            } else {
+                include("pages/error.php");
+            }
+        } else {
     ?>
 
-    <main class="main">
-        <div class="content">
-            <article>
-                <div class="panel">
-                    <img class="logo" src="css/images/logo.png" alt="Open RSC Logo"/>
-                    <div class="main-links">
-                        <ul>
-                            <li><a href="board/ucp?mode=register">Register</a></li>
-                            <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a></li>
-                            <li><a href="/downloads/openrsc.apk">Android</a></li>
-                            <li><a href="https://discordapp.com/invite/94vVKND">Discord</a></li>
-                        </ul>
-                    </div>
+        <main class="main">
+            <div class="content">
+                <article>
+                    <div class="panel">
+                        <img class="logo" src="css/images/logo.png" alt="Open RSC Logo"/>
+                        <div class="main-links">
+                            <ul>
+                                <li><a href="board/ucp?mode=register">Register</a></li>
+                                <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a></li>
+                                <li><a href="/downloads/openrsc.apk">Android</a></li>
+                                <li><a href="https://discordapp.com/invite/94vVKND">Discord</a></li>
+                            </ul>
+                        </div>
 
-                    <hr>
+                        <hr>
 
-                    <div class="news">
-                        <?php include 'inc/news.php' ?>
+                        <div class="news">
+                            <?php include 'inc/news.php' ?>
+                        </div>
                     </div>
-                </div>
-            </article>
-        </div>
-    </main>
+                </article>
+            </div>
+        </main>
+
 <?php } ?>
 
-<aside>
-    <div class="box">
-        <div class="side-panel">
-            <div>
-                <h5>Statistics</h5>
-                <dl class="side-menu">
-                    <dt>Players Online:</dt>
-                    <dd><?php echo playersOnline(); ?></dd>
-                    <dt>Server Status:</dt>
-                    <dd><?php echo checkStatus("game.openrsc.com", "43594"); ?></dd>
-                    <dt>Registrations Today:
-                    <dd>
-                        <a class="lime" href="/registrationstoday">
-                            <?php echo newRegistrationsToday(); ?>
-                        </a>
-                    </dd>
-                    <dt>Logins Today:</dt>
-                    <dd>
-                        <a class="lime" href="/loginstoday">
-                            <?php echo loginsToday(); ?>
-                        </a>
-                    </dd>
-                    <dt>Unique Players:</dt>
-                    <dd><?php echo uniquePlayers(); ?></dd>
-                    <dt>Total Players:</dt>
-                    <dd><?php echo totalGameCharacters(); ?></dd>
-                    <dt>Gold:</dt>
-                    <dd><?php echo banktotalGold(); ?></dd>
-                    <dt>Time Played:</dt>
-                    <dd><?php echo totalTime(); ?></dd>
-                </dl>
+        <aside>
+            <div class="box">
+                <div class="side-panel">
+                    <div>
+                        <h5>Statistics</h5>
+                        <dl class="side-menu">
+                            <dt>Players Online:</dt>
+                            <dd><?php echo playersOnline(); ?></dd>
+                            <dt>Server Status:</dt>
+                            <dd><?php echo checkStatus("game.openrsc.com", "43594"); ?></dd>
+                            <dt>Registrations Today:
+                            <dd>
+                                <a class="lime" href="/registrationstoday">
+                                    <?php echo newRegistrationsToday(); ?>
+                                </a>
+                            </dd>
+                            <dt>Logins Today:</dt>
+                            <dd>
+                                <a class="lime" href="/loginstoday">
+                                    <?php echo loginsToday(); ?>
+                                </a>
+                            </dd>
+                            <dt>Unique Players:</dt>
+                            <dd><?php echo uniquePlayers(); ?></dd>
+                            <dt>Total Players:</dt>
+                            <dd><?php echo totalGameCharacters(); ?></dd>
+                            <dt>Gold:</dt>
+                            <dd><?php echo banktotalGold(); ?></dd>
+                            <dt>Time Played:</dt>
+                            <dd><?php echo totalTime(); ?></dd>
+                        </dl>
+                    </div>
+                    <div>
+                        <iframe src="/inc/discord.html"></iframe>
+                    </div>
+                </div>
             </div>
-            <div>
-                <iframe src="/inc/discord.html"></iframe>
-            </div>
-        </div>
+        </aside>
+
+    </div> <!-- wrapper -->
+
+    <footer>
+        <p>Open RSC is in no way affiliated with JaGex or Runescape Classic.</p>
+    </footer>
+
+</div>
+
+    <!-- Hidden until "Login" is clicked. -->
+    <div class="modal-box" id="panel-login">
+		<div class="modal-content">
+			<span class="close-button">&times;</span>
+	        <h4>Open RSC Login</h4>
+	        <form method="post" action="/board/ucp?mode=login">
+	            <input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
+	            <input type="password" name="password" class="password" id="loginpass" placeholder="Password"/>
+		        <input type="hidden" checked="yes" name="autologin" class="autologin" id="autologin"/>
+				<fieldset>
+			        <input type="submit" value="Log In" name="login" class="submit"/>
+		        	<a class="submit" href="/board/ucp?mode=register">Register</a>
+				</fieldset>
+	            <input type="hidden" name="redirect" value="/"/>
+	        </form>
+		</div>
     </div>
-</aside>
 
 </body>
 </html>

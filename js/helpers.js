@@ -7,12 +7,6 @@ function loadContent(user, id, lvl, on) {
 				online: on
 		}, function (data) {
 				$("#character-details").html(data).show();
-				$("a#inline").fancybox({
-						'hideOnContentClick': false,
-						'hideOnOverlayClick': false,
-						'overlayColor': '#000000',
-						'padding': 0,
-				});
 
 				$("#character-delete-form").bind("submit", function () {
 						$("#verification-fails").hide();
@@ -45,20 +39,28 @@ $(document).ready(function () {
 		});
 
 		$("a#single_image").fancybox();
-		$("a#inline").fancybox({
-				'hideOnContentClick': false,
-				'overlayColor': '#000000',
-				'padding': 0,
-				'onClosed': function () {
-						$("#name-fails").hide();
-						$("#pass-fails").hide();
-						$("#user-fails").hide();
-						$("#user-passes").hide();
-						$("#character-creation-form").show();
-				}
-		});
 
-		$("#character-creation-form").bind("submit", function () {
+
+
+    var modal = document.querySelector(".modal-box");
+    var trigger = document.querySelector(".trigger");
+    var closeButton = document.querySelector(".close-button");
+
+    function toggleModal() {
+        modal.classList.toggle("show-modal");
+    }
+
+    function windowOnClick(event) {
+        if (event.target === modal) {
+            toggleModal();
+        }
+    }
+
+    trigger.addEventListener("click", toggleModal);
+    closeButton.addEventListener("click", toggleModal);
+
+    window.addEventListener("click", windowOnClick);
+    $("#character-creation-form").bind("submit", function () {
 				$("#name-fails").hide();
 				$("#pass-fails").hide();
 				if ($("#name").val().length >= 11 || $("#name").val().length <= 3) {

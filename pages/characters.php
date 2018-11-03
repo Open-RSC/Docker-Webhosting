@@ -40,13 +40,7 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
 ?>
 
 <div class="main">
-    <div class="content"
-    ">
-    <div class="navbar" style="height: 5px; width: 100%;">
-        <headerbar>
-            <headerbar-sides><br/><br/><br/><br/></headerbar-sides>
-        </headerbar>
-    </div>
+    <div class="content">
     <article>
         <div class="panel" style="height: 900px;">
             <div style="margin-left: 20px; margin-right: 20px; margin-top: 45px; margin-bottom: 45px; color: lightgrey;">

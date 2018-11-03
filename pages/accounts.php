@@ -10,11 +10,6 @@ if ($user->data['is_registered']) {
     ?>
     <div class="main">
         <div class="content">
-            <div class="navbar" style="height: 5px; width: 100%;">
-                <headerbar>
-                    <headerbar-sides><br /><br /><br /><br /></headerbar-sides>
-                </headerbar>
-            </div>
             <article>
                 <div class="panel" style="height: 700px;">
                     <div style="margin-left: 80px; margin-right: 80px; margin-top: 45px; margin-bottom: 45px; color: lightgrey;">
@@ -80,7 +75,7 @@ if ($user->data['is_registered']) {
                 <div id="user-fails" style="display:none;">Username already taken!</div>
                 <div id="user-passes" style="display:none;">Character created successfully!</div>
                 <form method="post" action="" id="character-creation-form">
-                    <label for="username">Username: </label><input type="text" name="username" class="name" id="name"/>
+                    <label for="username">Username: </label><input type="text" name="username" class="name" id="username"/>
                     <label for="password">Password: </label><input type="password" name="password" class="password"
                                                                    id="password"/>
                     <input type="submit" value="Create" name="create" class="submit"/>

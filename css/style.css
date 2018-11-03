@@ -3,14 +3,14 @@ p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em,
 img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr,
 dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, headerbar, headerbar-sides, canvas, details, figure, figcaption, hgroup,
+article, aside, canvas, details, figure, figcaption, hgroup,
 menu, footer, header, nav, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
 }
 
-article, aside, headerbar, headerbar-sides, canvas, figure, figure img, figcaption, hgroup,
+article, aside, canvas, figure, figure img, figcaption, hgroup,
 footer, header, nav, section, audio, video {
     display: block;
 }
@@ -112,11 +112,6 @@ panel-title {
     text-align: left;
 }
 
-body {
-    margin: 0 auto;
-    font: normal 14px/1.5 'Exo Bold', sans-serif;
-}
-
 .small, small {
     font-size: 13px;
     line-height: 18px;
@@ -138,26 +133,37 @@ img::-moz-selection {
     background: transparent;
 }
 
-body {
-    -webkit-tap-highlight-color: rgb(255, 255, 158);
+html, body {
+    width: 100%;
+    height: 100%;
 }
 
 body {
-    width: 1100px;
-    padding: 32px 48px 84px;
+    font: normal 14px/1.5 'Exo Bold', sans-serif;
     overflow-y: scroll;
     background: #000 url("/board/styles/pbwow3/theme/images/theme/wod.png") no-repeat fixed center center;
     background-size: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    margin: 0 auto;
+    padding: 32px 48px 20px;
     color: rgb(60, 60, 60);
     -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgb(255, 255, 158);
     line-height: normal;
 }
 
-.body-wrapper {
-}
-
 header {
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+header > h2 {
+    font-weight: 500;
 }
 
 .meta {
@@ -198,8 +204,8 @@ header {
 }
 
 article {
-    width: 770px;
-    padding: 10px;
+    width: 730px;
+    padding: 30px;
     float: left;
     background: url("/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
     url("/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
@@ -226,20 +232,6 @@ aside {
     url("/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
     url("/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
     rgba(20, 20, 20, 0.75);
-}
-
-headerbar {
-    background: url("/board/styles/pbwow3/theme/images/forumliner-top.png") repeat-x 0 0;
-    border: none;
-    border-radius: 0;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-
-headerbar-sides {
-    background: url("/board/styles/pbwow3/theme/images/forumliner-fix-left2.gif") no-repeat,
-    url("/board/styles/pbwow3/theme/images/forumliner-fix-right2.gif") repeat-y 100% 0;
 }
 
 p {
@@ -310,12 +302,8 @@ p {
 
 .navbar {
     width: 767px;
-    float: left;
-    height: 64px;
-}
-
-.navbar ul {
-    display: block;
+    display: flex;
+    flex-direction: row;
     list-style: none;
     padding: 23px 7px;
     background-image: -webkit-gradient(
@@ -325,7 +313,7 @@ p {
     );
 }
 
-.navbar ul li {
+.navbar li {
     text-transform: uppercase;
     padding: 0 7px;
     color: white;
@@ -335,12 +323,12 @@ p {
 
 }
 
-.navbar ul li a {
+.navbar li a {
     color: white;
     text-decoration: none;
 }
 
-.navbar ul li a:hover {
+.navbar li a:hover {
     color: #C6A444;
     text-decoration: none;
     -webkit-transition: all 0.2s ease-in-out;
@@ -437,7 +425,7 @@ p {
     height: 50px;
 }
 
-#data, #create, #pass, #delete, #error {
+#panel-login, #create, #pass, #delete, #error {
     width: 455px;
     height: 280px;
     background: url("/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
@@ -448,7 +436,7 @@ p {
     url("/board/styles/pbwow3/theme/images/border-top.gif") repeat-x 0 0,
     url("/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
     url("/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
-    rgba(20, 20, 20, 0.75);
+    rgba(20, 20, 20, 1);
 }
 
 .error-panel {
@@ -465,11 +453,6 @@ p {
     width: 100%;
     height: 60px;
     line-height: 260px;
-}
-
-.popupbox {
-    padding-top: 50px;
-    padding-left: 17%;
 }
 
 label {
@@ -612,14 +595,53 @@ label {
     height: 70px;
 }
 
-.panel-login {
-    margin: 3px 20px 21px;
-    height: 247px;
-    background: #111;
-    background: rgba(20, 20, 20, 0.75);
-    border: 1px solid #444;
-    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
-    color: #E1C492;
+/* modal! */
+.modal-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+    border-radius: 0.5rem;
+}
+.modal-content > * {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+.close-button:hover {
+    background-color: darkgray;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.trigger {
+    cursor: pointer;
 }
 
 .news {
@@ -643,7 +665,6 @@ label {
             rgba(32, 27, 24, 1) 31%,
             rgba(42, 34, 32, 1) 99%
     );
-    float: left;
     padding: 1px;
 }
 
@@ -653,41 +674,53 @@ label {
     padding-top: 15px;
 }
 
-.skill {
-    width: 150px;
-    flex: 0 1 auto;
+.highscores > .panel:first-child {
+    flex: 0 15%;
+    margin-bottom: 10px;
+}
+.highscores > .panel:last-child {
+    flex: 0 85%;
+    margin-bottom: 10px;
 }
 
-.skill ul {
-    width: 130px;
+.skill-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
     background: #2A2220;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
-.skill ul li {
+.skill li {
+    flex: 1 0 auto;
     width: 130px;
-    display: inline;
     color: white;
-    padding: 7px 10px 3px;
+    list-style: none;
+    padding: 5px 10px 5px;
     text-shadow: 0 0 2px #201B18;
-    float: left;
     font: 14px 'Exo', sans-serif;
     text-transform: uppercase;
-    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
-.skill ul li:nth-child(odd) {
+.skill li:nth-child(odd) {
     background: #261e1c;
 }
 
-.skill ul li:nth-child(even) {
+.skill li:nth-child(even) {
     background: #221c1a;
 }
 
-.skill ul li a {
+.skill li a {
     color: #C6A444;
 }
 
@@ -1105,6 +1138,17 @@ td.username {
     );
 }
 
+.container {
+    margin-bottom: 15px;
+}
+
 footer {
+    text-align: center;
+    background: url("/board/styles/pbwow3/theme/images/grey-bar-wide.gif") repeat-x;
+    background-size: auto 100%;
     position: relative;
+}
+footer > p {
+    height: 20px;
+    margin: 18px 0 15px;
 }

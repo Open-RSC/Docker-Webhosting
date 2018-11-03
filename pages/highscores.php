@@ -28,10 +28,11 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
                 <div class="skill">
                     <ul>
                         <?php foreach ($skill_array as $skill) { ?>
-                            <li><a href="/highscores/<?php print $skill; ?>"><img
-                                            src="/css/images/skill_icons/<?php print $skill; ?>.svg"
-                                            alt="<?php print $skill; ?>"/><?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
-                                </a></li>
+                            <li><a href="/highscores/<?php print $skill; ?>">
+                                <img src="/css/images/skill_icons/<?php print $skill; ?>.svg"
+                                     alt="<?php print $skill; ?>" class="skill-icon"/>
+                                <?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
+                            </a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -54,21 +55,18 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
     <div class="main">
         <div class="content">
             <article class="highscores">
-                <div class="panel"
-                     style="width: 150px; margin-right: 0px; margin-top: 0px; margin-left: 9px; z-index: 4;">
-                    <div class="skill">
-                        <ul>
-                            <?php foreach ($skill_array as $skill) { ?>
-                                <li><a href="/highscores/<?php print $skill; ?>"><img
-                                                src="/css/images/skill_icons/<?php print $skill; ?>.svg"
-                                                width="16px" height="16px"
-                                                alt="<?php print $skill; ?>"/><?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
-                                    </a></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
+                <div class="panel">
+                    <ul class="skill">
+                        <?php foreach ($skill_array as $skill) { ?>
+                            <li><a href="/highscores/<?php print $skill; ?>">
+                                <img src="/css/images/skill_icons/<?php print $skill; ?>.svg"
+                                     alt="<?php print $skill; ?>" class="skill-icon"/>
+                                <?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
+                            </a></li>
+                        <?php } ?>
+                    </ul>
                 </div>
-                <div class="panel" style="margin-top: 0px; margin-left: 0px; z-index: 5;">
+                <div class="panel">
                     <div class="ranking">
                         <h4 align="center">
                             <?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?> Rankings
