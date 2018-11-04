@@ -205,33 +205,43 @@ header > h2 {
 
 article {
     width: 730px;
-    padding: 30px;
+    padding: 21px 22px 30px;
     float: left;
-    background: url("/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
+    background: url("/board/styles/pbwow3/theme/images/forumliner-top.png") repeat-x 0 0,
+    url("/board/styles/pbwow3/theme/images/forumliner-fix-left2.gif") no-repeat,
+    url("/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
     url("/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
     url("/board/styles/pbwow3/theme/images/border-top-right.gif") no-repeat 100% 0,
     url("/board/styles/pbwow3/theme/images/border-top-left.gif") no-repeat 0 0,
     url("/board/styles/pbwow3/theme/images/border-bot.gif") repeat-x 0 100%,
     url("/board/styles/pbwow3/theme/images/border-top.gif") repeat-x 0 0,
     url("/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
+    url("/board/styles/pbwow3/theme/images/forumliner-fix-right2.gif") repeat-y 100% 0,
     url("/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
     rgba(20, 20, 20, 0.75);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
 aside {
     float: right;
     width: 270px;
     height: 285px;
-    padding: 10px;
-    background: url("/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
+    padding: 21px 22px 30px;
+    background: url("/board/styles/pbwow3/theme/images/forumliner-top.png") repeat-x 0 0,
+    url("/board/styles/pbwow3/theme/images/forumliner-fix-left2.gif") no-repeat,
+    url("/board/styles/pbwow3/theme/images/border-bot-left.gif") no-repeat 0 100%,
     url("/board/styles/pbwow3/theme/images/border-bot-right.gif") no-repeat 100% 100%,
     url("/board/styles/pbwow3/theme/images/border-top-right.gif") no-repeat 100% 0,
     url("/board/styles/pbwow3/theme/images/border-top-left.gif") no-repeat 0 0,
     url("/board/styles/pbwow3/theme/images/border-bot.gif") repeat-x 0 100%,
     url("/board/styles/pbwow3/theme/images/border-top.gif") repeat-x 0 0,
     url("/board/styles/pbwow3/theme/images/border-right.gif") repeat-y 100% 0,
+    url("/board/styles/pbwow3/theme/images/forumliner-fix-right2.gif") repeat-y 100% 0,
     url("/board/styles/pbwow3/theme/images/border-left.gif") repeat-y 0 0,
     rgba(20, 20, 20, 0.75);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
 p {
@@ -399,6 +409,15 @@ p {
     text-shadow: 0 0 1px black;
 }
 
+.welcome-text::after {
+    content: " | ";
+    margin-right: 3px;
+}
+
+.welcome-text:nth-child(3)::after {
+    content: "";
+}
+
 .welcome-text a {
     color: white;
     text-decoration: none;
@@ -537,12 +556,18 @@ label {
 }
 
 .panel, .side-panel {
-    margin: 3px 10px 21px;
     background: #111;
     background: rgba(20, 20, 20, 0.75);
-    border: 1px solid #444;
     box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
     color: #E1C492;
+}
+
+.side-panel {
+    padding: 0 10px 28px;
+}
+
+.panel {
+    padding: 10px 0;
 }
 
 .panel > hr {
@@ -556,9 +581,13 @@ label {
 
 .panel > img.logo {
     display: block;
-    margin: 20px auto;
+    margin: 0 auto;
     height: 300px;
     width: 320px;
+}
+
+.panel > .main-links {
+    margin-top: 20px;
 }
 
 .panel > .main-links ul {

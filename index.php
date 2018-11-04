@@ -54,7 +54,7 @@
     <nav class="navigation">
         <ul class="navbar">
             <li><a href="/">Home</a></li>
-            <li><a href="/board">Forum</a></li>
+            <li><a href="/board/index">Forum</a></li>
             <li><a href="/chat">Game Chat</a></li>
             <li><a href="/highscores/skill_total">Highscores</a></li>
             <li><a href="/worldmap">Player Map</a></li>
@@ -118,27 +118,25 @@
             ?>
 
             <main class="main">
-                <div class="content">
-                    <article>
-                        <div class="panel">
-                            <img class="logo" src="css/images/logo.png" alt="Open RSC Logo"/>
-                            <div class="main-links">
-                                <ul>
-                                    <li><a href="board/ucp?mode=register">Register</a></li>
-                                    <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a></li>
-                                    <li><a href="#">Android</a></li>
-                                    <li><a href="https://discordapp.com/invite/94vVKND">Discord</a></li>
-                                </ul>
-                            </div>
-
-                            <hr>
-
-                            <div class="news">
-                                <?php include 'inc/news.php' ?>
-                            </div>
+                <article>
+                    <div class="panel">
+                        <img class="logo" src="css/images/logo.png" alt="Open RSC Logo"/>
+                        <div class="main-links">
+                            <ul>
+                                <li><a href="board/ucp?mode=register">Register</a></li>
+                                <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a></li>
+                                <li><a href="#">Android</a></li>
+                                <li><a href="https://discordapp.com/invite/94vVKND">Discord</a></li>
+                            </ul>
                         </div>
-                    </article>
-                </div>
+
+                        <hr>
+
+                        <div class="news">
+                            <?php include 'inc/news.php' ?>
+                        </div>
+                    </div>
+                </article>
             </main>
 
         <?php } ?>
@@ -233,7 +231,7 @@
                 <input type="submit" value="Log In" name="login" class="submit"/>
                 <a class="submit" href="/board/ucp?mode=register">Register</a>
             </fieldset>
-            <input type="hidden" name="redirect" value="/board"/>
+            <input type="hidden" name="redirect" value="/board/index"/>
         </form>
     </div>
 </div>
