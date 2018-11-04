@@ -71,7 +71,7 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                                 $skillc = $skill;
                             }
                             ?><span class="sm-skill"><a
-                                href="<?php echo $script_directory; ?>highscores/<?php echo $skill; ?>"><img
+                                href="/highscores/<?php echo $skill; ?>"><img
                                     src="/css/images/skill_icons/<?php echo $skill; ?>.svg" width="16px"
                                     height="16px" alt="<?php echo $skill; ?>"/>
                             </a><?php echo experienceToLevel($character['exp_' . $skillc]); ?></span>
