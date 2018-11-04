@@ -54,7 +54,7 @@
     <nav class="navigation">
         <ul class="navbar">
             <li><a href="/">Home</a></li>
-            <li><a href="/board/index">Forum</a></li>
+            <li><a href="/board">Forum</a></li>
             <li><a href="/chat">Game Chat</a></li>
             <li><a href="/highscores/skill_total">Highscores</a></li>
             <li><a href="/worldmap">Player Map</a></li>
@@ -68,7 +68,7 @@
                         Welcome back, <?php print $user->data['username']; ?>
                     </span>
                     <ul>
-                        <li class="welcome-text"><a href="/accounts">Account Management</a></li>
+                        <li class="welcome-text"><a href="#/accounts">Account Management</a></li>
                         <li class="welcome-text">
                             <a href="/board/ucp?i=pm&folder=inbox">
                                 (<?php print $user->data['user_unread_privmsg']; ?>)
@@ -98,7 +98,7 @@
     </nav>
 
     <div class="container">
-    <?php
+        <?php
         if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
             if (file_exists("pages/" . curPageURL() . ".php")) {
                 include("pages/" . curPageURL() . ".php");
@@ -115,33 +115,33 @@
                 include("pages/error.php");
             }
         } else {
-    ?>
+            ?>
 
-        <main class="main">
-            <div class="content">
-                <article>
-                    <div class="panel">
-                        <img class="logo" src="css/images/logo.png" alt="Open RSC Logo"/>
-                        <div class="main-links">
-                            <ul>
-                                <li><a href="board/ucp?mode=register">Register</a></li>
-                                <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a></li>
-                                <li><a href="/downloads/openrsc.apk">Android</a></li>
-                                <li><a href="https://discordapp.com/invite/94vVKND">Discord</a></li>
-                            </ul>
+            <main class="main">
+                <div class="content">
+                    <article>
+                        <div class="panel">
+                            <img class="logo" src="css/images/logo.png" alt="Open RSC Logo"/>
+                            <div class="main-links">
+                                <ul>
+                                    <li><a href="board/ucp?mode=register">Register</a></li>
+                                    <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a></li>
+                                    <li><a href="#">Android</a></li>
+                                    <li><a href="https://discordapp.com/invite/94vVKND">Discord</a></li>
+                                </ul>
+                            </div>
+
+                            <hr>
+
+                            <div class="news">
+                                <?php include 'inc/news.php' ?>
+                            </div>
                         </div>
+                    </article>
+                </div>
+            </main>
 
-                        <hr>
-
-                        <div class="news">
-                            <?php include 'inc/news.php' ?>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </main>
-
-<?php } ?>
+        <?php } ?>
 
         <aside>
             <div class="box">
@@ -150,29 +150,59 @@
                         <h5>Statistics</h5>
                         <dl class="side-menu">
                             <dt>Players Online:</dt>
-                            <dd><?php echo playersOnline(); ?></dd>
+                            <dd>
+                                <b>
+                                    <a class="white" href="/online">
+                                        <?php echo playersOnline(); ?>
+                                    </a>
+                                </b>
+                            </dd>
                             <dt>Server Status:</dt>
-                            <dd><?php echo checkStatus("game.openrsc.com", "43594"); ?></dd>
+                            <dd>
+                                <b>
+                                    <?php echo checkStatus("game.openrsc.com", "43594"); ?>
+                                </b>
+                            </dd>
                             <dt>Registrations Today:
                             <dd>
-                                <a class="lime" href="/registrationstoday">
-                                    <?php echo newRegistrationsToday(); ?>
-                                </a>
+                                <b>
+                                    <a class="white" href="/registrationstoday">
+                                        <?php echo newRegistrationsToday(); ?>
+                                    </a>
+                                </b>
                             </dd>
                             <dt>Logins Today:</dt>
                             <dd>
-                                <a class="lime" href="/loginstoday">
-                                    <?php echo loginsToday(); ?>
-                                </a>
+                                <b>
+                                    <a class="white" href="/loginstoday">
+                                        <?php echo loginsToday(); ?>
+                                    </a>
+                                </b>
                             </dd>
                             <dt>Unique Players:</dt>
-                            <dd><?php echo uniquePlayers(); ?></dd>
+                            <dd>
+                                <b>
+                                    <?php echo uniquePlayers(); ?>
+                                </b>
+                            </dd>
                             <dt>Total Players:</dt>
-                            <dd><?php echo totalGameCharacters(); ?></dd>
+                            <dd>
+                                <b>
+                                    <?php echo totalGameCharacters(); ?>
+                                </b>
+                            </dd>
                             <dt>Gold:</dt>
-                            <dd><?php echo banktotalGold(); ?></dd>
+                            <dd>
+                                <b>
+                                    <?php echo banktotalGold(); ?>
+                                </b>
+                            </dd>
                             <dt>Time Played:</dt>
-                            <dd><?php echo totalTime(); ?></dd>
+                            <dd>
+                                <b>
+                                    <?php echo totalTime(); ?>
+                                </b>
+                            </dd>
                         </dl>
                     </div>
                     <div>
@@ -190,23 +220,23 @@
 
 </div>
 
-    <!-- Hidden until "Login" is clicked. -->
-    <div class="modal-box" id="panel-login">
-		<div class="modal-content">
-			<span class="close-button">&times;</span>
-	        <h4>Open RSC Login</h4>
-	        <form method="post" action="/board/ucp?mode=login">
-	            <input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
-	            <input type="password" name="password" class="password" id="loginpass" placeholder="Password"/>
-		        <input type="hidden" checked="yes" name="autologin" class="autologin" id="autologin"/>
-				<fieldset>
-			        <input type="submit" value="Log In" name="login" class="submit"/>
-		        	<a class="submit" href="/board/ucp?mode=register">Register</a>
-				</fieldset>
-	            <input type="hidden" name="redirect" value="/"/>
-	        </form>
-		</div>
+<!-- Hidden until "Login" is clicked. -->
+<div class="modal-box" id="panel-login">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h4>Open RSC Login</h4>
+        <form method="post" action="/board/ucp?mode=login">
+            <input type="text" name="username" class="name" id="loginname" placeholder="Username"/>
+            <input type="password" name="password" class="password" id="loginpass" placeholder="Password"/>
+            <input type="hidden" checked="yes" name="autologin" class="autologin" id="autologin"/>
+            <fieldset>
+                <input type="submit" value="Log In" name="login" class="submit"/>
+                <a class="submit" href="/board/ucp?mode=register">Register</a>
+            </fieldset>
+            <input type="hidden" name="redirect" value="/"/>
+        </form>
     </div>
+</div>
 
 </body>
 </html>

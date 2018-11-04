@@ -104,7 +104,7 @@ function playersOnline()
         if ($row["countOnline"] == NULL || $row["countOnline"] == 0) {
             echo "0";
         } else {
-            echo '<span class="white">' . $row["countOnline"] . "</span>";
+            echo $row["countOnline"];
         }
     }
 }
@@ -130,7 +130,7 @@ function onlinePlayers()
         if ($row["username"] == NULL) {
             echo "No players currently online.";
         } else {
-            echo '<a href="/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
+            echo '<a class="white" href="/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
             echo '<br />';
         }
     }
@@ -157,7 +157,7 @@ function listregistrationsToday()
         if ($row["username"] == NULL) {
             echo "No players have been created today.";
         } else {
-            echo '<a href="/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
+            echo '<a class="white" href="/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
             echo '<br />';
         }
     }
@@ -184,7 +184,7 @@ function listloginsToday()
         if ($row["username"] == NULL) {
             echo "No players have logged in today.";
         } else {
-            echo '<a href="/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
+            echo '<a class="white" href="/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
             echo '<br />';
         }
     }
