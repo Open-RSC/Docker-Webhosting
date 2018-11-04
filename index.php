@@ -233,7 +233,7 @@
                 <input type="submit" value="Log In" name="login" class="submit"/>
                 <a class="submit" href="/board/ucp?mode=register">Register</a>
             </fieldset>
-            <input type="hidden" name="redirect" value="/"/>
+            <input type="hidden" name="redirect" value="/board"/>
         </form>
     </div>
 </div>
