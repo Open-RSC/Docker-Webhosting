@@ -10,5 +10,5 @@ nbproject/
 *.svn-base
 \.svn/
 
-elite/board/cache/production/
-elite/feed-cache\.txt
+board/cache/production/
+feed-cache\.txt
