@@ -180,25 +180,33 @@
                             <dt>Unique Players:</dt>
                             <dd>
                                 <b>
-                                    <?php echo uniquePlayers(); ?>
+                                    <a class="white" href="/stats">
+                                        <?php echo uniquePlayers(); ?>
+                                    </a>
                                 </b>
                             </dd>
                             <dt>Total Players:</dt>
                             <dd>
                                 <b>
-                                    <?php echo totalGameCharacters(); ?>
+                                    <a class="white" href="/stats">
+                                        <?php echo totalGameCharacters(); ?>
+                                    </a>
                                 </b>
                             </dd>
                             <dt>Gold:</dt>
                             <dd>
                                 <b>
-                                    <?php echo banktotalGold(); ?>
+                                    <a class="white" href="/stats">
+                                        <?php echo banktotalGold(); ?>
+                                    </a>
                                 </b>
                             </dd>
                             <dt>Time Played:</dt>
                             <dd>
                                 <b>
-                                    <?php echo totalTime(); ?>
+                                    <a class="white" href="/stats">
+                                        <?php echo totalTime(); ?>
+                                    </a>
                                 </b>
                             </dd>
                         </dl>
