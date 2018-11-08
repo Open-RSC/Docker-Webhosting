@@ -126,7 +126,7 @@
                             <ul>
                                 <li><a href="board/ucp?mode=register">Register</a></li>
                                 <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a></li>
-                                <li><a href="#">Android</a></li>
+                                <li><a href="https://game.openrsc.com/downloads/openrsc.apk">Android</a></li>
                                 <li><a href="https://discordapp.com/invite/94vVKND">Discord</a></li>
                             </ul>
                         </div>
