@@ -13,7 +13,8 @@ if (!defined('IN_PHPBB')) {
                     <b><?php echo uniquePlayers(); ?></b> people have created <b><?php echo totalPlayers(); ?></b> players.<br/>
                     <b><?php echo newRegistrationsToday(); ?></b> players have been registered today.<br/>
                     <b><?php echo loginsToday(); ?></b> players logged in today.<br/>
-                    <b><?php echo playersOnline(); ?></b> players currently logged in.<br/><br/>
+                    <b><?php echo playersOnline(); ?></b> players currently logged in.<br/>
+                    <b><?php echo totalTime(); ?></b> total time played.<br/><br/>
 
                     <h4 style="color: #C6A444;">Combat</h4>
                     The highest combat level is <b><?php echo topcombat(); ?>.</b><br/>
@@ -28,7 +29,7 @@ if (!defined('IN_PHPBB')) {
                     <b><?php echo startedQuest(); ?></b> players have started at least one quest.<br/><br/>
 
                     <h4 style="color: #C6A444;">Wealth</h4>
-                    There is a total of <b><?php echo banktotalGold(); ?></b> gp in-game presently.<br/>
+                    <b><?php echo banktotalGold(); ?></b> gp total in-game.<br/>
                     <b><?php echo gold30(); ?></b> players have over 30K gp.<br/>
                     <b><?php echo gold50(); ?></b> players have over 50K gp.<br/>
                     <b><?php echo gold80(); ?></b> players have over 80K gp.<br/>
