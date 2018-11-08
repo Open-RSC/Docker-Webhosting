@@ -307,12 +307,77 @@ function banktotalGold()
 function maxGold()
 {
     $connector = new Dbc();
-    $maxGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, format(B.amount, 0) as count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND A.group_id = '4' AND A.banned = '0' ORDER BY B.amount DESC LIMIT 5");
-    while ($row = $connector->fetchArray($maxGold)) {
+    $maxGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, format(B.amount, 0) as count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '10' AND A.group_id = '4' AND A.banned = '0' ORDER BY B.amount DESC LIMIT 10");
+    $maxGold2 = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, format(B.amount, 0) as count2 FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '10' AND A.group_id = '4' AND A.banned = '0' ORDER BY B.amount DESC LIMIT 10");
+    while ($row = $connector->fetchArray($maxGold) + $row = $connector->fetchArray($maxGold2)) {
         echo $row["username"];
         echo ': ';
-        echo $row["count"];
-        echo ' gp<br />';
+        if ($row["count"] == NULL) {
+            echo 'B ';
+            echo "0";
+        } else {
+            echo 'B ';
+            echo $row["count"];
+        }
+        echo ' / ';
+        if ($row["count2"] == NULL) {
+            echo 'I ';
+            echo "0";
+        } else {
+            echo 'I ';
+            echo $row['count2'];
+        }
+        echo '<br />';
+    }
+}
+
+function maxNatsB()
+{
+    $connector = new Dbc();
+    $maxNatsB = $connector->gamequery("SELECT  A.username as username, format(B.amount, 0) as amt
+            FROM    openrsc_bank as B
+            LEFT JOIN openrsc_players as A
+            ON      B.playerID = A.id
+            AND     A.group_id = '4'
+            AND     A.banned = '0'
+            WHERE	B.id = '40'
+            ORDER BY B.amount DESC
+            LIMIT 5;
+");
+    while ($row = $connector->fetchArray($maxNatsB)) {
+        echo $row["username"];
+        echo ': ';
+        if ($row["amt"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["amt"];
+        }
+        echo '<br />';
+    }
+}
+
+function maxNatsI()
+{
+    $connector = new Dbc();
+    $maxNatsI = $connector->gamequery("SELECT  A.username as username, format(B.amount, 0) as amt
+            FROM    openrsc_invitems as B
+            LEFT JOIN openrsc_players as A
+            ON      B.playerID = A.id
+            AND     A.group_id = '4'
+            AND     A.banned = '0'
+            WHERE	B.id = '40'
+            ORDER BY B.amount DESC
+            LIMIT 5;
+");
+    while ($row = $connector->fetchArray($maxNatsI)) {
+        echo $row["username"];
+        echo ': ';
+        if ($row["amt"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["amt"];
+        }
+        echo '<br />';
     }
 }
 
