@@ -130,7 +130,7 @@ function onlinePlayers()
         if ($row["username"] == NULL) {
             echo "No players currently online.";
         } else {
-            echo '<a class="white" href="/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
+            echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
             echo '<br />';
         }
     }
@@ -157,7 +157,7 @@ function listregistrationsToday()
         if ($row["username"] == NULL) {
             echo "No players have been created today.";
         } else {
-            echo '<a class="white" href="/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
+            echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
             echo '<br />';
         }
     }
@@ -184,7 +184,7 @@ function listloginsToday()
         if ($row["username"] == NULL) {
             echo "No players have logged in today.";
         } else {
-            echo '<a class="white" href="/characters/'. $row["username"].'">'. ucfirst($row["username"]).'</a>';
+            echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
             echo '<br />';
         }
     }
@@ -385,6 +385,246 @@ function gold15m()
     $gold15m = $connector->gamequery("SELECT A.id, A.username, A.group_id, B.playerID, B.id, COUNT(B.amount) FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND B.amount >= 1500000 AND A.group_id = '4' AND A.banned = '0'");
     while ($row = $connector->fetchArray($gold15m)) {
         echo $row["COUNT(B.amount)"];
+    }
+}
+
+function pumpkins()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '422' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '422' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function crackers()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '575' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '575s' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function yellowphat()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '577' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '577' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function whitephat()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '581' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '581' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function purplephat()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '580' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '580' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function redphat()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '576' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '576' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function bluephat()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '578' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '578' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function greenphat()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '579' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '579' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function eastereggs()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '677' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '677' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function greenmask()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '828' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '828' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function redmask()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '831' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '831' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function bluemask()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '832' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '832' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function santahat()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '971' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '971' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function bunnyears()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '1156' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '1156' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
+    }
+}
+
+function scythe()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT SUM(amt) from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '1289' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '1289' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["SUM(amt)"];
+        }
     }
 }
 
