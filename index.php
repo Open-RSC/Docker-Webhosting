@@ -57,8 +57,9 @@
             <li><a href="/board/index">Forum</a></li>
             <li><a href="/chat">Game Chat</a></li>
             <li><a href="/highscores/skill_total">Highscores</a></li>
-            <li><a href="/worldmap">Player Map</a></li>
+            <li><a href="/worldmap">Live Map</a></li>
             <li><a href="/database">Database</a></li>
+            <li><a href="/calendar">Calendar</a></li>
         </ul>
 
         <div class="account-panel">

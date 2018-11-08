@@ -88,12 +88,12 @@ while ($char = $connector->fetchArray($playerPositions)) {
     }
     $xs[] = $coords['x'];
     $ys[] = $coords['y'];
-    ?><img src="/avatars/<?php echo $char['id'] ?>.png" style="display: none;" /><?php
-    $areaPlayer[] = 'ctx.drawImage(player,' . $coords['x'] . ', ' . $coords['y'] . ', 17, 25);'
+    ?><img src="/css/images/crosshairs.svg" style="display: none;" /><?php
+    $areaPlayer[] = 'ctx.drawImage(player,' . $coords['x'] . ', ' . $coords['y'] . ', 45, 45);'
         . ' ctx.fillStyle="white"; '
-        . ' ctx.font="8pt Exo"; '
+        . ' ctx.font="14pt Exo"; '
         . ' ctx.fillText("' . $char['username'] . '", ' . $coords['x'] . ', ' . $coords['y'] . '); '
-        . ' player.src ="/avatars/' . $char['id'] . '.png"; '
+        . ' player.src ="/css/images/crosshairs.svg"; '
     ?><?php
 } ?>
 
