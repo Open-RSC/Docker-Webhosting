@@ -40,7 +40,7 @@ if (!defined('IN_PHPBB')) {
                     <b><?php echo gold15m(); ?></b> players have over 1.5M gp.<br/><br/>
 
                     <h4 style="color: #C6A444;">Holiday Items</h4>
-                    <img src="/css/images/items/422.png"/> <b><?php echo pumpkins(); ?></b> (12989 on 11/1/2018)<br/>
+                    <img src="/css/images/items/422.png"/> <b><?php echo pumpkins(); ?></b> (12,989 on 11/1/2018)<br/>
                     <img src="/css/images/items/575.png"/> <b><?php echo crackers(); ?></b> (0 on 12/26/2018)<br/>
                     <img src="/css/images/items/577.png"/> <b><?php echo yellowphat(); ?></b> (0 on 12/26/2018)<br/>
                     <img src="/css/images/items/581.png"/> <b><?php echo whitephat(); ?></b> (0 on 12/26/2018)<br/>
