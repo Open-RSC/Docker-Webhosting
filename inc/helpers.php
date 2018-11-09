@@ -114,3 +114,10 @@ $posts_ary = array(
 $posts = $db->sql_build_query('SELECT', $posts_ary);
 $posts_result = $db->sql_query_limit($posts, $search_limit);
 ?>
+
+<style type="text/css">
+	A:link { COLOR: white; TEXT-DECORATION: none; font-weight: normal }
+	A:visited { COLOR: white; TEXT-DECORATION: none; font-weight: normal }
+	A:active { COLOR: white; TEXT-DECORATION: none }
+	A:hover { COLOR: #C6A444; TEXT-DECORATION: none; font-weight: none }
+</style>
