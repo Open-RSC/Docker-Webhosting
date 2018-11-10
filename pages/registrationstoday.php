@@ -9,7 +9,7 @@ if (!defined('IN_PHPBB')) {
             <div class="panel">
                 <div style="margin-left: 80px; margin-right: 80px; margin-top: 45px; margin-bottom: 45px; color: lightgrey; font-size: 18px;"
                      align="center">
-                    <h4 align="center">Players Created Today</h4>
+                    <h4 align="center">Players Created Today</h4><br/>
                     <b><?php echo listregistrationsToday(); ?></b><br/><br/>
                 </div>
             </div>
