@@ -131,6 +131,7 @@ function onlinePlayers()
             echo "No players currently online.";
         } else {
             echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
+            echo '<br />';
         }
     }
 }
@@ -157,6 +158,7 @@ function listregistrationsToday()
             echo "No players have been created today.";
         } else {
             echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
+            echo '<br />';
         }
     }
 }
@@ -183,6 +185,7 @@ function listloginsToday()
             echo "No players have logged in today.";
         } else {
             echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
+            echo '<br />';
         }
     }
 }
@@ -196,7 +199,7 @@ function gameChat()
     <div style="font: 14px 'Exo', sans-serif; color: lightgrey;">
         <?php while ($row = $connector->fetchArray($game_accounts)) { ?>
             [<?php echo strftime("%d %b | %I:%M:%S %p", $row["time"]) ?>]
-            <b><?php echo ucwords($row["sender"]) ?>:</b> <?php echo $row["message"] ?>
+            <b><?php echo ucwords($row["sender"]) ?>:</b> <?php echo $row["message"] ?><br/>
         <?php } ?>
     </div>
     <?php
@@ -324,6 +327,7 @@ function maxGold()
             echo 'I ';
             echo $row['count2'];
         }
+        echo '<br />';
     }
 }
 
@@ -348,6 +352,7 @@ function maxNatsB()
         } else {
             echo $row["amt"];
         }
+        echo '<br />';
     }
 }
 
@@ -372,6 +377,7 @@ function maxNatsI()
         } else {
             echo $row["amt"];
         }
+        echo '<br />';
     }
 }
 
