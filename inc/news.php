@@ -1,3 +1,4 @@
+<h4 style="color: #C6A444">Recent News</h4>
 <?php
 	while ($posts_row = $db->sql_fetchrow($posts_result)) {
 		$topic_title = $posts_row['topic_title'];
