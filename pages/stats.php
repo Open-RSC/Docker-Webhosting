@@ -10,11 +10,11 @@ if (!defined('IN_PHPBB')) {
                 <div style="margin-left: 80px; margin-right: 80px; margin-top: 45px; margin-bottom: 45px; color: lightgrey; font-size: 18px;"
                      align="left">
                     <h4 style="color: #C6A444;">Accounts</h4>
+                    <b><a class="white" href="/online"><?php echo playersOnline(); ?></a></b> players currently logged in.<br/>
+                    <b><a class="white" href="/registrationstoday"><?php echo newRegistrationsToday(); ?></a></b> players have been registered today.<br/>
+                    <b><a class="white" href="/loginstoday"><?php echo loginsToday(); ?></a></b> players logged in today.<br/>
                     <b><?php echo uniquePlayers(); ?></b> people have created <b><?php echo totalPlayers(); ?></b>
                     players.<br/>
-                    <b><?php echo newRegistrationsToday(); ?></b> players have been registered today.<br/>
-                    <b><?php echo loginsToday(); ?></b> players logged in today.<br/>
-                    <b><?php echo playersOnline(); ?></b> players currently logged in.<br/>
                     <b><?php echo totalTime(); ?></b> total time played.<br/><br/>
 
                     <h4 style="color: #C6A444;">Combat</h4>
