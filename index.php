@@ -56,8 +56,9 @@
             <li><a href="/chat">Game Chat</a></li>
             <li><a href="/highscores/skill_total">Highscores</a></li>
             <li><a href="/worldmap">Live Map</a></li>
-            <li><a href="/database">Database</a></li>
+            <li><a href="/database">Info</a></li>
             <li><a href="/calendar">Calendar</a></li>
+            <li><a href="/links">Links</a></li>
         </ul>
 
         <div class="account-panel">
@@ -119,19 +120,62 @@
             <main class="main">
                 <article>
                     <div class="panel">
+                        <br/>
                         <img class="logo" src="css/images/logo.png" alt="Open RSC Logo"/>
-                        <div class="main-links">
-                            <ul>
-                                <li><a href="board/ucp?mode=register">Register</a></li>
-                                <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a></li>
-                                <li><a href="https://game.openrsc.com/downloads/openrsc.apk">Android</a></li>
-                                <li><a href="https://discordapp.com/invite/94vVKND">Discord</a></li>
-                            </ul>
+
+                        <!-- Game Links Section-->
+                        <div style="margin-left: 40px; margin-right: 40px; margin-top: 25px; margin-bottom: 15px; color: lightgrey; font-size: 18px;"
+                             align="center">
+
+                            <!--<h3>Open RSC</h3>-->
+                            <a href="https://game.openrsc.com/downloads/OpenRSC.jar"><b>Download</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://game.openrsc.com/downloads/openrsc.apk"><b>Android</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://openrsc.com/OpenRSC"><b>Game Info</b></a>
+                            <!--<br/><br/>-->
+
+                            <!--<h3>Open Stork PK</h3>
+                            <h6><font color="red">(Currently in alpha testing)</font></h6>
+                            <a href="https://stork.openrsc.com/downloads/OpenStorkPK.jar"><b>Download</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://stork.openrsc.com/downloads/openstorkpk.apk"><b>Android</b></a>
+                            <font
+                                    color="#C6A444">|</font>
+                            <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://openrsc.com/OpenStorkPK"><b>Game Info</b></a>
+                            <br/><br/>
+
+                            <h3>Slothscape</h3>
+                            <h6><font color="red">(Currently in alpha testing)</font></h6>
+                            <a href="https://sloth.openrsc.com/downloads/Slothscape.jar"><b>Download</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://sloth.openrsc.com/downloads/slothscape.apk"><b>Android</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://openrsc.com/Slothscape"><b>Game Info</b></a>
+                            <br/><br/>
+
+                            <h3>Wolf Kingdom</h3>
+                            <h6><font color="red">(Currently in alpha testing)</font></h6>
+                            <a href="https://wolf.openrsc.com/downloads/WolfKingdom.jar"><b>Download</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://wolf.openrsc.com/downloads/wolfkingdom.apk"><b>Android</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
+                                    color="#C6A444">|</font>
+                            <a href="https://openrsc.com/WolfKingdom"><b>Game Info</b></a>
+                            <br/><br/>-->
                         </div>
 
                         <hr>
 
                         <div class="news">
+                            <h3>Recent Open RSC News</h3>
                             <?php include 'inc/news.php' ?>
                         </div>
                     </div>
