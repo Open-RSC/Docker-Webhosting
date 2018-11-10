@@ -175,7 +175,6 @@
                         <hr>
 
                         <div class="news">
-                            <h3>Recent Open RSC News</h3>
                             <?php include 'inc/news.php' ?>
                         </div>
                     </div>
