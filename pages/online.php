@@ -15,4 +15,4 @@ if (!defined('IN_PHPBB')) {
             </div>
         </article>
     </div>
-</div>s
+</div>
