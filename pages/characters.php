@@ -89,13 +89,13 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                             ?></span>
                         <!--<span class="sm-stats">Owner: <a
                             href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $phpbb_user['player_name']; ?></a></span>-->
-                            <span class="sm-stats">Last Login: <?php echo strftime("%d %b / %I:%M:%S %p", $character["login_date"]) ?></span>
                             <span class="sm-stats">Status:
                             <?php if ($character['online'] == 1) {
                                 echo '<span class="green"><strong>Online</strong></span>';
                             } else {
                                 echo '<span class="red"><strong>Offline</strong></span>';
                             } ?></span>
+                            <span class="sm-stats">Login: <?php date_default_timezone_set('America/New_York'); echo strftime("%d %b / %I:%M:%S %p %Z", $character["login_date"]) ?></span>
                     </div>
                 </div>
             </div>
