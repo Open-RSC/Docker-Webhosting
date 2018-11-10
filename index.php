@@ -53,12 +53,14 @@
         <ul class="navbar">
             <li><a href="/">Home</a></li>
             <li><a href="/board/index">Forum</a></li>
-            <li><a href="/chat">Game Chat</a></li>
-            <li><a href="/highscores/skill_total">Highscores</a></li>
+            <li><a href="/chat">Chat Log</a></li>
+            <li><a href="/highscores/skill_total">Hiscores</a></li>
             <li><a href="/worldmap">Live Map</a></li>
             <li><a href="/database">Info</a></li>
-            <li><a href="/calendar">Calendar</a></li>
             <li><a href="/links">Links</a></li>
+            <li><a href="/calendar">Events</a></li>
+            <li><a href="/rules">Rules</a></li>
+            <li><a href="/openrsc-faq">FAQ</a></li>
         </ul>
 
         <div class="account-panel">
@@ -134,7 +136,7 @@
                                     color="#C6A444">|</font>
                             <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
                                     color="#C6A444">|</font>
-                            <a href="https://openrsc.com/OpenRSC"><b>Game Info</b></a>
+                            <a href="https://openrsc.com/openrsc-faq"><b>FAQ</b></a>
                             <!--<br/><br/>-->
 
                             <!--<h3>Open Stork PK</h3>
@@ -146,7 +148,7 @@
                                     color="#C6A444">|</font>
                             <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
                                     color="#C6A444">|</font>
-                            <a href="https://openrsc.com/OpenStorkPK"><b>Game Info</b></a>
+                            <a href="https://openrsc.com/openstorkpk-faq"><b>FAQ</b></a>
                             <br/><br/>
 
                             <h3>Slothscape</h3>
@@ -157,7 +159,7 @@
                                     color="#C6A444">|</font>
                             <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
                                     color="#C6A444">|</font>
-                            <a href="https://openrsc.com/Slothscape"><b>Game Info</b></a>
+                            <a href="https://openrsc.com/slothscape-faq"><b>FAQ</b></a>
                             <br/><br/>
 
                             <h3>Wolf Kingdom</h3>
@@ -168,7 +170,7 @@
                                     color="#C6A444">|</font>
                             <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
                                     color="#C6A444">|</font>
-                            <a href="https://openrsc.com/WolfKingdom"><b>Game Info</b></a>
+                            <a href="https://openrsc.com/wolfkingdom-faq"><b>FAQ</b></a>
                             <br/><br/>-->
                         </div>
 
@@ -263,7 +265,9 @@
     </div> <!-- wrapper -->
 
     <footer>
-        <p>Open RSC is in no way affiliated with JaGex or Runescape Classic.</p>
+        <p>
+            <small>Open RSC is in no way affiliated with Jagex or Runescape Classic.</small>
+        </p>
     </footer>
 
 </div>
