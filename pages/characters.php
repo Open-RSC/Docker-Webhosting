@@ -53,7 +53,7 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
             <div class="stats flex-row">
                 <div id="character">
                     <?php
-                    $file = '/avatars/' . $character['id'] . '.png';
+                    $file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png';
                     echo "<img src=\"$file\"/>";
                     ?>
                 </div>
@@ -97,7 +97,7 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                     </div>
                 </div>
             </div>
-            <canvas class="line-chart"></canvas>
+            <!--<canvas class="line-chart"></canvas>
             <script>
                 new Chart(document.getElementById("line-chart"), {
                     type: 'line',
@@ -130,12 +130,15 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                         }
                     }
                 });
-            </script>
+            </script>-->
             <div class="accomplishments">
                 <h4>Recent Accomplishments: </h4>
+                <div align="left" style="margin-left: 10px;">
                 <?php while ($row = $connector->fetchArray($player_feed)) {
                     echo '[<strong>' . strftime("%d %b / %I:%M:%S %p", $row["time"]) . '</strong>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
+                    echo '<br/>';
                 } ?>
+                </div>
             </div>
             <div class="pie-stats">
                 <script type="text/javascript">

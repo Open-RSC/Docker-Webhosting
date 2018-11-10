@@ -124,10 +124,10 @@
                         <img class="logo" src="css/images/logo.png" alt="Open RSC Logo"/>
 
                         <!-- Game Links Section-->
-                        <div style="margin-left: 40px; margin-right: 40px; margin-top: 15px; margin-bottom: 15px; color: lightgrey; font-size: 18px;"
+                        <div style="margin-left: 40px; margin-right: 40px; margin-top: 25px; margin-bottom: 15px; color: lightgrey; font-size: 18px;"
                              align="center">
 
-                            <h3>Open RSC</h3>
+                            <!--<h3>Open RSC</h3>-->
                             <a href="https://game.openrsc.com/downloads/OpenRSC.jar"><b>Download</b></a> <font
                                     color="#C6A444">|</font>
                             <a href="https://game.openrsc.com/downloads/openrsc.apk"><b>Android</b></a> <font
@@ -135,9 +135,9 @@
                             <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
                                     color="#C6A444">|</font>
                             <a href="https://openrsc.com/OpenRSC"><b>Game Info</b></a>
-                            <br/><br/>
+                            <!--<br/><br/>-->
 
-                            <h3>Open Stork PK</h3>
+                            <!--<h3>Open Stork PK</h3>
                             <h6><font color="red">(Currently in alpha testing)</font></h6>
                             <a href="https://stork.openrsc.com/downloads/OpenStorkPK.jar"><b>Download</b></a> <font
                                     color="#C6A444">|</font>
@@ -169,7 +169,7 @@
                             <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
                                     color="#C6A444">|</font>
                             <a href="https://openrsc.com/WolfKingdom"><b>Game Info</b></a>
-                            <br/><br/>
+                            <br/><br/>-->
                         </div>
 
                         <hr>
