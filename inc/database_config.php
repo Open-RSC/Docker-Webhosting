@@ -131,6 +131,7 @@ function onlinePlayers()
             echo "No players currently online.";
         } else {
             echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
+            echo '<br/>';
         }
     }
 }
