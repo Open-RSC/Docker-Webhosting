@@ -46,7 +46,7 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
             <div>
                 <h3>
                     &nbsp<?php if ($character['group_id'] != 4): echo "<img src=\"../css/images/$character[group_id].svg\" width=\"20\" height=\"20\"> ";
-                    else: NULL;                        endif;
+                    else: NULL; endif;
                     echo $subpage; ?>'s player information
                 </h3>
             </div>
@@ -75,7 +75,7 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                         <?php } ?>
                     </div>
 
-                    <div id="sm-stats">                        <span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
+                    <div id="sm-stats"><span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
                         <span class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
                         <span class="sm-stats">Time Played: <?php
                             while ($row = $connector->fetchArray($totalTime)) {
@@ -84,10 +84,12 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                                 $hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
                                 $minutes = floor(($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60)) / 60);
                                 $seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
-                                echo $days . 'd ' . $hours . 'h ' . $minutes . 'm ';                            }
+                                echo $days . 'd ' . $hours . 'h ' . $minutes . 'm ';
+                            }
                             ?></span>
                         <!--<span class="sm-stats">Owner: <a
                             href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $phpbb_user['player_name']; ?></a></span>-->
+                            <span class="sm-stats">Last Login: <?php echo strftime("%d %b / %I:%M:%S %p", $character["login_date"]) ?></span>
                             <span class="sm-stats">Status:
                             <?php if ($character['online'] == 1) {
                                 echo '<span class="green"><strong>Online</strong></span>';
@@ -104,19 +106,25 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                     data: {
                         labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
                         datasets: [{
-                            data: [<?php while ($row = $connector->fetchArray($player_logins)) {echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];} ?>],
+                            data: [<?php while ($row = $connector->fetchArray($player_logins)) {
+                echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
+            } ?>],
                             label: "Logins",
                             borderColor: "#FF0000",
                             fill: false
                         },
                             {
-                                data: [<?php while ($row = $connector->fetchArray($player_chatlogs)) {echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];} ?>],
+                                data: [<?php while ($row = $connector->fetchArray($player_chatlogs)) {
+                echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
+            } ?>],
                                 label: "Chat Messages",
                                 borderColor: "#0000FF",
                                 fill: false
                             },
                             {
-                                data: [<?php while ($row = $connector->fetchArray($player_tradelogs)) {echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];} ?>],
+                                data: [<?php while ($row = $connector->fetchArray($player_tradelogs)) {
+                echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
+            } ?>],
                                 label: "Trades",
                                 borderColor: "#ffffff",
                                 fill: false
@@ -134,10 +142,10 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
             <div class="accomplishments">
                 <h4>Recent Accomplishments: </h4>
                 <div align="left" style="margin-left: 10px;">
-                <?php while ($row = $connector->fetchArray($player_feed)) {
-                    echo '[<strong>' . strftime("%d %b / %I:%M:%S %p", $row["time"]) . '</strong>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
-                    echo '<br/>';
-                } ?>
+                    <?php while ($row = $connector->fetchArray($player_feed)) {
+                        echo '[<strong>' . strftime("%d %b / %I:%M:%S %p", $row["time"]) . '</strong>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
+                        echo '<br/>';
+                    } ?>
                 </div>
             </div>
             <div class="pie-stats">
