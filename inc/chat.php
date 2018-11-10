@@ -55,9 +55,15 @@ function gameChat()
     date_default_timezone_set('America/New_York');
     ?>
     <div style="font: 14px 'Exo', sans-serif; color: lightgrey;">
+        <style type="text/css">
+            A:link { COLOR: white; TEXT-DECORATION: none; font-weight: normal }
+            A:visited { COLOR: white; TEXT-DECORATION: none; font-weight: normal }
+            A:active { COLOR: white; TEXT-DECORATION: none }
+            A:hover { COLOR: #C6A444; TEXT-DECORATION: none; font-weight: none }
+        </style>
         <?php while ($row = $connector->fetchArray($game_accounts)) { ?>
             [<b><?php echo strftime("%d %b / %I:%M:%S %p", $row["time"]) ?></b>]
-            [<b><?php echo ucwords($row["sender"]) ?></b>] <?php echo $row["message"] ?><br/>
+            [<b><a href="/characters/<?php echo ucwords($row["sender"]) ?>" target="_blank"><?php echo ucwords($row["sender"]) ?></a></b>] <?php echo $row["message"] ?><br/>
         <?php } ?>
     </div>
     <?php
