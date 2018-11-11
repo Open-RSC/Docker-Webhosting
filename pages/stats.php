@@ -40,6 +40,14 @@ if (!defined('IN_PHPBB')) {
                     <b><?php echo gold12m(); ?></b> players have over 1.2M gp.<br/>
                     <b><?php echo gold15m(); ?></b> players have over 1.5M gp.<br/><br/>
 
+                    <h4 style="color: #C6A444;">Expensive Items</h4>
+                    <img src="/css/images/items/1278.png"/> <b><?php echo dsq(); ?></b><br/>
+                    <img src="/css/images/items/795.png"/> <b><?php echo dmed(); ?></b><br/>
+                    <img src="/css/images/items/522.png"/> <b><?php echo dammy(); ?></b><br/>
+                    <img src="/css/images/items/597.png"/> <b><?php echo chargeddammy(); ?></b><br/>
+                    <img src="/css/images/items/594.png"/> <b><?php echo dbattle(); ?></b><br/>
+                    <img src="/css/images/items/593.png"/> <b><?php echo dlong(); ?></b><br/><br/>
+
                     <h4 style="color: #C6A444;">Holiday Items</h4>
                     <img src="/css/images/items/422.png"/> <b><?php echo pumpkins(); ?></b> (13,001 on 11/1/2018)<br/>
                     <img src="/css/images/items/575.png"/> <b><?php echo crackers(); ?></b> (0 on 12/26/2018)<br/>
