@@ -693,6 +693,102 @@ function scythe()
     }
 }
 
+function dsq()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT format(SUM(amt), 0) as amt from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '1278' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '1278' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["amt"];
+        }
+    }
+}
+
+function dmed()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT format(SUM(amt), 0) as amt from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '795' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '795' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["amt"];
+        }
+    }
+}
+
+function dammy()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT format(SUM(amt), 0) as amt from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '522' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '522' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["amt"];
+        }
+    }
+}
+
+function chargeddammy()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT format(SUM(amt), 0) as amt from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '597' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '597' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["amt"];
+        }
+    }
+}
+
+function dbattle()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT format(SUM(amt), 0) as amt from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '594' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '594' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["amt"];
+        }
+    }
+}
+
+function dlong()
+{
+    $connector = new Dbc();
+    $gold1m = $connector->gamequery("SELECT format(SUM(amt), 0) as amt from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '593' AND A.group_id = '4' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '593' AND A.group_id = '4' AND A.banned = '0') a");
+    while ($row = $connector->fetchArray($gold1m)) {
+        if ($row["SUM(amt)"] == NULL) {
+            echo "0";
+        } else {
+            echo $row["amt"];
+        }
+    }
+}
+
 function totalTime()
 {
     $connector = new Dbc();
