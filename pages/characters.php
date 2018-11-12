@@ -23,17 +23,17 @@ $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $skills = buildSQLArray($skill_array);
 
-$character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage'");
+$character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.id = '$subpage'");
 $character = $connector->fetchArray($character_result);
 
 $totalTime = $connector->gamequery("SELECT SUM(`value`) FROM openrsc_player_cache LEFT JOIN openrsc_players ON openrsc_player_cache.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' AND `openrsc_player_cache`.`key` = 'total_played'");
 
-$phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
-$phpbb_user = $connector->fetchArray($phpbb_user_result);
+//$phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
+//$phpbb_user = $connector->fetchArray($phpbb_user_result);
 
-$player_logins = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
-$player_chatlogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
-$player_tradelogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_trade_logs WHERE player1 = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+//$player_logins = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+//$player_chatlogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+//$player_tradelogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_trade_logs WHERE player1 = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
 
 $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE username = '$subpage' ORDER BY `time` DESC LIMIT 8");
 
@@ -47,7 +47,7 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                 <h3>
                     &nbsp<?php if ($character['group_id'] != 4): echo "<img src=\"../css/images/$character[group_id].svg\" width=\"20\" height=\"20\"> ";
                     else: NULL; endif;
-                    echo $subpage; ?>'s player information
+                    echo $character['username']; ?>'s player information
                 </h3>
             </div>
             <div class="stats flex-row">

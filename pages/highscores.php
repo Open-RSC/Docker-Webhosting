@@ -50,7 +50,7 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
     }
     $args = $query[0];
     $order = $query[1];
-    $stat_result = $connector->gamequery("SELECT openrsc_players.username,$args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id = '4' AND openrsc_players.login_date >= unix_timestamp( current_date - interval 3 month ) AND openrsc_players.login_date >= '1539645175' ORDER BY $order DESC LIMIT 30");
+    $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players.username,$args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id = '4' AND openrsc_players.login_date >= unix_timestamp( current_date - interval 3 month ) AND openrsc_players.login_date >= '1539645175' ORDER BY $order DESC LIMIT 30");
     ?>
 
     <div class="main">
@@ -88,12 +88,12 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
                             <?php
                             $i = 1;
                             while ($row = $connector->fetchArray($stat_result)) {
-                                $usernameLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['username']);
+                                $idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['id']);
                                 ?>
                                 <tr id="table">
                                     <td class="rank"><?php echo $i; ?></td>
                                     <td class="username">
-                                        <a href="/characters/<?php echo $usernameLink; ?>"><?php echo $row['username']; ?></a>
+                                        <a href="/characters/<?php echo $idLink; ?>"><?php echo $row['username']; ?></a>
                                     </td>
                                     <td class="level">
                                         <?php echo ($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_' . $subpage] / 4.0); ?>

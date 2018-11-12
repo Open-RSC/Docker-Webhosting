@@ -125,12 +125,12 @@ function totalGameCharacters()
 function onlinePlayers()
 {
     $connector = new Dbc();
-    $game_accounts = $connector->gamequery("SELECT username FROM openrsc_players WHERE online = '1'");
+    $game_accounts = $connector->gamequery("SELECT id, username FROM openrsc_players WHERE online = '1'");
     while ($row = $connector->fetchArray($game_accounts)) {
         if ($row["username"] == NULL) {
             echo "No players currently online.";
         } else {
-            echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
+            echo '<a class="white" href="/characters/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
             echo '<br />';
         }
     }
@@ -152,12 +152,12 @@ function newRegistrationsToday()
 function listregistrationsToday()
 {
     $connector = new Dbc();
-    $registrations_today = $connector->gamequery("SELECT username FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 1 day )");
+    $registrations_today = $connector->gamequery("SELECT id, username FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 1 day )");
     while ($row = $connector->fetchArray($registrations_today)) {
         if ($row["username"] == NULL) {
             echo "No players have been created today.";
         } else {
-            echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
+            echo '<a class="white" href="/characters/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
             echo '<br />';
         }
     }
@@ -179,30 +179,15 @@ function loginsToday()
 function listloginsToday()
 {
     $connector = new Dbc();
-    $loginsToday = $connector->gamequery("SELECT username FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
+    $loginsToday = $connector->gamequery("SELECT id, username FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
     while ($row = $connector->fetchArray($loginsToday)) {
         if ($row["username"] == NULL) {
             echo "No players have logged in today.";
         } else {
-            echo '<a class="white" href="/characters/' . $row["username"] . '">' . ucfirst($row["username"]) . '</a>';
+            echo '<a class="white" href="/characters/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
             echo '<br />';
         }
     }
-}
-
-function gameChat()
-{
-    $connector = new Dbc();
-    $game_accounts = $connector->logquery("SELECT sender, message, time FROM openrsc_chat_logs ORDER BY time DESC LIMIT 10000");
-    date_default_timezone_set('America/New_York');
-    ?>
-    <div style="font: 14px 'Exo', sans-serif; color: lightgrey;">
-        <?php while ($row = $connector->fetchArray($game_accounts)) { ?>
-            [<?php echo strftime("%d %b | %I:%M:%S %p", $row["time"]) ?>]
-            <b><?php echo ucwords($row["sender"]) ?>:</b> <?php echo $row["message"] ?><br/>
-        <?php } ?>
-    </div>
-    <?php
 }
 
 function totalPlayers()
