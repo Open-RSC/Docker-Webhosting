@@ -51,7 +51,7 @@ class Dbc
 function gameChat()
 {
     $connector = new Dbc();
-    $game_accounts = $connector->logquery("SELECT sender, message, time FROM openrsc_chat_logs WHERE time >= unix_timestamp( current_date - interval 5 day ) ORDER BY time DESC LIMIT 10000");
+    $game_accounts = $connector->logquery("SELECT A.id playerID, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username WHERE B.time >= unix_timestamp( current_date - interval 5 day ) ORDER BY B.time DESC LIMIT 10000");
     date_default_timezone_set('America/New_York');
     ?>
     <div style="font: 14px 'Exo', sans-serif; color: lightgrey;">
@@ -61,9 +61,11 @@ function gameChat()
             A:active { COLOR: white; TEXT-DECORATION: none }
             A:hover { COLOR: #C6A444; TEXT-DECORATION: none; font-weight: none }
         </style>
-        <?php while ($row = $connector->fetchArray($game_accounts)) { ?>
+        <?php while ($row = $connector->fetchArray($game_accounts)) {
+            $idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
+            ?>
             [<b><?php date_default_timezone_set('America/New_York'); echo strftime("%d %b / %I:%M:%S %p %Z", $row["time"]) ?></b>]
-            [<b><a href="/characters/<?php echo ucwords($row["sender"]) ?>" target="_blank"><?php echo ucwords($row["sender"]) ?></a></b>] <?php echo $row["message"] ?><br/>
+            [<b><a href="/characters/<?php echo $idLink ?>" target="_blank"><?php echo ucwords($row["sender"]) ?></a></b>] <?php echo $row["message"] ?><br/>
         <?php } ?>
     </div>
     <?php
