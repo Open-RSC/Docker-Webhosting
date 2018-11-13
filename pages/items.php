@@ -48,8 +48,8 @@ $list_items = $connector->gamequery('SELECT id, name, description, basePrice FRO
                                     <small><?php echo $result['description'] ?></small>
                                 </td>
                                 <td><?php echo number_format($result['basePrice']) ?>gp</td>
-                                <td><?php echo number_format($result['basePrice'] / 100 * 40) ?>gp</td>
-                                <td><?php echo number_format($result['basePrice'] / 100 * 40 * 1.5) ?>gp</td>
+                                <td><?php echo number_format($result['basePrice'] * 0.4) ?>gp</td>
+                                <td><?php echo number_format($result['basePrice'] * 0.6) ?>gp</td>
                             </tr>
                         <?php } ?>
                         </tbody>
