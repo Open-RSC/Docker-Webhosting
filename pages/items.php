@@ -13,7 +13,7 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
         <div class="panel">
             <div align="center">
                 <h3>Item Database</h3>
-                <small>(Click on each for more info)</small>
+                <small>(Click on each for more information)</small>
                 <br/><br/>
             </div>
             <div class="panel-body">
