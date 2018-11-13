@@ -26,7 +26,7 @@ $itemCountActive = $connector->gamequery("SELECT SUM(amt) as amt from (
             <?php if ($result) { ?>
             <div>
                 <h3>
-                    <?php echo $result['name']; ?>
+                    <a href="/items"><?php echo $result['name']; ?></a>
                 </h3>
             </div>
             <div class="stats flex-row">
