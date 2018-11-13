@@ -12,13 +12,18 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
     <article>
         <div class="panel">
             <div align="center">
-                <h3>Item Database</h3><small>(Click on a picture for more info)</small><br/><br/>
+                <h3>Item Database</h3>
+                <small>(Click on each for more info)</small>
+                <br/><br/>
             </div>
             <div class="panel-body">
                 <div>
                     <table class="white">
                         <thead>
                         <tr>
+                            <td align="center" style="padding-left: 15px;">
+                                <small>ID</small>
+                            </td>
                             <td align="center">
                                 <small>Picture</small>
                             </td>
@@ -44,19 +49,48 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
                         while ($result = $connector->fetch_assoc($list_items)) {
                             ?>
                             <tr>
-                                <td width="20%" align="center"><a href="/itemabout/<?php echo $result['id'] ?>"><img
-                                                src="/css/images/items/<?php echo $result['id'] ?>.png"></a><br/><br/>
+                                <td width="5%" align="center" style="padding-left: 15px;">
+                                    <a href="/itemabout/<?php echo $result['id'] ?>">
+                                        <?php echo $result['id'] ?>
+                                    </a>
                                 </td>
-                                <td width="40%"><?php echo $result['name'] ?> <br/>
-                                    <small><?php echo $result['description'] ?></small>
+                                <td width="10%" align="center">
+                                    <a href="/itemabout/<?php echo $result['id'] ?>"><img
+                                                src="/css/images/items/<?php echo $result['id'] ?>.png">
+                                    </a>
+                                    <br/><br/>
+                                </td>
+                                <td width="40%">
+                                    <a href="/itemabout/<?php echo $result['id'] ?>">
+                                        <?php echo $result['name'] ?> <br/>
+                                        <small><?php echo $result['description'] ?></small>
+                                    </a>
                                 </td>
                                 <?php if ($result['requiredLevel'] == 0) { ?>
-                                    <td></td><?php } else { ?>
-                                    <td width="10%"
-                                        align="center"><?php echo number_format($result['requiredLevel']) ?></td><?php } ?>
-                                <td><?php echo number_format($result['basePrice']) ?>gp</td>
-                                <td><?php echo number_format($result['basePrice'] * 0.4) ?>gp</td>
-                                <td><?php echo number_format($result['basePrice'] * 0.6) ?>gp</td>
+                                    <td>
+                                    </td>
+                                <?php } else { ?>
+                                    <td width="10%" align="center">
+                                        <a href="/itemabout/<?php echo $result['id'] ?>">
+                                            <?php echo number_format($result['requiredLevel']) ?>
+                                        </a>
+                                    </td>
+                                <?php } ?>
+                                <td>
+                                    <a href="/itemabout/<?php echo $result['id'] ?>">
+                                        <?php echo number_format($result['basePrice']) ?>gp
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/itemabout/<?php echo $result['id'] ?>">
+                                        <?php echo number_format($result['basePrice'] * 0.4) ?>gp
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/itemabout/<?php echo $result['id'] ?>">
+                                        <?php echo number_format($result['basePrice'] * 0.6) ?>gp
+                                    </a>
+                                </td>
                             </tr>
                         <?php } ?>
                         </tbody>
