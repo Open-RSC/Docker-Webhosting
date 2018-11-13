@@ -4,7 +4,7 @@ if (!defined('IN_PHPBB')) {
 }
 
 $connector = new Dbc();
-$list_items = $connector->gamequery('SELECT id, name, description, basePrice FROM openrsc_itemdef ORDER BY id ASC LIMIT 1290');
+$list_items = $connector->gamequery('SELECT id, name, description, requiredLevel, basePrice FROM openrsc_itemdef ORDER BY id ASC LIMIT 1290');
 
 ?>
 
@@ -20,13 +20,16 @@ $list_items = $connector->gamequery('SELECT id, name, description, basePrice FRO
                         <thead>
                         <tr>
                             <td align="center">
-                                <small>Image</small>
+                                <small>Picture</small>
                             </td>
                             <td>
                                 <small>Name and Description</small>
                             </td>
                             <td>
-                                <small>General</small>
+                                <small>Req Level</small>
+                            </td>
+                            <td>
+                                <small>Shop Price</small>
                             </td>
                             <td>
                                 <small>Low Alch</small>
@@ -41,15 +44,19 @@ $list_items = $connector->gamequery('SELECT id, name, description, basePrice FRO
                         while ($result = $connector->fetch_assoc($list_items)) {
                             ?>
                             <tr>
-                                <td width="10%" align="center"><img
-                                            src="/css/images/items/<?php echo $result['id'] ?>.png">
+                                <td width="20%" align="center"><a href="/itemabout/<?php echo $result['id'] ?>"><img
+                                                src="/css/images/items/<?php echo $result['id'] ?>.png"></a><br/><br/>
                                 </td>
-                                <td width="70%"><?php echo $result['name'] ?> -
+                                <td width="40%"><?php echo $result['name'] ?> <br/>
                                     <small><?php echo $result['description'] ?></small>
                                 </td>
+                                <?php if ($result['requiredLevel'] == 0) { ?>
+                                    <td></td><?php } else { ?>
+                                    <td width="10%"
+                                        align="center"><?php echo number_format($result['requiredLevel']) ?></td><?php } ?>
                                 <td><?php echo number_format($result['basePrice']) ?>gp</td>
-                                <td><?php echo number_format($result['basePrice'] / 100 * 40) ?>gp</td>
-                                <td><?php echo number_format($result['basePrice'] / 100 * 40 * 1.5) ?>gp</td>
+                                <td><?php echo number_format($result['basePrice'] * 0.4) ?>gp</td>
+                                <td><?php echo number_format($result['basePrice'] * 0.6) ?>gp</td>
                             </tr>
                         <?php } ?>
                         </tbody>
