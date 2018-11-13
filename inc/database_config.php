@@ -76,9 +76,19 @@ class Dbc
         return mysqli_fetch_assoc($result);
     }
 
+    function fetch_assoc($result)
+    {
+        return mysqli_fetch_assoc($result);
+    }
+
     function fetchResult($result)
     {
         return mysqli_result($result);
+    }
+
+    function num_rows($result)
+    {
+        return mysqli_num_rows($result);
     }
 
     function close()
