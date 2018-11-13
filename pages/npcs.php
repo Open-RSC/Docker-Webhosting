@@ -12,13 +12,18 @@ $list_items = $connector->gamequery('SELECT id, name, description, combatlvl, at
     <article>
         <div class="panel">
             <div align="center">
-                <h3>NPC Database</h3><small>(Click on a picture for more info)</small><br/><br/>
+                <h3>NPC Database</h3>
+                <small>(Click on each for more info)</small>
+                <br/><br/>
             </div>
             <div class="panel-body">
                 <div>
                     <table class="white">
                         <thead>
                         <tr>
+                            <td align="center" style="padding-left: 15px;">
+                                <small>ID</small>
+                            </td>
                             <td align="center">
                                 <small>Picture</small>
                             </td>
@@ -38,20 +43,36 @@ $list_items = $connector->gamequery('SELECT id, name, description, combatlvl, at
                         while ($result = $connector->fetch_assoc($list_items)) {
                             ?>
                             <tr>
-                                <td width="20%" align="center"><a href="/npcabout/<?php echo $result['id'] ?>"><img
-                                                src="/css/images/npc/<?php echo $result['id'] ?>.png"
-                                                style="max-width: 100px; max-height: 100px;"></a><br/><br/>
+                                <td width="5%" align="center" style="padding-left: 15px;">
+                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                        <?php echo $result['id'] ?>
+                                    </a>
                                 </td>
-                                <td><?php echo $result['name'] ?> (level <?php echo $result['combatlvl'] ?>)
-                                    <br/>
-                                    <small><?php echo $result['description'] ?></small>
+                                <td width="10%" align="center">
+                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                        <img src="/css/images/npc/<?php echo $result['id'] ?>.png"
+                                             style="max-width: 80px; max-height: 80px;">
+                                    </a>
+                                    <br/><br/>
+                                </td>
+                                <td>
+                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                        <?php echo $result['name'] ?> <font
+                                                color="grey">(level <?php echo $result['combatlvl'] ?>)</font>
+                                        <br/>
+                                        <small><?php echo $result['description'] ?></small>
+                                    </a>
                                 </td>
                                 <td width="25%">
-                                    <small><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?>
-                                        / <?php if ($result['aggressive']) { ?>Aggressive<?php } else { ?>Passive<?php } ?></small>
+                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                        <small><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?>
+                                            / <?php if ($result['aggressive']) { ?>Aggressive<?php } else { ?>Passive<?php } ?></small>
+                                    </a>
                                 </td>
                                 <td width="15%">
-                                    <small><?php echo $result['respawnTime'] ?> sec</small>
+                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                        <small><?php echo $result['respawnTime'] ?> sec</small>
+                                    </a>
                                 </td>
                             </tr>
                         <?php } ?>
