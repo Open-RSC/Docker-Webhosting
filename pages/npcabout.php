@@ -23,8 +23,8 @@ $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $skills = buildSQLArray($skill_array);
 
-$result_result = $connector->gamequery("SELECT * FROM openrsc_npcdef WHERE id = '$subpage'");
-$result = $connector->fetchArray($result_result);
+$npc_result = $connector->gamequery("SELECT * FROM openrsc_npcdef WHERE id = '$subpage'");
+$result = $connector->fetchArray($npc_result);
 
 $resultdrop_result = $connector->gamequery("SELECT * FROM openrsc_npcdrops LEFT JOIN openrsc_npcdef ON openrsc_npcdrops.npcdef_id = openrsc_npcdef.id WHERE openrsc_npcdef.id = '$subpage'");
 $resultdrop = $connector->fetchArray($resultdrop_result);
