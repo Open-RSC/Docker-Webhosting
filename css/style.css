@@ -991,6 +991,13 @@ td.username {
     text-transform: uppercase;
 }
 
+.sm-skill2 {
+    font: 12px 'Exo', sans-serif;
+    color: #C6A444;
+    text-shadow: 0 0 2px #201B18;
+    text-transform: uppercase;
+}
+
 .sm-skill a {
     color: #C6A444;
     text-decoration: none;
@@ -1008,6 +1015,11 @@ td.username {
 .sm-skill img {
     vertical-align: middle;
     padding-right: 5px;
+}
+
+.sm-skill2 img {
+    vertical-align: middle;
+    padding-left: 10px;
 }
 
 .sm-stats {

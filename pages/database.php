@@ -13,7 +13,7 @@ if (!defined('IN_PHPBB')) {
                             <br/>
                             <a href="items"/>Items</a> <font
                                     color="#C6A444">|</font>
-                            <a href="npclist"/>NPCs</a> <font
+                            <a href="npcs"/>NPCs</a> <font
                                     color="#C6A444">|</font>
                             <a href="itemprices"/>Prices</a> <font
                                     color="#C6A444">|</font>
