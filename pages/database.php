@@ -14,7 +14,12 @@ if (!defined('IN_PHPBB')) {
                             color="#C6A444">|</font>
                     <a href="npcs"/>NPCs</a> <font
                             color="#C6A444">|</font>
-                    <a href="stats"/>Statistics</a><br/><br/>
+                    <a href="stats"/>Statistics</a> <font
+                            color="#C6A444">|</font>
+                    <a href="faq"/>FAQ</a> <font
+                            color="#C6A444">|</font>
+                    <a href="rules"/>Rules</a>
+                    <br/><br/>
                 </h4>
             </div>
         </article>

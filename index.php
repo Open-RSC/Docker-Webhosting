@@ -53,14 +53,12 @@
         <ul class="navbar">
             <li><a href="/">Home</a></li>
             <li><a href="/board/index">Forum</a></li>
-            <li><a href="/chat">Chat Log</a></li>
-            <li><a href="/highscores/skill_total">Hiscores</a></li>
+            <li><a href="/chat">Chat History</a></li>
+            <li><a href="/highscores/skill_total">Highscores</a></li>
             <li><a href="/worldmap">Live Map</a></li>
-            <li><a href="/database">Info</a></li>
-            <li><a href="/links">Links</a></li>
             <li><a href="/calendar">Events</a></li>
-            <li><a href="/rules">Rules</a></li>
-            <li><a href="/openrsc-faq">FAQ</a></li>
+            <li><a href="/links">Links</a></li>
+            <li><a href="/database">Information</a></li>
         </ul>
 
         <div class="account-panel">
