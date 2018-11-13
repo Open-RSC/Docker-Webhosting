@@ -37,7 +37,7 @@ $resultdrop = $connector->fetchArray($resultdrop_result);
             <?php if ($result) { ?>
             <div>
                 <h3>
-                    <?php echo $result['name']; ?> (level <?php echo $result['combatlvl']; ?>)
+                    <a href="/npcs"><?php echo $result['name']; ?> (level <?php echo $result['combatlvl']; ?>)</a>
                 </h3>
             </div>
             <div class="stats flex-row">
