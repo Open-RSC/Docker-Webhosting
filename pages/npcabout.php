@@ -35,10 +35,11 @@ $resultdrop = $connector->fetchArray($resultdrop_result);
     <article>
         <div class="panel">
             <?php if ($result) { ?>
-            <div>
+            <div align="center">
                 <h3>
                     <a href="/npcs"><?php echo $result['name']; ?> (level <?php echo $result['combatlvl']; ?>)</a>
                 </h3>
+                <small>(Click the text above to go back)</small>
             </div>
             <div class="stats flex-row">
                 <div>
