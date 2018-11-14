@@ -127,49 +127,13 @@
                         <div style="margin-left: 40px; margin-right: 40px; margin-top: 25px; margin-bottom: 15px; color: lightgrey; font-size: 18px;"
                              align="center">
 
-                            <!--<h3>Open RSC</h3>-->
                             <a href="https://game.openrsc.com/downloads/OpenRSC.jar"><b>Download</b></a> <font
                                     color="#C6A444">|</font>
                             <a href="https://game.openrsc.com/downloads/openrsc.apk"><b>Android</b></a> <font
                                     color="#C6A444">|</font>
                             <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
                                     color="#C6A444">|</font>
-                            <a href="https://openrsc.com/openrsc-faq"><b>FAQ</b></a>
-                            <!--<br/><br/>-->
-
-                            <!--<h3>Open Stork PK</h3>
-                            <h6><font color="red">(Currently in alpha testing)</font></h6>
-                            <a href="https://stork.openrsc.com/downloads/OpenStorkPK.jar"><b>Download</b></a> <font
-                                    color="#C6A444">|</font>
-                            <a href="https://stork.openrsc.com/downloads/openstorkpk.apk"><b>Android</b></a>
-                            <font
-                                    color="#C6A444">|</font>
-                            <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
-                                    color="#C6A444">|</font>
-                            <a href="https://openrsc.com/openstorkpk-faq"><b>FAQ</b></a>
-                            <br/><br/>
-
-                            <h3>Slothscape</h3>
-                            <h6><font color="red">(Currently in alpha testing)</font></h6>
-                            <a href="https://sloth.openrsc.com/downloads/Slothscape.jar"><b>Download</b></a> <font
-                                    color="#C6A444">|</font>
-                            <a href="https://sloth.openrsc.com/downloads/slothscape.apk"><b>Android</b></a> <font
-                                    color="#C6A444">|</font>
-                            <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
-                                    color="#C6A444">|</font>
-                            <a href="https://openrsc.com/slothscape-faq"><b>FAQ</b></a>
-                            <br/><br/>
-
-                            <h3>Wolf Kingdom</h3>
-                            <h6><font color="red">(Currently in alpha testing)</font></h6>
-                            <a href="https://wolf.openrsc.com/downloads/WolfKingdom.jar"><b>Download</b></a> <font
-                                    color="#C6A444">|</font>
-                            <a href="https://wolf.openrsc.com/downloads/wolfkingdom.apk"><b>Android</b></a> <font
-                                    color="#C6A444">|</font>
-                            <a href="https://github.com/open-rsc/game" target="_blank"><b>GitHub</b></a> <font
-                                    color="#C6A444">|</font>
-                            <a href="https://openrsc.com/wolfkingdom-faq"><b>FAQ</b></a>
-                            <br/><br/>-->
+                            <a href="https://openrsc.com/faq"><b>FAQ</b></a>
                         </div>
 
                         <hr>
