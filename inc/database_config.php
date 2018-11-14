@@ -97,21 +97,12 @@ class Dbc
     }
 }
 
-function checkStatus1($ip, $port)
+function checkStatus($ip, $port)
 {
     if (!$sock = @fsockopen($ip, "$port", $num, $error, 5)) {
-        echo('<span class="red">World 1</span>');
+        echo('<span class="red">Offline</span>');
     } else {
-        echo('<span class="lime">World 1</span>');
-    }
-}
-
-function checkStatus2($ip, $port)
-{
-    if (!$sock = @fsockopen($ip, "$port", $num, $error, 5)) {
-        echo('<span class="red">World 2</span>');
-    } else {
-        echo('<span class="lime">World 2</span>');
+        echo('<span class="lime">Online</span>');
     }
 }
 
