@@ -30,8 +30,8 @@ $totalTime = $connector->gamequery("SELECT SUM(`value`) FROM openrsc_player_cach
 $player_logins = $connector->gamequery("SELECT * FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.id = '$subpage' ORDER BY 'time' DESC LIMIT 30");
 $player_chatlogs = $connector->gamequery("SELECT * FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username WHERE A.id = '$subpage' ORDER BY 'B.time' DESC LIMIT 30");
 
-$player_tradelogs_result = $connector->gamequery("SELECT * FROM openrsc_trade_logs AS B LEFT JOIN openrsc_players AS A ON B.player1 = A.username WHERE A.id = '$subpage' ORDER BY 'B.time' DESC LIMIT 30");
-$player_tradelogs = $connector->fetchArray($player_tradelogs_result);
+//$player_tradelogs_result = $connector->gamequery("SELECT * FROM openrsc_trade_logs AS B LEFT JOIN openrsc_players AS A ON B.player1 = A.username WHERE A.id = '$subpage' ORDER BY 'B.time' DESC LIMIT 30");
+//$player_tradelogs = $connector->fetchArray($player_tradelogs_result);
 
 $player_bank_result = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE A.id = '$subpage' ORDER BY slot ASC");
 $player_invitems_result = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_invitems` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE A.id = '$subpage' ORDER BY slot ASC");
@@ -202,13 +202,13 @@ function bd_nice_number($n)
 
                     <br/>
 
-                    <h4>Trade Logs:</h4>
-                    <?php while ($row = $connector->fetchArray($player_tradelogs)) {
-                        echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["player1"] . '</strong> <strong>' . $row["player2"] . '</strong> <strong>' . $row["player1_items"] . '</strong> <strong>' . $row["player2_items"] . '</strong>' . $row["ip"];
-                        echo '<br/>';
-                    } ?>
+                    <!--<h4>Trade Logs:</h4>
+                    <?php // while ($row = $connector->fetchArray($player_tradelogs)) {
+                       // echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["player1"] . '</strong> <strong>' . $row["player2"] . '</strong> <strong>' . $row["player1_items"] . '</strong> <strong>' . $row["player2_items"] . '</strong>' . $row["ip"];
+                       // echo '<br/>';
+                    //} ?>
 
-                    <br/>
+                    <br/>-->
                 </div>
             <?php } else {
             } ?>
