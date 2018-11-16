@@ -26,16 +26,30 @@ $skills = buildSQLArray($skill_array);
 $character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.id = '$subpage'");
 $character = $connector->fetchArray($character_result);
 
-$totalTime = $connector->gamequery("SELECT SUM(`value`) FROM openrsc_player_cache LEFT JOIN openrsc_players ON openrsc_player_cache.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' AND `openrsc_player_cache`.`key` = 'total_played'");
+$totalTime = $connector->gamequery("SELECT SUM(`value`) FROM openrsc_player_cache LEFT JOIN openrsc_players ON openrsc_player_cache.playerID = openrsc_players.id WHERE openrsc_players.id = '$subpage' AND `openrsc_player_cache`.`key` = 'total_played'");
+$player_logins = $connector->gamequery("SELECT * FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.id = '$subpage' ORDER BY 'time' DESC LIMIT 30");
+$player_chatlogs = $connector->gamequery("SELECT * FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username WHERE A.id = '$subpage' ORDER BY 'B.time' DESC LIMIT 30");
+
+$player_tradelogs_result = $connector->gamequery("SELECT * FROM openrsc_trade_logs AS B LEFT JOIN openrsc_players AS A ON B.player1 = A.username WHERE A.id = '$subpage' ORDER BY 'B.time' DESC LIMIT 30");
+$player_tradelogs = $connector->fetchArray($player_tradelogs_result);
+
+$player_bank_result = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE A.id = '$subpage' ORDER BY slot ASC");
+$player_invitems_result = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_invitems` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE A.id = '$subpage' ORDER BY slot ASC");
+
+$player_feed = $connector->gamequery("SELECT * FROM openrsc_live_feeds AS B LEFT JOIN openrsc_players AS A ON B.username = A.username WHERE A.id = '$subpage' ORDER BY 'B.time' DESC LIMIT 8");
 
 //$phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
 //$phpbb_user = $connector->fetchArray($phpbb_user_result);
 
-//$player_logins = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.username = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
-//$player_chatlogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_chat_logs WHERE sender = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
-//$player_tradelogs = $connector->gamequery("SELECT MONTH(FROM_UNIXTIME(time)), COUNT(MONTH(FROM_UNIXTIME(time))) FROM openrsc_trade_logs WHERE player1 = '$subpage' GROUP BY MONTH(FROM_UNIXTIME(time)) ORDER BY FROM_UNIXTIME(time)");
+function bd_nice_number($n)
+{
+    if ($n > 1000000000000) return round(($n / 1000000000000), 1) . ' trillion';
+    else if ($n > 1000000000) return round(($n / 1000000000), 1) . ' billion';
+    else if ($n > 1000000) return round(($n / 1000000), 1) . ' million';
+    else if ($n > 1000) return round(($n / 1000), 1) . ' thousand';
 
-$player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE username = '$subpage' ORDER BY `time` DESC LIMIT 8");
+    return number_format($n);
+}
 
 ?>
 
@@ -89,65 +103,117 @@ $player_feed = $connector->gamequery("SELECT * FROM `openrsc_live_feeds` WHERE u
                             ?></span>
                         <!--<span class="sm-stats">Owner: <a
                             href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $phpbb_user['player_name']; ?></a></span>-->
-                            <span class="sm-stats">Status:
+                        <span class="sm-stats">Status:
                             <?php if ($character['online'] == 1) {
                                 echo '<span class="green"><strong>Online</strong></span>';
                             } else {
                                 echo '<span class="red"><strong>Offline</strong></span>';
                             } ?></span>
-                            <span class="sm-stats">Login: <?php date_default_timezone_set('America/New_York'); echo strftime("%d %b / %I:%M:%S %p %Z", $character["login_date"]) ?></span>
+                        <span class="sm-stats">Login: <?php date_default_timezone_set('America/New_York');
+                            echo strftime("%d %b / %H:%M %Z", $character["login_date"]) ?></span>
                     </div>
                 </div>
             </div>
-            <!--<canvas class="line-chart"></canvas>
-            <script>
-                new Chart(document.getElementById("line-chart"), {
-                    type: 'line',
-                    data: {
-                        labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                        datasets: [{
-                            data: [<?php while ($row = $connector->fetchArray($player_logins)) {
-                echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
-            } ?>],
-                            label: "Logins",
-                            borderColor: "#FF0000",
-                            fill: false
-                        },
-                            {
-                                data: [<?php while ($row = $connector->fetchArray($player_chatlogs)) {
-                echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
-            } ?>],
-                                label: "Chat Messages",
-                                borderColor: "#0000FF",
-                                fill: false
-                            },
-                            {
-                                data: [<?php while ($row = $connector->fetchArray($player_tradelogs)) {
-                echo $row["time"] . ', ' . $row["COUNT(MONTH(FROM_UNIXTIME(time)))"];
-            } ?>],
-                                label: "Trades",
-                                borderColor: "#ffffff",
-                                fill: false
-                            }
-                        ]
-                    },
-                    options: {
-                        title: {
-                            display: false,
-                            text: 'Logins'
-                        }
-                    }
-                });
-            </script>-->
+
+            <br/>
+
             <div class="accomplishments">
-                <h4>Recent Accomplishments: </h4>
+                <h4>Recent Accomplishments:</h4>
                 <div align="left" style="margin-left: 10px;">
                     <?php while ($row = $connector->fetchArray($player_feed)) {
-                        echo '[<strong>' . strftime("%d %b / %I:%M:%S %p", $row["time"]) . '</strong>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
+                        echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
                         echo '<br/>';
                     } ?>
                 </div>
             </div>
+
+            <br/>
+
+            <!-- Begin admin and moderator view only -->
+            <?php if ($user->data['group_id'] == '5' || $user->data['group_id'] == '4') { ?>
+                <div style="margin-left: 10px;">
+                    <h4>Inventory:</h4>
+                    <table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+                        <?php $totalinvitems = $connector->num_rows($player_invitems_result); ?>
+                        <tr>
+                            <?php
+                            if ($totalinvitems == 0) {
+                                echo "No inventory items found.";
+                            } else {
+                                for ($i = 1; $listinvitems = $connector->fetchArray($player_invitems_result); $i++) {
+                                    ?>
+                                    <td style="border: 1px solid black;">
+                                        <div style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
+                                            <?php echo $listinvitems["number"]; ?>
+                                        </div>
+                                        <img src="/css/images/items/<?php echo $listinvitems["id"]; ?>.png"/>
+                                    </td>
+                                    <?php
+                                    if (($i % 14 == 0) && ($i < $totalinvitems)) {
+                                        echo '</tr><tr>';
+                                    }
+                                }
+                            } ?>
+                        </tr>
+                    </table>
+
+                    <br/>
+
+                    <h4>Bank:</h4>
+                    <table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+                        <?php $totalbank = $connector->num_rows($player_bank_result); ?>
+                        <tr>
+                            <?php
+                            if ($totalbank == 0) {
+                                echo "No bank items found.";
+                            } else {
+                                for ($i = 1; $listbank = $connector->fetchArray($player_bank_result); $i++) {
+                                    ?>
+                                    <td style="border: 1px solid black;">
+                                        <div style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
+                                            <?php echo $listbank["number"]; ?>
+                                        </div>
+                                        <img src="/css/images/items/<?php echo $listbank["id"]; ?>.png"/>
+                                    </td>
+                                    <?php
+                                    if (($i % 14 == 0) && ($i < $totalbank)) {
+                                        echo '</tr><tr>';
+                                    }
+                                }
+                            } ?>
+                        </tr>
+                    </table>
+
+                    <br/>
+
+                    <h4>Logins and IPs:</h4>
+                    <?php while ($row = $connector->fetchArray($player_logins)) {
+                        echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <small>' . $row["ip"] . '</small>';
+                        echo '<br/>';
+                    } ?>
+
+                    <br/>
+
+                    <h4>Chat Logs:</h4>
+                    <?php while ($row = $connector->fetchArray($player_chatlogs)) {
+                        echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <small>' . $row["message"] . '</small>';
+                        echo '<br/>';
+                    } ?>
+
+                    <br/>
+
+                    <h4>Trade Logs:</h4>
+                    <?php while ($row = $connector->fetchArray($player_tradelogs)) {
+                        echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["player1"] . '</strong> <strong>' . $row["player2"] . '</strong> <strong>' . $row["player1_items"] . '</strong> <strong>' . $row["player2_items"] . '</strong>' . $row["ip"];
+                        echo '<br/>';
+                    } ?>
+
+                    <br/>
+                </div>
+            <?php } else {
+            } ?>
+            <!-- End admin and moderator view only -->
+
             <div class="pie-stats">
                 <script type="text/javascript">
                     $(document).ready(function () {
