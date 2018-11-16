@@ -64,8 +64,8 @@ function gameChat()
         <?php while ($row = $connector->fetchArray($game_accounts)) {
             $idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
             ?>
-            [<b><?php date_default_timezone_set('America/New_York'); echo strftime("%d %b / %I:%M:%S %p %Z", $row["time"]) ?></b>]
-            [<b><a href="/characters/<?php echo $idLink ?>" target="_blank"><?php echo ucwords($row["sender"]) ?></a></b>] <?php echo $row["message"] ?><br/>
+            [<small><?php date_default_timezone_set('America/New_York'); echo strftime("%d %b / %H:%M %Z", $row["time"]) ?></small>]
+            [<strong><a href="/characters/<?php echo $idLink ?>" target="_blank"><?php echo ucwords($row["sender"]) ?></a></strong>] <?php echo $row["message"] ?><br/>
         <?php } ?>
     </div>
     <?php
@@ -77,7 +77,9 @@ function gameChat()
 <html>
 <head>
     <title>Open RSC</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo:400,500,700,900">
 </head>
+<body lang="en" style="font-family: 'Exo', sans-serif;">
 
 <h4>
     <b>

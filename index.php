@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="/css/style.css" media="all"/>
     <link rel="stylesheet" href="/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo:400,500,700,900">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js" type="text/javascript"></script>
@@ -37,7 +37,7 @@
     <script src="/js/helpers.js" type="text/javascript"></script>
 
 </head>
-<body lang="en">
+<body lang="en" style="font-family: 'Exo', sans-serif;">
 <div class="wrapper">
 
     <header>
