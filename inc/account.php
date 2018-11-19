@@ -28,7 +28,38 @@ class Dbc
         register_shutdown_function(array(&$this, 'close'));
     }
 
+    function query($query)
+    {
+        global $dbhost;
+        global $dbuser;
+        global $dbpasswd;
+        global $dbname;
+        $this->theQuery = $query;
+        $con = mysqli_connect($dbhost, $dbuser, $dbpasswd, $dbname);
+        return mysqli_query($con, $query);
+    }
+
     function gamequery($query)
+    {
+        global $dbhost;
+        global $dbuser;
+        global $dbpasswd;
+        $this->theQuery = $query;
+        $con = mysqli_connect($dbhost, $dbuser, $dbpasswd, "openrsc_game");
+        return mysqli_query($con, $query);
+    }
+
+    function forumquery($query)
+    {
+        global $dbhost;
+        global $dbuser;
+        global $dbpasswd;
+        $this->theQuery = $query;
+        $con = mysqli_connect($dbhost, $dbuser, $dbpasswd, "openrsc_forum");
+        return mysqli_query($con, $query);
+    }
+
+    function logquery($query)
     {
         global $dbhost;
         global $dbuser;
@@ -43,9 +74,19 @@ class Dbc
         return mysqli_fetch_assoc($result);
     }
 
+    function fetch_assoc($result)
+    {
+        return mysqli_fetch_assoc($result);
+    }
+
     function fetchResult($result)
     {
         return mysqli_result($result);
+    }
+
+    function num_rows($result)
+    {
+        return mysqli_num_rows($result);
     }
 
     function close()
@@ -75,11 +116,10 @@ function buildSQLArray($array)
 $connector = new Dbc();
 
 if ($_POST['nm']) {
-
     $username = $_POST['nm'];
     $password = $_POST['pw'];
 
-    $username = mysqli_real_escape_string($username);
+    //$username = mysqli_real_escape_string($username);
     $username = preg_replace("/[^A-Za-z0-9 ]/", " ", $username);
 
     $user_result = $connector->gamequery("SELECT username FROM openrsc_players WHERE username='$username'");
@@ -97,15 +137,14 @@ if ($_POST['nm']) {
             $time = time();
             $gamepass = sha1($password);
             $gamename = explode('.', $username);
-            $connector->gamequery("INSERT INTO `openrsc_curstats`(`playerID`) VALUES ('" . $gamename[0] . "')");
-            $connector->gamequery("INSERT INTO `openrsc_experience`(`playerID`) VALUES ('" . $gamename[0] . "')");
-            $connector->gamequery("INSERT INTO `openrsc_players`(`id`, `username`, `owner`, `pass`, `creation_date`, `creation_ip`) VALUES ('" . $username . "', '" . $user->data['user_id'] . "', '" . $gamepass . "', '" . $time . "', '" . $_SERVER['REMOTE_ADDR'] . "')");
+            $connector->gamequery("INSERT INTO `openrsc_curstats`(`playerID`) VALUES ('" . $user->data['user_id'] . "')");
+            $connector->gamequery("INSERT INTO `openrsc_experience`(`playerID`) VALUES ('" . $user->data['user_id'] . "')");
+            $connector->gamequery("INSERT INTO `openrsc_players`(`username`, `owner`, `pass`, `creation_date`, `creation_ip`) VALUES ('" . $username . "', '" . $user->data['user_id'] . "', '" . $gamepass . "', '" . $time . "', '" . $_SERVER['REMOTE_ADDR'] . "')");
             echo 1;
         }
     }
 
 } else if ($_POST["ver"]) {
-
     $user_i = $_POST["id"];
     $user_ui = $_POST["username"];
     $ver = $_POST["ver"];
@@ -113,7 +152,7 @@ if ($_POST['nm']) {
     if (strtolower($ver) != 'yes') {
         echo 0;
     } else {
-        $user_check = $connector->gamequery("SELECT id, username, owner, group_id FROM openrsc_players WHERE username=$user_ui");
+        $user_check = $connector->gamequery("SELECT * FROM openrsc_players WHERE id='$user_i'");
         $check = $connector->fetchArray($user_check);
         if ($user_i == $user->data['user_id']) {
             if ($check['group_id'] == 1) {
@@ -135,36 +174,35 @@ if ($_POST['nm']) {
     }
 
 } else if ($_POST["username"]) {
-
+    $id = $_POST["id"];
     $username = $_POST["username"];
     $combat = $_POST["combat"];
     $owner = $_POST["owner"];
     $online = $_POST["online"];
 
-    $username = preg_replace("/[^A-Za-z0-9]/", "-", $username);
+    $id = preg_replace("/[^A-Za-z0-9]/", "-", $id);
 
     $skills = buildSQLArray($skill_array);
-    $user_check = $connector->gamequery("SELECT " . $skills . ", openrsc_players.owner FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.id = openrsc_experience.playerID WHERE openrsc_players.username=$username");
+    $user_check = $connector->gamequery("SELECT " . $skills . ", openrsc_players.owner FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.id = openrsc_experience.playerID WHERE openrsc_players.id= '$id'");
     $check = $connector->fetchArray($user_check);
 
-    $character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.username = '$username'");
+    $character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.id = '$id'");
     $character = $connector->fetchArray($character_result);
 
     if ($check['owner'] == $user->data['user_id']) {
-
         ?>
-        <div id="character">
+        <!--<div id="character">
             <?php
-            $file = '/avatars/' . $character['id'] . '.png';
-            echo "<br /><img src=\"$file\"/>";
+            //$file = 'https://game.openrsc.com/avatars/' . $id . '.png';
+            //echo "<br /><img src=\"$file\"/>";
             ?>
-        </div>
+        </div>-->
 
-        <br/>
         <div id="hero-page-details">
+            <br/>
             <span class="sm-stats"><?php echo $username; ?></span>
             <span class="sm-stats">Combat Level: <?php echo $combat; ?></span>
-            <span class="sm-stats"><a href="<?php echo $script_directory; ?>characters/<?php echo $usernamelink; ?>">View Skill Levels</a></span>
+            <!--<span class="sm-stats"><a href="/characters/<?php //echo $id; ?>">View Skill Levels</a></span>-->
             <?php if ($online == 1) {
                 echo '<span id="green">Online</span>';
             } else {
@@ -196,46 +234,7 @@ if ($_POST['nm']) {
                 </div>
             </div>
         </div>
-        <div id="pie-stats">
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    var data = [
-                        <?php foreach ($skill_array as $skill) {
-                        if ($skill == 'hitpoints') {
-                            $skillc = 'hits';
-                        } else {
-                            $skillc = $skill;
-                        }
-                        if (experienceToLevel($character['exp_' . $skillc]) >= 10) {
-                            echo '{label: "' . ucwords($skill) . '",  data: ' . $character['exp_' . $skillc] . '}, ';
-                        }
-                    } ?>
-                    ];
 
-                    $.plot($("#donut"), data,
-                        {
-                            series: {
-                                pie: {
-
-                                    show: true,
-                                    combine: {
-                                        color: '#999',
-                                        threshold: 0.05,
-                                    }
-                                }
-                            },
-                            grid: {
-                                hoverable: true,
-                                clickable: false
-                            },
-                            legend: {
-                                show: false
-                            }
-                        });
-                });
-            </script>
-            <div id="donut" class="graph"></div>
-        </div>
         <div style="display:none">
             <div id="error">
                 <h4>Error</h4>

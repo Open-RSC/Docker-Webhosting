@@ -29,10 +29,10 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
                     <ul>
                         <?php foreach ($skill_array as $skill) { ?>
                             <li><a href="/highscores/<?php print $skill; ?>">
-                                <img src="/css/images/skill_icons/<?php print $skill; ?>.svg"
-                                     alt="<?php print $skill; ?>" class="skill-icon"/>
-                                <?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
-                            </a></li>
+                                    <img src="/css/images/skill_icons/<?php print $skill; ?>.svg"
+                                         alt="<?php print $skill; ?>" class="skill-icon"/>
+                                    <?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
+                                </a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -60,10 +60,10 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
                     <ul class="skill">
                         <?php foreach ($skill_array as $skill) { ?>
                             <li><a href="/highscores/<?php print $skill; ?>">
-                                <img src="/css/images/skill_icons/<?php print $skill; ?>.svg"
-                                     alt="<?php print $skill; ?>" class="skill-icon"/>
-                                <?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
-                            </a></li>
+                                    <img src="/css/images/skill_icons/<?php print $skill; ?>.svg"
+                                         alt="<?php print $skill; ?>" class="skill-icon"/>
+                                    <?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
+                                </a></li>
                         <?php } ?>
                     </ul>
                 </div>
