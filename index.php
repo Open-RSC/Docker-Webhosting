@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/css/style.css" media="all"/>
     <link rel="stylesheet" href="/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo:400,500,700,900">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js" type="text/javascript"></script>
@@ -32,9 +33,109 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.js" type="text/javascript"></script>
     <script src="/js/cufon.js" type="text/javascript"></script>
-
     <script src="/js/helpers.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        function loadContent(username, id, lvl, on) {
+            var url = "/inc/account.php";
+            $.post(url, {username: username, owner: id, combat: lvl, online: on} ,function(data) {
+                $("#character-details").html(data).show();
+                $("a#inline").fancybox({
+                    'hideOnContentClick': false,
+                    'hideOnOverlayClick': false,
+                    'overlayColor': '#000000',
+                    'padding': 0,
+                });
+                $("#character-delete-form").bind("submit", function() {
+                    $("#verification-fails").hide();
+                    if ($("#verification").val() != 'yes') {
+                        $("#verification-fails").show();
+                        $.fancybox.resize();
+                        return false;
+                    }
+                    $.fancybox.showActivity();
+                    var i = $("#user-i").val();
+                    var ui = $("#user-ui").val();
+                    var y = $("#verification").val();
+                    setTimeout(function(){
+
+                        $.post("inc/account.php", {id: i, username: ui, ver: y} ,function(data) {
+                            $.fancybox.hideActivity();
+                            $("#character-delete-form").hide();
+                            window.location.reload()
+                        });
+
+                    },5000);
+
+                    return false;
+                });
+            });
+        }
+
+        $(document).ready(function() {
+            $("#toggle:first").addClass('active');
+            $('#toggle').click(function(){
+                $('#toggle').removeClass('active');
+                $(this).toggleClass('active');
+            });
+
+            $("a#single_image").fancybox();
+
+            /* Using custom settings */
+
+            $("a#inline").fancybox({
+                'hideOnContentClick': false,
+                'overlayColor': '#000000',
+                'padding': 0,
+                'onClosed': function() {
+                    $("#name-fails").hide();
+                    $("#pass-fails").hide();
+                    $("#user-fails").hide();
+                    $("#user-passes").hide();
+                    $("#character-creation-form").show();
+                }
+            });
+
+            $("#character-creation-form").bind("submit", function() {
+                $("#name-fails").hide();
+                $("#pass-fails").hide();
+                if ($("#name").val().length >= 11 || $("#name").val().length <= 3) {
+                    $("#name-fails").show();
+                    $.fancybox.resize();
+                    return false;
+                }
+                if ($("#password").val().length <= 4) {
+                    $("#pass-fails").show();
+                    $.fancybox.resize();
+                    return false;
+                }
+
+                $.fancybox.showActivity();
+                var n = $("#name").val();
+                var p = $("#password").val();
+
+                setTimeout(function(){
+
+                    $.post("inc/account.php", {nm: n, pw: p} ,function(data) {
+                        if(data == 0){
+                            $("#user-fails").show();
+                        } else if(data == 1){
+                            $("#user-passes").show();
+                            $("#character-creation-form").hide();
+                            window.location.reload()
+                        }
+                        $.fancybox.hideActivity();
+                    });
+
+                },3000);
+
+                return false;
+            });
+
+        });
+    </script>
 
 </head>
 <body lang="en" style="font-family: 'Exo', sans-serif;">
@@ -68,7 +169,7 @@
                         Welcome back, <?php print $user->data['username']; ?>
                     </span>
                     <ul>
-                        <li class="welcome-text"><a href="#/accounts">Account Management</a></li>
+                        <li class="welcome-text"><a href="/#accounts">Account Management</a></li>
                         <li class="welcome-text">
                             <a href="/board/ucp?i=pm&folder=inbox">
                                 (<?php print $user->data['user_unread_privmsg']; ?>)
@@ -247,7 +348,7 @@
                 <input type="submit" value="Log In" name="login" class="submit"/>
                 <a class="submit" href="/board/ucp?mode=register">Register</a>
             </fieldset>
-            <input type="hidden" name="redirect" value="/board/index"/>
+            <input type="hidden" name="redirect" value="/"/>
         </form>
     </div>
 </div>

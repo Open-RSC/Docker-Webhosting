@@ -15,7 +15,7 @@ if ($user->data['is_registered']) {
                     <div style="margin-left: 80px; margin-right: 80px; margin-top: 45px; margin-bottom: 45px; color: lightgrey;">
                         <h4>Account Management</h4>
                         <p>Manage your player accounts, view their statistics, and change up your gear!</p>
-                        <a id="inline" href="#create" class="button">Create Hero</a>
+                        <a id="inline" href="/create" class="button">Create Hero</a>
                         <?php if (mysqli_num_rows($characters_result) > 0) { ?>
                             <div id="sm-list">
                                 <ul>
@@ -24,12 +24,13 @@ if ($user->data['is_registered']) {
                                     while ($row = $connector->fetchArray($characters_result)) {
                                         ?>
                                         <a href="#"
-                                           onClick="loadContent('<?php echo $row['username']; ?>','<?php echo $row['owner']; ?>','<?php echo $row['combat']; ?>','<?php echo $row['online']; ?>');">
+                                           onClick="loadContent('<?php echo $row['username']; ?>','<?php echo $row['id']; ?>','<?php echo $row['owner']; ?>','<?php echo $row['combat']; ?>','<?php echo $row['online']; ?>');">
                                             <li id="toggle"><?php echo $row['username']; ?></li>
                                         </a>
                                         <?php
                                         if ($i == 0) {
                                             $username = $row['username'];
+                                            $id = $row['id'];
                                             $owner = $row['owner'];
                                             $combat = $row['combat'];
                                             $online = $row['online'];
@@ -43,6 +44,7 @@ if ($user->data['is_registered']) {
                                 $(document).ready(function () {
                                     $.post("/inc/account.php", {
                                         username: '<?php echo $username; ?>',
+                                        id: '<?php echo $id; ?>',
                                         owner: '<?php echo $owner; ?>',
                                         combat: '<?php echo $combat; ?>',
                                         online: '<?php echo $online; ?>'
@@ -75,7 +77,8 @@ if ($user->data['is_registered']) {
                 <div id="user-fails" style="display:none;">Username already taken!</div>
                 <div id="user-passes" style="display:none;">Character created successfully!</div>
                 <form method="post" action="" id="character-creation-form">
-                    <label for="username">Username: </label><input type="text" name="username" class="name" id="username"/>
+                    <label for="username">Username: </label><input type="text" name="username" class="name"
+                                                                   id="username"/>
                     <label for="password">Password: </label><input type="password" name="password" class="password"
                                                                    id="password"/>
                     <input type="submit" value="Create" name="create" class="submit"/>
