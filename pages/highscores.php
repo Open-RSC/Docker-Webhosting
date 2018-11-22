@@ -41,8 +41,7 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
     </div>
     <?php
 } else {
-    $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
-    $subpage = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $subpage);
+    $subpage = preg_replace("/[^A-Za-z0-9 ]/", "_", $subpage);
     if ($subpage == $skill_array[0]) {
         $query = array('openrsc_players.' . $subpage . ', openrsc_experience.*', 'openrsc_players.' . $subpage);
     } else {
@@ -88,12 +87,13 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
                             <?php
                             $i = 1;
                             while ($row = $connector->fetchArray($stat_result)) {
+                                $idLink = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $idLinks);
                                 $idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['id']);
                                 ?>
                                 <tr id="table">
                                     <td class="rank"><?php echo $i; ?></td>
                                     <td class="username">
-                                        <a href="/characters/<?php echo $idLink; ?>"><?php echo $row['username']; ?></a>
+                                        <a href="/player/<?php echo $idLink; ?>"><?php echo $row['username']; ?></a>
                                     </td>
                                     <td class="level">
                                         <?php echo ($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_' . $subpage] / 4.0); ?>
