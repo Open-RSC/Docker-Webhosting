@@ -23,22 +23,26 @@ $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $skills = buildSQLArray($skill_array);
 
-$character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.id = '$subpage'");
+$character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE (openrsc_players.id = '$subpage' OR openrsc_players.username = '$subpage')");
 $character = $connector->fetchArray($character_result);
 
-$totalTime = $connector->gamequery("SELECT SUM(`value`) FROM openrsc_player_cache LEFT JOIN openrsc_players ON openrsc_player_cache.playerID = openrsc_players.id WHERE openrsc_players.id = '$subpage' AND `openrsc_player_cache`.`key` = 'total_played'");
-$player_logins = $connector->gamequery("SELECT * FROM openrsc_logins LEFT JOIN openrsc_players ON openrsc_logins.playerID = openrsc_players.id WHERE openrsc_players.id = '$subpage' ORDER BY 'time' DESC LIMIT 30");
-$player_chatlogs = $connector->gamequery("SELECT * FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username WHERE A.id = '$subpage' ORDER BY 'B.time' DESC LIMIT 30");
+$totalTime = $connector->gamequery("SELECT SUM(`value`) FROM openrsc_player_cache AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') AND B.key = 'total_played'");
 
-//$player_tradelogs_result = $connector->gamequery("SELECT * FROM openrsc_trade_logs AS B LEFT JOIN openrsc_players AS A ON B.player1 = A.username WHERE A.id = '$subpage' ORDER BY 'B.time' DESC LIMIT 30");
-//$player_tradelogs = $connector->fetchArray($player_tradelogs_result);
+$player_logins = $connector->gamequery("SELECT * FROM openrsc_logins AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY 'B.time'");
 
-$player_bank_result = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE A.id = '$subpage' ORDER BY slot ASC");
-$player_invitems_result = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_invitems` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE A.id = '$subpage' ORDER BY slot ASC");
+$player_chatlogs = $connector->gamequery("SELECT * FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY 'B.time'");
 
-$player_feed = $connector->gamequery("SELECT * FROM openrsc_live_feeds AS B LEFT JOIN openrsc_players AS A ON B.username = A.username WHERE A.id = '$subpage' ORDER BY 'B.time' DESC LIMIT 8");
+$player_pmlogs = $connector->gamequery("SELECT * FROM openrsc_private_message_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username OR B.reciever = A.username WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY 'B.time'");
 
-//$phpbb_user_result = $connector->gamequery("SELECT A.user_id, A.username AS player_name, B.username, B.group_id FROM openrsc_forum.phpbb_users as A LEFT JOIN openrsc_game.openrsc_players as B on A.user_id = B.owner WHERE B.username = '$subpage'");
+$player_tradelogs = $connector->gamequery("SELECT B.player1, B.player2, B.player1_items, B.player2_items, B.time FROM openrsc_trade_logs AS B LEFT JOIN openrsc_players AS A ON 'B.player1' = 'A.username' OR 'B.player2' = 'A.username' WHERE (A.id = '$subpage' OR A.username = '$subpage')");
+
+$player_bank = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY slot");
+
+$player_invitems = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_invitems` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY slot ASC");
+
+$player_feed = $connector->gamequery("SELECT * FROM openrsc_live_feeds AS B LEFT JOIN openrsc_players AS A ON B.username = A.username WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY 'B.time'");
+
+//$phpbb_user_result = $connector->gamequery("SELECT B.user_id, B.username AS player_name, A.username, A.group_id FROM openrsc_forum.phpbb_users as B LEFT JOIN openrsc_game.openrsc_players as A on B.user_id = A.owner WHERE (A.id = '$subpage' OR A.username = '$subpage')");
 //$phpbb_user = $connector->fetchArray($phpbb_user_result);
 
 function bd_nice_number($n)
@@ -102,14 +106,14 @@ function bd_nice_number($n)
                             }
                             ?></span>
                         <!--<span class="sm-stats">Owner: <a
-                            href="<?php echo $script_directory; ?>board/memberlist.php?mode=viewprofile&amp;u=<?php echo $character['owner']; ?>"><?php echo $phpbb_user['player_name']; ?></a></span>-->
+                                    href="/board/memberlist.php?mode=viewprofile&amp;u=<?php //echo $character['owner']; ?>"><?php //echo $phpbb_user['player_name']; ?></a></span>-->
                         <span class="sm-stats">Status:
                             <?php if ($character['online'] == 1) {
                                 echo '<span class="green"><strong>Online</strong></span>';
                             } else {
                                 echo '<span class="red"><strong>Offline</strong></span>';
                             } ?></span>
-                        <span class="sm-stats">Login: <?php date_default_timezone_set('America/New_York');
+                        <span class="sm-stats">Last Online: <?php date_default_timezone_set('America/New_York');
                             echo strftime("%d %b / %H:%M %Z", $character["login_date"]) ?></span>
                     </div>
                 </div>
@@ -134,22 +138,22 @@ function bd_nice_number($n)
                 <div style="margin-left: 10px;">
                     <h4>Inventory:</h4>
                     <table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
-                        <?php $totalinvitems = $connector->num_rows($player_invitems_result); ?>
+                        <?php $invitems = $connector->num_rows($player_invitems); ?>
                         <tr>
                             <?php
-                            if ($totalinvitems == 0) {
+                            if ($invitems == 0) {
                                 echo "No inventory items found.";
                             } else {
-                                for ($i = 1; $listinvitems = $connector->fetchArray($player_invitems_result); $i++) {
+                                for ($i = 1; $list = $connector->fetchArray($player_invitems); $i++) {
                                     ?>
                                     <td style="border: 1px solid black;">
                                         <div style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
-                                            <?php echo $listinvitems["number"]; ?>
+                                            <?php echo $list["number"]; ?>
                                         </div>
-                                        <img src="/css/images/items/<?php echo $listinvitems["id"]; ?>.png"/>
+                                        <img src="/css/images/items/<?php echo $list["id"]; ?>.png"/>
                                     </td>
                                     <?php
-                                    if (($i % 14 == 0) && ($i < $totalinvitems)) {
+                                    if (($i % 14 == 0) && ($i < $invitems)) {
                                         echo '</tr><tr>';
                                     }
                                 }
@@ -161,22 +165,22 @@ function bd_nice_number($n)
 
                     <h4>Bank:</h4>
                     <table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
-                        <?php $totalbank = $connector->num_rows($player_bank_result); ?>
+                        <?php $bank = $connector->num_rows($player_bank); ?>
                         <tr>
                             <?php
-                            if ($totalbank == 0) {
+                            if ($bank == 0) {
                                 echo "No bank items found.";
                             } else {
-                                for ($i = 1; $listbank = $connector->fetchArray($player_bank_result); $i++) {
+                                for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
                                     ?>
                                     <td style="border: 1px solid black;">
                                         <div style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
-                                            <?php echo $listbank["number"]; ?>
+                                            <?php echo $list["number"]; ?>
                                         </div>
-                                        <img src="/css/images/items/<?php echo $listbank["id"]; ?>.png"/>
+                                        <img src="/css/images/items/<?php echo $list["id"]; ?>.png"/>
                                     </td>
                                     <?php
-                                    if (($i % 14 == 0) && ($i < $totalbank)) {
+                                    if (($i % 14 == 0) && ($i < $bank)) {
                                         echo '</tr><tr>';
                                     }
                                 }
@@ -187,28 +191,96 @@ function bd_nice_number($n)
                     <br/>
 
                     <h4>Logins and IPs:</h4>
-                    <?php while ($row = $connector->fetchArray($player_logins)) {
-                        echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <small>' . $row["ip"] . '</small>';
-                        echo '<br/>';
-                    } ?>
+                    <table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+                        <?php $logins = $connector->num_rows($player_logins); ?>
+                        <tr>
+                            <?php
+                            if ($logins == 0) {
+                                echo "No login logs found.";
+                            } else {
+                                for ($i = 1; $list = $connector->fetchArray($player_logins); $i++) {
+                                    echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] <b>' . $list["ip"] . '</b>';
+                                    echo '<br/>';
+                                    if (($i % 14 == 0) && ($i < $logins)) {
+                                        echo '</tr><tr>';
+                                    }
+                                }
+                            } ?>
+                        </tr>
+                    </table>
 
                     <br/>
 
                     <h4>Chat Logs:</h4>
-                    <?php while ($row = $connector->fetchArray($player_chatlogs)) {
-                        echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <small>' . $row["message"] . '</small>';
-                        echo '<br/>';
-                    } ?>
+                    <table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+                        <?php $chat = $connector->num_rows($player_chatlogs); ?>
+                        <tr>
+                            <?php
+                            if ($chat == 0) {
+                                echo "No chat logs found.";
+                            } else {
+                                for ($i = 1; $list = $connector->fetchArray($player_chatlogs); $i++) {
+                                    echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] <b>' . $list["message"] . '</b>';
+                                    echo '<br/>';
+                                    if (($i % 14 == 0) && ($i < $chat)) {
+                                        echo '</tr><tr>';
+                                    }
+                                }
+                            } ?>
+                        </tr>
+                    </table>
 
                     <br/>
 
-                    <!--<h4>Trade Logs:</h4>
-                    <?php // while ($row = $connector->fetchArray($player_tradelogs)) {
-                       // echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["player1"] . '</strong> <strong>' . $row["player2"] . '</strong> <strong>' . $row["player1_items"] . '</strong> <strong>' . $row["player2_items"] . '</strong>' . $row["ip"];
-                       // echo '<br/>';
-                    //} ?>
+                    <h4>PM Logs:</h4>
+                    <table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+                        <?php $pm = $connector->num_rows($player_pmlogs); ?>
+                        <tr>
+                            <?php
+                            if ($pm == 0) {
+                                echo "No private message logs found.";
+                            } else {
+                                for ($i = 1; $list = $connector->fetchArray($player_pmlogs); $i++) {
+                                    $idLinkSender = preg_replace("/[^A-Za-z0-9]/", "-", $list['sender']);
+                                    $idLinkReciever = preg_replace("/[^A-Za-z0-9]/", "-", $list['reciever']);
+                                    echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b><a href="/characters/' . $idLinkSender . '" target="_blank">' . $list["sender"] . '</a></b> to <b><a href="/characters/' . $idLinkReciever . '" target="_blank">' . $list["reciever"] . '</a></b>: <small>' . $list["message"] . '</small>';
+                                    echo '<br/>';
+                                    if (($i % 14 == 0) && ($i < $pm)) {
+                                        echo '</tr><tr>';
+                                    }
 
-                    <br/>-->
+                                }
+                            } ?>
+                        </tr>
+                    </table>
+
+                    <br/>
+
+                    <h4>Trade Logs:</h4>
+                    <table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+                        <?php $trade = $connector->num_rows($player_tradelogs); ?>
+                        <tr>
+                            <?php
+                            if ($trade == 0) {
+                                echo "No trade logs found. This is currently not functioning and under development.";
+                            } else {
+                                for ($i = 1; $list = $connector->fetchArray($player_tradelogs); $i++) {
+                                    echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b>' . $list["player1"] . '</b> to <b>' . $list["player2"] . '</b>';
+                                    ?>
+                                    <td style="border: 1px solid black;">
+                                        <?php echo $list["player1_items"]; ?>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <?php echo $list["player2_items"]; ?>
+                                    </td>
+                                    <?php
+                                    if (($i % 14 == 0) && ($i < $trade)) {
+                                        echo '</tr><tr>';
+                                    }
+                                }
+                            } ?>
+                        </tr>
+                    </table>
                 </div>
             <?php } else {
             } ?>
