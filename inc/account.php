@@ -189,13 +189,13 @@ if ($_POST['nm']) {
     $character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.id = '$id'");
     $character = $connector->fetchArray($character_result);
 
-    if ($check['owner'] == $user->data['user_id']) {
+    if ($check['owner'] == $user->data['user_id'] && $user->data['group_id'] == '5') { //breaks so that nobody can access this on production
         ?>
         <!--<div id="character">
             <?php
-            //$file = 'https://game.openrsc.com/avatars/' . $id . '.png';
-            //echo "<br /><img src=\"$file\"/>";
-            ?>
+        //$file = 'https://game.openrsc.com/avatars/' . $id . '.png';
+        //echo "<br /><img src=\"$file\"/>";
+        ?>
         </div>-->
 
         <div id="hero-page-details">

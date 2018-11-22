@@ -15,7 +15,7 @@ if ($user->data['is_registered']) {
                     <div style="margin-left: 80px; margin-right: 80px; margin-top: 45px; margin-bottom: 45px; color: lightgrey;">
                         <h4>Account Management</h4>
                         <p>Manage your player accounts, view their statistics, and change up your gear!</p>
-                        <a id="inline" href="/create" class="button">Create Hero</a>
+                        <a href="/create" class="button">Create Hero</a>
                         <?php if (mysqli_num_rows($characters_result) > 0) { ?>
                             <div id="sm-list">
                                 <ul>

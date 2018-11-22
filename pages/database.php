@@ -18,7 +18,9 @@ if (!defined('IN_PHPBB')) {
                             color="#C6A444">|</font>
                     <a href="faq"/>FAQ</a> <font
                             color="#C6A444">|</font>
-                    <a href="rules"/>Rules</a>
+                    <a href="rules"/>Rules</a> <font
+                            color="#C6A444">|</font>
+                    <a href="shar"/>Party Bank</a>
                     <br/><br/>
                 </h4>
             </div>
