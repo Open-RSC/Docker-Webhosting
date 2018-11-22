@@ -41,8 +41,8 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
     </div>
     <?php
 } else {
-    //$subpage = mysqli_real_escape_string($subpage);
-    $subpage = preg_replace("/[^A-Za-z0-9 ]/", "_", $subpage);
+    $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
+    $subpage = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $subpage);
     if ($subpage == $skill_array[0]) {
         $query = array('openrsc_players.' . $subpage . ', openrsc_experience.*', 'openrsc_players.' . $subpage);
     } else {
