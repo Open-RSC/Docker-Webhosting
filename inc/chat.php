@@ -65,7 +65,7 @@ function gameChat()
             $idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
             ?>
             [<small><?php date_default_timezone_set('America/New_York'); echo strftime("%d %b / %H:%M %Z", $row["time"]) ?></small>]
-            [<strong><a href="/characters/<?php echo $idLink ?>" target="_blank"><?php echo ucwords($row["sender"]) ?></a></strong>] <?php echo $row["message"] ?><br/>
+            [<strong><a href="/player/<?php echo $idLink ?>" target="_blank"><?php echo ucwords($row["sender"]) ?></a></strong>] <?php echo $row["message"] ?><br/>
         <?php } ?>
     </div>
     <?php

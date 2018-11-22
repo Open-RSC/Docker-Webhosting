@@ -44,19 +44,19 @@ $list_items = $connector->gamequery('SELECT id, name, description, combatlvl, at
                             ?>
                             <tr>
                                 <td width="5%" align="center" style="padding-left: 15px;">
-                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                    <a href="/npcdef/<?php echo $result['id'] ?>">
                                         <?php echo $result['id'] ?>
                                     </a>
                                 </td>
                                 <td width="10%" align="center">
-                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                    <a href="/npcdef/<?php echo $result['id'] ?>">
                                         <img src="/css/images/npc/<?php echo $result['id'] ?>.png"
                                              style="max-width: 80px; max-height: 80px;">
                                     </a>
                                     <br/><br/>
                                 </td>
                                 <td>
-                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                    <a href="/npcdef/<?php echo $result['id'] ?>">
                                         <?php echo $result['name'] ?> <font
                                                 color="grey">(level <?php echo $result['combatlvl'] ?>)</font>
                                         <br/>
@@ -64,13 +64,13 @@ $list_items = $connector->gamequery('SELECT id, name, description, combatlvl, at
                                     </a>
                                 </td>
                                 <td width="25%">
-                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                    <a href="/npcdef/<?php echo $result['id'] ?>">
                                         <small><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?>
                                             / <?php if ($result['aggressive']) { ?>Aggressive<?php } else { ?>Passive<?php } ?></small>
                                     </a>
                                 </td>
                                 <td width="15%">
-                                    <a href="/npcabout/<?php echo $result['id'] ?>">
+                                    <a href="/npcdef/<?php echo $result['id'] ?>">
                                         <small><?php echo $result['respawnTime'] ?> sec</small>
                                     </a>
                                 </td>

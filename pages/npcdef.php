@@ -19,14 +19,14 @@ function buildSQLArray($array)
 
 $connector = new Dbc();
 
-//$subpage = mysqli_real_escape_string($subpage);
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
+$subpage = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $subpage);
 $skills = buildSQLArray($skill_array);
 
-$npc_result = $connector->gamequery("SELECT * FROM openrsc_npcdef WHERE id = '$subpage'");
+$npc_result = $connector->gamequery("SELECT * FROM openrsc_npcdef WHERE id = '$subpage' OR name = '$subpage'");
 $result = $connector->fetchArray($npc_result);
 
-$resultdrop_result = $connector->gamequery("SELECT * FROM openrsc_npcdrops LEFT JOIN openrsc_npcdef ON openrsc_npcdrops.npcdef_id = openrsc_npcdef.id WHERE openrsc_npcdef.id = '$subpage'");
+$resultdrop_result = $connector->gamequery("SELECT * FROM openrsc_npcdrops LEFT JOIN openrsc_npcdef ON openrsc_npcdrops.npcdef_id = openrsc_npcdef.id WHERE (openrsc_npcdef.id = '$subpage' OR openrsc_npcdef.name = '$subpage')");
 $resultdrop = $connector->fetchArray($resultdrop_result);
 
 ?>

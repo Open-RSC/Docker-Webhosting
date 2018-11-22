@@ -19,9 +19,10 @@ function buildSQLArray($array)
 
 $connector = new Dbc();
 
-//$subpage = mysqli_real_escape_string($subpage);
-$subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $skills = buildSQLArray($skill_array);
+
+$subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
+$subpage = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $subpage);
 
 $character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE (openrsc_players.id = '$subpage' OR openrsc_players.username = '$subpage')");
 $character = $connector->fetchArray($character_result);
@@ -243,7 +244,7 @@ function bd_nice_number($n)
                                 for ($i = 1; $list = $connector->fetchArray($player_pmlogs); $i++) {
                                     $idLinkSender = preg_replace("/[^A-Za-z0-9]/", "-", $list['sender']);
                                     $idLinkReciever = preg_replace("/[^A-Za-z0-9]/", "-", $list['reciever']);
-                                    echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b><a href="/characters/' . $idLinkSender . '" target="_blank">' . $list["sender"] . '</a></b> to <b><a href="/characters/' . $idLinkReciever . '" target="_blank">' . $list["reciever"] . '</a></b>: <small>' . $list["message"] . '</small>';
+                                    echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b><a href="/player/' . $idLinkSender . '" target="_blank">' . $list["sender"] . '</a></b> to <b><a href="/characters/' . $idLinkReciever . '" target="_blank">' . $list["reciever"] . '</a></b>: <small>' . $list["message"] . '</small>';
                                     echo '<br/>';
                                     if (($i % 14 == 0) && ($i < $pm)) {
                                         echo '</tr><tr>';

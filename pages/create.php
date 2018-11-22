@@ -3,15 +3,14 @@ if (!defined('IN_PHPBB')) {
     die("You do not have permission to access this file.");
 }
 
-
 $connector = new Dbc();
 
 if ($_POST['nm']) {
     $username = $_POST['nm'];
     $password = $_POST['pw'];
 
-    //$username = mysqli_real_escape_string($username);
     $username = preg_replace("/[^A-Za-z0-9 ]/", " ", $username);
+    $username = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $username);
 
     $user_result = $connector->gamequery("SELECT username FROM openrsc_players WHERE username='$username'");
     $num_users_row = mysqli_num_rows($user_result);
