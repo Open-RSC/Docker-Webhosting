@@ -135,11 +135,14 @@ function totalGameCharacters()
 function onlinePlayers()
 {
     $connector = new Dbc();
-    $game_accounts = $connector->gamequery("SELECT id, username FROM openrsc_players WHERE online = '1'");
+    $game_accounts = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE online = '1'");
     while ($row = $connector->fetchArray($game_accounts)) {
         if ($row["username"] == NULL) {
             echo "No players currently online.";
         } else {
+            if ($row['group_id'] != 4):
+                echo '<img src="../css/images/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+            else: NULL; endif;
             echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
             echo '<br />';
         }
@@ -162,11 +165,14 @@ function newRegistrationsToday()
 function listregistrationsToday()
 {
     $connector = new Dbc();
-    $registrations_today = $connector->gamequery("SELECT id, username FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 1 day )");
+    $registrations_today = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 1 day )");
     while ($row = $connector->fetchArray($registrations_today)) {
         if ($row["username"] == NULL) {
             echo "No players have been created today.";
         } else {
+            if ($row['group_id'] != 4):
+                echo '<img src="../css/images/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+            else: NULL; endif;
             echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
             echo '<br />';
         }
@@ -189,11 +195,14 @@ function loginsToday()
 function listloginsToday()
 {
     $connector = new Dbc();
-    $loginsToday = $connector->gamequery("SELECT id, username FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
+    $loginsToday = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
     while ($row = $connector->fetchArray($loginsToday)) {
         if ($row["username"] == NULL) {
             echo "No players have logged in today.";
         } else {
+            if ($row['group_id'] != 4):
+                echo '<img src="../css/images/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+            else: NULL; endif;
             echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
             echo '<br />';
         }
