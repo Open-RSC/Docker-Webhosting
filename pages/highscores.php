@@ -55,7 +55,7 @@ if (!$subpage || !in_array($subpage, $skill_array)) {
     <div class="main">
         <div class="content">
             <article class="highscores">
-                <div class="panel">s
+                <div class="panel">
                     <ul class="skill">
                         <?php foreach ($skill_array as $skill) { ?>
                             <li><a href="/highscores/<?php print $skill; ?>">
