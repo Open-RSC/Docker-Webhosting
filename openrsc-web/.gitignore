@@ -32,10 +32,14 @@ Homestead.yaml
 Homestead.json
 
 ### Master Configs ###
-.env
 composer.lock
 
 ### Assets ###
+!/storage/framework/.gitsave
+!/storage/views/.gitsave
+!/storage/sessions/.gitsave
+!/storage/cache/.gitsave
+!/bootstrap/cache/.gitsave
 /node_modules
 /public/hot
 /public/storage
@@ -46,6 +50,7 @@ composer.lock
 /storage/logs
 /storage/users
 packages/
+/bootstrap/cache
 
 # Debug Files
 npm-debug.log
