@@ -1344,8 +1344,8 @@ class Results
     /**
      * Prepare unsorted sql query and sort by key drop down
      *
-     * @param array  $analyzed_sql_results analyzed sql results
-     * @param string $sort_expression      sort expression
+     * @param array      $analyzed_sql_results analyzed sql results
+     * @param array|null $sort_expression      sort expression
      *
      * @return  array   two element array - $unsorted_sql_query, $drop_down_html
      *
@@ -1354,7 +1354,7 @@ class Results
      * @see     _getTableHeaders()
      */
     private function _getUnsortedSqlAndSortByKeyDropDown(
-        array $analyzed_sql_results, $sort_expression
+        array $analyzed_sql_results, array $sort_expression
     ) {
         $drop_down_html = '';
 
@@ -1389,9 +1389,9 @@ class Results
     /**
      * Prepare sort by key dropdown - html code segment
      *
-     * @param Index[] $indexes            the indexes of the table for sort criteria
-     * @param string  $sort_expression    the sort expression
-     * @param string  $unsorted_sql_query the unsorted sql query
+     * @param Index[]    $indexes            the indexes of the table for sort criteria
+     * @param array|null $sort_expression    the sort expression
+     * @param string     $unsorted_sql_query the unsorted sql query
      *
      * @return  string  $drop_down_html         html content
      *
@@ -1400,7 +1400,7 @@ class Results
      * @see     _getTableHeaders()
      */
     private function _getSortByKeyDropDown(
-        $indexes, $sort_expression, $unsorted_sql_query
+        $indexes, array $sort_expression, $unsorted_sql_query
     ) {
 
         $drop_down_html = '';
@@ -1415,7 +1415,7 @@ class Results
             . ': <select name="sql_query" class="autosubmit">' . "\n";
 
         $used_index = false;
-        $local_order = (isset($sort_expression) ? $sort_expression : '');
+        $local_order = (is_array($sort_expression) ? implode(', ',$sort_expression) : '');
 
         foreach ($indexes as $index) {
 
@@ -2893,28 +2893,29 @@ class Results
 
                     if (@file_exists($include_file)) {
 
-                        include_once $include_file;
                         $class_name = Transformations::getClassName($include_file);
-                        // todo add $plugin_manager
-                        $plugin_manager = null;
-                        $transformation_plugin = new $class_name(
-                            $plugin_manager
-                        );
+                        if (class_exists($class_name)) {
+                            // todo add $plugin_manager
+                            $plugin_manager = null;
+                            $transformation_plugin = new $class_name(
+                                $plugin_manager
+                            );
 
-                        $transform_options = Transformations::getOptions(
-                            isset(
-                                $mime_map[$orgFullColName]
+                            $transform_options = Transformations::getOptions(
+                                isset(
+                                    $mime_map[$orgFullColName]
+                                    ['transformation_options']
+                                )
+                                ? $mime_map[$orgFullColName]
                                 ['transformation_options']
-                            )
-                            ? $mime_map[$orgFullColName]
-                            ['transformation_options']
-                            : ''
-                        );
+                                : ''
+                            );
 
-                        $meta->mimetype = str_replace(
-                            '_', '/',
-                            $mime_map[$orgFullColName]['mimetype']
-                        );
+                            $meta->mimetype = str_replace(
+                                '_', '/',
+                                $mime_map[$orgFullColName]['mimetype']
+                            );
+                        }
 
                     } // end if file_exists
                 } // end if transformation is set
@@ -3939,13 +3940,13 @@ class Results
         }
 
         // as this is a form value, the type is always string so we cannot
-        // use Core::isValid($_REQUEST['session_max_rows'], 'integer')
-        if (Core::isValid($_REQUEST['session_max_rows'], 'numeric')) {
-            $query['max_rows'] = (int)$_REQUEST['session_max_rows'];
-            unset($_REQUEST['session_max_rows']);
-        } elseif ($_REQUEST['session_max_rows'] == self::ALL_ROWS) {
+        // use Core::isValid($_POST['session_max_rows'], 'integer')
+        if (Core::isValid($_POST['session_max_rows'], 'numeric')) {
+            $query['max_rows'] = (int)$_POST['session_max_rows'];
+            unset($_POST['session_max_rows']);
+        } elseif ($_POST['session_max_rows'] == self::ALL_ROWS) {
             $query['max_rows'] = self::ALL_ROWS;
-            unset($_REQUEST['session_max_rows']);
+            unset($_POST['session_max_rows']);
         } elseif (empty($query['max_rows'])) {
             $query['max_rows'] = intval($GLOBALS['cfg']['MaxRows']);
         }
@@ -4212,13 +4213,10 @@ class Results
         // can the result be sorted?
         if ($displayParts['sort_lnk'] == '1' && ! is_null($analyzed_sql_results['statement'])) {
 
-            // At this point, $sort_expression is an array but we only verify
-            // the first element in case we could find that the table is
-            // sorted by one of the choices listed in the
-            // "Sort by key" drop-down
+            // At this point, $sort_expression is an array
             list($unsorted_sql_query, $sort_by_key_html)
                 = $this->_getUnsortedSqlAndSortByKeyDropDown(
-                    $analyzed_sql_results, $sort_expression[0]
+                    $analyzed_sql_results, $sort_expression
                 );
 
         } else {
