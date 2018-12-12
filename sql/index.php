@@ -19,6 +19,7 @@ use PhpMyAdmin\Server\Select;
 use PhpMyAdmin\ThemeManager;
 use PhpMyAdmin\Url;
 use PhpMyAdmin\Util;
+use PhpMyAdmin\UserPreferences;
 
 /**
  * Gets some core libraries and displays a top message if required
@@ -82,6 +83,12 @@ if (isset($_POST['set_theme'])) {
     $tmanager = ThemeManager::getInstance();
     $tmanager->setActiveTheme($_POST['set_theme']);
     $tmanager->setThemeCookie();
+
+    $userPreferences = new UserPreferences();
+    $prefs = $userPreferences->load();
+    $prefs["config_data"]["ThemeDefault"] = $_POST['set_theme'];
+    $userPreferences->save($prefs["config_data"]);
+
     header('Location: index.php' . Url::getCommonRaw());
     exit();
 }
@@ -614,7 +621,7 @@ if ($server > 0) {
                 );
         }
         $msg = Message::notice($msg_text);
-        $msg->addParamHtml('<a href="./chk_rel.php' . $common_url_query . '">');
+        $msg->addParamHtml('<a href="./chk_rel.php" data-post="' . $common_url_query . '">');
         $msg->addParamHtml('</a>');
         /* Show error if user has configured something, notice elsewhere */
         if (!empty($cfg['Servers'][$server]['pmadb'])) {
