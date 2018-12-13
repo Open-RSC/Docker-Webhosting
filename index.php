@@ -187,10 +187,10 @@
                 </div>
             <?php } else { ?>
                 <div class="sidenavbar">
-                    <ul>
+                    <!--<ul>
                         <li><a class="trigger">Login</a></li>
                         <li><a href="/board/ucp?mode=register">Register</a></li>
-                    </ul>
+                    </ul>-->
                 </div>
             <?php } ?>
 
