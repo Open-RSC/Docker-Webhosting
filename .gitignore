@@ -13,3 +13,5 @@ nbproject/
 board/cache/production/
 
 sql/tmp/
+
+openrsc-web/bootstrap/cache/
