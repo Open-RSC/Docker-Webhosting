@@ -40,16 +40,12 @@ return [
     'forgot'          => 'Forgot Your Password?',
     'forgot_message'  => 'Password Troubles?',
     'name'            => 'Username',
-    'first_name'      => 'First Name',
-    'last_name'       => 'Last Name',
     'confirmPassword' => 'Confirm Password',
     'register'        => 'Register',
 
     // Placeholders
     'ph_name'          => 'Username',
     'ph_email'         => 'E-mail Address',
-    'ph_firstname'     => 'First Name',
-    'ph_lastname'      => 'Last Name',
     'ph_password'      => 'Password',
     'ph_password_conf' => 'Confirm Password',
 
@@ -66,8 +62,6 @@ return [
     // Validators
     'userNameTaken'    => 'Username is taken',
     'userNameRequired' => 'Username is required',
-    'fNameRequired'    => 'First Name is required',
-    'lNameRequired'    => 'Last Name is required',
     'emailRequired'    => 'Email is required',
     'emailInvalid'     => 'Email is invalid',
     'passwordRequired' => 'Password is required',
