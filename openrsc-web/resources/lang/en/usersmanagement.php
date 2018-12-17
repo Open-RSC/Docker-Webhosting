@@ -55,8 +55,6 @@ return [
         'caption'   => '{1} :userscount user total|[2,*] :userscount total users',
         'id'        => 'ID',
         'name'      => 'Username',
-        'fname'     => 'First Name',
-        'lname'     => 'Last Name',
         'email'     => 'Email',
         'role'      => 'Role',
         'created'   => 'Created',
@@ -90,8 +88,6 @@ return [
     'messages' => [
         'userNameTaken'          => 'Username is taken',
         'userNameRequired'       => 'Username is required',
-        'fNameRequired'          => 'First Name is required',
-        'lNameRequired'          => 'Last Name is required',
         'emailRequired'          => 'Email is required',
         'emailInvalid'           => 'Email is invalid',
         'passwordRequired'       => 'Password is required',

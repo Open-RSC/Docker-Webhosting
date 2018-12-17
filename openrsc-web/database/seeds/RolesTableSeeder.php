@@ -22,7 +22,7 @@ class RolesTableSeeder extends Seeder
                 'name'        => 'Admin',
                 'slug'        => 'admin',
                 'description' => 'Admin Role',
-                'level'       => 5,
+                'level'       => 1,
             ]);
         }
 
@@ -31,7 +31,7 @@ class RolesTableSeeder extends Seeder
                 'name'        => 'User',
                 'slug'        => 'user',
                 'description' => 'User Role',
-                'level'       => 1,
+                'level'       => 4,
             ]);
         }
 
