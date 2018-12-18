@@ -6,16 +6,17 @@
 
     <title>Laravel</title>
 
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- CSS and JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/darkly/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-w+yWASP3zYNxxvwoQBD5fUSc1tctKq4KUiZzxgkBSJACiUp+IbweVKvsEhMI+gz7" crossorigin="anonymous">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Exo:200,600" rel="stylesheet" type="text/css">
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/darkly/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-w+yWASP3zYNxxvwoQBD5fUSc1tctKq4KUiZzxgkBSJACiUp+IbweVKvsEhMI+gz7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/css/images/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicons/favicon-32x32.png">
@@ -24,7 +25,6 @@
     <link rel="mask-icon" href="/css/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
 
     <!-- Styles -->
-    <!--<link rel="stylesheet" href="/css/style.css" media="all"/>-->
     <style>
         html, body {
             font-family: 'Exo', sans-serif;
@@ -124,6 +124,7 @@
             text-transform: uppercase;
             color: white;
         }
+
         .links > a:hover {
             color: gold;
         }
@@ -140,6 +141,14 @@
         .features {
             position: absolute;
             right: 200px;
+        }
+
+        .featurelist li {
+            font-size: 18px;
+        }
+
+        ul {
+            list-style-type: none;
         }
 
     </style>
@@ -179,7 +188,7 @@
             <div class="d-flex text-center h-100">
                 <div class="my-auto w-100 text-white">
                     <h1 class="display-3">Open RSC</h1>
-                    <h3>Striving for a replica RSC game and more</h3>
+                    <h4>Striving for a replica RSC game and more</h4>
                     <div class="links">
                         <a href="https://game.openrsc.com/downloads/OpenRSC.jar">Download</a> |
                         <a href="#https://game.openrsc.com/downloads/openrsc.apk">Android</a> |
@@ -199,89 +208,109 @@
     </div>
 
     <div class="statistics">
-        <h3>Players Online:
-            <a href="/online">15
-                <?php //echo playersOnline(); ?>
-            </a>
-        </h3>
-        <h3>Server Status:
-            <a href="#">
-                <?php //echo checkStatus("game.openrsc.com", "43594"); ?>Online
-            </a>
-        </h3>
-        <h3>Registrations Today:
-            <a href="/registrationstoday">2
-                <?php //echo newRegistrationsToday(); ?>
-            </a>
-        </h3>
-        <h3>Logins Today:
-            <a href="/loginstoday">28
-                <?php //echo loginsToday(); ?>
-            </a>
-        </h3>
-        <h3>Unique Players:
-            <a href="/stats">532
-                <?php //echo uniquePlayers(); ?>
-            </a>
-        </h3>
-        <h3>Total Players:
-            <a href="/stats">1251
-                <?php //echo totalGameCharacters(); ?>
-            </a>
-        </h3>
-        <h3>Gold:
-            <a href="/stats">30,903,652
-                <?php //echo banktotalGold(); ?>
-            </a>
-        </h3>
-        <h3>Total Time:
-            <a href="/stats">222d 10h 43m
-                <?php //echo totalTime(); ?>
-            </a>
-        </h3>
+        <ul class="featurelist">
+            <li>
+                Players Online:
+                <a href="/online">15
+                    <?php //echo playersOnline(); ?>
+                </a>
+            </li>
+            <li>
+                Server Status:
+                <a href="#">
+                    <?php //echo checkStatus("game.openrsc.com", "43594"); ?>Online
+                </a>
+            </li>
+            <li>
+                Registrations Today:
+                <a href="/registrationstoday">2
+                    <?php //echo newRegistrationsToday(); ?>
+                </a>
+            </li>
+            <li>
+                Logins Today:
+                <a href="/loginstoday">28
+                    <?php //echo loginsToday(); ?>
+                </a>
+            </li>
+            <li>
+                Unique Players:
+                <a href="/stats">532
+                    <?php //echo uniquePlayers(); ?>
+                </a>
+            </li>
+            <li>
+                Total Players:
+                <a href="/stats">1251
+                    <?php //echo totalGameCharacters(); ?>
+                </a>
+            </li>
+            <li>
+                Gold:
+                <a href="/stats">30,903,652
+                    <?php //echo banktotalGold(); ?>
+                </a>
+            </li>
+            <li>
+                Total Time:
+                <a href="/stats">222d 10h 43m
+                    <?php //echo totalTime(); ?>
+                </a>
+            </li>
+        </ul>
     </div>
 
     <div class="features">
-        <h3>XP Rate:
-            <a href="#">
-                1x
-            </a>
-        </h3>
-        <h3>Batched Skills:
-            <a href="#">
-                Disabled
-            </a>
-        </h3>
-        <h3>Player Commands:
-            <a href="#">
-                Disabled
-            </a>
-        </h3>
-        <h3>Bank Notes:
-            <a href="#">
-                Enabled
-            </a>
-        </h3>
-        <h3>Drop X:
-            <a href="#">
-                Enabled
-            </a>
-        </h3>
-        <h3>NPC Blocking:
-            <a href="#">
-                Aggressive
-            </a>
-        </h3>
-        <h3>Quick Banking:
-            <a href="#">
-                Enabled
-            </a>
-        </h3>
-        <h3>Bots:
-            <a href="#">
-                Not Allowed
-            </a>
-        </h3>
+        <ul class="featurelist">
+            <li>
+                XP Rate:
+                <a href="#">
+                    1x
+                </a>
+            </li>
+            <li>
+                Batched Skills:
+                <a href="#">
+                    Disabled
+                </a>
+            </li>
+            <li>
+                Player Commands:
+                <a href="#">
+                    Disabled
+                </a>
+            </li>
+            <li>
+                Bank Notes:
+                <a href="#">
+                    Enabled
+                </a>
+            </li>
+            <li>
+                Drop X:
+                <a href="#">
+                    Enabled
+                </a>
+            </li>
+            <li>
+                NPC Blocking:
+                <a href="#">
+                    Aggressive
+                </a>
+            </li>
+            <li>
+                Quick Banking:
+                <a href="#">
+                    Enabled
+                </a>
+            </li>
+            <li>
+                Bots:
+                <a href="#">
+                    Not Allowed
+                </a>
+            </li>
+        </ul>
     </div>
 
 </div>
