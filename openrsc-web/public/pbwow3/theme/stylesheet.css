@@ -1,0 +1,137 @@
+/*  phpBB3 Style Sheet
+	--------------------------------------------------------------
+	Style name:			PBWoW3
+	Based on style:		prosilver (the default phpBB 3.2.x style)
+	Original author:	Tom Beddard ( http://www.subblue.com/ )
+	Modified by:		PayBas ( http://pbwow.com/ )
+	--------------------------------------------------------------
+*/
+
+
+@import url("base.css?v=3.2");
+@import url("common.css?v=3.2");
+@import url("links.css?v=3.2");
+@import url("content.css?v=3.2");
+@import url("buttons.css?v=3.2");
+@import url("cp.css?v=3.2");
+@import url("forms.css?v=3.2");
+@import url("icons.css?v=3.2");
+@import url("colours.css?v=3.2");
+@import url("imageset.css?v=3.2");
+@import url("custom.css?v=3.2");
+@import url("responsive.css?v=3.2");
+@import url("extensions.css?v=3.2");
+
+/* PBWoW Master style specific assets (overall_header {T_THEME_NAME}
+   (excluded for children)
+--------------------------------------------- */
+
+body.pbwow3 {
+	background-attachment: scroll;
+}
+
+body.pbwow3 .logo {
+	background: url("./images/theme/logo.png") no-repeat;
+	background-size: 101%;
+	width: 300px;
+	height: 180px;
+	margin: 10px 10px 40px 10px;
+	display: block;
+}
+
+body.pbwow3 #video-background {
+	display: none;
+}
+
+body.pbwow3 #page-body:before {
+	display: none;
+}
+body.pbwow3 #page-body {
+	background-color: rgba(0,0,0,0.90);
+}
+
+@media only screen and (max-width: 999px), only screen and (max-device-width: 999px) {
+
+	body.pbwow3 {
+		background-image: url("./images/theme/wod-small.png");
+		background-position: 0 0;
+	}
+
+	body.pbwow3.topbar {
+		background-position: 0 41px;
+	}
+}
+
+@media screen and (max-width: 859px) {
+	body.pbwow3 #logo {
+		width: 200px;
+		height: 100px;
+		margin: 0 0 25px 0;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	body.pbwow3 #logo {
+		display: none;
+	}
+}
+
+/* Tweaks
+--------------------------------------------- */
+.notouch.section-viewtopic .post-buttons {
+	opacity: 0;
+	transition: opacity .4s;
+}
+
+.notouch.section-viewtopic .post:hover .post-buttons {
+	opacity: 1;
+}
+
+ul.linklist > li,
+#quick-links {
+	margin-right: 10px;
+}
+
+ul.linklist > li.rightside {
+	margin-left: 10px;
+}
+
+.icon-mark-read {
+	margin-left: 20px !important;
+	margin-right: 15px !important;
+}
+
+ul.linklist > li a:hover {
+	text-decoration: none;
+}
+
+.action-bar.compact {
+	display: none;
+}
+
+input#pf_pbbnetavatar, label[for=pf_pbbnetavatar] {
+	display: none;
+}
+
+.topic_poll + hr {
+	display: none;
+}
+
+/* =Media queries (all >700px rules are in responsive.css)
+-------------------------------------------------------------- */
+
+@media screen and (max-width: 999px) {
+	.forum-blocks li.row,
+	.index-left .forum-blocks li.row {
+		width: 100%;
+		min-height: 60px;
+	}
+
+	.forum-blocks li.row dl {
+		min-height: inherit;
+	}
+
+	.postprofile {
+		background-position: 50% 0;
+	}
+}
