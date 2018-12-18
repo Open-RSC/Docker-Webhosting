@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 
     <!--Theme-->
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/darkly/bootstrap.min.css" rel="stylesheet"
@@ -31,8 +32,22 @@
         html, body {
             font-family: 'Exo', sans-serif;
             font-weight: 200;
-            height: 100vh;
-            margin: 0;
+        }
+
+        /* Fixes dropdown menus placed on the right side */
+        .ml-auto .dropdown-menu {
+            left: auto !important;
+            right: 0px;
+            z-index: 1;
+        }
+
+        @media (min-width: 992px) {
+            .nav-item {
+                font-size: 16px;
+                margin: 3px;
+                padding: 0px;
+                z-index: 1;
+            }
         }
 
         header {
@@ -52,7 +67,6 @@
             min-width: 100%;
             min-height: 100%;
             z-index: 0;
-
         }
 
         header .container {
@@ -99,20 +113,6 @@
             position: relative;
         }
 
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-            z-index: 1;
-        }
-
-        .top-left {
-            position: absolute;
-            left: 10px;
-            top: 18px;
-            z-index: 1;
-        }
-
         .links > a {
             padding: 0 10px;
             font-size: 13px;
@@ -155,46 +155,53 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        @if (Route::has('login'))
-            <div class="top-left links">
-                <a href="{{ url('/') }}">Home</a>
-                <a href="{{ url('/highscores') }}">Highscores</a>
-                <a href="{{ url('/worldmap') }}">Live Map</a>
-                <a href="{{ url('/chat') }}">Chat Logs</a>
-                <a href="{{ url('/database') }}">Information</a>
-                <a href="{{ url('/links') }}">Links</a>
-                <a href="{{ url('/calendar') }}">Event Calendar</a>
-                <hr>
-            </div>
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/account') }}"><i class="fas fa-gamepad"></i> Manage Players</a>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                @else
-                    <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"><i class="fas fa-lock"></i></i>
-                            Register</a>
-                    @endif
-                @endauth
-                <hr>
-            </div>
-        @endif
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/highscores') }}">Highscores</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/worldmap') }}">Live Map</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/chat') }}">Chat Logs</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/database') }}">Information</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/links') }}">Links</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/calendar') }}">Event Calendar</a></li>
+            </ul>
+            @if (Route::has('login'))
+            <ul class="navbar-nav ml-auto">
+                    @auth
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/account') }}"><i
+                                    class="fas fa-gamepad"></i> Manage
+                                Players</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    @else
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}"><i
+                                    class="fas fa-sign-in-alt"></i> Login</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}"><i
+                                        class="fas fa-lock"></i></i>
+                                    Register</a></li>
+                        @endif
+                    @endauth
+                </ul>
+            @endif
+        </div>
+
 </nav>
 
 <div class="flex-center position-ref full-height">
-
     <header>
         <div class="overlay"></div>
-        <video id="video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <!--<video id="video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
             <script>
                 var videoPlayer = document.getElementById('video');
 
@@ -212,8 +219,8 @@
                 videoPlayer.addEventListener('ended', playIt, false);
                 playIt();
             </script>
-        </video>
-        <div class="container h-100">
+        </video>-->
+        <div class="name-center h-100">
             <div class="d-flex text-center h-100">
                 <div class="my-auto w-100 text-white">
                     <h1 class="display-3">Open RSC</h1>
@@ -336,11 +343,9 @@
     </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        Footer
-    </div>
-</nav>
+<!--<div class="navbar fixed-bottom navbar-light bg-light">
+    Footer Example
+</div>-->
 
 </body>
 </html>
