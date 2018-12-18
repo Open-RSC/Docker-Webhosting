@@ -170,11 +170,17 @@
             </div>
             <div class="top-right links">
                 @auth
-                    <a href="{{ url('/account') }}">Manage Players</a>
+                    <a href="{{ url('/account') }}"><i class="fas fa-gamepad"></i> Manage Players</a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 @else
-                    <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span>
+                        <a href="{{ route('register') }}"><i class="fas fa-lock"></i></i>
                             Register</a>
                     @endif
                 @endauth
