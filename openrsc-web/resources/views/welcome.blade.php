@@ -34,31 +34,28 @@
         }
 
         header {
-            position: absolute;
-            background-color: black;
-            height: 75vh;
-            min-height: 25rem;
-            width: 100%;
-            overflow: hidden;
+            position: center;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: 0;
         }
 
         header video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            position: center;
+            right: 0;
+            bottom: 0;
+            top: 100px;
             min-width: 100%;
             min-height: 100%;
-            width: auto;
-            height: auto;
             z-index: 0;
-            -ms-transform: translateX(-50%) translateY(-50%);
-            -moz-transform: translateX(-50%) translateY(-50%);
-            -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
+
         }
 
         header .container {
             position: relative;
+            bottom: 750px;
             z-index: 2;
         }
 
@@ -66,19 +63,24 @@
             position: absolute;
             top: 0;
             left: 0;
-            height: 100%;
-            width: 100%;
             z-index: 1;
         }
 
-        @media (pointer: coarse) and (hover: none) {
-            header {
-                background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
-            }
-
-            header video {
-                display: none;
-            }
+        hr {
+            display: block;
+            position: relative;
+            padding: 0;
+            margin: 8px auto;
+            height: 0;
+            width: 100%;
+            max-height: 0;
+            font-size: 1px;
+            line-height: 0;
+            clear: both;
+            border: none;
+            border-top: 1px solid #aaaaaa;
+            border-bottom: 0.1px solid #ffffff;
+            z-index: 1;
         }
 
         .full-height {
@@ -99,20 +101,14 @@
             position: absolute;
             right: 10px;
             top: 18px;
+            z-index: 1;
         }
 
         .top-left {
             position: absolute;
             left: 10px;
             top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
+            z-index: 1;
         }
 
         .links > a {
@@ -123,24 +119,27 @@
             text-decoration: none;
             text-transform: uppercase;
             color: white;
+            z-index: 1;
         }
 
         .links > a:hover {
             color: gold;
         }
 
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-
         .statistics {
             position: absolute;
-            left: 200px;
+            right: 0px;
+            padding-right: 30px;
+            top: 200px;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         .features {
             position: absolute;
-            right: 200px;
+            left: 0px;
+            padding-right: 30px;
+            top: 200px;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         .featurelist li {
@@ -150,39 +149,61 @@
         ul {
             list-style-type: none;
         }
-
     </style>
 </head>
 <body>
 
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        @if (Route::has('login'))
+            <div class="top-left links">
+                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ url('/highscores') }}">Highscores</a>
+                <a href="{{ url('/worldmap') }}">Live Map</a>
+                <a href="{{ url('/chat') }}">Chat Logs</a>
+                <a href="{{ url('/database') }}">Information</a>
+                <a href="{{ url('/links') }}">Links</a>
+                <a href="{{ url('/calendar') }}">Event Calendar</a>
+                <hr>
+            </div>
+            <div class="top-right links">
+                @auth
+                    <a href="{{ url('/account') }}">Manage Players</a>
+                @else
+                    <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span>
+                            Register</a>
+                    @endif
+                @endauth
+                <hr>
+            </div>
+        @endif
+    </div>
+</nav>
+
 <div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-left links">
-            <a href="{{ url('/') }}">Home</a>
-            <a href="{{ url('/highscores') }}">Highscores</a>
-            <a href="{{ url('/worldmap') }}">Live Map</a>
-            <a href="{{ url('/chat') }}">Chat Logs</a>
-            <a href="{{ url('/database') }}">Information</a>
-            <a href="{{ url('/links') }}">Links</a>
-            <a href="{{ url('/calendar') }}">Event Calendar</a>
-        </div>
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/account') }}">Manage Players</a>
-            @else
-                <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span>
-                        Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
 
     <header>
         <div class="overlay"></div>
-        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-            <source src="/css/images/2.mp4" type="video/mp4">
+        <video id="video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <script>
+                var videoPlayer = document.getElementById('video');
+
+                function playIt() {
+                    videoPlayer.play();
+                    var videos = [
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                    ], videos = videos[Math.floor(Math.random() * videos.length)];
+                    videoPlayer.src = "/css/images/" + videos + ".mp4";
+                }
+
+                videoPlayer.addEventListener('ended', playIt, false);
+                playIt();
+            </script>
         </video>
         <div class="container h-100">
             <div class="d-flex text-center h-100">
@@ -200,12 +221,6 @@
             </div>
         </div>
     </header>
-
-    <div class="content">
-        <div class="title m-b-md">
-            <img class="logo" src="css/images/logo.png" height="400px" alt="Open RSC"/>
-        </div>
-    </div>
 
     <div class="statistics">
         <ul class="featurelist">
@@ -259,7 +274,6 @@
             </li>
         </ul>
     </div>
-
     <div class="features">
         <ul class="featurelist">
             <li>
@@ -312,7 +326,13 @@
             </li>
         </ul>
     </div>
-
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        Footer
+    </div>
+</nav>
+
 </body>
 </html>
