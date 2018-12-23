@@ -9,9 +9,18 @@
     <meta name="author" content="">
 
     <title>Open RSC</title>
+    <meta name="description" content="Striving for a replica RSC game and more.">
+    <meta name="keywords" content="openrsc,open rsc,rsc,open-rsc,rs classic,orsc evo,openrsc evolution">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="img/favicons/site.webmanifest">
+    <link rel="mask-icon" href="img/favicons/safari-pinned-tab.svg" color="#5bbad5">
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -20,16 +29,24 @@
         rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/grayscale.css" rel="stylesheet">
     <style>
         .name-box {
-            margin-left: 20px;
-            margin-right: 20px;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        @media (max-width: 992px) {
+            h1.name {
+                padding-top: 40px;
+                padding-bottom: 10px;
+            }
         }
 
         h1.name {
             font-size: calc(50px + 1vw);
             font-style: italic;
+            font-weight: 600;
         }
 
         h2.name {
@@ -38,16 +55,75 @@
         }
 
         .container {
-         max-width: 1900px;
+            max-width: 1900px;
+        }
+
+        .nav-item {
+            font-size: 16px;
+        }
+
+        .fullscreen-bg__video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
+
+        .fullscreen-bg {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -100;
+        }
+
+        @media (min-aspect-ratio: 16/9) {
+            .fullscreen-bg__video {
+                height: 300%;
+                top: -100%;
+            }
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .fullscreen-bg__video {
+                width: 300%;
+                left: -100%;
+            }
         }
     </style>
-
 </head>
 
 <body id="page-top">
 
+<div class="fullscreen-bg">
+    <video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay" muted="muted"
+           loop="loop">
+        <script>
+            var videoPlayer = document.getElementById('video');
+
+            function playIt() {
+                videoPlayer.play();
+                var videos = [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                ], videos = videos[Math.floor(Math.random() * videos.length)];
+                videoPlayer.src = "img/" + videos + ".mp4";
+            }
+
+            videoPlayer.addEventListener('ended', playIt, false);
+            playIt();
+        </script>
+    </video>
+</div>
+
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
         <!--<a class="navbar-brand js-scroll-trigger" href="#page-top">Open RSC</a>-->
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -97,14 +173,14 @@
                 <div class="mx-auto text-center">
                     <h1 class="name mx-auto my-0 text-uppercase">Authentic</h1>
                     <h2 class="name text-white-50 mx-auto mt-2 mb-5">Striving for a replica RSC game and more</h2>
-                    <a href="#about" class="btn btn-block btn-dark js-scroll-trigger">Enter Nostalgia</a>
+                    <a href="#about" class="btn btn-block btn-dark js-scroll-trigger">Find Nostalgia</a>
                 </div>
             </div>
             <div class="name-box p-2 flex-fill bd-highlight">
                 <div class="mx-auto text-center">
                     <h1 class="name mx-auto my-0 text-uppercase">Evolution</h1>
-                    <h2 class="name text-white-50 mx-auto mt-2 mb-5">Daring To Imagine A New Direction</h2>
-                    <a href="#about" class="btn btn-block btn-dark js-scroll-trigger">Enter Future</a>
+                    <h2 class="name text-white-50 mx-auto mt-2 mb-5">Daring To Imagine An Entirely New Direction</h2>
+                    <a href="#about" class="btn btn-block btn-dark js-scroll-trigger">Enter The Future</a>
                 </div>
             </div>
         </div>
