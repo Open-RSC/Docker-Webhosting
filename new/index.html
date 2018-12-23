@@ -47,13 +47,17 @@
             font-size: calc(50px + 1vw);
             font-style: italic;
             font-weight: 600;
-            
-            text-shadow: 0px -2px 10px rgba(255, 255, 255, 0.2);
+            text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
+            -webkit-text-stroke-width: 1.8px;
+            -webkit-text-stroke-color: darkgray;
         }
 
         h2.name {
             max-font-size: 22px;
             min-font-size: 8px;
+            font-weight: 600;
+            -webkit-text-stroke-width: 0.3px;
+            -webkit-text-stroke-color: darkgray;
         }
 
         .container {
@@ -62,6 +66,7 @@
 
         .nav-item {
             font-size: 16px;
+            font-weight: 600;
         }
 
         .fullscreen-bg__video {
@@ -81,6 +86,14 @@
             left: 0;
             overflow: hidden;
             z-index: -100;
+        }
+
+        @media (max-width: 1400px) {
+            .btn-block {
+                max-width: 460px;
+                display: block;
+                margin: auto;
+            }
         }
 
         @media (min-aspect-ratio: 16/9) {
