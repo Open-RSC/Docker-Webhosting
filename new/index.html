@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Open RSC</title>
+    <meta name="description" content="Striving for a replica RSC game and more.">
+    <meta name="keywords" content="openrsc,open rsc,rsc,open-rsc,rs classic,orsc evo,openrsc evolution">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="img/favicons/site.webmanifest">
+    <link rel="mask-icon" href="img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Exo:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.css" rel="stylesheet">
+    <style>
+        .name-box {
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        @media (max-width: 992px) {
+            h1.name {
+                padding-top: 40px;
+                padding-bottom: 10px;
+            }
+        }
+
+        h1.name {
+            font-size: calc(50px + 1vw);
+            font-style: italic;
+            font-weight: 600;
+            
+            text-shadow: 0px -2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        h2.name {
+            max-font-size: 22px;
+            min-font-size: 8px;
+        }
+
+        .container {
+            max-width: 1900px;
+        }
+
+        .nav-item {
+            font-size: 16px;
+        }
+
+        .fullscreen-bg__video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
+
+        .fullscreen-bg {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -100;
+        }
+
+        @media (min-aspect-ratio: 16/9) {
+            .fullscreen-bg__video {
+                height: 300%;
+                top: -100%;
+            }
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .fullscreen-bg__video {
+                width: 300%;
+                left: -100%;
+            }
+        }
+    </style>
+</head>
+
+<body id="page-top">
+
+<div class="fullscreen-bg">
+    <video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay" muted="muted"
+           loop="loop">
+        <script>
+            var videoPlayer = document.getElementById('video');
+
+            function playIt() {
+                videoPlayer.play();
+                var videos = [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                ], videos = videos[Math.floor(Math.random() * videos.length)];
+                videoPlayer.src = "img/" + videos + ".mp4";
+            }
+
+            videoPlayer.addEventListener('ended', playIt, false);
+            playIt();
+        </script>
+    </video>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+        <!--<a class="navbar-brand js-scroll-trigger" href="#page-top">Open RSC</a>-->
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#signup">Chat Log</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#projects">Highscores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#signup">Live Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#signup">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#signup">Information</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#projects">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#signup">Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container d-flex h-100 justify-content-center align-items-center">
+        <div class="row">
+            <div class="name-box p-2 flex-fill bd-highlight">
+                <div class="mx-auto text-center">
+                    <h1 class="name mx-auto my-0 text-uppercase">Authentic</h1>
+                    <h2 class="name text-white-50 mx-auto mt-2 mb-5">Striving for a replica RSC game and more</h2>
+                    <a href="#about" class="btn btn-block btn-dark js-scroll-trigger">Find Nostalgia</a>
+                </div>
+            </div>
+            <div class="name-box p-2 flex-fill bd-highlight">
+                <div class="mx-auto text-center">
+                    <h1 class="name mx-auto my-0 text-uppercase">Evolution</h1>
+                    <h2 class="name text-white-50 mx-auto mt-2 mb-5">Daring To Imagine An Entirely New Direction</h2>
+                    <a href="#about" class="btn btn-block btn-dark js-scroll-trigger">Enter The Future</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section id="about" class="about-section text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="text-white mb-4">Built with Bootstrap 4</h2>
+                <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours
+                    right now, simply download the template on
+                    <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is
+                    open source, and you can use it for any purpose, personal or commercial.</p>
+            </div>
+        </div>
+        <img src="img/ipad.png" class="img-fluid" alt="">
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section bg-light">
+    <div class="container">
+
+        <!-- Featured Project Row -->
+        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+            <div class="col-xl-8 col-lg-7">
+                <img class="img-fluid mb-3 mb-lg-0" src="img/bg-masthead.jpg" alt="">
+            </div>
+            <div class="col-xl-4 col-lg-5">
+                <div class="featured-text text-center text-lg-left">
+                    <h4>Shoreline</h4>
+                    <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it
+                        for any project - even commercial projects! Download it, customize it, and publish your
+                        website!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project One Row -->
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="img/demo-image-01.jpg" alt="">
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <h4 class="text-white">Misty</h4>
+                            <p class="mb-0 text-white-50">An example of where you can put an image of a project, or
+                                anything else, along with a description.</p>
+                            <hr class="d-none d-lg-block mb-0 ml-0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Two Row -->
+        <div class="row justify-content-center no-gutters">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="img/demo-image-02.jpg" alt="">
+            </div>
+            <div class="col-lg-6 order-lg-first">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-right">
+                            <h4 class="text-white">Mountains</h4>
+                            <p class="mb-0 text-white-50">Another example of a project with its respective description.
+                                These sections work well responsively as well, try this theme on a small screen!</p>
+                            <hr class="d-none d-lg-block mb-0 mr-0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Signup Section -->
+<section id="signup" class="signup-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+
+                <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+
+                <form class="form-inline d-flex">
+                    <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail"
+                           placeholder="Enter email address...">
+                    <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section bg-black">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Address</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Email</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">
+                            <a href="#">hello@yourdomain.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Phone</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">+1 (555) 902-8832</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social d-flex justify-content-center">
+            <a href="#" class="mx-2">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="mx-2">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="mx-2">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black small text-center text-white-50">
+    <div class="container">
+        Copyright &copy; Your Website 2018
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/grayscale.min.js"></script>
+
+</body>
+
+</html>
