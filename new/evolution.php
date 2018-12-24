@@ -51,7 +51,7 @@
     </div>
 </nav>
 
-<!-- About Section -->
+<!-- Title Section -->
 <section id="home" class="about-section text-center">
     <div class="container">
         <div class="row">
@@ -61,7 +61,7 @@
                 <p class="text-white">Daring To Imagine An Entirely New Direction</p>
             </div>
         </div>
-        <img src="img/ipad.png" class="img-fluid" alt="">
+        <img class="android" src="img/android.png" class="img-fluid" height="300px" width="600px;">
     </div>
 </section>
 
