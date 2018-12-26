@@ -54,13 +54,13 @@ if (!defined('IN_PHPBB')) {
 
                     <h4 style="color: #C6A444;">Holiday Items</h4>
 					<a href="/itemdef/422" target="_blank"><img src="/css/images/items/422.png"/> <b><?php echo pumpkins(); ?></b> (13,001 on 11/1/2018)</a><br/>
-					<a href="/itemdef/575" target="_blank"><img src="/css/images/items/575.png"/> <b><?php echo crackers(); ?></b> (0 on 12/26/2018)</a><br/>
-					<a href="/itemdef/577" target="_blank"><img src="/css/images/items/577.png"/> <b><?php echo yellowphat(); ?></b> (0 on 12/26/2018)</a><br/>
-					<a href="/itemdef/581" target="_blank"><img src="/css/images/items/581.png"/> <b><?php echo whitephat(); ?></b> (0 on 12/26/2018)</a><br/>
-					<a href="/itemdef/580" target="_blank"><img src="/css/images/items/580.png"/> <b><?php echo purplephat(); ?></b> (0 on 12/26/2018)</a><br/>
-					<a href="/itemdef/576" target="_blank"><img src="/css/images/items/576.png"/> <b><?php echo redphat(); ?></b> (0 on 12/26/2018)</a><br/>
-					<a href="/itemdef/578" target="_blank"><img src="/css/images/items/578.png"/> <b><?php echo bluephat(); ?></b> (0 on 12/26/2018)</a><br/>
-					<a href="/itemdef/579" target="_blank"><img src="/css/images/items/579.png"/> <b><?php echo greenphat(); ?></b> (0 on 12/26/2018)</a><br/>
+					<a href="/itemdef/575" target="_blank"><img src="/css/images/items/575.png"/> <b><?php echo crackers(); ?></b> (19,437 on 12/26/2018)</a><br/>
+					<a href="/itemdef/577" target="_blank"><img src="/css/images/items/577.png"/> <b><?php echo yellowphat(); ?></b> (798 on 12/26/2018)</a><br/>
+					<a href="/itemdef/581" target="_blank"><img src="/css/images/items/581.png"/> <b><?php echo whitephat(); ?></b> (558 on 12/26/2018)</a><br/>
+					<a href="/itemdef/580" target="_blank"><img src="/css/images/items/580.png"/> <b><?php echo purplephat(); ?></b> (246 on 12/26/2018)</a><br/>
+					<a href="/itemdef/576" target="_blank"><img src="/css/images/items/576.png"/> <b><?php echo redphat(); ?></b> (820 on 12/26/2018)</a><br/>
+					<a href="/itemdef/578" target="_blank"><img src="/css/images/items/578.png"/> <b><?php echo bluephat(); ?></b> (393 on 12/26/2018)</a><br/>
+					<a href="/itemdef/579" target="_blank"><img src="/css/images/items/579.png"/> <b><?php echo greenphat(); ?></b> (504 on 12/26/2018)</a><br/>
 					<a href="/itemdef/677" target="_blank"><img src="/css/images/items/677.png"/> <b><?php echo eastereggs(); ?></b> (0 on 4/22/2019)</a><br/>
 					<a href="/itemdef/828" target="_blank"><img src="/css/images/items/828.png"/> <b><?php echo greenmask(); ?></b> (0 on 11/1/2019)</a><br/>
 					<a href="/itemdef/831" target="_blank"><img src="/css/images/items/831.png"/> <b><?php echo redmask(); ?></b> (0 on 11/1/2019)</a><br/>
