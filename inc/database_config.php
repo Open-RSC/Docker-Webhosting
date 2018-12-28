@@ -4,7 +4,6 @@ if (!defined('IN_PHPBB')) {
 	die();
 }
 
-//$dbms = 'phpbb\\db\\driver\\mysqli';
 $dbhost = 'mysql';
 $dbport = '';
 $dbname = 'openrsc_game';
@@ -98,7 +97,7 @@ class Dbc
 function checkStatus($ip, $port)
 {
 	if (!$sock = @fsockopen($ip, "$port", $num, $error, 5)) {
-		echo('<span style="color: red">Offline</span>');
+		echo('<span style="red">Offline</span>');
 	} else {
 		echo('<span style="color: lime">Online</span>');
 	}

@@ -110,19 +110,8 @@ include "inc/database_config.php";
 				<div>Striving for a replica RSC game and more</div>
 				<!--<div>Daring To Imagine An Entirely New Direction</div>-->
 				<br>
-				<!-- Discord invite box in left column -->
-				<!--<script type="text/javascript">
-					discordInvite.init({
-						inviteCode: '94vVKND',
-						title: 'Open RSC',
-						miniMode: true,
-						hideIntro: true,
-					});
-					discordInvite.render();
-				</script>
-				<div class="pb-4" id="discordInviteBox"></div>-->
 				<br>
-				<a href="game.openrsc.com/downloads/openrsc.apk">
+				<a href="https://game.openrsc.com/downloads/openrsc.apk">
 					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 				</a>
 				<br>
