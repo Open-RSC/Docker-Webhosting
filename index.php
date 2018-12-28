@@ -92,10 +92,12 @@ include "inc/database_config.php";
 </div>
 
 <!-- Title Section -->
-<section id="home" class="about-section text-white">
+<section id="home" class="about-section text-white container-fluid">
 	<div class="container">
 		<div class="row mr-1">
-			<div class="side-left col-lg-3 mr-3 text-left text-info" style="font-size: 10px;">
+
+			<!-- Left column -->
+			<div class="side-left col-lg-3 mr-3 text-left text-info border-right border-info" style="font-size: 10px;">
 				<h5 class="pt-4">Recent Achievements</h5>
 				<div>
 					<?php activityfeed() ?>
@@ -107,7 +109,7 @@ include "inc/database_config.php";
 				<!--<img src="img/logo.png" height="300px" width="300px">-->
 				<h2 class="display-3 text-white mb-0">Open RSC</h2>
 				<!--<h2 class="display-3 font-italic text-white mb-0">Evolution</h2>-->
-				<div>Striving for a replica RSC game and more</div>
+				<div class="text-white-50">Striving for a replica RSC game and more</div>
 				<!--<div>Daring To Imagine An Entirely New Direction</div>-->
 				<br>
 				<br>
@@ -119,13 +121,15 @@ include "inc/database_config.php";
 
 			<!-- Right column -->
 			<div>
-				<div class="side-right col-lg-3 mr-3 text-left" style="font-size: 13px;">
+				<div class="side-right col-lg-3 mr-3 text-left border-left border-info" style="font-size: 13px;">
 					<h5 class="text-info">Statistics</h5>
 					<div class="pb-1">
 						Players Online:
 						<b>
 							<a href="/online">
+							<span class="text-info">
 								<?php echo playersOnline(); ?>
+							</span>
 							</a>
 						</b>
 					</div>
@@ -137,7 +141,9 @@ include "inc/database_config.php";
 						Registrations Today:
 						<b>
 							<a href="/registrationstoday">
-								<?php echo newRegistrationsToday(); ?>
+								<span class="text-info">
+									<?php echo newRegistrationsToday(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
@@ -145,7 +151,9 @@ include "inc/database_config.php";
 						Logins Today:
 						<b>
 							<a href="/loginstoday">
-								<?php echo loginsToday(); ?>
+								<span class="text-info">
+									<?php echo loginsToday(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
@@ -153,7 +161,9 @@ include "inc/database_config.php";
 						Unique Players:
 						<b>
 							<a href="/stats">
-								<?php echo uniquePlayers(); ?>
+								<span class="text-info">
+									<?php echo uniquePlayers(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
@@ -161,7 +171,9 @@ include "inc/database_config.php";
 						Total Players:
 						<b>
 							<a href="/stats">
-								<?php echo totalGameCharacters(); ?>
+								<span class="text-info">
+									<?php echo totalGameCharacters(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
@@ -169,7 +181,9 @@ include "inc/database_config.php";
 						Gold:
 						<b>
 							<a href="/stats">
-								<?php echo banktotalGold(); ?>
+								<span class="text-info">
+									<?php echo banktotalGold(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
@@ -177,7 +191,9 @@ include "inc/database_config.php";
 						Time Played:
 						<b>
 							<a href="/stats">
-								<?php echo totalTime(); ?>
+								<span class="text-info">
+									<?php echo totalTime(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
