@@ -1,0 +1,225 @@
+<?php
+define('IN_PHPBB', true);
+
+include "inc/database_config.php";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="import" href="header.html">
+	<title>Open RSC</title>
+</head>
+
+<!-- Page-specific Bootstrap style overrides -->
+<style>
+	html {
+		overflow: hidden;
+	}
+</style>
+
+<body id="page-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+	<div class="container">
+		<!--<a class="navbar-brand js-scroll-trigger" href="#page-top">Open RSC</a>-->
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+			Menu
+			<i class="fas fa-bars"></i>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="https://game.openrsc.com/downloads/OpenRSC.jar">PC</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger"
+					   href="https://game.openrsc.com/downloads/openrsc.apk">Android</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#highscores">Highscores</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#worldmap">Live Map</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#information">Information</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="https://github.com/open-rsc/game">Source Code</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#login">Login</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#register">Register</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="fullscreen-bg">
+	<video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay" muted="muted"
+		   loop="loop">
+		<script>
+			var videoPlayer = document.getElementById('video');
+
+			function playIt() {
+				videoPlayer.play();
+				var videos = [
+					"1",
+					"2",
+					"3",
+					"4",
+				], videos = videos[Math.floor(Math.random() * videos.length)];
+				videoPlayer.src = "img/" + videos + ".mp4";
+			}
+
+			videoPlayer.addEventListener('ended', playIt, false);
+			playIt();
+		</script>
+	</video>
+</div>
+
+<!-- Title Section -->
+<section id="home" class="about-section text-white">
+	<div class="container">
+		<div class="row mr-1">
+			<div class="side-left col-lg-3 mr-3 text-left text-info" style="font-size: 10px;">
+				<h5 class="pt-4">Recent Achievements</h5>
+				<div>
+					<?php activityfeed() ?>
+				</div>
+			</div>
+
+			<!-- Center column with title text -->
+			<div class="col-lg mx-auto text-center">
+				<!--<img src="img/logo.png" height="300px" width="300px">-->
+				<h2 class="display-3 text-white mb-0">Open RSC</h2>
+				<!--<h2 class="display-3 font-italic text-white mb-0">Evolution</h2>-->
+				<div>Striving for a replica RSC game and more</div>
+				<!--<div>Daring To Imagine An Entirely New Direction</div>-->
+				<br>
+				<!-- Discord invite box in left column -->
+				<!--<script type="text/javascript">
+					discordInvite.init({
+						inviteCode: '94vVKND',
+						title: 'Open RSC',
+						miniMode: true,
+						hideIntro: true,
+					});
+					discordInvite.render();
+				</script>
+				<div class="pb-4" id="discordInviteBox"></div>-->
+				<br>
+				<a href="game.openrsc.com/downloads/openrsc.apk">
+					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
+				</a>
+				<br>
+			</div>
+
+			<!-- Right column -->
+			<div>
+				<div class="side-right col-lg-3 mr-3 text-left" style="font-size: 13px;">
+					<h5 class="text-info">Statistics</h5>
+					<div class="pb-1">
+						Players Online:
+						<b>
+							<a href="/online">
+								<?php echo playersOnline(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Server Status:
+						<?php echo checkStatus("game.openrsc.com", "43594"); ?>
+					</div>
+					<div class="pb-1">
+						Registrations Today:
+						<b>
+							<a href="/registrationstoday">
+								<?php echo newRegistrationsToday(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Logins Today:
+						<b>
+							<a href="/loginstoday">
+								<?php echo loginsToday(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Unique Players:
+						<b>
+							<a href="/stats">
+								<?php echo uniquePlayers(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Total Players:
+						<b>
+							<a href="/stats">
+								<?php echo totalGameCharacters(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Gold:
+						<b>
+							<a href="/stats">
+								<?php echo banktotalGold(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Time Played:
+						<b>
+							<a href="/stats">
+								<?php echo totalTime(); ?>
+							</a>
+						</b>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<div class="bg-black text-white fixed-bottom social d-flex justify-content-center">
+			<a href="#" class="mx-2">
+				<i class="fab fa-reddit"></i>
+			</a>
+			<a href="#" class="mx-2">
+				<i class="fab fa-discord"></i>
+			</a>
+			<a href="#" class="mx-2">
+				<i class="fab fa-github"></i>
+			</a>
+		</div>
+</section>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/grayscale.min.js"></script>
+
+</body>
+</html>
