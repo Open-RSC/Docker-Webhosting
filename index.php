@@ -141,16 +141,27 @@ include "inc/helpers.php";
 			}
 		}
 
+		@media (max-width: 819px) {
+			.fullscreen-bg {
+				display: none;
+			}
+			.side-right {
+				display: none;
+			}
+		}
+
 		.side-right {
-			min-width: 380px;
-			max-width: 380px;
+			width: 380px;
 			height: 100%
 		}
 
 		.side-left {
-			min-width: 380px;
-			max-width: 380px;
+			width: 380px;
 			height: 100%
+		}
+
+		.middle {
+			width: 380px;
 		}
 
 		@media (min-aspect-ratio: 16/9) {
@@ -164,16 +175,6 @@ include "inc/helpers.php";
 			.fullscreen-bg__video {
 				width: 300%;
 				left: -100%;
-			}
-		}
-
-		@media (max-width: 728px) {
-			.fullscreen-bg {
-				display: none;
-			}
-			html {
-				overflow: unset;
-				background: #444;
 			}
 		}
 
@@ -299,7 +300,7 @@ include "inc/helpers.php";
 			</div>
 
 			<!-- Center column with title text -->
-			<div class="col mx-auto text-center" style="max-width: 700px;">
+			<div class="col mx-auto text-center">
 				<h2 class=" display-3 text-white mb-0">Open RSC</h2>
 				<div class="title text-white-50">Striving for a replica RSC game and more</div>
 				<br>
@@ -312,7 +313,7 @@ include "inc/helpers.php";
 				<button type="button" class="btn btn-dark btn-outline-info">Android</button>
 				<br>
 				<br>
-				<div class="border-top mx-auto border-info" style="width: 285px;">
+				<div class="middle border-top mx-auto border-info">
 					<div class="text-left"">
 					<br>
 					<h4 class="text-info">Statistics</h4>
