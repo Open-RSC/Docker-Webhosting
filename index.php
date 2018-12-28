@@ -1,14 +1,12 @@
 <?php
 define('IN_PHPBB', true);
-
-include "inc/database_config.php";
+include "inc/helpers.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<!--suppress ALL -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
@@ -33,6 +31,7 @@ include "inc/database_config.php";
 			integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 			crossorigin="anonymous"></script>
 	<script src="js/grayscale.min.js"></script>
+	<script type="text/javascript" src="js/twitterFetcher.js"></script>
 
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
@@ -56,6 +55,7 @@ include "inc/database_config.php";
 	<style>
 		html {
 			overflow: hidden;
+			height: 100%;
 		}
 
 		::-webkit-scrollbar {
@@ -92,6 +92,10 @@ include "inc/database_config.php";
 			-webkit-text-stroke-color: darkgray;
 		}
 
+		li {
+			list-style-type: none;
+		}
+
 		.nav-item {
 			font-size: 16px;
 			font-weight: 600;
@@ -124,6 +128,10 @@ include "inc/database_config.php";
 		}
 
 		@media (max-width: 1120px) {
+			.title {
+				display: none;
+			}
+
 			.picture {
 				display: none;
 			}
@@ -131,21 +139,18 @@ include "inc/database_config.php";
 			.side-left {
 				display: none;
 			}
-
-			.footer {
-				display: none;
-			}
 		}
 
 		.side-right {
-			min-width: 280px;
-			max-width: 280px;
+			min-width: 380px;
+			max-width: 380px;
+			height: 100%
 		}
 
 		.side-left {
-			overflow: auto;
-			min-width: 280px;
-			max-width: 280px;
+			min-width: 380px;
+			max-width: 380px;
+			height: 100%
 		}
 
 		@media (min-aspect-ratio: 16/9) {
@@ -161,6 +166,25 @@ include "inc/database_config.php";
 				left: -100%;
 			}
 		}
+
+		@media (max-width: 728px) {
+			.fullscreen-bg {
+				display: none;
+			}
+			html {
+				overflow: unset;
+				background: #444;
+			}
+		}
+
+		.tweet {
+			text-align: left;
+		}
+
+		.timePosted {
+			width: 15%;
+			float: left;
+		}
 	</style>
 
 	<title>Open RSC</title>
@@ -169,49 +193,46 @@ include "inc/database_config.php";
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-	<div class="container-fluid">
-		<!--<a class="navbar-brand js-scroll-trigger" href="#page-top">Open RSC</a>-->
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-			Menu
-			<i class="fas fa-bars"></i>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="https://game.openrsc.com/downloads/OpenRSC.jar">PC</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger"
-					   href="https://game.openrsc.com/downloads/openrsc.apk">Android</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#highscores">Highscores</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#worldmap">Live Map</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#information">Information</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="https://github.com/open-rsc/game">Source Code</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#login">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#register">Register</a>
-				</li>
-			</ul>
-		</div>
+<nav class="navbar navbar-expand-lg fixed-top container-fluid" id="mainNav">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+		Menu
+		<i class="fas fa-bars"></i>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="/">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="https://game.openrsc.com/downloads/OpenRSC.jar">PC</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger"
+				   href="https://game.openrsc.com/downloads/openrsc.apk">Android</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#highscores">Highscores</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#worldmap">Live Map</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#information">Information</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="https://github.com/open-rsc/game">Source Code</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#login">Login</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#register">Register</a>
+			</li>
+		</ul>
 	</div>
 </nav>
 
@@ -241,10 +262,36 @@ include "inc/database_config.php";
 <!-- Title Section -->
 <section id="home" class="about-section text-white container-fluid">
 	<div class="container-fluid">
-		<div class="row mb-1">
+		<div class="row">
+
+			<?php
+			if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
+				if (file_exists("pages/" . curPageURL() . ".php")) {
+					?>
+					<div class="container-fluid position-fixed" style="height: 100%; overflow-y: scroll;">
+						<?php
+						include("pages/" . curPageURL() . ".php");
+						?>
+					</div>
+					<?php
+				} else {
+					include("pages/error.php");
+				}
+			} else if (is_array(curPageURL()) && curPageURL() != 'index') {
+				$page = curPageURL();
+				$subpage = $page[1];
+				$page = $page[0];
+				if (file_exists("pages/" . $page . ".php")) {
+					include("pages/" . $page . ".php");
+				} else {
+					include("pages/error.php");
+				}
+			} else {
+			?>
 
 			<!-- Left column -->
-			<div class="side-left col-lg-3 text-left text-info border-right border-info" style="font-size: 10px;">
+			<div class="side-left text-left text-info border-right border-info pl-1"
+				 style="font-size: 10px;">
 				<h4>Recent Activity</h4>
 				<div>
 					<?php activityfeed() ?>
@@ -252,23 +299,22 @@ include "inc/database_config.php";
 			</div>
 
 			<!-- Center column with title text -->
-			<div class="col-md mx-auto text-center">
-				<!--<img src="img/logo.png" height="300px" width="300px">-->
-				<h2 class="display-3 text-white mb-0">Open RSC</h2>
-				<!--<h2 class="display-3 font-italic text-white mb-0">Evolution</h2>-->
-				<div class="text-white-50">Striving for a replica RSC game and more</div>
-				<!--<div>Daring To Imagine An Entirely New Direction</div>-->
-				<br>
+			<div class="col mx-auto text-center" style="max-width: 700px;">
+				<h2 class=" display-3 text-white mb-0">Open RSC</h2>
+				<div class="title text-white-50">Striving for a replica RSC game and more</div>
 				<br>
 				<a href="https://game.openrsc.com/downloads/openrsc.apk">
 					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 				</a>
 				<br>
-			</div>
-
-			<!-- Right column -->
-			<div>
-				<div class="side-right col-lg-3 text-left border-left border-info" style="font-size: 13px;">
+				<br>
+				<button type="button" class="btn btn-dark btn-outline-info">PC Client</button>
+				<button type="button" class="btn btn-dark btn-outline-info">Android</button>
+				<br>
+				<br>
+				<div class="border-top mx-auto border-info" style="width: 285px;">
+					<div class="text-left"">
+					<br>
 					<h4 class="text-info">Statistics</h4>
 					<div>
 						Players Online:
@@ -346,9 +392,26 @@ include "inc/database_config.php";
 							</a>
 						</b>
 					</div>
+					<br>
+				</div>
+
+				</div>
+			</div>
+
+			<!-- Right column -->
+			<div>
+				<div class="side-right border-left border-info"
+					 style="font-size: 13px;">
+					<!-- Twitter feed -->
+					<div class="container">
+						<h4 class="mt-3 text-info">Recent News</h4>
+						<div class="text-primary" id="tweets"></div>
+					</div>
 				</div>
 			</div>
 		</div>
+
+		<?php } ?>
 
 		<!-- Footer -->
 		<div class="bg-black text-white fixed-bottom social d-flex justify-content-center">
