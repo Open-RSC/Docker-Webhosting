@@ -92,37 +92,28 @@ include "inc/database_config.php";
 </div>
 
 <!-- Title Section -->
-<section id="home" class="about-section text-white">
-	<div class="container">
+<section id="home" class="about-section text-white container-fluid">
+	<div class="container-fluid">
 		<div class="row mr-1">
-			<div class="side-left col-lg-3 mr-3 text-left text-info" style="font-size: 10px;">
-				<h5 class="pt-4">Recent Achievements</h5>
+
+			<!-- Left column -->
+			<div class="side-left col-lg-3 mr-3 text-left text-info border-right border-info" style="font-size: 10px;">
+				<h4>Recent Activity</h4>
 				<div>
 					<?php activityfeed() ?>
 				</div>
 			</div>
 
 			<!-- Center column with title text -->
-			<div class="col-lg mx-auto text-center">
+			<div class="col-md mx-auto text-center">
 				<!--<img src="img/logo.png" height="300px" width="300px">-->
 				<h2 class="display-3 text-white mb-0">Open RSC</h2>
 				<!--<h2 class="display-3 font-italic text-white mb-0">Evolution</h2>-->
-				<div>Striving for a replica RSC game and more</div>
+				<div class="text-white-50">Striving for a replica RSC game and more</div>
 				<!--<div>Daring To Imagine An Entirely New Direction</div>-->
 				<br>
-				<!-- Discord invite box in left column -->
-				<!--<script type="text/javascript">
-					discordInvite.init({
-						inviteCode: '94vVKND',
-						title: 'Open RSC',
-						miniMode: true,
-						hideIntro: true,
-					});
-					discordInvite.render();
-				</script>
-				<div class="pb-4" id="discordInviteBox"></div>-->
 				<br>
-				<a href="game.openrsc.com/downloads/openrsc.apk">
+				<a href="https://game.openrsc.com/downloads/openrsc.apk">
 					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 				</a>
 				<br>
@@ -130,65 +121,81 @@ include "inc/database_config.php";
 
 			<!-- Right column -->
 			<div>
-				<div class="side-right col-lg-3 mr-3 text-left" style="font-size: 13px;">
-					<h5 class="text-info">Statistics</h5>
-					<div class="pb-1">
+				<div class="side-right col-lg-3 mr-3 text-left border-left border-info" style="font-size: 13px;">
+					<h4 class="text-info">Statistics</h4>
+					<div>
 						Players Online:
 						<b>
 							<a href="/online">
+							<span class="text-info float-right">
 								<?php echo playersOnline(); ?>
+							</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Server Status:
-						<?php echo checkStatus("game.openrsc.com", "43594"); ?>
+						<span class="float-right">
+							<?php echo checkStatus("game.openrsc.com", "43594"); ?>
+						</span>
 					</div>
-					<div class="pb-1">
+					<div>
 						Registrations Today:
 						<b>
 							<a href="/registrationstoday">
-								<?php echo newRegistrationsToday(); ?>
+								<span class="text-info float-right">
+									<?php echo newRegistrationsToday(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Logins Today:
 						<b>
 							<a href="/loginstoday">
-								<?php echo loginsToday(); ?>
+								<span class="text-info float-right">
+									<?php echo loginsToday(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Unique Players:
 						<b>
 							<a href="/stats">
-								<?php echo uniquePlayers(); ?>
+								<span class="text-info float-right">
+									<?php echo uniquePlayers(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Total Players:
 						<b>
 							<a href="/stats">
-								<?php echo totalGameCharacters(); ?>
+								<span class="text-info float-right">
+									<?php echo totalGameCharacters(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Gold:
 						<b>
 							<a href="/stats">
-								<?php echo banktotalGold(); ?>
+								<span class="text-info float-right">
+									<?php echo banktotalGold(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Time Played:
 						<b>
 							<a href="/stats">
-								<?php echo totalTime(); ?>
+								<span class="text-info float-right">
+									<?php echo totalTime(); ?>
+								</span>
 							</a>
 						</b>
 					</div>
