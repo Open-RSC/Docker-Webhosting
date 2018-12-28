@@ -98,9 +98,9 @@ class Dbc
 function checkStatus($ip, $port)
 {
 	if (!$sock = @fsockopen($ip, "$port", $num, $error, 5)) {
-		echo('<span class="red">Offline</span>');
+		echo('<span style="color: red">Offline</span>');
 	} else {
-		echo('<span class="lime">Online</span>');
+		echo('<span style="color: lime">Online</span>');
 	}
 }
 
@@ -808,19 +808,18 @@ function totalTime()
 function activityfeed()
 {
 	$connector = new Dbc();
-	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username");
+	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username ORDER BY B.time DESC LIMIT 20");
 	date_default_timezone_set('America/New_York');
 	while ($row = $connector->fetchArray($game_accounts)) {
 		if ($row["username"] == NULL) {
 			echo "No players activity.";
 		} else {
-			echo '
-				<div class="text-left"><a class="white" href = "/player/' . $row["id"] . '"> ' . strftime("%d %b / %H:%M %Z", $row["time"]) . ':</a></div>
-				<div class="text-left"><a class="white" href = "/player/' . $row["id"] . '">';
+			echo '<a href = "/player/' . $row["id"] . '"> ' . strftime("%d %b / %H:%M %Z", $row["time"]) . ':</a><br>
+				<a href = "/player/' . $row["id"] . '">';
 			if ($row['group_id'] != 4):
 				echo '<img src="img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			endif;
-			echo ucfirst($row["username"]) . ' ' . $row["message"] . '</a></div>';
+			echo ucfirst($row["username"]) . ' ' . $row["message"] . '</a><br><br>';
 		}
 	}
 }

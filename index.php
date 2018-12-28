@@ -12,6 +12,13 @@ include "inc/database_config.php";
 	<title>Open RSC</title>
 </head>
 
+<!-- Page-specific Bootstrap style overrides -->
+<style>
+	html {
+		overflow: hidden;
+	}
+</style>
+
 <body id="page-top">
 
 <!-- Navigation -->
@@ -88,6 +95,12 @@ include "inc/database_config.php";
 <section id="home" class="about-section text-white">
 	<div class="container">
 		<div class="row mr-1">
+			<div class="side-left col-lg-3 mr-3 text-left text-info" style="font-size: 10px;">
+				<h5 class="pt-4">Recent Achievements</h5>
+				<div>
+					<?php activityfeed() ?>
+				</div>
+			</div>
 
 			<!-- Center column with title text -->
 			<div class="col-lg mx-auto text-center">
@@ -112,83 +125,77 @@ include "inc/database_config.php";
 				<a href="game.openrsc.com/downloads/openrsc.apk">
 					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 				</a>
+				<br>
 			</div>
 
-			<!-- Live Feed right column -->
-			<span class="border border-dark border pt-3">
-				<div class="side col-lg-3 mr-3 text-left text-truncate text-info" style="font-size: 10px;">
-					<h5>Statistics</h5>
-					<dl class="side-menu">
-						<dt>Players Online:</dt>
-						<dd>
-							<b>
-								<a class="white" href="/online">
-									<?php echo playersOnline(); ?>
-								</a>
-							</b>
-						</dd>
-						<dt>Server Status:</dt>
-						<dd>
-							<b>
-								<?php echo checkStatus("game.openrsc.com", "43594"); ?>
-							</b>
-						</dd>
-						<dt>Registrations Today:
-						<dd>
-							<b>
-								<a class="white" href="/registrationstoday">
-									<?php echo newRegistrationsToday(); ?>
-								</a>
-							</b>
-						</dd>
-						<dt>Logins Today:</dt>
-						<dd>
-							<b>
-								<a class="white" href="/loginstoday">
-									<?php echo loginsToday(); ?>
-								</a>
-							</b>
-						</dd>
-						<dt>Unique Players:</dt>
-						<dd>
-							<b>
-								<a class="white" href="/stats">
-									<?php echo uniquePlayers(); ?>
-								</a>
-							</b>
-						</dd>
-						<dt>Total Players:</dt>
-						<dd>
-							<b>
-								<a class="white" href="/stats">
-									<?php echo totalGameCharacters(); ?>
-								</a>
-							</b>
-						</dd>
-						<dt>Gold:</dt>
-						<dd>
-							<b>
-								<a class="white" href="/stats">
-									<?php echo banktotalGold(); ?>
-								</a>
-							</b>
-						</dd>
-						<dt>Time Played:</dt>
-						<dd>
-							<b>
-								<a class="white" href="/stats">
-									<?php echo totalTime(); ?>
-								</a>
-							</b>
-						</dd>
-					</dl>
-
-					<h5 class="pt-4">Live Feed</h5>
-					<?php activityfeed() ?>
+			<!-- Right column -->
+			<div>
+				<div class="side-right col-lg-3 mr-3 text-left" style="font-size: 13px;">
+					<h5 class="text-info">Statistics</h5>
+					<div class="pb-1">
+						Players Online:
+						<b>
+							<a href="/online">
+								<?php echo playersOnline(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Server Status:
+						<?php echo checkStatus("game.openrsc.com", "43594"); ?>
+					</div>
+					<div class="pb-1">
+						Registrations Today:
+						<b>
+							<a href="/registrationstoday">
+								<?php echo newRegistrationsToday(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Logins Today:
+						<b>
+							<a href="/loginstoday">
+								<?php echo loginsToday(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Unique Players:
+						<b>
+							<a href="/stats">
+								<?php echo uniquePlayers(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Total Players:
+						<b>
+							<a href="/stats">
+								<?php echo totalGameCharacters(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Gold:
+						<b>
+							<a href="/stats">
+								<?php echo banktotalGold(); ?>
+							</a>
+						</b>
+					</div>
+					<div class="pb-1">
+						Time Played:
+						<b>
+							<a href="/stats">
+								<?php echo totalTime(); ?>
+							</a>
+						</b>
+					</div>
 				</div>
-				</div>
-			</span>
+			</div>
 		</div>
+
 		<!-- Footer -->
 		<div class="bg-black text-white fixed-bottom social d-flex justify-content-center">
 			<a href="#" class="mx-2">
@@ -202,9 +209,6 @@ include "inc/database_config.php";
 			</a>
 		</div>
 </section>
-
-
-
 
 
 <!-- Bootstrap core JavaScript -->
