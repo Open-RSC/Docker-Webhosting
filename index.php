@@ -98,7 +98,7 @@ include "inc/database_config.php";
 
 			<!-- Left column -->
 			<div class="side-left col-lg-3 mr-3 text-left text-info border-right border-info" style="font-size: 10px;">
-				<h5 class="pt-4">Recent Achievements</h5>
+				<h4>Recent Activity</h4>
 				<div>
 					<?php activityfeed() ?>
 				</div>
@@ -122,76 +122,78 @@ include "inc/database_config.php";
 			<!-- Right column -->
 			<div>
 				<div class="side-right col-lg-3 mr-3 text-left border-left border-info" style="font-size: 13px;">
-					<h5 class="text-info">Statistics</h5>
-					<div class="pb-1">
+					<h4 class="text-info">Statistics</h4>
+					<div>
 						Players Online:
 						<b>
 							<a href="/online">
-							<span class="text-info">
+							<span class="text-info float-right">
 								<?php echo playersOnline(); ?>
 							</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Server Status:
-						<?php echo checkStatus("game.openrsc.com", "43594"); ?>
+						<span class="float-right">
+							<?php echo checkStatus("game.openrsc.com", "43594"); ?>
+						</span>
 					</div>
-					<div class="pb-1">
+					<div>
 						Registrations Today:
 						<b>
 							<a href="/registrationstoday">
-								<span class="text-info">
+								<span class="text-info float-right">
 									<?php echo newRegistrationsToday(); ?>
 								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Logins Today:
 						<b>
 							<a href="/loginstoday">
-								<span class="text-info">
+								<span class="text-info float-right">
 									<?php echo loginsToday(); ?>
 								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Unique Players:
 						<b>
 							<a href="/stats">
-								<span class="text-info">
+								<span class="text-info float-right">
 									<?php echo uniquePlayers(); ?>
 								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Total Players:
 						<b>
 							<a href="/stats">
-								<span class="text-info">
+								<span class="text-info float-right">
 									<?php echo totalGameCharacters(); ?>
 								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Gold:
 						<b>
 							<a href="/stats">
-								<span class="text-info">
+								<span class="text-info float-right">
 									<?php echo banktotalGold(); ?>
 								</span>
 							</a>
 						</b>
 					</div>
-					<div class="pb-1">
+					<div>
 						Time Played:
 						<b>
 							<a href="/stats">
-								<span class="text-info">
+								<span class="text-info float-right">
 									<?php echo totalTime(); ?>
 								</span>
 							</a>

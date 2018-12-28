@@ -800,7 +800,7 @@ function totalTime()
 		$hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
 		$minutes = floor(($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60)) / 60);
 		$seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
-		echo $days . 'd ' . $hours . 'h ' . $minutes . 'm ';
+		echo $days . 'd ' . $hours . 'h ';
 	}
 }
 
