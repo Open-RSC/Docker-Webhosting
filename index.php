@@ -105,7 +105,7 @@ include "inc/database_config.php";
 			</div>
 
 			<!-- Center column with title text -->
-			<div class="col-lg mx-auto text-center">
+			<div class="col-md mx-auto text-center">
 				<!--<img src="img/logo.png" height="300px" width="300px">-->
 				<h2 class="display-3 text-white mb-0">Open RSC</h2>
 				<!--<h2 class="display-3 font-italic text-white mb-0">Evolution</h2>-->
