@@ -93,7 +93,7 @@ include "inc/database_config.php";
 
 <!-- Title Section -->
 <section id="home" class="about-section text-white container-fluid">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row mr-1">
 
 			<!-- Left column -->
