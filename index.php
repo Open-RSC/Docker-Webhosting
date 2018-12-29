@@ -47,17 +47,13 @@ include "inc/helpers.php";
 	<link
 		href="https://fonts.googleapis.com/css?family=Exo:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 		rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="css/grayscale.min.css" rel="stylesheet">
+	<link href="css/grayscale.css" rel="stylesheet">
 
 	<!-- Bootstrap style overrides -->
 	<style>
-		@font-face {
-			font-family: "StoneRunes";
-			src:url("css/StoneRunes.otf");
-		}
-
 		html {
 			overflow: hidden;
 		}
@@ -75,8 +71,8 @@ include "inc/helpers.php";
 		}
 
 		.display-3 {
-			font-family: "StoneRunes", cursive;
-			font-size: 92px;
+			font-family: 'Press Start 2P', cursive;
+			font-size: 55px;
 			filter: drop-shadow(0px 1px 40px #0e84b5);
 			text-shadow: 0 1px 0 #ccc,
 			0 1px 0 #c9c9c9,
@@ -90,7 +86,7 @@ include "inc/helpers.php";
 			0 3px 5px rgba(0,0,0,.25),
 			0 5px 7px rgba(0,0,0,.2),
 			0 7px 10px rgba(0,0,0,.15);
-			padding-bottom: 10px;
+			padding-bottom: 20px;
 		}
 
 		li {
@@ -131,7 +127,7 @@ include "inc/helpers.php";
 
 		@media (max-width: 968px) {
 			.display-3 {
-				font-size: 82px;
+				font-size: 42px;
 			}
 
 			.title {
@@ -159,7 +155,11 @@ include "inc/helpers.php";
 			}
 
 			.btn {
-				width: 450px;
+				width: 350px;
+			}
+
+			.middle, .border-top, .container {
+				width: 350px;
 			}
 		}
 
@@ -213,7 +213,7 @@ include "inc/helpers.php";
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg fixed-top container-fluid" id="mainNav">
+<nav class="navbar navbar-expand-lg fixed-top container-fluid pl-0 pr-0" id="mainNav">
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
 			aria-label="Toggle navigation">
@@ -320,8 +320,8 @@ include "inc/helpers.php";
 
 			<!-- Center column with title text -->
 			<div class="col mx-auto text-center">
-				<h2 class="display-3 text-white mb-0">XQPD RSC</h2>
-				<div class="text-white">Striving for a replica RSC game and more</div>
+				<h2 class="display-3 text-info mb-0">OPEN RSC</h2>
+				<div class="text-white-50">Striving for a replica RSC game and more</div>
 				<br>
 				<a href="https://game.openrsc.com/downloads/openrsc.apk">
 					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
@@ -331,7 +331,7 @@ include "inc/helpers.php";
 				<button type="button" class="mobile btn btn-dark btn-outline-info">Android</button>
 				<br>
 				<br>
-				<div class="middle border-top mx-auto border-info">
+				<div class="middle container-fluid border-top border-info">
 					<div class="text-left text-primary" style="font-size: 13px;">
 					<br>
 					<h4 class="text-info">Statistics</h4>

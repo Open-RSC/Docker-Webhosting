@@ -208,7 +208,7 @@
 var configProfile = {
     "profile": {"screenName": 'openrsc'},
     "domId": 'tweets',
-    "maxTweets": 5,
+    "maxTweets": 10,
     "showTime": true,
     "lang": 'en'
 };
