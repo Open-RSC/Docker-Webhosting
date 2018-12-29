@@ -71,9 +71,10 @@ include "inc/helpers.php";
 		}
 
 		.display-3 {
+			color: #008db5;
 			font-family: 'Press Start 2P', cursive;
 			font-size: 55px;
-			filter: drop-shadow(0px 1px 40px #0e84b5);
+			filter: drop-shadow(0px 1px 50px #058ab5);
 			text-shadow: 0 1px 0 #ccc,
 			0 1px 0 #c9c9c9,
 			0 2px 0 #bbb,
@@ -121,7 +122,7 @@ include "inc/helpers.php";
 			width: 450px;
 			height: auto;
 			object-fit: scale-down;
-			filter: drop-shadow(0px 0px 3px #17a2b8);
+			filter: drop-shadow(0px 0px 3px #17a2b8) brightness(70%);;
 			margin-bottom: 20px;
 		}
 
@@ -320,7 +321,7 @@ include "inc/helpers.php";
 
 			<!-- Center column with title text -->
 			<div class="col mx-auto text-center">
-				<h2 class="display-3 text-info mb-0">OPEN RSC</h2>
+				<h2 class="display-3 mb-0">OPEN RSC</h2>
 				<div class="text-white-50">Striving for a replica RSC game and more</div>
 				<br>
 				<a href="https://game.openrsc.com/downloads/openrsc.apk">
