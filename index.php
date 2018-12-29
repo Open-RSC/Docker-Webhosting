@@ -55,23 +55,10 @@ include "inc/helpers.php";
 	<style>
 		html {
 			overflow: hidden;
-			height: 100%;
 		}
 
 		::-webkit-scrollbar {
 			display: none;
-		}
-
-		.wrapper {
-			display: flex;
-			flex-direction: column;
-			width: 1100px;
-			margin: 0 auto;
-			padding: 32px 48px 20px;
-			color: rgb(60, 60, 60);
-			-webkit-text-size-adjust: 100%;
-			-webkit-tap-highlight-color: rgb(255, 255, 158);
-			line-height: normal;
 		}
 
 		.about-section {
@@ -82,14 +69,11 @@ include "inc/helpers.php";
 			text-decoration: none;
 		}
 
-		h1.name {
-			top: 53%;
-			font-size: 48px;
+		.display-3 {
+			font-size: 92px;
 			font-style: italic;
 			font-weight: 600;
-			text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
-			-webkit-text-stroke-width: 1.8px;
-			-webkit-text-stroke-color: darkgray;
+			filter: drop-shadow(0px 1px 3px #777);
 		}
 
 		li {
@@ -125,9 +109,14 @@ include "inc/helpers.php";
 			height: auto;
 			object-fit: scale-down;
 			filter: drop-shadow(0px 0px 3px #17a2b8);
+			margin-bottom: 20px;
 		}
 
 		@media (max-width: 968px) {
+			.display-3 {
+				font-size: 82px;
+			}
+
 			.title {
 				display: none;
 			}
@@ -152,9 +141,8 @@ include "inc/helpers.php";
 				display: none;
 			}
 
-			.mobile {
-				width: 380px;
-				content: 'MOBILE';
+			.btn {
+				width: 450px;
 			}
 		}
 
@@ -172,8 +160,10 @@ include "inc/helpers.php";
 			width: 450px;
 		}
 
-		.btn {
-			width: 225px;
+		@media (min-width: 969px) {
+			.btn {
+				width: 225px;
+			}
 		}
 
 		@media (min-aspect-ratio: 16/9) {
@@ -313,13 +303,12 @@ include "inc/helpers.php";
 
 			<!-- Center column with title text -->
 			<div class="col mx-auto text-center">
-				<h2 class=" display-3 text-white mb-0">Open RSC</h2>
+				<h2 class="display-3 text-white mb-0">Open RSC</h2>
 				<div class="title text-white-50">Striving for a replica RSC game and more</div>
 				<br>
 				<a href="https://game.openrsc.com/downloads/openrsc.apk">
 					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 				</a>
-				<br>
 				<br>
 				<button type="button" class="pc btn btn-dark btn-outline-info">PC Client</button>
 				<button type="button" class="mobile btn btn-dark btn-outline-info">Android</button>
