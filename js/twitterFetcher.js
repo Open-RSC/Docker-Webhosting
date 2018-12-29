@@ -179,23 +179,14 @@
             var arrayTweets = [];
             var x = tweets.length;
             var n = 0;
-            if (dataOnly) {
-                while (n < x) {
-                    arrayTweets.push({
-                        tweet: tweets[n].innerHTML,
-                        time: times[n].textContent,
-                        timestamp: times[n].getAttribute('datetime').replace('+0000', 'Z').replace(/([\+\-])(\d\d)(\d\d)/, '$1$2:$3'),
-                    });
-                    n++;
-                }
-            } else {
-                while (n < x) {
-                    var op = '';
-                    op += '<p class="timePosted">' + times[n].textContent + '</p>';
-                    op += '<p class="tweet">' + tweets[n].textContent + '</p>';
-                    arrayTweets.push(op);
-                    n++;
-                }
+
+            while (n < x) {
+                var op = '';
+                op += '<span class="text-info timePosted"><b>' + times[n].textContent + '</b></span>';
+                op += '<span class="tweet">' + tweets[n].textContent + '</span>';
+                op += '<br><br><div class="border-top border-info"></div><br>';
+                arrayTweets.push(op);
+                n++;
             }
 
             handleTweets(arrayTweets);

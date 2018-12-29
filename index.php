@@ -127,7 +127,7 @@ include "inc/helpers.php";
 			filter: drop-shadow(0px 0px 3px #17a2b8);
 		}
 
-		@media (max-width: 1120px) {
+		@media (max-width: 968px) {
 			.title {
 				display: none;
 			}
@@ -139,29 +139,41 @@ include "inc/helpers.php";
 			.side-left {
 				display: none;
 			}
-		}
 
-		@media (max-width: 819px) {
 			.fullscreen-bg {
 				display: none;
 			}
+
 			.side-right {
 				display: none;
+			}
+
+			.pc {
+				display: none;
+			}
+
+			.mobile {
+				width: 380px;
+				content: 'MOBILE';
 			}
 		}
 
 		.side-right {
-			width: 380px;
+			width: 450px;
 			height: 100%
 		}
 
 		.side-left {
-			width: 380px;
+			width: 450px;
 			height: 100%
 		}
 
 		.middle {
-			width: 380px;
+			width: 450px;
+		}
+
+		.btn {
+			width: 225px;
 		}
 
 		@media (min-aspect-ratio: 16/9) {
@@ -293,7 +305,7 @@ include "inc/helpers.php";
 			<!-- Left column -->
 			<div class="side-left text-left text-info border-right border-info pl-1"
 				 style="font-size: 10px;">
-				<h4>Recent Activity</h4>
+				<h4>Latest Achievements</h4>
 				<div>
 					<?php activityfeed() ?>
 				</div>
@@ -309,12 +321,13 @@ include "inc/helpers.php";
 				</a>
 				<br>
 				<br>
-				<button type="button" class="btn btn-dark btn-outline-info">PC Client</button>
-				<button type="button" class="btn btn-dark btn-outline-info">Android</button>
+				<button type="button" class="pc btn btn-dark btn-outline-info">PC Client</button>
+				<button type="button" class="mobile btn btn-dark btn-outline-info">Android</button>
 				<br>
 				<br>
 				<div class="middle border-top mx-auto border-info">
-					<div class="text-left"">
+					<div class="text-left"
+					">
 					<br>
 					<h4 class="text-info">Statistics</h4>
 					<div>
@@ -396,36 +409,34 @@ include "inc/helpers.php";
 					<br>
 				</div>
 
-				</div>
-			</div>
-
-			<!-- Right column -->
-			<div>
-				<div class="side-right border-left border-info"
-					 style="font-size: 13px;">
-					<!-- Twitter feed -->
-					<div class="container">
-						<h4 class="mt-3 text-info">Recent News</h4>
-						<div class="text-primary" id="tweets"></div>
-					</div>
-				</div>
 			</div>
 		</div>
 
-		<?php } ?>
-
-		<!-- Footer -->
-		<div class="bg-black text-white fixed-bottom social d-flex justify-content-center">
-			<a href="#" class="mx-2">
-				<i class="fab fa-reddit"></i>
-			</a>
-			<a href="#" class="mx-2">
-				<i class="fab fa-discord"></i>
-			</a>
-			<a href="#" class="mx-2">
-				<i class="fab fa-github"></i>
-			</a>
+		<!-- Right column -->
+		<div>
+			<div class="side-right border-left border-info"
+				 style="font-size: 13px;">
+				<!-- Twitter feed -->
+				<h4 class="mt-3 text-info" style="text-indent: 40px">Recent News</h4>
+				<div class="text-primary" id="tweets"></div>
+			</div>
 		</div>
+	</div>
+
+	<?php } ?>
+
+	<!-- Footer -->
+	<div class="bg-black text-white fixed-bottom social d-flex justify-content-center">
+		<a href="#" class="mx-2">
+			<i class="fab fa-reddit"></i>
+		</a>
+		<a href="#" class="mx-2">
+			<i class="fab fa-discord"></i>
+		</a>
+		<a href="#" class="mx-2">
+			<i class="fab fa-github"></i>
+		</a>
+	</div>
 </section>
 
 </body>
