@@ -1,14 +1,12 @@
 <?php
 define('IN_PHPBB', true);
-
-include "inc/database_config.php";
+include "inc/helpers.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<!--suppress ALL -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
@@ -33,6 +31,7 @@ include "inc/database_config.php";
 			integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 			crossorigin="anonymous"></script>
 	<script src="js/grayscale.min.js"></script>
+	<script type="text/javascript" src="js/twitterFetcher.js"></script>
 
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
@@ -48,9 +47,10 @@ include "inc/database_config.php";
 	<link
 		href="https://fonts.googleapis.com/css?family=Exo:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 		rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="css/grayscale.min.css" rel="stylesheet">
+	<link href="css/grayscale.css" rel="stylesheet">
 
 	<!-- Bootstrap style overrides -->
 	<style>
@@ -62,18 +62,6 @@ include "inc/database_config.php";
 			display: none;
 		}
 
-		.wrapper {
-			display: flex;
-			flex-direction: column;
-			width: 1100px;
-			margin: 0 auto;
-			padding: 32px 48px 20px;
-			color: rgb(60, 60, 60);
-			-webkit-text-size-adjust: 100%;
-			-webkit-tap-highlight-color: rgb(255, 255, 158);
-			line-height: normal;
-		}
-
 		.about-section {
 			height: 100vh;
 		}
@@ -82,14 +70,28 @@ include "inc/database_config.php";
 			text-decoration: none;
 		}
 
-		h1.name {
-			top: 53%;
-			font-size: 48px;
-			font-style: italic;
-			font-weight: 600;
-			text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
-			-webkit-text-stroke-width: 1.8px;
-			-webkit-text-stroke-color: darkgray;
+		.display-3 {
+			color: #008db5;
+			font-family: 'Press Start 2P', cursive;
+			font-size: 55px;
+			filter: drop-shadow(0px 1px 50px #058ab5);
+			text-shadow: 0 1px 0 #ccc,
+			0 1px 0 #c9c9c9,
+			0 2px 0 #bbb,
+			0 3px 0 #b9b9b9,
+			0 2px 0 #aaa,
+			0 3px 1px rgba(0,0,0,.1),
+			0 0 5px rgba(0,0,0,.1),
+			0 1px 1px rgba(0,0,0,.3),
+			0 2px 3px rgba(0,0,0,.2),
+			0 3px 5px rgba(0,0,0,.25),
+			0 5px 7px rgba(0,0,0,.2),
+			0 7px 10px rgba(0,0,0,.15);
+			padding-bottom: 20px;
+		}
+
+		li {
+			list-style-type: none;
 		}
 
 		.nav-item {
@@ -120,10 +122,19 @@ include "inc/database_config.php";
 			width: 450px;
 			height: auto;
 			object-fit: scale-down;
-			filter: drop-shadow(0px 0px 3px #17a2b8);
+			filter: drop-shadow(0px 0px 3px #17a2b8) brightness(70%);;
+			margin-bottom: 20px;
 		}
 
-		@media (max-width: 1120px) {
+		@media (max-width: 968px) {
+			.display-3 {
+				font-size: 42px;
+			}
+
+			.title {
+				display: none;
+			}
+
 			.picture {
 				display: none;
 			}
@@ -132,20 +143,45 @@ include "inc/database_config.php";
 				display: none;
 			}
 
-			.footer {
+			.fullscreen-bg {
 				display: none;
+			}
+
+			.side-right {
+				display: none;
+			}
+
+			.pc {
+				display: none;
+			}
+
+			.btn {
+				width: 350px;
+			}
+
+			.middle, .border-top, .container {
+				width: 350px;
 			}
 		}
 
 		.side-right {
-			min-width: 280px;
-			max-width: 280px;
+			width: 450px;
+			height: 100%
 		}
 
 		.side-left {
-			overflow: auto;
-			min-width: 280px;
-			max-width: 280px;
+			width: 450px;
+			height: 100%
+		}
+
+		.middle {
+			width: 450px;
+		}
+
+		@media (min-width: 969px) {
+			.btn {
+				width: 225px;
+			}
 		}
 
 		@media (min-aspect-ratio: 16/9) {
@@ -161,6 +197,15 @@ include "inc/database_config.php";
 				left: -100%;
 			}
 		}
+
+		.tweet {
+			text-align: left;
+		}
+
+		.timePosted {
+			width: 15%;
+			float: left;
+		}
 	</style>
 
 	<title>Open RSC</title>
@@ -169,49 +214,46 @@ include "inc/database_config.php";
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-	<div class="container-fluid">
-		<!--<a class="navbar-brand js-scroll-trigger" href="#page-top">Open RSC</a>-->
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-			Menu
-			<i class="fas fa-bars"></i>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#home">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="https://game.openrsc.com/downloads/OpenRSC.jar">PC</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger"
-					   href="https://game.openrsc.com/downloads/openrsc.apk">Android</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#highscores">Highscores</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#worldmap">Live Map</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#information">Information</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="https://github.com/open-rsc/game">Source Code</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#login">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#register">Register</a>
-				</li>
-			</ul>
-		</div>
+<nav class="navbar navbar-expand-lg fixed-top container-fluid pl-0 pr-0" id="mainNav">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+		Menu
+		<i class="fas fa-bars"></i>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="/">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="https://game.openrsc.com/downloads/OpenRSC.jar">PC</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger"
+				   href="https://game.openrsc.com/downloads/openrsc.apk">Android</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#highscores">Highscores</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#worldmap">Live Map</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#information">Information</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="https://github.com/open-rsc/game">Source Code</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#login">Login</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="#register">Register</a>
+			</li>
+		</ul>
 	</div>
 </nav>
 
@@ -241,34 +283,58 @@ include "inc/database_config.php";
 <!-- Title Section -->
 <section id="home" class="about-section text-white container-fluid">
 	<div class="container-fluid">
-		<div class="row mb-1">
+		<div class="row">
+
+			<?php
+			if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
+				if (file_exists("pages/" . curPageURL() . ".php")) {
+					?>
+					<div class="container-fluid position-fixed" style="height: 100%; overflow-y: scroll;">
+						<?php
+						include("pages/" . curPageURL() . ".php");
+						?>
+					</div>
+					<?php
+				} else {
+					include("pages/error.php");
+				}
+			} else if (is_array(curPageURL()) && curPageURL() != 'index') {
+				$page = curPageURL();
+				$subpage = $page[1];
+				$page = $page[0];
+				if (file_exists("pages/" . $page . ".php")) {
+					include("pages/" . $page . ".php");
+				} else {
+					include("pages/error.php");
+				}
+			} else {
+			?>
 
 			<!-- Left column -->
-			<div class="side-left col-lg-3 text-left text-info border-right border-info" style="font-size: 10px;">
-				<h4>Recent Activity</h4>
+			<div class="side-left text-left text-info border-right border-info pl-1"
+				 style="font-size: 10px;">
+				<h4>Latest Achievements</h4>
 				<div>
 					<?php activityfeed() ?>
 				</div>
 			</div>
 
 			<!-- Center column with title text -->
-			<div class="col-md mx-auto text-center">
-				<!--<img src="img/logo.png" height="300px" width="300px">-->
-				<h2 class="display-3 text-white mb-0">Open RSC</h2>
-				<!--<h2 class="display-3 font-italic text-white mb-0">Evolution</h2>-->
+			<div class="col mx-auto text-center">
+				<h2 class="display-3 mb-0">OPEN RSC</h2>
 				<div class="text-white-50">Striving for a replica RSC game and more</div>
-				<!--<div>Daring To Imagine An Entirely New Direction</div>-->
-				<br>
 				<br>
 				<a href="https://game.openrsc.com/downloads/openrsc.apk">
 					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 				</a>
 				<br>
-			</div>
-
-			<!-- Right column -->
-			<div>
-				<div class="side-right col-lg-3 text-left border-left border-info" style="font-size: 13px;">
+				<button type="button" class="pc btn btn-dark btn-outline-info">PC Client</button>
+				<button type="button" class="mobile btn btn-dark btn-outline-info">Android</button>
+				<br>
+				<br>
+				<div class="middle container-fluid border-top border-info">
+					<div class="text-left text-primary" style="font-size: 13px;">
+					<br>
 					<h4 class="text-info">Statistics</h4>
 					<div>
 						Players Online:
@@ -346,22 +412,37 @@ include "inc/database_config.php";
 							</a>
 						</b>
 					</div>
+					<br>
 				</div>
+
 			</div>
 		</div>
 
-		<!-- Footer -->
-		<div class="bg-black text-white fixed-bottom social d-flex justify-content-center">
-			<a href="#" class="mx-2">
-				<i class="fab fa-reddit"></i>
-			</a>
-			<a href="#" class="mx-2">
-				<i class="fab fa-discord"></i>
-			</a>
-			<a href="#" class="mx-2">
-				<i class="fab fa-github"></i>
-			</a>
+		<!-- Right column -->
+		<div>
+			<div class="side-right border-left border-info"
+				 style="font-size: 13px;">
+				<!-- Twitter feed -->
+				<h4 class="mt-3 text-info" style="text-indent: 40px">Recent News</h4>
+				<div class="text-primary" id="tweets"></div>
+			</div>
 		</div>
+	</div>
+
+	<?php } ?>
+
+	<!-- Footer -->
+	<div class="bg-black text-white fixed-bottom social d-flex justify-content-center">
+		<a href="#" class="mx-2">
+			<i class="fab fa-reddit"></i>
+		</a>
+		<a href="#" class="mx-2">
+			<i class="fab fa-discord"></i>
+		</a>
+		<a href="#" class="mx-2">
+			<i class="fab fa-github"></i>
+		</a>
+	</div>
 </section>
 
 </body>
