@@ -53,6 +53,11 @@ include "inc/helpers.php";
 
 	<!-- Bootstrap style overrides -->
 	<style>
+		@font-face {
+			font-family: "StoneRunes";
+			src:url("css/StoneRunes.otf");
+		}
+
 		html {
 			overflow: hidden;
 		}
@@ -70,10 +75,22 @@ include "inc/helpers.php";
 		}
 
 		.display-3 {
+			font-family: "StoneRunes", cursive;
 			font-size: 92px;
-			font-style: italic;
-			font-weight: 600;
-			filter: drop-shadow(0px 1px 3px #777);
+			filter: drop-shadow(0px 1px 40px #0e84b5);
+			text-shadow: 0 1px 0 #ccc,
+			0 1px 0 #c9c9c9,
+			0 2px 0 #bbb,
+			0 3px 0 #b9b9b9,
+			0 2px 0 #aaa,
+			0 3px 1px rgba(0,0,0,.1),
+			0 0 5px rgba(0,0,0,.1),
+			0 1px 1px rgba(0,0,0,.3),
+			0 2px 3px rgba(0,0,0,.2),
+			0 3px 5px rgba(0,0,0,.25),
+			0 5px 7px rgba(0,0,0,.2),
+			0 7px 10px rgba(0,0,0,.15);
+			padding-bottom: 10px;
 		}
 
 		li {
@@ -303,8 +320,8 @@ include "inc/helpers.php";
 
 			<!-- Center column with title text -->
 			<div class="col mx-auto text-center">
-				<h2 class="display-3 text-white mb-0">Open RSC</h2>
-				<div class="title text-white-50">Striving for a replica RSC game and more</div>
+				<h2 class="display-3 text-white mb-0">XQPD RSC</h2>
+				<div class="text-white">Striving for a replica RSC game and more</div>
 				<br>
 				<a href="https://game.openrsc.com/downloads/openrsc.apk">
 					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
@@ -315,8 +332,7 @@ include "inc/helpers.php";
 				<br>
 				<br>
 				<div class="middle border-top mx-auto border-info">
-					<div class="text-left"
-					">
+					<div class="text-left text-primary" style="font-size: 13px;">
 					<br>
 					<h4 class="text-info">Statistics</h4>
 					<div>
