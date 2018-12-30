@@ -159,23 +159,27 @@ include "inc/helpers.php";
 				width: 350px;
 			}
 
-			.middle, .border-top, .container {
+			.middle {
 				width: 350px;
+				padding-left: 0px;
+				padding-right: 0px;
 			}
 		}
 
 		.side-right {
-			width: 450px;
+			width: 400px;
 			height: 100%
 		}
 
 		.side-left {
-			width: 450px;
+			width: 400px;
 			height: 100%
 		}
 
-		.middle {
-			width: 450px;
+		@media (min-width: 969px) {
+			.middle {
+				width: 450px;
+			}
 		}
 
 		@media (min-width: 969px) {
@@ -214,7 +218,7 @@ include "inc/helpers.php";
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg fixed-top container-fluid pl-0 pr-0" id="mainNav">
+<nav class="navbar navbar-dark bg-black navbar-expand-lg fixed-top pl-0 pr-0" id="mainNav">
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
 			aria-label="Toggle navigation">
