@@ -315,7 +315,7 @@ include "inc/helpers.php";
 			?>
 
 			<!-- Left column -->
-			<div class="side-left text-left text-info border-right border-info pl-1"
+			<div class="side-left text-left text-info border-right border-info pl-1 pr-1"
 				 style="font-size: 10px;">
 				<h4>Latest Achievements</h4>
 				<div>
@@ -424,7 +424,7 @@ include "inc/helpers.php";
 
 		<!-- Right column -->
 		<div>
-			<div class="side-right border-left border-info"
+			<div class="side-right border-left border-info pr-1"
 				 style="font-size: 13px;">
 				<!-- Twitter feed -->
 				<h4 class="mt-3 text-info" style="text-indent: 40px">Recent News</h4>
