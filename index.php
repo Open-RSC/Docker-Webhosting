@@ -225,7 +225,7 @@ include "inc/helpers.php";
 		Menu
 		<i class="fas fa-bars"></i>
 	</button>
-	<div class="collapse navbar-collapse" id="navbarResponsive">
+	<div class="collapse navbar-collapse pl-2" id="navbarResponsive">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link js-scroll-trigger" href="/">Home</a>
