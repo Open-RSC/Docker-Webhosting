@@ -1,5 +1,6 @@
 <?php
 define('IN_SITE', true);
+include "config.php";
 
 class Dbc
 {

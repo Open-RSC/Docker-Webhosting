@@ -1,6 +1,7 @@
 <?php
 define('IN_SITE', true);
 require_once 'charfunctions.php';
+include "config.php";
 
 $sec = "30"; //page refresh time in seconds
 

@@ -3,7 +3,7 @@ if (!defined('IN_SITE')) {
     die("You do not have permission to access this file.");
 }
 
-include "../inc/database_config.php";
+include "../inc/config.php";
 
 $connector = new Dbc();
 

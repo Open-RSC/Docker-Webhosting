@@ -4,11 +4,7 @@ if (!defined('IN_SITE')) {
 	die();
 }
 
-$dbhost = 'mysql';
-$dbport = '';
-$dbname = 'openrsc_game';
-$dbuser = 'root';
-$dbpasswd = 'root';
+include "config.php";
 
 class Dbc
 {

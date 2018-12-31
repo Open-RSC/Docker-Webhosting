@@ -2,6 +2,7 @@
 define('IN_SITE', true);
 require_once 'charfunctions.php';
 require_once 'peoplesignClient.php';
+include "config.php";
 
 class Dbc
 {
