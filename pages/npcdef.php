@@ -1,5 +1,5 @@
 <?php
-if (!defined('IN_PHPBB')) {
+if (!defined('IN_SITE')) {
     die("You do not have permission to access this file.");
 }
 
@@ -47,7 +47,7 @@ $resultdrop = $connector->fetchArray($resultdrop_result);
                         <tbody>
                         <tr>
                             <td style="padding-right: 25px;" align="center">
-                                <img src="/css/images/npc/<?php echo $result['id'] ?>.png"
+                                <img src="/img/npc/<?php echo $result['id'] ?>.png"
                                      style="max-width: 150px; max-height: 150px;"/>
                                 <br/>
                                 <span class="sm-stats"><?php echo $result['description']; ?></span>
@@ -55,7 +55,7 @@ $resultdrop = $connector->fetchArray($resultdrop_result);
                             <td style="padding-right: 25px;">
                                 <?php foreach ($skill_array as $skill) {
                                     ?><span class="sm-skill2"><img
-                                            src="/css/images/skill_icons/<?php echo $skill; ?>.svg" width="16px"
+                                            src="/img/skill_icons/<?php echo $skill; ?>.svg" width="16px"
                                             height="16px" alt="<?php echo $skill; ?>"/>
                                     <?php echo $result[$skill]; ?></span>
                                 <?php } ?>

@@ -1,13 +1,5 @@
 <?php
-define('IN_PHPBB', true);
-
-$phpbb_root_path = '../board/';
-$phpEx = substr(strrchr(__FILE__, '.'), 1);
-require($phpbb_root_path . 'config.' . $phpEx);
-require_once($phpbb_root_path . 'common.' . $phpEx);
-require_once($phpbb_root_path . 'includes/bbcode.' . $phpEx);
-require_once($phpbb_root_path . 'includes/functions_display.' . $phpEx);
-require_once($phpbb_root_path . 'config.' . $phpEx);
+define('IN_SITE', true);
 require_once 'charfunctions.php';
 
 $sec = "30"; //page refresh time in seconds
@@ -88,16 +80,16 @@ while ($char = $connector->fetchArray($playerPositions)) {
     }
     $xs[] = $coords['x'];
     $ys[] = $coords['y'];
-    ?><img src="/css/images/crosshairs.svg" style="display: none;" /><?php
+    ?><img src="/img/crosshairs.svg" style="display: none;" /><?php
     $areaPlayer[] = 'ctx.drawImage(player,' . $coords['x'] . ', ' . $coords['y'] . ', 45, 45);'
         . ' ctx.fillStyle="white"; '
         . ' ctx.font="14pt Exo"; '
         . ' ctx.fillText("' . $char['username'] . '", ' . $coords['x'] . ', ' . $coords['y'] . '); '
-        . ' player.src ="/css/images/crosshairs.svg"; '
+        . ' player.src ="/img/crosshairs.svg"; '
     ?><?php
 } ?>
 
-<body onload="drawPosition();" background="../css/images/worldmap.png" style="background-repeat: no-repeat;">
+<body onload="drawPosition();" background="../img/worldmap.png" style="background-repeat: no-repeat;">
 <a href="../inc/worldmap.php" target="_parent">
     <canvas id="canvas" width="2152" height="1007"></canvas>
     <script>

@@ -1,5 +1,5 @@
 <?php
-if (!defined('IN_PHPBB')) {
+if (!defined('IN_SITE')) {
     die("You do not have permission to access this file.");
 }
 
@@ -103,7 +103,7 @@ function bd_nice_number($n)
                                     <div style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
                                         <?php echo $list["number"]; ?>
                                     </div>
-                                    <img src="/css/images/items/<?php echo $list["id"]; ?>.png"/>
+                                    <img src="/img/items/<?php echo $list["id"]; ?>.png"/>
                                 </td>
                                 <?php
                                 if (($i % 14 == 0) && ($i < $bank)) {

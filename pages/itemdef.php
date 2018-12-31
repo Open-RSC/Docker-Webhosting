@@ -1,5 +1,5 @@
 <?php
-if (!defined('IN_PHPBB')) {
+if (!defined('IN_SITE')) {
     die("You do not have permission to access this file.");
 }
 
@@ -37,7 +37,7 @@ $itemCountActive = $connector->gamequery("SELECT SUM(amt) as amt from (
                         <tbody>
                         <tr>
                             <td style="padding-right: 25px;" align="center">
-                                <img src="/css/images/items/<?php echo $result['id'] ?>.png"/>
+                                <img src="/img/items/<?php echo $result['id'] ?>.png"/>
                                 <br/>
                                 <span class="sm-stats"><?php echo $result['description']; ?></span>
                             </td>

@@ -1,5 +1,5 @@
 <?php
-if (!defined('IN_PHPBB')) {
+if (!defined('IN_SITE')) {
     die("You do not have permission to access this file.");
 }
 ?>
@@ -41,29 +41,29 @@ if (!defined('IN_PHPBB')) {
                     <b><?php echo gold15m(); ?></b> players have over 1.5M gp.<br/><br/>
 
                     <h4 style="color: #C6A444;">Expensive Items</h4>
-                    <img src="/css/images/items/1278.png"/> <b><?php echo dsq(); ?></b><br/>
-                    <img src="/css/images/items/795.png"/> <b><?php echo dmed(); ?></b><br/>
-                    <img src="/css/images/items/522.png"/> <b><?php echo dammy(); ?></b><br/>
-                    <img src="/css/images/items/597.png"/> <b><?php echo chargeddammy(); ?></b><br/>
-                    <img src="/css/images/items/594.png"/> <b><?php echo dbattle(); ?></b><br/>
-                    <img src="/css/images/items/593.png"/> <b><?php echo dlong(); ?></b><br/><br/>
+                    <img src="/img/items/1278.png"/> <b><?php echo dsq(); ?></b><br/>
+                    <img src="/img/items/795.png"/> <b><?php echo dmed(); ?></b><br/>
+                    <img src="/img/items/522.png"/> <b><?php echo dammy(); ?></b><br/>
+                    <img src="/img/items/597.png"/> <b><?php echo chargeddammy(); ?></b><br/>
+                    <img src="/img/items/594.png"/> <b><?php echo dbattle(); ?></b><br/>
+                    <img src="/img/items/593.png"/> <b><?php echo dlong(); ?></b><br/><br/>
 
                     <h4 style="color: #C6A444;">Holiday Items</h4>
-                    <img src="/css/images/items/422.png"/> <b><?php echo pumpkins(); ?></b> (13,001 on 11/1/2018)<br/>
-                    <img src="/css/images/items/575.png"/> <b><?php echo crackers(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/css/images/items/577.png"/> <b><?php echo yellowphat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/css/images/items/581.png"/> <b><?php echo whitephat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/css/images/items/580.png"/> <b><?php echo purplephat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/css/images/items/576.png"/> <b><?php echo redphat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/css/images/items/578.png"/> <b><?php echo bluephat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/css/images/items/579.png"/> <b><?php echo greenphat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/css/images/items/677.png"/> <b><?php echo eastereggs(); ?></b> (0 on 4/22/2019)<br/>
-                    <img src="/css/images/items/828.png"/> <b><?php echo greenmask(); ?></b> (0 on 11/1/2019)<br/>
-                    <img src="/css/images/items/831.png"/> <b><?php echo redmask(); ?></b> (0 on 11/1/2019)<br/>
-                    <img src="/css/images/items/832.png"/> <b><?php echo bluemask(); ?></b> (0 on 11/1/2019)<br/>
-                    <img src="/css/images/items/971.png"/> <b><?php echo santahat(); ?></b> (0 on 12/26/2019)<br/>
-                    <img src="/css/images/items/1156.png"/> <b><?php echo bunnyears(); ?></b> (0 on 4/22/2020)<br/>
-                    <img src="/css/images/items/1289.png"/> <b><?php echo scythe(); ?></b> (0 on 11/1/2020)<br/>
+                    <img src="/img/items/422.png"/> <b><?php echo pumpkins(); ?></b> (13,001 on 11/1/2018)<br/>
+                    <img src="/img/items/575.png"/> <b><?php echo crackers(); ?></b> (0 on 12/26/2018)<br/>
+                    <img src="/img/items/577.png"/> <b><?php echo yellowphat(); ?></b> (0 on 12/26/2018)<br/>
+                    <img src="/img/items/581.png"/> <b><?php echo whitephat(); ?></b> (0 on 12/26/2018)<br/>
+                    <img src="/img/items/580.png"/> <b><?php echo purplephat(); ?></b> (0 on 12/26/2018)<br/>
+                    <img src="/img/items/576.png"/> <b><?php echo redphat(); ?></b> (0 on 12/26/2018)<br/>
+                    <img src="/img/items/578.png"/> <b><?php echo bluephat(); ?></b> (0 on 12/26/2018)<br/>
+                    <img src="/img/items/579.png"/> <b><?php echo greenphat(); ?></b> (0 on 12/26/2018)<br/>
+                    <img src="/img/items/677.png"/> <b><?php echo eastereggs(); ?></b> (0 on 4/22/2019)<br/>
+                    <img src="/img/items/828.png"/> <b><?php echo greenmask(); ?></b> (0 on 11/1/2019)<br/>
+                    <img src="/img/items/831.png"/> <b><?php echo redmask(); ?></b> (0 on 11/1/2019)<br/>
+                    <img src="/img/items/832.png"/> <b><?php echo bluemask(); ?></b> (0 on 11/1/2019)<br/>
+                    <img src="/img/items/971.png"/> <b><?php echo santahat(); ?></b> (0 on 12/26/2019)<br/>
+                    <img src="/img/items/1156.png"/> <b><?php echo bunnyears(); ?></b> (0 on 4/22/2020)<br/>
+                    <img src="/img/items/1289.png"/> <b><?php echo scythe(); ?></b> (0 on 11/1/2020)<br/>
                 </div>
             </div>
         </article>
