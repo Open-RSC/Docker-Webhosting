@@ -64,7 +64,7 @@ function bd_nice_number($n)
             <?php if ($character) { ?>
             <div>
                 <h3>
-                    &nbsp<?php if ($character['group_id'] != 4): echo "<img src=\"../css/images/$character[group_id].svg\" width=\"20\" height=\"20\"> ";
+                    &nbsp<?php if ($character['group_id'] != 10): echo "<img src=\"../css/images/$character[group_id].svg\" width=\"20\" height=\"20\"> ";
                     else: NULL; endif;
                     echo $character['username']; ?>'s player information
                 </h3>
