@@ -11,14 +11,14 @@ $item_result = $connector->gamequery("SELECT * FROM openrsc_itemdef WHERE id = '
 $result = $connector->fetchArray($item_result);
 
 $itemCount = $connector->gamequery("SELECT SUM(amt) as amt from (
-    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '4' AND A.banned = '0'
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '10' AND A.banned = '0'
     union all
-    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '4' AND A.banned = '0') a");
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '10' AND A.banned = '0') a");
 
 $itemCountActive = $connector->gamequery("SELECT SUM(amt) as amt from (
-    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '4' AND A.banned = '0' AND A.login_date >= unix_timestamp( current_date - interval 3 month ) AND A.login_date >= '1539645175'
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '10' AND A.banned = '0' AND A.login_date >= unix_timestamp( current_date - interval 3 month ) AND A.login_date >= '1539645175'
     union all
-    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '4' AND A.banned = '0' AND A.login_date >= unix_timestamp( current_date - interval 3 month ) AND A.login_date >= '1539645175') a");
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '10' AND A.banned = '0' AND A.login_date >= unix_timestamp( current_date - interval 3 month ) AND A.login_date >= '1539645175') a");
 ?>
 
 <main class="main">
