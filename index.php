@@ -89,6 +89,7 @@ require_once('inc/charfunctions.php');
 		}
 
 		.display-3 {
+			padding-top: 3rem;
 			color: #008db5;
 			font-family: 'Press Start 2P', cursive;
 			font-size: 55px;
@@ -250,17 +251,6 @@ require_once('inc/charfunctions.php');
 			width: 730px;
 			padding: 21px 22px 30px;
 			float: left;
-			background: url("/img/theme/forumliner-top.png") repeat-x 0 0,
-			url("/img/theme/forumliner-fix-left2.gif") no-repeat,
-			url("/img/theme/border-bot-left.gif") no-repeat 0 100%,
-			url("/img/theme/border-bot-right.gif") no-repeat 100% 100%,
-			url("/img/theme/border-top-right.gif") no-repeat 100% 0,
-			url("/img/theme/border-top-left.gif") no-repeat 0 0,
-			url("/img/theme/border-bot.gif") repeat-x 0 100%,
-			url("/img/theme/border-top.gif") repeat-x 0 0,
-			url("/img/theme/border-right.gif") repeat-y 100% 0,
-			url("/img/theme/forumliner-fix-right2.gif") repeat-y 100% 0,
-			url("/img/theme/border-left.gif") repeat-y 0 0,
 			rgba(20, 20, 20, 0.75);
 			border-top-right-radius: 8px;
 			border-top-left-radius: 8px;
@@ -271,17 +261,6 @@ require_once('inc/charfunctions.php');
 			width: 270px;
 			height: 285px;
 			padding: 21px 22px 30px;
-			background: url("/img/theme/forumliner-top.png") repeat-x 0 0,
-			url("/img/theme/forumliner-fix-left2.gif") no-repeat,
-			url("/img/theme/border-bot-left.gif") no-repeat 0 100%,
-			url("/img/theme/border-bot-right.gif") no-repeat 100% 100%,
-			url("/img/theme/border-top-right.gif") no-repeat 100% 0,
-			url("/img/theme/border-top-left.gif") no-repeat 0 0,
-			url("/img/theme/border-bot.gif") repeat-x 0 100%,
-			url("/img/theme/border-top.gif") repeat-x 0 0,
-			url("/img/theme/border-right.gif") repeat-y 100% 0,
-			url("/img/theme/forumliner-fix-right2.gif") repeat-y 100% 0,
-			url("/img/theme/border-left.gif") repeat-y 0 0,
 			rgba(20, 20, 20, 0.75);
 			border-top-right-radius: 8px;
 			border-top-left-radius: 8px;
@@ -350,14 +329,6 @@ require_once('inc/charfunctions.php');
 		#panel-login, #create, #pass, #delete, #error {
 			width: 455px;
 			height: 280px;
-			background: url("/img/theme/border-bot-left.gif") no-repeat 0 100%,
-			url("/img/theme/border-bot-right.gif") no-repeat 100% 100%,
-			url("/img/theme/border-top-right.gif") no-repeat 100% 0,
-			url("/img/theme/border-top-left.gif") no-repeat 0 0,
-			url("/img/theme/border-bot.gif") repeat-x 0 100%,
-			url("/img/theme/border-top.gif") repeat-x 0 0,
-			url("/img/theme/border-right.gif") repeat-y 100% 0,
-			url("/img/theme/border-left.gif") repeat-y 0 0,
 			rgba(20, 20, 20, 1);
 		}
 
@@ -1173,33 +1144,33 @@ require_once('inc/charfunctions.php');
 
 <!-- Title Section -->
 <section id="home" class="about-section text-white container-fluid">
-	<div class="container-fluid">
+	<div class="pl-0 pr-0 pt-0">
 		<div class="row">
 
-			<?php
-			if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
-				if (file_exists("pages/" . curPageURL() . ".php")) {
-					?>
-					<div class="container-fluid position-fixed" style="height: 100%; overflow-y: scroll;">
-						<?php
-						include("pages/" . curPageURL() . ".php");
+				<?php
+				if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
+					if (file_exists("pages/" . curPageURL() . ".php")) {
 						?>
-					</div>
-					<?php
+						<div class="container-fluid position-fixed" style="height: 100%; overflow-y: scroll;">
+							<?php
+							include("pages/" . curPageURL() . ".php");
+							?>
+						</div>
+						<?php
+					} else {
+						include("pages/error.php");
+					}
+				} else if (is_array(curPageURL()) && curPageURL() != 'index') {
+					$page = curPageURL();
+					$subpage = $page[1];
+					$page = $page[0];
+					if (file_exists("pages/" . $page . ".php")) {
+						include("pages/" . $page . ".php");
+					} else {
+						include("pages/error.php");
+					}
 				} else {
-					include("pages/error.php");
-				}
-			} else if (is_array(curPageURL()) && curPageURL() != 'index') {
-				$page = curPageURL();
-				$subpage = $page[1];
-				$page = $page[0];
-				if (file_exists("pages/" . $page . ".php")) {
-					include("pages/" . $page . ".php");
-				} else {
-					include("pages/error.php");
-				}
-			} else {
-			?>
+				?>
 
 			<!-- Left column -->
 			<div class="side-left text-left text-info border-right border-info pl-1 pr-1"

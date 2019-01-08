@@ -819,4 +819,22 @@ function activityfeed()
 	}
 }
 
+function gameChat()
+{
+	$connector = new Dbc();
+	$game_accounts = $connector->logquery("SELECT A.id playerID, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 500");
+	date_default_timezone_set('America/New_York');
+	?>
+	<div style="font: 14px 'Exo', sans-serif; color: lightgrey;">
+
+		<?php while ($row = $connector->fetchArray($game_accounts)) {
+			$idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
+			?>
+			[<small><?php date_default_timezone_set('America/New_York'); echo strftime("%d %b / %H:%M %Z", $row["time"]) ?></small>]
+																																   [<strong><a href="/player/<?php echo $idLink ?>" target="_blank"><?php echo ucwords($row["sender"]) ?></a></strong>] <?php echo $row["message"] ?><br/>
+		<?php } ?>
+	</div>
+	<?php
+}
+
 ?>
