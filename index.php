@@ -191,6 +191,7 @@ require_once('inc/charfunctions.php');
 		}
 
 		.side-left {
+			padding-top: 1rem;
 			width: 400px;
 			height: 100%
 		}
@@ -247,21 +248,12 @@ require_once('inc/charfunctions.php');
 			border-radius: 10px / 100px;
 		}
 
-		article {
-			width: 730px;
-			padding: 21px 22px 30px;
-			float: left;
-			rgba(20, 20, 20, 0.75);
-			border-top-right-radius: 8px;
-			border-top-left-radius: 8px;
-		}
-
 		aside {
 			float: right;
 			width: 270px;
 			height: 285px;
 			padding: 21px 22px 30px;
-			rgba(20, 20, 20, 0.75);
+		rgba(20, 20, 20, 0.75);
 			border-top-right-radius: 8px;
 			border-top-left-radius: 8px;
 		}
@@ -329,7 +321,7 @@ require_once('inc/charfunctions.php');
 		#panel-login, #create, #pass, #delete, #error {
 			width: 455px;
 			height: 280px;
-			rgba(20, 20, 20, 1);
+		rgba(20, 20, 20, 1);
 		}
 
 		.error-panel {
@@ -431,9 +423,9 @@ require_once('inc/charfunctions.php');
 
 		.panel, .side-panel {
 			background: #111;
+			height: 100vh;
 			background: rgba(20, 20, 20, 0.75);
 			box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
-			color: #E1C492;
 		}
 
 		.side-panel {
@@ -849,25 +841,21 @@ require_once('inc/charfunctions.php');
 
 		.sm-skill {
 			font: 12px 'Exo', sans-serif;
-			color: #C6A444;
 			text-shadow: 0 0 2px #201B18;
 			text-transform: uppercase;
 		}
 
 		.sm-skill2 {
 			font: 12px 'Exo', sans-serif;
-			color: #C6A444;
 			text-shadow: 0 0 2px #201B18;
 			text-transform: uppercase;
 		}
 
 		.sm-skill a {
-			color: #C6A444;
 			text-decoration: none;
 		}
 
 		.sm-skill a:hover {
-			color: white;
 			text-decoration: none;
 			-webkit-transition: all 0.2s ease-in-out;
 			-moz-transition: all 0.2s ease-in-out;
@@ -888,19 +876,16 @@ require_once('inc/charfunctions.php');
 		.sm-stats {
 			display: block;
 			font: 12px 'Exo', sans-serif;
-			color: white;
 			text-shadow: 0 0 2px #201B18;
 			text-transform: uppercase;
 			padding: 2px 0;
 		}
 
 		.sm-stats a {
-			color: #C6A444;
 			text-decoration: none;
 		}
 
 		.sm-stats a:hover {
-			color: white;
 			text-decoration: none;
 			-webkit-transition: all 0.2s ease-in-out;
 			-moz-transition: all 0.2s ease-in-out;
@@ -1143,7 +1128,7 @@ require_once('inc/charfunctions.php');
 </div>
 
 <!-- Title Section -->
-<section id="home" class="about-section text-white container-fluid">
+<section id="home" class="text-white">
 	<div class="pl-0 pr-0 pt-0">
 		<div class="row">
 
@@ -1151,7 +1136,7 @@ require_once('inc/charfunctions.php');
 				if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
 					if (file_exists("pages/" . curPageURL() . ".php")) {
 						?>
-						<div class="container-fluid position-fixed" style="height: 100%; overflow-y: scroll;">
+						<div class="position-fixed" style="overflow-y: scroll;">
 							<?php
 							include("pages/" . curPageURL() . ".php");
 							?>
@@ -1173,7 +1158,7 @@ require_once('inc/charfunctions.php');
 				?>
 
 			<!-- Left column -->
-			<div class="side-left text-left text-info border-right border-info pl-1 pr-1"
+			<div class="panel side-left text-left text-info border-right border-info pl-1 pr-1"
 				 style="font-size: 10px;">
 				<h4>Latest Achievements</h4>
 				<div>
@@ -1182,7 +1167,7 @@ require_once('inc/charfunctions.php');
 			</div>
 
 			<!-- Center column with title text -->
-			<div class="col mx-auto text-center">
+			<div class="panel col mx-auto text-center">
 				<h2 class="display-3 mb-0">OPEN RSC</h2>
 				<div class="text-white-50">Striving for a replica RSC game and more</div>
 				<br>
@@ -1282,7 +1267,7 @@ require_once('inc/charfunctions.php');
 
 		<!-- Right column -->
 		<div>
-			<div class="side-right border-left border-info pr-1"
+			<div class="panel side-right border-left border-info pr-1"
 				 style="font-size: 13px;">
 				<!-- Twitter feed -->
 				<h4 class="mt-3 text-info" style="text-indent: 40px">Recent News</h4>
