@@ -15,6 +15,19 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 	});
 </script>
 
+<style>
+	.tableFixHead {
+		overflow-y: auto;
+		height: 100vh;
+	}
+
+	.tableFixHead th {
+		position: sticky;
+		top: 0;
+		background-color: #212529;
+	}
+</style>
+
 <div class="text-info table-dark">
 	<div align="center">
 		<h3 class="pt-4">Item Database</h3>
@@ -22,31 +35,18 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 		<br/><br/>
 	</div>
 	<div>
-		<div style="overflow-y: auto; height: 100vh;">
-			<table class="table-responsive-lg table-striped table-hover table-dark text-primary header-fixed" align="center" style="width: 100vw;">
+		<div class="tableFixHead">
+			<table class="table-responsive-lg table-striped table-hover table-dark text-primary" align="center"
+				   style="width: 100vw;">
 				<thead>
 				<tr class="text-info">
-					<td align="center">
-						<small>ID</small>
-					</td>
-					<td align="center">
-						<small>Picture</small>
-					</td>
-					<td>
-						<small>Name and Description</small>
-					</td>
-					<td>
-						<small>Req Level</small>
-					</td>
-					<td>
-						<small>Shop Price</small>
-					</td>
-					<td>
-						<small>Low Alch</small>
-					</td>
-					<td>
-						<small>High Alch</small>
-					</td>
+					<th class="small text-center">ID</th>
+					<th class="small text-center">Picture</th>
+					<th class="small">Name and Description</th>
+					<th class="small">Req Level</th>
+					<th class="small">Shop Price</th>
+					<th class="small">Low Alch</th>
+					<th class="small">High Alch</th>
 				</tr>
 				</thead>
 				<tbody>
