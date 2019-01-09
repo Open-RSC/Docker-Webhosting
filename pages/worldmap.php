@@ -1,6 +1,9 @@
 <?php
 if (!defined('IN_SITE')) {
-    die("You do not have permission to access this file.");
+	die("You do not have permission to access this file.");
 }
 ?>
-<object data="../inc/worldmap.php" width="100%" height="100%"></object>
+<div class="panel">
+	<object data="../inc/worldmap.php" style="height: 100vh; width: 100vw;"></object>
+</div>
+

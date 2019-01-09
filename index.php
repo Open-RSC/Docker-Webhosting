@@ -99,13 +99,13 @@ require_once('inc/charfunctions.php');
 			0 2px 0 #bbb,
 			0 3px 0 #b9b9b9,
 			0 2px 0 #aaa,
-			0 3px 1px rgba(0,0,0,.1),
-			0 0 5px rgba(0,0,0,.1),
-			0 1px 1px rgba(0,0,0,.3),
-			0 2px 3px rgba(0,0,0,.2),
-			0 3px 5px rgba(0,0,0,.25),
-			0 5px 7px rgba(0,0,0,.2),
-			0 7px 10px rgba(0,0,0,.15);
+			0 3px 1px rgba(0, 0, 0, .1),
+			0 0 5px rgba(0, 0, 0, .1),
+			0 1px 1px rgba(0, 0, 0, .3),
+			0 2px 3px rgba(0, 0, 0, .2),
+			0 3px 5px rgba(0, 0, 0, .25),
+			0 5px 7px rgba(0, 0, 0, .2),
+			0 7px 10px rgba(0, 0, 0, .15);
 			padding-bottom: 20px;
 		}
 
@@ -163,7 +163,7 @@ require_once('inc/charfunctions.php');
 			}
 
 			.fullscreen-bg {
-				display: none;
+				width: 100vh;
 			}
 
 			.side-right {
@@ -186,14 +186,26 @@ require_once('inc/charfunctions.php');
 		}
 
 		.side-right {
+			padding: 1rem;
 			width: 400px;
-			height: 100%
+			height: 100vh;
+			background: #111;
+			background: rgba(20, 20, 20, 0.9);
 		}
 
 		.side-left {
-			padding-top: 1rem;
+			padding: 1rem;
 			width: 400px;
-			height: 100%
+			background: #111;
+			height: 100vh;
+			background: rgba(20, 20, 20, 0.9);
+		}
+
+		.side-middle {
+			padding: 1rem;
+			background: #111;
+			height: 100vh;
+			background: rgba(20, 20, 20, 0.9);
 		}
 
 		@media (min-width: 969px) {
@@ -302,6 +314,7 @@ require_once('inc/charfunctions.php');
 			justify-content: space-around;
 
 		}
+
 		.account-text > ul li {
 			list-style: none;
 		}
@@ -334,6 +347,7 @@ require_once('inc/charfunctions.php');
 			font-family: "Exo", sans-serif;
 			height: 300px;
 		}
+
 		.error-panel p {
 			width: 100%;
 			height: 60px;
@@ -421,59 +435,12 @@ require_once('inc/charfunctions.php');
 			background: #201B18;
 		}
 
-		.panel, .side-panel {
+		.panel {
 			background: #111;
 			height: 100vh;
+			width: 100vw;
 			background: rgba(20, 20, 20, 0.75);
-			box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
-		}
 
-		.side-panel {
-			padding: 0 10px 28px;
-		}
-
-		.panel {
-			padding: 10px 0;
-		}
-
-		.panel > hr {
-			display: block;
-			clear: both;
-			width: 90%;
-			height: 2px;
-			background-color: white;
-			margin: 20px auto;
-		}
-
-		.panel > img.logo {
-			display: block;
-			margin: 0 auto;
-			height: 300px;
-			width: 320px;
-		}
-
-		.panel > .main-links {
-			margin-top: 20px;
-		}
-
-		.panel > .main-links ul {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-		}
-
-		.panel > .main-links li {
-			flex: 0 1 auto;
-			list-style: none;
-			font-size: 28px;
-		}
-
-		.panel > .main-links a {
-			font-family: "Exo Bold", sans-serif;
-			color: #c6a444;
-		}
-		.panel > .main-links a:hover {
-			color: gold;
 		}
 
 		.side-panel {
@@ -485,6 +452,7 @@ require_once('inc/charfunctions.php');
 		.side-panel > div:first-child {
 			padding: 10px 7px;
 		}
+
 		.side-panel > div:last-child {
 			padding-left: 10px;
 			height: 70px;
@@ -503,12 +471,14 @@ require_once('inc/charfunctions.php');
 			transform: scale(1.1);
 			transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 		}
+
 		.modal-content {
 			width: 100%;
 			height: 100%;
 			margin-top: 30px;
 			border-radius: 0.5rem;
 		}
+
 		.modal-content > * {
 			display: flex;
 			flex-direction: column;
@@ -525,9 +495,11 @@ require_once('inc/charfunctions.php');
 			cursor: pointer;
 			border-radius: 0.25rem;
 		}
+
 		.close-button:hover {
 			background-color: darkgray;
 		}
+
 		.show-modal {
 			opacity: 1;
 			visibility: visible;
@@ -566,6 +538,7 @@ require_once('inc/charfunctions.php');
 			flex: 0 15%;
 			margin-bottom: 10px;
 		}
+
 		.highscores > .panel:last-child {
 			flex: 0 85%;
 			margin-bottom: 10px;
@@ -828,6 +801,7 @@ require_once('inc/charfunctions.php');
 			margin: 0 auto;
 			text-align: center;
 		}
+
 		.graph {
 			width: 315px;
 			height: 300px;
@@ -897,6 +871,7 @@ require_once('inc/charfunctions.php');
 		.line-chart {
 			width: 100%;
 		}
+
 		.pie-stats {
 			width: 100%;
 		}
@@ -948,9 +923,11 @@ require_once('inc/charfunctions.php');
 			flex-wrap: wrap;
 			justify-content: space-between;
 		}
+
 		.side-menu > dt {
 			flex: 0 50%;
 		}
+
 		.side-menu > dd {
 			flex: 0 50%;
 			text-align: right;
@@ -959,6 +936,7 @@ require_once('inc/charfunctions.php');
 		.side-menu > dt:nth-child(5) {
 			flex: 0 65%;
 		}
+
 		.side-menu > dd:nth-child(6) {
 			flex: 0 35%;
 		}
@@ -1049,6 +1027,7 @@ require_once('inc/charfunctions.php');
 			background-size: auto 100%;
 			position: relative;
 		}
+
 		footer > p {
 			height: 20px;
 			margin: 18px 0 15px;
@@ -1061,7 +1040,7 @@ require_once('inc/charfunctions.php');
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-dark bg-black navbar-expand-lg fixed-top pl-0 pr-0" id="mainNav">
+<nav class="navbar navbar-dark bg-black navbar-expand-lg pl-0 pr-0" id="mainNav">
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
 			aria-label="Toggle navigation">
@@ -1130,35 +1109,35 @@ require_once('inc/charfunctions.php');
 <!-- Title Section -->
 <section id="home" class="text-white">
 	<div class="pl-0 pr-0 pt-0">
-		<div class="row">
+		<div class="row" style="margin-left: 0px; margin-right: 0px;">
 
-				<?php
-				if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
-					if (file_exists("pages/" . curPageURL() . ".php")) {
-						?>
-						<div class="position-fixed" style="overflow-y: scroll;">
-							<?php
-							include("pages/" . curPageURL() . ".php");
-							?>
-						</div>
+			<?php
+			if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
+				if (file_exists("pages/" . curPageURL() . ".php")) {
+					?>
+					<div class="position-fixed">
 						<?php
-					} else {
-						include("pages/error.php");
-					}
-				} else if (is_array(curPageURL()) && curPageURL() != 'index') {
-					$page = curPageURL();
-					$subpage = $page[1];
-					$page = $page[0];
-					if (file_exists("pages/" . $page . ".php")) {
-						include("pages/" . $page . ".php");
-					} else {
-						include("pages/error.php");
-					}
+						include("pages/" . curPageURL() . ".php");
+						?>
+					</div>
+					<?php
 				} else {
-				?>
+					include("pages/error.php");
+				}
+			} else if (is_array(curPageURL()) && curPageURL() != 'index') {
+				$page = curPageURL();
+				$subpage = $page[1];
+				$page = $page[0];
+				if (file_exists("pages/" . $page . ".php")) {
+					include("pages/" . $page . ".php");
+				} else {
+					include("pages/error.php");
+				}
+			} else {
+			?>
 
 			<!-- Left column -->
-			<div class="panel side-left text-left text-info border-right border-info pl-1 pr-1"
+			<div class="side-left text-left text-info border-right border-info pl-1 pr-1"
 				 style="font-size: 10px;">
 				<h4>Latest Achievements</h4>
 				<div>
@@ -1167,7 +1146,7 @@ require_once('inc/charfunctions.php');
 			</div>
 
 			<!-- Center column with title text -->
-			<div class="panel col mx-auto text-center">
+			<div class="side-middle col mx-auto text-center">
 				<h2 class="display-3 mb-0">OPEN RSC</h2>
 				<div class="text-white-50">Striving for a replica RSC game and more</div>
 				<br>
@@ -1181,115 +1160,115 @@ require_once('inc/charfunctions.php');
 				<br>
 				<div class="middle container-fluid border-top border-info">
 					<div class="text-left text-primary" style="font-size: 13px;">
-					<br>
-					<h4 class="text-info">Statistics</h4>
-					<div>
-						Players Online:
-						<b>
-							<a href="/online">
+						<br>
+						<h4 class="text-info">Statistics</h4>
+						<div>
+							Players Online:
+							<b>
+								<a href="/online">
 							<span class="text-info float-right">
 								<?php echo playersOnline(); ?>
 							</span>
-							</a>
-						</b>
-					</div>
-					<div>
-						Server Status:
-						<span class="float-right">
+								</a>
+							</b>
+						</div>
+						<div>
+							Server Status:
+							<span class="float-right">
 							<?php echo checkStatus("game.openrsc.com", "43594"); ?>
 						</span>
-					</div>
-					<div>
-						Registrations Today:
-						<b>
-							<a href="/registrationstoday">
+						</div>
+						<div>
+							Registrations Today:
+							<b>
+								<a href="/registrationstoday">
 								<span class="text-info float-right">
 									<?php echo newRegistrationsToday(); ?>
 								</span>
-							</a>
-						</b>
-					</div>
-					<div>
-						Logins Today:
-						<b>
-							<a href="/loginstoday">
+								</a>
+							</b>
+						</div>
+						<div>
+							Logins Today:
+							<b>
+								<a href="/loginstoday">
 								<span class="text-info float-right">
 									<?php echo loginsToday(); ?>
 								</span>
-							</a>
-						</b>
-					</div>
-					<div>
-						Unique Players:
-						<b>
-							<a href="/stats">
+								</a>
+							</b>
+						</div>
+						<div>
+							Unique Players:
+							<b>
+								<a href="/stats">
 								<span class="text-info float-right">
 									<?php echo uniquePlayers(); ?>
 								</span>
-							</a>
-						</b>
-					</div>
-					<div>
-						Total Players:
-						<b>
-							<a href="/stats">
+								</a>
+							</b>
+						</div>
+						<div>
+							Total Players:
+							<b>
+								<a href="/stats">
 								<span class="text-info float-right">
 									<?php echo totalGameCharacters(); ?>
 								</span>
-							</a>
-						</b>
-					</div>
-					<div>
-						Gold:
-						<b>
-							<a href="/stats">
+								</a>
+							</b>
+						</div>
+						<div>
+							Gold:
+							<b>
+								<a href="/stats">
 								<span class="text-info float-right">
 									<?php echo banktotalGold(); ?>
 								</span>
-							</a>
-						</b>
-					</div>
-					<div>
-						Time Played:
-						<b>
-							<a href="/stats">
+								</a>
+							</b>
+						</div>
+						<div>
+							Time Played:
+							<b>
+								<a href="/stats">
 								<span class="text-info float-right">
 									<?php echo totalTime(); ?>
 								</span>
-							</a>
-						</b>
+								</a>
+							</b>
+						</div>
+						<br>
 					</div>
-					<br>
+
 				</div>
+			</div>
 
+			<!-- Right column -->
+			<div>
+				<div class="side-right border-left border-info pr-1"
+					 style="font-size: 13px;">
+					<!-- Twitter feed -->
+					<h4 class="mt-3 text-info" style="text-indent: 40px">Recent News</h4>
+					<div class="text-primary" id="tweets"></div>
+				</div>
 			</div>
 		</div>
 
-		<!-- Right column -->
-		<div>
-			<div class="panel side-right border-left border-info pr-1"
-				 style="font-size: 13px;">
-				<!-- Twitter feed -->
-				<h4 class="mt-3 text-info" style="text-indent: 40px">Recent News</h4>
-				<div class="text-primary" id="tweets"></div>
-			</div>
-		</div>
-	</div>
+		<?php } ?>
 
-	<?php } ?>
-
-	<!-- Footer -->
-	<div class="bg-black text-white fixed-bottom social d-flex justify-content-center">
-		<a href="#" class="mx-2">
-			<i class="fab fa-reddit"></i>
-		</a>
-		<a href="#" class="mx-2">
-			<i class="fab fa-discord"></i>
-		</a>
-		<a href="#" class="mx-2">
-			<i class="fab fa-github"></i>
-		</a>
-	</div>
+		<!-- Footer -->
+		<!--<div class="bg-black text-white fixed-bottom social d-flex justify-content-center">
+            <a href="#" class="mx-2">
+                <i class="fab fa-reddit"></i>
+            </a>
+            <a href="#" class="mx-2">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="#" class="mx-2">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>-->
 </section>
 
 </body>
