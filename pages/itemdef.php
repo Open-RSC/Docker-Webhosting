@@ -22,11 +22,11 @@ $itemCountActive = $connector->gamequery("SELECT SUM(amt) as amt from (
 ?>
 
 <main class="main">
-	<div class="panel text-info">
+	<div class="panel text-info pt-4">
 		<?php if ($result) { ?>
 		<div align="center">
 			<h3><a class="text-info" href="/items"><?php echo $result['name']; ?></a></h3>
-			<small class="text-primary">(Click the text above to go back)</small>
+			<small class="text-primary">(Select the text above to go back)</small>
 		</div>
 		<div>
 			<div>

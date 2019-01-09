@@ -80,8 +80,19 @@ require_once('inc/charfunctions.php');
 			display: none;
 		}
 
+		.table-wrapper-scroll-y {
+			display: block;
+			max-height: 100vh;
+			overflow-y: auto;
+			-ms-overflow-style: -ms-autohiding-scrollbar;
+		}
+
 		.about-section {
 			height: 100vh;
+		}
+
+		.nav-link {
+			display: unset;
 		}
 
 		a:hover {
@@ -243,204 +254,11 @@ require_once('inc/charfunctions.php');
 			float: left;
 		}
 
-		.box {
-			margin-bottom: 20px;
-			-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			-moz-border-radius: 10px / 100px;
-			border-radius: 10px / 100px;
-		}
-
-		.main {
-			-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			-moz-border-radius: 10px / 100px;
-			border-radius: 10px / 100px;
-		}
-
-		aside {
-			float: right;
-			width: 270px;
-			height: 285px;
-			padding: 21px 22px 30px;
-		rgba(20, 20, 20, 0.75);
-			border-top-right-radius: 8px;
-			border-top-left-radius: 8px;
-		}
-
-		.wrapper {
-			display: flex;
-			flex-direction: column;
-			width: 1100px;
-			margin: 0 auto;
-			padding: 32px 48px 20px;
-			color: rgb(60, 60, 60);
-			-webkit-text-size-adjust: 100%;
-			-webkit-tap-highlight-color: rgb(255, 255, 158);
-			line-height: normal;
-		}
-
-		.navigation {
-			background: url("/img/theme/grey-bar-wide.gif") repeat-x;
-			background-size: auto 100%;
-			margin: 20px 0;
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			-moz-border-radius: 10px / 100px;
-			border-radius: 10px / 100px;
-		}
-
-		.account-panel {
-			width: 333px;
-			height: 64px;
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-		}
-
-		.account-text {
-			padding: 16px 5px;
-		}
-
-		.account-text > ul {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-
-		}
-
-		.account-text > ul li {
-			list-style: none;
-		}
-
-		.avatar-box {
-			width: 51px;
-			height: 64px;
-			padding-left: 5px;
-			padding-top: 6px;
-		}
-
-		.avatar-box img {
-			width: 50px;
-			height: 50px;
-		}
-
-		#panel-login, #create, #pass, #delete, #error {
-			width: 455px;
-			height: 280px;
-		rgba(20, 20, 20, 1);
-		}
-
-		.error-panel {
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-			text-align: center;
-			font-weight: 700;
-			font-size: 24px;
-			font-family: "Exo", sans-serif;
-			height: 300px;
-		}
-
-		.error-panel p {
-			width: 100%;
-			height: 60px;
-			line-height: 260px;
-		}
-
-		label {
-			font: 14px 'Exo', sans-serif;
-			display: block;
-			color: #ffffff;
-			text-shadow: 0 0 2px #201B18;
-		}
-
-		.name, .password, textarea {
-			margin: 5px;
-			font: 14px 'Exo', sans-serif;
-			width: 250px;
-			background: rgba(42, 34, 32, 1);
-			padding: 5px;
-			-webkit-border-radius: 2px;
-			-moz-border-radius: 2px;
-			border-radius: 2px;
-			color: #C6A444;
-			border: 1px solid #444;
-			text-shadow: 0 0 2px #201B18;
-			-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			background: #0D1A2D linear-gradient(to bottom, rgba(8, 17, 38, 1) 0, rgba(13, 26, 45, 0) 32px);
-		}
-
-		.autologin {
-			width: 250px;
-			margin: 10px 0;
-		}
-
-		.submit {
-			float: left;
-			display: inline;
-			margin: 5px 5px;
-			width: 121px;
-			font: 14px 'Exo', sans-serif;
-			color: #C6A444;
-			text-align: center;
-			-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-			background-image: -webkit-gradient(
-				linear,
-				left bottom,
-				left top,
-				color-stop(0.31, rgba(32, 27, 24, 1)),
-				color-stop(0.99, rgba(42, 34, 32, 1))
-			);
-			background-image: -moz-linear-gradient(
-				center bottom,
-				rgba(32, 27, 24, 1) 31%,
-				rgba(42, 34, 32, 1) 99%
-			);
-			padding: 5px;
-			border: none #4A4A4A;
-			background-color: #1a1a1a;
-			background-image: linear-gradient(to top, #111, #333);
-		}
-
-		.submit:active {
-			color: white;
-			border: 1px solid #444;
-			background-image: -webkit-gradient(
-				linear,
-				left bottom,
-				left top,
-				color-stop(0.31, rgba(42, 34, 32, 1)),
-				color-stop(0.99, rgba(32, 27, 24, 1))
-			);
-			background-image: -moz-linear-gradient(
-				center bottom,
-				rgba(42, 34, 32, 1) 31%,
-				rgba(32, 27, 24, 1) 99%
-			);
-		}
-
-		.featured-box {
-			min-height: 400px;
-			background: #201B18;
-		}
-
 		.panel {
 			background: #111;
 			height: 100vh;
 			width: 100vw;
 			background: rgba(20, 20, 20, 0.75);
-
 		}
 
 		.side-panel {
@@ -1137,7 +955,7 @@ require_once('inc/charfunctions.php');
 			?>
 
 			<!-- Left column -->
-			<div class="side-left text-left text-info border-right border-info pl-1 pr-1"
+			<div class="side-left table-wrapper-scroll-y text-left text-info border-right border-info pl-1 pr-1"
 				 style="font-size: 10px;">
 				<h4>Latest Achievements</h4>
 				<div>
@@ -1246,7 +1064,7 @@ require_once('inc/charfunctions.php');
 
 			<!-- Right column -->
 			<div>
-				<div class="side-right border-left border-info pr-1"
+				<div class="side-right table-wrapper-scroll-y border-left border-info pr-1"
 					 style="font-size: 13px;">
 					<!-- Twitter feed -->
 					<h4 class="mt-3 text-info" style="text-indent: 40px">Recent News</h4>

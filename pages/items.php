@@ -15,15 +15,15 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 	});
 </script>
 
-<div class="table table-striped table-hover table-dark text-info">
+<div class="text-info table-dark">
 	<div align="center">
-		<h3>Item Database</h3>
-		<small class="text-primary">(Click on each for more information)</small>
+		<h3 class="pt-4">Item Database</h3>
+		<small class="text-primary">(Select a row to show more information)</small>
 		<br/><br/>
 	</div>
 	<div>
-		<div>
-			<table class="text-primary" align="center" style="width: 100vw;">
+		<div style="overflow-y: auto; height: 100vh;">
+			<table class="table-responsive-lg table-striped table-hover table-dark text-primary header-fixed" align="center" style="width: 100vw;">
 				<thead>
 				<tr class="text-info">
 					<td align="center">
@@ -53,10 +53,10 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 				<?php
 				while ($result = $connector->fetch_assoc($list_items)) { ?>
 					<tr class="clickable-row" data-href="/itemdef/<?php echo $result['id'] ?>">
-						<td class="pt-4" width="5%" align="center">
+						<td class="pt-1" width="5%" align="center">
 							<?php echo $result['id'] ?>
 						</td>
-						<td class="pt-3" width="10%" align="center">
+						<td width="10%" align="center">
 							<img src="/img/items/<?php echo $result['id'] ?>.png">
 						</td>
 						<td width="40%">
@@ -67,17 +67,17 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 							<td>
 							</td>
 						<?php } else { ?>
-							<td class="pt-4" width="10%" align="center">
+							<td class="pt-1" width="10%" align="center">
 								<?php echo number_format($result['requiredLevel']) ?>
 							</td>
 						<?php } ?>
-						<td class="pt-4">
+						<td class="pt-1">
 							<?php echo number_format($result['basePrice']) ?>gp
 						</td>
-						<td class="pt-4">
+						<td class="pt-1">
 							<?php echo number_format($result['basePrice'] * 0.4) ?>gp
 						</td>
-						<td class="pt-4">
+						<td class="pt-1">
 							<?php echo number_format($result['basePrice'] * 0.6) ?>gp
 						</td>
 					</tr>

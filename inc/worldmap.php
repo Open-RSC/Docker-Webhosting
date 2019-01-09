@@ -71,7 +71,7 @@ while ($char = $connector->fetchArray($playerPositions)) {
 	?><?php
 } ?>
 
-<body onload="drawPosition();" background="../img/worldmap.png" style="background-repeat: no-repeat;">
+<body onload="drawPosition();" background="../img/worldmap.png" style="background-repeat: no-repeat; background-color: black;">
 <canvas id="canvas" width="2152" height="1007"></canvas>
 <script>
 	function drawPosition() {
