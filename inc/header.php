@@ -52,11 +52,11 @@ require_once('charfunctions.php');
 	<script type="text/javascript" src="js/twitterFetcher.js"></script>
 
 	<!-- Favicons -->
-	<link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
-	<link rel="manifest" href="img/favicons/site.webmanifest">
-	<link rel="mask-icon" href="img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png">
+	<link rel="manifest" href="../img/favicons/site.webmanifest">
+	<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg" color="#5bbad5">
 
 	<!-- Custom fonts for this template -->
 	<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"
@@ -68,7 +68,7 @@ require_once('charfunctions.php');
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="css/grayscale.css" rel="stylesheet">
+	<link href="../css/grayscale.css" rel="stylesheet">
 
 	<!-- Bootstrap style overrides -->
 	<style>
@@ -205,7 +205,7 @@ require_once('charfunctions.php');
 		}
 
 		.side-left {
-			padding: 1rem;
+			padding-top: 2rem;
 			width: 400px;
 			background: #111;
 			height: 100vh;
@@ -900,3 +900,27 @@ require_once('charfunctions.php');
 		</ul>
 	</div>
 </nav>
+
+<!-- Fullscreen video background -->
+<div class="fullscreen-bg">
+	<video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay" muted="muted"
+		   loop="loop">
+		<script>
+			var videoPlayer = document.getElementById('video');
+
+			function playIt() {
+				videoPlayer.play();
+				var videos = [
+					"1",
+					"2",
+					"3",
+					"4",
+				], videos = videos[Math.floor(Math.random() * videos.length)];
+				videoPlayer.src = "img/" + videos + ".mp4";
+			}
+
+			videoPlayer.addEventListener('ended', playIt, false);
+			playIt();
+		</script>
+	</video>
+</div>

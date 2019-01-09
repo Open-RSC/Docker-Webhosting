@@ -2,29 +2,6 @@
 include "inc/header.php";
 ?>
 
-<div class="fullscreen-bg">
-	<video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay" muted="muted"
-		   loop="loop">
-		<script>
-			var videoPlayer = document.getElementById('video');
-
-			function playIt() {
-				videoPlayer.play();
-				var videos = [
-					"1",
-					"2",
-					"3",
-					"4",
-				], videos = videos[Math.floor(Math.random() * videos.length)];
-				videoPlayer.src = "img/" + videos + ".mp4";
-			}
-
-			videoPlayer.addEventListener('ended', playIt, false);
-			playIt();
-		</script>
-	</video>
-</div>
-
 <!-- Title Section -->
 <section id="home" class="text-white">
 	<div class="pl-0 pr-0 pt-0">
@@ -56,9 +33,9 @@ include "inc/header.php";
 			?>
 
 			<!-- Left column -->
-			<div class="side-left table-wrapper-scroll-y text-left text-info border-right border-info pl-1 pr-1"
+			<div class="side-left table-wrapper-scroll-y text-left text-info border-right border-info"
 				 style="font-size: 10px;">
-				<h4>Latest Achievements</h4>
+				<h4 class="pl-3 pr-3">Latest Achievements</h4>
 				<div>
 					<?php activityfeed() ?>
 				</div>
@@ -165,7 +142,7 @@ include "inc/header.php";
 
 			<!-- Right column -->
 			<div>
-				<div class="side-right table-wrapper-scroll-y border-left border-info pr-1"
+				<div class="side-right table-wrapper-scroll-y border-left border-info"
 					 style="font-size: 13px;">
 					<!-- Twitter feed -->
 					<h4 class="mt-3 text-info" style="text-indent: 40px">Recent News</h4>
