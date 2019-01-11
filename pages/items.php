@@ -16,8 +16,7 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 	</div>
 	<div>
 		<div class="tableFixHead">
-			<table class="table-responsive-lg table-striped table-hover table-dark text-primary" align="center"
-				   style="width: 100vw;">
+			<table class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary" align="center">
 				<thead>
 				<tr class="text-info">
 					<th class="small text-center">ID</th>

@@ -274,7 +274,6 @@ require_once('charfunctions.php');
 
 		.panel {
 			background: #111;
-			height: 100vh;
 			width: 100vw;
 			background: rgba(20, 20, 20, 0.75);
 		}
@@ -876,7 +875,7 @@ require_once('charfunctions.php');
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-dark bg-black navbar-expand-lg pl-0 pr-0" id="mainNav">
+<nav class="navbar bg-black navbar-expand-lg pl-0 pr-0" id="mainNav">
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
 			aria-label="Toggle navigation">
@@ -886,34 +885,53 @@ require_once('charfunctions.php');
 	<div class="collapse navbar-collapse pl-2" id="navbarResponsive">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="/">Home</a>
+				<a class="nav-link" href="/">Home</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Download
+				</a>
+				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item text-secondary" href="https://game.openrsc.com/downloads/OpenRSC.jar">PC Client</a>
+					<a class="dropdown-item text-secondary" href="https://game.openrsc.com/downloads/openrsc.apk">Android Client</a>
+					<div class="dropdown-divider border-info"></div>
+					<a class="dropdown-item text-secondary" href="https://github.com/open-rsc/game">Source Code on GitHub</a>
+				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="https://game.openrsc.com/downloads/OpenRSC.jar">PC</a>
+				<a class="nav-link" href="/highscores">Highscores</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger"
-				   href="https://game.openrsc.com/downloads/openrsc.apk">Android</a>
+				<a class="nav-link" href="/chat">Chat Activity</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#highscores">Highscores</a>
+				<a class="nav-link" href="/worldmap">Live Map</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Information
+				</a>
+				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item text-secondary" href="/faq">FAQ</a>
+					<a class="dropdown-item text-secondary" href="/rules">Rules</a>
+					<a class="dropdown-item text-secondary" href="/shar">Shar's Bank</a>
+					<div class="dropdown-divider border-info"></div>
+					<a class="dropdown-item text-secondary" href="/items">Item Database</a>
+					<a class="dropdown-item text-secondary" href="/npcs">NPC Database</a>
+					<div class="dropdown-divider border-info"></div>
+					<a class="dropdown-item text-secondary" href="stats">Statistics</a>
+				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#worldmap">Live Map</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#information">Information</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="https://github.com/open-rsc/game">Source Code</a>
+				<a class="nav-link" href="https://github.com/open-rsc/game">Source Code</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#login">Login</a>
+				<a class="nav-link" href="#login">Login</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#register">Register</a>
+				<a class="nav-link" href="#register">Register</a>
 			</li>
 		</ul>
 	</div>

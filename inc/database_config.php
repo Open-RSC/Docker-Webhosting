@@ -813,7 +813,7 @@ function activityfeed()
 			<div class="text-primary ml-3 mr-3" style="font-size: 13px;"><br>
 					<div class="row clickable-row" data-href="/player/' . $row["id"] . '">
 						<div class="col-sm-3 text-info font-weight-bold">
-							' . strftime("%b %d, %H:%M %Z", $row["time"]) . '
+							' . strftime("%b %d, %I:%M %p", $row["time"]) . '
 						</div>
 						<div class="col-md-9">
 							';
@@ -835,17 +835,18 @@ function activityfeed()
 function gameChat()
 {
 	$connector = new Dbc();
-	$game_accounts = $connector->logquery("SELECT A.id playerID, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 500");
+	$game_accounts = $connector->logquery("SELECT A.id playerID, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 1000");
 	date_default_timezone_set('America/New_York');
 	?>
-	<div class="table-wrapper-scroll-y text-primary panel" style="font-size: 14px; height: 100vh;">
-		<div class="container panel pb-5 border-left border-info border-right pt-1">
+	<div class="text-primary panel" style="font-size: 14px;">
+		<div class="container pb-5 border-left border-info border-right pt-1">
 		<?php while ($row = $connector->fetchArray($game_accounts)) {
 			$idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
-			?>[<?php date_default_timezone_set('America/New_York');
-				echo strftime("%d %b / %H:%M %Z", $row["time"]) ?>] [<a
+			date_default_timezone_set('America/New_York');
+				echo '<span class="">';
+				echo strftime("%b %d, %I:%M %p", $row["time"]) ?></span> | <a
 					href="/player/<?php echo $idLink ?>"
-					target="_blank"><span class="text-info"><?php echo ucwords($row["sender"]) ?></span></a>] <?php echo $row["message"] ?><br>
+					target="_blank"><span class="text-info"><?php echo ucwords($row["sender"]) ?></span></a>: <?php echo $row["message"] ?><br>
 		<?php } ?>
 		</div>
 	</div>

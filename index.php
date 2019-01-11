@@ -11,7 +11,7 @@ include "inc/header.php";
 			if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
 				if (file_exists("pages/" . curPageURL() . ".php")) {
 					?>
-					<div class="position-fixed">
+					<div class="panel position-fixed table-wrapper-scroll-y">
 						<?php
 						include("pages/" . curPageURL() . ".php");
 						?>
