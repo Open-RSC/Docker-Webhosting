@@ -805,20 +805,31 @@ function activityfeed()
 	$connector = new Dbc();
 	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username ORDER BY B.time DESC LIMIT 100");
 	date_default_timezone_set('America/New_York');
-	echo '<div class="pl-3 pr-3">';
 	while ($row = $connector->fetchArray($game_accounts)) {
 		if ($row["username"] == NULL) {
 			echo "No players activity.";
 		} else {
-			echo '<a href = "/player/' . $row["id"] . '"> ' . strftime("%d %b / %H:%M %Z", $row["time"]) . ':</a><br>
-				<a href = "/player/' . $row["id"] . '">';
-			if ($row['group_id'] != 10):
-				echo '<img class="mb-1" src="img/' . $row["group_id"] . '.svg" width="9" height="9"> ';
-			endif;
-			echo ucfirst($row["username"]) . ' ' . $row["message"] . '</a><br><br>';
+			echo '
+			<div class="text-primary ml-3 mr-3" style="font-size: 13px;"><br>
+					<div class="row clickable-row" data-href="/player/' . $row["id"] . '">
+						<div class="col-sm-3 text-info font-weight-bold">
+							' . strftime("%b %d, %H:%M %Z", $row["time"]) . '
+						</div>
+						<div class="col-md-9">
+							';
+							if ($row['group_id'] != 10):
+								echo '<img class="mb-1" src="img/' . $row["group_id"] . '.svg" width="9" height="9"> ';
+							endif; echo  '
+							<img class="pr-2 float-left" src="https://game.openrsc.com/avatars/' . $row["id"] . '.png" width="36" height="48" onerror="this.style.display=\'none\'">
+							<span class="font-weight-bold">' . ucfirst($row["username"]) . '</span> ' . $row["message"] . '
+							<br><br>
+						</div>
+					</div>
+					<div class="border-top border-info"></div>
+			</div>
+			';
 		}
 	}
-	echo '</div>';
 }
 
 function gameChat()
@@ -827,14 +838,16 @@ function gameChat()
 	$game_accounts = $connector->logquery("SELECT A.id playerID, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 500");
 	date_default_timezone_set('America/New_York');
 	?>
-	<div style="font: 14px 'Exo', sans-serif; color: lightgrey;">
-
+	<div class="table-wrapper-scroll-y text-primary panel" style="font-size: 14px; height: 100vh;">
+		<div class="container panel pb-5 border-left border-info border-right pt-1">
 		<?php while ($row = $connector->fetchArray($game_accounts)) {
 			$idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
-			?>
-			[<small><?php date_default_timezone_set('America/New_York'); echo strftime("%d %b / %H:%M %Z", $row["time"]) ?></small>]
-																																   [<strong><a href="/player/<?php echo $idLink ?>" target="_blank"><?php echo ucwords($row["sender"]) ?></a></strong>] <?php echo $row["message"] ?><br/>
+			?>[<?php date_default_timezone_set('America/New_York');
+				echo strftime("%d %b / %H:%M %Z", $row["time"]) ?>] [<a
+					href="/player/<?php echo $idLink ?>"
+					target="_blank"><span class="text-info"><?php echo ucwords($row["sender"]) ?></span></a>] <?php echo $row["message"] ?><br>
 		<?php } ?>
+		</div>
 	</div>
 	<?php
 }

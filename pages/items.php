@@ -7,26 +7,6 @@ $connector = new Dbc();
 $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel, basePrice FROM openrsc_itemdef ORDER BY id ASC LIMIT 1290');
 
 ?>
-<script>
-	jQuery(document).ready(function ($) {
-		$(".clickable-row").click(function () {
-			window.location = $(this).data("href");
-		});
-	});
-</script>
-
-<style>
-	.tableFixHead {
-		overflow-y: auto;
-		height: 100vh;
-	}
-
-	.tableFixHead th {
-		position: sticky;
-		top: 0;
-		background-color: #212529;
-	}
-</style>
 
 <div class="text-info table-dark">
 	<div align="center">

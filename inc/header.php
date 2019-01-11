@@ -50,6 +50,13 @@ require_once('charfunctions.php');
 			crossorigin="anonymous"></script>
 	<script src="js/grayscale.min.js"></script>
 	<script type="text/javascript" src="js/twitterFetcher.js"></script>
+	<script>
+		jQuery(document).ready(function ($) {
+			$(".clickable-row").click(function () {
+				window.location = $(this).data("href");
+			});
+		});
+	</script>
 
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png">
@@ -97,6 +104,17 @@ require_once('charfunctions.php');
 
 		a:hover {
 			text-decoration: none;
+		}
+
+		.tableFixHead {
+			overflow-y: auto;
+			height: 100vh;
+		}
+
+		.tableFixHead th {
+			position: sticky;
+			top: 0;
+			background-color: #212529;
 		}
 
 		.display-3 {
@@ -250,7 +268,7 @@ require_once('charfunctions.php');
 		}
 
 		.timePosted {
-			width: 15%;
+			width: 20%;
 			float: left;
 		}
 

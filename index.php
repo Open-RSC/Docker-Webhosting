@@ -33,12 +33,9 @@ include "inc/header.php";
 			?>
 
 			<!-- Left column -->
-			<div class="side-left table-wrapper-scroll-y text-left text-info border-right border-info"
-				 style="font-size: 10px;">
+			<div class="side-left table-wrapper-scroll-y text-left text-info border-right border-info">
 				<h4 class="pl-3 pr-3">Latest Achievements</h4>
-				<div>
-					<?php activityfeed() ?>
-				</div>
+				<?php activityfeed() ?>
 			</div>
 
 			<!-- Center column with title text -->
@@ -55,7 +52,7 @@ include "inc/header.php";
 				<br>
 				<br>
 				<div class="middle container-fluid border-top border-info">
-					<div class="text-left text-primary" style="font-size: 13px;">
+					<div class="text-left text-primary small">
 						<br>
 						<h4 class="text-info">Statistics</h4>
 						<div>
@@ -142,11 +139,10 @@ include "inc/header.php";
 
 			<!-- Right column -->
 			<div>
-				<div class="side-right table-wrapper-scroll-y border-left border-info"
-					 style="font-size: 13px;">
+				<div class="side-right table-wrapper-scroll-y border-left border-info">
 					<!-- Twitter feed -->
-					<h4 class="mt-3 text-info" style="text-indent: 40px">Recent News</h4>
-					<div class="text-primary" id="tweets"></div>
+					<h4 class="mt-3 text-info">Recent News</h4>
+					<div class="text-primary small" id="tweets"></div>
 				</div>
 			</div>
 		</div>

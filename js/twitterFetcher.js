@@ -36,12 +36,12 @@
             var x = tweets.length;
             var n = 0;
             var element = document.getElementById(domNode);
-            var html = '<ul>';
+            var html = '<div>';
             while (n < x) {
-                html += '<li>' + tweets[n] + '</li>';
+                html += '<div>' + tweets[n] + '</div>';
                 n++;
             }
-            html += '</ul>';
+            html += '</div>';
             element.innerHTML = html;
         } else {
             customCallbackFunction(tweets);
@@ -182,7 +182,7 @@
 
             while (n < x) {
                 var op = '';
-                op += '<span class="text-info timePosted"><b>' + times[n].textContent + '</b></span>';
+                op += '<span class="text-info timePosted font-weight-bold">' + times[n].textContent + '</span>';
                 op += '<span class="tweet">' + tweets[n].textContent + '</span>';
                 op += '<br><br><div class="border-top border-info"></div><br>';
                 arrayTweets.push(op);
