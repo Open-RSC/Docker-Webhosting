@@ -812,10 +812,10 @@ function activityfeed()
 			echo '
 			<div class="text-primary ml-3 mr-3" style="font-size: 13px;"><br>
 					<div class="row clickable-row" data-href="/player/' . $row["id"] . '">
-						<div class="col-sm-3 text-info font-weight-bold">
+						<div class="col-sm text-info font-weight-bold">
 							' . strftime("%b %d, %I:%M %p", $row["time"]) . '
 						</div>
-						<div class="col-md-9">
+						<div class="col-9 p-0">
 							';
 							if ($row['group_id'] != 10):
 								echo '<img class="mb-1" src="img/' . $row["group_id"] . '.svg" width="9" height="9"> ';
@@ -835,18 +835,23 @@ function activityfeed()
 function gameChat()
 {
 	$connector = new Dbc();
-	$game_accounts = $connector->logquery("SELECT A.id playerID, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 1000");
+	$game_accounts = $connector->logquery("SELECT A.id playerID, A.group_id, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 1000");
 	date_default_timezone_set('America/New_York');
 	?>
-	<div class="text-primary panel" style="font-size: 14px;">
+	<div class="panel" style="font-size: 14px;">
 		<div class="container pb-5 border-left border-info border-right pt-1">
 		<?php while ($row = $connector->fetchArray($game_accounts)) {
 			$idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
 			date_default_timezone_set('America/New_York');
-				echo '<span class="">';
-				echo strftime("%b %d, %I:%M %p", $row["time"]) ?></span> | <a
+				echo '<span class="text-monospace text-white-50">';
+				echo strftime("%b %d, %I:%M %p", $row["time"]) ?> </span><a
 					href="/player/<?php echo $idLink ?>"
-					target="_blank"><span class="text-info"><?php echo ucwords($row["sender"]) ?></span></a>: <?php echo $row["message"] ?><br>
+					target="_blank"><span style="color: #F5FA3C; text-shadow: 1px 1px black;">
+					<?php
+					if ($row['group_id'] != 10):
+						echo '<img class="mb-1" src="img/' . $row["group_id"] . '.svg" width="10" height="10"> ';
+					endif;
+					echo ucwords($row["sender"]) ?></span></a><span style="color: #F5FA3C; text-shadow: 1px 1px black;">: <?php echo $row["message"] ?></span><br>
 		<?php } ?>
 		</div>
 	</div>
