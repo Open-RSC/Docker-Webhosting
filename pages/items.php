@@ -10,12 +10,12 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 
 <div class="text-info table-dark">
 	<div align="center">
-		<h2 class="pt-4 pb-2">Item Database</h2>
+		<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Item Database</h2>
 	</div>
 	<div>
 		<div class="tableFixHead">
 			<table class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary" align="center">
-				<thead>
+				<thead class="border-bottom border-info">
 				<tr class="text-info">
 					<th class="small text-center">ID</th>
 					<th class="small text-center">Picture</th>
