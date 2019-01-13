@@ -10,9 +10,7 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 
 <div class="text-info table-dark">
 	<div align="center">
-		<h3 class="pt-4">Item Database</h3>
-		<small class="text-primary">(Select a row to show more information)</small>
-		<br/><br/>
+		<h2 class="pt-4 pb-2">Item Database</h2>
 	</div>
 	<div>
 		<div class="tableFixHead">
@@ -39,7 +37,7 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 							<img src="/img/items/<?php echo $result['id'] ?>.png">
 						</td>
 						<td width="40%">
-							<?php echo $result['name'] ?> <br/>
+							<span class="text-capitalize"><?php echo $result['name'] ?> </span><br/>
 							<small><?php echo $result['description'] ?></small>
 						</td>
 						<?php if ($result['requiredLevel'] == 0) { ?>

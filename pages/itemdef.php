@@ -21,79 +21,84 @@ $itemCountActive = $connector->gamequery("SELECT SUM(amt) as amt from (
     SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '4' AND A.banned = '0' AND A.login_date >= unix_timestamp( current_date - interval 3 month ) AND A.login_date >= '1539645175') a");
 ?>
 
-<div class="panel text-info pt-4">
-	<?php if ($result) { ?>
-	<div align="center">
-		<h3><a class="text-info" href="/items"><?php echo $result['name']; ?></a></h3>
-		<small class="text-primary">(Select the text above to go back)</small>
-	</div>
-	<div>
+<div class="table-dark text-info pt-5" style="height: 100vh; width: 100vw;">
+	<div class="border-left border-info border-right container" style="height: 100vh; width: 100vw;">
+		<?php if ($result) { ?>
+		<div align="center">
+			<h2><a class="text-info text-capitalize display-3" style="font-size: unset;" href="/items"><?php echo $result['name']; ?></a></h2>
+		</div>
 		<div>
-			<table align="center">
-				<tbody>
-				<tr>
-					<td width="25%" align="center">
-						<img src="/img/items/<?php echo $result['id'] ?>.png"/><br/>
-						<span class="sm-stats"><?php echo $result['description']; ?></span>
-					</td>
-					<td width="25%" align="left">
-						<?php if ($result['requiredLevel'] == 0) { ?><?php } else { ?>
-							<span class="sm-skill">Required Level:</span>
-							<span class="sm-skill text-primary"><?php echo $result['requiredLevel'] ?></span><br/>
-						<?php } ?>
-						<?php if ($result['armourBonus'] == 0) { ?><?php } else { ?>
-							<span class="sm-skill">Armour Bonus:</span>
-							<span class="sm-skill text-primary"><?php echo $result['armourBonus'] ?></span><br/>
-						<?php } ?>
-						<?php if ($result['magicBonus'] == 0) { ?><?php } else { ?>
-							<span class="sm-skill">Magic Bonus:</span>
-							<span class="sm-skill text-primary"><?php echo $result['magicBonus'] ?></span><br/>
-						<?php } ?>
-						<?php if ($result['prayerBonus'] == 0) { ?><?php } else { ?>
-							<span class="sm-skill">Prayer Bonus:</span>
-							<span class="sm-skill text-primary"><?php echo $result['prayerBonus'] ?></span><br/>
-						<?php } ?>
-						<?php if ($result['weaponAimBonus'] == 0) { ?><?php } else { ?>
-							<span class="sm-skill">Weapon Aim Bonus:</span>
-							<span class="sm-skill text-primary"><?php echo $result['weaponAimBonus'] ?></span><br/>
-						<?php } ?>
-						<?php if ($result['weaponPowerBonus'] == 0) { ?><?php } else { ?>
-							<span class="sm-skill">Weapon Power Bonus:</span>
-							<span class="sm-skill text-primary"><?php echo $result['weaponPowerBonus'] ?></span>
+			<div>
+				<table align="center">
+					<tbody>
+					<tr>
+						<td width="25%" align="center">
+							<img class="pb-2" src="/img/items/<?php echo $result['id'] ?>.png"
+								 style="width: auto; height: 45px;"><br/>
+							<span class="sm-stats"><?php echo $result['description']; ?></span>
+						</td>
+						<td width="25%" align="left">
+							<?php if ($result['requiredLevel'] == 0) { ?><?php } else { ?>
+								<span class="sm-skill">Required Level:</span>
+								<span class="sm-skill text-primary"><?php echo $result['requiredLevel'] ?></span><br/>
+							<?php } ?>
+							<?php if ($result['armourBonus'] == 0) { ?><?php } else { ?>
+								<span class="sm-skill">Armour Bonus:</span>
+								<span class="sm-skill text-primary"><?php echo $result['armourBonus'] ?></span><br/>
+							<?php } ?>
+							<?php if ($result['magicBonus'] == 0) { ?><?php } else { ?>
+								<span class="sm-skill">Magic Bonus:</span>
+								<span class="sm-skill text-primary"><?php echo $result['magicBonus'] ?></span><br/>
+							<?php } ?>
+							<?php if ($result['prayerBonus'] == 0) { ?><?php } else { ?>
+								<span class="sm-skill">Prayer Bonus:</span>
+								<span class="sm-skill text-primary"><?php echo $result['prayerBonus'] ?></span><br/>
+							<?php } ?>
+							<?php if ($result['weaponAimBonus'] == 0) { ?><?php } else { ?>
+								<span class="sm-skill">Weapon Aim Bonus:</span>
+								<span class="sm-skill text-primary"><?php echo $result['weaponAimBonus'] ?></span><br/>
+							<?php } ?>
+							<?php if ($result['weaponPowerBonus'] == 0) { ?><?php } else { ?>
+								<span class="sm-skill">Weapon Power Bonus:</span>
+								<span class="sm-skill text-primary"><?php echo $result['weaponPowerBonus'] ?></span>
+								<br/>
+							<?php } ?>
+						</td>
+						<td width="25%" align="left">
 							<br/>
-						<?php } ?>
-					</td>
-					<td width="25%" align="left">
-						<br/>
-						<span class="sm-skill">Tradable: </span><span
-							class="sm-skill text-primary"><?php if ($result['isUntradable']) { ?>No<?php } else { ?>Yes<?php } ?></span><br/>
-						<span class="sm-skill">Shop Price: <span><span
-									class="sm-skill text-primary"><?php echo number_format($result['basePrice']) ?>gp</span><br/>
+							<span class="sm-skill">Tradable: </span><span
+								class="sm-skill text-primary"><?php if ($result['isUntradable']) { ?>No<?php } else { ?>Yes<?php } ?></span><br/>
+							<span class="sm-skill">Shop Price: <span><span
+										class="sm-skill text-primary"><?php echo number_format($result['basePrice']) ?>gp</span><br/>
 								<span class="sm-skill">Low Alch Price: </span><span
-									class="sm-skill text-primary"><?php echo number_format($result['basePrice'] * 0.4) ?>gp</span><br/>
+										class="sm-skill text-primary"><?php echo number_format($result['basePrice'] * 0.4) ?>gp</span><br/>
                                 <span class="sm-skill">High Alch Price: </span><span
-									class="sm-skill text-primary"><?php echo number_format($result['basePrice'] * 0.6) ?>gp</span><br/>
+										class="sm-skill text-primary"><?php echo number_format($result['basePrice'] * 0.6) ?>gp</span><br/>
                                 <span class="sm-skill">Total Player Held: </span><span
-									class="sm-skill text-primary"><?php while ($itemResult = $connector->fetchArray($itemCount)) {
-										if ($itemResult["amt"] == NULL) {
-											echo "0";
-										} else {
-											echo number_format($itemResult["amt"]);
-										}
-									} ?></span><br/>
+										class="sm-skill text-primary"><?php while ($itemResult = $connector->fetchArray($itemCount)) {
+											if ($itemResult["amt"] == NULL) {
+												echo "0";
+											} else {
+												echo number_format($itemResult["amt"]);
+											}
+										} ?></span><br/>
 										<span class="sm-skill">Last 3 Mo Active Player Held: </span><span
-									class="sm-skill text-primary"><?php while ($itemResult = $connector->fetchArray($itemCountActive)) {
-										if ($itemResult["amt"] == NULL) {
-											echo "0";
-										} else {
-											echo number_format($itemResult["amt"]);
-										}
-									} ?></span><br/>
+										class="sm-skill text-primary"><?php while ($itemResult = $connector->fetchArray($itemCountActive)) {
+											if ($itemResult["amt"] == NULL) {
+												echo "0";
+											} else {
+												echo number_format($itemResult["amt"]);
+											}
+										} ?></span><br/>
                                 <br/>
-					</td>
-				</tr>
-				</tbody>
-			</table>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="text-center">
+				<a class="btn btn-dark btn-outline-info mb-4" href="/items" role="button">Go Back</a>
+			</div>
 		</div>
 	</div>
 </div>
