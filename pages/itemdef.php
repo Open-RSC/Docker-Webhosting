@@ -238,10 +238,6 @@ $dropresult = $connector->fetchArray($item_drops);
 					</div>
 				</div>
 
-				<div class="fixed-bottom pt-3">
-					<a class="btn btn-dark btn-outline-info mb-4 ml-2" href="/items" role="button">Go Back</a>
-				</div>
-
 			</div>
 		</div>
 	</div>
