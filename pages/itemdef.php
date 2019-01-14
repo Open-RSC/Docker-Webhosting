@@ -118,13 +118,15 @@ WHERE
     B.id = '$subpage'
 ORDER BY
 	dropWeight DESC");
+
+$dropresult = $connector->fetchArray($item_drops);
 ?>
 
-<div class="table-dark text-info pt-5" style="height: 100vh; width: 100vw;">
-	<div class="border-left border-info border-right container table-wrapper-scroll-y" style="height: 100vh; width: 100vw;">
+<div class="table-dark text-info" style="height: 100vh; width: 100vw;">
+	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y" style="height: 100vh; width: 100vw;">
 		<?php if ($result) { ?>
 		<div align="center">
-			<h2><a class="text-info text-capitalize display-3" style="font-size: unset;"
+			<h2><a class="text-info text-capitalize display-3" style="font-size: 38px;;"
 				   href="/items"><?php echo $result['name']; ?></a></h2>
 		</div>
 
@@ -210,12 +212,17 @@ ORDER BY
 								<tbody>
 								<?php
 								while ($result = $connector->fetch_assoc($item_drops)) { ?>
+									<?php if ($result['npcID'] == NULL) {
+										echo "No NPCs drop this item.";
+									} else { ?>
 									<tr class="clickable-row  text-center"
 										data-href="/npcdef/<?php echo $result['npcID'] ?>">
 										<td class="small">
 											<img src="/img/npc/<?php echo $result['npcID'] ?>.png"
 												 style="max-width: 40px; max-height: 40px;"><br/>
-											<?php echo $result['npcName']; ?>
+												<?php echo $result['npcName'];
+											}
+											?>
 										</td>
 										<td class="pt-1 small">
 											<?php echo number_format($result['dropAmount']) ?>
