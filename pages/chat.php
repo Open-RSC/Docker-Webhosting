@@ -1,16 +1,7 @@
 <?php
-if (!defined('IN_PHPBB')) {
-    die("You do not have permission to access this file.");
-}
+define('IN_SITE', true);
 ?>
-<div class="main">
-    <div class="content">
-        <article>
-            <div class="panel">
-                <div>
-                    <iframe src="/inc/chat.php" style="width: 100%; height: 965px;"></iframe>
-                </div>
-            </div>
-        </article>
-    </div>
-</div>
+
+<h4>
+	<?php echo gameChat(); ?>
+</h4>

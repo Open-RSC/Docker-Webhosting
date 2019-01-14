@@ -1,5 +1,5 @@
 <?php
-if (!defined('IN_PHPBB')) {
+if (!defined('IN_SITE')) {
     die("You do not have permission to access this file.");
 }
 
@@ -50,7 +50,7 @@ $list_items = $connector->gamequery('SELECT id, name, description, combatlvl, at
                                 </td>
                                 <td width="10%" align="center">
                                     <a href="/npcdef/<?php echo $result['id'] ?>">
-                                        <img src="/css/images/npc/<?php echo $result['id'] ?>.png"
+                                        <img src="/img/npc/<?php echo $result['id'] ?>.png"
                                              style="max-width: 80px; max-height: 80px;">
                                     </a>
                                     <br/><br/>

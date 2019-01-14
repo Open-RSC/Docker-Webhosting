@@ -1,5 +1,5 @@
 <?php
-if (!defined('IN_PHPBB')) {
+if (!defined('IN_SITE')) {
     die("You do not have permission to access this file.");
 }
 
@@ -43,9 +43,6 @@ $player_invitems = $connector->gamequery("SELECT A.username, B.id, format(B.amou
 
 $player_feed = $connector->gamequery("SELECT * FROM openrsc_live_feeds AS B LEFT JOIN openrsc_players AS A ON B.username = A.username WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY 'B.time'");
 
-//$phpbb_user_result = $connector->gamequery("SELECT B.user_id, B.username AS player_name, A.username, A.group_id FROM openrsc_forum.phpbb_users as B LEFT JOIN openrsc_game.openrsc_players as A on B.user_id = A.owner WHERE (A.id = '$subpage' OR A.username = '$subpage')");
-//$phpbb_user = $connector->fetchArray($phpbb_user_result);
-
 function bd_nice_number($n)
 {
     if ($n > 1000000000000) return round(($n / 1000000000000), 1) . ' trillion';
@@ -58,13 +55,10 @@ function bd_nice_number($n)
 
 ?>
 
-<main class="main">
-    <article>
-        <div class="panel">
             <?php if ($character) { ?>
             <div>
                 <h3>
-                    &nbsp<?php if ($character['group_id'] != 4): echo "<img src=\"../css/images/$character[group_id].svg\" width=\"20\" height=\"20\"> ";
+                    &nbsp<?php if ($character['group_id'] != 4): echo "<img src=\"/img/$character[group_id].svg\" width=\"20\" height=\"20\"> ";
                     else: NULL; endif;
                     echo $character['username']; ?>'s player information
                 </h3>
@@ -95,14 +89,14 @@ function bd_nice_number($n)
                                 }
                                 ?><span class="sm-skill"><a
                                     href="/highscores/<?php echo $skill; ?>"><img
-                                        src="/css/images/skill_icons/<?php echo $skill; ?>.svg" width="16px"
+                                        src="/img/skill_icons/<?php echo $skill; ?>.svg" width="16px"
                                         height="16px" alt="<?php echo $skill; ?>"/>
                                 </a><?php echo experienceToLevel($character['exp_' . $skillc] / 4.0); ?></span>
                             <?php } ?>
                         </div>
 
-                        <div id="sm-stats"><span
-                                    class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
+                        <div id="sm-stats">
+							<span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
                             <span class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
                             <span class="sm-stats">Time Played: <?php
                                 while ($row = $connector->fetchArray($totalTime)) {
@@ -113,10 +107,9 @@ function bd_nice_number($n)
                                     $seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
                                     echo $days . 'd ' . $hours . 'h ' . $minutes . 'm ';
                                 }
-                                ?></span>
-                            <!--<span class="sm-stats">Owner: <a
-                                    href="/board/memberlist.php?mode=viewprofile&amp;u=<?php //echo $character['owner']; ?>"><?php //echo $phpbb_user['player_name']; ?></a></span>-->
-                            <span class="sm-stats">Status:
+                                ?>
+							</span>
+							<span class="sm-stats">Status:
                                 <?php if ($character['online'] == 1) {
                                     echo '<span class="green"><strong>Online</strong></span>';
                                 } else {
@@ -159,7 +152,7 @@ function bd_nice_number($n)
                                             <div style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
                                                 <?php echo $list["number"]; ?>
                                             </div>
-                                            <img src="/css/images/items/<?php echo $list["id"]; ?>.png"/>
+                                            <img src="/img/items/<?php echo $list["id"]; ?>.png"/>
                                         </td>
                                         <?php
                                         if (($i % 14 == 0) && ($i < $invitems)) {
@@ -186,7 +179,7 @@ function bd_nice_number($n)
                                             <div style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
                                                 <?php echo $list["number"]; ?>
                                             </div>
-                                            <img src="/css/images/items/<?php echo $list["id"]; ?>.png"/>
+                                            <img src="/img/items/<?php echo $list["id"]; ?>.png"/>
                                         </td>
                                         <?php
                                         if (($i % 14 == 0) && ($i < $bank)) {
@@ -342,5 +335,3 @@ function bd_nice_number($n)
         <?php } else {
             echo "<h4 align='center'>Player not found</h4>";
         } ?>
-    </article>
-</main>

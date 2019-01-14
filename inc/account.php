@@ -1,15 +1,8 @@
 <?php
-define('IN_PHPBB', true);
-
-$phpbb_root_path = '../board/';
-$phpEx = substr(strrchr(__FILE__, '.'), 1);
-require($phpbb_root_path . 'config.' . $phpEx);
-require_once($phpbb_root_path . 'common.' . $phpEx);
-require_once($phpbb_root_path . 'includes/bbcode.' . $phpEx);
-require_once($phpbb_root_path . 'includes/functions_display.' . $phpEx);
-require_once($phpbb_root_path . 'config.' . $phpEx);
+define('IN_SITE', true);
 require_once 'charfunctions.php';
 require_once 'peoplesignClient.php';
+include "config.php";
 
 class Dbc
 {

@@ -1,98 +1,244 @@
 <?php
-if (!defined('IN_PHPBB')) {
-    die("You do not have permission to access this file.");
+if (!defined('IN_SITE')) {
+	die("You do not have permission to access this file.");
 }
 
 $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $subpage = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $subpage);
 
-$item_result = $connector->gamequery("SELECT * FROM openrsc_itemdef WHERE id = '$subpage' OR name = '$subpage'");
+$item_result = $connector->gamequery("SELECT
+    *
+FROM
+    openrsc_itemdef
+WHERE
+    id = '$subpage' OR NAME = '$subpage'");
+
 $result = $connector->fetchArray($item_result);
 
-$itemCount = $connector->gamequery("SELECT SUM(amt) as amt from (
-    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '4' AND A.banned = '0'
-    union all
-    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '4' AND A.banned = '0') a");
+$itemCount = $connector->gamequery("SELECT
+    SUM(amt) AS amt
+FROM
+    (
+    SELECT
+        SUM(B.amount) amt
+    FROM
+        openrsc_bank AS B
+    LEFT JOIN openrsc_players AS A
+    ON
+        B.playerID = A.id
+    WHERE
+        B.id = '$subpage'
+        AND A.group_id = '10' AND A.banned = '0'
+    UNION ALL
+SELECT
+    SUM(B.amount) amt
+FROM
+    openrsc_invitems AS B
+LEFT JOIN openrsc_players AS A
+ON
+    B.playerID = A.id
+WHERE
+    B.id = '$subpage'
+	AND A.group_id = '10' AND A.banned = '0'
+) a");
 
-$itemCountActive = $connector->gamequery("SELECT SUM(amt) as amt from (
-    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '4' AND A.banned = '0' AND A.login_date >= unix_timestamp( current_date - interval 3 month ) AND A.login_date >= '1539645175'
-    union all
-    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE (B.id = '$subpage' OR A.username = '$subpage') AND A.group_id = '4' AND A.banned = '0' AND A.login_date >= unix_timestamp( current_date - interval 3 month ) AND A.login_date >= '1539645175') a");
+$itemCountActive = $connector->gamequery("SELECT
+    SUM(amt) AS amt
+FROM
+    (
+    SELECT
+        SUM(B.amount) amt
+    FROM
+        openrsc_bank AS B
+    LEFT JOIN openrsc_players AS A
+    ON
+        B.playerID = A.id
+    WHERE
+        (
+            B.id = '$subpage' OR A.username = '$subpage'
+        ) AND A.group_id = '10' AND A.banned = '0' AND A.login_date >= UNIX_TIMESTAMP(
+            CURRENT_DATE - INTERVAL 3 MONTH
+        ) AND A.login_date >= '1539645175'
+    UNION ALL
+SELECT
+    SUM(B.amount) amt
+FROM
+    openrsc_invitems AS B
+LEFT JOIN openrsc_players AS A
+ON
+    B.playerID = A.id
+WHERE
+    (
+        B.id = '$subpage' OR A.username = '$subpage'
+    ) AND A.group_id = '10' AND A.banned = '0' AND A.login_date >= UNIX_TIMESTAMP(
+        CURRENT_DATE - INTERVAL 3 MONTH
+    ) AND A.login_date >= '1539645175'
+) a");
+
+$npc_drops = $connector->gamequery("SELECT
+    A.id,
+    A.name AS npcName,
+    B.npcdef_id AS npcID,
+    B.amount AS dropAmount,
+    B.id,
+    B.weight AS dropWeight,
+    C.id AS itemID,
+    C.name AS itemName
+FROM
+    openrsc_npcdef AS A
+LEFT JOIN openrsc_npcdrops AS B
+ON
+    A.id = B.npcdef_id
+LEFT JOIN openrsc_itemdef AS C
+ON
+    B.id = C.id
+WHERE
+    B.npcdef_id = 477");
+
+$item_drops = $connector->gamequery("
+SELECT
+    A.id,
+    A.name AS npcName,
+    B.npcdef_id AS npcID,
+    B.amount AS dropAmount,
+    B.id AS dropID,
+    B.weight AS dropWeight,
+    C.id AS itemID,
+    C.name AS itemName
+FROM
+    openrsc_npcdrops AS B
+LEFT JOIN openrsc_npcdef AS A
+ON
+    A.id = B.npcdef_id
+LEFT JOIN openrsc_itemdef AS C
+ON
+    B.id = C.id
+WHERE
+    B.id = '$subpage'
+ORDER BY
+	dropWeight DESC");
 ?>
 
-<main class="main">
-    <article>
-        <div class="panel">
-            <?php if ($result) { ?>
-            <div align="center">
-                <h3>
-                    <a href="/items"><?php echo $result['name']; ?></a>
-                </h3>
-                <small>(Click the text above to go back)</small>
-            </div>
-            <div class="stats flex-row">
-                <div>
-                    <table class="white">
-                        <tbody>
-                        <tr>
-                            <td style="padding-right: 25px;" align="center">
-                                <img src="/css/images/items/<?php echo $result['id'] ?>.png"/>
-                                <br/>
-                                <span class="sm-stats"><?php echo $result['description']; ?></span>
-                            </td>
-                            <td style="padding-right: 25px;">
-                                <?php if ($result['requiredLevel'] == 0) { ?><?php } else { ?><span class="sm-skill">
-                                    Required
-                                    Level: <?php echo $result['requiredLevel'] ?></span><br/><?php } ?>
-                                <?php if ($result['armourBonus'] == 0) { ?><?php } else { ?><span class="sm-skill">
-                                    Armour
-                                    Bonus: <?php echo $result['armourBonus'] ?></span><br/><?php } ?>
-                                <?php if ($result['magicBonus'] == 0) { ?><?php } else { ?><span class="sm-skill">Magic
-                                    Bonus: <?php echo $result['magicBonus'] ?></span><br/><?php } ?>
-                                <?php if ($result['prayerBonus'] == 0) { ?><?php } else { ?><span class="sm-skill">
-                                    Prayer
-                                    Bonus: <?php echo $result['prayerBonus'] ?></span><br/><?php } ?>
-                                <?php if ($result['weaponAimBonus'] == 0) { ?><?php } else { ?><span class="sm-skill">
-                                    Weapon Aim
-                                    Bonus: <?php echo $result['weaponAimBonus'] ?></span><br/><?php } ?>
-                                <?php if ($result['weaponPowerBonus'] == 0) { ?><?php } else { ?><span class="sm-skill">
-                                    Weapon
-                                    Power Bonus: <?php echo $result['weaponPowerBonus'] ?></span><br/><?php } ?>
-                            </td>
-                            <td style="padding-right: 25px;">
-                                <br/><span
-                                        class="sm-skill">Tradable: <?php if ($result['isUntradable']) { ?>No<?php } else { ?>Yes<?php } ?></span><br/>
-                                <span class="sm-skill">Shop Price: <?php echo number_format($result['basePrice']) ?>
-                                    gp</span><br/>
-                                <span class="sm-skill">Low Alch Price: <?php echo number_format($result['basePrice'] * 0.4) ?>
-                                    gp</span><br/>
-                                <span class="sm-skill">High Alch Price: <?php echo number_format($result['basePrice'] * 0.6) ?>
-                                    gp</span><br/>
-                                <span class="sm-skill">Total Player Held: <?php while ($itemResult = $connector->fetchArray($itemCount)) {
-                                        if ($itemResult["amt"] == NULL) {
-                                            echo "0";
-                                        } else {
-                                            echo number_format($itemResult["amt"]);
-                                        }
-                                    } ?></span><br/>
-                                <span class="sm-skill">Last 3 Mo Active Player Held: <?php while ($itemResult = $connector->fetchArray($itemCountActive)) {
-                                        if ($itemResult["amt"] == NULL) {
-                                            echo "0";
-                                        } else {
-                                            echo number_format($itemResult["amt"]);
-                                        }
-                                    } ?></span><br/>
-                                <br/>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <?php } else {
-            echo "<h4 align='center'>Item not found</h4>";
-        } ?>
-    </article>
-</main>
+<div class="table-dark text-info pt-5" style="height: 100vh; width: 100vw;">
+	<div class="border-left border-info border-right container table-wrapper-scroll-y" style="height: 100vh; width: 100vw;">
+		<?php if ($result) { ?>
+		<div align="center">
+			<h2><a class="text-info text-capitalize display-3" style="font-size: unset;"
+				   href="/items"><?php echo $result['name']; ?></a></h2>
+		</div>
+
+		<div>
+			<div class="pt-5 pb-5">
+				<div class="d-flex align-items-center" align="center">
+
+					<div class="flex-fill">
+						<img class="pb-2" src="/img/items/<?php echo $result['id'] ?>.png"
+							 style="width: auto; height: 45px;"><br/>
+						<span class="sm-stats"><?php echo $result['description']; ?></span>
+					</div>
+
+					<div class="flex-fill">
+						<?php if ($result['requiredLevel'] == 0) { ?><?php } else { ?>
+							<span class="sm-skill">Required Level:</span>
+							<span class="sm-skill text-primary"><?php echo $result['requiredLevel'] ?></span><br/>
+						<?php } ?>
+						<?php if ($result['armourBonus'] == 0) { ?><?php } else { ?>
+							<span class="sm-skill">Armour Bonus:</span>
+							<span class="sm-skill text-primary"><?php echo $result['armourBonus'] ?></span><br/>
+						<?php } ?>
+						<?php if ($result['magicBonus'] == 0) { ?><?php } else { ?>
+							<span class="sm-skill">Magic Bonus:</span>
+							<span class="sm-skill text-primary"><?php echo $result['magicBonus'] ?></span><br/>
+						<?php } ?>
+						<?php if ($result['prayerBonus'] == 0) { ?><?php } else { ?>
+							<span class="sm-skill">Prayer Bonus:</span>
+							<span class="sm-skill text-primary"><?php echo $result['prayerBonus'] ?></span><br/>
+						<?php } ?>
+						<?php if ($result['weaponAimBonus'] == 0) { ?><?php } else { ?>
+							<span class="sm-skill">Weapon Aim Bonus:</span>
+							<span class="sm-skill text-primary"><?php echo $result['weaponAimBonus'] ?></span><br/>
+						<?php } ?>
+						<?php if ($result['weaponPowerBonus'] == 0) { ?><?php } else { ?>
+							<span class="sm-skill">Weapon Power Bonus:</span>
+							<span class="sm-skill text-primary"><?php echo $result['weaponPowerBonus'] ?></span>
+							<br/>
+						<?php } ?>
+					</div>
+
+					<div class="flex-fill">
+						<span class="sm-skill">Tradable: </span><span
+							class="sm-skill text-primary"><?php if ($result['isUntradable']) { ?>No<?php } else { ?>Yes<?php } ?></span><br/>
+						<span class="sm-skill">Shop Price: <span><span
+									class="sm-skill text-primary"><?php echo number_format($result['basePrice']) ?>gp</span><br/>
+								<span class="sm-skill">Low Alch Price: </span><span
+									class="sm-skill text-primary"><?php echo number_format($result['basePrice'] * 0.4) ?>gp</span><br/>
+                                <span class="sm-skill">High Alch Price: </span><span
+									class="sm-skill text-primary"><?php echo number_format($result['basePrice'] * 0.6) ?>gp</span><br/>
+                                <span class="sm-skill">Total Player Held: </span><span
+									class="sm-skill text-primary"><?php while ($itemResult = $connector->fetchArray($itemCount)) {
+										if ($itemResult["amt"] == NULL) {
+											echo "0";
+										} else {
+											echo number_format($itemResult["amt"]);
+										}
+									} ?></span><br/>
+										<span class="sm-skill">Last 3 Mo Active Player Held: </span><span
+									class="sm-skill text-primary"><?php while ($itemResult = $connector->fetchArray($itemCountActive)) {
+										if ($itemResult["amt"] == NULL) {
+											echo "0";
+										} else {
+											echo number_format($itemResult["amt"]);
+										}
+									} ?></span>
+					</div>
+				</div>
+
+				<div class="pt-5 d-flex align-items-center" align="center">
+					<div class="flex-fill">
+						<div class="h4 text-center">NPC Drop Table</div>
+						<div class="tableFixHead">
+							<table
+								class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary" align="center">
+								<thead class="border-bottom border-info">
+								<tr class="text-info text-center">
+									<th class="small w-25">NPC</th>
+									<th class="small w-25">Quantity</th>
+									<th class="small w-25">Drop Weight</th>
+								</tr>
+								</thead>
+								<tbody>
+								<?php
+								while ($result = $connector->fetch_assoc($item_drops)) { ?>
+									<tr class="clickable-row  text-center"
+										data-href="/npcdef/<?php echo $result['npcID'] ?>">
+										<td class="small">
+											<img src="/img/npc/<?php echo $result['npcID'] ?>.png"
+												 style="max-width: 40px; max-height: 40px;"><br/>
+											<?php echo $result['npcName']; ?>
+										</td>
+										<td class="pt-1 small">
+											<?php echo number_format($result['dropAmount']) ?>
+										</td>
+										<td class="pt-1 small">
+											<?php echo number_format($result['dropWeight']) ?>
+										</td>
+									</tr>
+								<?php } ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="fixed-bottom pt-3">
+					<a class="btn btn-dark btn-outline-info mb-4 ml-2" href="/items" role="button">Go Back</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+	</div>
+<?php } else {
+} ?>
