@@ -1,5 +1,3 @@
-# http://editorconfig.org
-
 root = true
 
 [*]
@@ -15,19 +13,3 @@ trim_trailing_whitespace = false
 
 [*.yml]
 indent_size = 2
-
-# 4 space indentation
-[*.py]
-indent_style = space
-indent_size = 2
-
-
-[*.java]
-indent_style = tab
-
-[*.php]
-indent_style = tab
-
-# Tab indentation (no size specified)
-[Makefile]
-indent_style = tab

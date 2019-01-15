@@ -1,15 +1,11 @@
-# Wiki
-Wiki
-
-# Global
-.*.swp
-.DS_Store
-
-nbproject/
-\.idea/
-*.svn-base
-\.svn/
-
-board/cache/production/
-
-sql/tmp/
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
