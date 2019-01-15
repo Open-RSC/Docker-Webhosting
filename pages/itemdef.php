@@ -98,13 +98,12 @@ LEFT JOIN openrsc_itemdef AS C
 ON
     B.id = C.id
 WHERE
-    B.id = '$subpage'
-ORDER BY
-	dropWeight DESC");
+    B.id = '$subpage'");
 ?>
 
 <div class="table-dark text-info" style="height: 100vh; width: 100vw;">
-	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y" style="height: 100vh; width: 100vw;">
+	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y"
+		 style="height: 100vh; width: 100vw;">
 		<?php if ($result) { ?>
 		<div align="center">
 			<h2><a class="text-info text-capitalize display-3" style="font-size: 38px;;"
@@ -182,38 +181,29 @@ ORDER BY
 						<div class="h4 text-center">NPC Drop Table</div>
 						<div class="tableFixHead">
 							<table
-								class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary" align="center">
+								class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary"
+								align="center">
 								<thead class="border-bottom border-info">
 								<tr class="text-info text-center">
 									<th class="small w-25">NPC</th>
 									<th class="small w-25">Quantity</th>
-									<th class="small w-25">Chance Percentage</th>
+									<th class="small w-25">Drop Chance</th>
 								</tr>
 								</thead>
 								<tbody>
 								<?php
-								while ($result = $connector->fetch_assoc($item_drops)) { ?>
-									<tr class="clickable-row  text-center"
-										data-href="/npcdef/<?php echo $result['npcID'] ?>">
-										<td class="small">
-											<img src="/img/npc/<?php echo $result['npcID'] ?>.png"
-												 style="max-width: 40px; max-height: 40px;"><br/>
-												<?php echo $result['npcName']; ?>
-										</td>
-										<td class="pt-1 small">
-											<?php echo number_format($result['dropAmount']) ?>
-										</td>
-										<td class="pt-1 small">
-											<?php
-											$npcID = $result['npcID'];
-											$npc_drops = $connector->gamequery("
+								while ($result = $connector->fetch_assoc($item_drops)) {
+									$npcID = $result['npcID'];
+									$dropAmount = $result['dropAmount'];
+									$npc_drops = $connector->gamequery("
 												SELECT
 													A.name AS npcName,
 													B.npcdef_id AS npcID,
+												    B.amount AS dropAmount,
 													CONCAT(
-														ROUND(
+														(
 															(
-																B.weight /(
+																weight /(
 																SELECT
 																	SUM(weight)
 																FROM
@@ -223,7 +213,7 @@ ORDER BY
 															)
 															) * 100
 														),
-														\"%\"
+														\"%<br>\"
 													) AS dropPercentage,
 													B.amount AS dropAmount,
 													C.id AS itemID,
@@ -238,15 +228,25 @@ ORDER BY
 													B.id = C.id
 												WHERE
 													B.npcdef_id = '$npcID' AND C.id = '$subpage'
-												");
-
-											while ($dropResult = $connector->fetch_assoc($npc_drops)) {
-												if ($dropResult['COUNT(dropPercentage)' > 1]) {
-													echo 'TWO';
+												"); ?>
+									<tr class="clickable-row  text-center"
+										data-href="/npcdef/<?php echo $result['npcID'] ?>">
+										<td class="small">
+											<img src="/img/npc/<?php echo $result['npcID'] ?>.png"
+												 style="max-width: 40px; max-height: 40px;"><br/>
+											<?php echo $result['npcName']; ?>
+										</td>
+										<td class="pt-1 small">
+											<?php echo $result['dropAmount'] ?>
+										</td>
+										<td class="pt-1 small">
+											<?php while ($dropResult = $connector->fetch_assoc($npc_drops)) {
+												if ($dropResult['dropPercentage'] == '0.0000%') {
+													echo '100%';
+												} else {
+													echo $dropResult['dropPercentage'];
 												}
-												echo $dropResult['dropPercentage'];
-											}
-											?>
+											} ?>
 										</td>
 									</tr>
 								<?php } ?>
