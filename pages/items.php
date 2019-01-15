@@ -10,62 +10,63 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 
 <div class="text-info table-dark">
 	<div class="container border-left border-info border-right">
-	<div align="center">
-		<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Item Database</h2>
-	</div>
-	<div>
-		<div class="container " style="padding-left: unset;">
-			<input type="text" id="inputBox" onkeyup="search()" placeholder="Search for an item">
+		<div align="center">
+			<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Item Database</h2>
 		</div>
-		<div class="tableFixHead">
-			<table id="itemList" class="container table-responsive-lg table-striped table-hover table-dark text-primary"
-				   align="center">
-				<thead class="border-bottom border-info">
-				<tr class="text-info">
-					<th class="small">Name</th>
-					<th class="small">Description</th>
-					<th class="small text-center">Picture</th>
-					<th class="small">Req Level</th>
-					<th class="small">Shop Price</th>
-					<th class="small">Low Alch</th>
-					<th class="small">High Alch</th>
-				</tr>
-				</thead>
-				<tbody>
-				<?php
-				while ($result = $connector->fetch_assoc($list_items)) { ?>
-					<tr class="clickable-row" data-href="/itemdef/<?php echo $result['id'] ?>">
-						<td width="25%">
-							<span class="text-capitalize"><?php echo $result['name'] ?> </span>
-						</td>
-						<td width="25%">
-							<small><?php echo $result['description'] ?></small>
-						</td>
-						<td width="10%" align="center">
-							<img src="/img/items/<?php echo $result['id'] ?>.png">
-						</td>
-						<?php if ($result['requiredLevel'] == 0) { ?>
-							<td>
-							</td>
-						<?php } else { ?>
-							<td class="pt-1" width="10%" align="center">
-								<?php echo number_format($result['requiredLevel']) ?>
-							</td>
-						<?php } ?>
-						<td class="pt-1">
-							<?php echo number_format($result['basePrice']) ?>gp
-						</td>
-						<td class="pt-1">
-							<?php echo number_format($result['basePrice'] * 0.4) ?>gp
-						</td>
-						<td class="pt-1">
-							<?php echo number_format($result['basePrice'] * 0.6) ?>gp
-						</td>
+		<div>
+			<div class="container " style="padding-left: unset;">
+				<input type="text" id="inputBox" onkeyup="search()" placeholder="Search for an item">
+			</div>
+			<div class="tableFixHead">
+				<table id="itemList"
+					   class="container table-responsive-lg table-striped table-hover table-dark text-primary"
+					   align="center">
+					<thead class="border-bottom border-info">
+					<tr class="text-info">
+						<th class="small pl-2">Name</th>
+						<th class="small">Description</th>
+						<th class="small text-center">Picture</th>
+						<th class="small">Req Level</th>
+						<th class="small">Shop Price</th>
+						<th class="small">Low Alch</th>
+						<th class="small">High Alch</th>
 					</tr>
-				<?php } ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+					<?php
+					while ($result = $connector->fetch_assoc($list_items)) { ?>
+						<tr class="clickable-row" data-href="/itemdef/<?php echo $result['id'] ?>">
+							<td width="25%">
+								<span class="text-capitalize pl-2"><?php echo $result['name'] ?> </span>
+							</td>
+							<td width="25%">
+								<small><?php echo $result['description'] ?></small>
+							</td>
+							<td width="10%" align="center">
+								<img src="/img/items/<?php echo $result['id'] ?>.png">
+							</td>
+							<?php if ($result['requiredLevel'] == 0) { ?>
+								<td>
+								</td>
+							<?php } else { ?>
+								<td class="pt-1" width="10%" align="center">
+									<?php echo number_format($result['requiredLevel']) ?>
+								</td>
+							<?php } ?>
+							<td class="pt-1">
+								<?php echo number_format($result['basePrice']) ?>gp
+							</td>
+							<td class="pt-1">
+								<?php echo number_format($result['basePrice'] * 0.4) ?>gp
+							</td>
+							<td class="pt-1">
+								<?php echo number_format($result['basePrice'] * 0.6) ?>gp
+							</td>
+						</tr>
+					<?php } ?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
-</div>
 </div>

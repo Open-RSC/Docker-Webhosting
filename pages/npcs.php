@@ -14,7 +14,7 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 			<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">NPC Database</h2>
 		</div>
 		<div>
-			<div class="container " style="padding-left: unset;">
+			<div class="container" style="padding-left: unset;">
 				<input type="text" id="inputBox" onkeyup="search()" placeholder="Search for a NPC">
 			</div>
 			<div class="tableFixHead">
@@ -23,7 +23,7 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 					   align="center">
 					<thead class="border-bottom border-info">
 					<tr class="text-info">
-						<th class="small" width="25%">Name</th>
+						<th class="small pl-2" width="25%">Name</th>
 						<th class="small" width="25%">Description</th>
 						<th class="small text-center" width="20%">Picture</th>
 						<th class="small">Combat</th>
@@ -34,27 +34,27 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 					<tbody>
 					<?php
 					while ($result = $connector->fetch_assoc($list_npcs)) { ?>
-					<tr class="clickable-row" data-href="/npcdef/<?php echo $result['id'] ?>">
-						<td width="25%">
-							<span class="text-capitalize"><?php echo $result['name'] ?></span>
-							<span class="text-secondary">(level <?php echo $result['combatlvl'] ?>)</span>
-						</td>
-						<td width="25%">
-							<small><?php echo $result['description'] ?></small>
-						</td>
-						<td class="text-center" width="20%">
-							<img style="max-height: 50px;" src="/img/npc/<?php echo $result['id'] ?>.png">
-						</td>
-						<td>
-							<small><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?></small>
-						</td>
-						<td class="text-center">
-							<small><?php if ($result['aggressive']) { ?>Aggressive<?php } else { ?>Passive<?php } ?></small>
-						</td>
-						<td class="text-center">
-							<small><?php echo $result['respawnTime'] ?> sec</small>
-						</td>
-					</tr>
+						<tr class="clickable-row" data-href="/npcdef/<?php echo $result['id'] ?>">
+							<td width="25%">
+								<span class="text-capitalize pl-2"><?php echo $result['name'] ?></span>
+								<span class="text-secondary">(level <?php echo $result['combatlvl'] ?>)</span>
+							</td>
+							<td width="25%">
+								<small><?php echo $result['description'] ?></small>
+							</td>
+							<td class="text-center" width="20%">
+								<img style="max-height: 50px;" src="/img/npc/<?php echo $result['id'] ?>.png">
+							</td>
+							<td>
+								<small><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?></small>
+							</td>
+							<td class="text-center">
+								<small><?php if ($result['aggressive']) { ?>Aggressive<?php } else { ?>Passive<?php } ?></small>
+							</td>
+							<td class="text-center">
+								<small><?php echo $result['respawnTime'] ?> sec</small>
+							</td>
+						</tr>
 					<?php } ?>
 					</tbody>
 				</table>
