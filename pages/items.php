@@ -42,7 +42,7 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 							<td width="25%">
 								<small><?php echo $result['description'] ?></small>
 							</td>
-							<td width="10%" align="center">
+							<td width="10%" align="center" class="pt-1 pb-1">
 								<img src="/img/items/<?php echo $result['id'] ?>.png">
 							</td>
 							<?php if ($result['requiredLevel'] == 0) { ?>
