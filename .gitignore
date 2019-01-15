@@ -1,17 +1,15 @@
-# Wiki
-Wiki
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
 
-# Global
-.*.swp
+/.idea
 .DS_Store
-
-nbproject/
-\.idea/
-*.svn-base
-\.svn/
-
-board/cache/production/
-
-sql/tmp/
-
-openrsc-web/bootstrap/cache/
+sql/tmp
