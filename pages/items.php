@@ -9,17 +9,22 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 ?>
 
 <div class="text-info table-dark">
+	<div class="container border-left border-info border-right">
 	<div align="center">
 		<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Item Database</h2>
 	</div>
 	<div>
+		<div class="container " style="padding-left: unset;">
+			<input type="text" id="inputBox" onkeyup="search()" placeholder="Search for an item">
+		</div>
 		<div class="tableFixHead">
-			<table class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary" align="center">
+			<table id="itemList" class="container table-responsive-lg table-striped table-hover table-dark text-primary"
+				   align="center">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
-					<th class="small text-center">ID</th>
+					<th class="small">Name</th>
+					<th class="small">Description</th>
 					<th class="small text-center">Picture</th>
-					<th class="small">Name and Description</th>
 					<th class="small">Req Level</th>
 					<th class="small">Shop Price</th>
 					<th class="small">Low Alch</th>
@@ -30,15 +35,14 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 				<?php
 				while ($result = $connector->fetch_assoc($list_items)) { ?>
 					<tr class="clickable-row" data-href="/itemdef/<?php echo $result['id'] ?>">
-						<td class="pt-1" width="5%" align="center">
-							<?php echo $result['id'] ?>
+						<td width="25%">
+							<span class="text-capitalize"><?php echo $result['name'] ?> </span>
+						</td>
+						<td width="25%">
+							<small><?php echo $result['description'] ?></small>
 						</td>
 						<td width="10%" align="center">
 							<img src="/img/items/<?php echo $result['id'] ?>.png">
-						</td>
-						<td width="40%">
-							<span class="text-capitalize"><?php echo $result['name'] ?> </span><br/>
-							<small><?php echo $result['description'] ?></small>
 						</td>
 						<?php if ($result['requiredLevel'] == 0) { ?>
 							<td>
@@ -63,4 +67,5 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 			</table>
 		</div>
 	</div>
+</div>
 </div>
