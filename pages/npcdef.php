@@ -146,7 +146,7 @@ $skills = buildSQLArray($skill_array);
 												<?php echo $result['dropAmount']; ?>
 											</td>
 											<td class="pt-1 small">
-												<?php if ($result['dropPercentage'] == '0.0000%') {
+												<?php if ($result['dropPercentage'] == '0.0000%' || $result['dropPercentage'] == NULL || $result['dropPercentage'] == '0.0000%<!--') {
 													echo '100%';
 												} else {
 													echo $result['dropPercentage'];

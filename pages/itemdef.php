@@ -98,7 +98,8 @@ LEFT JOIN openrsc_itemdef AS C
 ON
     B.id = C.id
 WHERE
-    B.id = '$subpage'");
+    B.id = '$subpage'
+LIMIT 793");
 ?>
 
 <div class="table-dark text-info" style="height: 100vh; width: 100vw;">
@@ -247,7 +248,7 @@ WHERE
 										</td>
 										<td class="pt-1 small">
 											<?php while ($dropResult = $connector->fetch_assoc($npc_drops)) {
-												if ($dropResult['dropPercentage'] == '0.0000%') {
+												if ($dropResult['dropPercentage'] == '0.0000%' || $dropResult['dropPercentage'] == NULL || $dropResult['dropPercentage'] == '0.0000%<!--') {
 													echo '100%';
 												} else {
 													echo $dropResult['dropPercentage'];
