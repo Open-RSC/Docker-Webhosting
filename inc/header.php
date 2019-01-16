@@ -56,6 +56,28 @@ require_once('charfunctions.php');
 				window.location = $(this).data("href");
 			});
 		});
+
+		function search() {
+			// Declare variables
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("inputBox");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("itemList");
+			tr = table.getElementsByTagName("tr");
+
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
 	</script>
 
 	<!-- Favicons -->
@@ -104,6 +126,16 @@ require_once('charfunctions.php');
 
 		a:hover {
 			text-decoration: none;
+		}
+
+		#inputBox {
+			background-color: #212529;
+			background-position: 10px 12px; /* Position the search icon */
+			background-repeat: no-repeat; /* Do not repeat the icon image */
+			width: 200px; /* Full-width */
+			font-size: 16px; /* Increase font-size */
+			color: #64a19d;
+			border: 1px solid #17a2b8; /* Add a grey border */
 		}
 
 		.tableFixHead {
