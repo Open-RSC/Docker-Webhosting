@@ -181,13 +181,14 @@ WHERE
 						</div>
 					</div>
 
-					<div class="pt-5 d-flex align-items-center" align="center">
+					<div class="d-flex align-items-center">
 						<div class="flex-fill">
-							<div class="h4 text-center">NPC Drop Table</div>
+							<input type="text" class="pl-2 mb-3 text-center" id="inputBox" onkeyup="search()"
+								   placeholder="Search for a NPC">
 							<div class="tableFixHead">
-								<table
-									class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary"
-									align="center">
+								<table id="itemList"
+									   class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary"
+									   align="center">
 									<thead class="border-bottom border-info">
 									<tr class="text-info text-center">
 										<th class="small w-25">NPC</th>
@@ -234,7 +235,7 @@ WHERE
 												WHERE
 													B.npcdef_id = '$npcID' AND C.id = '$subpage'
 												"); ?><!---->
-									<tr class="clickable-row  text-center"
+									<tr class="clickable-row text-center"
 										data-href="/npcdef/<?php echo $result['npcID'] ?>">
 										<td class="small">
 											<img src="/img/npc/<?php echo $result['npcID'] ?>.png"

@@ -100,7 +100,7 @@ $skills = buildSQLArray($skill_array);
 						</div>
 					</div>
 
-					<div class="pt-5 flex-fill align-items-center text-center">
+					<div class="pt-4 flex-fill align-items-center text-center">
 						<span class="font-weight-bold sm-skill">Combat: </span>
 						<span
 							class="sm-skill text-primary"><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?></span><br/>
@@ -112,13 +112,14 @@ $skills = buildSQLArray($skill_array);
 					</div>
 				</div>
 
-				<div class="pt-5 d-flex text-center">
+				<div class="d-flex">
 					<div class="flex-fill">
-						<div class="h4 text-center">Item Drop Table</div>
+						<input type="text" class="pl-2 mb-2 text-center" id="inputBox" onkeyup="search()"
+							   placeholder="Search for an item">
 						<div class="tableFixHead">
-							<table
-								class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary"
-								align="center">
+							<table id="itemList"
+								   class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary"
+								   align="center">
 								<thead class="border-bottom border-info">
 								<tr class="text-info text-center">
 									<th class="small w-25">Item</th>
@@ -129,30 +130,30 @@ $skills = buildSQLArray($skill_array);
 								<tbody>
 								<?php
 								while ($result = $connector->fetch_assoc($npc_drops)) {
-								if ($result['itemID'] == NULL) {
-									display:
-									none;
-								} else {
-								?>
-								<tr class="clickable-row  text-center"
-									data-href="/itemdef/<?php echo $result['itemID']; ?>">
-									<td class="small">
-										<img src="/img/items/<?php echo $result['itemID']; ?>.png"
-											 style="max-width: 40px; max-height: 40px;"><br/>
-										<?php echo $result['itemName']; ?>
-									</td>
-									<td class="pt-1 small">
-										<?php echo $result['dropAmount']; ?>
-									</td>
-									<td class="pt-1 small">
-										<?php if ($result['dropPercentage'] == '0.0000%') {
-											echo '100%';
-										} else {
-											echo $result['dropPercentage'];
-										} ?>
-									</td>
-								</tr>
-								<?php }
+									if ($result['itemID'] == NULL) {
+										display:
+										none;
+									} else {
+										?>
+										<tr class="clickable-row text-center"
+											data-href="/itemdef/<?php echo $result['itemID']; ?>">
+											<td class="small">
+												<img src="/img/items/<?php echo $result['itemID']; ?>.png"
+													 style="max-width: 40px; max-height: 40px;"><br/>
+												<?php echo $result['itemName']; ?>
+											</td>
+											<td class="pt-1 small">
+												<?php echo $result['dropAmount']; ?>
+											</td>
+											<td class="pt-1 small">
+												<?php if ($result['dropPercentage'] == '0.0000%') {
+													echo '100%';
+												} else {
+													echo $result['dropPercentage'];
+												} ?>
+											</td>
+										</tr>
+									<?php }
 								} ?>
 								</tbody>
 							</table>
