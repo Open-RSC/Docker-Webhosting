@@ -104,6 +104,7 @@ WHERE
 <div class="table-dark text-info" style="height: 100vh; width: 100vw;">
 	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y"
 		 style="height: 100vh; width: 100vw;">
+		<div class="">
 		<?php if ($result) { ?>
 		<div align="center">
 			<h2><a class="text-info text-capitalize display-3" style="font-size: 38px;;"
@@ -213,7 +214,7 @@ WHERE
 															)
 															) * 100
 														),
-														\"%<br>\"
+														\"%<!--\"
 													) AS dropPercentage,
 													B.amount AS dropAmount,
 													C.id AS itemID,
@@ -228,7 +229,7 @@ WHERE
 													B.id = C.id
 												WHERE
 													B.npcdef_id = '$npcID' AND C.id = '$subpage'
-												"); ?>
+												"); ?><!---->
 									<tr class="clickable-row  text-center"
 										data-href="/npcdef/<?php echo $result['npcID'] ?>">
 										<td class="small">
