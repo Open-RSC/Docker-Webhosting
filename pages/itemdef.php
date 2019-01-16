@@ -113,7 +113,7 @@ LIMIT 793");
 			</div>
 
 			<div>
-				<div class="pt-5 pb-5">
+				<div class="pt-0">
 					<div class="d-flex align-items-center text-center">
 
 						<div class="flex-fill">

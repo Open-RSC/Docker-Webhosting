@@ -85,7 +85,7 @@ $skills = buildSQLArray($skill_array);
 			</div>
 
 			<div>
-				<div class="pt-5">
+				<div class="pt-3">
 					<div class="d-flex align-items-center text-center">
 
 						<div class="flex-fill">
