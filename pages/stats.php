@@ -9,8 +9,8 @@ if (!defined('IN_SITE')) {
 		<div align="center">
 			<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Statistics</h2>
 		</div>
-		<div>
-			<div class="tableFixHead text-primary text-center">
+		<div class="row justify-content-center">
+			<div class="col-4 tableFixHead text-primary">
 					<h4 class="text-warning">Accounts</h4>
                     <a class="text-info font-weight-bold" href="/online"><?php echo playersOnline(); ?></a> players currently logged in.<br/>
                     <a class="text-info font-weight-bold" href="/registrationstoday"><?php echo newRegistrationsToday(); ?></a> players have been registered today.<br/>
@@ -29,7 +29,7 @@ if (!defined('IN_SITE')) {
                     <span class="text-info font-weight-bold"><?php echo combat123(); ?></span> players are combat level 123.</span><br/><br/>
 
 					<h4 class="text-warning">Quests</h4>
-                    <span class="text-info font-weight-bold"><?php echo startedQuest(); ?></span> players have started at least one quest.<br/><br/>
+                    <span class="text-info font-weight-bold"><?php echo startedQuest(); ?></span> players have begun a quest.<br/><br/>
 
 					<h4 class="text-warning">Wealth</h4>
                     <span class="text-info font-weight-bold"><?php echo banktotalGold(); ?></span> gp total in-game.<br/>
