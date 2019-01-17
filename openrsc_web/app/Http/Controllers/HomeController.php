@@ -24,13 +24,10 @@ class HomeController extends Controller
         $totalPlayers = DB::table('openrsc_players')->count();
         $uniquePlayers = DB::table('openrsc_players')->distinct('creation_ip')->count('creation_ip');
 
-        //This should almost definitely be re-written...
-        $time = DB::select("SELECT SUM(`value`) FROM `openrsc_player_cache` WHERE `openrsc_player_cache`.`key` = 'total_played'");
-        $time = collect($time)->map(function($x){ return (array) $x; })->toArray();
-        $time = $time[0]['SUM(`value`)'];
-        $days = floor($time / (24 * 60 * 60));
-        $hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
-        $totalTime = $days . 'd ' . $hours . 'h ';
+        $seconds = DB::table('openrsc_player_cache')->where('key', 'total_played')->sum('value');
+        $days = intval(floor($seconds / (24 * 60 * 60)));
+        $hours = intval(floor(($seconds - ($days * 24 * 60 * 60)) / (60 * 60)));
+        $totalTime = "{$days}d {$hours}h";
 
         return view('home',
         [
