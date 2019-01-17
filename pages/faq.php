@@ -10,7 +10,7 @@ if (!defined('IN_SITE')) {
 			<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Frequently Asked Questions</h2>
 		</div>
 		<div class="row justify-content-center">
-			<div class="col-11 tableFixHead text-primary">
+			<div class="col-11 text-primary">
 				<span class="text-info font-weight-bold">What is Open RSC?</span><br/>
 				Began in July 2018, the Open RSC project has been a community driven open source initiative to
 				strive for as close of a replica RSC game experience as possible.<br/><br/>

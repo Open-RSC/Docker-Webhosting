@@ -10,7 +10,7 @@ if (!defined('IN_SITE')) {
 			<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Statistics</h2>
 		</div>
 		<div class="row justify-content-center">
-			<div class="col-4 tableFixHead text-primary">
+			<div class="col-4 text-primary">
 					<h4 class="text-warning">Accounts</h4>
                     <a class="text-info font-weight-bold" href="/online"><?php echo playersOnline(); ?></a> players currently logged in.<br/>
                     <a class="text-info font-weight-bold" href="/registrationstoday"><?php echo newRegistrationsToday(); ?></a> players have been registered today.<br/>

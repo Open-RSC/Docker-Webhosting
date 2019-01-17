@@ -98,6 +98,8 @@ require_once('charfunctions.php');
 
 	<!-- Custom styles for this template -->
 	<link href="../css/grayscale.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/itemsprites.css">
+	<link rel="stylesheet" href="/css/npcsprites.css">
 
 	<!-- Bootstrap style overrides -->
 	<style>

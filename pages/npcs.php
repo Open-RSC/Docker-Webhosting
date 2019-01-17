@@ -43,7 +43,7 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 								<small><?php echo $result['description'] ?></small>
 							</td>
 							<td class="text-center pt-1 pb-1" width="20%">
-								<img style="max-height: 40px;" src="/img/npc/<?php echo $result['id'] ?>.png">
+								<div class="npc<?php echo $result['id'] ?>" style="max-height: 40px;"></div>
 							</td>
 							<td>
 								<small><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?></small>

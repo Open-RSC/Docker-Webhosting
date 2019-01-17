@@ -10,7 +10,7 @@ if (!defined('IN_SITE')) {
 			<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Open RSC Rules</h2>
 		</div>
 		<div class="row justify-content-center">
-			<div class="col-4 tableFixHead text-primary">
+			<div class="col-4 text-primary">
 				- Don't advertise external private servers<br/>
 				- Don't flame or attack others<br/>
 				- Don't spam<br/>
