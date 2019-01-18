@@ -49,61 +49,62 @@ function bd_nice_number($n)
 	else if ($n > 1000) return round(($n / 1000), 1) . ' thousand';
 	return number_format($n);
 }
+
 ?>
 
 <div class="text-info table-dark">
 	<div class="container border-left border-info border-right">
-		<div class="h2 text-center pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;"><?php echo $character['username']; ?>'s Bank</div>
-		<div class="row justify-content-center">
-			<div class="text-primary">
-				<div class="row justify-content-center">
-					<?php $file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png'; ?>
-					<img src="<?php echo $file; ?>">
-					<div class="col-6">
-                        		<span class="small text-uppercase text-info">Status:
+		<div class="h2 text-center text-capitalize display-3"
+			 style="font-size: 38px;"><?php echo $character['username']; ?>'s Bank
+		</div>
+		<div class="row sm-stats pl-3 pr-3">
+			<div class="pb-0 stats row justify-content-center">
+				<?php $file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png'; ?>
+				<img class="pl-5" src="<?php echo $file; ?>">
+				<div class="pl-5 col-6">
+                        		<span class="sm-stats small text-uppercase text-info">Status:
 								<?php if ($character['online'] == 1) {
 									echo '<span class="green"><strong>Online</strong></span>';
 								} else {
 									echo '<span class="red"><strong>Offline</strong></span>';
-								} ?></span><br>
-						<span class="small text-uppercase text-info">Last Online: </span>
-						<span class="small"><?php date_default_timezone_set('America/New_York');
-							echo strftime("%d %b / %H:%M %Z", $character["login_date"]) ?></span><br>
-						<span>Shar accepts player item donations for drop parties.</span>
-					</div>
-
-					<br>
-
-					<div style="margin-left: 10px;">
-						<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
-							<?php $bank = $connector->num_rows($player_bank); ?>
-							<tr>
-								<?php
-								if ($bank == 0) {
-									echo "No bank items found.";
-								} else {
-									for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
-										?>
-										<td style="border: 1px solid black;">
-											<div
-												style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
-												<?php echo $list["number"]; ?>
-											</div>
-											<div class="item<?php echo $list['id'] ?>"></div>
-										</td>
-										<?php
-										if (($i % 10 == 0) && ($i < $bank)) {
-											echo '</tr><tr>';
-										}
-									}
-								} ?>
-							</tr>
-						</table>
-						<br/>
-						<br><br><br><br>
-					</div>
+								} ?></span>
+					<span class="text-uppercase text-info">Last Online: </span>
+					<span><?php date_default_timezone_set('America/New_York');
+						echo strftime("%d %b / %H:%M %Z", $character["login_date"]) ?></span><br><br>
+					<span>Shar accepts player item donations for drop parties.</span><br><br>
+					<span>To donate in-game items to Shar, contact a staff member. </span>
 				</div>
+			</div>
+
+			<div align="center" style="margin-left: 10px;">
+				<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+					<?php $bank = $connector->num_rows($player_bank); ?>
+					<tr>
+						<?php
+						if ($bank == 0) {
+							echo "No bank items found.";
+						} else {
+							for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
+								?>
+								<td style="border: 1px solid black;">
+									<div
+										style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
+										<?php echo $list["number"]; ?>
+									</div>
+									<div class="item<?php echo $list['id'] ?>"></div>
+								</td>
+								<?php
+								if (($i % 10 == 0) && ($i < $bank)) {
+									echo '</tr><tr>';
+								}
+							}
+						} ?>
+					</tr>
+				</table>
+				<br/>
+				<br><br><br><br>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

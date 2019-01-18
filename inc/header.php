@@ -622,7 +622,7 @@ require_once('charfunctions.php');
 			width: 100%;
 			margin: 10px 0;
 			padding: 5px 0;
-			background: rgba(42, 34, 32, 1);
+			background: rgba(22, 22, 22, .5);
 			-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 			-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 			box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
@@ -957,7 +957,7 @@ require_once('charfunctions.php');
 					<a class="dropdown-item text-secondary" href="/items">Item Database</a>
 					<a class="dropdown-item text-secondary" href="/npcs">NPC Database</a>
 					<div class="dropdown-divider border-info"></div>
-					<a class="dropdown-item text-secondary" href="stats">Statistics</a>
+					<a class="dropdown-item text-secondary" href="/stats">Statistics</a>
 				</div>
 			</li>
 			<li class="nav-item">
