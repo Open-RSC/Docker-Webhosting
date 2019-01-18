@@ -133,8 +133,8 @@ function onlinePlayers()
 		if ($row["username"] == NULL) {
 			echo "No players currently online.";
 		} else {
-			if ($row['group_id'] != 4):
-				echo '<img src="../css/images/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+			if ($row['group_id'] != 10):
+				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
 			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
@@ -163,8 +163,8 @@ function listregistrationsToday()
 		if ($row["username"] == NULL) {
 			echo "No players have been created today.";
 		} else {
-			if ($row['group_id'] != 4):
-				echo '<img src="../css/images/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+			if ($row['group_id'] != 10):
+				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
 			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
@@ -193,8 +193,8 @@ function listloginsToday()
 		if ($row["username"] == NULL) {
 			echo "No players have logged in today.";
 		} else {
-			if ($row['group_id'] != 4):
-				echo '<img src="../css/images/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+			if ($row['group_id'] != 10):
+				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
 			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
