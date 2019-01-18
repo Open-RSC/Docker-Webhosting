@@ -87,11 +87,10 @@ function bd_nice_number($n)
 							for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
 								?>
 								<td style="border: 1px solid black;">
-									<div
-										style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
+									<div class="item<?php echo $list['id'] ?>"
+										 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
 										<?php echo $list["number"]; ?>
 									</div>
-									<div class="item<?php echo $list['id'] ?>"></div>
 								</td>
 								<?php
 								if (($i % 10 == 0) && ($i < $bank)) {
