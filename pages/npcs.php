@@ -23,7 +23,7 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 					<tr class="text-info">
 						<th class="small pl-2" width="25%">Name</th>
 						<th class="small" width="25%">Description</th>
-						<th class="small text-center" width="20%">Picture</th>
+						<th class="small" width="20%">Picture</th>
 						<th class="small">Combat</th>
 						<th class="small text-center">Disposition</th>
 						<th class="small text-center">Respawn</th>
