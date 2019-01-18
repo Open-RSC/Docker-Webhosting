@@ -79,8 +79,8 @@ $skills = buildSQLArray($skill_array);
 		<div class="">
 			<?php if ($result) { ?>
 			<div class="text-center">
-				<h2><a class="text-info text-capitalize display-3" style="font-size: 38px;"
-					   href="/npcs"><?php echo $result['name']; ?></a></h2>
+				<a class="h2 text-info text-capitalize display-3" style="font-size: 38px;"
+					   href="/npcs"><?php echo $result['name']; ?></a><br>
 				<span class="h5 font-weight-bold text-primary">(Combat level <?php echo $result['combatlvl']; ?>)</span>
 			</div>
 
@@ -90,7 +90,7 @@ $skills = buildSQLArray($skill_array);
 
 						<div class="flex-fill justify-content-center">
 							<div class="pt-4 pb-4 d-inline-block">
-								<div class="pb-1 npc<?php echo $result['id'] ?>" style="transform: scale(1.8); max-height: 90px;"></div>
+								<div class="pb-1 display-glow npc<?php echo $result['id'] ?>" style="transform: scale(1.8); max-height: 90px;"></div>
 							</div>
 							<br/>
 							<span class="h5 font-italic">"<?php echo $result['description']; ?>"</span><br>
@@ -143,7 +143,7 @@ $skills = buildSQLArray($skill_array);
 											<?php echo $result['itemName']; ?>
 										</td>
 										<td class="small text-center pl-5">
-											<div class="item<?php echo $result['itemID'] ?>"></div>
+											<div class="display-glow item<?php echo $result['itemID'] ?>"></div>
 										</td>
 										<td class="pt-1 small pl-5">
 											<?php echo $result['dropAmount']; ?>

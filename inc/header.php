@@ -172,6 +172,10 @@ require_once('charfunctions.php');
 			padding-bottom: 20px;
 		}
 
+		.display-glow {
+			filter: drop-shadow(0px 0px 10px #111111);
+		}
+
 		li {
 			list-style-type: none;
 		}

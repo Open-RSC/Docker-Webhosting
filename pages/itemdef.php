@@ -108,15 +108,15 @@ LIMIT 793");
 		<div class="">
 			<?php if ($result) { ?>
 			<div class="align-items-center text-center">
-				<h2><a class="text-info text-capitalize display-3" style="font-size: 38px;;"
-					   href="/items"><?php echo $result['name']; ?></a></h2>
+				<a class="h2 text-info text-capitalize display-3" style="font-size: 38px;"
+					   href="/items"><?php echo $result['name']; ?></a>
 			</div>
 
 			<div>
 				<div class="pt-4">
 					<div class="row">
 						<div class="col-4 d-inline-block text-center">
-							<div class="d-inline-block item<?php echo $result['id'] ?>"
+							<div class="d-inline-block display-glow item<?php echo $result['id'] ?>"
 								 style="transform: scale(1.3);"></div>
 							<br>
 							<span class="d-inline-block text-center"><?php echo $result['description']; ?></span>
@@ -243,7 +243,7 @@ LIMIT 793");
 										<?php echo $result['npcName']; ?>
 									</td>
 									<td class="small pr-5">
-										<div class="row-item npc<?php echo $result['npcID'] ?>"></div>
+										<div class="row-item display-glow npc<?php echo $result['npcID'] ?>"></div>
 									</td>
 									<td class="pt-1 small pl-5">
 										<?php echo $result['dropAmount'] ?>
