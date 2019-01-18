@@ -803,7 +803,7 @@ function totalTime()
 function activityfeed()
 {
 	$connector = new Dbc();
-	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username ORDER BY B.time DESC LIMIT 100");
+	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.id AS pid, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username ORDER BY B.time DESC LIMIT 100");
 	date_default_timezone_set('America/New_York');
 	while ($row = $connector->fetchArray($game_accounts)) {
 		if ($row["username"] == NULL) {
@@ -811,7 +811,7 @@ function activityfeed()
 		} else {
 			echo '
 			<div class="text-primary ml-3 mr-3" style="font-size: 13px;"><br>
-					<div class="row clickable-row" data-href="/player/' . $row["id"] . '">
+					<div class="row clickable-row" data-href="/player/' . $row["pid"] . '">
 						<div class="col-sm text-info font-weight-bold">
 							' . strftime("%b %d, %I:%M %p", $row["time"]) . '
 						</div>

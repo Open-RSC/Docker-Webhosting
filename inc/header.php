@@ -937,7 +937,7 @@ require_once('charfunctions.php');
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/highscores">Highscores</a>
+				<a class="nav-link" href="/highscores/skill_total">Highscores</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/chat">Chat Activity</a>
