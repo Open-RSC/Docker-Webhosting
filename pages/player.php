@@ -62,7 +62,7 @@ function bd_nice_number($n)
 			if ($character['group_id'] != 10): echo "<img class=\"pr-3 pb-2\" src=\"/img/$character[group_id].svg\" height=\"42\">";
 			else: NULL; endif;
 			echo $character['username']; ?></div>
-		<div class="row sm-stats justify-content-center">
+		<div class="row sm-stats justify-content-center" style="text-transform: unset;">
 			<div class="text-primary">
 				<div class="row justify-content-center">
 
