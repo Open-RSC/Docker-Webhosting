@@ -1,0 +1,3970 @@
+.npc0 {
+   background: url('/img/npc_spritesheet.png') no-repeat -701px -880px;
+   width: 17px;
+   max-height: 40px;
+}
+.npc1 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -985px;
+   width: 23px;
+   height: 50px;
+}
+.npc2 {
+   background: url('/img/npc_spritesheet.png') no-repeat -244px -758px;
+   width: 49px;
+   height: 64px;
+}
+.npc3 {
+   background: url('/img/npc_spritesheet.png') no-repeat -356px -1189px;
+   width: 28px;
+   height: 36px;
+}
+.npc4 {
+   background: url('/img/npc_spritesheet.png') no-repeat -410px -564px;
+   width: 63px;
+   height: 82px;
+}
+.npc5 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1007px -985px;
+   width: 23px;
+   height: 50px;
+}
+.npc6 {
+   background: url('/img/npc_spritesheet.png') no-repeat -442px -758px;
+   width: 118px;
+   height: 60px;
+}
+.npc7 {
+   background: url('/img/npc_spritesheet.png') no-repeat -125px -824px;
+   width: 23px;
+   height: 55px;
+}
+.npc8 {
+   background: url('/img/npc_spritesheet.png') no-repeat -692px -385px;
+   width: 105px;
+   height: 65px;
+}
+.npc9 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -0px;
+   width: 23px;
+   height: 50px;
+}
+.npc10 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -51px;
+   width: 23px;
+   height: 50px;
+}
+.npc11 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -102px;
+   width: 23px;
+   height: 50px;
+}
+.npc12 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -153px;
+   width: 23px;
+   height: 50px;
+}
+.npc13 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -491px;
+   width: 23px;
+   height: 51px;
+}
+.npc14 {
+   background: url('/img/npc_spritesheet.png') no-repeat -317px -297px;
+   width: 21px;
+   height: 50px;
+}
+.npc15 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -0px;
+   width: 29px;
+   height: 57px;
+}
+.npc16 {
+   background: url('/img/npc_spritesheet.png') no-repeat -149px -824px;
+   width: 23px;
+   height: 55px;
+}
+.npc17 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -630px;
+   width: 25px;
+   height: 55px;
+}
+.npc18 {
+   background: url('/img/npc_spritesheet.png') no-repeat -208px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc19 {
+   background: url('/img/npc_spritesheet.png') no-repeat -636px -1138px;
+   width: 54px;
+   height: 47px;
+}
+.npc20 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -204px;
+   width: 23px;
+   height: 50px;
+}
+.npc21 {
+   background: url('/img/npc_spritesheet.png') no-repeat -365px -661px;
+   width: 39px;
+   height: 90px;
+}
+.npc22 {
+   background: url('/img/npc_spritesheet.png') no-repeat -294px -758px;
+   width: 37px;
+   height: 63px;
+}
+.npc23 {
+   background: url('/img/npc_spritesheet.png') no-repeat -204px -1231px;
+   width: 15px;
+   height: 16px;
+}
+.npc24 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -255px;
+   width: 23px;
+   height: 50px;
+}
+.npc25 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -306px;
+   width: 23px;
+   height: 50px;
+}
+.npc26 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -357px;
+   width: 23px;
+   height: 50px;
+}
+.npc27 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -867px;
+   width: 21px;
+   height: 50px;
+}
+.npc28 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -408px;
+   width: 23px;
+   height: 50px;
+}
+.npc29 {
+   background: url('/img/npc_spritesheet.png') no-repeat -849px -1189px;
+   width: 27px;
+   height: 24px;
+}
+.npc30 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -459px;
+   width: 23px;
+   height: 50px;
+}
+.npc31 {
+   background: url('/img/npc_spritesheet.png') no-repeat -794px -673px;
+   width: 22px;
+   height: 52px;
+}
+.npc32 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -510px;
+   width: 23px;
+   height: 50px;
+}
+.npc33 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -561px;
+   width: 23px;
+   height: 50px;
+}
+.npc34 {
+   background: url('/img/npc_spritesheet.png') no-repeat -220px -1231px;
+   width: 15px;
+   height: 16px;
+}
+.npc35 {
+   background: url('/img/npc_spritesheet.png') no-repeat -332px -758px;
+   width: 37px;
+   height: 63px;
+}
+.npc36 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -918px;
+   width: 21px;
+   height: 50px;
+}
+.npc37 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -612px;
+   width: 23px;
+   height: 50px;
+}
+.npc38 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -663px;
+   width: 23px;
+   height: 50px;
+}
+.npc39 {
+   background: url('/img/npc_spritesheet.png') no-repeat -911px -1138px;
+   width: 21px;
+   height: 47px;
+}
+.npc40 {
+   background: url('/img/npc_spritesheet.png') no-repeat -441px -0px;
+   width: 60px;
+   height: 107px;
+}
+.npc41 {
+   background: url('/img/npc_spritesheet.png') no-repeat -536px -661px;
+   width: 24px;
+   height: 71px;
+}
+.npc42 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -714px;
+   width: 23px;
+   height: 50px;
+}
+.npc43 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -1231px;
+   width: 74px;
+   height: 21px;
+}
+.npc44 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -765px;
+   width: 23px;
+   height: 50px;
+}
+.npc45 {
+   background: url('/img/npc_spritesheet.png') no-repeat -441px -108px;
+   width: 60px;
+   height: 107px;
+}
+.npc46 {
+   background: url('/img/npc_spritesheet.png') no-repeat -441px -216px;
+   width: 60px;
+   height: 107px;
+}
+.npc47 {
+   background: url('/img/npc_spritesheet.png') no-repeat -691px -1138px;
+   width: 54px;
+   height: 47px;
+}
+.npc48 {
+   background: url('/img/npc_spritesheet.png') no-repeat -77px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc49 {
+   background: url('/img/npc_spritesheet.png') no-repeat -219px -1189px;
+   width: 30px;
+   height: 39px;
+}
+.npc50 {
+   background: url('/img/npc_spritesheet.png') no-repeat -441px -324px;
+   width: 60px;
+   height: 107px;
+}
+.npc51 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -816px;
+   width: 23px;
+   height: 50px;
+}
+.npc52 {
+   background: url('/img/npc_spritesheet.png') no-repeat -538px -564px;
+   width: 24px;
+   height: 71px;
+}
+.npc53 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -58px;
+   width: 29px;
+   height: 57px;
+}
+.npc54 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -867px;
+   width: 23px;
+   height: 50px;
+}
+.npc55 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -918px;
+   width: 23px;
+   height: 50px;
+}
+.npc56 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1035px -969px;
+   width: 23px;
+   height: 50px;
+}
+.npc57 {
+   background: url('/img/npc_spritesheet.png') no-repeat -392px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc58 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -0px;
+   width: 23px;
+   height: 50px;
+}
+.npc59 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -969px;
+   width: 21px;
+   height: 50px;
+}
+.npc60 {
+   background: url('/img/npc_spritesheet.png') no-repeat -418px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc61 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -322px;
+   width: 33px;
+   height: 76px;
+}
+.npc62 {
+   background: url('/img/npc_spritesheet.png') no-repeat -474px -564px;
+   width: 63px;
+   height: 82px;
+}
+.npc63 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -51px;
+   width: 23px;
+   height: 50px;
+}
+.npc64 {
+   background: url('/img/npc_spritesheet.png') no-repeat -233px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc65 {
+   background: url('/img/npc_spritesheet.png') no-repeat -245px -661px;
+   width: 39px;
+   height: 91px;
+}
+.npc66 {
+   background: url('/img/npc_spritesheet.png') no-repeat -387px -228px;
+   width: 49px;
+   height: 111px;
+}
+.npc67 {
+   background: url('/img/npc_spritesheet.png') no-repeat -100px -350px;
+   width: 110px;
+   height: 110px;
+}
+.npc68 {
+   background: url('/img/npc_spritesheet.png') no-repeat -537px -216px;
+   width: 24px;
+   height: 71px;
+}
+.npc69 {
+   background: url('/img/npc_spritesheet.png') no-repeat -444px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc70 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -1189px;
+   width: 42px;
+   height: 41px;
+}
+.npc71 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -102px;
+   width: 23px;
+   height: 50px;
+}
+.npc72 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -153px;
+   width: 23px;
+   height: 50px;
+}
+.npc73 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -204px;
+   width: 23px;
+   height: 50px;
+}
+.npc74 {
+   background: url('/img/npc_spritesheet.png') no-repeat -933px -1189px;
+   width: 22px;
+   height: 24px;
+}
+.npc75 {
+   background: url('/img/npc_spritesheet.png') no-repeat -417px -350px;
+   width: 23px;
+   height: 54px;
+}
+.npc76 {
+   background: url('/img/npc_spritesheet.png') no-repeat -417px -405px;
+   width: 23px;
+   height: 54px;
+}
+.npc77 {
+   background: url('/img/npc_spritesheet.png') no-repeat -903px -880px;
+   width: 23px;
+   height: 52px;
+}
+.npc78 {
+   background: url('/img/npc_spritesheet.png') no-repeat -387px -0px;
+   width: 53px;
+   height: 114px;
+}
+.npc79 {
+   background: url('/img/npc_spritesheet.png') no-repeat -341px -824px;
+   width: 21px;
+   height: 55px;
+}
+.npc80 {
+   background: url('/img/npc_spritesheet.png') no-repeat -194px -183px;
+   width: 69px;
+   height: 139px;
+}
+.npc81 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -686px;
+   width: 25px;
+   height: 55px;
+}
+.npc82 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -255px;
+   width: 23px;
+   height: 50px;
+}
+.npc83 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -1020px;
+   width: 21px;
+   height: 50px;
+}
+.npc84 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -543px;
+   width: 23px;
+   height: 51px;
+}
+.npc85 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -306px;
+   width: 23px;
+   height: 50px;
+}
+.npc86 {
+   background: url('/img/npc_spritesheet.png') no-repeat -93px -934px;
+   width: 29px;
+   height: 50px;
+}
+.npc87 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -357px;
+   width: 23px;
+   height: 50px;
+}
+.npc88 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -1071px;
+   width: 21px;
+   height: 50px;
+}
+.npc89 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -462px;
+   width: 47px;
+   height: 101px;
+}
+.npc90 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -408px;
+   width: 23px;
+   height: 50px;
+}
+.npc91 {
+   background: url('/img/npc_spritesheet.png') no-repeat -150px -1231px;
+   width: 9px;
+   height: 19px;
+}
+.npc92 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -459px;
+   width: 23px;
+   height: 50px;
+}
+.npc93 {
+   background: url('/img/npc_spritesheet.png') no-repeat -470px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc94 {
+   background: url('/img/npc_spritesheet.png') no-repeat -563px -664px;
+   width: 39px;
+   height: 81px;
+}
+.npc95 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -510px;
+   width: 23px;
+   height: 50px;
+}
+.npc96 {
+   background: url('/img/npc_spritesheet.png') no-repeat -205px -661px;
+   width: 39px;
+   height: 93px;
+}
+.npc97 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -561px;
+   width: 23px;
+   height: 50px;
+}
+.npc98 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -612px;
+   width: 23px;
+   height: 50px;
+}
+.npc99 {
+   background: url('/img/npc_spritesheet.png') no-repeat -236px -1231px;
+   width: 15px;
+   height: 16px;
+}
+.npc100 {
+   background: url('/img/npc_spritesheet.png') no-repeat -285px -661px;
+   width: 39px;
+   height: 91px;
+}
+.npc101 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -0px;
+   width: 21px;
+   height: 50px;
+}
+.npc102 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -728px;
+   width: 24px;
+   height: 55px;
+}
+.npc103 {
+   background: url('/img/npc_spritesheet.png') no-repeat -603px -664px;
+   width: 23px;
+   height: 54px;
+}
+.npc104 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -0px;
+   width: 83px;
+   height: 182px;
+}
+.npc105 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -663px;
+   width: 23px;
+   height: 50px;
+}
+.npc106 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -714px;
+   width: 23px;
+   height: 50px;
+}
+.npc107 {
+   background: url('/img/npc_spritesheet.png') no-repeat -363px -824px;
+   width: 21px;
+   height: 55px;
+}
+.npc108 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -350px;
+   width: 49px;
+   height: 111px;
+}
+.npc109 {
+   background: url('/img/npc_spritesheet.png') no-repeat -801px -1138px;
+   width: 27px;
+   height: 47px;
+}
+.npc110 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -824px;
+   width: 24px;
+   height: 55px;
+}
+.npc111 {
+   background: url('/img/npc_spritesheet.png') no-repeat -258px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc112 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -51px;
+   width: 21px;
+   height: 50px;
+}
+.npc113 {
+   background: url('/img/npc_spritesheet.png') no-repeat -101px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc114 {
+   background: url('/img/npc_spritesheet.png') no-repeat -731px -1189px;
+   width: 16px;
+   height: 28px;
+}
+.npc115 {
+   background: url('/img/npc_spritesheet.png') no-repeat -125px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc116 {
+   background: url('/img/npc_spritesheet.png') no-repeat -149px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc117 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -742px;
+   width: 25px;
+   height: 55px;
+}
+.npc118 {
+   background: url('/img/npc_spritesheet.png') no-repeat -395px -1138px;
+   width: 22px;
+   height: 49px;
+}
+.npc119 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -765px;
+   width: 23px;
+   height: 50px;
+}
+.npc120 {
+   background: url('/img/npc_spritesheet.png') no-repeat -496px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc121 {
+   background: url('/img/npc_spritesheet.png') no-repeat -719px -880px;
+   width: 26px;
+   height: 52px;
+}
+.npc122 {
+   background: url('/img/npc_spritesheet.png') no-repeat -441px -1138px;
+   width: 21px;
+   height: 49px;
+}
+.npc123 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -102px;
+   width: 21px;
+   height: 50px;
+}
+.npc124 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -816px;
+   width: 23px;
+   height: 50px;
+}
+.npc125 {
+   background: url('/img/npc_spritesheet.png') no-repeat -385px -824px;
+   width: 21px;
+   height: 55px;
+}
+.npc126 {
+   background: url('/img/npc_spritesheet.png') no-repeat -463px -1138px;
+   width: 21px;
+   height: 49px;
+}
+.npc127 {
+   background: url('/img/npc_spritesheet.png') no-repeat -773px -880px;
+   width: 25px;
+   height: 52px;
+}
+.npc128 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -867px;
+   width: 23px;
+   height: 50px;
+}
+.npc129 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -918px;
+   width: 23px;
+   height: 50px;
+}
+.npc130 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1059px -969px;
+   width: 23px;
+   height: 50px;
+}
+.npc131 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc132 {
+   background: url('/img/npc_spritesheet.png') no-repeat -283px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc133 {
+   background: url('/img/npc_spritesheet.png') no-repeat -173px -824px;
+   width: 23px;
+   height: 55px;
+}
+.npc134 {
+   background: url('/img/npc_spritesheet.png') no-repeat -173px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc135 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -474px;
+   width: 33px;
+   height: 73px;
+}
+.npc136 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -160px;
+   width: 120px;
+   height: 76px;
+}
+.npc137 {
+   background: url('/img/npc_spritesheet.png') no-repeat -24px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc138 {
+   background: url('/img/npc_spritesheet.png') no-repeat -25px -824px;
+   width: 24px;
+   height: 55px;
+}
+.npc139 {
+   background: url('/img/npc_spritesheet.png') no-repeat -522px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc140 {
+   background: url('/img/npc_spritesheet.png') no-repeat -548px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc141 {
+   background: url('/img/npc_spritesheet.png') no-repeat -418px -1138px;
+   width: 22px;
+   height: 49px;
+}
+.npc142 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -153px;
+   width: 21px;
+   height: 50px;
+}
+.npc143 {
+   background: url('/img/npc_spritesheet.png') no-repeat -197px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc144 {
+   background: url('/img/npc_spritesheet.png') no-repeat -221px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc145 {
+   background: url('/img/npc_spritesheet.png') no-repeat -48px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc146 {
+   background: url('/img/npc_spritesheet.png') no-repeat -72px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc147 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -204px;
+   width: 21px;
+   height: 50px;
+}
+.npc148 {
+   background: url('/img/npc_spritesheet.png') no-repeat -407px -824px;
+   width: 21px;
+   height: 55px;
+}
+.npc149 {
+   background: url('/img/npc_spritesheet.png') no-repeat -429px -824px;
+   width: 21px;
+   height: 55px;
+}
+.npc150 {
+   background: url('/img/npc_spritesheet.png') no-repeat -96px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc151 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -237px;
+   width: 40px;
+   height: 73px;
+}
+.npc152 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -311px;
+   width: 40px;
+   height: 73px;
+}
+.npc153 {
+   background: url('/img/npc_spritesheet.png') no-repeat -480px -462px;
+   width: 63px;
+   height: 82px;
+}
+.npc154 {
+   background: url('/img/npc_spritesheet.png') no-repeat -408px -758px;
+   width: 33px;
+   height: 61px;
+}
+.npc155 {
+   background: url('/img/npc_spritesheet.png') no-repeat -120px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc156 {
+   background: url('/img/npc_spritesheet.png') no-repeat -144px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc157 {
+   background: url('/img/npc_spritesheet.png') no-repeat -168px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc158 {
+   background: url('/img/npc_spritesheet.png') no-repeat -699px -758px;
+   width: 34px;
+   height: 58px;
+}
+.npc159 {
+   background: url('/img/npc_spritesheet.png') no-repeat -308px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc160 {
+   background: url('/img/npc_spritesheet.png') no-repeat -245px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc162 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -595px;
+   width: 23px;
+   height: 51px;
+}
+.npc161 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -647px;
+   width: 23px;
+   height: 51px;
+}
+.npc163 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -255px;
+   width: 21px;
+   height: 50px;
+}
+.npc164 {
+   background: url('/img/npc_spritesheet.png') no-repeat -192px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc165 {
+   background: url('/img/npc_spritesheet.png') no-repeat -216px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc166 {
+   background: url('/img/npc_spritesheet.png') no-repeat -240px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc167 {
+   background: url('/img/npc_spritesheet.png') no-repeat -264px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc168 {
+   background: url('/img/npc_spritesheet.png') no-repeat -288px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc169 {
+   background: url('/img/npc_spritesheet.png') no-repeat -312px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc170 {
+   background: url('/img/npc_spritesheet.png') no-repeat -336px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc171 {
+   background: url('/img/npc_spritesheet.png') no-repeat -360px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc172 {
+   background: url('/img/npc_spritesheet.png') no-repeat -384px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc173 {
+   background: url('/img/npc_spritesheet.png') no-repeat -408px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc174 {
+   background: url('/img/npc_spritesheet.png') no-repeat -574px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc175 {
+   background: url('/img/npc_spritesheet.png') no-repeat -269px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc176 {
+   background: url('/img/npc_spritesheet.png') no-repeat -600px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc177 {
+   background: url('/img/npc_spritesheet.png') no-repeat -746px -1138px;
+   width: 54px;
+   height: 47px;
+}
+.npc178 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -116px;
+   width: 29px;
+   height: 57px;
+}
+.npc179 {
+   background: url('/img/npc_spritesheet.png') no-repeat -502px -0px;
+   width: 60px;
+   height: 107px;
+}
+.npc180 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -385px;
+   width: 24px;
+   height: 71px;
+}
+.npc181 {
+   background: url('/img/npc_spritesheet.png') no-repeat -370px -758px;
+   width: 37px;
+   height: 63px;
+}
+.npc182 {
+   background: url('/img/npc_spritesheet.png') no-repeat -626px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc183 {
+   background: url('/img/npc_spritesheet.png') no-repeat -432px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc184 {
+   background: url('/img/npc_spritesheet.png') no-repeat -168px -0px;
+   width: 96px;
+   height: 166px;
+}
+.npc185 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -306px;
+   width: 21px;
+   height: 50px;
+}
+.npc186 {
+   background: url('/img/npc_spritesheet.png') no-repeat -456px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc187 {
+   background: url('/img/npc_spritesheet.png') no-repeat -507px -1138px;
+   width: 21px;
+   height: 48px;
+}
+.npc188 {
+   background: url('/img/npc_spritesheet.png') no-repeat -708px -311px;
+   width: 105px;
+   height: 65px;
+}
+.npc189 {
+   background: url('/img/npc_spritesheet.png') no-repeat -50px -350px;
+   width: 49px;
+   height: 111px;
+}
+.npc190 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -244px;
+   width: 37px;
+   height: 77px;
+}
+.npc191 {
+   background: url('/img/npc_spritesheet.png') no-repeat -293px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc192 {
+   background: url('/img/npc_spritesheet.png') no-repeat -829px -1138px;
+   width: 27px;
+   height: 47px;
+}
+.npc193 {
+   background: url('/img/npc_spritesheet.png') no-repeat -333px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc194 {
+   background: url('/img/npc_spritesheet.png') no-repeat -480px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc195 {
+   background: url('/img/npc_spritesheet.png') no-repeat -502px -108px;
+   width: 60px;
+   height: 107px;
+}
+.npc196 {
+   background: url('/img/npc_spritesheet.png') no-repeat -275px -462px;
+   width: 204px;
+   height: 96px;
+}
+.npc197 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -0px;
+   width: 23px;
+   height: 54px;
+}
+.npc198 {
+   background: url('/img/npc_spritesheet.png') no-repeat -504px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc199 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -106px;
+   width: 24px;
+   height: 51px;
+}
+.npc200 {
+   background: url('/img/npc_spritesheet.png') no-repeat -502px -323px;
+   width: 52px;
+   height: 101px;
+}
+.npc201 {
+   background: url('/img/npc_spritesheet.png') no-repeat -48px -462px;
+   width: 120px;
+   height: 100px;
+}
+.npc202 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -564px;
+   width: 204px;
+   height: 96px;
+}
+.npc203 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -0px;
+   width: 149px;
+   height: 79px;
+}
+.npc204 {
+   background: url('/img/npc_spritesheet.png') no-repeat -652px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc205 {
+   background: url('/img/npc_spritesheet.png') no-repeat -678px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc206 {
+   background: url('/img/npc_spritesheet.png') no-repeat -86px -1189px;
+   width: 24px;
+   height: 41px;
+}
+.npc207 {
+   background: url('/img/npc_spritesheet.png') no-repeat -704px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc208 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -0px;
+   width: 25px;
+   height: 55px;
+}
+.npc209 {
+   background: url('/img/npc_spritesheet.png') no-repeat -358px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc210 {
+   background: url('/img/npc_spritesheet.png') no-repeat -383px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc211 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -920px;
+   width: 19px;
+   height: 42px;
+}
+.npc212 {
+   background: url('/img/npc_spritesheet.png') no-repeat -730px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc213 {
+   background: url('/img/npc_spritesheet.png') no-repeat -756px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc214 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -457px;
+   width: 24px;
+   height: 71px;
+}
+.npc215 {
+   background: url('/img/npc_spritesheet.png') no-repeat -782px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc216 {
+   background: url('/img/npc_spritesheet.png') no-repeat -265px -157px;
+   width: 69px;
+   height: 139px;
+}
+.npc217 {
+   background: url('/img/npc_spritesheet.png') no-repeat -111px -1189px;
+   width: 17px;
+   height: 40px;
+}
+.npc218 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -208px;
+   width: 25px;
+   height: 51px;
+}
+.npc219 {
+   background: url('/img/npc_spritesheet.png') no-repeat -798px -385px;
+   width: 18px;
+   height: 43px;
+}
+.npc220 {
+   background: url('/img/npc_spritesheet.png') no-repeat -624px -758px;
+   width: 26px;
+   height: 60px;
+}
+.npc221 {
+   background: url('/img/npc_spritesheet.png') no-repeat -528px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc222 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -133px;
+   width: 18px;
+   height: 43px;
+}
+.npc223 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -1079px;
+   width: 20px;
+   height: 43px;
+}
+.npc224 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -1123px;
+   width: 20px;
+   height: 43px;
+}
+.npc225 {
+   background: url('/img/npc_spritesheet.png') no-repeat -552px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc226 {
+   background: url('/img/npc_spritesheet.png') no-repeat -576px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc227 {
+   background: url('/img/npc_spritesheet.png') no-repeat -600px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc228 {
+   background: url('/img/npc_spritesheet.png') no-repeat -317px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc229 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -45px;
+   width: 20px;
+   height: 43px;
+}
+.npc230 {
+   background: url('/img/npc_spritesheet.png') no-repeat -808px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc231 {
+   background: url('/img/npc_spritesheet.png') no-repeat -624px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc232 {
+   background: url('/img/npc_spritesheet.png') no-repeat -648px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc233 {
+   background: url('/img/npc_spritesheet.png') no-repeat -408px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc234 {
+   background: url('/img/npc_spritesheet.png') no-repeat -672px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc235 {
+   background: url('/img/npc_spritesheet.png') no-repeat -197px -824px;
+   width: 23px;
+   height: 55px;
+}
+.npc236 {
+   background: url('/img/npc_spritesheet.png') no-repeat -123px -934px;
+   width: 29px;
+   height: 50px;
+}
+.npc237 {
+   background: url('/img/npc_spritesheet.png') no-repeat -363px -934px;
+   width: 28px;
+   height: 50px;
+}
+.npc238 {
+   background: url('/img/npc_spritesheet.png') no-repeat -341px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc239 {
+   background: url('/img/npc_spritesheet.png') no-repeat -417px -1189px;
+   width: 17px;
+   height: 35px;
+}
+.npc240 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -1034px;
+   width: 20px;
+   height: 44px;
+}
+.npc241 {
+   background: url('/img/npc_spritesheet.png') no-repeat -877px -1189px;
+   width: 27px;
+   height: 24px;
+}
+.npc242 {
+   background: url('/img/npc_spritesheet.png') no-repeat -451px -824px;
+   width: 21px;
+   height: 55px;
+}
+.npc243 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -622px;
+   width: 34px;
+   height: 72px;
+}
+.npc244 {
+   background: url('/img/npc_spritesheet.png') no-repeat -788px -160px;
+   width: 27px;
+   height: 56px;
+}
+.npc245 {
+   background: url('/img/npc_spritesheet.png') no-repeat -252px -1231px;
+   width: 15px;
+   height: 16px;
+}
+.npc246 {
+   background: url('/img/npc_spritesheet.png') no-repeat -708px -237px;
+   width: 105px;
+   height: 65px;
+}
+.npc247 {
+   background: url('/img/npc_spritesheet.png') no-repeat -435px -1189px;
+   width: 17px;
+   height: 35px;
+}
+.npc248 {
+   background: url('/img/npc_spritesheet.png') no-repeat -453px -1189px;
+   width: 17px;
+   height: 35px;
+}
+.npc249 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -705px;
+   width: 21px;
+   height: 42px;
+}
+.npc250 {
+   background: url('/img/npc_spritesheet.png') no-repeat -696px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc251 {
+   background: url('/img/npc_spritesheet.png') no-repeat -365px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc252 {
+   background: url('/img/npc_spritesheet.png') no-repeat -651px -758px;
+   width: 47px;
+   height: 58px;
+}
+.npc253 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -104px;
+   width: 29px;
+   height: 51px;
+}
+.npc254 {
+   background: url('/img/npc_spritesheet.png') no-repeat -734px -758px;
+   width: 34px;
+   height: 58px;
+}
+.npc255 {
+   background: url('/img/npc_spritesheet.png') no-repeat -720px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc256 {
+   background: url('/img/npc_spritesheet.png') no-repeat -744px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc257 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -699px;
+   width: 23px;
+   height: 51px;
+}
+.npc258 {
+   background: url('/img/npc_spritesheet.png') no-repeat -768px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc259 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -55px;
+   width: 23px;
+   height: 54px;
+}
+.npc260 {
+   background: url('/img/npc_spritesheet.png') no-repeat -792px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc261 {
+   background: url('/img/npc_spritesheet.png') no-repeat -221px -824px;
+   width: 23px;
+   height: 55px;
+}
+.npc262 {
+   background: url('/img/npc_spritesheet.png') no-repeat -539px -824px;
+   width: 65px;
+   height: 54px;
+}
+.npc263 {
+   background: url('/img/npc_spritesheet.png') no-repeat -170px -1231px;
+   width: 16px;
+   height: 17px;
+}
+.npc264 {
+   background: url('/img/npc_spritesheet.png') no-repeat -816px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc265 {
+   background: url('/img/npc_spritesheet.png') no-repeat -433px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc266 {
+   background: url('/img/npc_spritesheet.png') no-repeat -153px -934px;
+   width: 29px;
+   height: 50px;
+}
+.npc267 {
+   background: url('/img/npc_spritesheet.png') no-repeat -840px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc268 {
+   background: url('/img/npc_spritesheet.png') no-repeat -864px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc269 {
+   background: url('/img/npc_spritesheet.png') no-repeat -183px -934px;
+   width: 29px;
+   height: 50px;
+}
+.npc270 {
+   background: url('/img/npc_spritesheet.png') no-repeat -834px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc271 {
+   background: url('/img/npc_spritesheet.png') no-repeat -43px -1189px;
+   width: 42px;
+   height: 41px;
+}
+.npc272 {
+   background: url('/img/npc_spritesheet.png') no-repeat -888px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc273 {
+   background: url('/img/npc_spritesheet.png') no-repeat -213px -934px;
+   width: 29px;
+   height: 50px;
+}
+.npc274 {
+   background: url('/img/npc_spritesheet.png') no-repeat -243px -934px;
+   width: 29px;
+   height: 50px;
+}
+.npc275 {
+   background: url('/img/npc_spritesheet.png') no-repeat -52px -880px;
+   width: 24px;
+   max-height: 40px;
+}
+.npc276 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -406px;
+   width: 29px;
+   height: 55px;
+}
+.npc277 {
+   background: url('/img/npc_spritesheet.png') no-repeat -50px -824px;
+   width: 24px;
+   height: 55px;
+}
+.npc278 {
+   background: url('/img/npc_spritesheet.png') no-repeat -912px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc279 {
+   background: url('/img/npc_spritesheet.png') no-repeat -936px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc280 {
+   background: url('/img/npc_spritesheet.png') no-repeat -960px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc281 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -357px;
+   width: 21px;
+   height: 50px;
+}
+.npc282 {
+   background: url('/img/npc_spritesheet.png') no-repeat -389px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc283 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -408px;
+   width: 21px;
+   height: 50px;
+}
+.npc284 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -459px;
+   width: 21px;
+   height: 50px;
+}
+.npc285 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -510px;
+   width: 21px;
+   height: 50px;
+}
+.npc286 {
+   background: url('/img/npc_spritesheet.png') no-repeat -984px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc287 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -56px;
+   width: 25px;
+   height: 55px;
+}
+.npc288 {
+   background: url('/img/npc_spritesheet.png') no-repeat -563px -83px;
+   width: 47px;
+   height: 82px;
+}
+.npc289 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1008px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc290 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -183px;
+   width: 96px;
+   height: 166px;
+}
+.npc291 {
+   background: url('/img/npc_spritesheet.png') no-repeat -205px -564px;
+   width: 204px;
+   height: 96px;
+}
+.npc292 {
+   background: url('/img/npc_spritesheet.png') no-repeat -956px -1189px;
+   width: 22px;
+   height: 24px;
+}
+.npc293 {
+   background: url('/img/npc_spritesheet.png') no-repeat -860px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc294 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -748px;
+   width: 20px;
+   height: 42px;
+}
+.npc295 {
+   background: url('/img/npc_spritesheet.png') no-repeat -298px -1231px;
+   width: 4px;
+   height: 13px;
+}
+.npc296 {
+   background: url('/img/npc_spritesheet.png') no-repeat -339px -232px;
+   width: 36px;
+   height: 114px;
+}
+.npc297 {
+   background: url('/img/npc_spritesheet.png') no-repeat -886px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc298 {
+   background: url('/img/npc_spritesheet.png') no-repeat -169px -462px;
+   width: 61px;
+   height: 99px;
+}
+.npc299 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1032px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc300 {
+   background: url('/img/npc_spritesheet.png') no-repeat -912px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc301 {
+   background: url('/img/npc_spritesheet.png') no-repeat -938px -934px;
+   width: 25px;
+   height: 50px;
+}
+.npc302 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1058px -1189px;
+   width: 22px;
+   height: 22px;
+}
+.npc303 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1081px -1189px;
+   width: 22px;
+   height: 22px;
+}
+.npc304 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1104px -1189px;
+   width: 22px;
+   height: 22px;
+}
+.npc305 {
+   background: url('/img/npc_spritesheet.png') no-repeat -632px -824px;
+   width: 25px;
+   height: 54px;
+}
+.npc306 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1056px -1036px;
+   width: 23px;
+   height: 50px;
+}
+.npc307 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -0px;
+   width: 23px;
+   height: 50px;
+}
+.npc308 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -51px;
+   width: 23px;
+   height: 50px;
+}
+.npc309 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -102px;
+   width: 23px;
+   height: 50px;
+}
+.npc310 {
+   background: url('/img/npc_spritesheet.png') no-repeat -245px -824px;
+   width: 23px;
+   height: 55px;
+}
+.npc311 {
+   background: url('/img/npc_spritesheet.png') no-repeat -211px -350px;
+   width: 110px;
+   height: 110px;
+}
+.npc312 {
+   background: url('/img/npc_spritesheet.png') no-repeat -711px -80px;
+   width: 31px;
+   height: 65px;
+}
+.npc313 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -110px;
+   width: 23px;
+   height: 54px;
+}
+.npc314 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -0px;
+   width: 25px;
+   height: 50px;
+}
+.npc315 {
+   background: url('/img/npc_spritesheet.png') no-repeat -563px -166px;
+   width: 47px;
+   height: 82px;
+}
+.npc316 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -153px;
+   width: 23px;
+   height: 50px;
+}
+.npc317 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -561px;
+   width: 21px;
+   height: 50px;
+}
+.npc318 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -204px;
+   width: 23px;
+   height: 50px;
+}
+.npc319 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -255px;
+   width: 23px;
+   height: 50px;
+}
+.npc320 {
+   background: url('/img/npc_spritesheet.png') no-repeat -458px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc321 {
+   background: url('/img/npc_spritesheet.png') no-repeat -325px -661px;
+   width: 39px;
+   height: 91px;
+}
+.npc322 {
+   background: url('/img/npc_spritesheet.png') no-repeat -387px -115px;
+   width: 50px;
+   height: 112px;
+}
+.npc323 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -934px;
+   width: 30px;
+   height: 50px;
+}
+.npc324 {
+   background: url('/img/npc_spritesheet.png') no-repeat -273px -934px;
+   width: 29px;
+   height: 50px;
+}
+.npc325 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -306px;
+   width: 23px;
+   height: 50px;
+}
+.npc326 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -357px;
+   width: 23px;
+   height: 50px;
+}
+.npc327 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -408px;
+   width: 23px;
+   height: 50px;
+}
+.npc328 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -459px;
+   width: 23px;
+   height: 50px;
+}
+.npc329 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -510px;
+   width: 23px;
+   height: 50px;
+}
+.npc330 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -561px;
+   width: 23px;
+   height: 50px;
+}
+.npc331 {
+   background: url('/img/npc_spritesheet.png') no-repeat -605px -824px;
+   width: 26px;
+   height: 54px;
+}
+.npc332 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -612px;
+   width: 23px;
+   height: 50px;
+}
+.npc333 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -112px;
+   width: 25px;
+   height: 55px;
+}
+.npc334 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -663px;
+   width: 23px;
+   height: 50px;
+}
+.npc335 {
+   background: url('/img/npc_spritesheet.png') no-repeat -413px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc336 {
+   background: url('/img/npc_spritesheet.png') no-repeat -437px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc337 {
+   background: url('/img/npc_spritesheet.png') no-repeat -461px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc338 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -714px;
+   width: 23px;
+   height: 50px;
+}
+.npc339 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -51px;
+   width: 25px;
+   height: 50px;
+}
+.npc340 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -765px;
+   width: 23px;
+   height: 50px;
+}
+.npc341 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -816px;
+   width: 23px;
+   height: 50px;
+}
+.npc342 {
+   background: url('/img/npc_spritesheet.png') no-repeat -483px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc343 {
+   background: url('/img/npc_spritesheet.png') no-repeat -187px -1231px;
+   width: 16px;
+   height: 17px;
+}
+.npc344 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -548px;
+   width: 33px;
+   height: 73px;
+}
+.npc345 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -867px;
+   width: 23px;
+   height: 50px;
+}
+.npc346 {
+   background: url('/img/npc_spritesheet.png') no-repeat -790px -457px;
+   width: 25px;
+   height: 56px;
+}
+.npc347 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -918px;
+   width: 23px;
+   height: 50px;
+}
+.npc348 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -969px;
+   width: 23px;
+   height: 50px;
+}
+.npc349 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1083px -1020px;
+   width: 23px;
+   height: 50px;
+}
+.npc350 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -102px;
+   width: 25px;
+   height: 50px;
+}
+.npc351 {
+   background: url('/img/npc_spritesheet.png') no-repeat -508px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc352 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -54px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc353 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -168px;
+   width: 25px;
+   height: 55px;
+}
+.npc354 {
+   background: url('/img/npc_spritesheet.png') no-repeat -799px -880px;
+   width: 25px;
+   height: 52px;
+}
+.npc355 {
+   background: url('/img/npc_spritesheet.png') no-repeat -75px -824px;
+   width: 24px;
+   height: 55px;
+}
+.npc356 {
+   background: url('/img/npc_spritesheet.png') no-repeat -493px -661px;
+   width: 42px;
+   height: 85px;
+}
+.npc357 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -153px;
+   width: 25px;
+   height: 50px;
+}
+.npc358 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -204px;
+   width: 25px;
+   height: 50px;
+}
+.npc359 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -529px;
+   width: 24px;
+   height: 71px;
+}
+.npc360 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -224px;
+   width: 25px;
+   height: 55px;
+}
+.npc361 {
+   background: url('/img/npc_spritesheet.png') no-repeat -769px -758px;
+   width: 32px;
+   height: 58px;
+}
+.npc362 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -255px;
+   width: 25px;
+   height: 50px;
+}
+.npc363 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -612px;
+   width: 21px;
+   height: 50px;
+}
+.npc364 {
+   background: url('/img/npc_spritesheet.png') no-repeat -322px -350px;
+   width: 49px;
+   height: 110px;
+}
+.npc365 {
+   background: url('/img/npc_spritesheet.png') no-repeat -473px -824px;
+   width: 21px;
+   height: 55px;
+}
+.npc366 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -306px;
+   width: 25px;
+   height: 50px;
+}
+.npc367 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1002px -1189px;
+   width: 27px;
+   height: 23px;
+}
+.npc368 {
+   background: url('/img/npc_spritesheet.png') no-repeat -825px -880px;
+   width: 25px;
+   height: 52px;
+}
+.npc369 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -0px;
+   width: 23px;
+   height: 50px;
+}
+.npc370 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -51px;
+   width: 23px;
+   height: 50px;
+}
+.npc371 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -102px;
+   width: 23px;
+   height: 50px;
+}
+.npc372 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -663px;
+   width: 21px;
+   height: 50px;
+}
+.npc373 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -751px;
+   width: 23px;
+   height: 51px;
+}
+.npc374 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -803px;
+   width: 23px;
+   height: 51px;
+}
+.npc375 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -314px;
+   width: 23px;
+   height: 51px;
+}
+.npc376 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -158px;
+   width: 24px;
+   height: 51px;
+}
+.npc377 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -791px;
+   width: 20px;
+   height: 42px;
+}
+.npc378 {
+   background: url('/img/npc_spritesheet.png') no-repeat -533px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc379 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -153px;
+   width: 23px;
+   height: 50px;
+}
+.npc380 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -204px;
+   width: 23px;
+   height: 50px;
+}
+.npc381 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -255px;
+   width: 23px;
+   height: 50px;
+}
+.npc382 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -306px;
+   width: 23px;
+   height: 50px;
+}
+.npc383 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -462px;
+   width: 29px;
+   height: 55px;
+}
+.npc384 {
+   background: url('/img/npc_spritesheet.png') no-repeat -743px -80px;
+   width: 31px;
+   height: 65px;
+}
+.npc385 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -210px;
+   width: 24px;
+   height: 51px;
+}
+.npc386 {
+   background: url('/img/npc_spritesheet.png') no-repeat -561px -758px;
+   width: 62px;
+   height: 60px;
+}
+.npc387 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -357px;
+   width: 23px;
+   height: 50px;
+}
+.npc388 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -834px;
+   width: 20px;
+   height: 42px;
+}
+.npc389 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -408px;
+   width: 23px;
+   height: 50px;
+}
+.npc390 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -459px;
+   width: 23px;
+   height: 50px;
+}
+.npc391 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -510px;
+   width: 23px;
+   height: 50px;
+}
+.npc392 {
+   background: url('/img/npc_spritesheet.png') no-repeat -544px -462px;
+   width: 18px;
+   height: 45px;
+}
+.npc393 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -280px;
+   width: 25px;
+   height: 55px;
+}
+.npc394 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -357px;
+   width: 25px;
+   height: 50px;
+}
+.npc395 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -408px;
+   width: 25px;
+   height: 50px;
+}
+.npc396 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -177px;
+   width: 17px;
+   height: 43px;
+}
+.npc397 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -221px;
+   width: 17px;
+   height: 43px;
+}
+.npc398 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -265px;
+   width: 17px;
+   height: 43px;
+}
+.npc399 {
+   background: url('/img/npc_spritesheet.png') no-repeat -385px -1189px;
+   width: 15px;
+   height: 36px;
+}
+.npc400 {
+   background: url('/img/npc_spritesheet.png') no-repeat -573px -1138px;
+   width: 20px;
+   height: 48px;
+}
+.npc401 {
+   background: url('/img/npc_spritesheet.png') no-repeat -231px -462px;
+   width: 43px;
+   height: 99px;
+}
+.npc402 {
+   background: url('/img/npc_spritesheet.png') no-repeat -401px -1189px;
+   width: 15px;
+   height: 36px;
+}
+.npc403 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -459px;
+   width: 25px;
+   height: 50px;
+}
+.npc404 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -309px;
+   width: 17px;
+   height: 43px;
+}
+.npc405 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -353px;
+   width: 17px;
+   height: 43px;
+}
+.npc406 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -397px;
+   width: 17px;
+   height: 43px;
+}
+.npc407 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -0px;
+   width: 30px;
+   height: 51px;
+}
+.npc408 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -441px;
+   width: 17px;
+   height: 43px;
+}
+.npc409 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -485px;
+   width: 17px;
+   height: 43px;
+}
+.npc410 {
+   background: url('/img/npc_spritesheet.png') no-repeat -303px -934px;
+   width: 29px;
+   height: 50px;
+}
+.npc411 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -518px;
+   width: 29px;
+   height: 55px;
+}
+.npc412 {
+   background: url('/img/npc_spritesheet.png') no-repeat -485px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc413 {
+   background: url('/img/npc_spritesheet.png') no-repeat -794px -601px;
+   width: 22px;
+   height: 52px;
+}
+.npc414 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -561px;
+   width: 23px;
+   height: 50px;
+}
+.npc415 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -0px;
+   width: 29px;
+   max-height: 40px;
+}
+.npc416 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -612px;
+   width: 23px;
+   height: 50px;
+}
+.npc417 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -663px;
+   width: 23px;
+   height: 50px;
+}
+.npc418 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -714px;
+   width: 23px;
+   height: 50px;
+}
+.npc419 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -765px;
+   width: 23px;
+   height: 50px;
+}
+.npc420 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -262px;
+   width: 24px;
+   height: 51px;
+}
+.npc421 {
+   background: url('/img/npc_spritesheet.png') no-repeat -333px -934px;
+   width: 29px;
+   height: 50px;
+}
+.npc422 {
+   background: url('/img/npc_spritesheet.png') no-repeat -794px -529px;
+   width: 22px;
+   height: 52px;
+}
+.npc423 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -877px;
+   width: 20px;
+   height: 42px;
+}
+.npc424 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -816px;
+   width: 23px;
+   height: 50px;
+}
+.npc425 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -867px;
+   width: 23px;
+   height: 50px;
+}
+.npc426 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -574px;
+   width: 29px;
+   height: 55px;
+}
+.npc427 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -918px;
+   width: 23px;
+   height: 50px;
+}
+.npc428 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -156px;
+   width: 29px;
+   height: 51px;
+}
+.npc429 {
+   background: url('/img/npc_spritesheet.png') no-repeat -269px -824px;
+   width: 23px;
+   height: 55px;
+}
+.npc430 {
+   background: url('/img/npc_spritesheet.png') no-repeat -765px -1189px;
+   width: 20px;
+   height: 25px;
+}
+.npc431 {
+   background: url('/img/npc_spritesheet.png') no-repeat -786px -1189px;
+   width: 20px;
+   height: 25px;
+}
+.npc432 {
+   background: url('/img/npc_spritesheet.png') no-repeat -807px -1189px;
+   width: 20px;
+   height: 25px;
+}
+.npc433 {
+   background: url('/img/npc_spritesheet.png') no-repeat -828px -1189px;
+   width: 20px;
+   height: 25px;
+}
+.npc434 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -969px;
+   width: 23px;
+   height: 50px;
+}
+.npc435 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1107px -1020px;
+   width: 23px;
+   height: 50px;
+}
+.npc436 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc437 {
+   background: url('/img/npc_spritesheet.png') no-repeat -24px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc438 {
+   background: url('/img/npc_spritesheet.png') no-repeat -48px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc439 {
+   background: url('/img/npc_spritesheet.png') no-repeat -72px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc440 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -714px;
+   width: 21px;
+   height: 50px;
+}
+.npc441 {
+   background: url('/img/npc_spritesheet.png') no-repeat -96px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc442 {
+   background: url('/img/npc_spritesheet.png') no-repeat -120px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc443 {
+   background: url('/img/npc_spritesheet.png') no-repeat -144px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc444 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -510px;
+   width: 25px;
+   height: 50px;
+}
+.npc445 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -561px;
+   width: 25px;
+   height: 50px;
+}
+.npc446 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -385px;
+   width: 23px;
+   height: 52px;
+}
+.npc447 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -765px;
+   width: 21px;
+   height: 50px;
+}
+.npc448 {
+   background: url('/img/npc_spritesheet.png') no-repeat -168px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc449 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1050px -1138px;
+   width: 20px;
+   height: 46px;
+}
+.npc450 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -816px;
+   width: 21px;
+   height: 50px;
+}
+.npc451 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -612px;
+   width: 25px;
+   height: 50px;
+}
+.npc452 {
+   background: url('/img/npc_spritesheet.png') no-repeat -529px -1138px;
+   width: 21px;
+   height: 48px;
+}
+.npc453 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -867px;
+   width: 21px;
+   height: 50px;
+}
+.npc454 {
+   background: url('/img/npc_spritesheet.png') no-repeat -192px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc455 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -918px;
+   width: 21px;
+   height: 50px;
+}
+.npc456 {
+   background: url('/img/npc_spritesheet.png') no-repeat -216px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc457 {
+   background: url('/img/npc_spritesheet.png') no-repeat -240px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc458 {
+   background: url('/img/npc_spritesheet.png') no-repeat -264px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc459 {
+   background: url('/img/npc_spritesheet.png') no-repeat -288px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc460 {
+   background: url('/img/npc_spritesheet.png') no-repeat -293px -824px;
+   width: 23px;
+   height: 55px;
+}
+.npc461 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -963px;
+   width: 19px;
+   height: 42px;
+}
+.npc462 {
+   background: url('/img/npc_spritesheet.png') no-repeat -312px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc463 {
+   background: url('/img/npc_spritesheet.png') no-repeat -336px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc464 {
+   background: url('/img/npc_spritesheet.png') no-repeat -360px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc465 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -969px;
+   width: 21px;
+   height: 50px;
+}
+.npc466 {
+   background: url('/img/npc_spritesheet.png') no-repeat -655px -1189px;
+   width: 23px;
+   height: 30px;
+}
+.npc467 {
+   background: url('/img/npc_spritesheet.png') no-repeat -679px -1189px;
+   width: 23px;
+   height: 30px;
+}
+.npc468 {
+   background: url('/img/npc_spritesheet.png') no-repeat -558px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc469 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -663px;
+   width: 25px;
+   height: 50px;
+}
+.npc470 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -1020px;
+   width: 21px;
+   height: 50px;
+}
+.npc471 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -1006px;
+   width: 19px;
+   height: 42px;
+}
+.npc472 {
+   background: url('/img/npc_spritesheet.png') no-repeat -384px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc473 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1030px -1189px;
+   width: 27px;
+   height: 23px;
+}
+.npc474 {
+   background: url('/img/npc_spritesheet.png') no-repeat -583px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc475 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -529px;
+   width: 17px;
+   height: 43px;
+}
+.npc476 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -1071px;
+   width: 21px;
+   height: 50px;
+}
+.npc477 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -661px;
+   width: 204px;
+   height: 96px;
+}
+.npc478 {
+   background: url('/img/npc_spritesheet.png') no-repeat -317px -824px;
+   width: 23px;
+   height: 55px;
+}
+.npc479 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -108px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc480 {
+   background: url('/img/npc_spritesheet.png') no-repeat -408px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc481 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -162px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc482 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -165px;
+   width: 23px;
+   height: 54px;
+}
+.npc483 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc484 {
+   background: url('/img/npc_spritesheet.png') no-repeat -432px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc485 {
+   background: url('/img/npc_spritesheet.png') no-repeat -22px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc486 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -216px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc487 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -270px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc488 {
+   background: url('/img/npc_spritesheet.png') no-repeat -44px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc489 {
+   background: url('/img/npc_spritesheet.png') no-repeat -608px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc490 {
+   background: url('/img/npc_spritesheet.png') no-repeat -456px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc491 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -714px;
+   width: 25px;
+   height: 50px;
+}
+.npc492 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -765px;
+   width: 25px;
+   height: 50px;
+}
+.npc493 {
+   background: url('/img/npc_spritesheet.png') no-repeat -480px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc494 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -336px;
+   width: 25px;
+   height: 55px;
+}
+.npc495 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -816px;
+   width: 25px;
+   height: 50px;
+}
+.npc496 {
+   background: url('/img/npc_spritesheet.png') no-repeat -551px -1138px;
+   width: 21px;
+   height: 48px;
+}
+.npc497 {
+   background: url('/img/npc_spritesheet.png') no-repeat -633px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc498 {
+   background: url('/img/npc_spritesheet.png') no-repeat -100px -824px;
+   width: 24px;
+   height: 55px;
+}
+.npc499 {
+   background: url('/img/npc_spritesheet.png') no-repeat -504px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc500 {
+   background: url('/img/npc_spritesheet.png') no-repeat -66px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc501 {
+   background: url('/img/npc_spritesheet.png') no-repeat -528px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc502 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -867px;
+   width: 25px;
+   height: 50px;
+}
+.npc503 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -366px;
+   width: 23px;
+   height: 51px;
+}
+.npc504 {
+   background: url('/img/npc_spritesheet.png') no-repeat -552px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc505 {
+   background: url('/img/npc_spritesheet.png') no-repeat -983px -918px;
+   width: 25px;
+   height: 50px;
+}
+.npc506 {
+   background: url('/img/npc_spritesheet.png') no-repeat -576px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc507 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -0px;
+   width: 25px;
+   height: 50px;
+}
+.npc508 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -51px;
+   width: 25px;
+   height: 50px;
+}
+.npc509 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -102px;
+   width: 25px;
+   height: 50px;
+}
+.npc510 {
+   background: url('/img/npc_spritesheet.png') no-repeat -600px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc511 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -153px;
+   width: 25px;
+   height: 50px;
+}
+.npc512 {
+   background: url('/img/npc_spritesheet.png') no-repeat -624px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc513 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -392px;
+   width: 25px;
+   height: 55px;
+}
+.npc514 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -448px;
+   width: 25px;
+   height: 55px;
+}
+.npc515 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -504px;
+   width: 25px;
+   height: 55px;
+}
+.npc516 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -601px;
+   width: 24px;
+   height: 71px;
+}
+.npc517 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -204px;
+   width: 25px;
+   height: 50px;
+}
+.npc518 {
+   background: url('/img/npc_spritesheet.png') no-repeat -405px -661px;
+   width: 43px;
+   height: 88px;
+}
+.npc519 {
+   background: url('/img/npc_spritesheet.png') no-repeat -265px -0px;
+   width: 73px;
+   height: 156px;
+}
+.npc520 {
+   background: url('/img/npc_spritesheet.png') no-repeat -648px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc521 {
+   background: url('/img/npc_spritesheet.png') no-repeat -268px -1231px;
+   width: 15px;
+   height: 16px;
+}
+.npc522 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -255px;
+   width: 25px;
+   height: 50px;
+}
+.npc523 {
+   background: url('/img/npc_spritesheet.png') no-repeat -64px -758px;
+   width: 29px;
+   height: 65px;
+}
+.npc524 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -418px;
+   width: 23px;
+   height: 51px;
+}
+.npc525 {
+   background: url('/img/npc_spritesheet.png') no-repeat -775px -80px;
+   width: 31px;
+   height: 65px;
+}
+.npc526 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -470px;
+   width: 23px;
+   height: 51px;
+}
+.npc527 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -522px;
+   width: 23px;
+   height: 51px;
+}
+.npc529 {
+   background: url('/img/npc_spritesheet.png') no-repeat -672px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc528 {
+   background: url('/img/npc_spritesheet.png') no-repeat -696px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc532 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -89px;
+   width: 19px;
+   height: 43px;
+}
+.npc531 {
+   background: url('/img/npc_spritesheet.png') no-repeat -692px -673px;
+   width: 33px;
+   height: 68px;
+}
+.npc530 {
+   background: url('/img/npc_spritesheet.png') no-repeat -88px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc533 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -306px;
+   width: 25px;
+   height: 50px;
+}
+.npc534 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -987px;
+   width: 19px;
+   height: 46px;
+}
+.npc535 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -573px;
+   width: 17px;
+   height: 43px;
+}
+.npc536 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -617px;
+   width: 17px;
+   height: 43px;
+}
+.npc537 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -661px;
+   width: 17px;
+   height: 43px;
+}
+.npc538 {
+   background: url('/img/npc_spritesheet.png') no-repeat -485px -1138px;
+   width: 21px;
+   height: 49px;
+}
+.npc539 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -574px;
+   width: 23px;
+   height: 51px;
+}
+.npc540 {
+   background: url('/img/npc_spritesheet.png') no-repeat -250px -1189px;
+   width: 17px;
+   height: 39px;
+}
+.npc541 {
+   background: url('/img/npc_spritesheet.png') no-repeat -594px -1138px;
+   width: 20px;
+   height: 48px;
+}
+.npc542 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -673px;
+   width: 24px;
+   height: 71px;
+}
+.npc543 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -357px;
+   width: 25px;
+   height: 50px;
+}
+.npc544 {
+   background: url('/img/npc_spritesheet.png') no-repeat -720px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc545 {
+   background: url('/img/npc_spritesheet.png') no-repeat -615px -1138px;
+   width: 20px;
+   height: 48px;
+}
+.npc546 {
+   background: url('/img/npc_spritesheet.png') no-repeat -308px -1138px;
+   width: 20px;
+   height: 50px;
+}
+.npc547 {
+   background: url('/img/npc_spritesheet.png') no-repeat -958px -1138px;
+   width: 22px;
+   height: 46px;
+}
+.npc548 {
+   background: url('/img/npc_spritesheet.png') no-repeat -744px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc549 {
+   background: url('/img/npc_spritesheet.png') no-repeat -768px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc550 {
+   background: url('/img/npc_spritesheet.png') no-repeat -792px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc551 {
+   background: url('/img/npc_spritesheet.png') no-repeat -933px -1138px;
+   width: 24px;
+   height: 46px;
+}
+.npc552 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1071px -1138px;
+   width: 20px;
+   height: 46px;
+}
+.npc553 {
+   background: url('/img/npc_spritesheet.png') no-repeat -816px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc554 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -408px;
+   width: 25px;
+   height: 50px;
+}
+.npc555 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -459px;
+   width: 25px;
+   height: 50px;
+}
+.npc556 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1092px -1138px;
+   width: 20px;
+   height: 46px;
+}
+.npc557 {
+   background: url('/img/npc_spritesheet.png') no-repeat -840px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc558 {
+   background: url('/img/npc_spritesheet.png') no-repeat -864px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc559 {
+   background: url('/img/npc_spritesheet.png') no-repeat -888px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc560 {
+   background: url('/img/npc_spritesheet.png') no-repeat -658px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc561 {
+   background: url('/img/npc_spritesheet.png') no-repeat -683px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc562 {
+   background: url('/img/npc_spritesheet.png') no-repeat -857px -1138px;
+   width: 26px;
+   height: 47px;
+}
+.npc563 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1113px -1138px;
+   width: 20px;
+   height: 46px;
+}
+.npc564 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1134px -1138px;
+   width: 20px;
+   height: 46px;
+}
+.npc565 {
+   background: url('/img/npc_spritesheet.png') no-repeat -964px -934px;
+   width: 18px;
+   height: 46px;
+}
+.npc566 {
+   background: url('/img/npc_spritesheet.png') no-repeat -981px -1138px;
+   width: 22px;
+   height: 46px;
+}
+.npc567 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -510px;
+   width: 25px;
+   height: 50px;
+}
+.npc568 {
+   background: url('/img/npc_spritesheet.png') no-repeat -97px -183px;
+   width: 96px;
+   height: 166px;
+}
+.npc569 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1155px -1138px;
+   width: 20px;
+   height: 46px;
+}
+.npc570 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -886px;
+   width: 20px;
+   height: 46px;
+}
+.npc571 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -884px;
+   width: 20px;
+   height: 46px;
+}
+.npc572 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -0px;
+   width: 20px;
+   height: 46px;
+}
+.npc573 {
+   background: url('/img/npc_spritesheet.png') no-repeat -708px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc574 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -626px;
+   width: 23px;
+   height: 51px;
+}
+.npc575 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -678px;
+   width: 23px;
+   height: 51px;
+}
+.npc576 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -47px;
+   width: 20px;
+   height: 46px;
+}
+.npc577 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -94px;
+   width: 20px;
+   height: 46px;
+}
+.npc578 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -141px;
+   width: 20px;
+   height: 46px;
+}
+.npc579 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -188px;
+   width: 20px;
+   height: 46px;
+}
+.npc580 {
+   background: url('/img/npc_spritesheet.png') no-repeat -129px -1189px;
+   width: 17px;
+   height: 40px;
+}
+.npc581 {
+   background: url('/img/npc_spritesheet.png') no-repeat -147px -1189px;
+   width: 17px;
+   height: 40px;
+}
+.npc582 {
+   background: url('/img/npc_spritesheet.png') no-repeat -884px -1138px;
+   width: 26px;
+   height: 47px;
+}
+.npc583 {
+   background: url('/img/npc_spritesheet.png') no-repeat -507px -1189px;
+   width: 15px;
+   height: 33px;
+}
+.npc584 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -695px;
+   width: 32px;
+   height: 58px;
+}
+.npc585 {
+   background: url('/img/npc_spritesheet.png') no-repeat -523px -1189px;
+   width: 15px;
+   height: 33px;
+}
+.npc586 {
+   background: url('/img/npc_spritesheet.png') no-repeat -539px -1189px;
+   width: 15px;
+   height: 33px;
+}
+.npc587 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1004px -1138px;
+   width: 22px;
+   height: 46px;
+}
+.npc588 {
+   background: url('/img/npc_spritesheet.png') no-repeat -658px -824px;
+   width: 25px;
+   height: 54px;
+}
+.npc589 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -174px;
+   width: 29px;
+   height: 57px;
+}
+.npc590 {
+   background: url('/img/npc_spritesheet.png') no-repeat -329px -1138px;
+   width: 20px;
+   height: 50px;
+}
+.npc591 {
+   background: url('/img/npc_spritesheet.png') no-repeat -555px -1189px;
+   width: 15px;
+   height: 33px;
+}
+.npc592 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -0px;
+   width: 24px;
+   height: 52px;
+}
+.npc593 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -53px;
+   width: 24px;
+   height: 52px;
+}
+.npc594 {
+   background: url('/img/npc_spritesheet.png') no-repeat -84px -0px;
+   width: 83px;
+   height: 182px;
+}
+.npc595 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -235px;
+   width: 20px;
+   height: 46px;
+}
+.npc596 {
+   background: url('/img/npc_spritesheet.png') no-repeat -165px -1189px;
+   width: 17px;
+   height: 40px;
+}
+.npc597 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -282px;
+   width: 20px;
+   height: 46px;
+}
+.npc598 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -329px;
+   width: 20px;
+   height: 46px;
+}
+.npc599 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -376px;
+   width: 20px;
+   height: 46px;
+}
+.npc600 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -423px;
+   width: 20px;
+   height: 46px;
+}
+.npc601 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1027px -1138px;
+   width: 22px;
+   height: 46px;
+}
+.npc602 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -470px;
+   width: 20px;
+   height: 46px;
+}
+.npc603 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -517px;
+   width: 20px;
+   height: 46px;
+}
+.npc604 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -564px;
+   width: 20px;
+   height: 46px;
+}
+.npc605 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -611px;
+   width: 20px;
+   height: 46px;
+}
+.npc606 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -658px;
+   width: 20px;
+   height: 46px;
+}
+.npc607 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -705px;
+   width: 20px;
+   height: 46px;
+}
+.npc608 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -752px;
+   width: 20px;
+   height: 46px;
+}
+.npc609 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -799px;
+   width: 20px;
+   height: 46px;
+}
+.npc610 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -846px;
+   width: 20px;
+   height: 46px;
+}
+.npc611 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -893px;
+   width: 20px;
+   height: 46px;
+}
+.npc612 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1177px -940px;
+   width: 20px;
+   height: 46px;
+}
+.npc613 {
+   background: url('/img/npc_spritesheet.png') no-repeat -502px -216px;
+   width: 34px;
+   height: 106px;
+}
+.npc614 {
+   background: url('/img/npc_spritesheet.png') no-repeat -754px -457px;
+   width: 35px;
+   height: 66px;
+}
+.npc615 {
+   background: url('/img/npc_spritesheet.png') no-repeat -449px -661px;
+   width: 43px;
+   height: 86px;
+}
+.npc616 {
+   background: url('/img/npc_spritesheet.png') no-repeat -733px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc617 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -561px;
+   width: 25px;
+   height: 50px;
+}
+.npc618 {
+   background: url('/img/npc_spritesheet.png') no-repeat -912px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc619 {
+   background: url('/img/npc_spritesheet.png') no-repeat -936px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc620 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -612px;
+   width: 25px;
+   height: 50px;
+}
+.npc621 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -663px;
+   width: 25px;
+   height: 50px;
+}
+.npc622 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -714px;
+   width: 25px;
+   height: 50px;
+}
+.npc623 {
+   background: url('/img/npc_spritesheet.png') no-repeat -960px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc624 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -765px;
+   width: 25px;
+   height: 50px;
+}
+.npc625 {
+   background: url('/img/npc_spritesheet.png') no-repeat -183px -1189px;
+   width: 17px;
+   height: 40px;
+}
+.npc626 {
+   background: url('/img/npc_spritesheet.png') no-repeat -684px -824px;
+   width: 25px;
+   height: 54px;
+}
+.npc627 {
+   background: url('/img/npc_spritesheet.png') no-repeat -710px -824px;
+   width: 25px;
+   height: 54px;
+}
+.npc628 {
+   background: url('/img/npc_spritesheet.png') no-repeat -736px -824px;
+   width: 25px;
+   height: 54px;
+}
+.npc629 {
+   background: url('/img/npc_spritesheet.png') no-repeat -762px -824px;
+   width: 25px;
+   height: 54px;
+}
+.npc630 {
+   background: url('/img/npc_spritesheet.png') no-repeat -905px -1189px;
+   width: 27px;
+   height: 24px;
+}
+.npc631 {
+   background: url('/img/npc_spritesheet.png') no-repeat -979px -1189px;
+   width: 22px;
+   height: 24px;
+}
+.npc632 {
+   background: url('/img/npc_spritesheet.png') no-repeat -31px -934px;
+   width: 30px;
+   height: 50px;
+}
+.npc633 {
+   background: url('/img/npc_spritesheet.png') no-repeat -62px -934px;
+   width: 30px;
+   height: 50px;
+}
+.npc634 {
+   background: url('/img/npc_spritesheet.png') no-repeat -984px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc635 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1008px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc636 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1032px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc637 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1056px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc638 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1080px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc639 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1104px -1087px;
+   width: 23px;
+   height: 50px;
+}
+.npc640 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -0px;
+   width: 23px;
+   height: 50px;
+}
+.npc641 {
+   background: url('/img/npc_spritesheet.png') no-repeat -268px -1189px;
+   width: 34px;
+   height: 37px;
+}
+.npc642 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -220px;
+   width: 23px;
+   height: 54px;
+}
+.npc643 {
+   background: url('/img/npc_spritesheet.png') no-repeat -495px -824px;
+   width: 21px;
+   height: 55px;
+}
+.npc644 {
+   background: url('/img/npc_spritesheet.png') no-repeat -339px -0px;
+   width: 47px;
+   height: 115px;
+}
+.npc645 {
+   background: url('/img/npc_spritesheet.png') no-repeat -563px -249px;
+   width: 47px;
+   height: 82px;
+}
+.npc646 {
+   background: url('/img/npc_spritesheet.png') no-repeat -563px -332px;
+   width: 47px;
+   height: 82px;
+}
+.npc647 {
+   background: url('/img/npc_spritesheet.png') no-repeat -563px -415px;
+   width: 47px;
+   height: 82px;
+}
+.npc648 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -275px;
+   width: 23px;
+   height: 54px;
+}
+.npc649 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -560px;
+   width: 25px;
+   height: 55px;
+}
+.npc650 {
+   background: url('/img/npc_spritesheet.png') no-repeat -788px -824px;
+   width: 25px;
+   height: 54px;
+}
+.npc651 {
+   background: url('/img/npc_spritesheet.png') no-repeat -667px -80px;
+   width: 43px;
+   height: 79px;
+}
+.npc652 {
+   background: url('/img/npc_spritesheet.png') no-repeat -758px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc653 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -730px;
+   width: 23px;
+   height: 51px;
+}
+.npc654 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -51px;
+   width: 23px;
+   height: 50px;
+}
+.npc655 {
+   background: url('/img/npc_spritesheet.png') no-repeat -339px -116px;
+   width: 47px;
+   height: 115px;
+}
+.npc656 {
+   background: url('/img/npc_spritesheet.png') no-repeat -284px -1231px;
+   width: 13px;
+   height: 14px;
+}
+.npc657 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -330px;
+   width: 23px;
+   height: 54px;
+}
+.npc658 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -816px;
+   width: 25px;
+   height: 50px;
+}
+.npc659 {
+   background: url('/img/npc_spritesheet.png') no-repeat -814px -824px;
+   width: 25px;
+   height: 54px;
+}
+.npc660 {
+   background: url('/img/npc_spritesheet.png') no-repeat -563px -0px;
+   width: 63px;
+   height: 82px;
+}
+.npc661 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -324px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc662 {
+   background: url('/img/npc_spritesheet.png') no-repeat -783px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc663 {
+   background: url('/img/npc_spritesheet.png') no-repeat -571px -1189px;
+   width: 27px;
+   height: 32px;
+}
+.npc664 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -232px;
+   width: 29px;
+   height: 57px;
+}
+.npc665 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -290px;
+   width: 29px;
+   height: 57px;
+}
+.npc666 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1127px -1189px;
+   width: 22px;
+   height: 22px;
+}
+.npc667 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -867px;
+   width: 25px;
+   height: 50px;
+}
+.npc668 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -782px;
+   width: 23px;
+   height: 51px;
+}
+.npc669 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -164px;
+   width: 36px;
+   height: 79px;
+}
+.npc670 {
+   background: url('/img/npc_spritesheet.png') no-repeat -927px -834px;
+   width: 23px;
+   height: 51px;
+}
+.npc671 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1009px -918px;
+   width: 25px;
+   height: 50px;
+}
+.npc672 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -616px;
+   width: 25px;
+   height: 55px;
+}
+.npc673 {
+   background: url('/img/npc_spritesheet.png') no-repeat -726px -673px;
+   width: 33px;
+   height: 68px;
+}
+.npc674 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -378px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc675 {
+   background: url('/img/npc_spritesheet.png') no-repeat -692px -457px;
+   width: 30px;
+   height: 68px;
+}
+.npc676 {
+   background: url('/img/npc_spritesheet.png') no-repeat -723px -457px;
+   width: 30px;
+   height: 68px;
+}
+.npc677 {
+   background: url('/img/npc_spritesheet.png') no-repeat -760px -673px;
+   width: 33px;
+   height: 68px;
+}
+.npc678 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -432px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc679 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -486px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc680 {
+   background: url('/img/npc_spritesheet.png') no-repeat -692px -601px;
+   width: 33px;
+   height: 68px;
+}
+.npc681 {
+   background: url('/img/npc_spritesheet.png') no-repeat -726px -601px;
+   width: 33px;
+   height: 68px;
+}
+.npc682 {
+   background: url('/img/npc_spritesheet.png') no-repeat -760px -601px;
+   width: 33px;
+   height: 68px;
+}
+.npc683 {
+   background: url('/img/npc_spritesheet.png') no-repeat -692px -529px;
+   width: 33px;
+   height: 68px;
+}
+.npc684 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -399px;
+   width: 32px;
+   height: 74px;
+}
+.npc685 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -416px;
+   width: 23px;
+   height: 51px;
+}
+.npc686 {
+   background: url('/img/npc_spritesheet.png') no-repeat -94px -758px;
+   width: 29px;
+   height: 65px;
+}
+.npc687 {
+   background: url('/img/npc_spritesheet.png') no-repeat -124px -758px;
+   width: 29px;
+   height: 65px;
+}
+.npc688 {
+   background: url('/img/npc_spritesheet.png') no-repeat -154px -758px;
+   width: 29px;
+   height: 65px;
+}
+.npc689 {
+   background: url('/img/npc_spritesheet.png') no-repeat -184px -758px;
+   width: 29px;
+   height: 65px;
+}
+.npc690 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -468px;
+   width: 23px;
+   height: 51px;
+}
+.npc691 {
+   background: url('/img/npc_spritesheet.png') no-repeat -726px -529px;
+   width: 33px;
+   height: 68px;
+}
+.npc692 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -520px;
+   width: 23px;
+   height: 51px;
+}
+.npc693 {
+   background: url('/img/npc_spritesheet.png') no-repeat -509px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc694 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -0px;
+   width: 39px;
+   height: 81px;
+}
+.npc695 {
+   background: url('/img/npc_spritesheet.png') no-repeat -201px -1189px;
+   width: 17px;
+   height: 40px;
+}
+.npc696 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -540px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc697 {
+   background: url('/img/npc_spritesheet.png') no-repeat -760px -529px;
+   width: 33px;
+   height: 68px;
+}
+.npc698 {
+   background: url('/img/npc_spritesheet.png') no-repeat -533px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc699 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -82px;
+   width: 39px;
+   height: 81px;
+}
+.npc700 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -594px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc701 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -985px;
+   width: 25px;
+   height: 50px;
+}
+.npc702 {
+   background: url('/img/npc_spritesheet.png') no-repeat -557px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc703 {
+   background: url('/img/npc_spritesheet.png') no-repeat -26px -985px;
+   width: 25px;
+   height: 50px;
+}
+.npc704 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -758px;
+   width: 31px;
+   height: 65px;
+}
+.npc705 {
+   background: url('/img/npc_spritesheet.png') no-repeat -748px -1189px;
+   width: 16px;
+   height: 28px;
+}
+.npc706 {
+   background: url('/img/npc_spritesheet.png') no-repeat -32px -758px;
+   width: 31px;
+   height: 65px;
+}
+.npc707 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -648px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc708 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -702px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc709 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -756px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc710 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -572px;
+   width: 23px;
+   height: 51px;
+}
+.npc711 {
+   background: url('/img/npc_spritesheet.png') no-repeat -52px -985px;
+   width: 25px;
+   height: 50px;
+}
+.npc712 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -260px;
+   width: 25px;
+   height: 51px;
+}
+.npc713 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -312px;
+   width: 25px;
+   height: 51px;
+}
+.npc714 {
+   background: url('/img/npc_spritesheet.png') no-repeat -110px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc715 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -1049px;
+   width: 19px;
+   height: 42px;
+}
+.npc716 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -624px;
+   width: 23px;
+   height: 51px;
+}
+.npc717 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -102px;
+   width: 23px;
+   height: 50px;
+}
+.npc718 {
+   background: url('/img/npc_spritesheet.png') no-repeat -78px -985px;
+   width: 25px;
+   height: 50px;
+}
+.npc719 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -153px;
+   width: 23px;
+   height: 50px;
+}
+.npc720 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -204px;
+   width: 23px;
+   height: 50px;
+}
+.npc721 {
+   background: url('/img/npc_spritesheet.png') no-repeat -471px -1189px;
+   width: 17px;
+   height: 35px;
+}
+.npc722 {
+   background: url('/img/npc_spritesheet.png') no-repeat -808px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc723 {
+   background: url('/img/npc_spritesheet.png') no-repeat -132px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc724 {
+   background: url('/img/npc_spritesheet.png') no-repeat -833px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc725 {
+   background: url('/img/npc_spritesheet.png') no-repeat -371px -1138px;
+   width: 23px;
+   height: 49px;
+}
+.npc726 {
+   background: url('/img/npc_spritesheet.png') no-repeat -858px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc727 {
+   background: url('/img/npc_spritesheet.png') no-repeat -883px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc728 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -255px;
+   width: 23px;
+   height: 50px;
+}
+.npc729 {
+   background: url('/img/npc_spritesheet.png') no-repeat -908px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc730 {
+   background: url('/img/npc_spritesheet.png') no-repeat -933px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc731 {
+   background: url('/img/npc_spritesheet.png') no-repeat -154px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc732 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -306px;
+   width: 23px;
+   height: 50px;
+}
+.npc733 {
+   background: url('/img/npc_spritesheet.png') no-repeat -851px -880px;
+   width: 25px;
+   height: 52px;
+}
+.npc734 {
+   background: url('/img/npc_spritesheet.png') no-repeat -877px -880px;
+   width: 25px;
+   height: 52px;
+}
+.npc735 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -676px;
+   width: 23px;
+   height: 51px;
+}
+.npc736 {
+   background: url('/img/npc_spritesheet.png') no-repeat -873px -438px;
+   width: 23px;
+   height: 52px;
+}
+.npc737 {
+   background: url('/img/npc_spritesheet.png') no-repeat -104px -985px;
+   width: 25px;
+   height: 50px;
+}
+.npc738 {
+   background: url('/img/npc_spritesheet.png') no-repeat -958px -985px;
+   width: 24px;
+   height: 50px;
+}
+.npc739 {
+   background: url('/img/npc_spritesheet.png') no-repeat -265px -297px;
+   width: 25px;
+   height: 52px;
+}
+.npc740 {
+   background: url('/img/npc_spritesheet.png') no-repeat -817px -348px;
+   width: 29px;
+   height: 57px;
+}
+.npc741 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -357px;
+   width: 23px;
+   height: 50px;
+}
+.npc742 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -408px;
+   width: 23px;
+   height: 50px;
+}
+.npc743 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -459px;
+   width: 23px;
+   height: 50px;
+}
+.npc744 {
+   background: url('/img/npc_spritesheet.png') no-repeat -517px -824px;
+   width: 21px;
+   height: 55px;
+}
+.npc745 {
+   background: url('/img/npc_spritesheet.png') no-repeat -176px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc746 {
+   background: url('/img/npc_spritesheet.png') no-repeat -581px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc747 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -728px;
+   width: 23px;
+   height: 51px;
+}
+.npc748 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1198px -0px;
+   width: 21px;
+   height: 44px;
+}
+.npc749 {
+   background: url('/img/npc_spritesheet.png') no-repeat -605px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc750 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -510px;
+   width: 23px;
+   height: 50px;
+}
+.npc751 {
+   background: url('/img/npc_spritesheet.png') no-repeat -198px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc752 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -561px;
+   width: 23px;
+   height: 50px;
+}
+.npc753 {
+   background: url('/img/npc_spritesheet.png') no-repeat -220px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc754 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -612px;
+   width: 23px;
+   height: 50px;
+}
+.npc755 {
+   background: url('/img/npc_spritesheet.png') no-repeat -242px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc756 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -663px;
+   width: 23px;
+   height: 50px;
+}
+.npc757 {
+   background: url('/img/npc_spritesheet.png') no-repeat -214px -758px;
+   width: 29px;
+   height: 65px;
+}
+.npc758 {
+   background: url('/img/npc_spritesheet.png') no-repeat -303px -1189px;
+   width: 34px;
+   height: 37px;
+}
+.npc759 {
+   background: url('/img/npc_spritesheet.png') no-repeat -372px -350px;
+   width: 44px;
+   height: 109px;
+}
+.npc760 {
+   background: url('/img/npc_spritesheet.png') no-repeat -563px -498px;
+   width: 47px;
+   height: 82px;
+}
+.npc761 {
+   background: url('/img/npc_spritesheet.png') no-repeat -599px -1189px;
+   width: 27px;
+   height: 32px;
+}
+.npc762 {
+   background: url('/img/npc_spritesheet.png') no-repeat -627px -1189px;
+   width: 27px;
+   height: 32px;
+}
+.npc763 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -714px;
+   width: 23px;
+   height: 50px;
+}
+.npc764 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -52px;
+   width: 30px;
+   height: 51px;
+}
+.npc765 {
+   background: url('/img/npc_spritesheet.png') no-repeat -291px -297px;
+   width: 25px;
+   height: 52px;
+}
+.npc766 {
+   background: url('/img/npc_spritesheet.png') no-repeat -130px -985px;
+   width: 25px;
+   height: 50px;
+}
+.npc767 {
+   background: url('/img/npc_spritesheet.png') no-repeat -746px -880px;
+   width: 26px;
+   height: 52px;
+}
+.npc768 {
+   background: url('/img/npc_spritesheet.png') no-repeat -75px -1231px;
+   width: 74px;
+   height: 21px;
+}
+.npc769 {
+   background: url('/img/npc_spritesheet.png') no-repeat -563px -581px;
+   width: 47px;
+   height: 82px;
+}
+.npc770 {
+   background: url('/img/npc_spritesheet.png') no-repeat -629px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc771 {
+   background: url('/img/npc_spritesheet.png') no-repeat -653px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc772 {
+   background: url('/img/npc_spritesheet.png') no-repeat -847px -672px;
+   width: 25px;
+   height: 55px;
+}
+.npc773 {
+   background: url('/img/npc_spritesheet.png') no-repeat -677px -880px;
+   width: 23px;
+   max-height: 40px;
+}
+.npc774 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -765px;
+   width: 23px;
+   height: 50px;
+}
+.npc775 {
+   background: url('/img/npc_spritesheet.png') no-repeat -489px -1189px;
+   width: 17px;
+   height: 35px;
+}
+.npc776 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -780px;
+   width: 23px;
+   height: 51px;
+}
+.npc777 {
+   background: url('/img/npc_spritesheet.png') no-repeat -160px -1231px;
+   width: 9px;
+   height: 19px;
+}
+.npc778 {
+   background: url('/img/npc_spritesheet.png') no-repeat -264px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc779 {
+   background: url('/img/npc_spritesheet.png') no-repeat -840px -824px;
+   width: 24px;
+   height: 54px;
+}
+.npc780 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1131px -816px;
+   width: 23px;
+   height: 50px;
+}
+.npc781 {
+   background: url('/img/npc_spritesheet.png') no-repeat -338px -1189px;
+   width: 17px;
+   height: 37px;
+}
+.npc782 {
+   background: url('/img/npc_spritesheet.png') no-repeat -703px -1189px;
+   width: 13px;
+   height: 30px;
+}
+.npc783 {
+   background: url('/img/npc_spritesheet.png') no-repeat -717px -1189px;
+   width: 13px;
+   height: 30px;
+}
+.npc784 {
+   background: url('/img/npc_spritesheet.png') no-repeat -897px -810px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc785 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -832px;
+   width: 23px;
+   height: 51px;
+}
+.npc786 {
+   background: url('/img/npc_spritesheet.png') no-repeat -1150px -1189px;
+   width: 22px;
+   height: 22px;
+}
+.npc787 {
+   background: url('/img/npc_spritesheet.png') no-repeat -156px -985px;
+   width: 25px;
+   height: 50px;
+}
+.npc788 {
+   background: url('/img/npc_spritesheet.png') no-repeat -286px -1138px;
+   width: 21px;
+   height: 50px;
+}
+.npc789 {
+   background: url('/img/npc_spritesheet.png') no-repeat -350px -1138px;
+   width: 20px;
+   height: 50px;
+}
+.npc790 {
+   background: url('/img/npc_spritesheet.png') no-repeat -182px -985px;
+   width: 25px;
+   height: 50px;
+}
+.npc791 {
+   background: url('/img/npc_spritesheet.png') no-repeat -952px -364px;
+   width: 25px;
+   height: 51px;
+}
+.npc792 {
+   background: url('/img/npc_spritesheet.png') no-repeat -0px -880px;
+   width: 25px;
+   max-height: 40px;
+}
+.npc793 {
+   background: url('/img/npc_spritesheet.png') no-repeat -26px -880px;
+   width: 25px;
+   max-height: 40px;
+}

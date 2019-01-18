@@ -10,9 +10,7 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 
 <div class="text-info table-dark">
 	<div class="container border-left border-info border-right">
-		<div align="center">
-			<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">NPC Database</h2>
-		</div>
+		<div class="h2 text-center pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">NPC Database</div>
 		<div>
 			<div class="container" style="padding-left: unset;">
 				<input type="text" class="pl-2" id="inputBox" onkeyup="search()" placeholder="Search for a NPC">
@@ -25,7 +23,7 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 					<tr class="text-info">
 						<th class="small pl-2" width="25%">Name</th>
 						<th class="small" width="25%">Description</th>
-						<th class="small text-center" width="20%">Picture</th>
+						<th class="small" width="20%">Picture</th>
 						<th class="small">Combat</th>
 						<th class="small text-center">Disposition</th>
 						<th class="small text-center">Respawn</th>
@@ -43,7 +41,7 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 								<small><?php echo $result['description'] ?></small>
 							</td>
 							<td class="text-center pt-1 pb-1" width="20%">
-								<img style="max-height: 40px;" src="/img/npc/<?php echo $result['id'] ?>.png">
+								<div class="display-glow npc<?php echo $result['id'] ?>" style="max-height: 40px;"></div>
 							</td>
 							<td>
 								<small><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?></small>

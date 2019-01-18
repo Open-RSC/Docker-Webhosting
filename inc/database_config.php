@@ -835,7 +835,7 @@ function activityfeed()
 function gameChat()
 {
 	$connector = new Dbc();
-	$game_accounts = $connector->logquery("SELECT A.id playerID, A.group_id, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 1000");
+	$game_accounts = $connector->logquery("SELECT A.id playerID, A.group_id, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 1500");
 	date_default_timezone_set('America/New_York');
 	?>
 	<div class="panel" style="font-size: 14px;">

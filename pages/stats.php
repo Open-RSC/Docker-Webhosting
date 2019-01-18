@@ -3,69 +3,69 @@ if (!defined('IN_SITE')) {
     die("You do not have permission to access this file.");
 }
 ?>
-<div class="main">
-    <div class="content">
-        <article>
-            <div class="panel">
-                <div style="margin-left: 80px; margin-right: 80px; margin-top: 45px; margin-bottom: 45px; color: lightgrey; font-size: 18px;"
-                     align="left">
-                    <h4 style="color: #C6A444;">Accounts</h4>
-                    <b><a class="white" href="/online"><?php echo playersOnline(); ?></a></b> players currently logged in.<br/>
-                    <b><a class="white" href="/registrationstoday"><?php echo newRegistrationsToday(); ?></a></b> players have been registered today.<br/>
-                    <b><a class="white" href="/loginstoday"><?php echo loginsToday(); ?></a></b> players logged in today.<br/>
-                    <b><?php echo uniquePlayers(); ?></b> people have created <b><?php echo totalPlayers(); ?></b>
-                    players.<br/>
-                    <b><?php echo totalTime(); ?></b> total time played.<br/><br/>
 
-                    <h4 style="color: #C6A444;">Combat</h4>
-                    The highest combat level is <b><?php echo topcombat(); ?>.</b><br/>
-                    <b><?php echo combat30(); ?></b> players over combat level 30.<br/>
-                    <b><?php echo combat50(); ?></b> players over combat level 50.</b><br/>
-                    <b><?php echo combat80(); ?></b> players over combat level 80.</b><br/>
-                    <b><?php echo combat90(); ?></b> players over combat level 90.</b><br/>
-                    <b><?php echo combat100(); ?></b> players over combat level 100.</b><br/>
-                    <b><?php echo combat123(); ?></b> players are combat level 123.</b><br/><br/>
+<div class="text-info table-dark">
+	<div class="container border-left border-info border-right">
+		<div class="h2 text-center pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Statistics</div>
+		<div class="row justify-content-center">
+			<div class="col-4 text-primary">
+					<div class="h4 text-warning">Accounts</div>
+                    <a class="text-info font-weight-bold" href="/online"><?php echo playersOnline(); ?></a> players currently logged in.<br/>
+                    <a class="text-info font-weight-bold" href="/registrationstoday"><?php echo newRegistrationsToday(); ?></a> players have been registered today.<br/>
+                    <a class="text-info font-weight-bold" href="/loginstoday"><?php echo loginsToday(); ?></a> players logged in today.<br/>
+                    <span class="text-info font-weight-bold"><?php echo uniquePlayers(); ?></span> people have created <span class="text-info font-weight-bold"><?php echo totalPlayers(); ?></span>
+					players.<br/>
+					<span class="text-info font-weight-bold"><?php echo totalTime(); ?></span> total time played.<br/><br/>
 
-                    <h4 style="color: #C6A444;">Quests</h4>
-                    <b><?php echo startedQuest(); ?></b> players have started at least one quest.<br/><br/>
+                    <div class="h4 text-warning">Combat</div>
+                    The highest combat level is <span class="text-info font-weight-bold"><?php echo topcombat(); ?>.</span><br/>
+                    <span class="text-info font-weight-bold"><?php echo combat30(); ?></span> players over combat level 30.<br/>
+                    <span class="text-info font-weight-bold"><?php echo combat50(); ?></span> players over combat level 50.</span><br/>
+                    <span class="text-info font-weight-bold"><?php echo combat80(); ?></span> players over combat level 80.</span><br/>
+                    <span class="text-info font-weight-bold"><?php echo combat90(); ?></span> players over combat level 90.</span><br/>
+                    <span class="text-info font-weight-bold"><?php echo combat100(); ?></span> players over combat level 100.</span><br/>
+                    <span class="text-info font-weight-bold"><?php echo combat123(); ?></span> players are combat level 123.</span><br/><br/>
 
-                    <h4 style="color: #C6A444;">Wealth</h4>
-                    <b><?php echo banktotalGold(); ?></b> gp total in-game.<br/>
-                    <b><?php echo gold30(); ?></b> players have over 30K gp.<br/>
-                    <b><?php echo gold50(); ?></b> players have over 50K gp.<br/>
-                    <b><?php echo gold80(); ?></b> players have over 80K gp.<br/>
-                    <b><?php echo gold120(); ?></b> players have over 120K gp.<br/>
-                    <b><?php echo gold400(); ?></b> players have over 400K gp.<br/>
-                    <b><?php echo gold1m(); ?></b> players have over 1M gp.<br/>
-                    <b><?php echo gold12m(); ?></b> players have over 1.2M gp.<br/>
-                    <b><?php echo gold15m(); ?></b> players have over 1.5M gp.<br/><br/>
+					<div class="h4 text-warning">Quests</div>
+                    <span class="text-info font-weight-bold"><?php echo startedQuest(); ?></span> players have begun a quest.<br/><br/>
 
-                    <h4 style="color: #C6A444;">Expensive Items</h4>
-                    <img src="/img/items/1278.png"/> <b><?php echo dsq(); ?></b><br/>
-                    <img src="/img/items/795.png"/> <b><?php echo dmed(); ?></b><br/>
-                    <img src="/img/items/522.png"/> <b><?php echo dammy(); ?></b><br/>
-                    <img src="/img/items/597.png"/> <b><?php echo chargeddammy(); ?></b><br/>
-                    <img src="/img/items/594.png"/> <b><?php echo dbattle(); ?></b><br/>
-                    <img src="/img/items/593.png"/> <b><?php echo dlong(); ?></b><br/><br/>
+					<div class="h4 text-warning">Wealth</div>
+                    <span class="text-info font-weight-bold"><?php echo banktotalGold(); ?></span> gp total in-game.<br/>
+                    <span class="text-info font-weight-bold"><?php echo gold30(); ?></span> players have over 30K gp.<br/>
+                    <span class="text-info font-weight-bold"><?php echo gold50(); ?></span> players have over 50K gp.<br/>
+                    <span class="text-info font-weight-bold"><?php echo gold80(); ?></span> players have over 80K gp.<br/>
+                    <span class="text-info font-weight-bold"><?php echo gold120(); ?></span> players have over 120K gp.<br/>
+                    <span class="text-info font-weight-bold"><?php echo gold400(); ?></span> players have over 400K gp.<br/>
+                    <span class="text-info font-weight-bold"><?php echo gold1m(); ?></span> players have over 1M gp.<br/>
+                    <span class="text-info font-weight-bold"><?php echo gold12m(); ?></span> players have over 1.2M gp.<br/>
+                    <span class="text-info font-weight-bold"><?php echo gold15m(); ?></span> players have over 1.5M gp.<br/><br/>
 
-                    <h4 style="color: #C6A444;">Holiday Items</h4>
-                    <img src="/img/items/422.png"/> <b><?php echo pumpkins(); ?></b> (13,001 on 11/1/2018)<br/>
-                    <img src="/img/items/575.png"/> <b><?php echo crackers(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/img/items/577.png"/> <b><?php echo yellowphat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/img/items/581.png"/> <b><?php echo whitephat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/img/items/580.png"/> <b><?php echo purplephat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/img/items/576.png"/> <b><?php echo redphat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/img/items/578.png"/> <b><?php echo bluephat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/img/items/579.png"/> <b><?php echo greenphat(); ?></b> (0 on 12/26/2018)<br/>
-                    <img src="/img/items/677.png"/> <b><?php echo eastereggs(); ?></b> (0 on 4/22/2019)<br/>
-                    <img src="/img/items/828.png"/> <b><?php echo greenmask(); ?></b> (0 on 11/1/2019)<br/>
-                    <img src="/img/items/831.png"/> <b><?php echo redmask(); ?></b> (0 on 11/1/2019)<br/>
-                    <img src="/img/items/832.png"/> <b><?php echo bluemask(); ?></b> (0 on 11/1/2019)<br/>
-                    <img src="/img/items/971.png"/> <b><?php echo santahat(); ?></b> (0 on 12/26/2019)<br/>
-                    <img src="/img/items/1156.png"/> <b><?php echo bunnyears(); ?></b> (0 on 4/22/2020)<br/>
-                    <img src="/img/items/1289.png"/> <b><?php echo scythe(); ?></b> (0 on 11/1/2020)<br/>
-                </div>
-            </div>
-        </article>
-    </div>
+					<div class="h4 text-warning">Expensive Items</div>
+					<div class="display-glow item1278 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo dsq(); ?></span><br/>
+					<div class="display-glow item795 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo dmed(); ?></span><br/>
+					<div class="display-glow item522 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo dammy(); ?></span><br/>
+					<div class="display-glow item597 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo chargeddammy(); ?></span><br/>
+					<div class="display-glow item594 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo dbattle(); ?></span><br/>
+					<div class="display-glow item592 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo dlong(); ?></span><br/><br/>
+
+					<div class="h4 text-warning">Holiday Items</div>
+					<div class="display-glow item422 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo pumpkins(); ?></span> (13,001 on 11/1/2018)<br/>
+                    <div class="display-glow item575 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo crackers(); ?></span> (0 on 12/26/2018)<br/>
+					<div class="display-glow item577 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo yellowphat(); ?></span> (0 on 12/26/2018)<br/>
+					<div class="display-glow item581 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo whitephat(); ?></span> (0 on 12/26/2018)<br/>
+					<div class="display-glow item580 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo purplephat(); ?></span> (0 on 12/26/2018)<br/>
+					<div class="display-glow item576 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo redphat(); ?></span> (0 on 12/26/2018)<br/>
+					<div class="display-glow item578 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo bluephat(); ?></span> (0 on 12/26/2018)<br/>
+					<div class="display-glow item579 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo greenphat(); ?></span> (0 on 12/26/2018)<br/>
+					<div class="display-glow item677 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo eastereggs(); ?></span> (0 on 4/22/2019)<br/>
+					<div class="display-glow item828 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo greenmask(); ?></span> (0 on 11/1/2019)<br/>
+					<div class="display-glow item831 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo redmask(); ?></span> (0 on 11/1/2019)<br/>
+					<div class="display-glow item832 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo bluemask(); ?></span> (0 on 11/1/2019)<br/>
+					<div class="display-glow item971 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo santahat(); ?></span> (0 on 12/26/2019)<br/>
+					<div class="display-glow item1156 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo bunnyears(); ?></span> (0 on 4/22/2020)<br/>
+					<div class="display-glow item1289 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo scythe(); ?></span> (0 on 11/1/2020)<br/>
+					<br/><br/><br/>
+			</div>
+		</div>
+	</div>
 </div>

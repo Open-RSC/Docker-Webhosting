@@ -1,20 +1,20 @@
 <?php
 if (!defined('IN_SITE')) {
-    die("You do not have permission to access this file.");
+	die("You do not have permission to access this file.");
 }
 
 $skill_array = array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
 
 function buildSQLArray($array)
 {
-    $SQLarray = '';
-    $size = sizeof($array) - 1;
-    $i = 0;
-    while ($i <= $size) {
-        $SQLarray .= ($array[$i] == 'total_lvl') ? '' : (($array[$i] == 'hitpoints') ? 'exp_hits,' : 'exp_' . $array[$i] . '' . (($i == $size) ? '' : ',') . '');
-        $i++;
-    }
-    return $SQLarray;
+	$SQLarray = '';
+	$size = sizeof($array) - 1;
+	$i = 0;
+	while ($i <= $size) {
+		$SQLarray .= ($array[$i] == 'total_lvl') ? '' : (($array[$i] == 'hitpoints') ? 'exp_hits,' : 'exp_' . $array[$i] . '' . (($i == $size) ? '' : ',') . '');
+		$i++;
+	}
+	return $SQLarray;
 }
 
 $connector = new Dbc();
@@ -41,81 +41,69 @@ $player_invitems = $connector->gamequery("SELECT A.username, B.id, format(B.amou
 
 $player_feed = $connector->gamequery("SELECT * FROM openrsc_live_feeds AS B LEFT JOIN openrsc_players AS A ON B.username = A.username WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY 'B.time' DESC LIMIT 8");
 
-//$phpbb_user_result = $connector->gamequery("SELECT B.user_id, B.username AS player_name, A.username, A.group_id FROM openrsc_forum.phpbb_users as B LEFT JOIN openrsc_game.openrsc_players as A on B.user_id = A.owner WHERE (A.id = '$subpage' OR A.username = '$subpage')");
-//$phpbb_user = $connector->fetchArray($phpbb_user_result);
-
 function bd_nice_number($n)
 {
-    if ($n > 1000000000000) return round(($n / 1000000000000), 1) . ' trillion';
-    else if ($n > 1000000000) return round(($n / 1000000000), 1) . ' billion';
-    else if ($n > 1000000) return round(($n / 1000000), 1) . ' million';
-    else if ($n > 1000) return round(($n / 1000), 1) . ' thousand';
-
-    return number_format($n);
+	if ($n > 1000000000000) return round(($n / 1000000000000), 1) . ' trillion';
+	else if ($n > 1000000000) return round(($n / 1000000000), 1) . ' billion';
+	else if ($n > 1000000) return round(($n / 1000000), 1) . ' million';
+	else if ($n > 1000) return round(($n / 1000), 1) . ' thousand';
+	return number_format($n);
 }
 
 ?>
 
-<main class="main">
-    <article>
-        <div class="panel">
-            <div>
-                <h3>
-                    <?php echo $character['username']; ?>'s Donation Bank
-                </h3>
-            </div>
-            <div class="stats flex-row">
-                <div id="character">
-                    <?php
-                    $file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png';
-                    echo "<img src=\"$file\"/>";
-                    ?>
-                </div>
+<div class="text-info table-dark">
+	<div class="container border-left border-info border-right">
+		<div class="h2 text-center text-capitalize display-3"
+			 style="font-size: 38px;"><?php echo $character['username']; ?>'s Bank
+		</div>
+		<div class="row sm-stats pl-3 pr-3">
+			<div class="pb-0 stats row justify-content-center">
+				<?php $file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png'; ?>
+				<img class="pl-5" src="<?php echo $file; ?>">
+				<div class="pl-5 col-6">
+                        		<span class="sm-stats small text-uppercase text-info">Status:
+								<?php if ($character['online'] == 1) {
+									echo '<span class="green"><strong>Online</strong></span>';
+								} else {
+									echo '<span class="red"><strong>Offline</strong></span>';
+								} ?></span>
+					<span class="text-uppercase text-info">Last Online: </span>
+					<span><?php date_default_timezone_set('America/New_York');
+						echo strftime("%d %b / %H:%M %Z", $character["login_date"]) ?></span><br><br>
+					<span>Shar accepts player item donations for drop parties.</span><br><br>
+					<span>To donate in-game items to Shar, contact a staff member. </span>
+				</div>
+			</div>
 
-                <div>
-                    <div id="sm-stats">
-                        <span class="sm-stats">Status:
-                            <?php if ($character['online'] == 1) {
-                                echo '<span class="green"><strong>Online</strong></span>';
-                            } else {
-                                echo '<span class="red"><strong>Offline</strong></span>';
-                            } ?></span>
-                        <span class="sm-stats">Last Online: <?php date_default_timezone_set('America/New_York');
-                            echo strftime("%d %b / %H:%M %Z", $character["login_date"]) ?></span>
-                        Shar redistributes wealth because he is concerned about the economy.
-                    </div>
-                </div>
-            </div>
-
-            <br/>
-
-            <div style="margin-left: 10px;">
-                <table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
-                    <?php $bank = $connector->num_rows($player_bank); ?>
-                    <tr>
-                        <?php
-                        if ($bank == 0) {
-                            echo "No bank items found.";
-                        } else {
-                            for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
-                                ?>
-                                <td style="border: 1px solid black;">
-                                    <div style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 0.8px; -webkit-text-stroke-color: black; margin-top: -3px; position: absolute; color: white; font-size: 13px; font-weight: 900;">
-                                        <?php echo $list["number"]; ?>
-                                    </div>
-                                    <img src="/img/items/<?php echo $list["id"]; ?>.png"/>
-                                </td>
-                                <?php
-                                if (($i % 14 == 0) && ($i < $bank)) {
-                                    echo '</tr><tr>';
-                                }
-                            }
-                        } ?>
-                    </tr>
-                </table>
-                <br/><p align="center">Shar accepts player item donations for drop parties. Please contact staff to donate.</p>
-            </div>
-
-        </div>
-    </article>
-</main>
+			<div align="center" style="margin-left: 10px;">
+				<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+					<?php $bank = $connector->num_rows($player_bank); ?>
+					<tr>
+						<?php
+						if ($bank == 0) {
+							echo "No bank items found.";
+						} else {
+							for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
+								?>
+								<td style="border: 1px solid black;">
+									<div class="item<?php echo $list['id'] ?>"
+										 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
+										<?php echo $list["number"]; ?>
+									</div>
+								</td>
+								<?php
+								if (($i % 10 == 0) && ($i < $bank)) {
+									echo '</tr><tr>';
+								}
+							}
+						} ?>
+					</tr>
+				</table>
+				<br/>
+				<br><br><br><br>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

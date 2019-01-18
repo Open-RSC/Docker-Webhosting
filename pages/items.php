@@ -10,11 +10,9 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 
 <div class="text-info table-dark">
 	<div class="container border-left border-info border-right">
-		<div align="center">
-			<h2 class="pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Item Database</h2>
-		</div>
+		<div class="h2 text-center pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Item Database</div>
 		<div>
-			<input type="text-center" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an item">
+			<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an item">
 			<div class="tableFixHead">
 				<table id="itemList"
 					   class="container table-responsive-lg table-striped table-hover table-dark text-primary"
@@ -41,7 +39,7 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 								<small><?php echo $result['description'] ?></small>
 							</td>
 							<td width="10%" align="center" class="pt-1 pb-1">
-								<img src="/img/items/<?php echo $result['id'] ?>.png">
+								<div class="display-glow item<?php echo $result['id'] ?>"></div>
 							</td>
 							<?php if ($result['requiredLevel'] == 0) { ?>
 								<td>
