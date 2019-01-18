@@ -56,7 +56,7 @@ function bd_nice_number($n)
 ?>
 
 <?php if ($character) { ?>
-<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
+	<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
 	<div class="border-left border-info border-right table-wrapper-scroll-y container">
 		<div class="h2 text-center text-capitalize display-3" style="font-size: 38px;"><?php
 			if ($character['group_id'] != 10): echo "<img class=\"pr-3 pb-2\" src=\"/img/$character[group_id].svg\" height=\"42\">";
@@ -195,7 +195,7 @@ function bd_nice_number($n)
 													</div>
 												</td>
 												<?php
-												if (($i % 14 == 0) && ($i < $bank)) {
+												if (($i % 10 == 0) && ($i < $bank)) {
 													echo '</tr><tr>';
 												}
 											}
@@ -240,7 +240,7 @@ function bd_nice_number($n)
 										echo "No chat logs found.";
 									} else {
 										for ($i = 1; $list = $connector->fetchArray($player_chatlogs); $i++) {
-											echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] <b>' . $list["message"] . '</b>';
+											echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] <span style="color: #F5FA3C; text-shadow: 1px 1px black;">' . $list["message"] . '</span>';
 											echo '<br/>';
 											if (($i % 14 == 0) && ($i < $chat)) {
 												echo '</tr><tr>';
@@ -265,7 +265,7 @@ function bd_nice_number($n)
 											for ($i = 1; $list = $connector->fetchArray($player_pmlogs); $i++) {
 												$idLinkSender = preg_replace("/[^A-Za-z0-9]/", "-", $list['sender']);
 												$idLinkReciever = preg_replace("/[^A-Za-z0-9]/", "-", $list['reciever']);
-												echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b><a href="/player/' . $idLinkSender . '" target="_blank">' . $list["sender"] . '</a></b> to <b><a href="/characters/' . $idLinkReciever . '" target="_blank">' . $list["reciever"] . '</a></b>: <small>' . $list["message"] . '</small>';
+												echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b><a href="/player/' . $idLinkSender . '" target="_blank">' . $list["sender"] . '</a></b> to <b><a href="/player/' . $idLinkReciever . '" target="_blank">' . $list["reciever"] . '</a></b>: <span class="text-info" style="text-shadow: 1px 1px black;">' . $list["message"] . '</span>';
 												echo '<br/>';
 												if (($i % 14 == 0) && ($i < $pm)) {
 													echo '</tr><tr>';
