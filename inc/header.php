@@ -440,7 +440,6 @@ require_once('charfunctions.php');
 			padding: 5px 10px 5px;
 			text-shadow: 0 0 2px #201B18;
 			font: 14px 'Exo', sans-serif;
-			text-transform: uppercase;
 			-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 			-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
@@ -481,7 +480,6 @@ require_once('charfunctions.php');
 			box-shadow: 0 2px 2px black;
 			margin-bottom: 1px;
 			font-weight: 700;
-			text-transform: capitalize;
 			background-color: rgba(42, 34, 32, 1);
 		}
 
@@ -689,13 +687,11 @@ require_once('charfunctions.php');
 		.sm-skill {
 			font: 12px 'Exo', sans-serif;
 			text-shadow: 0 0 2px #201B18;
-			text-transform: uppercase;
 		}
 
 		.sm-skill2 {
 			font: 12px 'Exo', sans-serif;
 			text-shadow: 0 0 2px #201B18;
-			text-transform: uppercase;
 		}
 
 		.sm-skill a {
@@ -724,7 +720,6 @@ require_once('charfunctions.php');
 			display: block;
 			font: 12px 'Exo', sans-serif;
 			text-shadow: 0 0 2px #201B18;
-			text-transform: uppercase;
 			padding: 2px 0;
 		}
 
@@ -753,7 +748,6 @@ require_once('charfunctions.php');
 			font: 12px 'Exo', sans-serif;
 			color: red;
 			text-shadow: 0 0 2px #201B18;
-			text-transform: uppercase;
 			padding: 2px 0;
 		}
 
@@ -761,7 +755,6 @@ require_once('charfunctions.php');
 			font: 12px 'Exo', sans-serif;
 			color: green;
 			text-shadow: 0 0 2px #201B18;
-			text-transform: uppercase;
 			padding: 2px 0;
 		}
 
@@ -926,14 +919,18 @@ require_once('charfunctions.php');
 				<a class="nav-link" href="/">Home</a>
 			</li>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				   aria-haspopup="true" aria-expanded="false">
 					Download
 				</a>
 				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item text-secondary" href="https://game.openrsc.com/downloads/OpenRSC.jar">PC Client</a>
-					<a class="dropdown-item text-secondary" href="https://game.openrsc.com/downloads/openrsc.apk">Android Client</a>
+					<a class="dropdown-item text-secondary" href="https://game.openrsc.com/downloads/OpenRSC.jar">PC
+						Client</a>
+					<a class="dropdown-item text-secondary" href="https://game.openrsc.com/downloads/openrsc.apk">Android
+						Client</a>
 					<div class="dropdown-divider border-info"></div>
-					<a class="dropdown-item text-secondary" href="https://github.com/open-rsc/game">Source Code on GitHub</a>
+					<a class="dropdown-item text-secondary" href="https://github.com/open-rsc/game">Source Code on
+						GitHub</a>
 				</div>
 			</li>
 			<li class="nav-item">
@@ -946,7 +943,8 @@ require_once('charfunctions.php');
 				<a class="nav-link" href="/worldmap">Live Map</a>
 			</li>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				   aria-haspopup="true" aria-expanded="false">
 					Information
 				</a>
 				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">

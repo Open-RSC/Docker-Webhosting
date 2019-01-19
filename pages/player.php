@@ -131,15 +131,13 @@ function bd_nice_number($n)
 
 						<br/>
 
-						<div class="accomplishments">
+						<div class="pt-3">
 							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info" align="left">Recent Accomplishments:</div>
-								<div align="left">
+								<div class="h4 text-info">Recent Accomplishments::</div>
 									<?php while ($row = $connector->fetchArray($player_feed)) {
 										echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
 										echo '<br/>';
 									} ?>
-								</div>
 							</div>
 						</div>
 
