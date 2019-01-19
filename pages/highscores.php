@@ -38,71 +38,91 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 			Note: Only players that have logged in within the last 3 months are shown.
 		</div>
 		<div class="pl-3 pr-3">
-			<div class="row">
-				<div class="col-2">
+			<div class="row tableFixHead">
+				<div class="col-sm-2">
 					<div class="skill">
-						<?php foreach ($skill_array as $skill) { ?>
-							<li><a href="/highscores/<?php print $skill; ?>">
-									<img src="/img/skill_icons/<?php print $skill; ?>.svg"
-										 alt="<?php print $skill; ?>" class="skill-icon"/>
-									<?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
-								</a></li>
-						<?php } ?>
+						<?php foreach ($skill_array
+
+						as $skill) { ?>
+						<li>
+							<div class="clickable-row"
+								 data-href="/highscores/<?php print $skill; ?>"
 					</div>
+					<img src="/img/skill_icons/<?php print $skill; ?>.svg"
+						 alt="<?php print $skill; ?>" class="skill-icon"/>
+					<?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
+					</li>
+					<?php } ?>
+					<li>
+						<div class="clickable-row"
+							 data-href="/highscores/gang"
 				</div>
-				<div class="col-10">
-					<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()"
-						   placeholder="Search for a player">
-					<div class="tableFixHead">
-						<table id="itemList" class="container table-striped table-hover table-dark text-primary"
-							   align="center">
-							<thead>
-							<tr>
-								<th class="username">Username</th>
-								<th class="rank">Rank</th>
-								<th class="experience">Level</th>
-								<th class="experience">Experience</th>
-								<th class="experience">Last Login</th>
-							</tr>
-							</thead>
-							<tbody>
-							<?php
-							$i = 1;
-							while ($row = $connector->fetchArray($stat_result)) {
-								$idLink = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $idLinks);
-								$idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['id']);
-								?>
-								<tr id="table">
-									<td class="text-capitalize username">
-										<div class="clickable-row" data-href="/player/<?php
-										if ($row['highscoreopt'] == 1): echo "null";
-										else:
-											echo $idLink;
-										endif;
-										?>"><?php
-											if ($row['highscoreopt'] == 1): echo "<i>(Hidden)</i>";
-											else:
-												echo $row['username'];
-											endif;
-											?></div>
-									</td>
-									<td class="rank"><?php echo $i; ?></td>
-									<td class="experience">
-										<?php echo ($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_' . $subpage] / 4.0); ?>
-									</td>
-									<td class="experience">
-										<?php echo ($subpage == $skill_array[0]) ? intval(totalXP($row) / 4.0) : intval($row['exp_' . $subpage] / 4.0); ?>
-									</td>
-									<td class="experience">
-										<?php echo $row['login_date']; ?>
-									</td>
-								</tr>
-								<?php $i++;
-							} ?>
-							</tbody>
-						</table>
-					</div>
-				</div>
+				<img src="/img/20.svg"
+					 alt="Gang" class="skill-icon"/>
+				Gang
+				</li>
+				<li>
+					<div class="clickable-row"
+						 data-href="/highscores/kill-to-death-ratio"
 			</div>
+			<img src="/img/skull.svg"
+				 alt="K/D Ratio" class="skill-icon"/>
+			K/D Ratio
+			</li>
 		</div>
 	</div>
+	<div class="col-sm-10 pt-2">
+		<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()"
+			   placeholder="Search for a player">
+		<table id="itemList" class="container table-striped table-hover table-dark text-primary">
+			<thead>
+			<tr>
+				<th class="username text-info">Username</th>
+				<th class="rank text-info">Rank</th>
+				<th class="experience text-info">Level</th>
+				<th class="experience text-info">Experience</th>
+				<th class="experience text-info">Last Login</th>
+			</tr>
+			</thead>
+			<tbody>
+			<?php
+			$i = 1;
+			while ($row = $connector->fetchArray($stat_result)) {
+				$idLink = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $idLinks);
+				$idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['id']);
+				?>
+				<tr id="table">
+					<td class="text-capitalize username">
+						<div class="clickable-row" data-href="/player/<?php
+						if ($row['highscoreopt'] == 1): echo "null";
+						else:
+							echo $idLink;
+						endif;
+						?>"><?php
+							if ($row['highscoreopt'] == 1): echo "<i>(Hidden)</i>";
+							else:
+								echo $row['username'];
+							endif;
+							?></div>
+					</td>
+					<td class="rank"><?php echo $i; ?></td>
+					<td class="experience">
+						<?php echo number_format(($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_' . $subpage] / 4.0)); ?>
+					</td>
+					<td class="experience">
+						<?php echo number_format(($subpage == $skill_array[0]) ? intval(totalXP($row) / 4.0) : intval($row['exp_' . $subpage] / 4.0)); ?>
+					</td>
+					<td class="experience">
+						<?php
+						date_default_timezone_set('America/New_York');
+						echo strftime("%b %d", $row['login_date']); ?>
+					</td>
+				</tr>
+				<?php $i++;
+			} ?>
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>
+</div>

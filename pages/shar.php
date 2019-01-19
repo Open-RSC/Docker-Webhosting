@@ -87,7 +87,7 @@ function bd_nice_number($n)
 							for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
 								?>
 								<td style="border: 1px solid black;">
-									<div class="item<?php echo $list['id'] ?>"
+									<div class="clickable-row item<?php echo $list['id'] ?>" data-href="/itemdef/<?php echo $list['id'] ?>"
 										 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
 										<?php echo $list["number"]; ?>
 									</div>

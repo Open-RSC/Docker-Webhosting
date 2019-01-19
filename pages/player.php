@@ -43,6 +43,8 @@ $player_invitems = $connector->gamequery("SELECT A.username, B.id, format(B.amou
 
 $player_feed = $connector->gamequery("SELECT * FROM openrsc_live_feeds AS B LEFT JOIN openrsc_players AS A ON B.username = A.username WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY B.time DESC LIMIT 30");
 
+$player_gang = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY slot");
+
 function bd_nice_number($n)
 {
 	if ($n > 1000000000000) return round(($n / 1000000000000), 1) . ' trillion';
@@ -56,7 +58,7 @@ function bd_nice_number($n)
 ?>
 
 <?php if ($character) { ?>
-	<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
+<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
 	<div class="border-left border-info border-right table-wrapper-scroll-y container">
 		<div class="h2 text-center text-capitalize display-3" style="font-size: 38px;"><?php
 			if ($character['group_id'] != 10): echo "<img class=\"pr-3 pb-2\" src=\"/img/$character[group_id].svg\" height=\"42\">";
@@ -74,70 +76,67 @@ function bd_nice_number($n)
 
 						<div class="pl-3 pr-3 container">
 							<div class="flex-row stats">
-								<div id="display-glow">
+								<div class="display-glow">
 									<?php
 									$file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png';
 									echo "<img src=\"$file\"/>";
 									?>
 								</div>
 
-								<div>
-
-									<div id="sm-skill">
-										<?php foreach ($skill_array as $skill) {
-											if ($skill == 'hitpoints') {
-												$skillc = 'hits';
-											} else {
-												$skillc = $skill;
-											}
-											?><span class="sm-skill"><a
-											href="/highscores/<?php echo $skill; ?>"><img
-												src="/img/skill_icons/<?php echo $skill; ?>.svg"
-												height="20px" alt="<?php echo $skill; ?>"/>
-											</a><?php echo experienceToLevel($character['exp_' . $skillc] / 4.0); ?>
-											</span>
-										<?php } ?>
-									</div>
-
-									<div id="sm-stats">
-										<span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
-										<span
-											class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
-										<span class="sm-stats">Time Played: <?php
-											while ($row = $connector->fetchArray($totalTime)) {
-												$time = $row["SUM(`value`)"] / 1000;
-												$days = floor($time / (24 * 60 * 60));
-												$hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
-												$minutes = floor(($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60)) / 60);
-												$seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
-												echo $days . 'd ' . $hours . 'h ' . $minutes . 'm ';
-											} ?>
+								<div id="sm-skill">
+									<?php foreach ($skill_array as $skill) {
+										if ($skill == 'hitpoints') {
+											$skillc = 'hits';
+										} else {
+											$skillc = $skill;
+										}
+										?><span class="sm-skill"><a
+										href="/highscores/<?php echo $skill; ?>"><img
+											src="/img/skill_icons/<?php echo $skill; ?>.svg"
+											height="20px" alt="<?php echo $skill; ?>"/>
+										</a><?php echo experienceToLevel($character['exp_' . $skillc] / 4.0); ?>
 										</span>
-										<span class="sm-stats">Status:
+									<?php } ?>
+								</div>
+
+								<div id="sm-stats">
+									<span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
+									<span
+										class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
+									<span class="sm-stats">Time Played: <?php
+										while ($row = $connector->fetchArray($totalTime)) {
+											$time = $row["SUM(`value`)"] / 1000;
+											$days = floor($time / (24 * 60 * 60));
+											$hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
+											$minutes = floor(($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60)) / 60);
+											$seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
+											echo $days . 'd ' . $hours . 'h ' . $minutes . 'm ';
+										} ?>
+										</span>
+									<span class="sm-stats">Status:
 											<?php if ($character['online'] == 1) {
 												echo '<span class="green"><strong>Online</strong></span>';
 											} else {
 												echo '<span class="red"><strong>Offline</strong></span>';
 											} ?>
 										</span>
-										<span
-											class="sm-stats">Last Online: <?php date_default_timezone_set('America/New_York');
-											echo strftime("%d %b / %H:%M %Z", $character["login_date"]) ?>
+									<span
+										class="sm-stats">Last Online: <?php date_default_timezone_set('America/New_York');
+										echo strftime("%b %d, %I:%M %p", $character["login_date"]) ?>
 										</span>
-									</div>
 								</div>
 							</div>
 						</div>
 
 						<br/>
 
-						<div class="pt-3">
+						<div>
 							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info">Recent Accomplishments::</div>
-									<?php while ($row = $connector->fetchArray($player_feed)) {
-										echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
-										echo '<br/>';
-									} ?>
+								<div class="h4 text-info">Recent Accomplishments</div>
+								<?php while ($row = $connector->fetchArray($player_feed)) {
+									echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
+									echo '<br/>';
+								} ?>
 							</div>
 						</div>
 
@@ -147,7 +146,7 @@ function bd_nice_number($n)
 						<?php //if ($user->data['group_id'] == '5' || $user->data['group_id'] == '4') { ?>
 						<div class="pt-3">
 							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info">Inventory:</div>
+								<div class="h4 text-info">Inventory</div>
 								<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
 									<?php $invitems = $connector->num_rows($player_invitems); ?>
 									<tr>
@@ -158,7 +157,7 @@ function bd_nice_number($n)
 											for ($i = 1; $list = $connector->fetchArray($player_invitems); $i++) {
 												?>
 												<td style="border: 1px solid black;">
-													<div class="item<?php echo $list['id'] ?>"
+													<div class="clickable-row item<?php echo $list['id'] ?>" data-href="/itemdef/<?php echo $list['id'] ?>"
 														 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
 														<?php echo $list["number"]; ?>
 													</div>
@@ -187,7 +186,7 @@ function bd_nice_number($n)
 											for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
 												?>
 												<td style="border: 1px solid black;">
-													<div class="item<?php echo $list['id'] ?>"
+													<div class="clickable-row item<?php echo $list['id'] ?>" data-href="/itemdef/<?php echo $list['id'] ?>"
 														 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
 														<?php echo $list["number"]; ?>
 													</div>
