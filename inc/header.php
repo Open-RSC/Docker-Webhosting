@@ -423,38 +423,27 @@ require_once('charfunctions.php');
 		}
 
 		.skill {
-			display: flex;
-			flex-direction: column;
-			width: 150px;
-			background: #2A2220;
 			-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 			-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 			box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 		}
 
 		.skill li {
-			flex: 1 0 auto;
-			width: 130px;
-			color: white;
-			list-style: none;
 			padding: 5px 10px 5px;
 			text-shadow: 0 0 2px #201B18;
 			font: 14px 'Exo', sans-serif;
-			-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-			-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 		}
 
 		.skill li:nth-child(odd) {
-			background: #261e1c;
+			background: #32383e;
 		}
 
 		.skill li:nth-child(even) {
-			background: #221c1a;
+			background: #212529;
 		}
 
 		.skill li a {
-			color: #C6A444;
+			color: #17a2b;
 		}
 
 		.skill ul li a:hover {

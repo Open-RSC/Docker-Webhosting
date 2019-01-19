@@ -305,54 +305,15 @@ function bd_nice_number($n)
 								</table>
 							</div>
 						</div>
+
 						<?php //} else {
 						//} ?>
 						<!-- End admin and moderator view only -->
 
-						<div class="pie-stats">
-							<script type="text/javascript">
-								$(document).ready(function () {
-									var data = [
-										<?php foreach ($skill_array as $skill) {
-										if ($skill == 'hitpoints') {
-											$skillc = 'hits';
-										} else {
-											$skillc = $skill;
-										}
-										if (experienceToLevel($character['exp_' . $skillc]) >= 10) {
-											echo '{label: "' . ucwords($skill) . '",  data: ' . $character['exp_' . $skillc] . '}, ';
-										}
-									} ?>
-									];
-
-									$.plot($("#donut"), data,
-										{
-											series: {
-												pie: {
-
-													show: true,
-													combine: {
-														color: '#999',
-														threshold: 0.05,
-													}
-												}
-											},
-											grid: {
-												hoverable: true,
-												clickable: false
-											},
-											legend: {
-												show: false
-											}
-										});
-								});
-							</script>
-							<div id="donut" class="graph"></div>
-						</div>
-
 					<?php } ?>
 					<!-- End player opt out view else -->
 				</div>
+				<br><br><br><br>
 				<?php } else {
-					echo "<h4 align='center'>Player not found</h4>";
+					echo "<div class='h4' align='center'>Player not found</div>";
 				} ?>
