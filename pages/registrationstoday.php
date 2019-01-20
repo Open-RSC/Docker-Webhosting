@@ -10,7 +10,7 @@ if (!defined('IN_SITE')) {
 			Today
 		</div>
 		<div class="row justify-content-center" style="height: 100vh;">
-			<div class="col-2 text-primary" align="center">
+			<div class="col-2 text-primary">
 				<b><?php echo listregistrationsToday(); ?></b><br/><br/>
 			</div>
 		</div>

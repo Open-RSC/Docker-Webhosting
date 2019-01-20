@@ -136,7 +136,7 @@ function onlinePlayers()
 			if ($row['group_id'] != 10):
 				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
-			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
+			echo '<a href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
 		}
 	}
@@ -166,17 +166,17 @@ function listregistrationsToday()
 			if ($row['group_id'] != 10):
 				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
-			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
+			echo '<a href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
 		}
 	}
 }
 
-function loginsToday()
+function logins48()
 {
 	$connector = new Dbc();
-	$loginsToday = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
-	while ($row = $connector->fetchArray($loginsToday)) {
+	$logins48 = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 48 hour )");
+	while ($row = $connector->fetchArray($logins48)) {
 		if ($row["countUsers"] == NULL) {
 			echo "0";
 		} else {
@@ -185,18 +185,18 @@ function loginsToday()
 	}
 }
 
-function listloginsToday()
+function listlogins48()
 {
 	$connector = new Dbc();
-	$loginsToday = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
-	while ($row = $connector->fetchArray($loginsToday)) {
+	$logins48 = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 48 hour )");
+	while ($row = $connector->fetchArray($logins48)) {
 		if ($row["username"] == NULL) {
-			echo "No players have logged in today.";
+			echo "No players have logged in for the last 48 hours.";
 		} else {
 			if ($row['group_id'] != 10):
 				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
-			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
+			echo '<a href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
 		}
 	}

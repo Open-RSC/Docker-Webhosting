@@ -82,11 +82,11 @@ include "inc/header.php";
 							</b>
 						</div>
 						<div>
-							Logins Today:
+							Online Last 48 Hours:
 							<b>
-								<a href="/loginstoday">
+								<a href="/logins48">
 								<span class="text-info float-right">
-									<?php echo loginsToday(); ?>
+									<?php echo logins48(); ?>
 								</span>
 								</a>
 							</b>
