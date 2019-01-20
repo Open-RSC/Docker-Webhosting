@@ -120,7 +120,7 @@ function totalGameCharacters()
 		if ($row["countPlayers"] == NULL) {
 			echo "0";
 		} else {
-			echo $row["countPlayers"];
+			echo number_format($row["countPlayers"]);
 		}
 	}
 }
@@ -133,8 +133,8 @@ function onlinePlayers()
 		if ($row["username"] == NULL) {
 			echo "No players currently online.";
 		} else {
-			if ($row['group_id'] != 4):
-				echo '<img src="../css/images/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+			if ($row['group_id'] != 10):
+				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
 			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
@@ -163,8 +163,8 @@ function listregistrationsToday()
 		if ($row["username"] == NULL) {
 			echo "No players have been created today.";
 		} else {
-			if ($row['group_id'] != 4):
-				echo '<img src="../css/images/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+			if ($row['group_id'] != 10):
+				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
 			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
@@ -193,11 +193,33 @@ function listloginsToday()
 		if ($row["username"] == NULL) {
 			echo "No players have logged in today.";
 		} else {
-			if ($row['group_id'] != 4):
-				echo '<img src="../css/images/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+			if ($row['group_id'] != 10):
+				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
 			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
+		}
+	}
+}
+
+function arrav()
+{
+	$connector = new Dbc();
+	$arrav = $connector->gamequery("SELECT id, username, value FROM openrsc_player_cache AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE B.key = 'arrav_gang' AND A.banned = '0' AND A.group_id = '10'");
+	while ($row = $connector->fetchArray($arrav)) {
+		if(mysqli_num_rows($arrav)===0)
+		{
+			echo 'No players are in a gang.';
+		}
+		else {
+			$gang = $row["value"];
+			$player = ucfirst($row["username"]);
+			if ($gang == 0) {
+				$pick = 'Black Arm';
+			} else {
+				$pick = 'Phoenix';
+			}
+			echo '<a href="/player/' . $row["id"] . '"><span class="text-info">' . $player . ':</span> ' . $pick . '</a><br>';
 		}
 	}
 }
@@ -216,7 +238,7 @@ function uniquePlayers()
 	$connector = new Dbc();
 	$uniquePlayers = $connector->gamequery("SELECT COUNT(DISTINCT creation_ip) AS Count FROM openrsc_players");
 	while ($row = $connector->fetchArray($uniquePlayers)) {
-		echo $row["Count"];
+		echo number_format($row["Count"]);
 	}
 }
 
@@ -297,7 +319,7 @@ function banktotalGold()
 	$connector = new Dbc();
 	$banktotalGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, A.banned, B.playerID, B.id, format(SUM(B.amount), 0) AS count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND A.group_id = '10' AND A.banned = '0'");
 	while ($row = $connector->fetchArray($banktotalGold)) {
-		echo $row["count"];
+		echo $row["count"] . ' gp';
 	}
 }
 
@@ -803,7 +825,7 @@ function totalTime()
 function activityfeed()
 {
 	$connector = new Dbc();
-	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username ORDER BY B.time DESC LIMIT 100");
+	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.id AS pid, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username ORDER BY B.time DESC LIMIT 100");
 	date_default_timezone_set('America/New_York');
 	while ($row = $connector->fetchArray($game_accounts)) {
 		if ($row["username"] == NULL) {
@@ -811,7 +833,7 @@ function activityfeed()
 		} else {
 			echo '
 			<div class="text-primary ml-3 mr-3" style="font-size: 13px;"><br>
-					<div class="row clickable-row" data-href="/player/' . $row["id"] . '">
+					<div class="row clickable-row" data-href="/player/' . $row["pid"] . '">
 						<div class="col-sm text-info font-weight-bold">
 							' . strftime("%b %d, %I:%M %p", $row["time"]) . '
 						</div>
