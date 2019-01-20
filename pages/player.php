@@ -43,7 +43,7 @@ $player_invitems = $connector->gamequery("SELECT A.username, B.id, format(B.amou
 
 $player_feed = $connector->gamequery("SELECT * FROM openrsc_live_feeds AS B LEFT JOIN openrsc_players AS A ON B.username = A.username WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY B.time DESC LIMIT 30");
 
-$player_gang = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY slot");
+$player_gang = $connector->gamequery("SELECT value FROM openrsc_player_cache AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE B.key = 'arrav_gang' AND (A.id = '$subpage' OR A.username = '$subpage')");
 
 function bd_nice_number($n)
 {
@@ -103,6 +103,23 @@ function bd_nice_number($n)
 									<span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
 									<span
 										class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
+									<span class="sm-stats">Gang: <?php
+										if(mysqli_num_rows($player_gang)===0)
+										{
+											echo 'None';
+											}
+										else {
+											while ($row = $connector->fetchArray($player_gang)) {
+												$gang = $row["value"];
+												if ($gang == 0) {
+													$pick = 'Phenix';
+												} else {
+													$pick = 'Arrav';
+												}
+												echo $pick;
+											}
+										}?>
+										</span>
 									<span class="sm-stats">Time Played: <?php
 										while ($row = $connector->fetchArray($totalTime)) {
 											$time = $row["SUM(`value`)"] / 1000;

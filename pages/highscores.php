@@ -53,22 +53,6 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 					<?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
 					</li>
 					<?php } ?>
-					<li>
-						<div class="clickable-row"
-							 data-href="/highscores/gang"
-				</div>
-				<img src="/img/20.svg"
-					 alt="Gang" class="skill-icon"/>
-				Gang
-				</li>
-				<li>
-					<div class="clickable-row"
-						 data-href="/highscores/kill-to-death-ratio"
-			</div>
-			<img src="/img/skull.svg"
-				 alt="K/D Ratio" class="skill-icon"/>
-			K/D Ratio
-			</li>
 		</div>
 	</div>
 	<div class="col-sm-10 pt-2">
