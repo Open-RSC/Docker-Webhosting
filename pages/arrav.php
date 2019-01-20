@@ -18,6 +18,10 @@ $player_gang = $connector->gamequery("SELECT B.username AS player, A.value AS ga
 			<div class="text-primary">
 				<div class="row justify-content-center">
 					<div class="pl-3 pr-3 container">
+						<div class="pb-1" align="center">
+							<img class="display-glow border border-dark rounded" src="../img/quests/Shield_of_Arrav_completed.png"><br>
+						</div>
+
 						<div class="flex-row stats">
 							<div id="sm-stats col">
 								<span class="text-info">Release date:</span> 4 January 2001<br>

@@ -10,9 +10,9 @@ if (!defined('IN_SITE')) {
 		<div class="row justify-content-center">
 			<div class="col-4 text-primary">
 					<div class="h4 text-warning">Accounts</div>
-                    <a class="text-info font-weight-bold" href="/online"><?php echo playersOnline(); ?></a> players currently logged in.<br/>
-                    <a class="text-info font-weight-bold" href="/registrationstoday"><?php echo newRegistrationsToday(); ?></a> players have been registered today.<br/>
-                    <a class="text-info font-weight-bold" href="/loginstoday"><?php echo logins48(); ?></a> players logged in today.<br/>
+                    <a class="text-info font-weight-bold" href="online"><?php echo playersOnline(); ?></a> players currently logged in.<br/>
+                    <a class="text-info font-weight-bold" href="registrationstoday"><?php echo newRegistrationsToday(); ?></a> players have been registered today.<br/>
+                    <a class="text-info font-weight-bold" href="logins48"><?php echo logins48(); ?></a> players logged in the last 48 hours.<br/>
                     <span class="text-info font-weight-bold"><?php echo uniquePlayers(); ?></span> people have created <span class="text-info font-weight-bold"><?php echo totalPlayers(); ?></span>
 					players.<br/>
 					<span class="text-info font-weight-bold"><?php echo totalTime(); ?></span> total time played.<br/><br/>

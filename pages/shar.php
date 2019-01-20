@@ -53,7 +53,7 @@ function bd_nice_number($n)
 ?>
 
 <div class="text-info table-dark">
-	<div class="container border-left border-info border-right">
+	<div class="container border-left border-info border-right" style="height: 100vh;">
 		<div class="h2 text-center text-capitalize display-3"
 			 style="font-size: 38px;"><?php echo $character['username']; ?>'s Bank
 		</div>
@@ -76,7 +76,7 @@ function bd_nice_number($n)
 				</div>
 			</div>
 
-			<div align="center" style="margin-left: 10px;">
+			<div class="stats pl-5 pr-5" align="center">
 				<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
 					<?php $bank = $connector->num_rows($player_bank); ?>
 					<tr>
@@ -87,7 +87,7 @@ function bd_nice_number($n)
 							for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
 								?>
 								<td style="border: 1px solid black;">
-									<div class="clickable-row item<?php echo $list['id'] ?>" data-href="/itemdef/<?php echo $list['id'] ?>"
+									<div class="clickable-row item<?php echo $list['id'] ?>" data-href="../itemdef/<?php echo $list['id'] ?>"
 										 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
 										<?php echo $list["number"]; ?>
 									</div>
@@ -100,10 +100,7 @@ function bd_nice_number($n)
 						} ?>
 					</tr>
 				</table>
-				<br/>
-				<br><br><br><br>
 			</div>
 		</div>
 	</div>
-</div>
 </div>

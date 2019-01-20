@@ -58,7 +58,7 @@ include "inc/header.php";
 						<div>
 							Players Online:
 							<b>
-								<a href="/online">
+								<a href="online">
 							<span class="text-info float-right">
 								<?php echo playersOnline(); ?>
 							</span>
@@ -74,7 +74,7 @@ include "inc/header.php";
 						<div>
 							Registrations Today:
 							<b>
-								<a href="/registrationstoday">
+								<a href="registrationstoday">
 								<span class="text-info float-right">
 									<?php echo newRegistrationsToday(); ?>
 								</span>
@@ -84,7 +84,7 @@ include "inc/header.php";
 						<div>
 							Online Last 48 Hours:
 							<b>
-								<a href="/logins48">
+								<a href="logins48">
 								<span class="text-info float-right">
 									<?php echo logins48(); ?>
 								</span>
@@ -94,7 +94,7 @@ include "inc/header.php";
 						<div>
 							Unique Players:
 							<b>
-								<a href="/stats">
+								<a href="stats">
 								<span class="text-info float-right">
 									<?php echo uniquePlayers(); ?>
 								</span>
@@ -104,7 +104,7 @@ include "inc/header.php";
 						<div>
 							Total Players:
 							<b>
-								<a href="/stats">
+								<a href="stats">
 								<span class="text-info float-right">
 									<?php echo totalGameCharacters(); ?>
 								</span>
@@ -114,7 +114,7 @@ include "inc/header.php";
 						<div>
 							Sum Gold:
 							<b>
-								<a href="/stats">
+								<a href="stats">
 								<span class="text-info float-right">
 									<?php echo banktotalGold(); ?>
 								</span>
@@ -124,7 +124,7 @@ include "inc/header.php";
 						<div>
 							Cumulative Play:
 							<b>
-								<a href="/stats">
+								<a href="stats">
 								<span class="text-info float-right">
 									<?php echo totalTime(); ?>
 								</span>
