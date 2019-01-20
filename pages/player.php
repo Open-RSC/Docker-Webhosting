@@ -112,9 +112,9 @@ function bd_nice_number($n)
 											while ($row = $connector->fetchArray($player_gang)) {
 												$gang = $row["value"];
 												if ($gang == 0) {
-													$pick = 'Phenix';
+													$pick = 'Black Arm';
 												} else {
-													$pick = 'Arrav';
+													$pick = 'Phoenix';
 												}
 												echo $pick;
 											}
