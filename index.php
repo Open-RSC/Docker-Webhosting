@@ -112,7 +112,7 @@ include "inc/header.php";
 							</b>
 						</div>
 						<div>
-							Gold:
+							Sum Gold:
 							<b>
 								<a href="/stats">
 								<span class="text-info float-right">
@@ -122,7 +122,7 @@ include "inc/header.php";
 							</b>
 						</div>
 						<div>
-							Time Played:
+							Cumulative Play:
 							<b>
 								<a href="/stats">
 								<span class="text-info float-right">

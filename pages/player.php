@@ -54,7 +54,6 @@ function bd_nice_number($n)
 
 	return number_format($n);
 }
-
 ?>
 
 <?php if ($character) { ?>
@@ -75,256 +74,251 @@ function bd_nice_number($n)
 						?>
 
 						<div class="pl-3 pr-3 container">
-							<div class="flex-row stats">
-								<div class="display-glow">
-									<?php
-									$file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png';
-									echo "<img src=\"$file\"/>";
-									?>
-								</div>
+						<div class="flex-row stats">
+							<div class="display-glow">
+								<?php
+								$file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png';
+								echo "<img src=\"$file\"/>";
+								?>
+							</div>
 
-								<div id="sm-skill">
-									<?php foreach ($skill_array as $skill) {
-										if ($skill == 'hitpoints') {
-											$skillc = 'hits';
-										} else {
-											$skillc = $skill;
+							<div id="sm-skill">
+								<?php foreach ($skill_array as $skill) {
+									if ($skill == 'hitpoints') {
+										$skillc = 'hits';
+									} else {
+										$skillc = $skill;
+									}
+									?><span class="sm-skill"><a
+									href="/highscores/<?php echo $skill; ?>"><img
+										src="/img/skill_icons/<?php echo $skill; ?>.svg"
+										height="20px" alt="<?php echo $skill; ?>"/>
+									</a><?php echo experienceToLevel($character['exp_' . $skillc] / 4.0); ?>
+									</span>
+								<?php } ?>
+							</div>
+
+							<div id="sm-stats">
+								<span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
+								<span
+									class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
+								<span class="sm-stats">Gang: <?php
+									if (mysqli_num_rows($player_gang) === 0) {
+										echo 'None';
+									} else {
+										while ($row = $connector->fetchArray($player_gang)) {
+											$gang = $row["value"];
+											if ($gang == 0) {
+												$pick = 'Black Arm';
+											} else {
+												$pick = 'Phoenix';
+											}
+											echo $pick;
 										}
-										?><span class="sm-skill"><a
-										href="/highscores/<?php echo $skill; ?>"><img
-											src="/img/skill_icons/<?php echo $skill; ?>.svg"
-											height="20px" alt="<?php echo $skill; ?>"/>
-										</a><?php echo experienceToLevel($character['exp_' . $skillc] / 4.0); ?>
+									} ?>
 										</span>
-									<?php } ?>
-								</div>
-
-								<div id="sm-stats">
-									<span class="sm-stats">Combat Level: <?php echo $character['combat']; ?></span>
-									<span
-										class="sm-stats">Skill Total: <?php echo $character['skill_total']; ?></span>
-									<span class="sm-stats">Gang: <?php
-										if(mysqli_num_rows($player_gang)===0)
-										{
-											echo 'None';
-											}
-										else {
-											while ($row = $connector->fetchArray($player_gang)) {
-												$gang = $row["value"];
-												if ($gang == 0) {
-													$pick = 'Black Arm';
-												} else {
-													$pick = 'Phoenix';
-												}
-												echo $pick;
-											}
-										}?>
+								<span class="sm-stats">Time Played: <?php
+									while ($row = $connector->fetchArray($totalTime)) {
+										$time = $row["SUM(`value`)"] / 1000;
+										$days = floor($time / (24 * 60 * 60));
+										$hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
+										$minutes = floor(($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60)) / 60);
+										$seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
+										echo $days . 'd ' . $hours . 'h ' . $minutes . 'm ';
+									} ?>
 										</span>
-									<span class="sm-stats">Time Played: <?php
-										while ($row = $connector->fetchArray($totalTime)) {
-											$time = $row["SUM(`value`)"] / 1000;
-											$days = floor($time / (24 * 60 * 60));
-											$hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
-											$minutes = floor(($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60)) / 60);
-											$seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
-											echo $days . 'd ' . $hours . 'h ' . $minutes . 'm ';
-										} ?>
-										</span>
-									<span class="sm-stats">Status:
+								<span class="sm-stats">Status:
 											<?php if ($character['online'] == 1) {
 												echo '<span class="green"><strong>Online</strong></span>';
 											} else {
 												echo '<span class="red"><strong>Offline</strong></span>';
 											} ?>
 										</span>
-									<span
-										class="sm-stats">Last Online: <?php date_default_timezone_set('America/New_York');
-										echo strftime("%b %d, %I:%M %p", $character["login_date"]) ?>
+								<span
+									class="sm-stats">Last Online: <?php date_default_timezone_set('America/New_York');
+									echo strftime("%b %d, %I:%M %p", $character["login_date"]) ?>
 										</span>
-								</div>
 							</div>
 						</div>
 
-						<br/>
-
-						<div>
-							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info">Recent Accomplishments</div>
-								<?php while ($row = $connector->fetchArray($player_feed)) {
-									echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
-									echo '<br/>';
-								} ?>
-							</div>
+						<div class="stats pl-5 pr-5">
+							<div class="h4 text-info">Recent Accomplishments</div>
+							<?php while ($row = $connector->fetchArray($player_feed)) {
+								echo '[<small>' . strftime("%d %b / %H:%M %Z", $row["time"]) . '</small>] <strong>' . $row["username"] . '</strong> ' . $row["message"];
+								echo '<br/>';
+							} ?>
 						</div>
-
-						<br/>
 
 						<!-- Begin admin and moderator view only -->
-						<?php //if ($user->data['group_id'] == '5' || $user->data['group_id'] == '4') { ?>
-						<div class="pt-3">
-							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info">Inventory</div>
-								<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
-									<?php $invitems = $connector->num_rows($player_invitems); ?>
-									<tr>
-										<?php
-										if ($invitems == 0) {
-											echo "No inventory items found.";
-										} else {
-											for ($i = 1; $list = $connector->fetchArray($player_invitems); $i++) {
-												?>
-												<td style="border: 1px solid black;">
-													<div class="clickable-row item<?php echo $list['id'] ?>" data-href="/itemdef/<?php echo $list['id'] ?>"
-														 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
-														<?php echo $list["number"]; ?>
-													</div>
-												</td>
-												<?php
-												if (($i % 10 == 0) && ($i < $invitems)) {
-													echo '</tr><tr>';
+						<?php //if ($user->data['group_id'] == '5' || $user->data['group_id'] == '4') {
+						if ($staff == 1) { ?>
+							<div class="pt-3">
+								<div class="stats pl-5 pr-5">
+									<div class="h4 text-info">Inventory</div>
+									<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+										<?php $invitems = $connector->num_rows($player_invitems); ?>
+										<tr>
+											<?php
+											if ($invitems == 0) {
+												echo "No inventory items found.";
+											} else {
+												for ($i = 1; $list = $connector->fetchArray($player_invitems); $i++) {
+													?>
+													<td style="border: 1px solid black;">
+														<div class="clickable-row item<?php echo $list['id'] ?>"
+															 data-href="/itemdef/<?php echo $list['id'] ?>"
+															 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
+															<?php echo $list["number"]; ?>
+														</div>
+													</td>
+													<?php
+													if (($i % 10 == 0) && ($i < $invitems)) {
+														echo '</tr><tr>';
+													}
 												}
-											}
-										} ?>
-									</tr>
-								</table>
-							</div>
+											} ?>
+										</tr>
+									</table>
+								</div>
 
-							<br/>
+								<br/>
 
-							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info">Bank:</div>
-								<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
-									<?php $bank = $connector->num_rows($player_bank); ?>
-									<tr>
-										<?php
-										if ($bank == 0) {
-											echo "No bank items found.";
-										} else {
-											for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
-												?>
-												<td style="border: 1px solid black;">
-													<div class="clickable-row item<?php echo $list['id'] ?>" data-href="/itemdef/<?php echo $list['id'] ?>"
-														 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
-														<?php echo $list["number"]; ?>
-													</div>
-												</td>
-												<?php
-												if (($i % 10 == 0) && ($i < $bank)) {
-													echo '</tr><tr>';
+								<div class="stats pl-5 pr-5">
+									<div class="h4 text-info">Bank:</div>
+									<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+										<?php $bank = $connector->num_rows($player_bank); ?>
+										<tr>
+											<?php
+											if ($bank == 0) {
+												echo "No bank items found.";
+											} else {
+												for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
+													?>
+													<td style="border: 1px solid black;">
+														<div class="clickable-row item<?php echo $list['id'] ?>"
+															 data-href="/itemdef/<?php echo $list['id'] ?>"
+															 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
+															<?php echo $list["number"]; ?>
+														</div>
+													</td>
+													<?php
+													if (($i % 10 == 0) && ($i < $bank)) {
+														echo '</tr><tr>';
+													}
 												}
-											}
-										} ?>
-									</tr>
-								</table>
-							</div>
+											} ?>
+										</tr>
+									</table>
+								</div>
 
-							<br/>
+								<br/>
 
-							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info">Logins and IPs:</div>
-								<table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
-									<?php $logins = $connector->num_rows($player_logins); ?>
+								<div class="stats pl-5 pr-5">
+									<div class="h4 text-info">Logins and IPs:</div>
+									<table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+										<?php $logins = $connector->num_rows($player_logins); ?>
+										<tr>
+											<?php
+											if ($logins == 0) {
+												echo "No login logs found.";
+											} else {
+												for ($i = 1; $list = $connector->fetchArray($player_logins); $i++) {
+													echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] <b>' . $list["ip"] . '</b>';
+													echo '<br/>';
+													if (($i % 14 == 0) && ($i < $logins)) {
+														echo '</tr><tr>';
+													}
+												}
+											} ?>
+										</tr>
+									</table>
+								</div>
+
+								<br/>
+
+								<div class="stats pl-5 pr-5">
+									<div class="h4 text-info">Chat Logs:</div>
+									<table class=style="background: rgba(255,255,255,0.3); border-collapse: collapse;
+									">
+									<?php $chat = $connector->num_rows($player_chatlogs); ?>
 									<tr>
 										<?php
-										if ($logins == 0) {
-											echo "No login logs found.";
+										if ($chat == 0) {
+											echo "No chat logs found.";
 										} else {
-											for ($i = 1; $list = $connector->fetchArray($player_logins); $i++) {
-												echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] <b>' . $list["ip"] . '</b>';
+											for ($i = 1; $list = $connector->fetchArray($player_chatlogs); $i++) {
+												echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] <span style="color: #F5FA3C; text-shadow: 1px 1px black;">' . $list["message"] . '</span>';
 												echo '<br/>';
-												if (($i % 14 == 0) && ($i < $logins)) {
+												if (($i % 14 == 0) && ($i < $chat)) {
 													echo '</tr><tr>';
 												}
 											}
 										} ?>
 									</tr>
-								</table>
-							</div>
+									</table>
+								</div>
 
-							<br/>
+								<br/>
 
-							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info">Chat Logs:</div>
-								<table class=style="background: rgba(255,255,255,0.3); border-collapse: collapse;
-								">
-								<?php $chat = $connector->num_rows($player_chatlogs); ?>
-								<tr>
-									<?php
-									if ($chat == 0) {
-										echo "No chat logs found.";
-									} else {
-										for ($i = 1; $list = $connector->fetchArray($player_chatlogs); $i++) {
-											echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] <span style="color: #F5FA3C; text-shadow: 1px 1px black;">' . $list["message"] . '</span>';
-											echo '<br/>';
-											if (($i % 14 == 0) && ($i < $chat)) {
-												echo '</tr><tr>';
-											}
-										}
-									} ?>
-								</tr>
-								</table>
-							</div>
+								<div class="stats pl-5 pr-5">
+									<div class="h4 text-info">PM Logs:</div>
+									<table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+										<?php $pm = $connector->num_rows($player_pmlogs); ?>
+										<tr>
+											<?php
+											if ($pm == 0) {
+												echo "No private message logs found.";
+											} else {
+												for ($i = 1; $list = $connector->fetchArray($player_pmlogs); $i++) {
+													$idLinkSender = preg_replace("/[^A-Za-z0-9]/", "-", $list['sender']);
+													$idLinkReciever = preg_replace("/[^A-Za-z0-9]/", "-", $list['reciever']);
+													echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b><a href="/player/' . $idLinkSender . '" target="_blank">' . $list["sender"] . '</a></b> to <b><a href="/player/' . $idLinkReciever . '" target="_blank">' . $list["reciever"] . '</a></b>: <span class="text-info" style="text-shadow: 1px 1px black;">' . $list["message"] . '</span>';
+													echo '<br/>';
+													if (($i % 14 == 0) && ($i < $pm)) {
+														echo '</tr><tr>';
+													}
 
-							<br/>
-
-							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info">PM Logs:</div>
-								<table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
-									<?php $pm = $connector->num_rows($player_pmlogs); ?>
-									<tr>
-										<?php
-										if ($pm == 0) {
-											echo "No private message logs found.";
-										} else {
-											for ($i = 1; $list = $connector->fetchArray($player_pmlogs); $i++) {
-												$idLinkSender = preg_replace("/[^A-Za-z0-9]/", "-", $list['sender']);
-												$idLinkReciever = preg_replace("/[^A-Za-z0-9]/", "-", $list['reciever']);
-												echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b><a href="/player/' . $idLinkSender . '" target="_blank">' . $list["sender"] . '</a></b> to <b><a href="/player/' . $idLinkReciever . '" target="_blank">' . $list["reciever"] . '</a></b>: <span class="text-info" style="text-shadow: 1px 1px black;">' . $list["message"] . '</span>';
-												echo '<br/>';
-												if (($i % 14 == 0) && ($i < $pm)) {
-													echo '</tr><tr>';
 												}
+											} ?>
+										</tr>
+									</table>
+								</div>
 
-											}
-										} ?>
-									</tr>
-								</table>
-							</div>
+								<br/>
 
-							<br/>
-
-							<div class="stats pl-5 pr-5">
-								<div class="h4 text-info">Trade Logs:</div>
-								<table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
-									<?php $trade = $connector->num_rows($player_tradelogs); ?>
-									<tr>
-										<?php
-										if ($trade == 0) {
-											echo "No trade logs found. This is currently not functioning and under development.";
-										} else {
-											for ($i = 1; $list = $connector->fetchArray($player_tradelogs); $i++) {
-												echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b>' . $list["player1"] . '</b> to <b>' . $list["player2"] . '</b>';
-												?>
-												<td style="border: 1px solid black;">
-													<?php echo $list["player1_items"]; ?>
-												</td>
-												<td style="border: 1px solid black;">
-													<?php echo $list["player2_items"]; ?>
-												</td>
-												<?php
-												if (($i % 14 == 0) && ($i < $trade)) {
-													echo '</tr><tr>';
+								<div class="stats pl-5 pr-5">
+									<div class="h4 text-info">Trade Logs:</div>
+									<table style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+										<?php $trade = $connector->num_rows($player_tradelogs); ?>
+										<tr>
+											<?php
+											if ($trade == 0) {
+												echo "No trade logs found. This is currently not functioning and under development.";
+											} else {
+												for ($i = 1; $list = $connector->fetchArray($player_tradelogs); $i++) {
+													echo '[<small>' . strftime("%d %b / %H:%M %Z", $list["time"]) . '</small>] from <b>' . $list["player1"] . '</b> to <b>' . $list["player2"] . '</b>';
+													?>
+													<td style="border: 1px solid black;">
+														<?php echo $list["player1_items"]; ?>
+													</td>
+													<td style="border: 1px solid black;">
+														<?php echo $list["player2_items"]; ?>
+													</td>
+													<?php
+													if (($i % 14 == 0) && ($i < $trade)) {
+														echo '</tr><tr>';
+													}
 												}
-											}
-										} ?>
-									</tr>
-								</table>
+											} ?>
+										</tr>
+									</table>
+								</div>
 							</div>
-						</div>
 
-						<?php //} else {
-						//} ?>
-						<!-- End admin and moderator view only -->
+						<?php } else { ?>
+							</div>
+						<?php } ?>
+						<!-- End staff view only -->
 
 					<?php } ?>
 					<!-- End player opt out view else -->

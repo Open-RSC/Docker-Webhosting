@@ -120,7 +120,7 @@ function totalGameCharacters()
 		if ($row["countPlayers"] == NULL) {
 			echo "0";
 		} else {
-			echo $row["countPlayers"];
+			echo number_format($row["countPlayers"]);
 		}
 	}
 }
@@ -202,6 +202,28 @@ function listloginsToday()
 	}
 }
 
+function arrav()
+{
+	$connector = new Dbc();
+	$arrav = $connector->gamequery("SELECT id, username, value FROM openrsc_player_cache AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE B.key = 'arrav_gang' AND A.banned = '0' AND A.group_id = '10'");
+	while ($row = $connector->fetchArray($arrav)) {
+		if(mysqli_num_rows($arrav)===0)
+		{
+			echo 'No players are in a gang.';
+		}
+		else {
+			$gang = $row["value"];
+			$player = ucfirst($row["username"]);
+			if ($gang == 0) {
+				$pick = 'Black Arm';
+			} else {
+				$pick = 'Phoenix';
+			}
+			echo '<a href="/player/' . $row["id"] . '"><span class="text-info">' . $player . ':</span> ' . $pick . '</a><br>';
+		}
+	}
+}
+
 function totalPlayers()
 {
 	$connector = new Dbc();
@@ -216,7 +238,7 @@ function uniquePlayers()
 	$connector = new Dbc();
 	$uniquePlayers = $connector->gamequery("SELECT COUNT(DISTINCT creation_ip) AS Count FROM openrsc_players");
 	while ($row = $connector->fetchArray($uniquePlayers)) {
-		echo $row["Count"];
+		echo number_format($row["Count"]);
 	}
 }
 
@@ -297,7 +319,7 @@ function banktotalGold()
 	$connector = new Dbc();
 	$banktotalGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, A.banned, B.playerID, B.id, format(SUM(B.amount), 0) AS count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND A.group_id = '10' AND A.banned = '0'");
 	while ($row = $connector->fetchArray($banktotalGold)) {
-		echo $row["count"];
+		echo $row["count"] . ' gp';
 	}
 }
 

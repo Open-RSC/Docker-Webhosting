@@ -954,14 +954,15 @@ require_once('charfunctions.php');
 				</a>
 				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item text-secondary" href="/arrav">Shield of Arrav</a>
-					<div class="dropdown-divider border-info"></div>
-					<a class="dropdown-item text-secondary" href="/items">Member Quest 1</a>
+					<!--<div class="dropdown-divider border-info"></div>
+					<a class="dropdown-item text-secondary" href="/items">Member Quest 1</a>-->
 				</div>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="https://github.com/open-rsc/game">Source Code</a>
 			</li>
 		</ul>
+		<!-- Hidden login on the right
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="#login">Login</a>
@@ -970,6 +971,7 @@ require_once('charfunctions.php');
 				<a class="nav-link" href="#register">Register</a>
 			</li>
 		</ul>
+		-->
 	</div>
 </nav>
 
