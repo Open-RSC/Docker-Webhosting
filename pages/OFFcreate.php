@@ -3,7 +3,7 @@ if (!defined('IN_SITE')) {
     die("You do not have permission to access this file.");
 }
 
-$connector = new Dbc();
+//$connector = new Dbc();
 
 if ($_POST['nm']) {
     $username = $_POST['nm'];
@@ -12,8 +12,8 @@ if ($_POST['nm']) {
     $username = preg_replace("/[^A-Za-z0-9 ]/", " ", $username);
     $username = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $username);
 
-    $user_result = $connector->gamequery("SELECT username FROM openrsc_players WHERE username='$username'");
-    $num_users_row = mysqli_num_rows($user_result);
+    //$user_result = $connector->gamequery("SELECT username FROM openrsc_players WHERE username='$username'");
+    //$num_users_row = mysqli_num_rows($user_result);
 
     if ($num_users_row != 0) {
         echo 0;
@@ -27,9 +27,9 @@ if ($_POST['nm']) {
             $time = time();
             $gamepass = sha1($password);
             $gamename = explode('.', $username);
-            $connector->gamequery("INSERT INTO `openrsc_curstats`(`playerID`) VALUES ('" . $user->data['user_id'] . "')");
-            $connector->gamequery("INSERT INTO `openrsc_experience`(`playerID`) VALUES ('" . $user->data['user_id'] . "')");
-            $connector->gamequery("INSERT INTO `openrsc_players`(`username`, `owner`, `pass`, `creation_date`, `creation_ip`) VALUES ('" . $username . "', '" . $user->data['user_id'] . "', '" . $gamepass . "', '" . $time . "', '" . $_SERVER['REMOTE_ADDR'] . "')");
+            //$connector->gamequery("INSERT INTO `openrsc_curstats`(`playerID`) VALUES ('" . $user->data['user_id'] . "')");
+            //$connector->gamequery("INSERT INTO `openrsc_experience`(`playerID`) VALUES ('" . $user->data['user_id'] . "')");
+            //$connector->gamequery("INSERT INTO `openrsc_players`(`username`, `owner`, `pass`, `creation_date`, `creation_ip`) VALUES ('" . $username . "', '" . $user->data['user_id'] . "', '" . $gamepass . "', '" . $time . "', '" . $_SERVER['REMOTE_ADDR'] . "')");
             echo 1;
         }
     }

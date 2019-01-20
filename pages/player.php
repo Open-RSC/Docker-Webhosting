@@ -54,12 +54,14 @@ function bd_nice_number($n)
 
 	return number_format($n);
 }
+
 ?>
 
 <?php if ($character) { ?>
 <div class="text-info table-dark" style="height: 100vh; width: 100vw;"
 	 xmlns:border-collapse="http://www.w3.org/1999/xhtml">
-	<div class="border-left border-info border-right table-wrapper-scroll-y container" style="height: 100vh; width: 100vw;">
+	<div class="border-left border-info border-right table-wrapper-scroll-y container"
+		 style="height: 100vh; width: 100vw;">
 		<div class="h2 text-center text-capitalize display-3" style="font-size: 38px;"><?php
 			if ($character['group_id'] != 10): echo "<img class=\"pr-3 pb-2\" src=\"../img/$character[group_id].svg\" height=\"42\">";
 			else: NULL; endif;
@@ -76,26 +78,25 @@ function bd_nice_number($n)
 
 						<div class="pl-3 pr-3 container">
 						<div class="flex-row stats">
-							<div class="display-glow">
+							<div class="pt-3 display-glow">
 								<?php
 								$file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png';
 								echo "<img src=\"$file\"/>";
 								?>
 							</div>
 
-							<div id="sm-skill">
+							<div id="sm-skill" class="pt-4">
 								<?php foreach ($skill_array as $skill) {
 									if ($skill == 'hitpoints') {
 										$skillc = 'hits';
 									} else {
 										$skillc = $skill;
 									}
-									?><span class="sm-skill"><a
-									href="/highscores/<?php echo $skill; ?>"><img
-										src="/img/skill_icons/<?php echo $skill; ?>.svg"
+									?><a class="sm-skill"
+										 href="../highscores/<?php echo $skill; ?>"><img
+										src="../img/skill_icons/<?php echo $skill; ?>.svg"
 										height="20px" alt="<?php echo $skill; ?>"/>
-									</a><?php echo experienceToLevel($character['exp_' . $skillc] / 4.0); ?>
-									</span>
+									<?php echo experienceToLevel($character['exp_' . $skillc] / 4.0); ?></a>
 								<?php } ?>
 							</div>
 
@@ -239,7 +240,8 @@ function bd_nice_number($n)
 
 								<div class="stats pl-5 pr-5">
 									<div class="h4 text-info">Chat Logs:</div>
-									<table class=style="background: rgba(255,255,255,0.3); border-collapse: collapse;">
+									<table class=style="background: rgba(255,255,255,0.3); border-collapse: collapse;
+									">
 									<?php $chat = $connector->num_rows($player_chatlogs); ?>
 									<tr>
 										<?php

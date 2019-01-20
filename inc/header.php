@@ -959,19 +959,9 @@ require_once('charfunctions.php');
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="https://github.com/open-rsc/game">Source Code</a>
+				<a class="nav-link" href="/calendar">Event Calendar</a>
 			</li>
 		</ul>
-		<!-- Hidden login on the right
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="#login">Login</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#register">Register</a>
-			</li>
-		</ul>
-		-->
 	</div>
 </nav>
 

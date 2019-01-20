@@ -5,8 +5,8 @@ if (!defined('IN_SITE')) {
 if ($user->data['is_registered']) {
 	$phpbb_user_id = $user->data['user_id'];
 
-	$connector = new Dbc();
-	$characters_result = $connector->gamequery("SELECT * FROM openrsc_players WHERE owner=$phpbb_user_id");
+	//$connector = new Dbc();
+	//$characters_result = $connector->gamequery("SELECT * FROM openrsc_players WHERE owner=$phpbb_user_id");
 	?>
 	<div class="main">
 		<div class="content">

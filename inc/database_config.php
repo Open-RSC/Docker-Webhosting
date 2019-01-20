@@ -873,7 +873,7 @@ function gameChat()
 						date_default_timezone_set('America/New_York'); ?>
 						<tr class="small clickable-row" data-href="../player/<?php echo $row['playerID'] ?>">
 							<td class="text-capitalize pl-2"
-								 style="color: #F5FA3C; text-shadow: 1px 1px black;">
+								style="color: #F5FA3C; text-shadow: 1px 1px black;">
 								<?php if ($row['group_id'] != 10):
 									echo '<img class="mb-1" src="../img/' . $row["group_id"] . '.svg" width="10" height="10"> ';
 								endif; ?>
