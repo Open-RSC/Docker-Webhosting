@@ -947,6 +947,17 @@ require_once('charfunctions.php');
 					<a class="dropdown-item text-secondary" href="/stats">Statistics</a>
 				</div>
 			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				   aria-haspopup="true" aria-expanded="false">
+					Quests
+				</a>
+				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item text-secondary" href="/arrav">Shield of Arrav</a>
+					<div class="dropdown-divider border-info"></div>
+					<a class="dropdown-item text-secondary" href="/items">Member Quest 1</a>
+				</div>
+			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="https://github.com/open-rsc/game">Source Code</a>
 			</li>
