@@ -31,8 +31,8 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 
 <div class="text-info table-dark highscores">
 	<div class="container">
-		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3"
-			 style="font-size: 38px;"><?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
+		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
+			<?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
 		</h2>
 		<p class="note center text-center">
 			Note: Only players that have logged in within the last 3 months are shown.

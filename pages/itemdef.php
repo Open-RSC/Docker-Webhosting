@@ -108,7 +108,7 @@ LIMIT 793");
 		<div class="">
 			<?php if ($result) { ?>
 			<h2 class="align-items-center text-center">
-				<a class="h2 text-info text-capitalize display-3" style="font-size: 38px;"
+				<a class="h2 text-info text-capitalize display-3"
 				   href="../items"><?php echo $result['name']; ?></a>
 			</h2>
 

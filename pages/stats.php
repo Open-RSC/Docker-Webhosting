@@ -6,7 +6,7 @@ if (!defined('IN_SITE')) {
 
 <div class="text-info table-dark">
 	<div class="container border-left border-info border-right">
-		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Statistics</h2>
+		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Statistics</h2>
 		<div class="row justify-content-center">
 			<div class="col-4 text-primary">
 					<div class="h4 text-warning">Accounts</div>

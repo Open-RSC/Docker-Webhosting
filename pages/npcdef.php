@@ -78,7 +78,7 @@ $skills = buildSQLArray($skill_array);
 		 style="height: 100vh; width: 100vw;">
 		<?php if ($result) { ?>
 		<h2 class="text-center">
-			<a class="h2 text-info text-capitalize display-3" style="font-size: 38px;"
+			<a class="h2 text-info text-capitalize display-3"
 			   href="../npcs"><?php echo $result['name']; ?></a><br>
 			<span class="h5 font-weight-bold text-primary">(Combat level <?php echo $result['combatlvl']; ?>)</span>
 		</h2>
