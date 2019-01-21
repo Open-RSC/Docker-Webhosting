@@ -27,9 +27,9 @@ $cur = $connector->fetchArray($cur_result);
 
 <div class="text-info table-dark" style="height: 100vh; width: 100vw;">
 	<div class="border-left border-info border-right container table-wrapper-scroll-y" style="height: 100vh;">
-		<div class="h2 text-center text-capitalize display-3"
-			 style="font-size: 38px;"><?php echo $character["username"] ?>'s Export
-		</div>
+		<h2 class="h2 text-center text-capitalize display-3">
+			<?php echo $character["username"] ?>'s Export
+		</h2>
 		<div class="row sm-stats" style="text-transform: unset;">
 			<div class="text-primary">
 				<div class="row">

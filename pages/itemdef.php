@@ -107,10 +107,10 @@ LIMIT 793");
 		 style="height: 100vh; width: 100vw;">
 		<div class="">
 			<?php if ($result) { ?>
-			<div class="align-items-center text-center">
-				<a class="h2 text-info text-capitalize display-3" style="font-size: 38px;"
+			<h2 class="align-items-center text-center">
+				<a class="h2 text-info text-capitalize display-3"
 				   href="../items"><?php echo $result['name']; ?></a>
-			</div>
+			</h2>
 
 			<div class="pt-1 pl-3 pr-3">
 				<div class="stats row">
