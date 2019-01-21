@@ -30,7 +30,7 @@ if (!defined('IN_SITE')) {
 				<a href="https://github.com/open-rsc/game"/>Follow this guide on GitHub.</a><br/><br/>
 
 				<span class="text-info font-weight-bold">Who are the Open RSC admins?</span><br/>
-				Marwolf, Kenix, and Christofosho<br/><br/>
+				Marwolf and Kenix<br/><br/>
 
 				<span class="text-info font-weight-bold">What is Open RSC's stance on botting?</span><br/>
 				We have a zero tolerance policy.<br/><br/>
