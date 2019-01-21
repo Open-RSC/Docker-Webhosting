@@ -54,9 +54,9 @@ function bd_nice_number($n)
 
 <div class="text-info table-dark">
 	<div class="container border-left border-info border-right" style="height: 100vh;">
-		<div class="h2 text-center text-capitalize display-3"
+		<h2 class="h2 text-center text-capitalize display-3"
 			 style="font-size: 38px;"><?php echo $character['username']; ?>'s Bank
-		</div>
+		</h2>
 		<div class="row sm-stats pl-3 pr-3">
 			<div class="pb-0 stats row justify-content-center">
 				<?php $file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png'; ?>

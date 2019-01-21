@@ -1,6 +1,6 @@
 <div class="text-info table-dark" style="height: 100vh; width: 100vw;">
 	<div class="border-left border-info border-right container" style="height: 100vh;">
-		<div class="h2 text-center text-capitalize display-3" style="font-size: 38px;">Error</div>
+		<h2 class="h2 text-center text-capitalize display-3" style="font-size: 38px;">Error</h2>
 		<div class="row sm-stats justify-content-center" style="text-transform: unset;">
 			<div class="text-primary">
 				<div class="row justify-content-center">

@@ -318,6 +318,10 @@ li {
   margin-bottom: 10px;
 }
 
+.clickable-row {
+  cursor: pointer;
+}
+
 .skill-icon {
   width: 16px;
   height: 16px;
@@ -784,7 +788,8 @@ footer {
   background-size: auto 100%;
   position: relative;
   padding: 0;
-  min-height: 35px;
+  padding-top: 8px;
+  min-height: 25px;
 }
 
 footer > p {
