@@ -134,16 +134,25 @@ include "inc/header.php";
 						<br>
 					</div>
 
+					<div class="fixed-bottom">
+						<a href="https://discordapp.com/invite/94vVKND" target="_blank"><i
+								class="text-info h3 fab fa-discord mr-md-2 clickable-row"></i></a>
+						<a href="https://www.reddit.com/r/openrsc" target="_blank"><i
+								class="text-info h3 fab fa-reddit mr-md-2 clickable-row"></i></a>
+						<a href="https://twitter.com/openrsc" target="_blank"><i
+								class="text-info h3 fab fa-twitter mr-md-2 clickable-row"></i></a>
+						<a href="https://github.com/open-rsc/Game" target="_blank"><i
+								class="text-info h3 fab fa-github clickable-row"></i></a>
+					</div>
+
 				</div>
 			</div>
 
 			<!-- Right column -->
-			<div>
-				<div class="side-right table-wrapper-scroll-y border-left border-info">
-					<!-- Twitter feed -->
-					<h4 class="mt-3 text-info">Recent News</h4>
-					<div class="text-primary small" id="tweets"></div>
-				</div>
+			<div class="side-right table-wrapper-scroll-y border-left border-info">
+				<!-- Twitter feed -->
+				<h4 class="mt-3 text-info">Recent News</h4>
+				<div class="text-primary small" id="tweets"></div>
 			</div>
 		</div>
 
