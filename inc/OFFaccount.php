@@ -106,7 +106,7 @@ function buildSQLArray($array)
     return $SQLarray;
 }
 
-$connector = new Dbc();
+//$connector = new Dbc();
 
 if ($_POST['nm']) {
     $username = $_POST['nm'];
@@ -115,7 +115,7 @@ if ($_POST['nm']) {
     //$username = mysqli_real_escape_string($username);
     $username = preg_replace("/[^A-Za-z0-9 ]/", " ", $username);
 
-    $user_result = $connector->gamequery("SELECT username FROM openrsc_players WHERE username='$username'");
+    //$user_result = $connector->gamequery("SELECT username FROM openrsc_players WHERE username='$username'");
     $num_users_row = mysqli_num_rows($user_result);
 
     if ($num_users_row != 0) {
@@ -145,7 +145,7 @@ if ($_POST['nm']) {
     if (strtolower($ver) != 'yes') {
         echo 0;
     } else {
-        $user_check = $connector->gamequery("SELECT * FROM openrsc_players WHERE id='$user_i'");
+        //$user_check = $connector->gamequery("SELECT * FROM openrsc_players WHERE id='$user_i'");
         $check = $connector->fetchArray($user_check);
         if ($user_i == $user->data['user_id']) {
             if ($check['group_id'] == 1) {
@@ -176,10 +176,10 @@ if ($_POST['nm']) {
     $id = preg_replace("/[^A-Za-z0-9]/", "-", $id);
 
     $skills = buildSQLArray($skill_array);
-    $user_check = $connector->gamequery("SELECT " . $skills . ", openrsc_players.owner FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.id = openrsc_experience.playerID WHERE openrsc_players.id= '$id'");
+    //$user_check = $connector->gamequery("SELECT " . $skills . ", openrsc_players.owner FROM openrsc_players LEFT JOIN openrsc_experience ON openrsc_players.id = openrsc_experience.playerID WHERE openrsc_players.id= '$id'");
     $check = $connector->fetchArray($user_check);
 
-    $character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.id = '$id'");
+    //$character_result = $connector->gamequery("SELECT " . $skills . ", openrsc_players.* FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.id = '$id'");
     $character = $connector->fetchArray($character_result);
 
     if ($check['owner'] == $user->data['user_id'] && $user->data['group_id'] == '5') { //breaks so that nobody can access this on production

@@ -134,9 +134,9 @@ function onlinePlayers()
 			echo "No players currently online.";
 		} else {
 			if ($row['group_id'] != 10):
-				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+				echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
-			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
+			echo '<a href="../player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
 		}
 	}
@@ -164,19 +164,19 @@ function listregistrationsToday()
 			echo "No players have been created today.";
 		} else {
 			if ($row['group_id'] != 10):
-				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+				echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
-			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
+			echo '<a href="../player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
 		}
 	}
 }
 
-function loginsToday()
+function logins48()
 {
 	$connector = new Dbc();
-	$loginsToday = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
-	while ($row = $connector->fetchArray($loginsToday)) {
+	$logins48 = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 48 hour )");
+	while ($row = $connector->fetchArray($logins48)) {
 		if ($row["countUsers"] == NULL) {
 			echo "0";
 		} else {
@@ -185,18 +185,18 @@ function loginsToday()
 	}
 }
 
-function listloginsToday()
+function listlogins48()
 {
 	$connector = new Dbc();
-	$loginsToday = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 1 day )");
-	while ($row = $connector->fetchArray($loginsToday)) {
+	$logins48 = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 48 hour )");
+	while ($row = $connector->fetchArray($logins48)) {
 		if ($row["username"] == NULL) {
-			echo "No players have logged in today.";
+			echo "No players have logged in for the last 48 hours.";
 		} else {
 			if ($row['group_id'] != 10):
-				echo '<img src="/img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+				echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 			else: NULL; endif;
-			echo '<a class="white" href="/player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
+			echo '<a href="../player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
 			echo '<br />';
 		}
 	}
@@ -207,11 +207,9 @@ function arrav()
 	$connector = new Dbc();
 	$arrav = $connector->gamequery("SELECT id, username, value FROM openrsc_player_cache AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE B.key = 'arrav_gang' AND A.banned = '0' AND A.group_id = '10'");
 	while ($row = $connector->fetchArray($arrav)) {
-		if(mysqli_num_rows($arrav)===0)
-		{
+		if (mysqli_num_rows($arrav) === 0) {
 			echo 'No players are in a gang.';
-		}
-		else {
+		} else {
 			$gang = $row["value"];
 			$player = ucfirst($row["username"]);
 			if ($gang == 0) {
@@ -219,7 +217,7 @@ function arrav()
 			} else {
 				$pick = 'Phoenix';
 			}
-			echo '<a href="/player/' . $row["id"] . '"><span class="text-info">' . $player . ':</span> ' . $pick . '</a><br>';
+			echo '<a href="../player/' . $row["id"] . '"><span class="text-info">' . $player . ':</span> ' . $pick . '</a><br>';
 		}
 	}
 }
@@ -833,16 +831,17 @@ function activityfeed()
 		} else {
 			echo '
 			<div class="text-primary ml-3 mr-3" style="font-size: 13px;"><br>
-					<div class="row clickable-row" data-href="/player/' . $row["pid"] . '">
+					<div class="row clickable-row" data-href="../player/' . $row["pid"] . '">
 						<div class="col-sm text-info font-weight-bold">
 							' . strftime("%b %d, %I:%M %p", $row["time"]) . '
 						</div>
 						<div class="col-9 p-0">
 							';
-							if ($row['group_id'] != 10):
-								echo '<img class="mb-1" src="img/' . $row["group_id"] . '.svg" width="9" height="9"> ';
-							endif; echo  '
-							<img class="pr-2 float-left" src="https://game.openrsc.com/avatars/' . $row["id"] . '.png" width="36" height="48" onerror="this.style.display=\'none\'">
+			if ($row['group_id'] != 10):
+				echo '<img class="mb-1" src="../img/' . $row["group_id"] . '.svg" width="9" height="9"> ';
+			endif;
+			echo '
+							<img class="pr-2 float-left" src="https://game.openrsc.com/avatars/' . $row["pid"] . '.png" width="36" height="48" onerror="this.style.display=\'none\'">
 							<span class="font-weight-bold">' . ucfirst($row["username"]) . '</span> ' . $row["message"] . '
 							<br><br>
 						</div>
@@ -860,21 +859,43 @@ function gameChat()
 	$game_accounts = $connector->logquery("SELECT A.id playerID, A.group_id, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 1500");
 	date_default_timezone_set('America/New_York');
 	?>
-	<div class="panel" style="font-size: 14px;">
-		<div class="container pb-5 border-left border-info border-right pt-1">
-		<?php while ($row = $connector->fetchArray($game_accounts)) {
-			$idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
-			date_default_timezone_set('America/New_York');
-				echo '<span class="text-monospace text-white-50">';
-				echo strftime("%b %d, %I:%M %p", $row["time"]) ?> </span><a
-					href="/player/<?php echo $idLink ?>"
-					target="_blank"><span style="color: #F5FA3C; text-shadow: 1px 1px black;">
-					<?php
-					if ($row['group_id'] != 10):
-						echo '<img class="mb-1" src="img/' . $row["group_id"] . '.svg" width="10" height="10"> ';
-					endif;
-					echo ucwords($row["sender"]) ?></span></a><span style="color: #F5FA3C; text-shadow: 1px 1px black;">: <?php echo $row["message"] ?></span><br>
-		<?php } ?>
+	<div class="text-info table-dark">
+		<div class="container border-left border-info border-right">
+			<div class="h2 text-center pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Recent Chat</div>
+			<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an player">
+			<div class="tableFixHead">
+				<table id="itemList"
+					   class="small container table-responsive-lg table-striped table-hover table-dark text-primary"
+					   align="center">
+					<tbody>
+					<?php while ($row = $connector->fetchArray($game_accounts)) {
+						$idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
+						date_default_timezone_set('America/New_York'); ?>
+						<tr class="small clickable-row" data-href="../player/<?php echo $row['playerID'] ?>">
+							<td class="text-capitalize pl-2"
+								style="color: #F5FA3C; text-shadow: 1px 1px black;">
+								<?php if ($row['group_id'] != 10):
+									echo '<img class="mb-1" src="../img/' . $row["group_id"] . '.svg" width="10" height="10"> ';
+								endif; ?>
+								<?php echo $row['sender'] ?>
+							</td>
+							<td>
+								<img class="pr-2 float-left"
+									 src="https://game.openrsc.com/avatars/<?php echo $row["playerID"] ?>.png"
+									 width="36"
+									 height="48" onerror="this.style.display='none'">
+							</td>
+							<td class="text-monospace text-white-50 pt-2">
+								<?php echo strftime("%b %d, %I:%M %p", $row["time"]) ?>
+							</td>
+							<td style="color: #F5FA3C; text-shadow: 1px 1px black;">
+								<?php echo $row["message"] ?>
+							</td>
+						</tr>
+					<?php } ?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<?php

@@ -1,6 +1,6 @@
 <?php
 if (!defined('IN_SITE')) {
-    die("You do not have permission to access this file.");
+	die("You do not have permission to access this file.");
 }
 
 include "../inc/config.php";
@@ -25,18 +25,29 @@ $cur = $connector->fetchArray($cur_result);
 
 ?>
 
-<?php if ($character) { ?>
-    <!-- Begin logged in user view only -->
-    <?php if ($user->data['is_registered']) { ?>
+<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
+	<div class="border-left border-info border-right container table-wrapper-scroll-y" style="height: 100vh;">
+		<div class="h2 text-center text-capitalize display-3"
+			 style="font-size: 38px;"><?php echo $character["username"] ?>'s Export
+		</div>
+		<div class="row sm-stats" style="text-transform: unset;">
+			<div class="text-primary">
+				<div class="row">
+					<div class="pl-3 pr-3 container">
+						<div class="pb-1">
 
-        <!-- Begin hide if highscore opt out unless admin or moderator -->
-        <?php if ($character['highscoreopt'] == 1 && ($user->data['group_id'] == '3' || $user->data['group_id'] == '2' || $user->data['group_id'] == '7' || $user->data['group_id'] == '1') || $user->data['group_id'] == '6') { ?>
-            <br/><h4 align="center">The player has decided to opt out of highscores</h4><br/>
-        <?php } else {
-            ?>
+							<?php if ($character) { ?>
+							<!-- Begin logged in user view only -->
+							<?php if ($admin == 1) { //($user->data['is_registered']) { ?>
 
-            <div class="white">
-                <?php echo 'INSERT INTO `openrsc_players` (`id`, `username`, `group_id`, `owner`, `pass`, `salt`, 
+								<!-- Begin hide if highscore opt out unless admin or moderator -->
+								<?php if ($character['highscoreopt'] == 1 && ($user->data['group_id'] == '3' || $user->data['group_id'] == '2' || $user->data['group_id'] == '7' || $user->data['group_id'] == '1') || $user->data['group_id'] == '6') { ?>
+									<br/><h4 align="center">The player has decided to opt out of highscores</h4><br/>
+								<?php } else {
+									?>
+
+									<div>
+										<?php echo 'INSERT INTO `openrsc_players` (`id`, `username`, `group_id`, `owner`, `pass`, `salt`, 
                 `combat`, `skill_total`, `x`, `y`, `fatigue`, `combatstyle`, `block_chat`, `block_private`, `block_trade`, 
                 `block_duel`, `cameraauto`, `onemouse`, `soundoff`, `haircolour`, `topcolour`, `trousercolour`, `skincolour`, 
                 `headsprite`, `bodysprite`, `male`, `skulled`, `charged`, `creation_date`, 
@@ -50,9 +61,9 @@ $cur = $connector->fetchArray($cur_result);
                 \'0.0.0.0\', \'' . $character["login_date"] . '\', \'0.0.0.0\', \'' . $character["banned"] . '\', \'' . $character["offences"] . '\', \'' . $character["muted"] . '\', \'' . $character["kills"] . '\', \'' . $character["deaths"] . '\', \'' . $character["iron_man"] . '\', 
                 \'' . $character["iron_man_restriction"] . '\', \'' . $character["hc_ironman_death"] . '\', \'' . $character["online"] . '\', NULL, \'' . $character["bank_size"] . '\', \'' . $character["highscoreopt"] . '\', \'' . $character["forum_active"] . '\');'; ?>
 
-                <br/><br/>
+										<br/><br/>
 
-                <?php echo 'INSERT INTO `openrsc_curstats` (`id`, `playerID`, `cur_attack`, `cur_defense`, 
+										<?php echo 'INSERT INTO `openrsc_curstats` (`id`, `playerID`, `cur_attack`, `cur_defense`, 
             `cur_strength`, `cur_hits`, `cur_ranged`, `cur_prayer`, 
             `cur_magic`, `cur_cooking`, `cur_woodcut`, `cur_fletching`, 
             `cur_fishing`, `cur_firemaking`, `cur_crafting`, `cur_smithing`, 
@@ -64,9 +75,9 @@ $cur = $connector->fetchArray($cur_result);
             \'' . $cur["cur_fishing"] . '\', \'' . $cur["cur_firemaking"] . '\', \'' . $cur["cur_crafting"] . '\', \'' . $cur["cur_smithing"] . '\', 
             \'' . $cur["cur_mining"] . '\', \'' . $cur["cur_herblaw"] . '\', \'' . $cur["cur_agility"] . '\', \'' . $cur["cur_thieving"] . '\');'; ?>
 
-                <br/><br/>
+										<br/><br/>
 
-                <?php echo 'INSERT INTO `openrsc_experience` (`id`, `playerID`, `exp_attack`, `exp_defense`, 
+										<?php echo 'INSERT INTO `openrsc_experience` (`id`, `playerID`, `exp_attack`, `exp_defense`, 
             `exp_strength`, `exp_hits`, `exp_ranged`, `exp_prayer`, 
             `exp_magic`, `exp_cooking`, `exp_woodcut`, `exp_fletching`, 
             `exp_fishing`, `exp_firemaking`, `exp_crafting`, `exp_smithing`, 
@@ -78,39 +89,50 @@ $cur = $connector->fetchArray($cur_result);
             \'' . $exp["exp_fishing"] . '\', \'' . $exp["exp_firemaking"] . '\', \'' . $exp["exp_crafting"] . '\', \'' . $exp["exp_smithing"] . '\', 
             \'' . $exp["exp_mining"] . '\', \'' . $exp["exp_herblaw"] . '\', \'' . $exp["exp_agility"] . '\', \'' . $exp["exp_thieving"] . '\');'; ?>
 
-                <br/><br/>
+										<br/><br/>
 
-                <?php $invitem = $connector->num_rows($invitem_result);
-                if ($invitem == 0) {
-                } else {
-                    for ($i = 1; $invitem = $connector->fetchArray($invitem_result); $i++) {
-                        ?>
-                        <?php echo 'INSERT INTO `openrsc_invitems` (`playerID`, `id`, `amount`, `wielded`, `slot`, `dbid`) VALUES (\'' . $invitem["playerID"] . '\', \'' . $invitem["id"] . '\', \'' . $invitem["amount"] . '\', \'' . $invitem["wielded"] . '\', \'' . $invitem["slot"] . '\', \'' . $invitem["dbid"] . '\');';?><br/>
-                    <?php }
-                } ?>
+										<?php $invitem = $connector->num_rows($invitem_result);
+										if ($invitem == 0) {
+										} else {
+											for ($i = 1; $invitem = $connector->fetchArray($invitem_result); $i++) {
+												?>
+												<?php echo 'INSERT INTO `openrsc_invitems` (`playerID`, `id`, `amount`, `wielded`, `slot`, `dbid`) VALUES (\'' . $invitem["playerID"] . '\', \'' . $invitem["id"] . '\', \'' . $invitem["amount"] . '\', \'' . $invitem["wielded"] . '\', \'' . $invitem["slot"] . '\', \'' . $invitem["dbid"] . '\');'; ?>
+												<br/>
+											<?php }
+										} ?>
 
-                <br/>
+										<br/>
 
-                <?php $bank = $connector->num_rows($bank_result);
-                if ($bank == 0) {
-                } else {
-                    for ($i = 1; $bank = $connector->fetchArray($bank_result); $i++) {
-                        ?>
-                        <?php echo 'INSERT INTO `openrsc_bank` (`playerID`, `id`, `amount`, `slot`, `dbid`) VALUES (\'' . $bank["playerID"] . '\', \'' . $bank["id"] . '\', \'' . $bank["amount"] . '\', \'' . $bank["slot"] . '\', \'' . $bank["dbid"] . '\');';?><br/>
-                    <?php }
-                } ?>
-            </div>
-        <?php } ?>
-        <!-- End player opt out view else -->s
+										<?php $bank = $connector->num_rows($bank_result);
+										if ($bank == 0) {
+										} else {
+											for ($i = 1; $bank = $connector->fetchArray($bank_result); $i++) {
+												?>
+												<?php echo 'INSERT INTO `openrsc_bank` (`playerID`, `id`, `amount`, `slot`, `dbid`) VALUES (\'' . $bank["playerID"] . '\', \'' . $bank["id"] . '\', \'' . $bank["amount"] . '\', \'' . $bank["slot"] . '\', \'' . $bank["dbid"] . '\');'; ?>
+												<br/>
+											<?php }
+										} ?>
+									</div>
+								<?php } ?>
+								<!-- End player opt out view else -->
 
-    <?php } else {
-        echo "<h4>";
-        echo "You must be logged in to view this page.";
-        echo "</h4>";
-    } ?>
-    <!-- End logged in user view only -->
+							<?php } else {
+								echo "<h4 align='center'>";
+								echo "You must be logged in and a staff member to view this page.";
+								echo "</h4>";
+							} ?>
+							<!-- End logged in user view only -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br><br><br><br>
+	</div>
+</div>
 <?php } else {
-    echo "<h4 align='center'>Player not found</h4>";
+	echo "<h4 align='center'>No player found</h4>";
 }
 exit();
 ?>

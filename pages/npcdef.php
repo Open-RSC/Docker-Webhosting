@@ -79,7 +79,7 @@ $skills = buildSQLArray($skill_array);
 		<?php if ($result) { ?>
 		<div class="text-center">
 			<a class="h2 text-info text-capitalize display-3" style="font-size: 38px;"
-			   href="/npcs"><?php echo $result['name']; ?></a><br>
+			   href="../npcs"><?php echo $result['name']; ?></a><br>
 			<span class="h5 font-weight-bold text-primary">(Combat level <?php echo $result['combatlvl']; ?>)</span>
 		</div>
 
@@ -93,7 +93,7 @@ $skills = buildSQLArray($skill_array);
 					<br/>
 					<span class="h5 font-italic">"<?php echo $result['description']; ?>"</span><br>
 					<?php foreach ($skill_array as $skill) { ?>
-						<img src="/img/skill_icons/<?php echo $skill; ?>.svg" height="25px"
+						<img src="../img/skill_icons/<?php echo $skill; ?>.svg" height="25px"
 							 alt="<?php echo $skill; ?>"/>
 						<span class="h5 font-weight-bold pr-3"><?php echo $result[$skill]; ?></span>
 					<?php } ?>
@@ -136,7 +136,7 @@ $skills = buildSQLArray($skill_array);
 						} else {
 							?>
 							<tr class="clickable-row"
-								data-href="/itemdef/<?php echo $result['itemID']; ?>">
+								data-href="../itemdef/<?php echo $result['itemID']; ?>">
 								<td class="text-capitalize small pl-1">
 									<?php echo $result['itemName']; ?>
 								</td>

@@ -58,7 +58,7 @@ include "inc/header.php";
 						<div>
 							Players Online:
 							<b>
-								<a href="/online">
+								<a href="online">
 							<span class="text-info float-right">
 								<?php echo playersOnline(); ?>
 							</span>
@@ -74,7 +74,7 @@ include "inc/header.php";
 						<div>
 							Registrations Today:
 							<b>
-								<a href="/registrationstoday">
+								<a href="registrationstoday">
 								<span class="text-info float-right">
 									<?php echo newRegistrationsToday(); ?>
 								</span>
@@ -82,11 +82,11 @@ include "inc/header.php";
 							</b>
 						</div>
 						<div>
-							Logins Today:
+							Online Last 48 Hours:
 							<b>
-								<a href="/loginstoday">
+								<a href="logins48">
 								<span class="text-info float-right">
-									<?php echo loginsToday(); ?>
+									<?php echo logins48(); ?>
 								</span>
 								</a>
 							</b>
@@ -94,7 +94,7 @@ include "inc/header.php";
 						<div>
 							Unique Players:
 							<b>
-								<a href="/stats">
+								<a href="stats">
 								<span class="text-info float-right">
 									<?php echo uniquePlayers(); ?>
 								</span>
@@ -104,7 +104,7 @@ include "inc/header.php";
 						<div>
 							Total Players:
 							<b>
-								<a href="/stats">
+								<a href="stats">
 								<span class="text-info float-right">
 									<?php echo totalGameCharacters(); ?>
 								</span>
@@ -114,7 +114,7 @@ include "inc/header.php";
 						<div>
 							Sum Gold:
 							<b>
-								<a href="/stats">
+								<a href="stats">
 								<span class="text-info float-right">
 									<?php echo banktotalGold(); ?>
 								</span>
@@ -124,7 +124,7 @@ include "inc/header.php";
 						<div>
 							Cumulative Play:
 							<b>
-								<a href="/stats">
+								<a href="stats">
 								<span class="text-info float-right">
 									<?php echo totalTime(); ?>
 								</span>
@@ -134,16 +134,25 @@ include "inc/header.php";
 						<br>
 					</div>
 
+					<div class="fixed-bottom">
+						<a href="https://discordapp.com/invite/94vVKND" target="_blank"><i
+								class="text-info h3 fab fa-discord mr-md-2 clickable-row"></i></a>
+						<a href="https://www.reddit.com/r/openrsc" target="_blank"><i
+								class="text-info h3 fab fa-reddit mr-md-2 clickable-row"></i></a>
+						<a href="https://twitter.com/openrsc" target="_blank"><i
+								class="text-info h3 fab fa-twitter mr-md-2 clickable-row"></i></a>
+						<a href="https://github.com/open-rsc/Game" target="_blank"><i
+								class="text-info h3 fab fa-github clickable-row"></i></a>
+					</div>
+
 				</div>
 			</div>
 
 			<!-- Right column -->
-			<div>
-				<div class="side-right table-wrapper-scroll-y border-left border-info">
-					<!-- Twitter feed -->
-					<h4 class="mt-3 text-info">Recent News</h4>
-					<div class="text-primary small" id="tweets"></div>
-				</div>
+			<div class="side-right table-wrapper-scroll-y border-left border-info">
+				<!-- Twitter feed -->
+				<h4 class="mt-3 text-info">Recent News</h4>
+				<div class="text-primary small" id="tweets"></div>
 			</div>
 		</div>
 

@@ -109,7 +109,7 @@ LIMIT 793");
 			<?php if ($result) { ?>
 			<div class="align-items-center text-center">
 				<a class="h2 text-info text-capitalize display-3" style="font-size: 38px;"
-				   href="/items"><?php echo $result['name']; ?></a>
+				   href="../items"><?php echo $result['name']; ?></a>
 			</div>
 
 			<div class="pt-1 pl-3 pr-3">
@@ -238,7 +238,7 @@ LIMIT 793");
 													B.npcdef_id = '$npcID' AND C.id = '$subpage'
 												"); ?><!---->
 							<tr class="clickable-row"
-								data-href="/npcdef/<?php echo $result['npcID'] ?>">
+								data-href="../npcdef/<?php echo $result['npcID'] ?>">
 								<td class="text-capitalize small pl-1">
 									<?php echo $result['npcName']; ?>
 								</td>

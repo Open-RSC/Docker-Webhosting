@@ -54,13 +54,16 @@ function bd_nice_number($n)
 
 	return number_format($n);
 }
+
 ?>
 
 <?php if ($character) { ?>
-<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
-	<div class="border-left border-info border-right table-wrapper-scroll-y container">
+<div class="text-info table-dark" style="height: 100vh; width: 100vw;"
+	 xmlns:border-collapse="http://www.w3.org/1999/xhtml">
+	<div class="border-left border-info border-right table-wrapper-scroll-y container"
+		 style="height: 100vh; width: 100vw;">
 		<div class="h2 text-center text-capitalize display-3" style="font-size: 38px;"><?php
-			if ($character['group_id'] != 10): echo "<img class=\"pr-3 pb-2\" src=\"/img/$character[group_id].svg\" height=\"42\">";
+			if ($character['group_id'] != 10): echo "<img class=\"pr-3 pb-2\" src=\"../img/$character[group_id].svg\" height=\"42\">";
 			else: NULL; endif;
 			echo $character['username']; ?></div>
 		<div class="row sm-stats justify-content-center" style="text-transform: unset;">
@@ -75,26 +78,25 @@ function bd_nice_number($n)
 
 						<div class="pl-3 pr-3 container">
 						<div class="flex-row stats">
-							<div class="display-glow">
+							<div class="pt-3 display-glow">
 								<?php
 								$file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png';
 								echo "<img src=\"$file\"/>";
 								?>
 							</div>
 
-							<div id="sm-skill">
+							<div id="sm-skill" class="pt-4">
 								<?php foreach ($skill_array as $skill) {
 									if ($skill == 'hitpoints') {
 										$skillc = 'hits';
 									} else {
 										$skillc = $skill;
 									}
-									?><span class="sm-skill"><a
-									href="/highscores/<?php echo $skill; ?>"><img
-										src="/img/skill_icons/<?php echo $skill; ?>.svg"
+									?><a class="sm-skill"
+										 href="../highscores/<?php echo $skill; ?>"><img
+										src="../img/skill_icons/<?php echo $skill; ?>.svg"
 										height="20px" alt="<?php echo $skill; ?>"/>
-									</a><?php echo experienceToLevel($character['exp_' . $skillc] / 4.0); ?>
-									</span>
+									<?php echo experienceToLevel($character['exp_' . $skillc] / 4.0); ?></a>
 								<?php } ?>
 							</div>
 
@@ -166,7 +168,7 @@ function bd_nice_number($n)
 													?>
 													<td style="border: 1px solid black;">
 														<div class="clickable-row item<?php echo $list['id'] ?>"
-															 data-href="/itemdef/<?php echo $list['id'] ?>"
+															 data-href="../itemdef/<?php echo $list['id'] ?>"
 															 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
 															<?php echo $list["number"]; ?>
 														</div>
@@ -196,7 +198,7 @@ function bd_nice_number($n)
 													?>
 													<td style="border: 1px solid black;">
 														<div class="clickable-row item<?php echo $list['id'] ?>"
-															 data-href="/itemdef/<?php echo $list['id'] ?>"
+															 data-href="../itemdef/<?php echo $list['id'] ?>"
 															 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
 															<?php echo $list["number"]; ?>
 														</div>
