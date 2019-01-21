@@ -29,35 +29,30 @@ $order = $query[1];
 $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players.username, openrsc_players.login_date, openrsc_players.highscoreopt, $args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id = '10' AND openrsc_players.login_date >= unix_timestamp( current_date - interval 3 month ) AND openrsc_players.login_date >= '1539645175' ORDER BY $order DESC");
 ?>
 
-<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
+<div class="text-info table-dark highscores" style="height: 100vh; width: 100vw;">
 	<div class="container border-left border-info border-right">
 		<h2 class="text-center pt-5 pb-5 text-capitalize display-3"
-			 style="font-size: 38px;"><?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
+			style="font-size: 38px;"><?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
 		</h2>
-		<div align="center">
-			Note: Only players that have logged in within the last 3 months are shown.
-		</div>
-		<div class="pl-3 pr-3">
-			<div class="row tableFixHead">
-				<div class="col-sm-2">
-					<div class="skill">
-						<?php foreach ($skill_array
-
-						as $skill) { ?>
-						<li>
-							<div class="clickable-row"
-								 data-href="/highscores/<?php print $skill; ?>"
-					</div>
-					<img src="/img/skill_icons/<?php print $skill; ?>.svg"
-						 alt="<?php print $skill; ?>" class="skill-icon"/>
-					<?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
-					</li>
+		<div class="highscores-menu">
+			<div class="dropdown skill-dropdown pl-2 mb-2">
+				<a class="dropdown-toggle text-secondary" href="#" role="button" id="highscoresDropdown"
+				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Select a category
+				</a>
+				<div class="dropdown-menu bg-black" aria-labelledby="highscoresDropdown">
+					<?php foreach ($skill_array as $skill) { ?>
+						<a class="dropdown-item text-secondary" href="/highscores/<?php print $skill; ?>">
+							<img src="/img/skill_icons/<?php print $skill; ?>.svg"
+								 alt="<?php print $skill; ?>" class="skill-icon"/>
+							<?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
+						</a>
 					<?php } ?>
+				</div>
+			</div> <!-- .dropdown -->
+			<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()"
+				   placeholder="Search for a player">
 		</div>
-	</div>
-	<div class="col-sm-10 pt-2">
-		<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()"
-			   placeholder="Search for a player">
 		<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 			<thead>
 			<tr>
@@ -107,6 +102,4 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 			</tbody>
 		</table>
 	</div>
-</div>
-</div>
 </div>

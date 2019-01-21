@@ -17,6 +17,16 @@ html {
     height: 100vh;
 }
 
+section {
+    flex-grow: 1;
+    background: rgba(20, 20, 20, 0.9);
+    padding-bottom: 47px;
+}
+
+nav > button {
+    margin-left: 5px;
+}
+
 .nav-link {
     display: unset;
 }
@@ -300,20 +310,31 @@ li {
     display: flex;
     justify-content: space-around;
     padding-top: 15px;
+    margin: 0 auto;
 }
 
-.highscores > .panel:first-child {
-    flex: 0 15%;
-    margin-bottom: 10px;
+.highscores-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 
 .highscores > .panel:last-child {
-    flex: 0 85%;
-    margin-bottom: 10px;
 }
 
 .clickable-row {
     cursor: pointer;
+}
+
+.skill-dropdown {
+    background-color: #212529;
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 200px;
+    font-size: 16px;
+    color: #64a19d;
+    border: 1px solid #17a2b8;
 }
 
 .skill-icon {
