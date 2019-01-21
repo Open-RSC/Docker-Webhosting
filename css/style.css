@@ -12,12 +12,16 @@ body {
 section {
   flex-grow: 1;
   background: rgba(20, 20, 20, 0.9);
+  padding-bottom: 47px;
+}
+
+.h2 {
+  font-size: 4rem;
 }
 
 section#home {
   display: flex;
   flex-direction: row;
-
 }
 
 ::-webkit-scrollbar {
@@ -91,6 +95,10 @@ a:hover {
 
 li {
   list-style-type: none;
+}
+
+nav > button {
+  margin-left: 5px;
 }
 
 .nav-item {
@@ -306,16 +314,17 @@ li {
   display: flex;
   justify-content: space-around;
   padding-top: 15px;
+  margin: 0 auto;
 }
 
-.highscores > .panel:first-child {
-  flex: 0 15%;
-  margin-bottom: 10px;
+.highscores-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
-.highscores > .panel:last-child {
-  flex: 0 85%;
-  margin-bottom: 10px;
+.highscoresDropdown {
 }
 
 .clickable-row {
@@ -478,6 +487,19 @@ li {
 .rank {
   width: 70px;
   text-align: center;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.note {
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .username {
@@ -789,6 +811,7 @@ footer {
   position: relative;
   padding: 0;
   padding-top: 8px;
+  margin-top: -47px;
   min-height: 25px;
 }
 
