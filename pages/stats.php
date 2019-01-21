@@ -48,15 +48,19 @@ if (!defined('IN_SITE')) {
 					<div class="display-glow item594 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo dbattle(); ?></span><br/>
 					<div class="display-glow item592 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo dlong(); ?></span><br/><br/>
 
+					<div class="h4 text-warning">Important Items</div>
+					<div class="display-glow item18 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo cabbage(); ?></span><br/>
+					<div class="display-glow item193 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo beer(); ?></span><br/>
+
 					<div class="h4 text-warning">Holiday Items</div>
 					<div class="display-glow item422 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo pumpkins(); ?></span> (13,001 on 11/1/2018)<br/>
-                    <div class="display-glow item575 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo crackers(); ?></span> (0 on 12/26/2018)<br/>
-					<div class="display-glow item577 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo yellowphat(); ?></span> (0 on 12/26/2018)<br/>
-					<div class="display-glow item581 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo whitephat(); ?></span> (0 on 12/26/2018)<br/>
-					<div class="display-glow item580 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo purplephat(); ?></span> (0 on 12/26/2018)<br/>
-					<div class="display-glow item576 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo redphat(); ?></span> (0 on 12/26/2018)<br/>
-					<div class="display-glow item578 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo bluephat(); ?></span> (0 on 12/26/2018)<br/>
-					<div class="display-glow item579 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo greenphat(); ?></span> (0 on 12/26/2018)<br/>
+                    <div class="display-glow item575 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo crackers(); ?></span> (19,437 on 12/26/2018)<br/>
+					<div class="display-glow item577 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo yellowphat(); ?></span> (798 on 12/26/2018)<br/>
+					<div class="display-glow item581 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo whitephat(); ?></span> (558 on 12/26/2018)<br/>
+					<div class="display-glow item580 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo purplephat(); ?></span> (246 on 12/26/2018)<br/>
+					<div class="display-glow item576 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo redphat(); ?></span> (820 on 12/26/2018)<br/>
+					<div class="display-glow item578 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo bluephat(); ?></span> (393 on 12/26/2018)<br/>
+					<div class="display-glow item579 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo greenphat(); ?></span> (504 on 12/26/2018)<br/>
 					<div class="display-glow item677 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo eastereggs(); ?></span> (0 on 4/22/2019)<br/>
 					<div class="display-glow item828 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo greenmask(); ?></span> (0 on 11/1/2019)<br/>
 					<div class="display-glow item831 d-inline-block"></div><span class="text-info font-weight-bold"> <?php echo redmask(); ?></span> (0 on 11/1/2019)<br/>

@@ -806,6 +806,38 @@ function dlong()
 	}
 }
 
+function cabbage()
+{
+	$connector = new Dbc();
+	$gold1m = $connector->gamequery("SELECT format(SUM(amt), 0) as amt from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '193' AND A.group_id = '10' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '193' AND A.group_id = '10' AND A.banned = '0') a");
+	while ($row = $connector->fetchArray($gold1m)) {
+		if ($row["amt"] == NULL) {
+			echo "0";
+		} else {
+			echo $row["amt"];
+		}
+	}
+}
+
+function beer()
+{
+	$connector = new Dbc();
+	$gold1m = $connector->gamequery("SELECT format(SUM(amt), 0) as amt from (
+    SELECT SUM(B.amount) amt FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '18' AND A.group_id = '10' AND A.banned = '0'
+    union all 
+    SELECT SUM(B.amount) amt FROM openrsc_invitems as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = '18' AND A.group_id = '10' AND A.banned = '0') a");
+	while ($row = $connector->fetchArray($gold1m)) {
+		if ($row["amt"] == NULL) {
+			echo "0";
+		} else {
+			echo $row["amt"];
+		}
+	}
+}
+
 function totalTime()
 {
 	$connector = new Dbc();
@@ -860,7 +892,7 @@ function gameChat()
 	date_default_timezone_set('America/New_York');
 	?>
 	<div class="text-info table-dark">
-		<div class="container border-left border-info border-right">
+		<div class="container border-left border-info border-right table-wrapper-scroll-y">
 			<div class="h2 text-center pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Recent Chat</div>
 			<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an player">
 			<div class="tableFixHead">
