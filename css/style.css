@@ -312,6 +312,10 @@ li {
     margin-bottom: 10px;
 }
 
+.clickable-row {
+    cursor: pointer;
+}
+
 .skill-icon {
     width: 16px;
     height: 16px;

@@ -47,8 +47,8 @@ include "inc/header.php";
 					<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 				</a>
 				<br>
-				<button type="button" class="pc btn btn-dark btn-outline-info">PC Client</button>
-				<button type="button" class="mobile btn btn-dark btn-outline-info">Android</button>
+				<a class="pc btn btn-dark btn-outline-info btn-link" href="#" role="button">PC Client</a>
+				<button type="button" class="mobile btn btn-dark text-primary btn-outline-info">Android</button>
 				<br>
 				<br>
 				<div class="middle container-fluid border-top border-info">

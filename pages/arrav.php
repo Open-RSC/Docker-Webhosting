@@ -13,7 +13,7 @@ $player_gang = $connector->gamequery("SELECT B.username AS player, A.value AS ga
 
 <div class="text-info table-dark" style="height: 100vh; width: 100vw;">
 	<div class="border-left border-info border-right table-wrapper-scroll-y container">
-		<div class="h2 text-center text-capitalize display-3" style="font-size: 38px;">Shield of Arrav</div>
+		<h2 class="text-center text-capitalize display-3" style="font-size: 38px;">Shield of Arrav</h2>
 		<div class="row sm-stats justify-content-center" style="text-transform: unset;">
 			<div class="text-primary">
 				<div class="row justify-content-center">

@@ -6,7 +6,7 @@ if (!defined('IN_SITE')) {
 
 <div class="text-info table-dark">
 	<div class="container border-left border-info border-right">
-		<div class="h2 text-center pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Open RSC Rules</div>
+		<h2 class="text-center pt-5 pb-5 text-capitalize display-3" style="font-size: 38px;">Open RSC Rules</h2>
 		<div class="row justify-content-center" style="height: 100vh;">
 			<div class="col-4 text-primary">
 				- Don't advertise external private servers<br/>
