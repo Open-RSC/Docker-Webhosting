@@ -2,6 +2,24 @@ html {
   overflow: hidden;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+section {
+  flex-grow: 1;
+  background: rgba(20, 20, 20, 0.9);
+}
+
+section#home {
+  display: flex;
+  flex-direction: row;
+
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -137,7 +155,8 @@ li {
   }
 
   .btn {
-    width: 350px;
+    min-width: 200px;
+    max-width: 350px;
   }
 
   .middle {
@@ -147,32 +166,19 @@ li {
   }
 }
 
-.side-right {
-  padding: 1rem;
-  width: 400px;
-  height: 100vh;
-  background: #111;
-  background: rgba(20, 20, 20, 0.9);
-}
-
-.side-left {
-  padding-top: 2rem;
-  width: 400px;
-  background: #111;
-  height: 100vh;
-  background: rgba(20, 20, 20, 0.9);
+.side-right, .side-left {
+  min-width: 400px;
+  padding-bottom: 35px;
+  margin-top: 35px;
 }
 
 .side-middle {
   padding: 1rem;
-  background: #111;
-  height: 100vh;
-  background: rgba(20, 20, 20, 0.9);
 }
 
 @media (min-width: 969px) {
   .middle {
-    width: 450px;
+    max-width: 450px;
   }
 }
 
@@ -774,8 +780,11 @@ td.username {
 footer {
   text-align: center;
   background: url("/img/theme/grey-bar-wide.gif") repeat-x;
+  background: rgba(20, 20, 20, 0.9);
   background-size: auto 100%;
   position: relative;
+  padding: 0;
+  min-height: 35px;
 }
 
 footer > p {
