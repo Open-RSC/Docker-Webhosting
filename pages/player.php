@@ -81,7 +81,7 @@ function bd_nice_number($n)
 							<div class="pt-3 display-glow">
 								<?php
 								$file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png';
-								echo "<img src=\"$file\"/>";
+								echo "<img src=\"$file\"/ style=\"height: 125px;\">";
 								?>
 							</div>
 
