@@ -14,7 +14,7 @@ class ItemController extends Controller
     }
 
     public function show() {
-        //TODO Implement DB code here then pass any required variables to the blade template item.blade.php here.
-        return view('item');
+        //TODO Implement DB code here then pass any required variables to the blade template itemdef.blade.php here.
+        return view('itemdef');
     }
 }

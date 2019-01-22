@@ -3,7 +3,7 @@
     @include('layouts.header')
     <body>
     @include('layouts.navbar')
-    @include('layouts.itembody')
+    @include('layouts.itemdefbody')
     @include('layouts.footer')
     @include('layouts.footerscripts')
     </body>
