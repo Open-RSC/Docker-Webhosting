@@ -151,7 +151,7 @@ nav > button {
   }
 
   .fullscreen-bg {
-    width: 100vw;
+    width: 100vh;
   }
 
   .side-right {
@@ -590,17 +590,6 @@ td.username {
   text-align: center;
 }
 
-.graph {
-  width: 315px;
-  height: 300px;
-  margin: 0 auto;
-}
-
-.graph2 {
-  width: 390px;
-  height: 300px;
-}
-
 .sm-skill {
   font: 12px 'Exo', sans-serif;
   text-shadow: 0 0 2px #201B18;
@@ -650,15 +639,6 @@ td.username {
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-
-}
-
-.line-chart {
-  width: 100%;
-}
-
-.pie-stats {
-  width: 100%;
 }
 
 #red {
@@ -673,59 +653,6 @@ td.username {
   color: green;
   text-shadow: 0 0 2px #201B18;
   padding: 2px 0;
-}
-
-#slider {
-  position: relative;
-  width: 580px; /* Change this to your images width */
-  height: 246px; /* Change this to your images height */
-  background: url(images/loading.gif) no-repeat 50% 50%;
-
-}
-
-#slider img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  width: 600px;
-}
-
-#slider a {
-  border: 0;
-  display: block;
-}
-
-.sidebar {
-  width: 276px;
-  margin: 0 0 20px 0;
-}
-
-.side-menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.side-menu > dt {
-  flex: 0 50%;
-}
-
-.side-menu > dd {
-  flex: 0 50%;
-  text-align: right;
-}
-
-.side-menu > dt:nth-child(5) {
-  flex: 0 65%;
-}
-
-.side-menu > dd:nth-child(6) {
-  flex: 0 35%;
-}
-
-.side-menu a:hover {
-  color: gold;
 }
 
 .white {
@@ -806,7 +733,6 @@ td.username {
 
 footer {
   text-align: center;
-  background: url("/img/theme/grey-bar-wide.gif") repeat-x;
   background: rgba(20, 20, 20, 0.9);
   background-size: auto 100%;
   position: relative;
