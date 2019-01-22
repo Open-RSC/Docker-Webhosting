@@ -30,7 +30,7 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 ?>
 
 <div class="text-info table-dark highscores table-wrapper-scroll-y full-width">
-	<div class="container">
+	<div class="container border-left border-info border-right">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 			<?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
 		</h2>
