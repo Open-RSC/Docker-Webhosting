@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/items', 'ItemController@index');
+Route::get('/itemdef/{id}', 'ItemController@show');

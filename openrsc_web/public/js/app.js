@@ -48664,11 +48664,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/ken/Desktop/dev/OpenRSC-Site/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/ken/Desktop/dev/OpenRSC-Site/node_modules/bootstrap/dist/js/bootstrap.js */"./node_modules/bootstrap/dist/js/bootstrap.js");
-__webpack_require__(/*! /home/ken/Desktop/dev/OpenRSC-Site/node_modules/startbootstrap-grayscale/js/grayscale.js */"./node_modules/startbootstrap-grayscale/js/grayscale.js");
-__webpack_require__(/*! /home/ken/Desktop/dev/OpenRSC-Site/node_modules/twitter-fetcher/js/twitterFetcher.js */"./node_modules/twitter-fetcher/js/twitterFetcher.js");
-module.exports = __webpack_require__(/*! /home/ken/Desktop/dev/OpenRSC-Site/resources/js/dark-google-calendar-2018.user.js */"./resources/js/dark-google-calendar-2018.user.js");
+__webpack_require__(/*! /var/www/html/blog/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /var/www/html/blog/node_modules/bootstrap/dist/js/bootstrap.js */"./node_modules/bootstrap/dist/js/bootstrap.js");
+__webpack_require__(/*! /var/www/html/blog/node_modules/startbootstrap-grayscale/js/grayscale.js */"./node_modules/startbootstrap-grayscale/js/grayscale.js");
+__webpack_require__(/*! /var/www/html/blog/node_modules/twitter-fetcher/js/twitterFetcher.js */"./node_modules/twitter-fetcher/js/twitterFetcher.js");
+module.exports = __webpack_require__(/*! /var/www/html/blog/resources/js/dark-google-calendar-2018.user.js */"./resources/js/dark-google-calendar-2018.user.js");
 
 
 /***/ })
