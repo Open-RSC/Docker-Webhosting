@@ -30,7 +30,7 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 ?>
 
 <div class="text-info table-dark highscores table-wrapper-scroll-y full-width">
-	<div class="container">
+	<div class="container border-left border-info border-right">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 			<?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
 		</h2>
@@ -41,7 +41,7 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 			<div class="dropdown skill-dropdown">
 				<a class="dropdown-toggle text-secondary" href="#" role="button" id="highscoresDropdown"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Select a category
+					Select a skill
 				</a>
 				<div class="dropdown-menu bg-black" aria-labelledby="highscoresDropdown">
 					<?php foreach ($skill_array as $skill) { ?>
