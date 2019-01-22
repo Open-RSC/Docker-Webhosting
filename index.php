@@ -3,7 +3,7 @@ include "inc/header.php";
 ?>
 
 <!-- Title Section -->
-<section id="home" class="text-white">
+<section id="home">
 
 	<?php
 	if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {

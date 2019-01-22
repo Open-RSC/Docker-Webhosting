@@ -58,8 +58,7 @@ function bd_nice_number($n)
 ?>
 
 <?php if ($character) { ?>
-<div class="text-info table-dark" style="height: 100vh; width: 100vw;"
-	 xmlns:border-collapse="http://www.w3.org/1999/xhtml">
+<div class="text-info table-dark full-width">
 	<div class="border-left border-info border-right table-wrapper-scroll-y container"
 		 style="height: 100vh; width: 100vw;">
 		<h2 class="h2 text-center text-capitalize display-3"><?php
