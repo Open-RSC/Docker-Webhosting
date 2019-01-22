@@ -13,7 +13,10 @@ const mix = require('laravel-mix');
 
 mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.css',
-    'node_modules/startbootstrap-grayscale/css/grayscale.css'
+    'node_modules/startbootstrap-grayscale/css/grayscale.css',
+    'resources/css/style.css',
+    'resources/css/npcsprites.css',
+    'resources/css/itemsprites.css'
 ], 'public/css/app.css')
     .js([
     'resources/js/app.js',
