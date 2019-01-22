@@ -138,7 +138,7 @@ include "inc/header.php";
 	<div class="side-right table-wrapper-scroll-y text-info border-left border-info">
 		<!-- Twitter feed -->
 		<h4 class="pl-3 pr-3">Recent News</h4>
-		<div class="text-primary small" id="tweets"></div>
+		<div class="pl-3 pr-3 text-primary small" id="tweets"></div>
 
 
 <?php } ?>
