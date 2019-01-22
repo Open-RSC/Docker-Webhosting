@@ -30,6 +30,30 @@ include "inc/header.php";
 	} else {
 	?>
 
+	<!-- Fullscreen video background -->
+	<div class="fullscreen-bg">
+		<video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay" muted="muted"
+			   loop="loop">
+			<script>
+				var videoPlayer = document.getElementById('video');
+
+				function playIt() {
+					videoPlayer.play();
+					var videos = [
+						"1",
+						"2",
+						"3",
+						"4",
+					], videos = videos[Math.floor(Math.random() * videos.length)];
+					videoPlayer.src = "../img/" + videos + ".mp4";
+				}
+
+				videoPlayer.addEventListener('ended', playIt, false);
+				playIt();
+			</script>
+		</video>
+	</div>
+
 	<!-- Left column -->
 	<div class="side-left table-wrapper-scroll-y text-left text-info border-right border-info">
 		<h4 class="pl-3 pr-3">Latest Achievements</h4>
