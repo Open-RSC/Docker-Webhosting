@@ -57,10 +57,10 @@ function bd_nice_number($n)
 		<h2 class="h2 text-center text-capitalize display-3">
 			<?php echo $character['username']; ?>'s Bank
 		</h2>
-		<div class="row sm-stats pl-3 pr-3">
+		<div class="sm-stats pl-3 pr-3">
 			<div class="pb-0 stats row justify-content-center">
 				<?php $file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png'; ?>
-				<img class="pl-5" src="<?php echo $file; ?>">
+				<img class="pl-5" src="<?php echo $file; ?>" style="height: 125px;">
 				<div class="pl-5 col-6">
                         		<span class="sm-stats small text-uppercase text-info">Status:
 								<?php if ($character['online'] == 1) {

@@ -29,7 +29,7 @@ $order = $query[1];
 $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players.username, openrsc_players.login_date, openrsc_players.highscoreopt, $args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id = '10' AND openrsc_players.login_date >= unix_timestamp( current_date - interval 3 month ) AND openrsc_players.login_date >= '1539645175' ORDER BY $order DESC");
 ?>
 
-<div class="text-info table-dark highscores">
+<div class="text-info table-dark highscores table-wrapper-scroll-y full-width">
 	<div class="container">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 			<?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
@@ -38,14 +38,14 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 			Note: Only players that have logged in within the last 3 months are shown.
 		</p>
 		<div class="highscores-menu">
-			<div class="dropdown">
-				<a class="dropdown-toggle" href="#" role="button" id="highscoresDropdown"
+			<div class="dropdown skill-dropdown">
+				<a class="dropdown-toggle text-secondary" href="#" role="button" id="highscoresDropdown"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Select a category
 				</a>
-				<div class="dropdown-menu" aria-labelledby="highscoresDropdown">
+				<div class="dropdown-menu bg-black" aria-labelledby="highscoresDropdown">
 					<?php foreach ($skill_array as $skill) { ?>
-						<a class="dropdown-item" href="/highscores/<?php print $skill; ?>">
+						<a class="dropdown-item text-secondary" href="/highscores/<?php print $skill; ?>">
 							<img src="/img/skill_icons/<?php print $skill; ?>.svg"
 								alt="<?php print $skill; ?>" class="skill-icon"/>
 							<?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
