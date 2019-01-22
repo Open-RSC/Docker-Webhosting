@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  font-family: 'Exo';
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -163,10 +164,19 @@ nav > button {
   }
 
   .btn {
+    font-family: 'Exo';
     min-width: 200px;
     max-width: 350px;
   }
-
+  .signup-section .form-inline input {
+    font-family: 'Exo';
+  }
+  .contact-section .card h4 {
+    font-family: 'Exo';
+  }
+  .masthead h1 {
+    font-family: 'Exo';
+  }
   .middle {
     max-width: 350px;
     padding-left: 0px;
