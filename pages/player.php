@@ -63,7 +63,7 @@ function bd_nice_number($n)
 	<div class="border-left border-info border-right table-wrapper-scroll-y container"
 		 style="height: 100vh; width: 100vw;">
 		<h2 class="h2 text-center text-capitalize display-3"><?php
-			if ($character['group_id'] != 10): echo "<img class=\"pr-3 pb-2\" src=\"../img/$character[group_id].svg\" height=\"42\">";
+			if ($character['group_id'] != 10): echo "<img class=\"pr-3 pb-3\" src=\"../img/$character[group_id].svg\" height=\"65\" width=\"72\">";
 			else: NULL; endif;
 			echo $character['username']; ?></h2>
 		<div class="row sm-stats justify-content-center" style="text-transform: unset;">

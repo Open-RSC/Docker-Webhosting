@@ -16,7 +16,7 @@ section {
 }
 
 .h2 {
-  font-size: 4rem;
+  font-size: 4rem;!important;
 }
 
 section#home {
@@ -232,6 +232,10 @@ nav > button {
 
 .full-width {
     width: 100vw;!important
+}
+
+.full-height {
+    height: 100vh;!important
 }
 
 .panel {
