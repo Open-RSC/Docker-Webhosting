@@ -53,7 +53,7 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 					<?php } ?>
 				</div>
 			</div> <!-- .dropdown -->
-			<input type="text" class="pl-2 mb-2 text-capitalize" id="inputBox" onkeyup="search()"
+			<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()"
 				placeholder="Search for a player">
 		</div>
 		<table id="itemList" class="container table-striped table-hover table-dark text-primary">

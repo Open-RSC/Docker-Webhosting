@@ -97,7 +97,7 @@ require_once('charfunctions.php');
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link rel="stylesheet" href="../css/grayscale.css">
+	<link rel="stylesheet" href="../css/grayscale.min.css">
 	<link rel="stylesheet" href="../css/itemsprites.css">
 	<link rel="stylesheet" href="../css/npcsprites.css">
 

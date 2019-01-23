@@ -182,7 +182,7 @@ LIMIT 793");
 		</div>
 
 		<div class="container-fluid">
-			<input type="text" class="pl-2 mb-3 text-capitalize" id="inputBox" onkeyup="search()"
+			<input type="text" class="pl-2 mb-3" id="inputBox" onkeyup="search()"
 				   placeholder="Search for a NPC">
 			<div class="tableFixHead">
 				<table id="itemList"

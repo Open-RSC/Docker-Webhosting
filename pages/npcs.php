@@ -12,7 +12,7 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 	<div class="container border-left border-info border-right">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">NPC Database</h2>
 		<div class="container" style="padding-left: unset;">
-			<input type="text" class="pl-2 text-capitalize" id="inputBox" onkeyup="search()" placeholder="Search for a NPC">
+			<input type="text" class="pl-2 text" id="inputBox" onkeyup="search()" placeholder="Search for a NPC">
 		</div>
 		<div class="tableFixHead">
 			<table id="itemList"
