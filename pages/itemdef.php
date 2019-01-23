@@ -102,9 +102,8 @@ WHERE
 LIMIT 793");
 ?>
 
-<article class="text-info table-dark full-width">
-	<div class="pt-5 border-left border-info border-right container"
-		 style="height: 100vh; width: 100vw;">
+<article class="text-info table-dark spaced-body full-width">
+	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y">
 
 		<?php if ($result) { ?>
 		<h2 class="align-items-center text-center pb-4">
@@ -256,11 +255,11 @@ LIMIT 793");
 					</tr>
 					<?php } ?>
 					</tbody>
-				</table>
-			</div>
+			</table>
 		</div>
 	</div>
 </article>
 	</div>
 <?php } else {
 } ?>
+

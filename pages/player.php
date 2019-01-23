@@ -60,7 +60,7 @@ function bd_nice_number($n)
 ?>
 
 <?php if ($character) { ?>
-<article class="text-info table-dark full-width">
+<article class="text-info table-dark spaced-body full-width">
 	<div class="container border-left border-info border-right table-wrapper-scroll-y">
 		<h2 class="h2 text-center text-capitalize display-3 pb-4"><?php
 			if ($character['group_id'] != 10): echo "<img class=\"pr-3 pb-3\" src=\"../img/$character[group_id].svg\" height=\"65\" width=\"72\">";

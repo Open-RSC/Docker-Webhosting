@@ -342,7 +342,7 @@ nav > button {
   padding: 1px;
 }
 
-.highscores {
+.spaced-body {
   display: flex;
   justify-content: space-around;
   padding-top: 15px;
