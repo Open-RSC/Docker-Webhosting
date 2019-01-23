@@ -4,7 +4,7 @@ if (!defined('IN_SITE')) {
 }
 ?>
 
-<div class="text-info table-dark">
+<div class="text-info table-dark full-width">
 	<div class="container border-left border-info border-right">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Open RSC Rules</h2>
 		<div class="row justify-content-center" style="height: 100vh;">

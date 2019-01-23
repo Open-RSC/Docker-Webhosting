@@ -102,8 +102,8 @@ WHERE
 LIMIT 793");
 ?>
 
-<div class="table-dark text-info" style="height: 100vh; width: 100vw;">
-	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y"
+<article class="text-info table-dark full-width">
+	<div class="pt-5 border-left border-info border-right container"
 		 style="height: 100vh; width: 100vw;">
 
 		<?php if ($result) { ?>
@@ -185,9 +185,7 @@ LIMIT 793");
 			<input type="text" class="pl-2 mb-3" id="inputBox" onkeyup="search()"
 				   placeholder="Search for a NPC">
 			<div class="tableFixHead">
-				<table id="itemList"
-					   class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary"
-					   align="center">
+				<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 					<thead class="border-bottom border-info">
 					<tr class="text-info">
 						<th class="small w-25 pl-1">NPC</th>
@@ -262,7 +260,7 @@ LIMIT 793");
 			</div>
 		</div>
 	</div>
-</div>
+</article>
 	</div>
 <?php } else {
 } ?>

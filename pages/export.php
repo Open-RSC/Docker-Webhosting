@@ -25,7 +25,7 @@ $cur = $connector->fetchArray($cur_result);
 
 ?>
 
-<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
+<article class="text-info table-dark full-width">
 	<div class="border-left border-info border-right container table-wrapper-scroll-y" style="height: 100vh;">
 		<h2 class="h2 text-center text-capitalize display-3">
 			<?php echo $character["username"] ?>'s Export
@@ -130,7 +130,7 @@ $cur = $connector->fetchArray($cur_result);
 		</div>
 		<br><br><br><br>
 	</div>
-</div>
+</article>
 <?php } else {
 	echo "<h4 align='center'>No player found</h4>";
 }

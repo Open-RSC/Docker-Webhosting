@@ -73,7 +73,7 @@ $skills = buildSQLArray($skill_array);
 
 ?>
 
-<div class="table-dark text-info" style="height: 100vh; width: 100vw;">
+<article class="text-info table-dark full-width">
 	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y"
 		 style="height: 100vh; width: 100vw;">
 		<?php if ($result) { ?>
@@ -161,7 +161,7 @@ $skills = buildSQLArray($skill_array);
 			</div>
 		</div>
 	</div>
-</div>
+</article>
 	</div>
 <?php } else {
 } ?>

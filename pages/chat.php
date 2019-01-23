@@ -6,10 +6,11 @@ $game_accounts = $connector->logquery("SELECT A.id playerID, A.group_id, B.sende
 date_default_timezone_set('America/New_York');
 ?>
 
-	<article class="text-info table-dark full-width d-block">
+	<article class="text-info table-dark full-width">
 		<div class="container border-left border-info border-right table-wrapper-scroll-y">
 			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Recent Chat</h2>
-			<input type="text" class="pl-2 mb-2 pt-1 pb-1 text-capitalize" id="inputBox" onkeyup="search()" placeholder="Search for an player">
+			<input type="text" class="pl-2 mb-2 pt-1 pb-1 text-capitalize" id="inputBox" onkeyup="search()"
+				   placeholder="Search for an player">
 			<div class="tableFixHead">
 				<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 					<tbody>

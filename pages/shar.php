@@ -53,7 +53,7 @@ function bd_nice_number($n)
 
 ?>
 
-<div class="text-info table-dark">
+<div class="text-info table-dark full-width">
 	<div class="container border-left border-info border-right full-height">
 		<h2 class="h2 text-center text-capitalize display-3 pb-4">
 			<?php echo $character['username']; ?>'s Bank

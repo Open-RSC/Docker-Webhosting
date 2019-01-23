@@ -10,9 +10,7 @@ include "inc/header.php";
 	if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
 		if (file_exists("pages/" . curPageURL() . ".php")) {
 			?>
-			<div class="position-fixed full-width">
 				<?php include("pages/" . curPageURL() . ".php"); ?>
-			</div>
 			<?php
 		} else {
 			include("pages/error.php");
