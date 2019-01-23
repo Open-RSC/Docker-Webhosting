@@ -11,9 +11,7 @@ include "inc/header.php";
 		if (file_exists("pages/" . curPageURL() . ".php")) {
 			?>
 			<div class="position-fixed full-width">
-				<?php
-				include("pages/" . curPageURL() . ".php");
-				?>
+				<?php include("pages/" . curPageURL() . ".php"); ?>
 			</div>
 			<?php
 		} else {
