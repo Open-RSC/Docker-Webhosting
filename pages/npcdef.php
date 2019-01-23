@@ -73,9 +73,8 @@ $skills = buildSQLArray($skill_array);
 
 ?>
 
-<div class="table-dark text-info" style="height: 100vh; width: 100vw;">
-	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y"
-		 style="height: 100vh; width: 100vw;">
+<article class="text-info table-dark spaced-body full-width">
+	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y">
 		<?php if ($result) { ?>
 		<h2 class="text-center">
 			<a class="h2 text-info text-capitalize display-3"
@@ -113,55 +112,53 @@ $skills = buildSQLArray($skill_array);
 		</div>
 
 		<div class="container-fluid">
-			<input type="text" class="pl-2 mb-2 text-capitalize" id="inputBox" onkeyup="search()"
+			<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()"
 				   placeholder="Search for an item">
-			<div class="tableFixHead">
-				<table id="itemList"
-					   class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary"
-					   align="center">
-					<thead class="border-bottom border-info">
-					<tr class="text-info">
-						<th class="small pl-1">Item</th>
-						<th class="small pl-5">Picture</th>
-						<th class="small pl-5">Quantity</th>
-						<th class="small pl-5">Drop Chance</th>
-					</tr>
-					</thead>
-					<tbody>
-					<?php
-					while ($result = $connector->fetch_assoc($npc_drops)) {
-						if ($result['itemID'] == NULL) {
-							display:
-							none;
-						} else {
-							?>
-							<tr class="clickable-row"
-								data-href="../itemdef/<?php echo $result['itemID']; ?>">
-								<td class="text-capitalize small pl-1">
-									<?php echo $result['itemName']; ?>
-								</td>
-								<td class="small text-center pl-5">
-									<div class="display-glow item<?php echo $result['itemID'] ?>"></div>
-								</td>
-								<td class="pt-1 small pl-5">
-									<?php echo $result['dropAmount']; ?>
-								</td>
-								<td class="pt-1 small pl-5">
-									<?php if ($result['dropPercentage'] == '0.0000%' || $result['dropPercentage'] == NULL || $result['dropPercentage'] == '0.0000%<!--') {
-										echo '100%';
-									} else {
-										echo $result['dropPercentage'];
-									} ?>
-								</td>
-							</tr>
-						<?php }
-					} ?>
-					</tbody>
-				</table>
-			</div>
+			<table id="itemList"
+				   class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary"
+				   align="center">
+				<thead class="border-bottom border-info">
+				<tr class="text-info">
+					<th class="small pl-1">Item</th>
+					<th class="small pl-5">Picture</th>
+					<th class="small pl-5">Quantity</th>
+					<th class="small pl-5">Drop Chance</th>
+				</tr>
+				</thead>
+				<tbody>
+				<?php
+				while ($result = $connector->fetch_assoc($npc_drops)) {
+					if ($result['itemID'] == NULL) {
+						display:
+						none;
+					} else {
+						?>
+						<tr class="clickable-row"
+							data-href="../itemdef/<?php echo $result['itemID']; ?>">
+							<td class="text-capitalize small pl-1">
+								<?php echo $result['itemName']; ?>
+							</td>
+							<td class="small text-center pl-5">
+								<div class="display-glow item<?php echo $result['itemID'] ?>"></div>
+							</td>
+							<td class="pt-1 small pl-5">
+								<?php echo $result['dropAmount']; ?>
+							</td>
+							<td class="pt-1 small pl-5">
+								<?php if ($result['dropPercentage'] == '0.0000%' || $result['dropPercentage'] == NULL || $result['dropPercentage'] == '0.0000%<!--') {
+									echo '100%';
+								} else {
+									echo $result['dropPercentage'];
+								} ?>
+							</td>
+						</tr>
+					<?php }
+				} ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
-</div>
+</article>
 	</div>
 <?php } else {
 } ?>

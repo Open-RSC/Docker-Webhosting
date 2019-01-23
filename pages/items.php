@@ -8,14 +8,12 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 
 ?>
 
-<div class="text-info table-dark">
-	<div class="container border-left border-info border-right">
+<article class="text-info table-dark spaced-body full-width">
+	<div class="container border-left border-info border-righ table-wrapper-scroll-y">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Item Database</h2>
-		<input type="text" class="pl-2 mb-2 text-capitalize" id="inputBox" onkeyup="search()" placeholder="Search for an item">
+		<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an item">
 		<div class="tableFixHead">
-			<table id="itemList"
-				   class="container table-responsive-lg table-striped table-hover table-dark text-primary"
-				   align="center">
+			<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
 					<th class="small pl-2">Name</th>
@@ -63,4 +61,4 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 			</table>
 		</div>
 	</div>
-</div>
+</article>

@@ -29,7 +29,7 @@ $order = $query[1];
 $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players.username, openrsc_players.login_date, openrsc_players.highscoreopt, $args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id = '10' AND openrsc_players.login_date >= unix_timestamp( current_date - interval 3 month ) AND openrsc_players.login_date >= '1539645175' ORDER BY $order DESC");
 ?>
 
-<article class="text-info table-dark highscores full-width">
+<article class="text-info table-dark spaced-body full-width">
 	<div class="container border-left border-info border-right table-wrapper-scroll-y">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 			<?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
@@ -53,7 +53,7 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 					<?php } ?>
 				</div>
 			</div> <!-- .dropdown -->
-			<input type="text" class="pl-2 mb-2 text-capitalize" id="inputBox" onkeyup="search()"
+			<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()"
 				placeholder="Search for a player">
 		</div>
 		<table id="itemList" class="container table-striped table-hover table-dark text-primary">

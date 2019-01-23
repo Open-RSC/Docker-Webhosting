@@ -1,5 +1,5 @@
-<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
-	<div class="border-left border-info border-right container" style="height: 100vh;">
+<article class="text-info table-dark spaced-body full-width">
+	<div class="border-left border-info border-right container table-wrapper-scroll-y">
 		<h2 class="h2 text-center text-capitalize display-3">Error</h2>
 		<div class="row sm-stats justify-content-center" style="text-transform: unset;">
 			<div class="text-primary">
@@ -13,5 +13,5 @@
 			</div>
 		</div>
 	</div>
-</div>
+</article>
 
