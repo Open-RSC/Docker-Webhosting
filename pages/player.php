@@ -153,7 +153,7 @@ function bd_nice_number($n)
 
 						<!-- Begin admin and moderator view only -->
 						<?php //if ($user->data['group_id'] == '5' || $user->data['group_id'] == '4') {
-						if ($staff == 0) { ?>
+						if ($staff == 1) { ?>
 
 							<div class="pt-3">
 
