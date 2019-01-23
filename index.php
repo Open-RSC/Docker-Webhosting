@@ -5,6 +5,7 @@ include "inc/header.php";
 <!-- Title Section -->
 <section id="home">
 
+	<!-- All content in the pages directory -->
 	<?php
 	if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
 		if (file_exists("pages/" . curPageURL() . ".php")) {

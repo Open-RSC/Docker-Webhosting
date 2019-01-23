@@ -11,7 +11,7 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 <div class="text-info table-dark">
 	<div class="container border-left border-info border-right">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Item Database</h2>
-		<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an item">
+		<input type="text" class="pl-2 mb-2 text-capitalize" id="inputBox" onkeyup="search()" placeholder="Search for an item">
 		<div class="tableFixHead">
 			<table id="itemList"
 				   class="container table-responsive-lg table-striped table-hover table-dark text-primary"

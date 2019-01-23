@@ -856,7 +856,7 @@ function gameChat()
 	<article class="text-info table-dark full-width">
 		<div class="container border-left border-info border-right table-wrapper-scroll-y">
 			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Recent Chat</h2>
-			<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an player">
+			<input type="text" class="pl-2 mb-2 pt-1 pb-1 text-capitalize" id="inputBox" onkeyup="search()" placeholder="Search for an player">
 			<div class="tableFixHead">
 				<table id="itemList"
 					   class="small container table-responsive-lg table-striped table-hover table-dark text-primary"
