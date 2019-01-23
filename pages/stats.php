@@ -4,8 +4,8 @@ if (!defined('IN_SITE')) {
 }
 ?>
 
-<div class="text-info table-dark">
-	<div class="container border-left border-info border-right">
+<article class="text-info table-dark full-width">
+	<div class="container border-left border-info border-right table-wrapper-scroll-y">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Statistics</h2>
 		<div class="row justify-content-center">
 			<div class="text-primary">
@@ -53,8 +53,10 @@ if (!defined('IN_SITE')) {
 				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold400(); ?></span> players have over 400K gp.</span>
 				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold1m(); ?></span> players have over 1M gp.</span>
 				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold12m(); ?></span> players have over 1.2M gp.</span>
-				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold15m(); ?></span> players have over 1.5M
-					gp.</span>
+				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold15m(); ?></span> players have over 1.5M gp.</span>
+				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold2m(); ?></span> players have over 2M gp.</span>
+				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold4m(); ?></span> players have over 4M gp.</span>
+				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold10m(); ?></span> players have over 10M gp.</span>
 
 				<h4 class="pt-4 h4 text-warning">Expensive Items</h4>
 				<div class="clickable-row" data-href="itemdef/1278">
@@ -151,4 +153,4 @@ if (!defined('IN_SITE')) {
 			</div>
 		</div>
 	</div>
-</div>
+</article>

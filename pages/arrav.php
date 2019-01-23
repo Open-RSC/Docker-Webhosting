@@ -2,17 +2,10 @@
 if (!defined('IN_SITE')) {
 	die("You do not have permission to access this file.");
 }
-
-$connector = new Dbc();
-
-$subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
-$subpage = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $subpage);
-
-$player_gang = $connector->gamequery("SELECT B.username AS player, A.value AS gang FROM openrsc_player_cache AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE B.key = 'arrav_gang'");
 ?>
 
-<div class="text-info table-dark" style="height: 100vh; width: 100vw;">
-	<div class="border-left border-info border-right table-wrapper-scroll-y container">
+<article class="text-info table-dark full-width">
+	<div class="container border-left border-info border-right table-wrapper-scroll-y">
 		<h2 class="h2 text-center text-capitalize display-3">Shield of Arrav</h2>
 		<div class="row sm-stats justify-content-center" style="text-transform: unset;">
 			<div class="text-primary">

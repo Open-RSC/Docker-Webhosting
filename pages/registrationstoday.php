@@ -4,7 +4,7 @@ if (!defined('IN_SITE')) {
 }
 ?>
 
-<article class="text-info table-dark">
+<article class="text-info table-dark full-width">
 	<div class="container border-left border-info border-right table-wrapper-scroll-y">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Players Registered
 			Today
