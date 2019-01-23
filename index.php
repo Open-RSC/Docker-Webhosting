@@ -9,7 +9,7 @@ include "inc/header.php";
 	if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
 		if (file_exists("pages/" . curPageURL() . ".php")) {
 			?>
-			<div class="panel position-fixed table-wrapper-scroll-y">
+			<div class="position-fixed full-width">
 				<?php
 				include("pages/" . curPageURL() . ".php");
 				?>
@@ -168,7 +168,4 @@ include "inc/header.php";
 <?php } ?>
 </section>
 
-
-<?php
-include "inc/footer.php";
-?>
+<?php include "inc/footer.php"; ?>

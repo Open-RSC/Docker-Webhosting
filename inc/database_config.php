@@ -128,16 +128,19 @@ function totalGameCharacters()
 function onlinePlayers()
 {
 	$connector = new Dbc();
-	$game_accounts = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE online = '1'");
+	$game_accounts = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE online = '1' LIMIT 100");
 	while ($row = $connector->fetchArray($game_accounts)) {
 		if ($row["username"] == NULL) {
 			echo "No players currently online.";
 		} else {
-			if ($row['group_id'] != 10):
-				echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
-			else: NULL; endif;
-			echo '<a href="../player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
-			echo '<br />';
+			echo '<div class="clickable-row" data-href="../player/' . $row["id"] . '">';
+				echo '<div class="d-inline-block">';
+					if ($row['group_id'] != 10):
+						echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+					else: NULL; endif;
+					echo ucfirst($row["username"]);
+				echo '</div>';
+			echo '</div>';
 		}
 	}
 }
@@ -163,11 +166,14 @@ function listregistrationsToday()
 		if ($row["username"] == NULL) {
 			echo "No players have been created today.";
 		} else {
-			if ($row['group_id'] != 10):
-				echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
-			else: NULL; endif;
-			echo '<a href="../player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
-			echo '<br />';
+			echo '<div class="clickable-row" data-href="../player/' . $row["id"] . '">';
+				echo '<div class="d-inline-block">';
+					if ($row['group_id'] != 10):
+						echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+					else: NULL; endif;
+					echo ucfirst($row["username"]);
+				echo '</div>';
+			echo '</div>';
 		}
 	}
 }
@@ -193,11 +199,14 @@ function listlogins48()
 		if ($row["username"] == NULL) {
 			echo "No players have logged in for the last 48 hours.";
 		} else {
-			if ($row['group_id'] != 10):
-				echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
-			else: NULL; endif;
-			echo '<a href="../player/' . $row["id"] . '">' . ucfirst($row["username"]) . '</a>';
-			echo '<br />';
+			echo '<div class="clickable-row" data-href="../player/' . $row["id"] . '">';
+				echo '<div class="d-inline-block">';
+					if ($row['group_id'] != 10):
+						echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+					else: NULL; endif;
+					echo ucfirst($row["username"]);
+				echo '</div>';
+			echo '</div>';
 		}
 	}
 }
