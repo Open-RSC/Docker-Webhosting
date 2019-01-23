@@ -168,7 +168,7 @@ require_once('charfunctions.php');
 					Quests
 				</a>
 				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item text-secondary" href="/arrav">Shield of Arrav</a>
+					<a class="dropdown-item text-secondary" href="/quest-arrav">Shield of Arrav</a>
 					<!--<div class="dropdown-divider border-info"></div>
 					<a class="dropdown-item text-secondary" href="/items">Member Quest 1</a>-->
 				</div>
