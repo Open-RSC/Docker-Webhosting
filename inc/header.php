@@ -168,7 +168,7 @@ require_once('charfunctions.php');
 					Quests
 				</a>
 				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item text-secondary" href="/arrav">Shield of Arrav</a>
+					<a class="dropdown-item text-secondary" href="/quest-arrav">Shield of Arrav</a>
 					<!--<div class="dropdown-divider border-info"></div>
 					<a class="dropdown-item text-secondary" href="/items">Member Quest 1</a>-->
 				</div>
@@ -179,27 +179,3 @@ require_once('charfunctions.php');
 		</ul>
 	</div>
 </nav>
-
-<!-- Fullscreen video background -->
-<div class="fullscreen-bg">
-	<video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay" muted="muted"
-		   loop="loop">
-		<script>
-			var videoPlayer = document.getElementById('video');
-
-			function playIt() {
-				videoPlayer.play();
-				var videos = [
-					"1",
-					"2",
-					"3",
-					"4",
-				], videos = videos[Math.floor(Math.random() * videos.length)];
-				videoPlayer.src = "../img/" + videos + ".mp4";
-			}
-
-			videoPlayer.addEventListener('ended', playIt, false);
-			playIt();
-		</script>
-	</video>
-</div>

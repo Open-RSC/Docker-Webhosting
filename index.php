@@ -5,11 +5,12 @@ include "inc/header.php";
 <!-- Title Section -->
 <section id="home">
 
+	<!-- All content in the pages directory -->
 	<?php
 	if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
 		if (file_exists("pages/" . curPageURL() . ".php")) {
 			?>
-			<div class="panel position-fixed table-wrapper-scroll-y">
+			<div class="position-fixed full-width">
 				<?php
 				include("pages/" . curPageURL() . ".php");
 				?>
@@ -29,6 +30,30 @@ include "inc/header.php";
 		}
 	} else {
 	?>
+
+	<!-- Fullscreen video background -->
+	<div class="fullscreen-bg">
+		<video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay" muted="muted"
+			   loop="loop">
+			<script>
+				var videoPlayer = document.getElementById('video');
+
+				function playIt() {
+					videoPlayer.play();
+					var videos = [
+						"1",
+						"2",
+						"3",
+						"4",
+					], videos = videos[Math.floor(Math.random() * videos.length)];
+					videoPlayer.src = "../img/" + videos + ".mp4";
+				}
+
+				videoPlayer.addEventListener('ended', playIt, false);
+				playIt();
+			</script>
+		</video>
+	</div>
 
 	<!-- Left column -->
 	<div class="side-left table-wrapper-scroll-y text-left text-info border-right border-info">
@@ -144,7 +169,4 @@ include "inc/header.php";
 <?php } ?>
 </section>
 
-
-<?php
-include "inc/footer.php";
-?>
+<?php include "inc/footer.php"; ?>

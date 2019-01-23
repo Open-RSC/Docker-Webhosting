@@ -35,7 +35,8 @@ $player_pmlogs = $connector->gamequery("SELECT * FROM openrsc_private_message_lo
 
 $player_tradelogs = $connector->gamequery("SELECT B.player1, B.player2, B.player1_items, B.player2_items, B.time FROM openrsc_trade_logs AS B LEFT JOIN openrsc_players AS A ON 'B.player1' = 'A.username' OR 'B.player2' = 'A.username' WHERE (A.id = '$subpage' OR A.username = '$subpage') LIMIT 30");
 
-$player_bank = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY slot ASC");
+$player_bank_regular = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY slot ASC");
+$player_bank_mobile = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY slot ASC");
 
 $player_invitems = $connector->gamequery("SELECT A.username, B.id, format(B.amount, 0) number, B.slot FROM `openrsc_invitems` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage') ORDER BY slot ASC");
 
@@ -76,15 +77,14 @@ function bd_nice_number($n)
 				</div>
 			</div>
 
-			<div class="stats pl-5 pr-5" align="center">
+			<!-- Regular view only -->
+			<div class="stats pl-5 pr-5 d-none d-md-block d-lg-block" align="center">
 				<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
-					<?php $bank = $connector->num_rows($player_bank); ?>
+					<?php $bank = $connector->num_rows($player_bank_regular); ?>
 					<tr>
 						<?php
-						if ($bank == 0) {
-							echo "No bank items found.";
-						} else {
-							for ($i = 1; $list = $connector->fetchArray($player_bank); $i++) {
+						if ($bank > 0) {
+							for ($i = 1; $list = $connector->fetchArray($player_bank_regular); $i++) {
 								?>
 								<td style="border: 1px solid black;">
 									<div class="clickable-row item<?php echo $list['id'] ?>" data-href="../itemdef/<?php echo $list['id'] ?>"
@@ -94,13 +94,41 @@ function bd_nice_number($n)
 								</td>
 								<?php
 								if (($i % 10 == 0) && ($i < $bank)) {
-									echo '</tr><tr>';
+									echo '</tr>';
 								}
 							}
+						} else {
+							echo "No bank items found.";
 						} ?>
-					</tr>
 				</table>
 			</div>
+
+			<!-- Mobile view only -->
+			<div class="stats pl-5 pr-5 d-md-none" align="center">
+				<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+					<?php $bank = $connector->num_rows($player_bank_mobile); ?>
+					<tr>
+						<?php
+						if ($bank > 0) {
+							for ($i = 1; $list = $connector->fetchArray($player_bank_mobile); $i++) {
+								?>
+								<td style="border: 1px solid black;">
+									<div class="clickable-row item<?php echo $list['id'] ?>" data-href="../itemdef/<?php echo $list['id'] ?>"
+										 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
+										<?php echo $list["number"]; ?>
+									</div>
+								</td>
+								<?php
+								if (($i % 5 == 0) && ($i < $bank)) {
+									echo '</tr>';
+								}
+							}
+						} else {
+							echo "No bank items found.";
+						} ?>
+				</table>
+			</div>
+
 		</div>
 	</div>
 </div>
