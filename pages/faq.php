@@ -10,7 +10,7 @@ if (!defined('IN_SITE')) {
 		<div class="row justify-content-center">
 			<div class="tableFixHead col-11 text-primary">
 				<span class="text-info font-weight-bold">What is Open RSC?</span><br/>
-				Began in July 2018, the Open RSC project has been a community driven open source initiative to
+				Began in June 2018, the Open RSC project has been a community driven open source initiative to
 				strive for as close of a replica RSC game experience as possible.<br/><br/>
 
 				<span class="text-info font-weight-bold">Can I donate or subscribe for perks?</span><br/>

@@ -76,8 +76,8 @@ article {
 .display-3 {
   padding-top: 3rem;
   color: #008db5;
-    font-family: 'Kaushan Script', cursive;
-  font-size: 4rem;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 2.5em;
   filter: drop-shadow(0px 1px 50px #058ab5);
   text-shadow: 0 1px 0 #222,
   0 1px 0 #000,
