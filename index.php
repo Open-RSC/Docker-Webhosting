@@ -77,7 +77,7 @@ include "inc/header.php";
 			</a>
 			<br>
 			<a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">PC Client</a>
-			<a href="https://game.openrsc.com/downloads/openrsc.apk" type="button" class="mobile btn btn-dark btn-outline-info">Android</a>
+			<a href="https://game.openrsc.com/downloads/openrsc.apk" class="mobile btn btn-dark btn-outline-info">Android</a>
 			<br>
 			<br>
 			<div class="middle container-fluid border-top border-info">
