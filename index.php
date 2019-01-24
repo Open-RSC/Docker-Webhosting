@@ -60,7 +60,7 @@ include "inc/header.php";
 
 		<!-- Center column with title text -->
 		<div class="side-middle col mx-auto text-center">
-			<h2 class="display-3 mb-0">OPEN RSC</h2>
+			<h2 class="display-3-title mb-0">OPEN RSC</h2>
 			<div class="text-white-50">Striving for a replica RSC game and more</div>
 			<br>
 			<a href="https://game.openrsc.com/downloads/openrsc.apk">
