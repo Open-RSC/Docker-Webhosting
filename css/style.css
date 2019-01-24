@@ -33,7 +33,7 @@ section#home {
   display: block;
   max-height: 100vh;
   overflow-y: auto;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: none;
 }
 
 .about-section {

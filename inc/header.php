@@ -110,7 +110,7 @@ require_once('charfunctions.php');
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar bg-black navbar-expand-lg pl-0 pr-0" id="mainNav">
+<nav class="navbar bg-black navbar-expand-xl pl-0 pr-0" id="mainNav">
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
 			aria-label="Toggle navigation">
