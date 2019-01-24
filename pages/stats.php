@@ -74,7 +74,7 @@ if (!defined('IN_SITE')) {
 				<div class="clickable-row" data-href="itemdef/594">
 					<div class="display-glow item594 d-inline-block"></div>
 					<span class="text-info font-weight-bold"> <?php echo dbattle(); ?></span></div>
-				<div class="clickable-row" data-href="itemdef/592">
+				<div class="clickable-row" data-href="itemdef/593">
 					<div class="display-glow item592 d-inline-block"></div>
 					<span class="text-info font-weight-bold"> <?php echo dlong(); ?></span></div>
 
