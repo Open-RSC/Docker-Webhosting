@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: 'Exo';
+  font-family: 'Exo', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -76,8 +76,8 @@ article {
 .display-3 {
   padding-top: 3rem;
   color: #008db5;
-    font-family: 'Kaushan Script', cursive;
-  font-size: 4rem;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 2.5em;
   filter: drop-shadow(0px 1px 50px #058ab5);
   text-shadow: 0 1px 0 #222,
   0 1px 0 #000,
@@ -165,18 +165,18 @@ nav > button {
   }
 
   .btn {
-    font-family: 'Exo';
+    font-family: 'Exo', sans-serif;
     min-width: 200px;
     max-width: 350px;
   }
   .signup-section .form-inline input {
-    font-family: 'Exo';
+    font-family: 'Exo', sans-serif;
   }
   .contact-section .card h4 {
-    font-family: 'Exo';
+    font-family: 'Exo', sans-serif;
   }
   .masthead h1 {
-    font-family: 'Exo';
+    font-family: 'Exo', sans-serif;
   }
   .middle {
     max-width: 350px;
