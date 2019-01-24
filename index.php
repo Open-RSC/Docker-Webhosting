@@ -2,6 +2,16 @@
 include "inc/header.php";
 ?>
 
+<script>
+	function download_pc() {
+		location.href = "https://game.openrsc.com/downloads/OpenRSC.jar";
+	}
+
+	function download_android() {
+		location.href = "https://game.openrsc.com/downloads/openrsc.apk";
+	}
+</script>
+
 <section id="home">
 
 	<?php
@@ -66,8 +76,8 @@ include "inc/header.php";
 				<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 			</a>
 			<br>
-			<button type="button" class="pc btn btn-dark btn-outline-info">PC Client</button>
-			<button type="button" class="mobile btn btn-dark btn-outline-info">Android</button>
+			<button type="button" class="pc btn btn-dark btn-outline-info" onclick="download_pc()">PC Client</button>
+			<button type="button" class="mobile btn btn-dark btn-outline-info" onclick="download_android()">Android</button>
 			<br>
 			<br>
 			<div class="middle container-fluid border-top border-info">
