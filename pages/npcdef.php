@@ -76,38 +76,45 @@ $skills = buildSQLArray($skill_array);
 <article class="text-info table-dark spaced-body full-width">
 	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y">
 		<?php if ($result) { ?>
-		<h2 class="text-center">
-			<a class="h2 text-info text-capitalize display-3"
-			   href="../npcs"><?php echo $result['name']; ?></a><br>
-			<span class="h5 font-weight-bold text-primary">(Combat level <?php echo $result['combatlvl']; ?>)</span>
+		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
+			<a class="d-block text-info text-capitalize" href="../items"><?php echo $result['name']; ?></a>
+			<span
+				class="d-block h5 font-weight-bold text-primary">(Combat level <?php echo $result['combatlvl']; ?>)</span>
 		</h2>
 
 		<div class="pt-1 pl-3 pr-3">
 			<div class="stats d-flex align-items-center text-center">
 				<div class="flex-fill justify-content-center">
-					<div class="pt-4 pb-4 d-inline-block">
-						<div class="pb-1 display-glow npc<?php echo $result['id'] ?>"
-							 style="transform: scale(1.8); max-height: 90px;"></div>
+					<div class="d-block">
+						<div class="pt-4 pb-4 d-inline-block">
+							<div class="pb-1 display-glow npc<?php echo $result['id'] ?>"
+								 style="transform: scale(1.3); max-height: 90px;"></div>
+						</div>
 					</div>
-					<br/>
-					<span class="h5 font-italic">"<?php echo $result['description']; ?>"</span><br>
-					<?php foreach ($skill_array as $skill) { ?>
-						<img src="../img/skill_icons/<?php echo $skill; ?>.svg" height="25px"
-							 alt="<?php echo $skill; ?>"/>
-						<span class="h5 font-weight-bold pr-3"><?php echo $result[$skill]; ?></span>
-					<?php } ?>
+					<div class="d-block">
+						<span class="h5 font-italic">"<?php echo $result['description']; ?>"</span>
+					</div>
+					<div class="d-block">
+						<?php foreach ($skill_array as $skill) { ?>
+							<img src="../img/skill_icons/<?php echo $skill; ?>.svg" height="25px"
+								 alt="<?php echo $skill; ?>"/>
+							<span class="h5 font-weight-bold pr-3"><?php echo $result[$skill]; ?></span>
+						<?php } ?>
+					</div>
 				</div>
 			</div>
 
 			<div class="pt-4 flex-fill align-items-center text-center">
+				<span class="d-block">
 				<span class="font-weight-bold sm-skill">Combat: </span>
 				<span
-					class="sm-skill text-primary"><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?></span><br/>
-				<span class="font-weight-bold sm-skill">Disposition: </span>
+					class="sm-skill text-primary"><?php if ($result['attackable']) { ?>Attackable<?php } else { ?>Not Attackable<?php } ?></span>
+					</span>
+				<span class="d-block"><span class="font-weight-bold sm-skill">Disposition: </span>
 				<span
-					class="sm-skill text-primary"><?php if ($result['aggressive']) { ?>Aggressive<?php } else { ?>Passive<?php } ?></span><br>
-				<span class="font-weight-bold sm-skill">Respawn: </span>
-				<span class="sm-skill text-primary"><?php echo $result['respawnTime'] ?> seconds</span>
+					class="sm-skill text-primary"><?php if ($result['aggressive']) { ?>Aggressive<?php } else { ?>Passive<?php } ?></span></span>
+				<span class="d-block"><span class="font-weight-bold sm-skill">Respawn: </span>
+					<span class="sm-skill text-primary"><?php echo $result['respawnTime'] ?> seconds</span></span>
 			</div>
 		</div>
 
