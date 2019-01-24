@@ -76,8 +76,8 @@ include "inc/header.php";
 				<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 			</a>
 			<br>
-			<button type="button" class="pc btn btn-dark btn-outline-info" onclick="download_pc()">PC Client</button>
-			<button type="button" class="mobile btn btn-dark btn-outline-info" onclick="download_android()">Android</button>
+			<a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">PC Client</a>
+			<a href="https://game.openrsc.com/downloads/openrsc.apk" class="mobile btn btn-dark btn-outline-info">Android</a>
 			<br>
 			<br>
 			<div class="middle container-fluid border-top border-info">
