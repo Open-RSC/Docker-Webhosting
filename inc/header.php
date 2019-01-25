@@ -141,9 +141,9 @@ require_once('charfunctions.php');
 			<li class="nav-item">
 				<a class="nav-link" href="/highscores/skill_total">Highscores</a>
 			</li>
-			<li class="nav-item">
+			<!--<li class="nav-item">
 				<a class="nav-link" href="/chat">Recent Chat</a>
-			</li>
+			</li>-->
 			<li class="nav-item">
 				<a class="nav-link" href="/worldmap">Live Map</a>
 			</li>

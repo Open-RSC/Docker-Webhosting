@@ -2,16 +2,6 @@
 include "inc/header.php";
 ?>
 
-<script>
-	function download_pc() {
-		location.href = "https://game.openrsc.com/downloads/OpenRSC.jar";
-	}
-
-	function download_android() {
-		location.href = "https://game.openrsc.com/downloads/openrsc.apk";
-	}
-</script>
-
 <section id="home">
 
 	<?php
@@ -62,13 +52,13 @@ include "inc/header.php";
 
 		<!-- Left column -->
 		<div
-			class="side-left table-wrapper-scroll-y text-info table-wrapper-scroll-y border-info border-right">
+			class="side-left table-wrapper-scroll-y text-info border-info border-right">
 			<h4 class="pl-3 pr-3">Latest Achievements</h4>
 			<?php activityfeed() ?>
 		</div>
 
 		<!-- Center column with title text -->
-		<div class="side-middle col mx-auto text-center">
+		<div class="side-middle table-wrapper-scroll-y text-center">
 			<h2 class="display-3-title mb-0">OPEN RSC</h2>
 			<div class="text-white-50">Striving for a replica RSC game and more</div>
 			<br>
