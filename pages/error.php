@@ -1,5 +1,6 @@
 <article class="text-info table-dark spaced-body full-width">
-	<div class="border-left border-info border-right container table-wrapper-scroll-y">
+	<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
+		 data-mcs-theme="minimal">
 		<h2 class="h2 text-center text-capitalize display-3">Error</h2>
 		<div class="row sm-stats justify-content-center" style="text-transform: unset;">
 			<div class="text-primary">

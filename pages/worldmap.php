@@ -6,7 +6,7 @@ if (!defined('IN_SITE')) {
 define('IN_SITE', true);
 
 $connector = new Dbc();
-$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_players WHERE online = '0'"); // shows players currently logged in only
+$playerPositions = $connector->gamequery("SELECT id, username, x, y, online FROM openrsc_players WHERE online = '1'"); // shows players currently logged in only
 $xs = $ys = array();
 
 function coords_to_image($x, $y)
