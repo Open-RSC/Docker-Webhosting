@@ -26,9 +26,10 @@ $cur = $connector->fetchArray($cur_result);
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
-	<div class="pt-5 border-left border-info border-right container table-wrapper-scroll-y">
+	<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
+		 data-mcs-theme="minimal">
 		<h2 class="h2 text-center text-capitalize display-3">
-			<?php echo $character["username"] ?>'s Export
+			Player Export
 		</h2>
 		<div class="row sm-stats" style="text-transform: unset;">
 			<div class="text-primary">

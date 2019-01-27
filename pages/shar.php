@@ -54,7 +54,8 @@ function bd_nice_number($n)
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
-	<div class="border-left border-info border-right container table-wrapper-scroll-y">
+	<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
+		 data-mcs-theme="minimal">
 		<h2 class="h2 text-center text-capitalize display-3 pb-4">
 			<?php echo $character['username']; ?>'s Bank
 		</h2>
@@ -87,7 +88,8 @@ function bd_nice_number($n)
 							for ($i = 1; $list = $connector->fetchArray($player_bank_regular); $i++) {
 								?>
 								<td style="border: 1px solid black;">
-									<div class="clickable-row item<?php echo $list['id'] ?>" data-href="../itemdef/<?php echo $list['id'] ?>"
+									<div class="clickable-row item<?php echo $list['id'] ?>"
+										 data-href="../itemdef/<?php echo $list['id'] ?>"
 										 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
 										<?php echo $list["number"]; ?>
 									</div>
@@ -113,7 +115,8 @@ function bd_nice_number($n)
 							for ($i = 1; $list = $connector->fetchArray($player_bank_mobile); $i++) {
 								?>
 								<td style="border: 1px solid black;">
-									<div class="clickable-row item<?php echo $list['id'] ?>" data-href="../itemdef/<?php echo $list['id'] ?>"
+									<div class="clickable-row item<?php echo $list['id'] ?>"
+										 data-href="../itemdef/<?php echo $list['id'] ?>"
 										 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0px; position: relative; color: white; font-size: 13px; font-weight: 900;">
 										<?php echo $list["number"]; ?>
 									</div>

@@ -52,13 +52,13 @@ include "inc/header.php";
 
 		<!-- Left column -->
 		<div
-			class="side-left table-wrapper-scroll-y text-info border-info border-right">
+			class="side-left text-info border-info border-right mCustomScrollbar" data-mcs-theme="minimal">
 			<h4 class="pl-3 pr-3">Latest Achievements</h4>
 			<?php activityfeed() ?>
 		</div>
 
 		<!-- Center column with title text -->
-		<div class="side-middle table-wrapper-scroll-y text-center">
+		<div class="side-middle text-center mCustomScrollbar" data-mcs-theme="minimal">
 			<h2 class="display-3-title mb-0">OPEN RSC</h2>
 			<div class="text-white-50">Striving for a replica RSC game and more</div>
 			<br>
@@ -66,7 +66,8 @@ include "inc/header.php";
 				<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
 			</a>
 			<br>
-			<a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">PC Client</a>
+			<a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">PC
+				Client</a>
 			<a href="https://game.openrsc.com/downloads/openrsc.apk" class="mobile btn btn-dark btn-outline-info">Android</a>
 			<br>
 			<br>
@@ -156,7 +157,7 @@ include "inc/header.php";
 		</div>
 
 		<!-- Right column -->
-		<div class="side-right table-wrapper-scroll-y text-info table-wrapper-scroll-y border-info border-left">
+		<div class="side-right text-info border-info border-left mCustomScrollbar" data-mcs-theme="minimal">
 			<!-- Twitter feed -->
 			<h4 class="pl-3 pr-3">Recent News</h4>
 			<div class="pl-3 pr-3 text-primary small" id="tweets"></div>

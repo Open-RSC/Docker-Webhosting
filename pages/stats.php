@@ -5,7 +5,8 @@ if (!defined('IN_SITE')) {
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
-	<div class="border-left border-info border-right container table-wrapper-scroll-y">
+	<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
+		 data-mcs-theme="minimal">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Statistics</h2>
 		<div class="row justify-content-center">
 			<div class="text-primary">

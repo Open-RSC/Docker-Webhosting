@@ -74,7 +74,8 @@ $skills = buildSQLArray($skill_array);
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
-	<div class="border-left border-info border-right container table-wrapper-scroll-y">
+	<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
+		 data-mcs-theme="minimal">
 		<?php if ($result) { ?>
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 			<a class="d-block text-info text-capitalize" href="../items"><?php echo $result['name']; ?></a>

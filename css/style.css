@@ -26,15 +26,10 @@ section#home {
     flex-direction: row;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
 .table-wrapper-scroll-y {
     display: block;
     max-height: 100vh;
     overflow-y: auto;
-    -ms-overflow-style: none;
 }
 
 .about-section {
