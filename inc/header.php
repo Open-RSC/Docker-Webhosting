@@ -50,6 +50,7 @@ require_once('charfunctions.php');
 			crossorigin="anonymous"></script>
 	<script src="../js/grayscale.min.js"></script>
 	<script type="text/javascript" src="../js/twitterFetcher.js"></script>
+	<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script>
 		jQuery(document).ready(function ($) {
 			$(".clickable-row").click(function () {
@@ -78,6 +79,12 @@ require_once('charfunctions.php');
 				}
 			}
 		}
+
+		(function($){
+			$(window).on("load",function(){
+				$(".content").mCustomScrollbar();
+			});
+		})(jQuery);
 	</script>
 
 	<!-- Favicons -->
@@ -100,6 +107,7 @@ require_once('charfunctions.php');
 	<link rel="stylesheet" href="../css/grayscale.min.css">
 	<link rel="stylesheet" href="../css/itemsprites.css">
 	<link rel="stylesheet" href="../css/npcsprites.css">
+	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css" />
 
 	<!-- Bootstrap style overrides -->
 	<link rel="stylesheet" href="../css/style.css">

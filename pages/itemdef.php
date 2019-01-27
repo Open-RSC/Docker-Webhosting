@@ -103,13 +103,13 @@ LIMIT 793");
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
-	<div class="border-left border-info border-right container table-wrapper-scroll-y">
+	<div class="border-left border-info border-right container table-wrapper-scroll-y mCustomScrollbar"
+		 data-mcs-theme="minimal">
 
 		<?php if ($result) { ?>
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3"><a class="text-info text-capitalize"
 																		  href="../items"><?php echo $result['name']; ?></a>
 		</h2>
-
 		<div class="pt-1 pl-3 pr-3">
 			<div class="stats row">
 				<div class="sm-skill col-4 d-inline-block text-center pt-3">
@@ -201,25 +201,23 @@ LIMIT 793");
 				</div>
 			</div>
 
-			<div class="container-fluid">
-				<input type="text" class="pl-2 mb-3" id="inputBox" onkeyup="search()"
-					   placeholder="Search for a NPC">
-				<div class="tableFixHead">
-					<table id="itemList" class="container table-striped table-hover table-dark text-primary">
-						<thead class="border-bottom border-info">
-						<tr class="text-info">
-							<th class="small w-25 pl-1">NPC</th>
-							<th class="small w-25">Picture</th>
-							<th class="small w-25 pl-5">Quantity</th>
-							<th class="small w-25 pl-5">Drop Chance</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php
-						while ($result = $connector->fetch_assoc($item_drops)) {
-						$npcID = $result['npcID'];
-						$dropAmount = $result['dropAmount'];
-						$npc_drops = $connector->gamequery("
+			<input type="text" class="pl-2 mb-3" id="inputBox" onkeyup="search()"
+				   placeholder="Search for a NPC">
+			<table id="itemList" class="container table-striped table-hover table-dark text-primary">
+				<thead class="border-bottom border-info">
+				<tr class="text-info">
+					<th class="small w-25 pl-1">NPC</th>
+					<th class="small w-25">Picture</th>
+					<th class="small w-25 pl-5">Quantity</th>
+					<th class="small w-25 pl-5">Drop Chance</th>
+				</tr>
+				</thead>
+				<tbody>
+				<?php
+				while ($result = $connector->fetch_assoc($item_drops)) {
+				$npcID = $result['npcID'];
+				$dropAmount = $result['dropAmount'];
+				$npc_drops = $connector->gamequery("
 												SELECT
 													A.name AS npcName,
 													B.npcdef_id AS npcID,
@@ -253,32 +251,30 @@ LIMIT 793");
 												WHERE
 													B.npcdef_id = '$npcID' AND C.id = '$subpage'
 												"); ?><!---->
-						<tr class="clickable-row"
-							data-href="../npcdef/<?php echo $result['npcID'] ?>">
-							<td class="text-capitalize small pl-1">
-								<?php echo $result['npcName']; ?>
-							</td>
-							<td class="small pr-5">
-								<div class="row-item display-glow npc<?php echo $result['npcID'] ?>"></div>
-							</td>
-							<td class="pt-1 small pl-5">
-								<?php echo $result['dropAmount'] ?>
-							</td>
-							<td class="pt-1 small pl-5">
-								<?php while ($dropResult = $connector->fetch_assoc($npc_drops)) {
-									if ($dropResult['dropPercentage'] == '0.0000%' || $dropResult['dropPercentage'] == NULL || $dropResult['dropPercentage'] == '0.0000%<!--') {
-										echo '100%';
-									} else {
-										echo $dropResult['dropPercentage'];
-									}
-								} ?>
-							</td>
-						</tr>
-						<?php } ?>
-						</tbody>
-					</table>
-				</div>
-			</div>
+				<tr class="clickable-row"
+					data-href="../npcdef/<?php echo $result['npcID'] ?>">
+					<td class="text-capitalize small pl-1">
+						<?php echo $result['npcName']; ?>
+					</td>
+					<td class="small pr-5">
+						<div class="row-item display-glow npc<?php echo $result['npcID'] ?>"></div>
+					</td>
+					<td class="pt-1 small pl-5">
+						<?php echo $result['dropAmount'] ?>
+					</td>
+					<td class="pt-1 small pl-5">
+						<?php while ($dropResult = $connector->fetch_assoc($npc_drops)) {
+							if ($dropResult['dropPercentage'] == '0.0000%' || $dropResult['dropPercentage'] == NULL || $dropResult['dropPercentage'] == '0.0000%<!--') {
+								echo '100%';
+							} else {
+								echo $dropResult['dropPercentage'];
+							}
+						} ?>
+					</td>
+				</tr>
+				<?php } ?>
+				</tbody>
+			</table>
 </article>
 	</div>
 <?php } else {
