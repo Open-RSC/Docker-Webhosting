@@ -49,7 +49,7 @@ require_once('charfunctions.php');
 			integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 			crossorigin="anonymous"></script>
 	<script src="../js/grayscale.min.js"></script>
-	<script type="text/javascript" src="../js/twitterFetcher.js"></script>
+	<script type="text/javascript" src="../js/twitterFetcher.min.js"></script>
 	<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script>
 		jQuery(document).ready(function ($) {
@@ -105,9 +105,9 @@ require_once('charfunctions.php');
 
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" href="../css/grayscale.min.css">
-	<link rel="stylesheet" href="../css/itemsprites.css">
-	<link rel="stylesheet" href="../css/npcsprites.css">
-	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css" />
+	<link rel="stylesheet" href="../css/itemsprites.min.css">
+	<link rel="stylesheet" href="../css/npcsprites.min.css">
+	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css" />
 
 	<!-- Bootstrap style overrides -->
 	<link rel="stylesheet" href="../css/style.css">
