@@ -3,7 +3,7 @@ if (!defined('IN_SITE')) {
 	die("You do not have permission to access this file.");
 }
 $connector = new Dbc();
-$registrations_today = $connector->gamequery("SELECT id, username, group_id, creation_date FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 24 hour) AND banned = '0' ORDER BY creation_date DESC LIMIT 1000");
+$registrations_today = $connector->gamequery("SELECT id, combat, username, group_id, creation_date FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 24 hour) AND banned = '0' ORDER BY creation_date DESC LIMIT 1000");
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
@@ -29,7 +29,7 @@ $registrations_today = $connector->gamequery("SELECT id, username, group_id, cre
 											<?php if ($row['group_id'] != 10):
 												echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
 											else: NULL; endif; ?>
-											<?php echo ucfirst($row["username"]); ?>
+											<?php echo ucfirst($row["username"]) . ' (Level ' . $row["combat"] . ')'; ?>
 										</td>
 									</tr>
 									</tbody>
