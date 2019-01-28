@@ -14,9 +14,7 @@ date_default_timezone_set('America/New_York');
 				   placeholder="Search for an player">
 			<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 				<tbody>
-				<?php while ($row = $connector->fetchArray($game_accounts)) {
-					$idLink = preg_replace("/[^A-Za-z0-9]/", "-", $row['playerID']);
-					date_default_timezone_set('America/New_York'); ?>
+				<?php while ($row = $connector->fetchArray($game_accounts)) { ?>
 					<tr class="clickable-row" data-href="../player/<?php echo $row['playerID'] ?>">
 						<td class="text-capitalize pl-2"
 							style="color: #F5FA3C; text-shadow: 1px 1px black;">
