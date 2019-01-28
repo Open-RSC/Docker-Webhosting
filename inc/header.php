@@ -110,7 +110,7 @@ require_once('charfunctions.php');
 	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css" />
 
 	<!-- Bootstrap style overrides -->
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/style.min.css">
 
 	<title>Open RSC</title>
 </head>

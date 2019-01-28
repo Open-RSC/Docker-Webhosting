@@ -333,7 +333,7 @@ function bd_nice_number($n)
 											for ($i = 1; $row = $connector->fetchArray($player_chatlogs); $i++) { ?>
 												<tr>
 													<td class="text-monospace text-white-50 pt-0">
-														<?php echo strftime("%d %b / %H:%M %Z", $row["time"]) ?>
+														<?php echo strftime("%b %d, %I:%M %p", $row["time"]) ?>
 													</td>
 													<td class="pl-1" style="color: #F5FA3C; text-shadow: 1px 1px black;">
 														<?php echo $row["message"] ?>
@@ -360,7 +360,7 @@ function bd_nice_number($n)
 												?>
 												<tr>
 													<td class="text-monospace text-white-50">
-														<?php echo strftime("%d %b / %H:%M %Z", $row["time"]) ?>
+														<?php echo strftime("%b %d, %I:%M %p", $row["time"]) ?>
 													</td>
 													<td class="pl-1 pr-1" style="text-shadow: 1px 1px black;">
 														from
