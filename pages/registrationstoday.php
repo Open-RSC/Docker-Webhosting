@@ -4,6 +4,7 @@ if (!defined('IN_SITE')) {
 }
 $connector = new Dbc();
 $registrations_today = $connector->gamequery("SELECT id, combat, username, group_id, creation_date FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 24 hour) AND banned = '0' ORDER BY creation_date DESC LIMIT 1000");
+date_default_timezone_set('America/New_York');
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
