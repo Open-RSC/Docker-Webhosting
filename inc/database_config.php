@@ -158,26 +158,6 @@ function newRegistrationsToday()
 	}
 }
 
-function listregistrationsToday()
-{
-	$connector = new Dbc();
-	$registrations_today = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 1 day )");
-	while ($row = $connector->fetchArray($registrations_today)) {
-		if ($row["username"] == NULL) {
-			echo "No players have been created today.";
-		} else {
-			echo '<div class="clickable-row" data-href="../player/' . $row["id"] . '">';
-			echo '<div class="d-inline-block">';
-			if ($row['group_id'] != 10):
-				echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
-			else: NULL; endif;
-			echo ucfirst($row["username"]);
-			echo '</div>';
-			echo '</div>';
-		}
-	}
-}
-
 function logins48()
 {
 	$connector = new Dbc();
@@ -187,26 +167,6 @@ function logins48()
 			echo "0";
 		} else {
 			echo $row["countUsers"];
-		}
-	}
-}
-
-function listlogins48()
-{
-	$connector = new Dbc();
-	$logins48 = $connector->gamequery("SELECT id, username, group_id FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 48 hour )");
-	while ($row = $connector->fetchArray($logins48)) {
-		if ($row["username"] == NULL) {
-			echo "No players have logged in for the last 48 hours.";
-		} else {
-			echo '<div class="clickable-row" data-href="../player/' . $row["id"] . '">';
-			echo '<div class="d-inline-block">';
-			if ($row['group_id'] != 10):
-				echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
-			else: NULL; endif;
-			echo ucfirst($row["username"]);
-			echo '</div>';
-			echo '</div>';
 		}
 	}
 }
