@@ -2,7 +2,27 @@
 define('IN_SITE', true);
 
 $connector = new Dbc();
-$game_accounts = $connector->logquery("SELECT A.id playerID, A.group_id, B.sender, B.message, B.time FROM openrsc_chat_logs AS B LEFT JOIN openrsc_players AS A ON B.sender = A.username ORDER BY B.time DESC LIMIT 500");
+$game_accounts = $connector->logquery("
+SELECT
+    A.id playerID,
+    B.sender,
+    B.message,
+    B.time
+FROM
+    openrsc_chat_logs AS B
+LEFT JOIN openrsc_players AS A
+ON
+    B.sender = A.username
+WHERE
+    B.time >= UNIX_TIMESTAMP(
+        CURRENT_DATE - INTERVAL 5 DAY
+    )
+ORDER BY
+    B.time
+DESC
+LIMIT 1000
+");
+
 date_default_timezone_set('America/New_York');
 ?>
 
@@ -29,7 +49,7 @@ date_default_timezone_set('America/New_York');
 								 width="36"
 								 height="48" onerror="this.style.display='none'">
 						</td>
-						<td class="text-monospace text-white-50 pt-2">
+						<td class="small text-monospace text-white-50 pt-2">
 							<?php echo strftime("%b %d, %I:%M %p", $row["time"]) ?>
 						</td>
 						<td style="color: #F5FA3C; text-shadow: 1px 1px black;">
