@@ -17,7 +17,7 @@ if (!defined('IN_SITE')) {
 								 src="../img/quests/Shield_of_Arrav_completed.png">
 						</div>
 
-						<div class="flex-row stats">
+						<div class="flex-row stats pl-5 pr-5">
 							<div class="sm-stats col-sm">
 								<span class="d-block"><span class="text-info">Release date:</span> 4 January 2001</span>
 								<span class="d-block"><span class="text-info">Start:</span> Reldo in the Varrock Library</span>
