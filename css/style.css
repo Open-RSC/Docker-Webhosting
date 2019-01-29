@@ -15,11 +15,6 @@ section {
     background: rgba(20, 20, 20, 0.9);
 }
 
-.toggle,
-[id^=drop] {
-    display: none;
-}
-
 .h2 {
     font-size: 4rem;
 !important;

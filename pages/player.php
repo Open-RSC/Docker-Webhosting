@@ -150,25 +150,22 @@ function bd_nice_number($n)
 						<div class="stats pl-5 pr-5">
 							<div class="h4 text-info">Recent Accomplishments</div>
 							<?php while ($row = $connector->fetchArray($player_feed)) { ?>
-								<table>
-									<tbody>
-									<tr>
-										<td class="text-monospace text-white-50 pt-0">
-											<?php echo strftime("%d %b / %H:%M %Z", $row["time"]) ?>
-										</td>
-										<td class="text-capitalize pl-1"
+									<div class="pl-3 row">
+										<div class="text-monospace text-white-50 pt-0">
+											<time class="timeago"
+												  datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $row["time"]) ?>"></time>
+										</div>
+										<div class="text-capitalize pl-1"
 											style="text-shadow: 1px 1px black;">
 											<?php if ($row['group_id'] != 10):
 												echo '<img class="mb-1" src="../img/' . $row["group_id"] . '.svg" width="10" height="10"> ';
 											endif; ?>
 											<?php echo $row['username'] ?>
-										</td>
-										<td class="pl-1" style="text-shadow: 1px 1px black;">
+										</div>
+										<div class="pl-1" style="text-shadow: 1px 1px black;">
 											<?php echo $row["message"] ?>
-										</td>
-									</tr>
-									</tbody>
-								</table>
+										</div>
+									</div>
 							<?php } ?>
 						</div>
 
