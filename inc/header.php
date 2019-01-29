@@ -98,6 +98,8 @@ require_once('charfunctions.php');
 	<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png">
 	<link rel="manifest" href="../img/favicons/site.webmanifest">
 	<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#000000">
+	<meta name="theme-color" content="#000000">
 
 	<!-- Custom fonts for this template -->
 	<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"

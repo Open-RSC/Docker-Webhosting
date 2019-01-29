@@ -8,7 +8,8 @@ date_default_timezone_set('America/New_York');
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
-	<div class="container border-left border-info border-right">
+	<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
+		 data-mcs-theme="minimal">
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Players Online
 		</h2>
 		<div class="row justify-content-center full-height mCustomScrollbar" data-mcs-theme="minimal">
