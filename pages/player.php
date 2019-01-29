@@ -139,9 +139,10 @@ function bd_nice_number($n)
 											} else {
 												echo '<span class="red"><strong>Offline</strong></span>';
 											} ?>
-										</span>
+								</span>
 								<span class="sm-stats">Last Online: <time class="timeago"
-																		  datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $character["login_date"]) ?>"></time></span>
+																		  datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $character["login_date"]) ?>"></time>
+								</span>
 							</div>
 						</div>
 

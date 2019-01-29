@@ -60,21 +60,23 @@ function bd_nice_number($n)
 			<?php echo $character['username']; ?>'s Bank
 		</h2>
 		<div class="sm-stats pl-3 pr-3">
-			<div class="pb-0 stats row justify-content-center">
+			<div class="pb-0 stats row justify-content-center text-primary">
 				<?php $file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png'; ?>
 				<img class="pl-5" src="<?php echo $file; ?>" style="height: 125px;">
 				<div class="pl-5 col-6">
-                        		<span class="sm-stats small text-uppercase text-info">Status:
-								<?php if ($character['online'] == 1) {
-									echo '<span class="green"><strong>Online</strong></span>';
-								} else {
-									echo '<span class="red"><strong>Offline</strong></span>';
-								} ?></span>
-					<span class="text-uppercase text-info">Last Online: </span>
-					<span><?php date_default_timezone_set('America/New_York');
-						echo strftime("%d %b / %H:%M %Z", $character["login_date"]) ?></span><br><br>
-					<span>Shar accepts player item donations for drop parties.</span><br><br>
-					<span>To donate in-game items to Shar, contact a staff member. </span>
+					<span class="sm-stats text-info pt-3">Status:
+						<?php if ($character['online'] == 1) {
+							echo '<span class="green"><strong>Online</strong></span>';
+						} else {
+							echo '<span class="red"><strong>Offline</strong></span>';
+						} ?>
+					</span>
+					<span class="sm-stats text-info">Last Online:
+						<time class="timeago text-primary"
+							  datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $character["login_date"]) ?>"></time>
+					</span>
+					<span class="sm-stats pt-2">Shar accepts player item donations for drop parties.</span>
+					<span class="sm-stats pt-2">To donate in-game items to Shar, contact a staff member.</span>
 				</div>
 			</div>
 
