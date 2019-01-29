@@ -50,7 +50,7 @@ date_default_timezone_set('America/New_York');
 								 height="48" onerror="this.style.display='none'">
 						</td>
 						<td class="small text-monospace text-white-50 pt-2">
-							<?php echo strftime("%b %d, %I:%M %p", $row["time"]) ?>
+							<time class="timeago" datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $row["time"]) ?>"></time>
 						</td>
 						<td style="color: #F5FA3C; text-shadow: 1px 1px black;">
 							<?php echo $row["message"] ?>

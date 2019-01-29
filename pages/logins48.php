@@ -24,7 +24,7 @@ date_default_timezone_set('America/New_York');
 									<tbody>
 									<tr>
 										<td class="text-monospace text-white-50 pt-0 pr-2">
-											<?php echo strftime("%b %d, %I:%M %p", $row["login_date"]); ?>
+											<time class="timeago" datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $row["login_date"]) ?>"></time>
 										</td>
 										<td class="pl-1" style="color: #F5FA3C; text-shadow: 1px 1px black;">
 											<?php if ($row['group_id'] != 10):
