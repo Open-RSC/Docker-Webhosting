@@ -64,7 +64,7 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 				<th class="rank text-info">Rank</th>
 				<th class="experience text-info">Level</th>
 				<th class="experience text-info">Experience</th>
-				<th class="experience text-info">Last Login</th>
+				<th class="experience text-info">Last Online</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -127,8 +127,7 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 							echo $idLink;
 						endif;
 						?>">
-							<?php date_default_timezone_set('America/New_York');
-							echo strftime("%b %d", $row['login_date']); ?>
+							<time class="timeago" datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $row["login_date"]) ?>"></time>
 						</div>
 					</td>
 				</tr>

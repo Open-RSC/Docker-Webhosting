@@ -781,7 +781,7 @@ function totalTime()
 function activityfeed()
 {
 	$connector = new Dbc();
-	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.id AS pid, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username WHERE A.banned = '0' ORDER BY B.time DESC LIMIT 100");
+	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.id AS pid, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username WHERE B.time >= unix_timestamp( current_date - interval 10 day) AND banned = '0' ORDER BY B.time DESC LIMIT 100");
 	date_default_timezone_set('America/New_York');
 	while ($row = $connector->fetchArray($game_accounts)) {
 		echo '<div class="text-primary ml-3 mr-3 pt-3" style="font-size: 13px;">
