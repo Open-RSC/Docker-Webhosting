@@ -53,7 +53,7 @@ require_once('charfunctions.php');
 	<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.timeago.min.js"></script>
 	<script>
-		jQuery(document).ready(function() {
+		jQuery(document).ready(function () {
 			jQuery("time.timeago").timeago();
 		});
 
@@ -85,8 +85,8 @@ require_once('charfunctions.php');
 			}
 		}
 
-		(function($){
-			$(window).on("load",function(){
+		(function ($) {
+			$(window).on("load", function () {
 				$(".content").mCustomScrollbar();
 			});
 		})(jQuery);
@@ -98,6 +98,8 @@ require_once('charfunctions.php');
 	<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png">
 	<link rel="manifest" href="../img/favicons/site.webmanifest">
 	<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#000000">
+	<meta name="theme-color" content="#000000">
 
 	<!-- Custom fonts for this template -->
 	<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"
@@ -112,7 +114,7 @@ require_once('charfunctions.php');
 	<link rel="stylesheet" href="../css/grayscale.min.css">
 	<link rel="stylesheet" href="../css/itemsprites.min.css">
 	<link rel="stylesheet" href="../css/npcsprites.min.css">
-	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css" />
+	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css"/>
 
 	<!-- Bootstrap style overrides -->
 	<link rel="stylesheet" href="../css/style.min.css">
@@ -151,8 +153,52 @@ require_once('charfunctions.php');
 						GitHub</a>
 				</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/highscores/skill_total">Highscores</a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+				   data-toggle="dropdown"
+				   aria-haspopup="true" aria-expanded="false">
+					Highscores
+				</a>
+				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item text-secondary" href="/highscores/skill_total">
+						<img src="/img/skill_icons/skill_total.svg" class="pr-2 mb-1" height="14px"/>Skill Total</a>
+					<a class="dropdown-item text-secondary" href="/highscores/attack">
+						<img src="/img/skill_icons/attack.svg" class="pr-2 mb-1" height="14px"/>Attack</a>
+					<a class="dropdown-item text-secondary" href="/highscores/strength">
+						<img src="/img/skill_icons/strength.svg" class="pr-2 mb-1" height="14px"/>Strength</a>
+					<a class="dropdown-item text-secondary" href="/highscores/defense">
+						<img src="/img/skill_icons/defense.svg" class="pr-2 mb-1" height="14px"/>Defense</a>
+					<a class="dropdown-item text-secondary" href="/highscores/hits">
+						<img src="/img/skill_icons/hits.svg" class="pr-2 mb-1" height="14px"/>Hits</a>
+					<a class="dropdown-item text-secondary" href="/highscores/ranged">
+						<img src="/img/skill_icons/ranged.svg" class="pr-2 mb-1" height="14px"/>Ranged</a>
+					<a class="dropdown-item text-secondary" href="/highscores/prayer">
+						<img src="/img/skill_icons/prayer.svg" class="pr-2 mb-1" height="14px"/>Prayer</a>
+					<a class="dropdown-item text-secondary" href="/highscores/magic">
+						<img src="/img/skill_icons/magic.svg" class="pr-2 mb-1" height="14px"/>Magic</a>
+					<a class="dropdown-item text-secondary" href="/highscores/cooking">
+						<img src="/img/skill_icons/cooking.svg" class="pr-2 mb-1" height="14px"/>Cooking</a>
+					<a class="dropdown-item text-secondary" href="/highscores/woodcut">
+						<img src="/img/skill_icons/woodcut.svg" class="pr-2 mb-1" height="14px"/>Woodcut</a>
+					<a class="dropdown-item text-secondary" href="/highscores/fletching">
+						<img src="/img/skill_icons/fletching.svg" class="pr-2 mb-1" height="14px"/>Fletching</a>
+					<a class="dropdown-item text-secondary" href="/highscores/fishing">
+						<img src="/img/skill_icons/fishing.svg" class="pr-2 mb-1" height="14px"/>Fishing</a>
+					<a class="dropdown-item text-secondary" href="/highscores/firemaking">
+						<img src="/img/skill_icons/firemaking.svg" class="pr-2 mb-1" height="14px"/>Firemaking</a>
+					<a class="dropdown-item text-secondary" href="/highscores/crafting">
+						<img src="/img/skill_icons/crafting.svg" class="pr-2 mb-1" height="14px"/>Crafting</a>
+					<a class="dropdown-item text-secondary" href="/highscores/smithing">
+						<img src="/img/skill_icons/smithing.svg" class="pr-2 mb-1" height="14px"/>Smithing</a>
+					<a class="dropdown-item text-secondary" href="/highscores/mining">
+						<img src="/img/skill_icons/mining.svg" class="pr-2 mb-1" height="14px"/>Mining</a>
+					<a class="dropdown-item text-secondary" href="/highscores/herblaw">
+						<img src="/img/skill_icons/herblaw.svg" class="pr-2 mb-1" height="14px"/>Herblaw</a>
+					<a class="dropdown-item text-secondary" href="/highscores/agility">
+						<img src="/img/skill_icons/agility.svg" class="pr-2 mb-1" height="14px"/>Agility</a>
+					<a class="dropdown-item text-secondary" href="/highscores/thieving">
+						<img src="/img/skill_icons/thieving.svg" class="pr-2 mb-1" height="14px"/>Thieving</a>
+				</div>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/chat">Recent Chat</a>
@@ -170,11 +216,22 @@ require_once('charfunctions.php');
 					<a class="dropdown-item text-secondary" href="/faq">FAQ</a>
 					<a class="dropdown-item text-secondary" href="/rules">Rules</a>
 					<a class="dropdown-item text-secondary" href="/shar">Shar's Bank</a>
+					<a class="dropdown-item text-secondary" href="/calendar">Event Calendar</a>
 					<div class="dropdown-divider border-info"></div>
 					<a class="dropdown-item text-secondary" href="/items">Item Database</a>
 					<a class="dropdown-item text-secondary" href="/npcs">NPC Database</a>
 					<div class="dropdown-divider border-info"></div>
 					<a class="dropdown-item text-secondary" href="/stats">Statistics</a>
+					<div class="dropdown-divider border-info"></div>
+					<a class="dropdown-item text-secondary" target="_blank"
+					   href="https://discordapp.com/invite/94vVKND">
+						<i class="text-info fab fa-discord mr-md-2"></i>Discord</a>
+					<a class="dropdown-item text-secondary" target="_blank" href="https://github.com/open-rsc">
+						<i class="text-info fab fa-github mr-md-2"></i>GitHub</a>
+					<a class="dropdown-item text-secondary" target="_blank" href="https://twitter.com/openrsc">
+						<i class="text-info fab fa-twitter mr-md-2"></i>Twitter</a>
+					<a class="dropdown-item text-secondary" target="_blank" href="https://www.reddit.com/r/openrsc">
+						<i class="text-info fab fa-reddit mr-md-2"></i>Reddit</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
@@ -188,9 +245,6 @@ require_once('charfunctions.php');
 					<div class="dropdown-divider border-info"></div>
 					<a class="dropdown-item text-secondary" href="/quest-arrav">Shield of Arrav</a>
 				</div>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/calendar">Event Calendar</a>
 			</li>
 		</ul>
 	</div>
