@@ -24,7 +24,7 @@ include "inc/header.php";
 		?>
 
 		<!-- Fullscreen video background -->
-		<div class="fullscreen-bg full-width">
+		<div class="fullscreen-bg">
 			<video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay"
 				   muted="muted"
 				   loop="loop">
