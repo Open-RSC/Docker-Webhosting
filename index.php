@@ -52,13 +52,13 @@ include "inc/header.php";
 
 		<!-- Left column -->
 		<div
-			class="side-left text-info border-info border-right mCustomScrollbar" data-mcs-theme="minimal">
+			class="side-left text-info border-info border-right full-height mCustomScrollbar" data-mcs-theme="minimal">
 			<h4 class="pl-3 pr-3">Latest Achievements</h4>
 			<?php activityfeed() ?>
 		</div>
 
 		<!-- Center column with title text -->
-		<div class="side-middle text-center mCustomScrollbar" data-mcs-theme="minimal">
+		<div class="side-middle text-center full-height mCustomScrollbar" data-mcs-theme="minimal">
 			<div class="d-block pt-5">
 				<img src="img/logo.png" class="img-fluid">
 			</div>
@@ -68,7 +68,7 @@ include "inc/header.php";
 			</div>
 
 			<div class="d-block pt-1 pb-4">
-				<a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">Download PC</a>
+				<a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">PC</a>
 				<a href="https://game.openrsc.com/downloads/openrsc.apk" class="mobile btn btn-dark btn-outline-info">Android</a>
 			</div>
 
@@ -142,7 +142,7 @@ include "inc/header.php";
 		</div>
 
 		<!-- Right column -->
-		<div class="side-right text-info border-info border-left mCustomScrollbar" data-mcs-theme="minimal">
+		<div class="side-right text-info border-info border-left full-height mCustomScrollbar" data-mcs-theme="minimal">
 			<!-- Twitter feed -->
 			<h4 class="pl-3 pr-3">Recent News</h4>
 			<div class="pl-3 pr-3 text-primary small" id="tweets"></div>
