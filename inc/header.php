@@ -176,12 +176,12 @@ require_once('charfunctions.php');
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 				   data-toggle="dropdown"
 				   aria-haspopup="true" aria-expanded="false">
-					Quests
+					Guides
 				</a>
 				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item text-secondary" href="/wilderness">Wilderness Map</a>
+					<div class="dropdown-divider border-info"></div>
 					<a class="dropdown-item text-secondary" href="/quest-arrav">Shield of Arrav</a>
-					<!--<div class="dropdown-divider border-info"></div>
-                    <a class="dropdown-item text-secondary" href="/items">Member Quest 1</a>-->
 				</div>
 			</li>
 			<li class="nav-item">

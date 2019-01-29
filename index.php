@@ -59,99 +59,84 @@ include "inc/header.php";
 
 		<!-- Center column with title text -->
 		<div class="side-middle text-center mCustomScrollbar" data-mcs-theme="minimal">
-			<h2 class="display-3-title mb-0">OPEN RSC</h2>
-			<div class="text-white-50">Striving for a replica RSC game and more</div>
-			<br>
-			<a href="https://game.openrsc.com/downloads/openrsc.apk">
-				<img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
-			</a>
-			<br>
-			<a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">PC
-				Client</a>
-			<a href="https://game.openrsc.com/downloads/openrsc.apk" class="mobile btn btn-dark btn-outline-info">Android</a>
-			<br>
-			<br>
+			<div class="d-block pt-5">
+				<img src="img/logo.png" class="img-fluid">
+			</div>
+
+			<div class="d-block pb-3">
+				<div class="text-white-50">Striving for a replica RSC game and more</div>
+			</div>
+
+			<div class="d-block pt-1 pb-4">
+				<a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">Download PC</a>
+				<a href="https://game.openrsc.com/downloads/openrsc.apk" class="mobile btn btn-dark btn-outline-info">Android</a>
+			</div>
+
 			<div class="middle container-fluid border-top border-info">
-				<div class="text-left text-primary small">
-					<br>
+				<div class="text-left text-primary small pt-3">
 					<h4 class="text-info">Statistics</h4>
 					<div>
 						Players Online:
-						<b>
-							<a href="online">
-					<span class="text-info float-right">
+						<a href="online">
+					<span class="font-weight-bold text-info float-right">
 						<?php echo playersOnline(); ?>
 					</span>
-							</a>
-						</b>
+						</a>
 					</div>
 					<div>
 						Server Status:
 						<span class="float-right">
-					<?php echo checkStatus("game.openrsc.com", "43594"); ?>
-				</span>
+							<?php echo checkStatus("game.openrsc.com", "43594"); ?>
+						</span>
 					</div>
 					<div>
 						Registrations Today:
-						<b>
-							<a href="registrationstoday">
-						<span class="text-info float-right">
+						<a href="registrationstoday">
+						<span class="font-weight-bold text-info float-right">
 							<?php echo newRegistrationsToday(); ?>
 						</span>
-							</a>
-						</b>
+						</a>
 					</div>
 					<div>
 						Online Last 48 Hours:
-						<b>
-							<a href="logins48">
-						<span class="text-info float-right">
+						<a href="logins48">
+						<span class="font-weight-bold text-info float-right">
 							<?php echo logins48(); ?>
 						</span>
-							</a>
-						</b>
+						</a>
 					</div>
 					<div>
 						Unique Players:
-						<b>
-							<a href="stats">
-						<span class="text-info float-right">
+						<a href="stats">
+						<span class="font-weight-bold text-info float-right">
 							<?php echo uniquePlayers(); ?>
 						</span>
-							</a>
-						</b>
+						</a>
 					</div>
 					<div>
 						Total Players:
-						<b>
-							<a href="stats">
-						<span class="text-info float-right">
+						<a href="stats">
+						<span class="font-weight-bold text-info float-right">
 							<?php echo totalGameCharacters(); ?>
 						</span>
-							</a>
-						</b>
+						</a>
 					</div>
 					<div>
 						Sum Gold:
-						<b>
-							<a href="stats">
-						<span class="text-info float-right">
+						<a href="stats">
+						<span class="font-weight-bold text-info float-right">
 							<?php echo banktotalGold(); ?>
 						</span>
-							</a>
-						</b>
+						</a>
 					</div>
 					<div>
 						Cumulative Play:
-						<b>
-							<a href="stats">
-						<span class="text-info float-right">
+						<a href="stats">
+						<span class="font-weight-bold text-info float-right">
 							<?php echo totalTime(); ?>
 						</span>
-							</a>
-						</b>
+						</a>
 					</div>
-					<br>
 				</div>
 			</div>
 		</div>
@@ -165,5 +150,3 @@ include "inc/header.php";
 
 	<?php } ?>
 </section>
-
-<?php include "inc/footer.php"; ?>
