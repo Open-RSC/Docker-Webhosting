@@ -111,7 +111,7 @@ require_once('charfunctions.php');
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link rel="stylesheet" href="../css/grayscale.min.css">
+	<link rel="stylesheet" href="../css/grayscale.css">
 	<link rel="stylesheet" href="../css/itemsprites.min.css">
 	<link rel="stylesheet" href="../css/npcsprites.min.css">
 	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css"/>
@@ -132,13 +132,13 @@ require_once('charfunctions.php');
 		Menu
 		<i class="fas fa-bars"></i>
 	</button>
-	<div class="collapse navbar-collapse pl-2" id="navbarResponsive">
+	<div class="collapse navbar-collapse pl-2 py-0" id="navbarResponsive">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="/">Home</a>
+			<li class="nav-item py-0">
+				<a class="nav-link py-0" href="/">Home</a>
 			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+			<li class="nav-item dropdown py-0">
+				<a class="nav-link py-0 dropdown-toggle" href="#" id="navbarDropdown" role="button"
 				   data-toggle="dropdown"
 				   aria-haspopup="true" aria-expanded="false">
 					Download
@@ -153,22 +153,22 @@ require_once('charfunctions.php');
 						GitHub</a>
 				</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/highscores/skill_total">Highscores</a>
+			<li class="nav-item py-0">
+				<a class="nav-link py-0" href="/highscores/skill_total">Highscores</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/chat">Recent Chat</a>
+			<li class="nav-item py-0">
+				<a class="nav-link py-0" href="/chat">Recent Chat</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/worldmap">Live Map</a>
+			<li class="nav-item py-0">
+				<a class="nav-link py-0" href="/worldmap">Live Map</a>
 			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+			<li class="nav-item dropdown py-0">
+				<a class="nav-link py-0 dropdown-toggle" href="#" id="navbarDropdown" role="button"
 				   data-toggle="dropdown"
 				   aria-haspopup="true" aria-expanded="false">
 					Information
 				</a>
-				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
+				<div class="dropdown-menu bg-black py-0" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item text-secondary" href="/faq">FAQ</a>
 					<a class="dropdown-item text-secondary" href="/rules">Rules</a>
 					<a class="dropdown-item text-secondary" href="/shar">Shar's Bank</a>
@@ -190,13 +190,13 @@ require_once('charfunctions.php');
 						<i class="text-info fab fa-reddit mr-md-2"></i>Reddit</a>
 				</div>
 			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+			<li class="nav-item dropdown py-0">
+				<a class="nav-link py-0 dropdown-toggle" href="#" id="navbarDropdown" role="button"
 				   data-toggle="dropdown"
 				   aria-haspopup="true" aria-expanded="false">
 					Guides
 				</a>
-				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
+				<div class="dropdown-menu bg-black py-0" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item text-secondary" href="/wilderness">Wilderness Map</a>
 					<div class="dropdown-divider border-info"></div>
 					<a class="dropdown-item text-secondary" href="/quest-arrav">Shield of Arrav</a>
