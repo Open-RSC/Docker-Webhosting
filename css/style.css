@@ -15,6 +15,12 @@ section {
     background: rgba(20, 20, 20, 0.9);
 }
 
+@media (max-width: 1199px) {
+    .navbar-nav {
+        padding-bottom: 130px;
+    }
+}
+
 .h2 {
     font-size: 4rem;
 !important;
