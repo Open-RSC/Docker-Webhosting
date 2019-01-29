@@ -153,52 +153,8 @@ require_once('charfunctions.php');
 						GitHub</a>
 				</div>
 			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-				   data-toggle="dropdown"
-				   aria-haspopup="true" aria-expanded="false">
-					Highscores
-				</a>
-				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item text-secondary" href="/highscores/skill_total">
-						<img src="/img/skill_icons/skill_total.svg" class="pr-2 mb-1" height="14px"/>Skill Total</a>
-					<a class="dropdown-item text-secondary" href="/highscores/attack">
-						<img src="/img/skill_icons/attack.svg" class="pr-2 mb-1" height="14px"/>Attack</a>
-					<a class="dropdown-item text-secondary" href="/highscores/strength">
-						<img src="/img/skill_icons/strength.svg" class="pr-2 mb-1" height="14px"/>Strength</a>
-					<a class="dropdown-item text-secondary" href="/highscores/defense">
-						<img src="/img/skill_icons/defense.svg" class="pr-2 mb-1" height="14px"/>Defense</a>
-					<a class="dropdown-item text-secondary" href="/highscores/hits">
-						<img src="/img/skill_icons/hits.svg" class="pr-2 mb-1" height="14px"/>Hits</a>
-					<a class="dropdown-item text-secondary" href="/highscores/ranged">
-						<img src="/img/skill_icons/ranged.svg" class="pr-2 mb-1" height="14px"/>Ranged</a>
-					<a class="dropdown-item text-secondary" href="/highscores/prayer">
-						<img src="/img/skill_icons/prayer.svg" class="pr-2 mb-1" height="14px"/>Prayer</a>
-					<a class="dropdown-item text-secondary" href="/highscores/magic">
-						<img src="/img/skill_icons/magic.svg" class="pr-2 mb-1" height="14px"/>Magic</a>
-					<a class="dropdown-item text-secondary" href="/highscores/cooking">
-						<img src="/img/skill_icons/cooking.svg" class="pr-2 mb-1" height="14px"/>Cooking</a>
-					<a class="dropdown-item text-secondary" href="/highscores/woodcut">
-						<img src="/img/skill_icons/woodcut.svg" class="pr-2 mb-1" height="14px"/>Woodcut</a>
-					<a class="dropdown-item text-secondary" href="/highscores/fletching">
-						<img src="/img/skill_icons/fletching.svg" class="pr-2 mb-1" height="14px"/>Fletching</a>
-					<a class="dropdown-item text-secondary" href="/highscores/fishing">
-						<img src="/img/skill_icons/fishing.svg" class="pr-2 mb-1" height="14px"/>Fishing</a>
-					<a class="dropdown-item text-secondary" href="/highscores/firemaking">
-						<img src="/img/skill_icons/firemaking.svg" class="pr-2 mb-1" height="14px"/>Firemaking</a>
-					<a class="dropdown-item text-secondary" href="/highscores/crafting">
-						<img src="/img/skill_icons/crafting.svg" class="pr-2 mb-1" height="14px"/>Crafting</a>
-					<a class="dropdown-item text-secondary" href="/highscores/smithing">
-						<img src="/img/skill_icons/smithing.svg" class="pr-2 mb-1" height="14px"/>Smithing</a>
-					<a class="dropdown-item text-secondary" href="/highscores/mining">
-						<img src="/img/skill_icons/mining.svg" class="pr-2 mb-1" height="14px"/>Mining</a>
-					<a class="dropdown-item text-secondary" href="/highscores/herblaw">
-						<img src="/img/skill_icons/herblaw.svg" class="pr-2 mb-1" height="14px"/>Herblaw</a>
-					<a class="dropdown-item text-secondary" href="/highscores/agility">
-						<img src="/img/skill_icons/agility.svg" class="pr-2 mb-1" height="14px"/>Agility</a>
-					<a class="dropdown-item text-secondary" href="/highscores/thieving">
-						<img src="/img/skill_icons/thieving.svg" class="pr-2 mb-1" height="14px"/>Thieving</a>
-				</div>
+			<li class="nav-item">
+				<a class="nav-link" href="/highscores/skill_total">Highscores</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/chat">Recent Chat</a>

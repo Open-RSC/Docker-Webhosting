@@ -13,7 +13,11 @@ body {
 section {
     flex-grow: 1;
     background: rgba(20, 20, 20, 0.9);
-    padding-bottom: 47px;
+}
+
+.toggle,
+[id^=drop] {
+    display: none;
 }
 
 .h2 {
@@ -228,13 +232,6 @@ nav > button {
     }
 }
 
-@media (min-aspect-ratio: 16/9) {
-    .fullscreen-bg__video {
-        height: 300%;
-        top: -100%;
-    }
-}
-
 @media (max-aspect-ratio: 16/9) {
     .fullscreen-bg__video {
         width: 300%;
@@ -252,6 +249,7 @@ nav > button {
 }
 
 .skill-dropdown {
+    position: relative;
     background-color: #212529;
     background-position: 10px 12px;
     background-repeat: no-repeat;
@@ -551,11 +549,6 @@ nav > button {
     text-align: center;
 }
 
-.note {
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
 .username {
     width: 220px;
     text-align: left;
@@ -784,16 +777,6 @@ td.username {
     margin-bottom: 15px;
 }
 
-footer {
-    text-align: center;
-    background: rgba(20, 20, 20, 0.9);
-    background-size: auto 100%;
-    position: relative;
-    padding: 0;
-    padding-top: 8px;
-    margin-top: -47px;
-}
-
 .pretty-text {
     text-shadow: 0 1px 0 #ccc,
     0 1px 0 #c9c9c9,
@@ -808,9 +791,4 @@ footer {
     0 5px 7px rgba(0, 0, 0, .2),
     0 7px 10px rgba(0, 0, 0, .15);
 !important;
-}
-
-footer > p {
-    height: 20px;
-    margin: 18px 0 15px;
 }

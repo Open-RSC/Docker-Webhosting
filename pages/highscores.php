@@ -35,7 +35,7 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 			<?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
 		</h2>
-		<p class="note center text-center">
+		<p class="text-center">
 			Note: Only players that have logged in within the last 3 months are shown.
 		</p>
 		<div class="highscores-menu">
@@ -44,11 +44,11 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Select a skill
 				</a>
-				<div class="dropdown-menu bg-black" aria-labelledby="highscoresDropdown">
+				<div class="dropdown-menu bg-black" aria-labelledby="highscoresDropdown" width="140px;">
 					<?php foreach ($skill_array as $skill) { ?>
 						<a class="dropdown-item text-secondary" href="/highscores/<?php print $skill; ?>">
 							<img src="/img/skill_icons/<?php print $skill; ?>.svg"
-								 alt="<?php print $skill; ?>" class="skill-icon"/>
+								 alt="<?php print $skill; ?>" height="20px"/>
 							<?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
 						</a>
 					<?php } ?>

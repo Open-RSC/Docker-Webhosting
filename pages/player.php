@@ -139,11 +139,10 @@ function bd_nice_number($n)
 											} else {
 												echo '<span class="red"><strong>Offline</strong></span>';
 											} ?>
-										</span>
-								<span
-									class="sm-stats">Last Online: <?php date_default_timezone_set('America/New_York');
-									echo strftime("%b %d, %I:%M %p", $character["login_date"]) ?>
-										</span>
+								</span>
+								<span class="sm-stats">Last Online: <time class="timeago"
+																		  datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $character["login_date"]) ?>"></time>
+								</span>
 							</div>
 						</div>
 
@@ -335,7 +334,8 @@ function bd_nice_number($n)
 													<td class="text-monospace text-white-50 pt-0">
 														<?php echo strftime("%b %d, %I:%M %p", $row["time"]) ?>
 													</td>
-													<td class="pl-1" style="color: #F5FA3C; text-shadow: 1px 1px black;">
+													<td class="pl-1"
+														style="color: #F5FA3C; text-shadow: 1px 1px black;">
 														<?php echo $row["message"] ?>
 													</td>
 												</tr>
@@ -367,15 +367,19 @@ function bd_nice_number($n)
 														<?php if (($row['group_id'] != 10) && ($row['username'] != $row['reciever'])):
 															echo '<img class="mb-1" src="../img/' . $row["group_id"] . '.svg" width="10" height="10"> ';
 														endif; ?>
-														<a style="text-shadow: 1px 1px black;" href="/player/<?php echo $idLinkSender ?>" target="_blank">
-															<span class="font-weight-bold text-capitalize"><?php echo $row['sender'] ?></span>
+														<a style="text-shadow: 1px 1px black;"
+														   href="/player/<?php echo $idLinkSender ?>" target="_blank">
+															<span
+																class="font-weight-bold text-capitalize"><?php echo $row['sender'] ?></span>
 														</a>
 														to
 														<?php if (($row['group_id'] != 10) && ($row['username'] != $row['sender'])):
 															echo '<img class="mb-1" src="../img/' . $row["group_id"] . '.svg" width="10" height="10"> ';
 														endif; ?>
-														<a style="text-shadow: 1px 1px black;" href="/player/<?php echo $idLinkReciever ?>" target="_blank">
-															<span class="font-weight-bold text-capitalize"><?php echo $row['reciever'] ?></span>
+														<a style="text-shadow: 1px 1px black;"
+														   href="/player/<?php echo $idLinkReciever ?>" target="_blank">
+															<span
+																class="font-weight-bold text-capitalize"><?php echo $row['reciever'] ?></span>
 														</a>
 														<span class="text-info"><?php echo $row["message"] ?></span>
 													</td>

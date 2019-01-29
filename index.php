@@ -7,9 +7,7 @@ include "inc/header.php";
 	<?php
 	if (curPageURL() != "" && !is_array(curPageURL()) && curPageURL() != 'index') {
 		if (file_exists("pages/" . curPageURL() . ".php")) {
-			?>
-			<?php include("pages/" . curPageURL() . ".php"); ?>
-			<?php
+			include("pages/" . curPageURL() . ".php");
 		} else {
 			include("pages/error.php");
 		}
@@ -26,7 +24,7 @@ include "inc/header.php";
 		?>
 
 		<!-- Fullscreen video background -->
-		<div class="fullscreen-bg full-width">
+		<div class="fullscreen-bg">
 			<video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay"
 				   muted="muted"
 				   loop="loop">
@@ -67,7 +65,7 @@ include "inc/header.php";
 				<div class="text-white-50">Striving for a replica RSC game and more</div>
 			</div>
 
-			<div class="d-block pt-1 pb-4">
+			<div class="d-block pt-1 pb-4 btn-group-sm">
 				<a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">PC</a>
 				<a href="https://game.openrsc.com/downloads/openrsc.apk" class="mobile btn btn-dark btn-outline-info">Android</a>
 			</div>
