@@ -39,19 +39,24 @@ require_once('charfunctions.php');
 		  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 	<!-- Javascript -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 			crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
 			integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
 			crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 			integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 			crossorigin="anonymous"></script>
 	<script src="../js/grayscale.min.js"></script>
 	<script type="text/javascript" src="../js/twitterFetcher.min.js"></script>
-	<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.timeago.min.js"></script>
 	<script>
+		jQuery(document).ready(function() {
+			jQuery("time.timeago").timeago();
+		});
+
 		jQuery(document).ready(function ($) {
 			$(".clickable-row").click(function () {
 				window.location = $(this).data("href");
@@ -176,12 +181,12 @@ require_once('charfunctions.php');
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 				   data-toggle="dropdown"
 				   aria-haspopup="true" aria-expanded="false">
-					Quests
+					Guides
 				</a>
 				<div class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item text-secondary" href="/wilderness">Wilderness Map</a>
+					<div class="dropdown-divider border-info"></div>
 					<a class="dropdown-item text-secondary" href="/quest-arrav">Shield of Arrav</a>
-					<!--<div class="dropdown-divider border-info"></div>
-                    <a class="dropdown-item text-secondary" href="/items">Member Quest 1</a>-->
 				</div>
 			</li>
 			<li class="nav-item">

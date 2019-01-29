@@ -781,29 +781,25 @@ function totalTime()
 function activityfeed()
 {
 	$connector = new Dbc();
-	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.id AS pid, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username ORDER BY B.time DESC LIMIT 100");
+	$game_accounts = $connector->gamequery("SELECT B.id, A.group_id, B.username, B.message, B.time, A.id AS pid, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username WHERE A.banned = '0' ORDER BY B.time DESC LIMIT 100");
 	date_default_timezone_set('America/New_York');
 	while ($row = $connector->fetchArray($game_accounts)) {
-		if ($row["username"] == NULL) {
-			echo "No players activity.";
-		} else {
-			echo '<div class="text-primary ml-3 mr-3 pt-3" style="font-size: 13px;">
+		echo '<div class="text-primary ml-3 mr-3 pt-3" style="font-size: 13px;">
 					<div class="row clickable-row" data-href="../player/' . $row["pid"] . '">
 						<div class="col-sm text-info font-weight-bold">
-							' . strftime("%b %d, %I:%M %p", $row["time"]) . '
+							<time class="timeago" datetime="' . strftime("%Y-%m-%dT%H:%M:%S", $row["time"]) . '"></time>
 						</div>
 						<div class="col-9 pr-1 pl-1">';
-			if ($row['group_id'] != 10):
-				echo '<img class="mb-1" src="../img/' . $row["group_id"] . '.svg" width="9" height="9"> ';
-			endif;
-			echo '
+		if ($row['group_id'] != 10):
+			echo '<img class="mb-1" src="../img/' . $row["group_id"] . '.svg" width="9" height="9"> ';
+		endif;
+		echo '
 							<img class="pr-2 float-left" src="https://game.openrsc.com/avatars/' . $row["pid"] . '.png" width="36" height="48" onerror="this.style.display=\'none\'">
 							<span class="font-weight-bold">' . ucfirst($row["username"]) . '</span> ' . $row["message"] . '
 						</div>
 					</div>
 					<div class="border-top border-info mt-3"></div>
 				</div>';
-		}
 	}
 }
 
