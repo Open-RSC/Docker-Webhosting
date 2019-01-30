@@ -149,8 +149,8 @@ require_once('charfunctions.php');
 					<a class="dropdown-item text-secondary" href="https://game.openrsc.com/downloads/openrsc.apk">Android
 						Client</a>
 					<div class="dropdown-divider border-info"></div>
-					<a class="dropdown-item text-secondary" href="https://github.com/open-rsc/game">Source Code on
-						GitHub</a>
+					<a class="dropdown-item text-secondary" target="_blank" href="https://github.com/open-rsc/single-player/releases">Single Player</a>
+					<a class="dropdown-item text-secondary" target="_blank" href="https://github.com/open-rsc/game">Source Code</a>
 				</div>
 			</li>
 			<li class="nav-item py-0">
@@ -174,20 +174,7 @@ require_once('charfunctions.php');
 					<a class="dropdown-item text-secondary" href="/shar">Shar's Bank</a>
 					<a class="dropdown-item text-secondary" href="/calendar">Event Calendar</a>
 					<div class="dropdown-divider border-info"></div>
-					<a class="dropdown-item text-secondary" href="/items">Item Database</a>
-					<a class="dropdown-item text-secondary" href="/npcs">NPC Database</a>
-					<div class="dropdown-divider border-info"></div>
-					<a class="dropdown-item text-secondary" href="/stats">Statistics</a>
-					<div class="dropdown-divider border-info"></div>
-					<a class="dropdown-item text-secondary" target="_blank"
-					   href="https://discordapp.com/invite/94vVKND">
-						<i class="text-info fab fa-discord mr-md-2"></i>Discord</a>
-					<a class="dropdown-item text-secondary" target="_blank" href="https://github.com/open-rsc">
-						<i class="text-info fab fa-github mr-md-2"></i>GitHub</a>
-					<a class="dropdown-item text-secondary" target="_blank" href="https://twitter.com/openrsc">
-						<i class="text-info fab fa-twitter mr-md-2"></i>Twitter</a>
-					<a class="dropdown-item text-secondary" target="_blank" href="https://www.reddit.com/r/openrsc">
-						<i class="text-info fab fa-reddit mr-md-2"></i>Reddit</a>
+					<a class="dropdown-item text-secondary" href="/stats">Game Statistics</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown py-0">
@@ -197,9 +184,28 @@ require_once('charfunctions.php');
 					Guides
 				</a>
 				<div class="dropdown-menu bg-black py-0" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item text-secondary" href="/quest">Quests</a>
 					<a class="dropdown-item text-secondary" href="/wilderness">Wilderness Map</a>
-					<div class="dropdown-divider border-info"></div>
-					<a class="dropdown-item text-secondary" href="/quest-arrav">Shield of Arrav</a>
+					<a class="dropdown-item text-secondary" href="/items">Item Database</a>
+					<a class="dropdown-item text-secondary" href="/npcs">NPC Database</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown py-0">
+				<a class="nav-link py-0 dropdown-toggle" href="#" id="navbarDropdown" role="button"
+				   data-toggle="dropdown"
+				   aria-haspopup="true" aria-expanded="false">
+					Links
+				</a>
+				<div class="dropdown-menu bg-black py-0" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item text-secondary" target="_blank"
+					   href="https://discordapp.com/invite/94vVKND">
+						<i class="text-info fab fa-discord mr-md-2"></i>Discord</a>
+					<a class="dropdown-item text-secondary" target="_blank" href="https://github.com/open-rsc">
+						<i class="text-info fab fa-github mr-md-2"></i>GitHub</a>
+					<a class="dropdown-item text-secondary" target="_blank" href="https://twitter.com/openrsc">
+						<i class="text-info fab fa-twitter mr-md-2"></i>Twitter</a>
+					<a class="dropdown-item text-secondary" target="_blank" href="https://www.reddit.com/r/openrsc">
+						<i class="text-info fab fa-reddit mr-md-2"></i>Reddit</a>
 				</div>
 			</li>
 		</ul>

@@ -4,7 +4,7 @@ if (!defined('IN_SITE')) {
 }
 ?>
 
-<article class="text-info table-dark spaced-body full-width">
+<article class="text-info table-dark spaced-body full-width full-height">
 	<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
 		 data-mcs-theme="minimal">
 		<h2 class="h2 text-center text-capitalize display-3 pb-4">Shield of Arrav</h2>
@@ -209,3 +209,7 @@ if (!defined('IN_SITE')) {
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+</article>
