@@ -124,13 +124,11 @@ li {
 
 /* CSS Document */
 nav {
-    background: #212121;
     font-size: 22px;
     line-height: 32px;
     margin: 0;
     padding: 0;
     word-wrap: break-word !important;
-    font-family: 'Exo', sans-serif;
     text-align: center;
 }
 
@@ -145,7 +143,6 @@ nav h1 {
     text-align: center;
     font-size: 60px;
     line-height: 70px;
-    font-family: 'Exo', sans-serif;
 }
 
 #container {
@@ -169,15 +166,7 @@ nav p {
 nav {
     margin: 0;
     padding: 0;
-    background-color: rgb(28, 52, 68);
-}
-
-#logo {
-    display: block;
-    padding: 0 30px;
-    float: right;
-    font-size: 20px;
-    line-height: 60px;
+    background-color: rgb(19, 36, 47);
 }
 
 nav:after {
@@ -200,8 +189,16 @@ nav ul li {
     padding-right: 5px;
     display: inline-block;
     float: left;
-    background-color: rgba(28, 52, 68, 0.95);
+    background-color: rgba(19, 36, 47, 0.95);
     background-blend-mode: darken;
+    z-index: 999;
+}
+
+.dropdown-divider {
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    float: left;
     z-index: 999;
 }
 
@@ -210,7 +207,7 @@ nav a {
     display: block;
     /*padding:14px 20px; */
     padding: 8px 8px;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 17px;
     text-decoration: none;
 }
@@ -220,7 +217,8 @@ nav ul li ul li:hover {
 
 /* Background color change on Hover */
 nav a:hover {
-    background-color: rgba(54, 104, 135, 0.95);
+    background-color: rgba(19, 36, 47, 0.3);
+    color: rgb(255, 255, 255);
 }
 
 /* Hide Dropdowns by Default
@@ -294,17 +292,16 @@ li > a:only-child:after {
     /* Styling the toggle label */
     .toggle {
         display: block;
-        background-color: #254441;
-        /*padding:14px 20px; */
+        background-color: rgba(19, 36, 47, 0.95);
         padding: 8px 8px;
-        color: #FFF;
+        color: rgba(255, 255, 255, 0.7);
         font-size: 17px;
         text-decoration: none;
         border: none;
     }
 
     .toggle:hover {
-        background-color: #000000;
+        background-color: rgba(19, 36, 47, 0.3);
     }
 
     /* Display Dropdown when clicked on parent label */
@@ -329,27 +326,27 @@ li > a:only-child:after {
 
     nav a:hover,
     nav ul ul ul a {
-        background-color: #000000;
+        background-color: rgba(19, 36, 47, 0.3);
     }
 
     nav ul li ul li .toggle,
     nav ul ul a,
     nav ul ul ul a {
         padding: 8px 8px;
-        color: #FFF;
+        color: rgba(255, 255, 255, 0.7);
         font-size: 17px;
     }
 
     nav ul li ul li .toggle,
     nav ul ul a {
-        background-color: #212121;
+        background-color: rgba(19, 36, 47, 0.3);
     }
 
     /* Hide Dropdowns by Default */
     nav ul ul {
         float: none;
         position: static;
-        color: #ffffff;
+        color: rgba(255, 255, 255, 0.7);
         /* has to be the same number as the "line-height" of "nav a" */
     }
 
@@ -363,6 +360,7 @@ li > a:only-child:after {
     nav ul ul li {
         display: block;
         width: 100%;
+        text-align: center;
     }
 
     nav ul ul ul li {
@@ -402,7 +400,7 @@ li > a:only-child:after {
     width: 450px;
     height: auto;
     object-fit: scale-down;
-    filter: drop-shadow(0px 0px 3px #17a2b8) brightness(70%);;
+    filter: drop-shadow(0px 0px 3px #17a2b8) brightness(70%);
     margin-bottom: 20px;
 }
 
@@ -436,21 +434,17 @@ li > a:only-child:after {
     }
 
     .btn {
-        font-family: 'Exo', sans-serif;
         min-width: 200px;
         max-width: 350px;
     }
 
     .signup-section .form-inline input {
-        font-family: 'Exo', sans-serif;
     }
 
     .contact-section .card h4 {
-        font-family: 'Exo', sans-serif;
     }
 
     .masthead h1 {
-        font-family: 'Exo', sans-serif;
     }
 
     .middle {
@@ -660,7 +654,7 @@ li > a:only-child:after {
 }
 
 .skill li a {
-    color: #17a2b;
+    color: #17a2b1;
 }
 
 .skill ul li a:hover {
