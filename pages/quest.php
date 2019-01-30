@@ -7,7 +7,7 @@ if (!defined('IN_SITE')) {
 <article class="text-info table-dark spaced-body full-width full-height">
 	<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
 		 data-mcs-theme="minimal">
-		<h2 class="h2 text-center text-capitalize display-3 pb-4">Quest Guides</h2>
+		<h2 class="h2 text-center text-capitalize display-3 pb-4">Quest List</h2>
 		<div class="row sm-stats" style="text-transform: unset;">
 			<div class="text-primary">
 				<div class="flex-row">
@@ -21,7 +21,7 @@ if (!defined('IN_SITE')) {
 										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
 											 height="150px">
 										<span class="text-info">
-											Shield of Arrav
+											Black Knights' Fortress
 										</span>
 									</span>
 									<span class="d-block pb-3">
@@ -29,7 +29,11 @@ if (!defined('IN_SITE')) {
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
@@ -39,15 +43,19 @@ if (!defined('IN_SITE')) {
 										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
 											 height="150px">
 										<span class="text-info">
-											Shield of Arrav
+											Cook's Assistant
 										</span>
 									</span>
 									<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
@@ -57,7 +65,7 @@ if (!defined('IN_SITE')) {
 										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
 											 height="150px">
 										<span class="text-info">
-											Shield of Arrav
+											Demon Slayer
 										</span>
 									</span>
 									<span class="d-block pb-3">
@@ -65,7 +73,11 @@ if (!defined('IN_SITE')) {
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
@@ -75,15 +87,19 @@ if (!defined('IN_SITE')) {
 										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
 											 height="150px">
 										<span class="text-info">
-											Shield of Arrav
+											Doric's Quest
 										</span>
 									</span>
 									<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
@@ -105,23 +121,9 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 										</span>
-									</span>
-								</div>
-
-								<div class="clickable-row" data-href="/quest-arrav">
-									<span class="d-block">
-										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
-											 height="150px">
-										<span class="text-info">
-											Shield of Arrav
-										</span>
-									</span>
-									<span class="d-block pb-3">
-										Difficulty:
-										<span class="small text-info font-weight-bold">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
@@ -141,6 +143,10 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
 									</span>
 								</div>
 
@@ -158,6 +164,32 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											Shield of Arrav
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
@@ -183,23 +215,9 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 										</span>
-									</span>
-								</div>
-
-								<div class="clickable-row" data-href="/quest-arrav">
-									<span class="d-block">
-										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
-											 height="150px">
-										<span class="text-info">
-											Shield of Arrav
-										</span>
-									</span>
-									<span class="d-block pb-3">
-										Difficulty:
-										<span class="small text-info font-weight-bold">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
@@ -219,6 +237,10 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
 									</span>
 								</div>
 
@@ -236,6 +258,32 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											Shield of Arrav
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
@@ -257,23 +305,9 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 										</span>
-									</span>
-								</div>
-
-								<div class="clickable-row" data-href="/quest-arrav">
-									<span class="d-block">
-										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
-											 height="150px">
-										<span class="text-info">
-											Shield of Arrav
-										</span>
-									</span>
-									<span class="d-block pb-3">
-										Difficulty:
-										<span class="small text-info font-weight-bold">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
@@ -293,6 +327,10 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
 									</span>
 								</div>
 
@@ -310,6 +348,32 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											Shield of Arrav
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 										</span>
 									</span>
 								</div>
