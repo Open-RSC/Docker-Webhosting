@@ -217,7 +217,6 @@ nav ul li ul li:hover {
 
 /* Background color change on Hover */
 nav a:hover {
-    background-color: rgba(19, 36, 47, 0.3);
     color: rgb(255, 255, 255);
 }
 
@@ -339,7 +338,7 @@ li > a:only-child:after {
 
     nav ul li ul li .toggle,
     nav ul ul a {
-        background-color: rgba(19, 36, 47, 0.3);
+        background-color: rgba(16, 25, 34, 0.8);
     }
 
     /* Hide Dropdowns by Default */
