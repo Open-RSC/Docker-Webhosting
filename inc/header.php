@@ -150,7 +150,7 @@ require_once('charfunctions.php');
 		<li><a href="/highscores/skill_total">Highscores</a></li>
 		<li><a href="/chat">Recent Chat</a></li>
 		<li>
-			<label for="drop-2" class="toggle">Information</label>
+			<label for="drop-2" class="toggle">Information ▾</label>
 			<a href="#">Information</a>
 			<input type="checkbox" id="drop-2"/>
 			<ul>
@@ -162,7 +162,7 @@ require_once('charfunctions.php');
 			</ul>
 		</li>
 		<li>
-			<label for="drop-3" class="toggle">Guide</label>
+			<label for="drop-3" class="toggle">Guide ▾</label>
 			<a href="#">Guide</a>
 			<input type="checkbox" id="drop-3"/>
 			<ul>
@@ -174,7 +174,7 @@ require_once('charfunctions.php');
 			</ul>
 		</li>
 		<li>
-			<label for="drop-4" class="toggle">Links</label>
+			<label for="drop-4" class="toggle">Links ▾</label>
 			<a href="#">Links</a>
 			<input type="checkbox" id="drop-4"/>
 			<ul>
