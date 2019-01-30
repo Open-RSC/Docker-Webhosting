@@ -123,138 +123,125 @@ li {
 }
 
 /* CSS Document */
-
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
-
 nav {
-    background: #212121;
-    font-size:22px;
+    font-size: 22px;
     line-height: 32px;
-    color: #ffffff;
     margin: 0;
     padding: 0;
-    word-wrap:break-word !important;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 30px;
-    line-height: 34px;
+    word-wrap: break-word !important;
     text-align: center;
-    color: #FFF;
 }
 
 nav h3 a {
-    color: #FFF;
 }
 
 nav a {
-    color: #FFF;
 }
 
 nav h1 {
     margin-top: 100px;
-    text-align:center;
-    font-size:60px;
+    text-align: center;
+    font-size: 60px;
     line-height: 70px;
-    font-family: 'Bree Serif', 'serif';
-    }
+}
 
 #container {
     margin: 0 auto;
     max-width: 890px;
 }
+
 nav label {
     margin-bottom: 0;
 }
+
 nav p {
     text-align: center;
 }
 
-.toggle,
-[id^=drop] {
+.toggle, [id^=drop] {
     display: none;
 }
 
 /* Giving a background-color to the nav container. */
-nav { 
-    margin:0;
+nav {
+    margin: 0;
     padding: 0;
-    background-color: #254441;
+    background-color: rgb(19, 36, 47);
 }
-
-#logo {
-    display: block;
-    padding: 0 30px;
-    float: right;
-    font-size:20px;
-    line-height: 60px;
-}
-
-/* Since we'll have the "ul li" "float:left"
- * we need to add a clear after the container. */
 
 nav:after {
-    content:"";
-    display:table;
-    clear:both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
-/* Removing padding, margin and "list-style" from the "ul",
- * and adding "position:reltive" */
 nav ul {
     float: left;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
     list-style: none;
     position: relative;
-    }
-    
-/* Positioning the navigation items inline */
+}
+
 nav ul li {
     margin: 0px;
-    display:inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: inline-block;
     float: left;
-    background-color: #254441;
+    background-color: rgba(19, 36, 47, 0.95);
+    background-blend-mode: darken;
     z-index: 999;
-    }
+}
+
+.dropdown-divider {
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    float: left;
+    z-index: 999;
+}
 
 /* Styling the links */
 nav a {
-    display:block;
+    display: block;
     /*padding:14px 20px; */
-    padding: 8px 8px;  
-    color:#FFF;
-    font-size:17px;
-    text-decoration:none;
+    padding: 8px 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 17px;
+    text-decoration: none;
 }
 
-
-nav ul li ul li:hover { background: #000000; }
+nav ul li ul li:hover {
+}
 
 /* Background color change on Hover */
-nav a:hover { 
-    background-color: #000000; 
+nav a:hover {
+    background-color: rgba(19, 36, 47, 0.3);
+    color: rgb(255, 255, 255);
 }
 
 /* Hide Dropdowns by Default
  * and giving it a position of absolute */
 nav ul ul {
     display: none;
-    position: absolute; 
+    position: absolute;
     /* has to be the same number as the "line-height" of "nav a" */
     /*top: 60px; */
     top: 50px;
 }
-    
+
 /* Display Dropdowns on Hover */
 nav ul li:hover > ul {
-    display:inherit;
+    display: inherit;
 }
-    
-/* Fisrt Tier Dropdown */
+
+/* First Tier Dropdown */
 nav ul ul li {
-    width:170px;
-    float:none;
-    display:list-item;
+    width: 170px;
+    float: none;
+    text-align: left;
+    display: list-item;
     position: relative;
 }
 
@@ -264,21 +251,24 @@ nav ul ul li {
 */
 nav ul ul ul li {
     position: relative;
-    top:-60px;
-    /* has to be the same number as the "width" of "nav ul ul li" */ 
-    left:170px; 
+    top: -60px;
+    /* has to be the same number as the "width" of "nav ul ul li" */
+    left: 170px;
 }
 
-    
 /* Change ' +' in order to change the Dropdown symbol */
-li > a:after { content:  ' ▾'; }
-li > a:only-child:after { content: ''; }
+li > a:after {
+    content: ' ▾';
+}
 
+li > a:only-child:after {
+    content: '';
+}
 
 /* Media Queries
 --------------------------------------------- */
 
-@media all and (max-width : 768px) {
+@media all and (max-width: 768px) {
 
     #logo {
         display: block;
@@ -299,23 +289,22 @@ li > a:only-child:after { content: ''; }
         display: none;
     }
 
-    /* Stylinf the toggle lable */
+    /* Styling the toggle label */
     .toggle {
         display: block;
-        background-color: #254441;
-        /*padding:14px 20px; */
-        padding: 8px 8px; 
-        color:#FFF;
-        font-size:17px;
-        text-decoration:none;
-        border:none;
+        background-color: rgba(19, 36, 47, 0.95);
+        padding: 8px 8px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 17px;
+        text-decoration: none;
+        border: none;
     }
 
     .toggle:hover {
-        background-color: #000000;
+        background-color: rgba(19, 36, 47, 0.3);
     }
 
-    /* Display Dropdown when clicked on Parent Lable */
+    /* Display Dropdown when clicked on parent label */
     [id^=drop]:checked + ul {
         display: block;
     }
@@ -324,7 +313,7 @@ li > a:only-child:after { content: ''; }
     nav ul li {
         display: block;
         width: 100%;
-        }
+    }
 
     nav ul ul .toggle,
     nav ul ul a {
@@ -337,56 +326,54 @@ li > a:only-child:after { content: ''; }
 
     nav a:hover,
     nav ul ul ul a {
-        background-color: #000000;
+        background-color: rgba(19, 36, 47, 0.3);
     }
-  
+
     nav ul li ul li .toggle,
     nav ul ul a,
-  nav ul ul ul a{
-        /*padding:14px 20px; */
-        padding: 8px 8px; 
-        color:#FFF;
-        font-size:17px; 
+    nav ul ul ul a {
+        padding: 8px 8px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 17px;
     }
-  
-  
+
     nav ul li ul li .toggle,
     nav ul ul a {
-        background-color: #212121; 
+        background-color: rgba(19, 36, 47, 0.3);
     }
 
     /* Hide Dropdowns by Default */
     nav ul ul {
         float: none;
-        position:static;
-        color: #ffffff;
+        position: static;
+        color: rgba(255, 255, 255, 0.7);
         /* has to be the same number as the "line-height" of "nav a" */
     }
-        
+
     /* Hide menus on hover */
     nav ul ul li:hover > ul,
     nav ul li:hover > ul {
         display: none;
     }
-        
-    /* Fisrt Tier Dropdown */
+
+    /* First tier dropdown */
     nav ul ul li {
         display: block;
         width: 100%;
+        text-align: center;
     }
 
     nav ul ul ul li {
         position: static;
-        /* has to be the same number as the "width" of "nav ul ul li" */ 
+        /* has to be the same number as the "width" of "nav ul ul li" */
 
     }
-
 }
 
-@media all and (max-width : 330px) {
+@media all and (max-width: 330px) {
 
     nav ul li {
-        display:block;
+        display: block;
         width: 94%;
     }
 
@@ -413,7 +400,7 @@ li > a:only-child:after { content: ''; }
     width: 450px;
     height: auto;
     object-fit: scale-down;
-    filter: drop-shadow(0px 0px 3px #17a2b8) brightness(70%);;
+    filter: drop-shadow(0px 0px 3px #17a2b8) brightness(70%);
     margin-bottom: 20px;
 }
 
@@ -447,21 +434,17 @@ li > a:only-child:after { content: ''; }
     }
 
     .btn {
-        font-family: 'Exo', sans-serif;
         min-width: 200px;
         max-width: 350px;
     }
 
     .signup-section .form-inline input {
-        font-family: 'Exo', sans-serif;
     }
 
     .contact-section .card h4 {
-        font-family: 'Exo', sans-serif;
     }
 
     .masthead h1 {
-        font-family: 'Exo', sans-serif;
     }
 
     .middle {
@@ -671,7 +654,7 @@ li > a:only-child:after { content: ''; }
 }
 
 .skill li a {
-    color: #17a2b;
+    color: #17a2b1;
 }
 
 .skill ul li a:hover {

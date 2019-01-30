@@ -44,7 +44,7 @@ $stat_result = $connector->gamequery("SELECT openrsc_players.id, openrsc_players
 				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
 					Select a skill
 				</a>
-				<div class="dropdown-menu bg-black" aria-labelledby="highscoresDropdown" style="width: 140px;">
+				<div class="dropdown-menu" aria-labelledby="highscoresDropdown" style="width: 140px; background-color: rgba(19, 36, 47, 0.95);">
 					<?php foreach ($skill_array as $skill) { ?>
 						<a class="dropdown-item text-secondary" href="/highscores/<?php print $skill; ?>">
 							<img src="/img/skill_icons/<?php print $skill; ?>.svg"
