@@ -111,7 +111,7 @@ if (!defined('IN_SITE')) {
 										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
 											 height="150px">
 										<span class="text-info">
-											Shield of Arrav
+											Dragon slayer
 										</span>
 									</span>
 									<span class="d-block pb-3">
@@ -120,8 +120,30 @@ if (!defined('IN_SITE')) {
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
 										</span>
 										<span class="small">
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											Ernest the Chicken
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 										</span>
@@ -133,17 +155,17 @@ if (!defined('IN_SITE')) {
 										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
 											 height="150px">
 										<span class="text-info">
-											Shield of Arrav
+											Goblin Diplomacy
 										</span>
 									</span>
 									<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
 										</span>
 										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 										</span>
@@ -155,7 +177,31 @@ if (!defined('IN_SITE')) {
 										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
 											 height="150px">
 										<span class="text-info">
-											Shield of Arrav
+											Imp Catcher
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+							</div>
+
+							<div id="row3" class="d-flex flex-wrap justify-content-between pt-3">
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											The Knight's Sword
 										</span>
 									</span>
 									<span class="d-block pb-3">
@@ -163,9 +209,9 @@ if (!defined('IN_SITE')) {
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
 										</span>
 										<span class="small">
+											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 										</span>
@@ -177,7 +223,29 @@ if (!defined('IN_SITE')) {
 										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
 											 height="150px">
 										<span class="text-info">
-											Shield of Arrav
+											Pirate's Treasure
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											Prince Ali Rescue
 										</span>
 									</span>
 									<span class="d-block pb-3">
@@ -185,9 +253,121 @@ if (!defined('IN_SITE')) {
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											The Restless Ghost
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
 										</span>
 										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+							</div>
+
+							<div id="row4" class="d-flex flex-wrap justify-content-between pt-3">
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											Romeo & Juliet
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											Pirate's Treasure
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											Prince Ali Rescue
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
+										</span>
+									</span>
+								</div>
+
+								<div class="clickable-row" data-href="/quest-arrav">
+									<span class="d-block">
+										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
+											 height="150px">
+										<span class="text-info">
+											The Restless Ghost
+										</span>
+									</span>
+									<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+										</span>
+										<span class="small">
+											<i class="far fa-star"></i>
+											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 										</span>
@@ -382,6 +562,10 @@ if (!defined('IN_SITE')) {
 						</div>
 
 					</div>
+				</div>
+				<div class="text-center pt-5 pb-5">
+					<a href="https://classic.runescape.wiki">A special thanks to the Runescape Classic Wiki for quest
+						guides!</a>
 				</div>
 			</div>
 		</div>

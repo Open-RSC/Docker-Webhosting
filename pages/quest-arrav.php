@@ -51,7 +51,7 @@ if (!defined('IN_SITE')) {
 								 aria-expanded="false" aria-controls="collapseOne">
 								Show contents
 							</div>
-							<div id="collapseplayerlist" class="collapse hide" aria-labelledby="headingOne"
+							<div id="collapseplayerlist" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
 								<?php echo arrav(); ?>
 							</div>
@@ -64,7 +64,7 @@ if (!defined('IN_SITE')) {
 								 aria-expanded="false" aria-controls="collapseOne">
 								Show contents
 							</div>
-							<div id="collapsewalkthrough" class="collapse hide" aria-labelledby="headingOne"
+							<div id="collapsewalkthrough" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
 								<span class="d-block">
 								To start the quest, talk to Reldo, in the Varrock Library. Tell him that you're looking
@@ -85,7 +85,7 @@ if (!defined('IN_SITE')) {
 								 aria-expanded="false" aria-controls="collapseOne">
 								Show contents
 							</div>
-							<div id="collapsephoenix" class="collapse hide" aria-labelledby="headingOne"
+							<div id="collapsephoenix" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
 								<span class="d-block">Go and talk to Baraek in the Varrock Square. Ask him about the Phoenix Gang, and he says
 								that for more information, you must pay 20 coins. After you pay him, you find out that
@@ -122,7 +122,7 @@ if (!defined('IN_SITE')) {
 								 aria-expanded="false" aria-controls="collapseOne">
 								Show contents
 							</div>
-							<div id="collapseblackarm" class="collapse hide" aria-labelledby="headingOne"
+							<div id="collapseblackarm" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
 								<span class="d-block">After reading the book, talk to the Tramp near Varrock's southern gate. Ask him what is
 								down
@@ -170,12 +170,12 @@ if (!defined('IN_SITE')) {
 						</div>
 
 						<div class="stats pl-5 pr-5" id="accordion">
-							<div class="h4 text-info">Finale</div>
+							<h4 class="text-info">Finale</h4>
 							<div class="text-primary btn btn-link" data-toggle="collapse" data-target="#collapsefinale"
 								 aria-expanded="false" aria-controls="collapseOne">
 								Show contents
 							</div>
-							<div id="collapsefinale" class="collapse hide" aria-labelledby="headingOne"
+							<div id="collapsefinale" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
 								You must now find another player with the other half of the Broken Shield. You or the
 								other
@@ -199,13 +199,23 @@ if (!defined('IN_SITE')) {
 								 aria-expanded="false" aria-controls="collapseOne">
 								Show contents
 							</div>
-							<div id="collapserewards" class="collapse hide" aria-labelledby="headingOne"
+							<div id="collapserewards" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
 								<ul>
 									<li style="list-style: unset;">1 Quest Point</li>
-									<li style="list-style: unset;">600 coins</li>
+									<li style="list-style: unset;">
+										<div class="row">
+											<div class="pt-2 pb-2 display-glow item10"></div>
+											<span class="pt-2">600 coins</span>
+										</div>
+									</li>
 								</ul>
 							</div>
+						</div>
+
+						<div class="text-center pt-5 pb-5">
+							<a href="https://classic.runescape.wiki">A special thanks to the Runescape Classic Wiki for
+								quest guides!</a>
 						</div>
 					</div>
 				</div>
