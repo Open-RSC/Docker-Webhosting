@@ -20,7 +20,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-black-knights-fortress">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Black_Knight_Quest_Complete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Black Knights' Fortress
 										</span>
@@ -42,7 +42,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-cooks-assistant">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Cooks_Assistant_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Cook's Assistant
 										</span>
@@ -64,7 +64,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-demon-slayer">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Demon_Slayer_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Demon Slayer
 										</span>
@@ -86,7 +86,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-doric-quest">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Dorics_Quest_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Doric's Quest
 										</span>
@@ -110,7 +110,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-dragon-slayer">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Dragon_Slayer_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Dragon slayer
 										</span>
@@ -132,7 +132,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-ernest-the-chicken">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Ernest_Chicken_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Ernest the Chicken
 										</span>
@@ -154,7 +154,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-goblin-diplomacy">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Goblin_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Goblin Diplomacy
 										</span>
@@ -176,7 +176,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-imp-catcher">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Imp_Catcher_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Imp Catcher
 										</span>
@@ -200,7 +200,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-the-knights-sword">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Knight's_Sword_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											The Knight's Sword
 										</span>
@@ -222,7 +222,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-pirates-treasure">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Pirates_Treasure_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Pirate's Treasure
 										</span>
@@ -244,7 +244,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-prince-ali-rescue">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Prince_Ali_Rescue_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Prince Ali Rescue
 										</span>
@@ -266,7 +266,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-the-restless-ghost">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/The_Restless_Ghost_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											The Restless Ghost
 										</span>
@@ -290,7 +290,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-romeo-and-juliet">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Romeo_Juliet_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Romeo & Juliet
 										</span>
@@ -312,7 +312,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-sheep-shearer">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Sheep_Shearer_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Sheep Shearer
 										</span>
@@ -334,7 +334,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-shield-of-arrav">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Shield_of_Arrav_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Shield of Arrav
 										</span>
@@ -356,7 +356,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-vampire-slayer">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Vampire_Slayer_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Vampire Slayer
 										</span>
@@ -379,8 +379,8 @@ if (!defined('IN_SITE')) {
 							<div id="row5" class="d-flex flex-wrap justify-content-between pt-3">
 								<div class="clickable-row" data-href="/quest-witchs-potion">
 									<span class="d-block">
-										<img class="d-block" src="../img/quests/Betty_witch_potion.png"
-											 style="max-height:150px;">
+										<img class="d-block" src="../img/quests/Witch's_potion_completed.png"
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Witch's potion
 										</span>
@@ -410,7 +410,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-biohazard">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Biohazard_finish_8.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Biohazard
 										</span>
@@ -432,7 +432,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-clock-tower">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Clock_tower_2.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Clock Tower
 										</span>
@@ -454,7 +454,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-digsite">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Digsite_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Digsite
 										</span>
@@ -476,7 +476,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-druidic-ritual">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Druidic_Ritual_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Druidic Ritual
 										</span>
@@ -500,7 +500,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-dwarf-cannon">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Dwarf_cannon_finish.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Dwarf Cannon
 										</span>
@@ -522,7 +522,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-family-crest">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Family_Crest_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Family Crest
 										</span>
@@ -544,7 +544,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-fight-arena">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/FightArenaComplete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Fight Arena
 										</span>
@@ -566,7 +566,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-fishing-contest">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/FishConReward.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Fishing Contest
 										</span>
@@ -590,7 +590,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-the-grand-tree">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Grand_tree_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											The Grand Tree
 										</span>
@@ -612,7 +612,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-gertrudes-cat">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Gertude_Cat_Complete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Gertrude's Cat
 										</span>
@@ -634,7 +634,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-the-hazeel-cult">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Good_Hazeel_Complete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											The Hazeel Cult
 										</span>
@@ -656,7 +656,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-heros-quest">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Heroes_finish.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Hero's Quest
 										</span>
@@ -680,7 +680,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-the-holy-grail">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/HolyGrailComplete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											The Holy Grail
 										</span>
@@ -702,7 +702,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-jungle-potion">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/JunglePotionComplete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Jungle Potion
 										</span>
@@ -724,7 +724,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-legends-quest">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/LegendsQuestComplete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Legend's Quest
 										</span>
@@ -744,7 +744,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-lost-city">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Lost_City_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Lost City
 										</span>
@@ -768,7 +768,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-merlins-crystal">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Merlins_Crystal_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Merlin's Crystal
 										</span>
@@ -790,7 +790,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-monks-friend">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Monk's_friend_end.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Monk's Friend
 										</span>
@@ -812,7 +812,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-murder-mystery">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Murder_reward.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Murder Mystery
 										</span>
@@ -834,7 +834,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-observatory-quest">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Observatory_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Observatory Quest
 										</span>
@@ -858,7 +858,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-plague-city">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Plague_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Plague City
 										</span>
@@ -880,7 +880,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-scorpion-catcher">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Scorp_catcher_end.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Scorpion Catcher
 										</span>
@@ -902,7 +902,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-sea-slug">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/SeaSlugComplete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Sea Slug
 										</span>
@@ -924,7 +924,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-sheep-herder">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Sheep_Herder_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Sheep Herder
 										</span>
@@ -948,7 +948,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-shilo-village">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/ShiloVillageComplete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Shilo Village
 										</span>
@@ -970,7 +970,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-temple-of-ikov">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Temple_of_Ikov_Evil_-_Complete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Temple of Ikov
 										</span>
@@ -992,7 +992,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-tourist-trap">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/TouristTrapComplete.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Tourist Trap
 										</span>
@@ -1014,7 +1014,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-tree-gnome-village">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Tree_Gnome_Village_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Tree Gnome Village
 										</span>
@@ -1038,7 +1038,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-tribal-totem">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Tribal_totem_5.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Tribal Totem
 										</span>
@@ -1060,7 +1060,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-underground-pass">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Underground_completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Underground Pass
 										</span>
@@ -1082,7 +1082,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-watchtower">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Watchtower_other_rewards.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Watchtower
 										</span>
@@ -1104,7 +1104,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-waterfall-quest">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Waterfall_Quest_Completed.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Waterfall Quest
 										</span>
@@ -1128,7 +1128,7 @@ if (!defined('IN_SITE')) {
 								<div class="clickable-row" data-href="/quest-witches-house">
 									<span class="d-block">
 										<img class="d-block" src="../img/quests/Witches_Quest_end.png"
-											 style="max-height:150px;">
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Witch's House
 										</span>
