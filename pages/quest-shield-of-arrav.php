@@ -202,11 +202,15 @@ if (!defined('IN_SITE')) {
 							<div id="collapserewards" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
 								<ul>
-									<li style="list-style: unset;">1 Quest Point</li>
+									<li style="list-style: unset;">
+										<span class="text-success font-weight-bold">
+											1 Quest Point
+										</span>
+									</li>
 									<li style="list-style: unset;">
 										<div class="row">
 											<div class="pt-2 pb-2 display-glow item10"></div>
-											<span class="pt-2">600 coins</span>
+											<span class="text-success font-weight-bold" style="padding-top: 12px;">600 coins</span>
 										</div>
 									</li>
 								</ul>
