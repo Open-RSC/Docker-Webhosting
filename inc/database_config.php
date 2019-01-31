@@ -770,11 +770,12 @@ function totalTime()
 	$totalTime = $connector->gamequery("SELECT SUM(`value`) FROM `openrsc_player_cache` WHERE `openrsc_player_cache`.`key` = 'total_played'");
 	while ($row = $connector->fetchArray($totalTime)) {
 		$time = $row["SUM(`value`)"] / 1000;
+		$years = floor($time / (24 * 60 * 60 * 12));
 		$days = floor($time / (24 * 60 * 60));
 		$hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
 		$minutes = floor(($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60)) / 60);
 		$seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
-		echo $days . 'd ' . $hours . 'h ';
+		echo $years . 'y ' . $days . 'd ' . $hours . 'h ';
 	}
 }
 

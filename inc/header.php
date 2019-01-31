@@ -149,6 +149,7 @@ require_once('charfunctions.php');
 		</li>
 		<li><a href="/highscores/skill_total">Highscores</a></li>
 		<li><a href="/chat">Recent Chat</a></li>
+		<li><a href="/worldmap">Live Map</a></li>
 		<li>
 			<label for="drop-2" class="toggle">Information ▾</label>
 			<a href="#">Information</a>
