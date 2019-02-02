@@ -53,7 +53,7 @@ a:hover {
     background-color: #212529;
     background-position: 10px 12px; /* Position the search icon */
     background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 200px; /* Full-width */
+    width: 160px; /* Full-width */
     font-size: 16px; /* Increase font-size */
     color: #64a19d;
     border: 1px solid #17a2b8; /* Add a grey border */
@@ -499,7 +499,7 @@ li > a:only-child:after {
     background-color: #212529;
     background-position: 10px 12px;
     background-repeat: no-repeat;
-    width: 200px;
+    width: 160px;
     font-size: 16px;
     border: 1px solid #17a2b8;
     padding-left: 10px;
