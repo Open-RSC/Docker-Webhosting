@@ -48,10 +48,10 @@ require_once('charfunctions.php');
 	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 			integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 			crossorigin="anonymous"></script>
-	<script src="../js/grayscale.min.js"></script>
-	<script type="text/javascript" src="../js/twitterFetcher.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.timeago.min.js"></script>
+	<script src="../js/grayscale.min.js?v=1.0.0"></script>
+	<script type="text/javascript" src="../js/twitterFetcher.min.js?v=1.0.0"></script>
+	<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js?v=1.0.0"></script>
+	<script type="text/javascript" src="../js/jquery.timeago.min.js?v=1.0.0"></script>
 	<script>
 		jQuery(document).ready(function () {
 			jQuery("time.timeago").timeago();
@@ -111,13 +111,13 @@ require_once('charfunctions.php');
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link rel="stylesheet" href="../css/grayscale.css">
-	<link rel="stylesheet" href="../css/itemsprites.min.css">
-	<link rel="stylesheet" href="../css/npcsprites.min.css">
-	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css"/>
+	<link rel="stylesheet" href="../css/grayscale.css?v=1.0.0">
+	<link rel="stylesheet" href="../css/itemsprites.min.css?v=1.0.0">
+	<link rel="stylesheet" href="../css/npcsprites.min.css?v=1.0.0">
+	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css?v=1.0.0"/>
 
 	<!-- Bootstrap style overrides -->
-	<link rel="stylesheet" href="../css/style.min.css">
+	<link rel="stylesheet" href="../css/style.min.css?v=1.0.0">
 
 	<title>Open RSC</title>
 </head>
