@@ -13,7 +13,7 @@ if (!defined('IN_SITE')) {
 				<div class="row justify-content-center">
 					<div class="pl-3 pr-3 container">
 						<div class="pb-1" align="center">
-							<img class="display-glow border border-dark rounded"
+							<img class="display-glow img-fluid"
 								 src="../img/quests/Shield_of_Arrav_completed.png">
 						</div>
 
@@ -32,15 +32,11 @@ if (!defined('IN_SITE')) {
 									<i class="far fa-star"></i>
 									</span></span>
 								<span class="d-block"><span class="text-info">Length:</span> Medium</span>
-							</div>
-							<div class="sm-stats">
 								<span class="d-block"><span class="text-info">Items needed:</span> 20gp or food and a weapon</span>
 								<span class="d-block"><span class="text-info">Requirements:</span> Ability to kill a level 10 or 25 enemy,
 									another player to help</span>
 								<span class="d-block"><span class="text-info">Monsters to kill:</span> Jonny the Beard (level 10, if you join
-									the Phoenix Gang)</span>
-								<span
-									class="d-sm-block">or Weaponmaster (level 25, if you join the Black Arm Gang)</span>
+									the Phoenix Gang) or Weaponmaster (level 25, if you join the Black Arm Gang)</span>
 							</div>
 						</div>
 
@@ -66,6 +62,7 @@ if (!defined('IN_SITE')) {
 							</div>
 							<div id="collapsewalkthrough" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
+								<img class="pb-2 img-fluid" src="../img/quests/Shield_Start.png">
 								<span class="d-block">
 								To start the quest, talk to Reldo, in the Varrock Library. Tell him that you're looking
 								for
@@ -87,6 +84,7 @@ if (!defined('IN_SITE')) {
 							</div>
 							<div id="collapsephoenix" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
+								<img class="pb-2 img-fluid" src="../img/quests/Phoenix_Gang_Hideout_entrance_map.png">
 								<span class="d-block">Go and talk to Baraek in the Varrock Square. Ask him about the Phoenix Gang, and he says
 								that for more information, you must pay 20 coins. After you pay him, you find out that
 								the
@@ -124,6 +122,7 @@ if (!defined('IN_SITE')) {
 							</div>
 							<div id="collapseblackarm" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
+								<img class="pb-2 img-fluid" src="../img/quests/Black_Arm_Gang_Hideout_map_1.png">
 								<span class="d-block">After reading the book, talk to the Tramp near Varrock's southern gate. Ask him what is
 								down
 								that alleyway and he will tell you that it contains the base of the Black Arm Gang. Ask
@@ -177,6 +176,8 @@ if (!defined('IN_SITE')) {
 							</div>
 							<div id="collapsefinale" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
+								<img class="pb-2 img-fluid" src="../img/quests/Shield_of_Arrav_completed.png">
+								<span class="d-block">
 								You must now find another player with the other half of the Broken Shield. You or the
 								other
 								player will have to trade and one of you will have both halves. The two of you must then
@@ -190,6 +191,7 @@ if (!defined('IN_SITE')) {
 								work (for example: if someone had a left over certificate, it won't let you
 								speed-complete
 								this quest).
+								</span>
 							</div>
 						</div>
 
@@ -218,8 +220,8 @@ if (!defined('IN_SITE')) {
 						</div>
 
 						<div class="text-center pt-5 pb-5">
-							<a href="https://classic.runescape.wiki">A special thanks to the Runescape Classic Wiki for
-								quest guides!</a>
+							<a href="https://classic.runescape.wiki/w/Shield_of_Arrav">Thank you to the Runescape Classic Wiki for
+								this quest guide!</a>
 						</div>
 					</div>
 				</div>
