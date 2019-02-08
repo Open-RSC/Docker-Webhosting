@@ -154,7 +154,7 @@ if (!defined('IN_SITE')) {
 						</div>
 
 						<div class="text-center pt-5 pb-5">
-							<a href="https://classic.runescape.wiki/w/Black_Knights%27_Fortress_(quest)">Thank you to
+							<a href="https://classic.runescape.wiki/w/Demon_Slayer">Thank you to
 								the Runescape
 								Classic Wiki for
 								this quest guide!</a>
