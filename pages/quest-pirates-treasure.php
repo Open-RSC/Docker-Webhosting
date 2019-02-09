@@ -34,7 +34,7 @@ if (!defined('IN_SITE')) {
 									</span></span>
 								<span class="d-block"><span class="text-info">Length:</span> Medium</span>
 
-								<span class="d-block d-responsive"><span class="text-info">Items needed: (These items are obtained during the quest)</span>
+								<span class="d-block d-responsive"><span class="text-info">Items needed:</span>
 									<li>- 60 coins</li>
 									<li>- White Apron (can be bought from Thessalia's Fine Clothes)</li>
 									<li>- Spade (one can be found in a house in Falador)</li>
