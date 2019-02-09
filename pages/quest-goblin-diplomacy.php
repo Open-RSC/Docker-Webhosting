@@ -72,7 +72,7 @@ if (!defined('IN_SITE')) {
 							</div>
 							<div id="collapsephoenix" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
-								<span class="d-block">o create orange dye, you'll need two onions, three redberries, and 10 coins. Onions can be obtained from the field behind Farmer Fred's house, located on the path leading from Draynor Village to Lumbridge. Redberries are located to the west of the small mine south-east of Varrock. Once you have the two onions and three redberries, visit Aggie in Draynor Village. She can be found in the house that has two red dots in it on the mini-map (representing item spawns for cheese and tomato).</span>
+								<span class="d-block">To create orange dye, you'll need two onions, three redberries, and 10 coins. Onions can be obtained from the field behind Farmer Fred's house, located on the path leading from Draynor Village to Lumbridge. Redberries are located to the west of the small mine south-east of Varrock. Once you have the two onions and three redberries, visit Aggie in Draynor Village. She can be found in the house that has two red dots in it on the mini-map (representing item spawns for cheese and tomato).</span>
 								<span class="pt-3 d-block">Ask her to make you a red and yellow dye. When you have both, use one on the other to mix them to create orange dye. Now use the orange dye on the Goblin Armour. Return to Goblin Village and talk to one of the Goblin generals and they will take the orange armour. They will say they don't like the colour and want to see dark blue-coloured armour.</span>
 							</div>
 						</div>
