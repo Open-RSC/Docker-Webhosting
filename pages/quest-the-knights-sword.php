@@ -53,20 +53,6 @@ if (!defined('IN_SITE')) {
 							</div>
 							<div id="collapsewalkthrough" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
-								<span class="d-block">To start the quest, talk to Veronica at the entrance to Draynor Manor, located to the north of Draynor Village. She explains that herself and her fiancé, Ernest, were lost. Ernest went into the mansion to get directions and he hasn't returned, and asks you to go into the mansion to find him. Note that there are Ghosts, a level 25 Witch, and a level 21 Skeleton in the manor but that they are all non-aggressive.</span>
-								<span class="pt-3 d-block">Go into the manor and go up the stairs, then go up the nearby ladder to reach the top floor. Talk to Professor Oddenstein. When you ask him about Ernest, he says that Ernest is helping him with his experiments but that he was turned into a Chicken by the professor's "pouletmorph machine."</span>
-								<span class="pt-3 d-block">He can transform him back, but his machine is no longer working and the "house gremlins" have ran off with parts needed to get it working again. He says the parts are either in the manor or on its grounds, and that he needs a Pressure Gauge, Rubber Tube and an Oil Can.</span>
-							</div>
-						</div>
-
-						<div class="stats pl-5 pr-5" id="accordion">
-							<div class="h4 text-info">Pressure Gauge</div>
-							<div class="text-primary btn btn-link" data-toggle="collapse" data-target="#collapsephoenix"
-								 aria-expanded="false" aria-controls="collapseOne">
-								Show contents
-							</div>
-							<div id="collapsephoenix" class="pt-3 collapse hide" aria-labelledby="headingOne"
-								 data-parent="#accordion">
 								<span class="d-block">To start the quest, talk to the Squire in the southern room on the ground floor in the White Knights Castle. He explains he lost Sir Vyvin's sword, a sword that was passed down for five generations. Offer to help, and he'll explain Imcando Dwarves made the sword, a race he believes no longer exists. However, he thinks Reldo the librarian at Varrock Castle might know more about the Imcando Dwarves and tells you to talk to him.</span>
 								<span class="pt-3 d-block">Head to the Varrock Library, the north-most room in the castle, and talk to Reldo. He'll tell you that he believes some Imcando Dwarves may be living in Asgarnia on the southern plateau, and that their favourite food is redberry pie. Before you leave, grab the Pie Dish in the room on the eastern side of the castle.</span>
 							</div>
