@@ -85,6 +85,7 @@ if (!defined('IN_SITE')) {
 							<div id="collapseblackarm" class="pt-3 collapse hide" aria-labelledby="headingOne"
 								 data-parent="#accordion">
 								<span class="d-block">Once the beads are gathered, return to Wizard Mizgog on the top floor of the Wizards' Tower. Congratulations, quest complete!</span>
+								<img class="pt-2 pb-2 img-fluid" src="../img/quests/Imp_Catcher_Completed.png">
 							</div>
 						</div>
 
