@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     //
-    public function index() {
+    public function index()
+    {
         $online = DB::table('openrsc_players')->where('online', 1)->count();
 
         $status = @fsockopen("game.openrsc.com", "43594", $num, $error, 5);
@@ -29,8 +30,9 @@ class HomeController extends Controller
         $hours = intval(floor(($seconds - ($days * 24 * 60 * 60)) / (60 * 60)));
         $totalTime = "{$days}d {$hours}h";
 
-        return view('home',
-        [
+        return view(
+            'home',
+            [
             'online' => $online,
             'status' => $status,
             'registrations' => $registrations,
@@ -39,6 +41,7 @@ class HomeController extends Controller
             'uniquePlayers' => $uniquePlayers,
             'time' => $totalTime
 
-        ]);
+            ]
+        );
     }
 }

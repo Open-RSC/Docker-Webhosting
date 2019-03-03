@@ -15,6 +15,7 @@ mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.css',
     'node_modules/startbootstrap-grayscale/css/grayscale.css',
     'resources/css/style.css',
+    'resources/css/jquery.mCustomScrollbar.css',
     'resources/css/npcsprites.css',
     'resources/css/itemsprites.css'
 ], 'public/css/app.css')
@@ -23,5 +24,7 @@ mix.styles([
     'node_modules/bootstrap/dist/js/bootstrap.js',
     'node_modules/startbootstrap-grayscale/js/grayscale.js',
     'node_modules/twitter-fetcher/js/twitterFetcher.js',
-    'resources/js/dark-google-calendar-2018.user.js'
+    'resources/js/dark-google-calendar-2018.user.js',
+    'resources/js/jquery.timeago.js',
+    'resources/js/jquery.mCustomScrollbar.js'
 ], 'public/js/app.js');

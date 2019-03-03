@@ -27,24 +27,28 @@
 <section id="home">
 
     <!-- Left column -->
-    <div class="side-left table-wrapper-scroll-y text-left text-info border-right border-info">
+    <div
+            class="side-left text-info border-info border-right full-height mCustomScrollbar" data-mcs-theme="minimal">
         <h4 class="pl-3 pr-3">Latest Achievements</h4>
-        
+
     </div>
 
     <!-- Center column with title text -->
-    <div class="side-middle col mx-auto text-center">
-        <h2 class="display-3 mb-0">OPEN RSC</h2>
-        <div class="text-white-50">Striving for a replica RSC game and more</div>
-        <br>
-        <a href="https://game.openrsc.com/downloads/openrsc.apk">
-            <img class="picture" src="img/android.png" class="img-fluid" height="300px" width="600px;">
-        </a>
-        <br>
-        <button type="button" class="pc btn btn-dark btn-outline-info">PC Client</button>
-        <button type="button" class="mobile btn btn-dark btn-outline-info">Android</button>
-        <br>
-        <br>
+    <div class="side-middle text-center full-height mCustomScrollbar" data-mcs-theme="minimal">
+        <div class="d-block pt-5">
+            <img src="img/logo.png" class="img-fluid">
+        </div>
+
+        <div class="d-block pb-3">
+            <div class="text-white-50">Striving for a replica RSC game and more</div>
+        </div>
+
+        <div class="d-block pt-1 pb-4 btn-group-lg">
+            <a href="https://game.openrsc.com/downloads/OpenRSC.jar" class="pc btn btn-dark btn-outline-info">PC</a>
+            <a href="https://game.openrsc.com/downloads/openrsc.apk" class="mobile btn btn-dark btn-outline-info">Android</a>
+        </div>
+
+
         <div class="middle container-fluid border-top border-info">
             <div class="text-left text-primary small">
                 <br>
@@ -131,10 +135,11 @@
     </div>
 
     <!-- Right column -->
-    <div class="side-right table-wrapper-scroll-y text-info border-left border-info">
+    <div class="side-right text-info border-info border-left full-height mCustomScrollbar" data-mcs-theme="minimal">
         <!-- Twitter feed -->
         <h4 class="pl-3 pr-3">Recent News</h4>
         <div class="pl-3 pr-3 text-primary small" id="tweets"></div>
+    </div>
 
 
 </section>
