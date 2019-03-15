@@ -45,6 +45,7 @@ if (!defined('IN_SITE')) {
 									<li>- 5 coins</li>
 									<li>- Soft clay</li>
 									<li>- Bronze bar</li>
+									<li>- Pink skirt</li>
 									<li>- 3 beers (not Asgarnian Ale)</li>
 									<li>- Additional coins for the Al Kharid toll gate multiple times, or a Charged Dragonstone Amulet for teleports between Al Kharid and Draynor (optional)</li>
 								</span>
@@ -70,6 +71,7 @@ if (!defined('IN_SITE')) {
 								<span class="pt-3 d-block">Talk to Aggie about skin paste, and she'll make you some from the redberries, flour, water, and ashes.</span>
 								<span class="pt-3 d-block">Talk to Aggie again about yellow dye and she'll make you some for the onions and the five coins.</span>
 								<span class="pt-3 d-block">Use the yellow dye with the wig from Ned to dye it blonde.</span>
+								<span class="pt-3 d-block">You need to obtain a pink skirt like Lady Keli wears.</span>
 								<span class="pt-3 d-block">With the soft clay in your inventory, speak with Lady Keli (found in the prison, east of Draynor Village) and convince her to get a keyprint.</span>
 								<img class="pt-2 pb-2 img-fluid" src="../img/quests/Prince_Ali_Rescue_Osman.png">
 								<span class="pt-3 d-block">Take the imprint along with the bronze bar to Osman to get the bronze key. At this point, you can speak with the Chancellor to get 80 coins from the final reward for your service thus far.</span>
