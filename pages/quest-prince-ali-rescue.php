@@ -45,7 +45,6 @@ if (!defined('IN_SITE')) {
 									<li>- 5 coins</li>
 									<li>- Soft clay</li>
 									<li>- Bronze bar</li>
-									<li>- Pink skirt</li>
 									<li>- 3 beers (not Asgarnian Ale)</li>
 									<li>- Additional coins for the Al Kharid toll gate multiple times, or a Charged Dragonstone Amulet for teleports between Al Kharid and Draynor (optional)</li>
 								</span>
