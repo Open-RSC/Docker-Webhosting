@@ -18,8 +18,8 @@
             <ul>
                 <li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">PC Client</a></li>
                 <li><a href="https://game.openrsc.com/downloads/openrsc.apk">Android Client</a></li>
-                <li><a href="https://github.com/open-rsc/single-player/releases" target="_blank">Single Player</a></li>
-                <li><a href="https://github.com/open-rsc/game" target="_blank">Source Code</a></li>
+				<li><a href="https://gitlab.openrsc.com/open-rsc/single-player/releases" target="_blank">Single Player</a></li>
+				<li><a href="https://gitlab.openrsc.com/open-rsc/game" target="_blank">Source Code</a></li>
             </ul>
 
         </li>
