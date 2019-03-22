@@ -39,8 +39,8 @@
             </ul>
         </li>
         <li>
-            <label for="drop-3" class="toggle">Guide ▾</label>
-            <a href="#">Guide</a>
+            <label for="drop-3" class="toggle">Guides ▾</label>
+            <a href="#">Guides</a>
             <input type="checkbox" id="drop-3"/>
             <ul>
                 <li><a href="/quest">Quest List</a></li>
