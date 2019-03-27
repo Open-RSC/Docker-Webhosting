@@ -30,8 +30,8 @@ date_default_timezone_set('America/New_York');
 		<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
 			 data-mcs-theme="minimal">
 			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Recent Chat</h2>
-			<input type="text" class="pl-2 mb-2 pt-1 pb-1 text-capitalize" id="inputBox" onkeyup="search()"
-				   placeholder="Search for an player">
+			<input type="text" class="pl-2 mb-2 pt-1 pb-1" id="inputBox" onkeyup="search()"
+				   placeholder="Search for a player">
 			<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 				<tbody>
 				<?php while ($row = $connector->fetchArray($game_accounts)) { ?>
