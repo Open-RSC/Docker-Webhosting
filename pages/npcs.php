@@ -31,7 +31,7 @@ $list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, att
 			while ($result = $connector->fetch_assoc($list_npcs)) { ?>
 				<tr class="clickable-row" data-href="../npcdef/<?php echo $result['id'] ?>">
 					<td width="25%">
-						<span class="text-capitalize pl-2"><?php echo $result['name'] ?></span>
+						<a href="../npcdef/<?php echo $result['id'] ?>" class="text-capitalize pl-2"><?php echo $result['name'] ?></a>
 						<span class="small text-secondary">(Level <?php echo $result['combatlvl'] ?>)</span>
 					</td>
 					<td width="25%">
