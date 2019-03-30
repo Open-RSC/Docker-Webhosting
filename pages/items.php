@@ -30,7 +30,7 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 			while ($result = $connector->fetch_assoc($list_items)) { ?>
 				<tr class="clickable-row" data-href="../itemdef/<?php echo $result['id'] ?>">
 					<td width="25%">
-						<span class="text-capitalize pl-2"><?php echo $result['name'] ?> </span>
+						<a href="../itemdef/<?php echo $result['id'] ?>" class="text-capitalize pl-2"><?php echo $result['name'] ?> </a>
 					</td>
 					<td width="25%">
 						<small><?php echo $result['description'] ?></small>
