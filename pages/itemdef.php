@@ -203,6 +203,7 @@ LIMIT 793");
 
 			<input type="text" class="pl-2 mb-3" id="inputBox" onkeyup="search()"
 				   placeholder="Search for a NPC">
+			<a type="button" class="btn-small btn-dark btn-outline-info" href="/items">Go Back</a>	   
 			<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
