@@ -22,7 +22,7 @@
                         @foreach ($items as $row)
                             <tr class="clickable-row" data-href="../itemdef/{{ $row->id }}">
                                 <td width="25%">
-                                    <span class="text-capitalize pl-2">{{ $row->name }} </span>
+                                    <a href="../itemdef/{{ $row->id }}" class="text-capitalize pl-2">{{ $row->name }} </a>
                                 </td>
                                 <td width="25%">
                                     <small>{{ $row->description }}</small>
