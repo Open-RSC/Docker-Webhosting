@@ -122,6 +122,7 @@ $skills = buildSQLArray($skill_array);
 		<div class="container-fluid">
 			<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()"
 				   placeholder="Search for an item">
+			<a type="button" class="btn-small btn-dark btn-outline-info" href="/npcs">Go Back</a>	 
 			<table id="itemList"
 				   class="container-fluid table-responsive-sm table-striped table-hover table-dark text-primary"
 				   align="center">
