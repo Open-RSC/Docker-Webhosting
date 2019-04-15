@@ -1,6 +1,6 @@
 <?php
 $dbhost = 'mysql';
 $dbport = '';
-$dbname = 'openrsc_game';
+$dbname = 'openrsc';
 $dbuser = 'root';
 $dbpasswd = 'root';

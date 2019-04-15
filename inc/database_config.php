@@ -40,7 +40,7 @@ class Dbc
 		global $dbuser;
 		global $dbpasswd;
 		$this->theQuery = $query;
-		$con = mysqli_connect($dbhost, $dbuser, $dbpasswd, "openrsc_game");
+		$con = mysqli_connect($dbhost, $dbuser, $dbpasswd, "openrsc");
 		return mysqli_query($con, $query);
 	}
 
@@ -60,7 +60,7 @@ class Dbc
 		global $dbuser;
 		global $dbpasswd;
 		$this->theQuery = $query;
-		$con = mysqli_connect($dbhost, $dbuser, $dbpasswd, "openrsc_game");
+		$con = mysqli_connect($dbhost, $dbuser, $dbpasswd, "openrsc");
 		return mysqli_query($con, $query);
 	}
 
@@ -102,7 +102,7 @@ function checkStatus($ip, $port)
 function playersOnline()
 {
 	$connector = new Dbc();
-	$getPlayersOnline = $connector->gamequery("SELECT sum(online) AS `countOnline` FROM openrsc_game.openrsc_players WHERE online = '1'");
+	$getPlayersOnline = $connector->gamequery("SELECT sum(online) AS `countOnline` FROM openrsc.openrsc_players WHERE online = '1'");
 	while ($row = $connector->fetchArray($getPlayersOnline)) {
 		if ($row["countOnline"] == NULL || $row["countOnline"] == 0) {
 			echo "0";
