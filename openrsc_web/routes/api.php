@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+// Commented out due to error "Unable to prepare route [api/user] for serialization. Uses Closure" when executing "php artisan optimize"
+// Solution: https://github.com/laravel/framework/issues/22034#issuecomment-440911461
+
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
