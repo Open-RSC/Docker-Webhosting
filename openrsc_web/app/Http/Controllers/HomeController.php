@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    //
     public function index()
     {
         $online = DB::table('openrsc_players')->where('online', 1)->count();
@@ -40,7 +39,6 @@ class HomeController extends Controller
             'totalPlayers' => $totalPlayers,
             'uniquePlayers' => $uniquePlayers,
             'time' => $totalTime
-
             ]
         );
     }
