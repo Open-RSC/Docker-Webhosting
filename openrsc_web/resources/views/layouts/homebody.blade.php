@@ -33,7 +33,7 @@
 	<!-- Center column with title text -->
 	<div class="side-middle text-center full-height mCustomScrollbar" data-mcs-theme="minimal">
 		<div class="d-block pt-5">
-			<img src="img/logo.png" class="img-fluid" alt="logo">
+			<img src="/img/logo.png" class="img-fluid" alt="logo">
 		</div>
 
 		<div class="d-block pb-3">

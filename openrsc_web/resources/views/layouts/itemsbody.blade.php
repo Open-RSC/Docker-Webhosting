@@ -28,7 +28,7 @@
 								<small>{{ $row->description }}</small>
 							</td>
 							<td width="10%" align="center" class="pt-1 pb-1">
-								<div class="display-glow item{{ $row->id }}"></div>
+								<div class="display-glow"><img src="/img/items/{{ $row->id }}.png"/></div>
 							</td>
 							@if ($row->requiredLevel == 0)
 								<td>
