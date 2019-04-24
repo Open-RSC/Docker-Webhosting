@@ -17,7 +17,7 @@ class ItemController extends Controller
 
 	public function show(Request $request, $id)
 	{
-		$itemdef = DB::table('openrsc_itemdef')->select('*')->where('id', $id)->get();
-		return view('itemdef', compact('id'));
+		$itemdef = DB::table('openrsc_itemdef')->select('*')->where('id', $id)->first();
+		return view('itemdef', compact('itemdef'));
 	}
 }

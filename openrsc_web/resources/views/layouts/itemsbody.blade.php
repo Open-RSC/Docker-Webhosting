@@ -3,8 +3,10 @@
 		<div class="text-info table-dark spaced-body full-width">
 			<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
 				 data-mcs-theme="minimal">
+
 				<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Item Database</h2>
-				<label for="inputBox"></label><input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an item">
+				<label for="inputBox"></label>
+				<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an item">
 				<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 					<thead class="border-bottom border-info">
 					<tr class="text-info">
@@ -18,11 +20,10 @@
 					</tr>
 					</thead>
 					<tbody>
-
 					@foreach ($items as $row)
-						<tr class="clickable-row" data-href="../itemdef/{{ $row->id }}">
+						<tr class="clickable-row" data-href="/itemdef/{{ $row->id }}">
 							<td width="25%">
-								<a href="../itemdef/{{ $row->id }}" class="text-capitalize pl-2">{{ $row->name }} </a>
+								<a href="/itemdef/{{ $row->id }}" class="text-capitalize pl-2">{{ $row->name }} </a>
 							</td>
 							<td width="25%">
 								<small>{{ $row->description }}</small>
@@ -53,6 +54,3 @@
 				</table>
 			</div>
 		</div>
-	</div>
-	</div>
-</section>
