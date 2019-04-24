@@ -6,7 +6,7 @@
 
 				<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Item Database</h2>
 				<label for="inputBox"></label>
-				<input type="text" class="pl-2 mb-2" id="inputBox" onkeyup="search()" placeholder="Search for an item">
+				<input type="text" class="pl-2 pt-1 mb-3" id="inputBox" onkeyup="search()" placeholder="Search for an item">
 				<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 					<thead class="border-bottom border-info">
 					<tr class="text-info">
