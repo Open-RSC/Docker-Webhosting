@@ -98,9 +98,9 @@
 					<thead class="border-bottom border-info">
 					<tr class="text-info">
 						<th class="small w-25 pl-1">NPC</th>
-						<th class="small w-25">Picture</th>
-						<th class="small w-25 pl-5">Quantity</th>
-						<th class="small w-25 pl-5">Drop Chance</th>
+						<th class="text-center small w-25">Picture</th>
+						<th class="text-center small w-25 pl-5">Quantity</th>
+						<th class="text-center small w-25 pl-5">Drop Chance</th>
 					</tr>
 					</thead>
 					<tbody>

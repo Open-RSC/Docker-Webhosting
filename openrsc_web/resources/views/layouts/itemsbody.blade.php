@@ -12,40 +12,40 @@
 					<tr class="text-info">
 						<th class="small pl-2">Name</th>
 						<th class="small">Description</th>
-						<th class="small text-center">Picture</th>
-						<th class="small">Req Level</th>
-						<th class="small">Shop Price</th>
-						<th class="small">Low Alch</th>
-						<th class="small">High Alch</th>
+						<th class="text-center small">Picture</th>
+						<th class="text-center small">Req Level</th>
+						<th class="text-center small">Shop Price</th>
+						<th class="text-center small">Low Alch</th>
+						<th class="text-center small">High Alch</th>
 					</tr>
 					</thead>
 					<tbody>
 					@foreach ($items as $row)
 						<tr class="clickable-row" data-href="/itemdef/{{ $row->id }}">
-							<td width="25%">
+							<td class="w-25">
 								<a href="/itemdef/{{ $row->id }}" class="text-capitalize pl-2">{{ $row->name }} </a>
 							</td>
-							<td width="25%">
+							<td class="w-25">
 								<small>{{ $row->description }}</small>
 							</td>
-							<td width="10%" align="center" class="pt-1 pb-1">
+							<td class="w-10 text-center pt-1 pb-1">
 								<div class="display-glow"><img src="/img/items/{{ $row->id }}.png"/></div>
 							</td>
 							@if ($row->requiredLevel == 0)
 								<td>
 								</td>
 							@else
-								<td class="pt-1" width="10%" align="center">
+								<td class="w-10 text-center pt-1 pb-1">
 									{{ number_format($row->requiredLevel) }}
 								</td>
 							@endif
-							<td class="pt-1">
+							<td class="text-center pt-1">
 								{{number_format($row->basePrice) }}gp
 							</td>
-							<td class="pt-1">
+							<td class="text-center pt-1">
 								{{ number_format($row->basePrice * 0.4) }}gp
 							</td>
-							<td class="pt-1">
+							<td class="text-center pt-1">
 								{{ number_format($row->basePrice * 0.6) }}gp
 							</td>
 						</tr>
