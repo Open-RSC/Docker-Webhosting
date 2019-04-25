@@ -18,13 +18,14 @@
 						<th class="text-center small">Shop Price</th>
 						<th class="text-center small">Low Alch</th>
 						<th class="text-center small">High Alch</th>
+						<th class="text-center small">Item ID</th>
 					</tr>
 					</thead>
 					<tbody>
 					@foreach ($items as $row)
 						<tr class="clickable-row" data-href="itemdef/{{ $row->id }}">
 							<td class="w-25">
-								<a href="/itemdef/{{ $row->id }}" class="text-capitalize pl-2">{{ $row->name }} </a>
+								<a href="itemdef/{{ $row->id }}" class="text-capitalize pl-2">{{ $row->name }} </a>
 							</td>
 							<td class="w-25">
 								<small>{{ $row->description }}</small>
@@ -48,6 +49,9 @@
 							</td>
 							<td class="text-center pt-1">
 								{{ number_format($row->basePrice * 0.6) }}gp
+							</td>
+							<td class="text-center pt-1">
+								{{ $row->id }}
 							</td>
 						</tr>
 					@endforeach
