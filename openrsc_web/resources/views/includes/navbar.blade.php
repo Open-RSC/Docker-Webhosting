@@ -10,7 +10,7 @@
 
 	<input type="checkbox" id="drop"/>
 	<ul class="menu">
-		<li><a href="/">Home</a></li>
+		<li><a href="{{ route('home') }}">Home</a></li>
 		<li>
 			<label for="drop-1" class="toggle">Download ▾</label>
 			<a href="#">Download</a>
@@ -63,7 +63,7 @@
 						Reddit</a></li>
 			</ul>
 		</li>
-		<li><a href="{{ asset('highscores/skill_total') }}">Highscores</a></li>
+		<li><a href="{{ asset('highscores') }}">Highscores</a></li>
 		<li><a href="{{ asset('chat') }}">Recent Chat</a></li>
 		<li><a href="{{ asset('worldmap') }}">Live Map</a></li>
 		<li>
@@ -86,7 +86,7 @@
 				<li><a href="{{ asset('quest') }}">Quest List</a></li>
 				<li><a href="{{ asset('minigames') }}">Minigames</a></li>
 				<li><a href="{{ asset('wilderness') }}">Wilderness Map</a></li>
-				<li><a href="{{ asset('items') }}">Item Database</a></li>
+				<li><a href="{{ route('items') }}">Item Database</a></li>
 				<li><a href="{{ asset('npcs') }}">NPC Database</a></li>
 			</ul>
 		</li>
