@@ -1,4 +1,3 @@
-<!-- Navigation -->
 <nav>
 	<label for="drop" class="toggle">
 		<svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" data-prefix="fas" data-icon="bars" role="img"
@@ -6,7 +5,8 @@
 			<path fill="currentColor"
 				  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
 		</svg>
-		Navigation</label>
+		Navigation
+	</label>
 
 	<input type="checkbox" id="drop"/>
 	<ul class="menu">
@@ -63,19 +63,19 @@
 						Reddit</a></li>
 			</ul>
 		</li>
-		<li><a href="/highscores/skill_total">Highscores</a></li>
-		<li><a href="/chat">Recent Chat</a></li>
-		<li><a href="/worldmap">Live Map</a></li>
+		<li><a href="{{ asset('highscores/skill_total') }}">Highscores</a></li>
+		<li><a href="{{ asset('chat') }}">Recent Chat</a></li>
+		<li><a href="{{ asset('worldmap') }}">Live Map</a></li>
 		<li>
 			<label for="drop-2" class="toggle">Information ▾</label>
 			<a href="#">Information</a>
 			<input type="checkbox" id="drop-2"/>
 			<ul>
-				<li><a href="/faq">FAQ</a></li>
-				<li><a href="/rules">Rules</a></li>
-				<li><a href="/shar">Shar's Bank</a></li>
-				<li><a href="/calendar">Event Calendar</a></li>
-				<li><a href="/stats">Game Statistics</a></li>
+				<li><a href="{{ asset('faq') }}">FAQ</a></li>
+				<li><a href="{{ asset('rules') }}">Rules</a></li>
+				<li><a href="{{ asset('shar') }}">Shar's Bank</a></li>
+				<li><a href="{{ asset('calendar') }}">Event Calendar</a></li>
+				<li><a href="{{ asset('stats') }}">Game Statistics</a></li>
 			</ul>
 		</li>
 		<li>
@@ -83,11 +83,11 @@
 			<a href="#">Guides</a>
 			<input type="checkbox" id="drop-3"/>
 			<ul>
-				<li><a href="/quest">Quest List</a></li>
-				<li><a href="/minigames">Minigames</a></li>
-				<li><a href="/wilderness">Wilderness Map</a></li>
-				<li><a href="/items">Item Database</a></li>
-				<li><a href="/npcs">NPC Database</a></li>
+				<li><a href="{{ asset('quest') }}">Quest List</a></li>
+				<li><a href="{{ asset('minigames') }}">Minigames</a></li>
+				<li><a href="{{ asset('wilderness') }}">Wilderness Map</a></li>
+				<li><a href="{{ asset('items') }}">Item Database</a></li>
+				<li><a href="{{ asset('npcs') }}">NPC Database</a></li>
 			</ul>
 		</li>
 		<li>

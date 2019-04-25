@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    @include('layouts.header')
+    @include('includes.header')
     <body>
-    @include('layouts.navbar')
-    @include('layouts.itemsbody')
-    @include('layouts.footer')
-    @include('layouts.footerscripts')
+    @include('includes.navbar')
+	@include('includes.items')
+	@include('includes.footer')
+    @include('includes.footerscripts')
     </body>
 </html>
