@@ -125,7 +125,7 @@ if (!defined('IN_SITE')) {
 				</div>
 				<div class="clickable-row" data-href="itemdef/677">
 					<div class="display-glow item677 d-inline-block"></div>
-					<span class="text-info font-weight-bold"> <?php echo eastereggs(); ?></span> (9,138 on 4/22/2019)
+					<span class="text-info font-weight-bold"> <?php echo eastereggs(); ?></span> (9,103 on 4/22/2019)
 				</div>
 				<div class="clickable-row" data-href="itemdef/828">
 					<div class="display-glow item828 d-inline-block"></div>
