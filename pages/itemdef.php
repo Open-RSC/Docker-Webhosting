@@ -31,7 +31,7 @@ FROM
         B.playerID = A.id
     WHERE
         B.id = '$subpage'
-        AND A.group_id > '1' AND A.banned = '0'
+        AND A.group_id >= '10' AND A.banned = '0'
     UNION ALL
 SELECT
     SUM(B.amount) amt
@@ -42,7 +42,7 @@ ON
     B.playerID = A.id
 WHERE
     B.id = '$subpage'
-	AND A.group_id > '1' AND A.banned = '0'
+	AND A.group_id >= '10' AND A.banned = '0'
 ) a");
 
 $itemCountActive = $connector->gamequery("
