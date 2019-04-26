@@ -19,10 +19,11 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 				<th class="small pl-2">Name</th>
 				<th class="small">Description</th>
 				<th class="small text-center">Picture</th>
-				<th class="small">Req Level</th>
-				<th class="small">Shop Price</th>
-				<th class="small">Low Alch</th>
-				<th class="small">High Alch</th>
+				<th class="small text-center">Req Level</th>
+				<th class="small text-center">Shop Price</th>
+				<th class="small text-center">Low Alch</th>
+				<th class="small text-center">High Alch</th>
+				<th class="small text-center">Item ID</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -42,18 +43,21 @@ $list_items = $connector->gamequery('SELECT id, name, description, requiredLevel
 						<td>
 						</td>
 					<?php } else { ?>
-						<td class="pt-1" width="10%" align="center">
+						<td class="pt-1 text-center" width="10%" align="center">
 							<?php echo number_format($result['requiredLevel']) ?>
 						</td>
 					<?php } ?>
-					<td class="pt-1">
+					<td class="pt-1 text-center">
 						<?php echo number_format($result['basePrice']) ?>gp
 					</td>
-					<td class="pt-1">
+					<td class="pt-1 text-center">
 						<?php echo number_format($result['basePrice'] * 0.4) ?>gp
 					</td>
-					<td class="pt-1">
+					<td class="pt-1 text-center">
 						<?php echo number_format($result['basePrice'] * 0.6) ?>gp
+					</td>
+					<td class="pt-1 text-center">
+						<?php echo $result['id'] ?>
 					</td>
 				</tr>
 			<?php } ?>
