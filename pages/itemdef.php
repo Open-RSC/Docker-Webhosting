@@ -60,7 +60,7 @@ FROM
     WHERE
         (
             B.id = '$subpage' OR A.username = '$subpage'
-        ) AND A.group_id > '1' AND A.banned = '0' AND A.login_date >= UNIX_TIMESTAMP(
+        ) AND A.group_id >= '10' AND A.banned = '0' AND A.login_date >= UNIX_TIMESTAMP(
             CURRENT_DATE - INTERVAL 3 MONTH
         ) AND A.login_date >= '1539645175'
     UNION ALL
@@ -74,7 +74,7 @@ ON
 WHERE
     (
         B.id = '$subpage' OR A.username = '$subpage'
-    ) AND A.group_id > '1' AND A.banned = '0' AND A.login_date >= UNIX_TIMESTAMP(
+    ) AND A.group_id >= '10' AND A.banned = '0' AND A.login_date >= UNIX_TIMESTAMP(
         CURRENT_DATE - INTERVAL 3 MONTH
     ) AND A.login_date >= '1539645175'
 ) a");
