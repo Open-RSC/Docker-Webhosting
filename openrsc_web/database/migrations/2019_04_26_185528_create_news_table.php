@@ -13,8 +13,8 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('news_posts', function (Blueprint $table) {
+            $table->increments('id')->autoIncrement();
             $table->string('title');
             $table->text('description')->nullable();
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('news_posts');
     }
 }
