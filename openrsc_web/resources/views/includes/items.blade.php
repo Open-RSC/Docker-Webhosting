@@ -14,9 +14,8 @@
 						<th class="small pl-2">Name</th>
 						<th class="text-center small">Picture</th>
 						<th class="text-center small">Req Level</th>
-						<th class="text-center small">Shop Price</th>
-						<th class="text-center small">Low Alch</th>
-						<th class="text-center small">High Alch</th>
+						<th class="text-center small">Shop Value</th>
+						<th class="text-center small">Alch (Low/High)</th>
 						<th class="text-center small">Item ID</th>
 					</tr>
 					</thead>
@@ -24,8 +23,9 @@
 					@foreach ($items as $row)
 						<tr class="clickable-row" data-href="itemdef/{{ $row->id }}">
 							<td class="w-25">
-								<a href="itemdef/{{ $row->id }}" class="lead text-capitalize pl-1">{{ $row->name }} </a>
-								<span class="blockquote-footer pl-1">{{ $row->description }}</span>
+								<a href="itemdef/{{ $row->id }}"
+								   class="small text-capitalize pl-1">{{ $row->name }} </a>
+								<span class="small text-white-50 pl-1 d-block">{{ $row->description }}</span>
 							</td>
 							<td class="w-10 text-center pt-1 pb-1">
 								<div class="display-glow"><img src="img/items/{{ $row->id }}.png" alt="item"/></div>
@@ -34,20 +34,18 @@
 								<td>
 								</td>
 							@else
-								<td class="w-10 text-center pt-1 pb-1">
+								<td class="small w-10 text-center pt-1 pb-1">
 									{{ number_format($row->requiredLevel) }}
 								</td>
 							@endif
-							<td class="text-center pt-1">
+							<td class="small text-center pt-1">
 								{{number_format($row->basePrice) }}gp
 							</td>
-							<td class="text-center pt-1">
+							<td class="small text-center pt-1">
 								{{ number_format($row->basePrice * 0.4) }}gp
+								/ {{ number_format($row->basePrice * 0.6) }}gp
 							</td>
-							<td class="text-center pt-1">
-								{{ number_format($row->basePrice * 0.6) }}gp
-							</td>
-							<td class="text-center pt-1">
+							<td class="small text-center pt-1">
 								{{ $row->id }}
 							</td>
 						</tr>
