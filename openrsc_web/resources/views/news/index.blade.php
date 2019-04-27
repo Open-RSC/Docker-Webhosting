@@ -16,5 +16,5 @@
 		</div>
 	@endforeach
 
-	{{ $news_posts->links('includes.pagination') }}
+	{{ $news_posts->links('pagination::bootstrap-4') }}
 @endsection
