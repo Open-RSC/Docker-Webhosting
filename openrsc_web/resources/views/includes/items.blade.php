@@ -8,6 +8,7 @@
 				<label for="inputBox"></label>
 				<input type="text" class="pl-2 pt-1 mb-3" id="inputBox" onkeyup="search()"
 					   placeholder="Search for an item">
+				{{ $items->links("includes.pagination") }}
 				<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 					<thead class="border-bottom border-info">
 					<tr class="text-info">
@@ -57,5 +58,6 @@
 					@endforeach
 					</tbody>
 				</table>
+				{{ $items->links("includes.pagination") }}
 			</div>
 		</div>
