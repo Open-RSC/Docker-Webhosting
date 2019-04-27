@@ -31,3 +31,14 @@ class ItemController extends Controller
 		return view('itemdef', compact('itemdef'));
 	}
 }
+
+/*
+ 		$collection = itemDef::limit(1290)->paginate(15);
+		$collection->each(function($object) {
+			$object->id;
+			$object->name;
+			$object->description;
+			$object->requiredLevel;
+			$object->basePrice;
+		});
+ */
