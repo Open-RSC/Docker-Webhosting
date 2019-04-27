@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property mixed reply
  */
-class news_post_response extends Model
+class news_response extends Model
 {
 	public function news_post()
 	{

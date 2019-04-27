@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\news_post;
-use App\news_post_response;
+use App\news_response;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class News_Post_ResponseController extends Controller
+class News_ResponseController extends Controller
 {
 	/**
 	 * Store a newly created resource in storage.
@@ -20,14 +20,14 @@ class News_Post_ResponseController extends Controller
     {
         $this->validate($request, [
         	'reply' => 'required|min:15',
-			'question_id' => 'required|integer'
+			'news_post_id' => 'required|integer'
 		]);
 
-        $news_response = new News_Post_Response();
+        $news_response = new news_response();
 		$news_response->reply = $request->reply;
 
         $news_post = news_post::findOrFail($request->news_post_id);
-        $news_post->news_post_responses()->save($news_response);
+        $news_post->news_responses()->save($news_response);
 
         return redirect()->route('news.show', $news_post->id);
     }
