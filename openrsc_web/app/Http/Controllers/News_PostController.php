@@ -79,7 +79,7 @@ class News_PostController extends Controller
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param int $id
-	 * @return Response
+	 * @return void
 	 */
 	public function edit($id)
 	{
@@ -91,7 +91,7 @@ class News_PostController extends Controller
 	 *
 	 * @param Request $request
 	 * @param int $id
-	 * @return Response
+	 * @return void
 	 */
 	public function update(Request $request, $id)
 	{
@@ -102,7 +102,7 @@ class News_PostController extends Controller
 	 * Remove the specified resource from storage.
 	 *
 	 * @param int $id
-	 * @return Response
+	 * @return void
 	 */
 	public function destroy($id)
 	{
