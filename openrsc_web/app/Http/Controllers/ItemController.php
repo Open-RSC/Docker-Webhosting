@@ -15,7 +15,7 @@ class ItemController extends Controller
 		$items = DB::table('openrsc_itemdef')->
 		select('id', 'name', 'description', 'requiredLevel', 'basePrice')->
 		orderBy('id', 'asc')->
-		paginate(20);
+		paginate(15);
 
 		// return the view and pass in the group of records to loop through
 		return view('items')->with('items', $items);

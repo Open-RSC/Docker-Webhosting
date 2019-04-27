@@ -17,7 +17,7 @@ class News_PostController extends Controller
 	public function index()
 	{
 		// go to the model and get a group of records
-		$news_posts = News_Post::paginate(5);
+		$news_posts = News_Post::orderBy('id', 'desc')->paginate(5);
 
 		// return the view and pass in the group of records to loop through
 		return view('news.index')->with('news_posts', $news_posts);

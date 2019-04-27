@@ -1,16 +1,20 @@
-<div class="container">
-	<h1>Recent News:</h1>
-	<hr/>
+@extends('news.template')
+
+@section('content')
+	<h2 class="mb-3">Recent News</h2>
 
 	@foreach($news_posts as $news_post)
-		<div class="well">
-			<h3>{{ $news_post->title }}</h3>
-			<p>
-				{{ $news_post->description }}
+		<div class="mb-4">
+			<a href="{{ route('news.show', $news_post->id) }}" class="text-info">{{ $news_post->title }}</a>
+			<span class="small text-secondary">//</span>
+			<span class="small text-info">{{ $news_post->created_at }}</span>
+			<p class="small text-white-50">{{ \Illuminate\Support\Str::limit($news_post->description, 350) }}
+				@if(strlen($news_post->description)>350)
+					<a href="{{ route('news.show', $news_post->id) }}" class="text-info">Continue reading &raquo;</a>
+				@endif
 			</p>
-			<a href="{{ route('news.show', $news_post->id) }}" class="btn btn-primary btn-sm">View Details</a>
 		</div>
 	@endforeach
 
-	{{ $news_posts->links() }}
-</div>
+	{{ $news_posts->links('includes.pagination') }}
+@endsection
