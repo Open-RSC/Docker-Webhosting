@@ -2,11 +2,22 @@
 
 @section('content')
 	<h4>{{ $news_post->title }}</h4>
-	<p class="small text-white-50 d-block">{{ $news_post->description }}</p>
+	<p class="small text-white-50 d-block mb-4">{{ $news_post->description }}</p>
+
+	@if($news_post->news_responses->count() > 0)
+	<div class="d-block mb-4">
+		Recent Comments:
+		@foreach($news_post->news_responses as $news_response)
+			<div class="small text-white-50 d-block">
+				<span>"{{ $news_response->reply }}"</span>
+			</div>
+		@endforeach
+	</div>
+	@endif
 
 	<form action="{{ route('news_responses.store') }}" method="POST">
 		{{ csrf_field() }}
-		<label for="reply" class="pt-3">Your Thoughts:</label>
+		<label for="reply" class="mb-1">Your Thoughts:</label>
 		<textarea class="form-control bg-dark text-white-50 border-info" name="reply" id="reply"
 				  rows="4"></textarea>
 		<input type="hidden" value="{{ $news_post->id }}" name="news_post_id"/>
@@ -15,13 +26,6 @@
 				   value="Share Your Thoughts"/>
 		</div>
 	</form>
-
-	Recent Replies:
-	@foreach($news_post->news_responses as $news_response)
-		<div class="small text-white-50 d-block">
-			<span>"{{ $news_response->reply }}"</span>
-		</div>
-	@endforeach
 
 	<div class="mt-3 row justify-content-center">
 		<a href="{{ route('news.index') }}" class="text-info">Go Back</a>
