@@ -5,14 +5,14 @@
 	<p class="small text-white-50 d-block mb-4">{{ $news_post->description }}</p>
 
 	@if($news_post->news_responses->count() > 0)
-	<div class="d-block mb-4">
-		Recent Comments:
-		@foreach($news_post->news_responses as $news_response)
-			<div class="small text-white-50 d-block">
-				<span>"{{ $news_response->reply }}"</span>
-			</div>
-		@endforeach
-	</div>
+		<div class="d-block mb-4">
+			Recent Comments:
+			@foreach($news_post->news_responses as $news_response)
+				<div class="small text-white-50 d-block">
+					<span>"{{ $news_response->reply }}"</span>
+				</div>
+			@endforeach
+		</div>
 	@endif
 
 	<form action="{{ route('news_responses.store') }}" method="POST">

@@ -2,13 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-	public function index()
-	{
-		$online = DB::table('openrsc_players')->where('online', 1)->count();
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return Renderable
+     */
+    public function index()
+    {
+        $online = DB::table('openrsc_players')->where('online', 1)->count();
 
 		$status = @fsockopen("game.openrsc.com", "43594", $num, $error, 5);
 
