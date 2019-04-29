@@ -4,16 +4,10 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
-				<div class="card">
-					<div class="card-header">{{ __('Reset Password') }}</div>
+				<div class="card bg-transparent border-info">
+					<div class="card-header text-center h5">{{ __('Reset Password') }}</div>
 
 					<div class="card-body">
-						@if (session('status'))
-							<div class="alert alert-success" role="alert">
-								{{ session('status') }}
-							</div>
-						@endif
-
 						<form method="POST" action="{{ route('password.email') }}">
 							@csrf
 
@@ -23,7 +17,7 @@
 
 								<div class="col-md-6">
 									<input id="email" type="email"
-										   class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+										   class="small bg-dark border-info text-white-50 form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
 										   name="email" value="{{ old('email') }}" required>
 
 									@if ($errors->has('email'))
@@ -31,12 +25,17 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
 									@endif
+									@if (session('status'))
+										<div class="small bg-dark text-white-50" role="alert">
+											{{ session('status') }}
+										</div>
+									@endif
 								</div>
 							</div>
 
 							<div class="form-group row mb-0">
 								<div class="col-md-6 offset-md-4">
-									<button type="submit" class="btn btn-primary">
+									<button type="submit" class="btn-sm w-75 text-center btn-dark btn-outline-info outline-dark">
 										{{ __('Send Password Reset Link') }}
 									</button>
 								</div>
