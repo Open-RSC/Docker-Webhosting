@@ -14,7 +14,7 @@
 			@foreach($news_post->news_responses as $news_response)
 				<div class="small text-white-50 d-block">
 					<span class="text-secondary">
-						{{ $news_response->user->name }} {{ $news_response->created_at->diffForHumans() }}:
+						<img src="{{ asset('img/0.svg') }}" height="10px" width="10px" class="mb-1 ml-1"/> {{ $news_response->user->name }} wrote {{ $news_response->created_at->diffForHumans() }}:
 					</span>
 					<span>
 						"{{ $news_response->reply }}"
