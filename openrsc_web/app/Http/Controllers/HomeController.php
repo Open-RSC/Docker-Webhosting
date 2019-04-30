@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return Renderable
-     */
-    public function index()
-    {
-        $online = DB::table('openrsc_players')->where('online', 1)->count();
+	/**
+	 * Show the application dashboard.
+	 *
+	 * @return Renderable
+	 */
+	public function index()
+	{
+		$online = DB::table('openrsc_players')->where('online', 1)->count();
 
 		$status = @fsockopen("game.openrsc.com", "43594", $num, $error, 5);
 
