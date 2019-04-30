@@ -2,19 +2,23 @@
 
 @section('content')
 	<h4>{{ $news_post->title }}</h4>
-	<p class="small text-white-50 d-block mb-4">{{ $news_post->description }}</p>
+	<p class="small text-white-50">Added by {{ $news_post->user->name }} {{ $news_post->created_at->diffForHumans() }}.</p>
+	<p class="text-white-50 d-block mb-4">{{ $news_post->description }}</p>
 
+	<!-- Displays all the responses to this news post -->
 	@if($news_post->news_responses->count() > 0)
 		<div class="d-block mb-4">
 			Recent Comments:
 			@foreach($news_post->news_responses as $news_response)
 				<div class="small text-white-50 d-block">
+					<span class="text-secondary">{{ $news_response->user->name }} {{ $news_response->created_at->diffForHumans() }}:</span>
 					<span>"{{ $news_response->reply }}"</span>
 				</div>
 			@endforeach
 		</div>
 	@endif
 
+	<!-- Presents the reply form -->
 	<form action="{{ route('news_responses.store') }}" method="POST">
 		{{ csrf_field() }}
 		<label for="reply" class="mb-1">Your Thoughts:</label>

@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\news_post;
 use App\news_response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class News_ResponseController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('auth');
+		$this->middleware('auth'); // requires login for all functions
 	}
 
 	/**
@@ -30,6 +31,7 @@ class News_ResponseController extends Controller
 
 		$news_response = new news_response();
 		$news_response->reply = $request->reply;
+		$news_response->user()->associate(Auth::id()); // gets the currently logged in user id
 
 		$news_post = news_post::findOrFail($request->news_post_id);
 		$news_post->news_responses()->save($news_response);

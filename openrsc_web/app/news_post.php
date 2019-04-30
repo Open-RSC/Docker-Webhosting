@@ -18,4 +18,9 @@ class news_post extends Model
 	{
 		return $this->hasMany('App\news_response');
 	}
+
+	public function user()
+	{
+		return $this->belongsTo('App\User');
+	}
 }

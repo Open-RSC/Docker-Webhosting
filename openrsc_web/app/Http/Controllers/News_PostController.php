@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\news_post;
+use App\news_response;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class News_PostController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('auth', ['except' => ['index', 'show']]);
+		$this->middleware('auth', ['except' => ['index', 'show']]); // requires login for all functions except these
 	}
 
 	/**
@@ -56,6 +58,7 @@ class News_PostController extends Controller
 		$news_post = new news_post();
 		$news_post->title = $request->title;
 		$news_post->description = $request->description;
+		$news_post->user()->associate(Auth::id()); // gets the currently logged in user id
 
 		// if successful we want to redirect
 		if ($news_post->save()) {
