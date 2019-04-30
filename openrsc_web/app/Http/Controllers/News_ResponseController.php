@@ -47,7 +47,12 @@ class News_ResponseController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		// prevent unauthorized users from editing other user's comments
+		$news_response = News_Response::findOrFail($id);
+		if ($news_response->user->id != Auth::id()) {
+			return abort(403);
+		}
+		return view('news_response.edit');
 	}
 
 	/**
@@ -59,17 +64,35 @@ class News_ResponseController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		// prevent unauthorized users from editing other user's comments
+		$news_response = News_Response::findOrFail($id);
+		if ($news_response->user->id != Auth::id()) {
+			return abort(403);
+		}
+		// update the comment
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param Request $request
 	 * @param int $id
 	 * @return void
 	 */
-	public function destroy($id)
+	public function destroy(Request $request, $id)
 	{
-		//
+		// prevent unauthorized users from deleting other user's comments
+		$news_response = News_Response::findOrFail($id);
+		if ($news_response->user->id != Auth::id()) {
+			return abort(403);
+		}
+
+		// delete the comment
+		$news_response->delete();
+
+		$news_post = news_post::findOrFail($request->news_post_id);
+		$news_post->news_responses()->delete($news_response);
+
+		return redirect()->route('news.show', $news_post->id)->with('success', 'Comment deleted.');
 	}
 }

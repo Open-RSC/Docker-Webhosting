@@ -92,7 +92,12 @@ class News_PostController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		// prevent unauthorized users from editing other user's comments
+		$news_post = News_Post::findOrFail($id);
+		if ($news_post->user - id != Auth::id()) {
+			return abort(403);
+		}
+		return view('news.edit');
 	}
 
 	/**
@@ -104,7 +109,12 @@ class News_PostController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		// prevent unauthorized users from editing other user's comments
+		$news_post = News_Post::findOrFail($id);
+		if ($news_post->user - id != Auth::id()) {
+			return abort(403);
+		}
+		// update the news post
 	}
 
 	/**
@@ -115,6 +125,12 @@ class News_PostController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		// prevent unauthorized users from deleting other user's comments
+		$news_post = News_Post::findOrFail($id);
+		if ($news_post->user->id != Auth::id()) {
+			return abort(403);
+		}
+
+		// delete the news post
 	}
 }
