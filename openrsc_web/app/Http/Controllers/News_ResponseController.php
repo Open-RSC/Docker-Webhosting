@@ -75,11 +75,10 @@ class News_ResponseController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param Request $request
 	 * @param int $id
 	 * @return void
 	 */
-	public function destroy(Request $request, $id)
+	public function destroy($id)
 	{
 		// prevent unauthorized users from deleting other user's comments
 		$news_response = News_Response::findOrFail($id);
@@ -90,9 +89,6 @@ class News_ResponseController extends Controller
 		// delete the comment
 		$news_response->delete();
 
-		$news_post = news_post::findOrFail($request->news_post_id);
-		$news_post->news_responses()->delete($news_response);
-
-		return redirect()->route('news.show', $news_post->id)->with('success', 'Comment deleted.');
+		return redirect()->route('news.show', $news_response->news_post->id)->with('success', 'Comment deleted.');
 	}
 }

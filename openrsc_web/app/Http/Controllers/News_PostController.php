@@ -125,12 +125,15 @@ class News_PostController extends Controller
 	 */
 	public function destroy($id)
 	{
-		// prevent unauthorized users from deleting other user's comments
+		// prevent unauthorized users from deleting other user's news posts
 		$news_post = News_Post::findOrFail($id);
 		if ($news_post->user->id != Auth::id()) {
 			return abort(403);
 		}
 
 		// delete the news post
+		$news_post->delete();
+
+		return redirect('/news');
 	}
 }
