@@ -10,3 +10,4 @@ Route::get('/itemdef/{id}', 'ItemController@show')->name('itemdef');
 Route::resource('news', 'News_PostController');
 Route::resource('news_responses', 'News_ResponseController', ['except' => ['index', 'create', 'show']]);
 Auth::routes();
+Route::get('/profile/{user}', 'PageController@profile')->name('profile');
