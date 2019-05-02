@@ -27,4 +27,5 @@ mix.styles([
     'resources/js/dark-google-calendar-2018.user.js',
     'resources/js/jquery.timeago.js',
     'resources/js/jquery.mCustomScrollbar.js'
-], 'public/js/app.js');
+], 'public/js/app.js')
+    .version();
