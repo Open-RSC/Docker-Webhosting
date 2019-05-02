@@ -8,7 +8,7 @@
 		</p>
 
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 panel">
 				<h3>News Posts</h3>
 				<!-- display all the questions that this user submitted -->
 				@foreach($user->news_posts as $news_post)
@@ -20,14 +20,16 @@
 							</span>
 						</div>
 						<div class="panel-footer">
-							<a href="{{ route('news.show', $news_post->id) }}" class="btn-sm btn-outline-info bg-dark text-info mt-3 w-25">
+							<a href="{{ route('news.show', $news_post->id) }}"
+							   class="btn-sm btn-outline-info bg-dark text-info mt-3 w-25">
 								View News
 							</a>
 						</div>
 					</div>
 				@endforeach
 			</div>
-			<div class="col-md-6">
+			
+			<div class="col-md-6 panel">
 				<h3>Comments</h3>
 				<!-- display all the answers that this user submitted -->
 				@foreach($user->news_responses as $news_response)
@@ -37,8 +39,12 @@
 						</div>
 						<div>
 							<p>
+								<small>{{ $user->name }}'s comment:</small>
 								{{ $news_response->reply }}
 							</p>
+							<a href="{{ route('news.show', $news_response->news_post->id) }}"
+							   class="btn-sm btn-outline-info bg-dark text-info w-25">View all comments for this news
+								post</a>
 						</div>
 					</div>
 				@endforeach
