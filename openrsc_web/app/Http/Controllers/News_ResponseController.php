@@ -52,7 +52,9 @@ class News_ResponseController extends Controller
 		if ($news_response->user->id != Auth::id()) {
 			return abort(403);
 		}
-		return view('news_response.edit');
+
+		$news_response = News_Response::find($id);
+		return view('news_response.edit', compact('news_response'));
 	}
 
 	/**
@@ -61,15 +63,28 @@ class News_ResponseController extends Controller
 	 * @param Request $request
 	 * @param int $id
 	 * @return void
+	 * @throws ValidationException
 	 */
 	public function update(Request $request, $id)
 	{
+		$this->validate($request, [
+			'reply' => 'required',
+			'news_post_id' => 'required|integer'
+		]);
+
 		// prevent unauthorized users from editing other user's comments
 		$news_response = News_Response::findOrFail($id);
 		if ($news_response->user->id != Auth::id()) {
 			return abort(403);
 		}
+
 		// update the comment
+		$news_response = News_Response::findOrFail($id);
+		$news_response->reply = $request->get('reply');
+		$news_response->news_post_id = $request->get('news_post_id');
+		$news_response->save();
+
+		return redirect()->route('news.show', $news_response->news_post_id)->with('success', "Comment updated!");
 	}
 
 	/**
