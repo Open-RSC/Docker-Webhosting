@@ -28,7 +28,7 @@
 					</div>
 				@endforeach
 			</div>
-			
+
 			<div class="col-md-6 panel">
 				<h3>Comments</h3>
 				<!-- display all the answers that this user submitted -->

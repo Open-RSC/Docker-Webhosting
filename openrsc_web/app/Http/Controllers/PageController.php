@@ -24,7 +24,7 @@ class PageController extends Controller
 
 	public function profile($id)
 	{
-		$user = User::findOrFail($id);
+		$user = User::with(['news_posts', 'news_responses', 'news_responses.news_post'])->find($id); // eager loading with 3 queries instead of n+1 lazy loading
 		return view('profile')->with('user', $user);
 	}
 }
