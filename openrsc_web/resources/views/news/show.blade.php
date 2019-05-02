@@ -1,7 +1,7 @@
 @extends('news.template')
 
 @section('content')
-	<div class="h4 mb-0">{{ $news_post->title }}</div>
+	<div class="h4 mb-0"><a href="{{ route('news.index') }}">{{ $news_post->title }}</a></div>
 	<span class="small text-white-50">
 		Posted by<img src="{{ asset('img/0.svg') }}" height="10px" width="10px"
 					  class="mb-1 ml-1"/> {{ $news_post->user->name }} {{ $news_post->created_at->diffForHumans() }}.

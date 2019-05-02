@@ -25,7 +25,7 @@ class News_ResponseController extends Controller
 	public function store(Request $request)
 	{
 		$this->validate($request, [
-			'reply' => 'required|min:15|max:500',
+			'reply' => 'required|min:5|max:500',
 			'news_post_id' => 'required|integer'
 		]);
 

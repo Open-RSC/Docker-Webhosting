@@ -51,8 +51,8 @@ class News_PostController extends Controller
 	{
 		// validate the form data
 		$this->validate($request, [
-			'title' => 'required|min:15|max:255',
-			'description' => 'required|min:15'
+			'title' => 'required|min:10|max:255',
+			'description' => 'required|min:10'
 		]);
 
 		// process the data and submit it

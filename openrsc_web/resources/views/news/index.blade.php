@@ -9,7 +9,10 @@
 			<span
 				class="small text-secondary">Posted by<img src="{{ asset('img/0.svg') }}" height="10px" width="10px"
 														   class="mb-1 ml-1"/> {{ $news_post->user->name }} {{ $news_post->created_at->diffForHumans() }}.
-				@if($news_post->news_responses->count() > 0)
+				@if($news_post->news_responses->count() == 1)
+					<a href="{{ route('news.show', $news_post->id) }}" class="text-info">({{ $news_post->news_responses->count() }} comment)</a>
+				@endif
+				@if($news_post->news_responses->count() > 1)
 					<a href="{{ route('news.show', $news_post->id) }}" class="text-info">({{ $news_post->news_responses->count() }} comments)</a>
 				@endif
 			</span>
