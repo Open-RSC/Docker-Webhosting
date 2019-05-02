@@ -4,20 +4,23 @@
 	<h2>News Post Submission</h2>
 	<form action="{{ route('news.store') }}" method="POST">
 		{{ csrf_field() }}
+
 		<label for="title" class="pt-2 bold">Title</label>
-		<input type="text" class="form-control bg-dark text-white-50 border-info {{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" id="title"/>
-		@if ($errors->has('title'))
-			<span class="invalid-feedback" role="alert">
-            	<strong>{{ $errors->first('title') }}</strong>
-			</span>
-		@endif
+		<input type="text"
+			   class="form-control bg-dark text-white-50 border-info {{ $errors->has('title') ? ' is-invalid' : '' }}"
+			   name="title" id="title"/>
 
 		<label for="description" class="pt-3">Description</label>
-		<textarea class="form-control bg-dark text-white-50 border-info {{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" id="description"
-				  rows="4"></textarea>
-		@if ($errors->has('description'))
+		<textarea
+			class="form-control bg-dark text-white-50 border-info {{ $errors->has('description') ? ' is-invalid' : '' }}"
+			name="description" id="description"
+			rows="4"></textarea>
+
+		@if($errors->any())
 			<span class="invalid-feedback" role="alert">
-            	<strong>{{ $errors->first('description') }}</strong>
+            	@foreach ($errors->all() as $error)
+					<strong>{{ $error }}</strong>
+				@endforeach
 			</span>
 		@endif
 

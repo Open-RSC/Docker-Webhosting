@@ -2,31 +2,26 @@
 
 @section('content')
 
-	@if ($errors->any())
-		<div class="alert alert-danger">
-			<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
-
 	<!-- Presents the reply form -->
 	<form method="post" action="{{ route('news_responses.update', $news_response->id) }}">
 		@method('PATCH')
 		@csrf
+
 		<textarea
 			class="form-control bg-dark text-white-50 border-info {{ $errors->has('reply') ? ' is-invalid' : '' }}"
 			name="reply" id="reply"
 			rows="4">
 			{{ $news_response->reply }}
 		</textarea>
-		@if ($errors->has('reply'))
+
+		@if($errors->any())
 			<span class="invalid-feedback" role="alert">
-            	<strong>{{ $errors->first('reply') }}</strong>
+            	@foreach ($errors->all() as $error)
+					<strong>{{ $error }}</strong>
+				@endforeach
 			</span>
 		@endif
+
 		<input type="hidden" value="{{ $news_response->news_post_id }}" name="news_post_id"/>
 		<div class="row justify-content-center">
 			<input type="submit" class="btn-sm btn-outline-info bg-dark text-info mt-3 w-25"

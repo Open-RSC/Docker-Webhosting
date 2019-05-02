@@ -94,10 +94,11 @@ class News_PostController extends Controller
 	{
 		// prevent unauthorized users from editing other user's comments
 		$news_post = News_Post::findOrFail($id);
-		if ($news_post->user - id != Auth::id()) {
+		if ($news_post->user->id != Auth::id()) {
 			return abort(403);
 		}
-		return view('news.edit');
+
+		return view('news.edit', compact('news_post'));
 	}
 
 	/**
@@ -106,15 +107,30 @@ class News_PostController extends Controller
 	 * @param Request $request
 	 * @param int $id
 	 * @return void
+	 * @throws ValidationException
 	 */
 	public function update(Request $request, $id)
 	{
+		// validate the form data
+		$this->validate($request, [
+			'title' => 'required|min:10|max:255',
+			'description' => 'required|min:10'
+		]);
+
 		// prevent unauthorized users from editing other user's comments
 		$news_post = News_Post::findOrFail($id);
-		if ($news_post->user - id != Auth::id()) {
+		if ($news_post->user->id != Auth::id()) {
 			return abort(403);
 		}
+
 		// update the news post
+		$news_post = News_Post::findOrFail($id);
+		$news_post->id = $request->get('id');
+		$news_post->title = $request->get('title');
+		$news_post->description = $request->get('description');
+		$news_post->save();
+
+		return redirect()->route('news.show', $news_post->id)->with('success', "News post updated!");
 	}
 
 	/**

@@ -4,7 +4,8 @@
 	<div class="h4 mb-0"><a href="{{ route('news.index') }}">{{ $news_post->title }}</a></div>
 	<span class="small text-white-50">
 		Posted by<img src="{{ asset('img/0.svg') }}" height="10px" width="10px"
-					  class="mb-1 ml-1"/> {{ $news_post->user->name }} {{ $news_post->created_at->diffForHumans() }}.
+					  class="mb-1 ml-1"
+					  alt="rank"/> {{ $news_post->user->name }} {{ $news_post->created_at->diffForHumans() }}.
 	</span>
 	<span class="small text-white-50 d-block mt-2 mb-4 pl-1">{{ $news_post->description }}
 		@if($news_post->user->id = Auth::id())
@@ -12,7 +13,8 @@
 			<form action="{{ route('news.destroy', $news_post->id)}}" method="post">
 				@csrf
 				@method('DELETE')
-				<button class="btn-xs text-danger border-dark bg-dark btn-outline-dark" title="Delete Post" type="submit">X</button>
+				<button class="btn-xs text-danger border-dark bg-dark btn-outline-dark" title="Delete Post"
+						type="submit">X</button>
 			</form>
 		@endif
 	</span>
@@ -35,7 +37,9 @@
 						<form action="{{ route('news_responses.destroy', $news_response->id)}}" method="post">
 							@csrf
 							@method('DELETE')
-							<button class="btn-xs text-danger border-dark bg-dark btn-outline-dark" title="Delete Comment" type="submit">X</button>
+							<button class="btn-xs text-danger border-dark bg-dark btn-outline-dark"
+									title="Delete Comment" type="submit">X
+							</button>
 						</form>
 					@endif
 				</div>
@@ -44,19 +48,26 @@
 	@endif
 
 	<!-- Presents the reply form -->
-	<form action="{{ route('news_responses.store') }}" method="POST">
-		{{ csrf_field() }}
+	<form method="post" action="{{ route('news_responses.store') }}">
+		@method('POST')
+		@csrf
+
 		<label for="reply" class="mb-1">Your Thoughts:</label>
+
 		<textarea
 			class="form-control bg-dark text-white-50 border-info {{ $errors->has('reply') ? ' is-invalid' : '' }}"
 			name="reply" id="reply"
 			rows="4">
 		</textarea>
-		@if ($errors->has('reply'))
+
+		@if($errors->any())
 			<span class="invalid-feedback" role="alert">
-            	<strong>{{ $errors->first('reply') }}</strong>
+            	@foreach ($errors->all() as $error)
+					<strong>{{ $error }}</strong>
+				@endforeach
 			</span>
 		@endif
+
 		<input type="hidden" value="{{ $news_post->id }}" name="news_post_id"/>
 		<div class="row justify-content-center">
 			<input type="submit" class="btn-sm btn-outline-info bg-dark text-info mt-3 w-25"
