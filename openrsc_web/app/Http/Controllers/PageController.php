@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactForm;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\ValidationException;
 
 class PageController extends Controller
 {
@@ -37,6 +40,16 @@ class PageController extends Controller
 	public function sendContact(Request $request)
 	{
 		// send and process the email
+		try {
+			$this->validate($request, [
+				'name' => 'required',
+				'email' => 'required|email',
+				'subject' => 'required|min:3',
+				'message' => 'required|min:10'
+			]);
+		} catch (ValidationException $e) {
+		}
 
+		Mail::to('openrsc.emailer@gmail.com')->send(new ContactForm($request));
 	}
 }
