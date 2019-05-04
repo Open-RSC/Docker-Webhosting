@@ -51,5 +51,7 @@ class PageController extends Controller
 		}
 
 		Mail::to('openrsc.emailer@gmail.com')->send(new ContactForm($request));
+
+		return redirect('/');
 	}
 }
