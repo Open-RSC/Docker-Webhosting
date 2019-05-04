@@ -1,5 +1,5 @@
 @component('mail::message')
-# New Contact Message
+# New Open RSC Website Contact Form Submission
 
 From: {{ $name }} ({{ $email }})
 
