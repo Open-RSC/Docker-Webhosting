@@ -3,7 +3,7 @@
 @section('content')
 	<h2>News Post Submission</h2>
 	<form action="{{ route('news.store') }}" method="POST">
-		{{ csrf_field() }}
+		@csrf
 
 		<label for="title" class="pt-2 bold">Title</label>
 		<input type="text"

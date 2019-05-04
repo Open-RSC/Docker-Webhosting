@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -26,5 +27,16 @@ class PageController extends Controller
 	{
 		$user = User::with(['news_posts', 'news_responses', 'news_responses.news_post'])->find($id); // eager loading with 3 queries instead of n+1 lazy loading
 		return view('profile')->with('user', $user);
+	}
+
+	public function contact()
+	{
+		return view('contact');
+	}
+
+	public function sendContact(Request $request)
+	{
+		// send and process the email
+
 	}
 }
