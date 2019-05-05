@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ItemController extends Controller
 {
 
+	/**
+	 * @return Factory|View
+	 */
 	public function index()
 	{
 		// query the database and paginate results
-		$items = DB::table('openrsc_itemdef')->
+		$items = DB::connection('openrsc')->table('openrsc_itemdef')->
 		select('id', 'name', 'description', 'requiredLevel', 'basePrice')->
 		orderBy('id', 'asc')->
 		paginate(15);
@@ -21,9 +26,13 @@ class ItemController extends Controller
 		return view('items')->with('items', $items);
 	}
 
-	public function show(Request $request, $id)
+	/**
+	 * @param $id
+	 * @return Factory|View
+	 */
+	public function show($id)
 	{
-		$itemdef = DB::table('openrsc_itemdef')->
+		$itemdef = DB::connection('openrsc')->table('openrsc_itemdef')->
 		select('*')->
 		where('id', $id)->
 		limit('1290')->first();

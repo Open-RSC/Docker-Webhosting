@@ -47,15 +47,15 @@
 			</div>
 
 			<div class="middle container-fluid border-top border-info">
-				<div class="text-left text-primary small">
+				<div class="text-left text-primary">
 					<br>
 					<h4 class="text-info">Statistics</h4>
 					<div>
 						Players Online:
 						<b>
-							<a href="online">
+							<a href="openrsc_online">
                     <span class="text-info float-right">
-                        {{ $online }}
+                        {{ $openrsc_online }}
                     </span>
 							</a>
 						</b>
@@ -63,15 +63,15 @@
 					<div>
 						Server Status:
 						<span class="float-right">
-                    {!! $status !!}
+                    {!! $openrsc_status !!}
                 </span>
 					</div>
 					<div>
 						Registrations Today:
 						<b>
-							<a href="registrationstoday">
+							<a href="openrsc_registrationstoday">
                         <span class="text-info float-right">
-                            {{ $registrations }}
+                            {{ $openrsc_registrations }}
                         </span>
 							</a>
 						</b>
@@ -79,9 +79,9 @@
 					<div>
 						Online Last 48 Hours:
 						<b>
-							<a href="logins48">
+							<a href="openrsc_logins48">
                         <span class="text-info float-right">
-                            {{ $logins }}
+                            {{ $openrsc_logins }}
                         </span>
 							</a>
 						</b>
@@ -89,9 +89,9 @@
 					<div>
 						Unique Players:
 						<b>
-							<a href="stats">
+							<a href="openrsc_stats">
                         <span class="text-info float-right">
-                            {{ $uniquePlayers }}
+                            {{ $openrsc_uniquePlayers }}
                         </span>
 							</a>
 						</b>
@@ -99,9 +99,9 @@
 					<div>
 						Total Players:
 						<b>
-							<a href="stats">
+							<a href="openrsc_stats">
                         <span class="text-info float-right">
-                            {{ $totalPlayers }}
+                            {{ $openrsc_totalPlayers }}
                         </span>
 							</a>
 						</b>
@@ -109,7 +109,7 @@
 					<div>
 						Sum Gold:
 						<b>
-							<a href="stats">
+							<a href="openrsc_stats">
                         <span class="text-info float-right">
                            
                         </span>
@@ -119,9 +119,9 @@
 					<div>
 						Cumulative Play:
 						<b>
-							<a href="stats">
+							<a href="openrsc_stats">
                         <span class="text-info float-right">
-                            {{ $time }}
+                            {{ $openrsc_totalTime }}
                         </span>
 							</a>
 						</b>
@@ -132,10 +132,11 @@
 		</div>
 
 		<!-- Right column -->
-		<div class="side-right text-info border-info border-left full-height mCustomScrollbar" data-mcs-theme="minimal">
-			<!-- Twitter feed -->
+		<div class="side-right text-info border-info border-left full-height">
 			<h4 class="pl-3 pr-3">Recent News</h4>
-			<div class="pl-3 pr-3 text-primary small" id="tweets"></div>
+			<div class="pl-3 pr-3 text-primary">
+
+			</div>
 		</div>
 
 	</section>
