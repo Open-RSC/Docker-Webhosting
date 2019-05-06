@@ -136,7 +136,7 @@
 
 					<div class="d-block">
 						<span class="">Last 3 Mo Active Player Held: </span>
-						<span class=" text-primary">@@@</span>
+						<span class=" text-primary">{{ number_format($last3moPlayerHeld) }}</span>
 					</div>
 				</div>
 
