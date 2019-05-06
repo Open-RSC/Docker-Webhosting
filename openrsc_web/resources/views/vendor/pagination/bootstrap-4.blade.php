@@ -1,9 +1,9 @@
 @if ($paginator->hasPages())
-	<ul class="pagination small text-primary justify-content-center">
+	<ul class="pagination text-primary justify-content-center">
 		{{-- Previous Page Link --}}
 		@if ($paginator->onFirstPage())
 			<li class="page-item disabled">
-				<a class="small bg-dark border-info page-link" href="#" aria-label="Previous">
+				<a class="bg-dark border-info page-link" href="#" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
 					<span class="sr-only">Previous</span>
 				</a>
@@ -11,7 +11,7 @@
 		@else
 		<!-- left button -->
 			<li class="page-item">
-				<a href="{{ $paginator->previousPageUrl() }}" class="small bg-dark border-info text-primary page-link"
+				<a href="{{ $paginator->previousPageUrl() }}" class="bg-dark border-info text-primary page-link"
 				   rel="prev">&laquo;</a>
 			</li>
 		@endif
@@ -29,13 +29,13 @@
 					@if ($page == $paginator->currentPage())
 						<li class="page-item active">
 							<!-- current page button -->
-							<a href="#" class="small bg-info border-info text-white page-link">{{ $page }}<span
+							<a href="#" class="bg-info border-info text-white page-link">{{ $page }}<span
 									class="sr-only">(current)</span></a>
 						</li>
 					@else
 						<li class="page-item">
 							<!-- nearby pages buttons -->
-							<a href="{{ $url }}" class="small bg-dark border-info text-primary page-link">{{ $page }}</a>
+							<a href="{{ $url }}" class="bg-dark border-info text-primary page-link">{{ $page }}</a>
 						</li>
 					@endif
 				@endforeach
@@ -46,11 +46,11 @@
 		@if ($paginator->hasMorePages())
 		<!-- right button -->
 			<li class="page-item">
-				<a href="{{ $paginator->nextPageUrl() }}" class="small bg-dark border-info text-primary page-link" rel="next">&raquo;</a>
+				<a href="{{ $paginator->nextPageUrl() }}" class="bg-dark border-info text-primary page-link" rel="next">&raquo;</a>
 			</li>
 		@else
 			<li class="page-item disabled">
-				<a class="small bg-dark border-info page-link" href="#" aria-label="Next">
+				<a class="bg-dark border-info page-link" href="#" aria-label="Next">
 					<span aria-hidden="true">&raquo;</span>
 					<span class="sr-only">Next</span>
 				</a>
