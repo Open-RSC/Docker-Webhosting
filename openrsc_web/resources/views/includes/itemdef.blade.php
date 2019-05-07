@@ -156,6 +156,7 @@
 					</tr>
 					</thead>
 					<tbody>
+					{{ $item_drops }}
 					</tbody>
 				</table>
 			</div>
