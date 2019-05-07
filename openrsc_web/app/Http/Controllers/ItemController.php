@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+use DateTimeZone;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -85,17 +87,13 @@ class ItemController extends Controller
 		table('openrsc_bank')->
 		select('openrsc_bank.id', 'openrsc_bank.playerID', 'openrsc_bank.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned', 'openrsc_players.login_date')->
 		join('openrsc_players', function ($join) use ($id) {
-			$dateS = Carbon::now()->startOfMonth()->subMonth(3);
-			$dateE = Carbon::now()->startOfMonth();
 			$join->on('openrsc_bank.playerID', '=', 'openrsc_players.id')->
 			where([
 				['openrsc_bank.id', '=', $id],
 				['openrsc_players.id', '>=', '10'],
 				['openrsc_players.banned', '=', '0'],
-			])->
-			whereBetween(
-				(Carbon::parse('openrsc_players.login_date')), [$dateS, $dateE]
-			);
+				['openrsc_players.login_date', '>=', Carbon::now()->subMonth(3)->timestamp]
+			]);
 		})->
 		sum('amount');
 
@@ -103,17 +101,13 @@ class ItemController extends Controller
 		table('openrsc_invitems')->
 		select('openrsc_invitems.id', 'openrsc_invitems.playerID', 'openrsc_invitems.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned', 'openrsc_players.login_date')->
 		join('openrsc_players', function ($join) use ($id) {
-			$dateS = Carbon::now()->startOfMonth()->subMonth(3);
-			$dateE = Carbon::now()->startOfMonth();
 			$join->on('openrsc_invitems.playerID', '=', 'openrsc_players.id')->
 			where([
 				['openrsc_invitems.id', '=', $id],
 				['openrsc_players.id', '>=', '10'],
 				['openrsc_players.banned', '=', '0'],
-			])->
-			whereBetween(
-				(Carbon::parse('openrsc_players.login_date')), [$dateS, $dateE]
-			);
+				['openrsc_players.login_date', '>=', Carbon::now()->subMonth(3)->timestamp]
+			]);
 		})->
 		sum('amount');
 
