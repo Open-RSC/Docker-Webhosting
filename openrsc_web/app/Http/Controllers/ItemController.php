@@ -125,8 +125,8 @@ class ItemController extends Controller
 			->select('A.id', 'A.name AS npcName', 'B.npcdef_id AS npcID', 'B.amount AS dropAmount', 'B.id AS dropID', 'B.weight AS dropWeight', 'C.id AS itemID', 'C.name AS itemName')
 			->where('B.id', '=', $id)
 			->limit('793')
-			->get();
-		
+			->paginate(6);
+
 
 		return view('itemdef', [
 			'totalPlayerHeld' => $totalPlayerHeld,

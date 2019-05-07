@@ -146,17 +146,36 @@
 
 				<a type="button" class="btn-small btn-dark btn-outline-info" href=" {{ route('items') }}">Go Back</a>
 
+				{{ $item_drops->links('pagination::bootstrap-4') }}
 				<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 					<thead class="border-bottom border-info">
 					<tr class="text-info">
-						<th class="small w-25 pl-1">NPC</th>
-						<th class="text-center small w-25">Picture</th>
-						<th class="text-center small w-25 pl-5">Quantity</th>
-						<th class="text-center small w-25 pl-5">Drop Chance</th>
+						<th class="w-25 pl-1">NPC</th>
+						<th class="text-center w-25">Picture</th>
+						<th class="text-center w-25 pl-5">Quantity</th>
+						<th class="text-center w-25 pl-5">Drop Chance</th>
 					</tr>
 					</thead>
 					<tbody>
-					{{ $item_drops }}
+					@foreach($item_drops as $item_drop)
+						<tr class="clickable-row" data-href="npcdef/{{ $item_drop->npcID }}">
+							<td class="text-capitalize w-25">
+								<a href="npcdef/{{ $item_drop->npcID }}"
+								   class="text-capitalize pl-1">{{ $item_drop->npcName }} ({{ $item_drop->npcID }})</a>
+							</td>
+							<td class="w-10 text-center pt-1 pb-1">
+								<div class="display-glow">
+									<img src="{{ asset('img/npc') }}/{{ $item_drop->npcID }}.png" alt="{{ $item_drop->npcName }}"/>
+								</div>
+							</td>
+							<td class="pt-1 pl-5">
+								{{ $item_drop->dropAmount }}
+							</td>
+							<td class="pt-1 pl-5">
+
+							</td>
+						</tr>
+					@endforeach
 					</tbody>
 				</table>
 			</div>

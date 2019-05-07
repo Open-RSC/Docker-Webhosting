@@ -27,7 +27,9 @@
 								<span class="text-white-50 pl-1 d-block">{{ $itemdef->description }}</span>
 							</td>
 							<td class="w-10 text-center pt-1 pb-1">
-								<div class="display-glow"><img src="img/items/{{ $itemdef->id }}.png" alt="item"/></div>
+								<div class="display-glow">
+									<img src="{{ asset('img/items') }}/{{ $itemdef->id }}.png" alt="{{ $itemdef->name }}"/>
+								</div>
 							</td>
 							@if ($itemdef->requiredLevel == 0)
 								<td>
