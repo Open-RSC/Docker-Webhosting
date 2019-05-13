@@ -44,6 +44,16 @@ class Dbc
 		return mysqli_query($con, $query);
 	}
 
+	function cabbagegamequery($query)
+	{
+		global $dbhost;
+		global $dbuser;
+		global $dbpasswd;
+		$this->theQuery = $query;
+		$con = mysqli_connect($dbhost, $dbuser, $dbpasswd, "cabbage");
+		return mysqli_query($con, $query);
+	}
+
 	function forumquery($query)
 	{
 		global $dbhost;
@@ -112,10 +122,36 @@ function playersOnline()
 	}
 }
 
+function cabbageplayersOnline()
+{
+	$connector = new Dbc();
+	$getPlayersOnline = $connector->cabbagegamequery("SELECT sum(online) AS `countOnline` FROM cabbage.openrsc_players WHERE online = '1'");
+	while ($row = $connector->fetchArray($getPlayersOnline)) {
+		if ($row["countOnline"] == NULL || $row["countOnline"] == 0) {
+			echo "0";
+		} else {
+			echo $row["countOnline"];
+		}
+	}
+}
+
 function totalGameCharacters()
 {
 	$connector = new Dbc();
 	$game_accounts = $connector->gamequery("SELECT COUNT(*) AS `countPlayers` FROM openrsc_players");
+	while ($row = $connector->fetchArray($game_accounts)) {
+		if ($row["countPlayers"] == NULL) {
+			echo "0";
+		} else {
+			echo number_format($row["countPlayers"]);
+		}
+	}
+}
+
+function cabbagetotalGameCharacters()
+{
+	$connector = new Dbc();
+	$game_accounts = $connector->cabbagegamequery("SELECT COUNT(*) AS `countPlayers` FROM openrsc_players");
 	while ($row = $connector->fetchArray($game_accounts)) {
 		if ($row["countPlayers"] == NULL) {
 			echo "0";
@@ -145,6 +181,26 @@ function onlinePlayers()
 	}
 }
 
+function cabbageonlinePlayers()
+{
+	$connector = new Dbc();
+	$game_accounts = $connector->cabbagegamequery("SELECT id, username, group_id FROM openrsc_players WHERE online = '1' LIMIT 100");
+	while ($row = $connector->fetchArray($game_accounts)) {
+		if ($row["username"] == NULL) {
+			echo "No players currently online.";
+		} else {
+			echo '<div class="clickable-row" data-href="../player/' . $row["id"] . '">';
+			echo '<div class="d-inline-block">';
+			if ($row['group_id'] != 10):
+				echo '<img src="../img/' . $row["group_id"] . '.svg" width="15" height="15"> ';
+			else: NULL; endif;
+			echo ucfirst($row["username"]);
+			echo '</div>';
+			echo '</div>';
+		}
+	}
+}
+
 function newRegistrationsToday()
 {
 	$connector = new Dbc();
@@ -158,10 +214,36 @@ function newRegistrationsToday()
 	}
 }
 
+function cabbagenewRegistrationsToday()
+{
+	$connector = new Dbc();
+	$registrations_today = $connector->cabbagegamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE creation_date >= unix_timestamp( current_date - interval 1 day )");
+	while ($row = $connector->fetchArray($registrations_today)) {
+		if ($row["countUsers"] == NULL) {
+			echo "0";
+		} else {
+			echo $row["countUsers"];
+		}
+	}
+}
+
 function logins48()
 {
 	$connector = new Dbc();
 	$logins48 = $connector->gamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 48 hour )");
+	while ($row = $connector->fetchArray($logins48)) {
+		if ($row["countUsers"] == NULL) {
+			echo "0";
+		} else {
+			echo $row["countUsers"];
+		}
+	}
+}
+
+function cabbagelogins48()
+{
+	$connector = new Dbc();
+	$logins48 = $connector->cabbagegamequery("SELECT COUNT(*) AS countUsers FROM openrsc_players WHERE login_date >= unix_timestamp( current_date - interval 48 hour )");
 	while ($row = $connector->fetchArray($logins48)) {
 		if ($row["countUsers"] == NULL) {
 			echo "0";
@@ -207,6 +289,15 @@ function totalPlayers()
 	}
 }
 
+function cabbagetotalPlayers()
+{
+	$connector = new Dbc();
+	$totalPlayers = $connector->cabbagegamequery("SELECT COUNT(id) FROM openrsc_players");
+	while ($row = $connector->fetchArray($totalPlayers)) {
+		echo $row["COUNT(id)"];
+	}
+}
+
 function uniquePlayers()
 {
 	$connector = new Dbc();
@@ -216,10 +307,28 @@ function uniquePlayers()
 	}
 }
 
+function cabbageuniquePlayers()
+{
+	$connector = new Dbc();
+	$uniquePlayers = $connector->cabbagegamequery("SELECT COUNT(DISTINCT creation_ip) AS Count FROM openrsc_players");
+	while ($row = $connector->fetchArray($uniquePlayers)) {
+		echo number_format($row["Count"]);
+	}
+}
+
 function topcombat()
 {
 	$connector = new Dbc();
 	$topcombat = $connector->gamequery("SELECT combat FROM openrsc_players WHERE group_id >= '10' AND banned = '0' ORDER BY openrsc_players.combat DESC LIMIT 1");
+	while ($row = $connector->fetchArray($topcombat)) {
+		echo $row["combat"];
+	}
+}
+
+function cabbagetopcombat()
+{
+	$connector = new Dbc();
+	$topcombat = $connector->cabbagegamequery("SELECT combat FROM openrsc_players WHERE group_id >= '10' AND banned = '0' ORDER BY openrsc_players.combat DESC LIMIT 1");
 	while ($row = $connector->fetchArray($topcombat)) {
 		echo $row["combat"];
 	}
@@ -292,6 +401,15 @@ function banktotalGold()
 {
 	$connector = new Dbc();
 	$banktotalGold = $connector->gamequery("SELECT A.id, A.username, A.group_id, A.banned, B.playerID, B.id, format(SUM(B.amount), 0) AS count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND A.group_id >= '10' AND A.banned = '0'");
+	while ($row = $connector->fetchArray($banktotalGold)) {
+		echo $row["count"] . ' gp';
+	}
+}
+
+function cabbagebanktotalGold()
+{
+	$connector = new Dbc();
+	$banktotalGold = $connector->cabbagegamequery("SELECT A.id, A.username, A.group_id, A.banned, B.playerID, B.id, format(SUM(B.amount), 0) AS count FROM openrsc_bank as B LEFT JOIN openrsc_players as A ON B.playerID = A.id WHERE B.id = 10 AND A.group_id >= '10' AND A.banned = '0'");
 	while ($row = $connector->fetchArray($banktotalGold)) {
 		echo $row["count"] . ' gp';
 	}
@@ -768,6 +886,21 @@ function totalTime()
 {
 	$connector = new Dbc();
 	$totalTime = $connector->gamequery("SELECT SUM(`value`) FROM `openrsc_player_cache` WHERE `openrsc_player_cache`.`key` = 'total_played'");
+	while ($row = $connector->fetchArray($totalTime)) {
+		$time = $row["SUM(`value`)"] / 1000;
+		$years = floor($time / (24 * 60 * 60 * 12));
+		$days = floor($time / (24 * 60 * 60));
+		$hours = floor(($time - ($days * 24 * 60 * 60)) / (60 * 60));
+		$minutes = floor(($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60)) / 60);
+		$seconds = ($time - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60)) % 60;
+		echo $days . 'd ' . $hours . 'h ';
+	}
+}
+
+function cabbagetotalTime()
+{
+	$connector = new Dbc();
+	$totalTime = $connector->cabbagegamequery("SELECT SUM(`value`) FROM `openrsc_player_cache` WHERE `openrsc_player_cache`.`key` = 'total_played'");
 	while ($row = $connector->fetchArray($totalTime)) {
 		$time = $row["SUM(`value`)"] / 1000;
 		$years = floor($time / (24 * 60 * 60 * 12));

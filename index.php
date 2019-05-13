@@ -72,7 +72,7 @@ include "inc/header.php";
 
 			<div class="middle container-fluid border-top border-info">
 				<div class="text-left text-primary small pt-3">
-					<h4 class="text-info">Statistics</h4>
+					<h4 class="text-info">Open RSC Statistics</h4>
 					<div>
 						Players Online:
 						<a href="online">
@@ -136,14 +136,73 @@ include "inc/header.php";
 						</a>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<!-- Right column -->
-		<div class="side-right text-info border-info border-left full-height mCustomScrollbar" data-mcs-theme="minimal">
-			<!-- Twitter feed -->
-			<h4 class="pl-3 pr-3">Recent News</h4>
-			<div class="pl-3 pr-3 text-primary small" id="tweets"></div>
+				<div class="text-left text-primary small pt-3">
+					<h4 class="text-info">RSC Cabbage Statistics</h4>
+					<div>
+						Players Online:
+						<a href="cabbageonline">
+					<span class="font-weight-bold text-info float-right">
+						<?php echo cabbageplayersOnline(); ?>
+					</span>
+						</a>
+					</div>
+					<div>
+						Server Status:
+						<span class="float-right">
+							<?php echo checkStatus("game.openrsc.com", "43595"); ?>
+						</span>
+					</div>
+					<div>
+						Registrations Today:
+						<a href="cabbageregistrationstoday">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo cabbagenewRegistrationsToday(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Online Last 48 Hours:
+						<a href="cabbagelogins48">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo cabbagelogins48(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Unique Players:
+						<a href="cabbagestats">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo cabbageuniquePlayers(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Total Players:
+						<a href="cabbagestats">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo cabbagetotalGameCharacters(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Sum Gold:
+						<a href="cabbagestats">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo cabbagebanktotalGold(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Cumulative Play:
+						<a href="cabbagestats">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo cabbagetotalTime(); ?>
+						</span>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
 
 	<?php } ?>
