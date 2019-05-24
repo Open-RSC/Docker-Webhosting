@@ -57,6 +57,6 @@ class __TwigTemplate_06779ab71a63389462d66383409fb4364497e1d16a4bba8be5924d2fd5b
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/structure/empty_table.twig", "/var/www/html/sql/templates/database/structure/empty_table.twig");
+        return new Twig_Source("", "database/structure/empty_table.twig", "/var/www/html/openrsc_web/public/sql/templates/database/structure/empty_table.twig");
     }
 }

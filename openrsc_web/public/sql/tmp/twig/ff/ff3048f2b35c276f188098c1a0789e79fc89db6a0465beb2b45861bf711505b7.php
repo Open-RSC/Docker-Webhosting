@@ -78,6 +78,6 @@ class __TwigTemplate_6c3765b2776d7cf55172d40d103f411c07cbc048028ca9c35a713904e96
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "console/toolbar.twig", "/var/www/html/sql/templates/console/toolbar.twig");
+        return new Twig_Source("", "console/toolbar.twig", "/var/www/html/openrsc_web/public/sql/templates/console/toolbar.twig");
     }
 }

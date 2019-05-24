@@ -158,6 +158,6 @@ class __TwigTemplate_d3b356e4c054a3a171a22fdef59c1a5de9b739b5752f7dbc07d102be205
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/results/options_block.twig", "/var/www/html/sql/templates/display/results/options_block.twig");
+        return new Twig_Source("", "display/results/options_block.twig", "/var/www/html/openrsc_web/public/sql/templates/display/results/options_block.twig");
     }
 }

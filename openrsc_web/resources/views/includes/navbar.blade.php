@@ -17,11 +17,13 @@
 			<a href="#">Download</a>
 			<input type="checkbox" id="drop-1"/>
 			<ul>
-				<li><a href="https://game.openrsc.com/downloads/OpenRSC.jar">PC Client</a></li>
-				<li><a href="https://game.openrsc.com/downloads/openrsc.apk">Android Client</a></li>
-				<li><a href="https://gitlab.openrsc.com/open-rsc/single-player/releases" target="_blank">Single
+				<li><a href="{{ asset('downloads/OpenRSC%20Launcher.exe') }}">Windows</a></li>
+				<li><a href="{{ asset('downloads/OpenRSC.jar') }}">Mac / Linux</a></li>
+				<li><a href="{{ asset('downloads/openrsc.apk') }}">Android App</a></li>
+				<li>
+					<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/archive/master/Single-Player-master.zip">Single
 						Player</a></li>
-				<li><a href="https://gitlab.openrsc.com/open-rsc/game" target="_blank">Source Code</a></li>
+				<li><a href="https://gitlab.openrsc.com/open-rsc/Game" target="_blank">Source Code</a></li>
 			</ul>
 
 		</li>

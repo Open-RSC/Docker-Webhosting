@@ -180,6 +180,6 @@ class __TwigTemplate_8e41ca7685d07d712c098473b770d8c0381833c31d0034793feab2966a6
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/structure/check_all_tables.twig", "/var/www/html/sql/templates/database/structure/check_all_tables.twig");
+        return new Twig_Source("", "database/structure/check_all_tables.twig", "/var/www/html/openrsc_web/public/sql/templates/database/structure/check_all_tables.twig");
     }
 }

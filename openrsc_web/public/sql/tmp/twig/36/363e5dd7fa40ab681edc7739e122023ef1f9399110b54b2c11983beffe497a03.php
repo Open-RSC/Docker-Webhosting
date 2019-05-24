@@ -53,6 +53,6 @@ class __TwigTemplate_bc8749edcffaca71e03afd6f72aa34667f3571ccb5f55b3f465cdd2be16
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "fk_checkbox.twig", "/var/www/html/sql/templates/fk_checkbox.twig");
+        return new Twig_Source("", "fk_checkbox.twig", "/var/www/html/openrsc_web/public/sql/templates/fk_checkbox.twig");
     }
 }

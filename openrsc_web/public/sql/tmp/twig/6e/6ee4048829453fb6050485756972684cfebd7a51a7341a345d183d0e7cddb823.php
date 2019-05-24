@@ -73,6 +73,6 @@ class __TwigTemplate_88ca4109b16f15a1616f5da643a90e893617a092147c0a589cd4b9ada23
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "navigation/logo.twig", "/var/www/html/sql/templates/navigation/logo.twig");
+        return new Twig_Source("", "navigation/logo.twig", "/var/www/html/openrsc_web/public/sql/templates/navigation/logo.twig");
     }
 }

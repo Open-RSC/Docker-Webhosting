@@ -82,6 +82,6 @@ class __TwigTemplate_f37a807218232c668298409ffa4d22ca5a6361345d29c07d144df80b26e
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/results/show_all_checkbox.twig", "/var/www/html/sql/templates/display/results/show_all_checkbox.twig");
+        return new Twig_Source("", "display/results/show_all_checkbox.twig", "/var/www/html/openrsc_web/public/sql/templates/display/results/show_all_checkbox.twig");
     }
 }

@@ -72,6 +72,6 @@ class __TwigTemplate_e352bc3250760db3436ebb086b960481bfa4e577d2e22a439dd098f25ab
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "checkbox.twig", "/var/www/html/sql/templates/checkbox.twig");
+        return new Twig_Source("", "checkbox.twig", "/var/www/html/openrsc_web/public/sql/templates/checkbox.twig");
     }
 }

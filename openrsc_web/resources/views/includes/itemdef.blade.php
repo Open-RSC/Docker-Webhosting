@@ -172,7 +172,13 @@
 								{{ $item_drop->dropAmount }}
 							</td>
 							<td class="pt-1 pl-5">
-
+								@foreach($npc_drops as $npc_drop)
+									@if ($npc_drop->dropPercentage == '0.0000%' || $npc_drop->dropPercentage == 'NULL' || $npc_drop->dropPercentage == '0.0000%')
+										100%
+									@else
+										{{ $npc_drop->dropPercentage }}
+									@endif
+								@endforeach
 							</td>
 						</tr>
 					@endforeach

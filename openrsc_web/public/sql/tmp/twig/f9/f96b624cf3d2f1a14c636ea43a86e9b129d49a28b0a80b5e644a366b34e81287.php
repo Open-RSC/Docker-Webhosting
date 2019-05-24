@@ -280,6 +280,6 @@ class __TwigTemplate_2c4746d4eea4ac8c2393de0857eb10b2b43211705e1fbab6a61ac10b518
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/structure/body_for_table_summary.twig", "/var/www/html/sql/templates/database/structure/body_for_table_summary.twig");
+        return new Twig_Source("", "database/structure/body_for_table_summary.twig", "/var/www/html/openrsc_web/public/sql/templates/database/structure/body_for_table_summary.twig");
     }
 }

@@ -54,6 +54,6 @@ class __TwigTemplate_29a7b0ca17628eff68e5082ddc5b3721895b3e34dec69b585863be53b2e
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/structure/browse_table_label.twig", "/var/www/html/sql/templates/database/structure/browse_table_label.twig");
+        return new Twig_Source("", "database/structure/browse_table_label.twig", "/var/www/html/openrsc_web/public/sql/templates/database/structure/browse_table_label.twig");
     }
 }

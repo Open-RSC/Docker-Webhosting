@@ -85,6 +85,6 @@ class __TwigTemplate_3b27fc69fad1607344c0a9c10a522be78a8d6154c7b7dfd238680d45b65
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/create_table.twig", "/var/www/html/sql/templates/database/create_table.twig");
+        return new Twig_Source("", "database/create_table.twig", "/var/www/html/openrsc_web/public/sql/templates/database/create_table.twig");
     }
 }

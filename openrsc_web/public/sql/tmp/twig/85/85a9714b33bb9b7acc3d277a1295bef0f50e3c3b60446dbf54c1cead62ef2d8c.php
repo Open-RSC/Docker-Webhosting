@@ -211,6 +211,6 @@ class __TwigTemplate_5989d693770caf7f2b00fb939c93fbd27e9914263803a6390a9ee70e40d
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/structure/table_header.twig", "/var/www/html/sql/templates/database/structure/table_header.twig");
+        return new Twig_Source("", "database/structure/table_header.twig", "/var/www/html/openrsc_web/public/sql/templates/database/structure/table_header.twig");
     }
 }

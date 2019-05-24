@@ -121,6 +121,6 @@ class __TwigTemplate_578ba1ab0670a9299106a8aedf1b6452ba02992d4b110f2b3593662643a
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "list/item.twig", "/var/www/html/sql/templates/list/item.twig");
+        return new Twig_Source("", "list/item.twig", "/var/www/html/openrsc_web/public/sql/templates/list/item.twig");
     }
 }

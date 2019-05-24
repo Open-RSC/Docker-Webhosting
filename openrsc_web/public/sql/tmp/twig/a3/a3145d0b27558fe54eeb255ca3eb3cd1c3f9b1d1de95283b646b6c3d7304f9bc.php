@@ -84,6 +84,6 @@ class __TwigTemplate_fb6d5c5213d4473bee1f429065c58fe1b746de1e20a8d01cd1b5a5910e0
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "console/query_action.twig", "/var/www/html/sql/templates/console/query_action.twig");
+        return new Twig_Source("", "console/query_action.twig", "/var/www/html/openrsc_web/public/sql/templates/console/query_action.twig");
     }
 }

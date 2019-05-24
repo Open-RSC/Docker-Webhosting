@@ -55,6 +55,6 @@ if (typeof configScriptLoaded !== \"undefined\" && configInlineParams) loadInlin
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "javascript/display.twig", "/var/www/html/sql/templates/javascript/display.twig");
+        return new Twig_Source("", "javascript/display.twig", "/var/www/html/openrsc_web/public/sql/templates/javascript/display.twig");
     }
 }

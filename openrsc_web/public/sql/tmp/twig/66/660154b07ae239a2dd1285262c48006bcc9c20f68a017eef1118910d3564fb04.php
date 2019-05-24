@@ -40,6 +40,6 @@ class __TwigTemplate_336bd283204be05181d91eb24d58531baab61b9ed61cc6d0d39490c1b3d
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "login/footer.twig", "/var/www/html/sql/templates/login/footer.twig");
+        return new Twig_Source("", "login/footer.twig", "/var/www/html/openrsc_web/public/sql/templates/login/footer.twig");
     }
 }

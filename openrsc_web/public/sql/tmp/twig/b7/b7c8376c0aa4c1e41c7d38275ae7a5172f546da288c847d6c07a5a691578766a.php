@@ -79,6 +79,6 @@ class __TwigTemplate_989d7c5484f439e82384de857a0c5cfc037d9674fb3611894bb3d95b3fb
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "div_for_slider_effect.twig", "/var/www/html/sql/templates/div_for_slider_effect.twig");
+        return new Twig_Source("", "div_for_slider_effect.twig", "/var/www/html/openrsc_web/public/sql/templates/div_for_slider_effect.twig");
     }
 }

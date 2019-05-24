@@ -40,6 +40,6 @@ class __TwigTemplate_2f8159cadaa811fb0406885622134fafae57cf6a0b17c482d6b35b156fa
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "config/form_display/tabs_bottom.twig", "/var/www/html/sql/templates/config/form_display/tabs_bottom.twig");
+        return new Twig_Source("", "config/form_display/tabs_bottom.twig", "/var/www/html/openrsc_web/public/sql/templates/config/form_display/tabs_bottom.twig");
     }
 }

@@ -68,6 +68,6 @@ class __TwigTemplate_34dffca7227bbd4dbdf0579f3ddb485dc030d9e7ba693bdda3bc6c84d79
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/results/multi_row_operations_form.twig", "/var/www/html/sql/templates/display/results/multi_row_operations_form.twig");
+        return new Twig_Source("", "display/results/multi_row_operations_form.twig", "/var/www/html/openrsc_web/public/sql/templates/display/results/multi_row_operations_form.twig");
     }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DateTime;
-use DateTimeZone;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -12,14 +10,16 @@ use Illuminate\View\View;
 
 class ItemController extends Controller
 {
-
 	/**
 	 * @return Factory|View
-	 * @var $items
-	 * fetches the table row of the item in view and paginates the results
 	 */
 	public function index()
 	{
+		/**
+		 * @return Factory|View
+		 * @var $items
+		 * fetches the table row of the item in view and paginates the results
+		 */
 		$items = DB::connection('openrsc')->table('openrsc_itemdef')->
 		orderBy('id', 'asc')->
 		paginate(15);
@@ -143,10 +143,69 @@ class ItemController extends Controller
 			->paginate(6);
 
 
+		/**
+		 * @var $npc_drops
+		 * gathers npc drop tables for drop chance calculation based on the item being displayed
+		 * @var $npcID
+		 * fetches the npc id from the item_drops query result above
+		 */
+		//$npcID->$item_drops->npcID;
+		/*$npc_drops = DB::connection('openrsc')
+			->table('openrsc_npcdrops AS B')
+			->join('openrsc_npcdef AS A', 'A.id', '=', 'B.npcdef_id')
+			->join('openrsc_itemdef AS C', 'B.id', '=', 'C.id')
+			->select('A.name AS npcName', 'B.npcdef_id AS npcID', 'B.amount AS dropAmount')
+			->concat('weight')
+			->as('dropPercentage')
+			->select('SUM(weight)')
+			->where(['B.npcdef_id', '=', $npcID])
+			->multiply('100')
+			->get();*/
+
+		$npc_drops = DB::connection('openrsc')
+			->raw('						SELECT
+													A.name AS npcName,
+													B.npcdef_id AS npcID,
+												    B.amount AS dropAmount,
+													CONCAT(
+														(
+															(
+																weight /(
+																SELECT
+																	SUM(weight)
+																FROM
+																	openrsc_npcdrops
+																WHERE
+																	npcdef_id = $npcID
+															)
+															) * 100
+														),
+														\'%\'
+													) AS dropPercentage,
+													B.amount AS dropAmount,
+													C.id AS itemID,
+													C.name AS itemName
+												FROM
+													openrsc_npcdef AS A
+												LEFT JOIN openrsc_npcdrops AS B
+												ON
+													A.id = B.npcdef_id
+												LEFT JOIN openrsc_itemdef AS C
+												ON
+													B.id = C.id
+												WHERE
+													B.npcdef_id = $npcID AND C.id = $id');
+		/*->WHERE(
+            ['B.npcdef_id', '=', $npcID],
+            ['C.id', '=', $id]
+        )->get();*/
+
+
 		return view('itemdef', [
 			'totalPlayerHeld' => $totalPlayerHeld,
 			'last3moPlayerHeld' => $last3moPlayerHeld,
-			'item_drops' => $item_drops
+			'item_drops' => $item_drops,
+			//'npc_drops' => $npc_drops
 		])->with(compact('itemdef'));
 	}
 }

@@ -79,6 +79,6 @@ class __TwigTemplate_ac08ba68e069ebf3687d98f28458f88cbcf4e42b213d3a528b619eb833f
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "radio_fields.twig", "/var/www/html/sql/templates/radio_fields.twig");
+        return new Twig_Source("", "radio_fields.twig", "/var/www/html/openrsc_web/public/sql/templates/radio_fields.twig");
     }
 }

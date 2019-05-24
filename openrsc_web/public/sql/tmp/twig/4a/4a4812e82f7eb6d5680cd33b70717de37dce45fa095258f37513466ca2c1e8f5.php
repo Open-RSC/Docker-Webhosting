@@ -74,6 +74,6 @@ class __TwigTemplate_e6fd0ea371f1c0095e7f98535582a86532e2a99aa1920b5bef333f6926d
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "config/form_display/fieldset_bottom.twig", "/var/www/html/sql/templates/config/form_display/fieldset_bottom.twig");
+        return new Twig_Source("", "config/form_display/fieldset_bottom.twig", "/var/www/html/openrsc_web/public/sql/templates/config/form_display/fieldset_bottom.twig");
     }
 }

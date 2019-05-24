@@ -70,6 +70,6 @@ class __TwigTemplate_c1f912d37e1abbc17548d0ed4fd1624152ddb916722ec1ae5b252ea1306
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/results/additional_fields.twig", "/var/www/html/sql/templates/display/results/additional_fields.twig");
+        return new Twig_Source("", "display/results/additional_fields.twig", "/var/www/html/openrsc_web/public/sql/templates/display/results/additional_fields.twig");
     }
 }

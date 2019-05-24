@@ -57,6 +57,6 @@ class __TwigTemplate_524dbc296d4819386f2f8161e25a6f707358efdb23ca3c9e87bb828ee78
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "config/form_display/group_header.twig", "/var/www/html/sql/templates/config/form_display/group_header.twig");
+        return new Twig_Source("", "config/form_display/group_header.twig", "/var/www/html/openrsc_web/public/sql/templates/config/form_display/group_header.twig");
     }
 }
