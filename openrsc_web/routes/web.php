@@ -9,6 +9,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/items', 'ItemController@index')->name('items');
 Route::get('/itemdef/{id}', 'ItemController@show')->name('itemdef');
 
+Route::get('/npcs', 'NpcController@index')->name('npcs');
+Route::get('/npcdef/{id}', 'NpcController@show')->name('npcdef');
+
 Route::resource('news', 'News_PostController');
 Route::resource('news_responses', 'News_ResponseController', ['except' => ['index', 'create', 'show']]);
 

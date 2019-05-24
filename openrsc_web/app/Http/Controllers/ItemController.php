@@ -20,11 +20,14 @@ class ItemController extends Controller
 		 * @var $items
 		 * fetches the table row of the item in view and paginates the results
 		 */
-		$items = DB::connection('openrsc')->table('openrsc_itemdef')->
-		orderBy('id', 'asc')->
-		paginate(15);
+		$items = DB::connection('openrsc')
+			->table('openrsc_itemdef')
+			->where('id', '<=', '1289')
+			->orderBy('id', 'asc')
+			->paginate(50);
 
-		return view('items')->with(compact('items'));
+		return view('items')
+			->with(compact('items'));
 	}
 
 	/**
@@ -37,7 +40,9 @@ class ItemController extends Controller
 		 * @var $itemdef
 		 * queries the item and returns a 404 error if not found in database
 		 */
-		$itemdef = DB::connection('openrsc')->table('openrsc_itemdef')->find($id);
+		$itemdef = DB::connection('openrsc')
+			->table('openrsc_itemdef')
+			->find($id);
 		if (!$itemdef) abort(404);
 
 
@@ -45,36 +50,36 @@ class ItemController extends Controller
 		 * @var $totalPlayerHeld_bank
 		 * determines a count for how many of the item the player base has total in their bank
 		 */
-		$totalPlayerHeld_bank = DB::connection('openrsc')->
-		table('openrsc_bank')->
-		select('openrsc_bank.id', 'openrsc_bank.playerID', 'openrsc_bank.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned')->
-		join('openrsc_players', function ($join) use ($id) {
-			$join->on('openrsc_bank.playerID', '=', 'openrsc_players.id')->
-			where([
-				['openrsc_bank.id', '=', $id],
-				['openrsc_players.id', '>=', '10'],
-				['openrsc_players.banned', '=', '0']
-			]);
-		})->
-		sum('amount');
+		$totalPlayerHeld_bank = DB::connection('openrsc')
+			->table('openrsc_bank')
+			->select('openrsc_bank.id', 'openrsc_bank.playerID', 'openrsc_bank.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned')
+			->join('openrsc_players', function ($join) use ($id) {
+				$join->on('openrsc_bank.playerID', '=', 'openrsc_players.id')
+					->where([
+						['openrsc_bank.id', '=', $id],
+						['openrsc_players.id', '>=', '10'],
+						['openrsc_players.banned', '=', '0']
+					]);
+			})
+			->sum('amount');
 
 
 		/**
 		 * @var $totalPlayerHeld_invitems
 		 * determines a count for how many of the item the player base has total in their inventory
 		 */
-		$totalPlayerHeld_invitems = DB::connection('openrsc')->
-		table('openrsc_invitems')->
-		select('openrsc_invitems.id', 'openrsc_invitems.playerID', 'openrsc_invitems.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned')->
-		join('openrsc_players', function ($join) use ($id) {
-			$join->on('openrsc_invitems.playerID', '=', 'openrsc_players.id')->
-			where([
-				['openrsc_invitems.id', '=', $id],
-				['openrsc_players.id', '>=', '10'],
-				['openrsc_players.banned', '=', '0']
-			]);
-		})->
-		sum('amount');
+		$totalPlayerHeld_invitems = DB::connection('openrsc')
+			->table('openrsc_invitems')
+			->select('openrsc_invitems.id', 'openrsc_invitems.playerID', 'openrsc_invitems.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned')
+			->join('openrsc_players', function ($join) use ($id) {
+				$join->on('openrsc_invitems.playerID', '=', 'openrsc_players.id')
+					->where([
+						['openrsc_invitems.id', '=', $id],
+						['openrsc_players.id', '>=', '10'],
+						['openrsc_players.banned', '=', '0']
+					]);
+			})
+			->sum('amount');
 
 
 		/**
@@ -97,7 +102,9 @@ class ItemController extends Controller
 						['openrsc_bank.id', '=', $id],
 						['openrsc_players.id', '>=', '10'],
 						['openrsc_players.banned', '=', '0'],
-						['openrsc_players.login_date', '>=', Carbon::now()->subMonth(3)->timestamp]
+						['openrsc_players.login_date', '>=', Carbon::now()
+							->subMonth(3)
+							->timestamp]
 					]);
 			})
 			->sum('amount');
@@ -111,12 +118,15 @@ class ItemController extends Controller
 			->table('openrsc_invitems')
 			->select('openrsc_invitems.id', 'openrsc_invitems.playerID', 'openrsc_invitems.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned', 'openrsc_players.login_date')
 			->join('openrsc_players', function ($join) use ($id) {
-				$join->on('openrsc_invitems.playerID', '=', 'openrsc_players.id')
+				$join
+					->on('openrsc_invitems.playerID', '=', 'openrsc_players.id')
 					->where([
 						['openrsc_invitems.id', '=', $id],
 						['openrsc_players.id', '>=', '10'],
 						['openrsc_players.banned', '=', '0'],
-						['openrsc_players.login_date', '>=', Carbon::now()->subMonth(3)->timestamp]
+						['openrsc_players.login_date', '>=', Carbon::now()
+							->subMonth(3)
+							->timestamp]
 					]);
 			})
 			->sum('amount');
@@ -140,72 +150,13 @@ class ItemController extends Controller
 			->select('A.id', 'A.name AS npcName', 'B.npcdef_id AS npcID', 'B.amount AS dropAmount', 'B.id AS dropID', 'B.weight AS dropWeight', 'C.id AS itemID', 'C.name AS itemName')
 			->where('B.id', '=', $id)
 			->limit('793')
-			->paginate(6);
-
-
-		/**
-		 * @var $npc_drops
-		 * gathers npc drop tables for drop chance calculation based on the item being displayed
-		 * @var $npcID
-		 * fetches the npc id from the item_drops query result above
-		 */
-		//$npcID->$item_drops->npcID;
-		/*$npc_drops = DB::connection('openrsc')
-			->table('openrsc_npcdrops AS B')
-			->join('openrsc_npcdef AS A', 'A.id', '=', 'B.npcdef_id')
-			->join('openrsc_itemdef AS C', 'B.id', '=', 'C.id')
-			->select('A.name AS npcName', 'B.npcdef_id AS npcID', 'B.amount AS dropAmount')
-			->concat('weight')
-			->as('dropPercentage')
-			->select('SUM(weight)')
-			->where(['B.npcdef_id', '=', $npcID])
-			->multiply('100')
-			->get();*/
-
-		$npc_drops = DB::connection('openrsc')
-			->raw('						SELECT
-													A.name AS npcName,
-													B.npcdef_id AS npcID,
-												    B.amount AS dropAmount,
-													CONCAT(
-														(
-															(
-																weight /(
-																SELECT
-																	SUM(weight)
-																FROM
-																	openrsc_npcdrops
-																WHERE
-																	npcdef_id = $npcID
-															)
-															) * 100
-														),
-														\'%\'
-													) AS dropPercentage,
-													B.amount AS dropAmount,
-													C.id AS itemID,
-													C.name AS itemName
-												FROM
-													openrsc_npcdef AS A
-												LEFT JOIN openrsc_npcdrops AS B
-												ON
-													A.id = B.npcdef_id
-												LEFT JOIN openrsc_itemdef AS C
-												ON
-													B.id = C.id
-												WHERE
-													B.npcdef_id = $npcID AND C.id = $id');
-		/*->WHERE(
-            ['B.npcdef_id', '=', $npcID],
-            ['C.id', '=', $id]
-        )->get();*/
-
+			->paginate(50);
 
 		return view('itemdef', [
 			'totalPlayerHeld' => $totalPlayerHeld,
 			'last3moPlayerHeld' => $last3moPlayerHeld,
-			'item_drops' => $item_drops,
-			//'npc_drops' => $npc_drops
-		])->with(compact('itemdef'));
+			'item_drops' => $item_drops
+		])
+			->with(compact('itemdef'));
 	}
 }

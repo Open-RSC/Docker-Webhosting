@@ -1,14 +1,13 @@
 <section id="home">
-	<div class="panel position-fixed table-wrapper-scroll-y">
-		<div class="text-info table-dark spaced-body full-width">
-			<div class="container border-left border-info border-right table-wrapper-scroll-y">
+	<div class="text-info table-dark">
+		<div class="container">
 
-				<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
+			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 					<a class="text-info text-capitalize" href="{{ route('items') }}">{{ $itemdef->name }}</a>
 				</h2>
 				<div class="col-4 d-inline-block text-center pt-3">
 					<img class="display-glow pb-2" style="transform: scale(1.3);"
-						 src="{{ asset('img/items') }}/{{ $itemdef->id }}.png"/>
+						 src="{{ asset('img/items') }}/{{ $itemdef->id }}.png" alt="{{ $itemdef->name }}"/>
 					<span class="col d-inline-block">{{ $itemdef->description }}</span>
 				</div>
 
@@ -150,17 +149,16 @@
 				<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 					<thead class="border-bottom border-info">
 					<tr class="text-info">
-						<th class="w-25 pl-1">NPC</th>
+						<th class="w-25 pl-1">Name (ID)</th>
 						<th class="text-center w-25">Picture</th>
 						<th class="text-center w-25 pl-5">Quantity</th>
-						<th class="text-center w-25 pl-5">Drop Chance</th>
 					</tr>
 					</thead>
 					<tbody>
 					@foreach($item_drops as $item_drop)
-						<tr class="clickable-row" data-href="npcdef/{{ $item_drop->npcID }}">
+						<tr class="clickable-row" data-href="/npcdef/{{ $item_drop->npcID }}">
 							<td class="text-capitalize w-25">
-								<a href="npcdef/{{ $item_drop->npcID }}"
+								<a href="/npcdef/{{ $item_drop->npcID }}"
 								   class="text-capitalize pl-1">{{ $item_drop->npcName }} ({{ $item_drop->npcID }})</a>
 							</td>
 							<td class="w-10 text-center pt-1 pb-1">
@@ -168,17 +166,8 @@
 									<img src="{{ asset('img/npc') }}/{{ $item_drop->npcID }}.png" alt="{{ $item_drop->npcName }}"/>
 								</div>
 							</td>
-							<td class="pt-1 pl-5">
+							<td class="text-center w-25 pl-5">
 								{{ $item_drop->dropAmount }}
-							</td>
-							<td class="pt-1 pl-5">
-								@foreach($npc_drops as $npc_drop)
-									@if ($npc_drop->dropPercentage == '0.0000%' || $npc_drop->dropPercentage == 'NULL' || $npc_drop->dropPercentage == '0.0000%')
-										100%
-									@else
-										{{ $npc_drop->dropPercentage }}
-									@endif
-								@endforeach
 							</td>
 						</tr>
 					@endforeach

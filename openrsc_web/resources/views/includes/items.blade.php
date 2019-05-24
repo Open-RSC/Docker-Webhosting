@@ -10,11 +10,11 @@
 			<table id="itemList" class="container table-striped table-hover table-dark text-primary">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
-					<th class="pl-2">Name and Description</th>
+					<th class="pl-2">Item Name</th>
 					<th class="text-center">Picture</th>
-					<th class="text-center">Req Level</th>
+					<th class="text-center">Required Level</th>
 					<th class="text-center">Shop Value</th>
-					<th class="text-center">Alch (Low/High)</th>
+					<th class="text-center">Alch Value (Low / High)</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -98,7 +98,8 @@
 						</td>
 						<td class="text-center pt-1">
 							{{ number_format($itemdef->basePrice * 0.4) }}gp
-							/ {{ number_format($itemdef->basePrice * 0.6) }}gp
+							<span class="text-secondary">/</span>
+							{{ number_format($itemdef->basePrice * 0.6) }}gp
 						</td>
 					</tr>
 				@endforeach
