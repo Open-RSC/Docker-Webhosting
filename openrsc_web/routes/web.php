@@ -12,6 +12,9 @@ Route::get('/itemdef/{id}', 'ItemController@show')->name('itemdef');
 Route::get('/npcs', 'NpcController@index')->name('npcs');
 Route::get('/npcdef/{id}', 'NpcController@show')->name('npcdef');
 
+Route::get('/worldmap', 'MapController@index')->name('worldmap');
+Route::get('/wilderness', 'MapController@wilderness')->name('wilderness');
+
 Route::resource('news', 'News_PostController');
 Route::resource('news_responses', 'News_ResponseController', ['except' => ['index', 'create', 'show']]);
 
