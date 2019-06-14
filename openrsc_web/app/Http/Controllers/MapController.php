@@ -2,25 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class MapController extends Controller
 {
 	/**
 	 * Display the live world map.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return Response
 	 */
 	public function index()
 	{
-		return view('worldmap')
-			->with(compact('worldmap'));
+		$playerPositions = DB::connection('openrsc')->table('openrsc_players')->where('online', 0)->get();
+
+		return view('worldmap', [
+			'coords' => $playerPositions
+		])
+			->with(compact('coords'));
 	}
 
 	/**
 	 * Display the wilderness map.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return Response
 	 */
 	public function wilderness()
 	{

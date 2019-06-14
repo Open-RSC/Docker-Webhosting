@@ -1,37 +1,47 @@
 <section id="home">
+
+	@php
+		$xs = $ys = array();
+
+        function coords_to_image($x, $y)
+        {
+            $x = 2152 - (($x - 45) * 3);
+            $y = ($y - 437) * 3;
+            if ($x < 0 || $x > 2152 || $y < 0 || $y > 1007) {
+                return false;
+            }
+            return array('x' => $x, 'y' => $y);
+        }
+	@endphp
+
+	@foreach ($coords as $coord)
+		{{ coords_to_image($coord->x, $coord->y) }}
+		<img src="{{ asset('img/crosshairs.svg') }}" style="display: none;" alt='{{ $coord->username }}'/>
+		@php
+			$areaPlayer[] = 'ctx.drawImage(player,' . $coord->x . ', ' . $coord->y . ', 38, 38);'
+                . ' player.src ="../img/crosshairs.svg"; '
+                . ' ctx.fillStyle="gold"; '
+                . ' ctx.font="18pt sans-serif"; '
+                . ' ctx.fillText("' . ucfirst($coord->username) . '", ' . $coord->x . ', ' . $coord->y . '); '
+		@endphp
+	@endforeach
+
+	<script>
+		function drawPosition() {
+			var c = document.getElementById('canvas');
+			var ctx = c.getContext('2d');
+			var player = new Image();
+			{{ implode('', $areaPlayer) }}
+		}
+	</script>
+
 	<div class="text-info table-dark">
-		<div class="container">
+		<div class="container-fluid">
 
-			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">NPC Database</h2>
-			<label for="inputBox"></label>
-			<input type="text" class="pl-2 pt-1 mb-3" id="inputBox" onkeyup="search()"
-				   placeholder="Search for a NPC">
-
-			<table id="npcList" class="container table-striped table-hover table-dark text-primary">
-				<thead class="border-bottom border-info">
-				<tr class="text-info">
-					<th class="pl-2">NPC Name</th>
-					<th class="text-center">Picture</th>
-				</tr>
-				</thead>
-				<tbody>
-				@foreach ($npcs as $npcdef)
-					<tr class="clickable-row" data-href="npcdef/{{ $npcdef->id }}">
-						<td class="w-25">
-							<a href="npcdef/{{ $npcdef->id }}"
-							   class="text-capitalize pl-1">{{ $npcdef->name }} ({{ $npcdef->id }})</a>
-							<span class="text-white-50 pl-1 d-block">{{ $npcdef->description }}</span>
-						</td>
-						<td class="w-10 text-center pt-1 pb-1">
-							<div class="display-glow">
-								<img src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"/>
-							</div>
-						</td>
-					</tr>
-				@endforeach
-				</tbody>
-			</table>
-			{{ $npcs->links('pagination::bootstrap-4') }}
+			<canvas style="background-image: url('{{ asset('img/worldmap.png') }}');" id="canvas" width="2152"
+					height="1007">
+				<script> drawPosition(); </script>
+			</canvas>
 		</div>
 	</div>
 </section>
