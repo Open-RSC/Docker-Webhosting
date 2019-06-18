@@ -67,8 +67,6 @@
 			</ul>
 		</li>
 		<li><a href="{{ asset('highscores') }}">Highscores</a></li>
-		<li><a href="{{ asset('chat') }}">Recent Chat</a></li>
-		<li><a href="{{ asset('worldmap') }}">Live Map</a></li>
 		<li>
 			<label for="drop-3" class="toggle">Information ▾</label>
 			<a href="#">Information</a>
@@ -93,6 +91,8 @@
 				<li><a href="{{ asset('npcs') }}">NPC Database</a></li>
 			</ul>
 		</li>
+		<li><a href="{{ asset('chat') }}">Recent Chat</a></li>
+		<li><a href="{{ asset('worldmap') }}">Live Map</a></li>
 		<li>
 			<label for="drop-5" class="toggle">Reports ▾</label>
 			<a href="#">Reports</a>
