@@ -148,9 +148,9 @@ require_once('charfunctions.php');
 
 		</li>
 		<li>
-			<label for="drop-4" class="toggle">Community ▾</label>
+			<label for="drop-2" class="toggle">Community ▾</label>
 			<a href="#">Community</a>
-			<input type="checkbox" id="drop-4"/>
+			<input type="checkbox" id="drop-2"/>
 			<ul>
 				<li><a href="https://discordapp.com/invite/94vVKND" target="_blank">
 						<svg class="svg-inline--fa fa-discord fa-w-14 text-info mr-md-2" aria-hidden="true"
@@ -187,12 +187,10 @@ require_once('charfunctions.php');
 			</ul>
 		</li>
 		<li><a href="/highscores/skill_total">Highscores</a></li>
-		<li><a href="/chat">Recent Chat</a></li>
-		<li><a href="/worldmap">Live Map</a></li>
 		<li>
-			<label for="drop-2" class="toggle">Information ▾</label>
+			<label for="drop-3" class="toggle">Information ▾</label>
 			<a href="#">Information</a>
-			<input type="checkbox" id="drop-2"/>
+			<input type="checkbox" id="drop-3"/>
 			<ul>
 				<li><a href="/faq">FAQ</a></li>
 				<li><a href="/rules">Rules</a></li>
@@ -202,9 +200,9 @@ require_once('charfunctions.php');
 			</ul>
 		</li>
 		<li>
-			<label for="drop-3" class="toggle">Guides ▾</label>
+			<label for="drop-4" class="toggle">Guides ▾</label>
 			<a href="#">Guides</a>
-			<input type="checkbox" id="drop-3"/>
+			<input type="checkbox" id="drop-4"/>
 			<ul>
 				<li><a href="/quest">Quest List</a></li>
 				<li><a href="/minigames">Minigames</a></li>
@@ -213,10 +211,12 @@ require_once('charfunctions.php');
 				<li><a href="/npcs">NPC Database</a></li>
 			</ul>
 		</li>
+		<li><a href="/chat">Recent Chat</a></li>
+		<li><a href="/worldmap">Live Map</a></li>
 		<li>
-			<label for="drop-4" class="toggle">Reports ▾</label>
+			<label for="drop-5" class="toggle">Reports ▾</label>
 			<a href="#">Reports</a>
-			<input type="checkbox" id="drop-4"/>
+			<input type="checkbox" id="drop-5"/>
 			<ul>
 				<li><a href="https://goo.gl/forms/nnhSln7S81l4I26t2" target="_blank">Bug Reports</a></li>
 				<li><a href="https://goo.gl/forms/AkBzpOzgAmzWiZ8H2" target="_blank">Bot Reports</a></li>
