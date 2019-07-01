@@ -2,7 +2,7 @@
 define('IN_SITE', true);
 
 $connector = new Dbc();
-$game_accounts = $connector->logquery("
+$game_accounts = $connector->logquerycabbage("
 SELECT
     A.id playerID,
     B.sender,

@@ -74,6 +74,16 @@ class Dbc
 		return mysqli_query($con, $query);
 	}
 
+	function logquerycabbage($query)
+	{
+		global $dbhost;
+		global $dbuser;
+		global $dbpasswd;
+		$this->theQuery = $query;
+		$con = mysqli_connect($dbhost, $dbuser, $dbpasswd, "cabbage");
+		return mysqli_query($con, $query);
+	}
+
 	function fetchArray($result)
 	{
 		return mysqli_fetch_assoc($result);
