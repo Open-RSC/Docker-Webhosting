@@ -7,7 +7,7 @@ $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $subpage = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $subpage);
 
-$npc_result = $connector->gamequery("
+$npc_result = $connector->cabbagegamequery("
 SELECT
     *
 FROM
@@ -17,7 +17,7 @@ WHERE
 
 $result = $connector->fetchArray($npc_result);
 
-$npc_drops = $connector->gamequery("
+$npc_drops = $connector->cabbagegamequery("
 SELECT
     A.id,
     A.name AS npcName,

@@ -4,7 +4,7 @@ if (!defined('IN_SITE')) {
 }
 
 $connector = new Dbc();
-$list_items = $connector->gamequery('SELECT id, name, description, requiredLevel, basePrice FROM openrsc_itemdef ORDER BY id ASC LIMIT 1290');
+$list_items = $connector->cabbagegamequery('SELECT id, name, description, requiredLevel, basePrice FROM openrsc_itemdef ORDER BY id ASC LIMIT 1290');
 
 ?>
 

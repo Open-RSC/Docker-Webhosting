@@ -32,7 +32,7 @@ require_once('charfunctions.php');
 
 	<title>Open RSC</title>
 	<meta name="description" content="Striving for a replica RSC game and more.">
-	<meta name="keywords" content="openrsc,open rsc,rsc,open-rsc,rs classic,orsc evo,openrsc evolution">
+	<meta name="keywords" content="runescape classic,runescape,openrsc,open rsc,rsc,open-rsc,rs classic,rsc cabbage, rsccabbage, openpk, open pk, rsc preservation, rscpreservation, rscp">
 
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"

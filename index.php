@@ -62,7 +62,7 @@ include "inc/header.php";
 			</div>
 
 			<div class="d-block pb-3">
-				<div class="text-white-50">Striving for a replica RSC game and more</div>
+				<div class="text-white-50">Open Source Runescape Classic that is free forever</div>
 			</div>
 
 			<div class="d-block pt-1 pb-4 btn-group-lg">
@@ -71,72 +71,6 @@ include "inc/header.php";
 			</div>
 
 			<div class="middle container-fluid border-top border-info">
-				<div class="text-left text-primary small pt-3">
-					<h4 class="text-info">Open RSC Statistics</h4>
-					<div>
-						Players Online:
-						<a href="online">
-					<span class="font-weight-bold text-info float-right">
-						<?php echo playersOnline(); ?>
-					</span>
-						</a>
-					</div>
-					<div>
-						Server Status:
-						<span class="float-right">
-							<?php echo checkStatus("game.openrsc.com", "43594"); ?>
-						</span>
-					</div>
-					<div>
-						Registrations Today:
-						<a href="registrationstoday">
-						<span class="font-weight-bold text-info float-right">
-							<?php echo newRegistrationsToday(); ?>
-						</span>
-						</a>
-					</div>
-					<div>
-						Online Last 48 Hours:
-						<a href="logins48">
-						<span class="font-weight-bold text-info float-right">
-							<?php echo logins48(); ?>
-						</span>
-						</a>
-					</div>
-					<div>
-						Unique Players:
-						<a href="stats">
-						<span class="font-weight-bold text-info float-right">
-							<?php echo uniquePlayers(); ?>
-						</span>
-						</a>
-					</div>
-					<div>
-						Total Players:
-						<a href="stats">
-						<span class="font-weight-bold text-info float-right">
-							<?php echo totalGameCharacters(); ?>
-						</span>
-						</a>
-					</div>
-					<div>
-						Sum Gold:
-						<a href="stats">
-						<span class="font-weight-bold text-info float-right">
-							<?php echo banktotalGold(); ?>
-						</span>
-						</a>
-					</div>
-					<div>
-						Cumulative Play:
-						<a href="stats">
-						<span class="font-weight-bold text-info float-right">
-							<?php echo totalTime(); ?>
-						</span>
-						</a>
-					</div>
-				</div>
-
 				<div class="text-left text-primary small pt-3">
 					<h4 class="text-info">RSC Cabbage Statistics</h4>
 					<div>
@@ -198,6 +132,72 @@ include "inc/header.php";
 						<a href="cabbagestats">
 						<span class="font-weight-bold text-info float-right">
 							<?php echo cabbagetotalTime(); ?>
+						</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="text-left text-primary small pt-3">
+					<h4 class="text-info">Open RSC Statistics</h4>
+					<div>
+						Players Online:
+						<a href="online">
+					<span class="font-weight-bold text-info float-right">
+						<?php echo playersOnline(); ?>
+					</span>
+						</a>
+					</div>
+					<div>
+						Server Status:
+						<span class="float-right">
+							<?php echo checkStatus("game.openrsc.com", "43594"); ?>
+						</span>
+					</div>
+					<div>
+						Registrations Today:
+						<a href="registrationstoday">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo newRegistrationsToday(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Online Last 48 Hours:
+						<a href="logins48">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo logins48(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Unique Players:
+						<a href="stats">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo uniquePlayers(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Total Players:
+						<a href="stats">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo totalGameCharacters(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Sum Gold:
+						<a href="stats">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo banktotalGold(); ?>
+						</span>
+						</a>
+					</div>
+					<div>
+						Cumulative Play:
+						<a href="stats">
+						<span class="font-weight-bold text-info float-right">
+							<?php echo totalTime(); ?>
 						</span>
 						</a>
 					</div>

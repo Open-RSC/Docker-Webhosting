@@ -7,7 +7,7 @@ $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $subpage = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $subpage);
 
-$item_result = $connector->gamequery("
+$item_result = $connector->cabbagegamequery("
 SELECT
     *
 FROM
@@ -17,7 +17,7 @@ WHERE
 
 $result = $connector->fetchArray($item_result);
 
-$itemCount = $connector->gamequery("
+$itemCount = $connector->cabbagegamequery("
 SELECT
     SUM(amt) AS amt
 FROM
@@ -45,7 +45,7 @@ WHERE
 	AND A.group_id >= '10' AND A.banned = '0'
 ) a");
 
-$itemCountActive = $connector->gamequery("
+$itemCountActive = $connector->cabbagegamequery("
 SELECT
     SUM(amt) AS amt
 FROM
@@ -79,7 +79,7 @@ WHERE
     ) AND A.login_date >= '1539645175'
 ) a");
 
-$item_drops = $connector->gamequery("
+$item_drops = $connector->cabbagegamequery("
 SELECT
     A.id,
     A.name AS npcName,
@@ -218,7 +218,7 @@ LIMIT 793");
 				while ($result = $connector->fetch_assoc($item_drops)) {
 				$npcID = $result['npcID'];
 				$dropAmount = $result['dropAmount'];
-				$npc_drops = $connector->gamequery("
+				$npc_drops = $connector->cabbagegamequery("
 												SELECT
 													A.name AS npcName,
 													B.npcdef_id AS npcID,
