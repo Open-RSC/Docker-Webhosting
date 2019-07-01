@@ -10,17 +10,17 @@ $connector = new Dbc();
 $subpage = preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage);
 $subpage = preg_replace('~[\x00\x0A\x0D\x1A\x22\x25\x27\x5C\x5F]~u', " ", $subpage);
 
-$character_result = $connector->gamequery("SELECT * FROM openrsc_players WHERE (openrsc_players.id = '$subpage' OR openrsc_players.username = '$subpage')");
+$character_result = $connector->cabbagegamequery("SELECT * FROM openrsc_players WHERE (openrsc_players.id = '$subpage' OR openrsc_players.username = '$subpage')");
 $character = $connector->fetchArray($character_result);
 
-$bank_result = $connector->gamequery("SELECT A.username, B.* FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage')");
+$bank_result = $connector->cabbagegamequery("SELECT A.username, B.* FROM `openrsc_bank` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage')");
 
-$invitem_result = $connector->gamequery("SELECT A.username, B.* FROM `openrsc_invitems` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage')");
+$invitem_result = $connector->cabbagegamequery("SELECT A.username, B.* FROM `openrsc_invitems` AS B LEFT JOIN openrsc_players AS A ON B.playerID = A.id WHERE (A.id = '$subpage' OR A.username = '$subpage')");
 
-$exp_result = $connector->gamequery("SELECT * FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE (openrsc_players.id = '$subpage' OR openrsc_players.username = '$subpage')");
+$exp_result = $connector->cabbagegamequery("SELECT * FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE (openrsc_players.id = '$subpage' OR openrsc_players.username = '$subpage')");
 $exp = $connector->fetchArray($exp_result);
 
-$cur_result = $connector->gamequery("SELECT * FROM openrsc_curstats LEFT JOIN openrsc_players ON openrsc_curstats.playerID = openrsc_players.id WHERE (openrsc_players.id = '$subpage' OR openrsc_players.username = '$subpage')");
+$cur_result = $connector->cabbagegamequery("SELECT * FROM openrsc_curstats LEFT JOIN openrsc_players ON openrsc_curstats.playerID = openrsc_players.id WHERE (openrsc_players.id = '$subpage' OR openrsc_players.username = '$subpage')");
 $cur = $connector->fetchArray($cur_result);
 
 ?>

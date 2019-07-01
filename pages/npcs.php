@@ -4,7 +4,7 @@ if (!defined('IN_SITE')) {
 }
 
 $connector = new Dbc();
-$list_npcs = $connector->gamequery('SELECT id, name, description, combatlvl, attackable, aggressive, respawnTime FROM openrsc_npcdef ORDER BY id ASC LIMIT 794');
+$list_npcs = $connector->cabbagegamequery('SELECT id, name, description, combatlvl, attackable, aggressive, respawnTime FROM openrsc_npcdef ORDER BY id ASC LIMIT 794');
 
 ?>
 
