@@ -12,22 +12,22 @@ if (!defined('IN_SITE')) {
 			<div class="text-primary">
 				<h4 class="pt-4 h4 text-warning">Accounts</h4>
 				<span class="d-block"><a class="text-info font-weight-bold"
-										 href="online"><?php echo playersOnline(); ?></a> players currently
+										 href="online"><?php echo cabbageplayersOnline(); ?></a> players currently
 					logged in.</span>
 				<span class="d-block"><a class="text-info font-weight-bold"
-										 href="registrationstoday"><?php echo newRegistrationsToday(); ?></a> players have been registered
+										 href="registrationstoday"><?php echo cabbagenewRegistrationsToday(); ?></a> players have been registered
 					today.</span>
 				<span class="d-block"><a class="text-info font-weight-bold"
-										 href="logins48"><?php echo logins48(); ?></a> players logged in
+										 href="logins48"><?php echo cabbagelogins48(); ?></a> players logged in
 					the last 48 hours.</span>
-				<span class="d-block"><span class="text-info font-weight-bold"><?php echo uniquePlayers(); ?></span> people have created <span
-						class="text-info font-weight-bold"><?php echo totalPlayers(); ?></span>
+				<span class="d-block"><span class="text-info font-weight-bold"><?php echo cabbageuniquePlayers(); ?></span> people have created <span
+						class="text-info font-weight-bold"><?php echo cabbagetotalPlayers(); ?></span>
 					players.</span>
-				<span class="d-block"><span class="text-info font-weight-bold"><?php echo totalTime(); ?></span> total time played.</span>
+				<span class="d-block"><span class="text-info font-weight-bold"><?php echo cabbagetotalTime(); ?></span> total time played.</span>
 
 				<h4 class="pt-4 h4 text-warning">Combat</h4>
 				<span class="d-block">The highest combat level is <span
-						class="text-info font-weight-bold"><?php echo topcombat(); ?>.</span></span>
+						class="text-info font-weight-bold"><?php echo cabbagetopcombat(); ?>.</span></span>
 				<span class="d-block"><span class="text-info font-weight-bold"><?php echo combat30(); ?></span> players over combat level
 					30.</span>
 				<span class="d-block"><span class="text-info font-weight-bold"><?php echo combat50(); ?></span> players over combat level
@@ -46,7 +46,7 @@ if (!defined('IN_SITE')) {
 				quest.
 
 				<h4 class="pt-4 h4 text-warning">Wealth</h4>
-				<span class="d-block"><span class="text-info font-weight-bold"><?php echo banktotalGold(); ?></span> gp total in-game.</span>
+				<span class="d-block"><span class="text-info font-weight-bold"><?php echo cabbagebanktotalGold(); ?></span> gp total in-game.</span>
 				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold30(); ?></span> players have over 30K gp.</span>
 				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold50(); ?></span> players have over 50K gp.</span>
 				<span class="d-block"><span class="text-info font-weight-bold"><?php echo gold80(); ?></span> players have over 80K gp.</span>
