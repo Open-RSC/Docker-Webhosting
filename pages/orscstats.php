@@ -12,18 +12,18 @@ if (!defined('IN_SITE')) {
 			<div class="text-primary">
 				<h4 class="pt-4 h4 text-warning">Accounts</h4>
 				<span class="d-block"><a class="text-info font-weight-bold"
-										 href="online"><?php echo cabbageplayersOnline(); ?></a> players currently
+										 href="online"><?php echo playersOnline(); ?></a> players currently
 					logged in.</span>
 				<span class="d-block"><a class="text-info font-weight-bold"
-										 href="registrationstoday"><?php echo cabbagenewRegistrationsToday(); ?></a> players have been registered
+										 href="registrationstoday"><?php echo newRegistrationsToday(); ?></a> players have been registered
 					today.</span>
 				<span class="d-block"><a class="text-info font-weight-bold"
-										 href="logins48"><?php echo cabbagelogins48(); ?></a> players logged in
+										 href="logins48"><?php echo logins48(); ?></a> players logged in
 					the last 48 hours.</span>
-				<span class="d-block"><span class="text-info font-weight-bold"><?php echo cabbageuniquePlayers(); ?></span> people have created <span
-						class="text-info font-weight-bold"><?php echo cabbagetotalPlayers(); ?></span>
+				<span class="d-block"><span class="text-info font-weight-bold"><?php echo uniquePlayers(); ?></span> people have created <span
+						class="text-info font-weight-bold"><?php echo totalPlayers(); ?></span>
 					players.</span>
-				<span class="d-block"><span class="text-info font-weight-bold"><?php echo cabbagetotalTime(); ?></span> total time played.</span>
+				<span class="d-block"><span class="text-info font-weight-bold"><?php echo totalTime(); ?></span> total time played.</span>
 			</div>
 		</div>
 	</div>
