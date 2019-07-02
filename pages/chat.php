@@ -24,7 +24,9 @@ LIMIT 1000
 ");
 
 date_default_timezone_set('America/New_York');
-?>
+
+if ($staff == 1) { ?>
+	?>
 
 	<article class="text-info table-dark spaced-body full-width">
 		<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
@@ -62,4 +64,5 @@ date_default_timezone_set('America/New_York');
 			</table>
 		</div>
 	</article>
-<?php
+	<?php
+}

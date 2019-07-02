@@ -211,7 +211,7 @@ require_once('charfunctions.php');
 				<li><a href="/npcs">NPC Database</a></li>
 			</ul>
 		</li>
-		<li><a href="/chat">Recent Chat</a></li>
+		<!--<li><a href="/chat">Recent Chat</a></li>-->
 		<li><a href="/worldmap">Live Map</a></li>
 		<li>
 			<label for="drop-5" class="toggle">Reports ▾</label>
