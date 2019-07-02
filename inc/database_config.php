@@ -938,7 +938,7 @@ function activityfeed()
 			echo '<img class="mb-1" src="../img/' . $row["group_id"] . '.svg" width="9" height="9"> ';
 		endif;
 		echo '
-							<img class="pr-2 float-left" src="https://game.openrsc.com/avatars/' . $row["pid"] . '.png" width="36" height="48" onerror="this.style.display=\'none\'">
+							<img class="pr-2 float-left" src="https://game.openrsc.com/img/avatars/' . $row["pid"] . '.png" width="36" height="48" onerror="this.style.display=\'none\'">
 							<span class="font-weight-bold">' . ucfirst($row["username"]) . '</span> ' . $row["message"] . '
 						</div>
 					</div>

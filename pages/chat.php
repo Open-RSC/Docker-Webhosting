@@ -45,7 +45,7 @@ date_default_timezone_set('America/New_York');
 						</td>
 						<td>
 							<img class="pr-2 float-left"
-								 src="https://game.openrsc.com/avatars/<?php echo $row["playerID"] ?>.png"
+								 src="https://game.openrsc.com/img/avatars/<?php echo $row["playerID"] ?>.png"
 								 width="36"
 								 height="48" onerror="this.style.display='none'">
 						</td>
