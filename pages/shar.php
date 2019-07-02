@@ -61,7 +61,7 @@ function bd_nice_number($n)
 		</h2>
 		<div class="sm-stats pl-3 pr-3">
 			<div class="pb-0 stats row justify-content-center text-primary">
-				<?php $file = 'https://game.openrsc.com/avatars/' . $character['id'] . '.png'; ?>
+				<?php $file = 'https://game.openrsc.com/img/avatars/' . $character['id'] . '.png'; ?>
 				<img class="pl-5" src="<?php echo $file; ?>" style="height: 125px;">
 				<div class="pl-5 col-6">
 					<span class="sm-stats text-info pt-3">Status:
