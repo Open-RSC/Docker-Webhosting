@@ -26,7 +26,7 @@ if ($subpage == $skill_array[0]) {
 }
 $args = $query[0];
 $order = $query[1];
-$stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_players.username, openrsc_players.login_date, openrsc_players.highscoreopt, $args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned != '1' AND openrsc_players.group_id = '10' AND openrsc_players.login_date >= unix_timestamp( current_date - interval 3 month ) AND openrsc_players.login_date >= '1539645175' ORDER BY $order DESC");
+$stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_players.username, openrsc_players.login_date, openrsc_players.highscoreopt, $args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned = '0' AND openrsc_players.group_id = '10' AND openrsc_players.login_date >= unix_timestamp( current_date - interval 3 month ) AND openrsc_players.login_date >= '1539645175' ORDER BY $order DESC");
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
