@@ -3,7 +3,7 @@ if (!defined('IN_SITE')) {
 	die("You do not have permission to access this file.");
 }
 
-$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
+$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft');
 
 function totalXP($skills)
 {
@@ -26,7 +26,7 @@ if ($subpage == $skill_array[0]) {
 }
 $args = $query[0];
 $order = $query[1];
-$stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_players.username, openrsc_players.login_date, openrsc_players.highscoreopt, $args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned = '0' AND openrsc_players.group_id = '10' AND openrsc_players.login_date >= unix_timestamp( current_date - interval 3 month ) AND openrsc_players.login_date >= '1539645175' ORDER BY $order DESC");
+$stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_players.username, openrsc_players.login_date, openrsc_players.highscoreopt, $args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned = '0' AND openrsc_players.group_id = '10' ORDER BY $order DESC");
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
@@ -35,9 +35,6 @@ $stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 			<?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
 		</h2>
-		<p class="text-center">
-			Note: Only players that have logged in within the last 3 months are shown.
-		</p>
 		<div class="highscores-menu">
 			<div class="dropdown skill-dropdown">
 				<a class="dropdown-toggle text-secondary" href="#" role="button" id="highscoresDropdown"
