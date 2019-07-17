@@ -3,7 +3,7 @@ if (!defined('IN_SITE')) {
 	die("You do not have permission to access this file.");
 }
 
-$skill_array = array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
+$skill_array = array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft');
 
 function buildSQLArray($array)
 {
@@ -64,7 +64,7 @@ function bd_nice_number($n)
 	<div class="container border-left border-info border-right table-wrapper-scroll-y mCustomScrollbar"
 		 data-mcs-theme="minimal">
 		<h2 class="h2 text-center text-capitalize display-3 pb-4"><?php
-			if ($character['group_id'] != 10): echo "<img class=\"pr-3 mb-4 pt-3\" src=\"../img/$character[group_id].svg\" height=\"48\" width=\"55\">";
+			if ($character['group_id'] != 10): echo "<img class=\"pr-3 mb-4 pt-3\" src=\"../img/$character[group_id].svg\" height=\"48\" width=\"55\" alt=\"group\">";
 			else: NULL; endif;
 			echo $character['username']; ?></h2>
 		<div class="row sm-stats justify-content-center" style="text-transform: unset;">
@@ -72,8 +72,8 @@ function bd_nice_number($n)
 				<div class="row justify-content-center">
 
 					<!-- Begin hide if highscore opt out unless admin or moderator -->
-					<?php if ($character['highscoreopt'] == 1 && ($user->data['group_id'] == '3' || $user->data['group_id'] == '2' || $user->data['group_id'] == '7' || $user->data['group_id'] == '1') || $user->data['group_id'] == '6') { ?>
-						<br/><h4 align="center">The player has decided to opt out of highscores</h4><br/>
+					<?php if ($character['highscoreopt'] == 1 || $character['group_id'] != '10') { ?>
+						<br/><h4 align="center">The player has decided to opt out of highscores or is a staff member</h4><br/>
 					<?php } else {
 						?>
 
