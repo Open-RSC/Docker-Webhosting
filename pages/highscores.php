@@ -35,13 +35,17 @@ $stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 			<?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
 		</h2>
+		<p class="text-center">
+			Note: Players transferred from another RSC private server are not displayed at this time.
+		</p>
 		<div class="highscores-menu">
 			<div class="dropdown skill-dropdown">
 				<a class="dropdown-toggle text-secondary" href="#" role="button" id="highscoresDropdown"
 				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
 					Select a skill
 				</a>
-				<div class="dropdown-menu" aria-labelledby="highscoresDropdown" style="width: 140px; background-color: rgba(19, 36, 47, 0.95);">
+				<div class="dropdown-menu" aria-labelledby="highscoresDropdown"
+					 style="width: 140px; background-color: rgba(19, 36, 47, 0.95);">
 					<?php foreach ($skill_array as $skill) { ?>
 						<a class="dropdown-item text-secondary" href="/highscores/<?php print $skill; ?>">
 							<img src="/img/skill_icons/<?php print $skill; ?>.svg"
@@ -124,7 +128,8 @@ $stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_
 							echo $idLink;
 						endif;
 						?>">
-							<time class="timeago" datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $row["login_date"]) ?>"></time>
+							<time class="timeago"
+								  datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $row["login_date"]) ?>"></time>
 						</div>
 					</td>
 				</tr>
