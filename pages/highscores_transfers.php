@@ -26,7 +26,7 @@ if ($subpage == $skill_array[0]) {
 }
 $args = $query[0];
 $order = $query[1];
-$stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_players.username, openrsc_players.login_date, openrsc_players.highscoreopt, $args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned = '0' AND openrsc_players.group_id = '10' AND openrsc_players.highscoreopt = '0' ORDER BY $order DESC");
+$stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_players.username, openrsc_players.login_date, openrsc_players.highscoreopt, $args FROM openrsc_experience LEFT JOIN openrsc_players ON openrsc_experience.playerID = openrsc_players.id WHERE openrsc_players.banned = '0' AND openrsc_players.group_id = '10' ORDER BY $order DESC");
 ?>
 
 <article class="text-info table-dark spaced-body full-width">
@@ -35,11 +35,6 @@ $stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_
 		<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
 			<?php print preg_replace("/[^A-Za-z0-9 ]/", " ", $subpage); ?>
 		</h2>
-		<p class="text-center">
-			<a href="/highscores_transfers/skill_total">
-				Players transferred from another RSC private server are not displayed by default. Click here to view all players.
-			</a>
-		</p>
 		<div class="highscores-menu">
 			<div class="dropdown skill-dropdown">
 				<a class="dropdown-toggle text-secondary" href="#" role="button" id="highscoresDropdown"
@@ -49,7 +44,7 @@ $stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_
 				<div class="dropdown-menu" aria-labelledby="highscoresDropdown"
 					 style="width: 140px; background-color: rgba(19, 36, 47, 0.95);">
 					<?php foreach ($skill_array as $skill) { ?>
-						<a class="dropdown-item text-secondary" href="/highscores/<?php print $skill; ?>">
+						<a class="dropdown-item text-secondary" href="/highscores_transfers/<?php print $skill; ?>">
 							<img src="/img/skill_icons/<?php print $skill; ?>.svg"
 								 alt="<?php print $skill; ?>" height="20px"/>
 							<?php print ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)); ?>
