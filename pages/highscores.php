@@ -80,55 +80,37 @@ $stat_result = $connector->cabbagegamequery("SELECT openrsc_players.id, openrsc_
 				<tr id="table">
 					<td class="text-capitalize username">
 						<div class="clickable-row" data-href="/player/<?php
-						if ($row['highscoreopt'] == 1): echo "null";
-						else:
 							echo $idLink;
-						endif;
 						?>">
 							<?php
-							//if ($row['highscoreopt'] == 1): echo "<i>(Hidden)</i>";
-							//else:
 								echo $row['username'];
-							//endif;
 							?>
 						</div>
 					</td>
 					<td class="rank">
 						<div class="clickable-row" data-href="/player/<?php
-						if ($row['highscoreopt'] == 1): echo "null";
-						else:
 							echo $idLink;
-						endif;
 						?>">
 							<?php echo $i; ?>
 						</div>
 					</td>
 					<td class="experience">
 						<div class="clickable-row" data-href="/player/<?php
-						if ($row['highscoreopt'] == 1): echo "null";
-						else:
 							echo $idLink;
-						endif;
 						?>">
 							<?php echo number_format(($subpage == $skill_array[0]) ? $row['skill_total'] : experienceToLevel($row['exp_' . $subpage] / 4.0)); ?>
 						</div>
 					</td>
 					<td class="experience">
 						<div class="clickable-row" data-href="/player/<?php
-						if ($row['highscoreopt'] == 1): echo "null";
-						else:
 							echo $idLink;
-						endif;
 						?>">
 							<?php echo number_format(($subpage == $skill_array[0]) ? intval(totalXP($row) / 4.0) : intval($row['exp_' . $subpage] / 4.0)); ?>
 						</div>
 					</td>
 					<td class="experience">
 						<div class="clickable-row" data-href="/player/<?php
-						if ($row['highscoreopt'] == 1): echo "null";
-						else:
 							echo $idLink;
-						endif;
 						?>">
 							<time class="timeago"
 								  datetime="<?php echo strftime("%Y-%m-%dT%H:%M:%S", $row["login_date"]) ?>"></time>
