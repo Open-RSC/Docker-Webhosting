@@ -70,13 +70,6 @@ function bd_nice_number($n)
 		<div class="row sm-stats justify-content-center" style="text-transform: unset;">
 			<div class="text-primary">
 				<div class="row justify-content-center">
-
-					<!-- Begin hide if highscore opt out unless admin or moderator -->
-					<?php if ($character['highscoreopt'] == 1 || $character['group_id'] != '10') { ?>
-						<br/><h4 align="center">The player has decided to opt out of highscores or is a staff member</h4><br/>
-					<?php } else {
-						?>
-
 						<!-- Avatar -->
 						<div class="pl-3 pr-3 container">
 						<div class="flex-row stats">
@@ -422,8 +415,6 @@ function bd_nice_number($n)
 						<?php } ?>
 						<!-- End staff view only -->
 
-					<?php } ?>
-					<!-- End player opt out view else -->
 				</div>
 				<?php } else { ?>
 					<article class="text-info table-dark spaced-body full-width">
