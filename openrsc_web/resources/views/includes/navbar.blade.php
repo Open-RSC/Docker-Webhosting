@@ -98,8 +98,7 @@
 			<a href="#">Reports</a>
 			<input type="checkbox" id="drop-5"/>
 			<ul>
-				<li><a href="https://goo.gl/forms/nnhSln7S81l4I26t2" target="_blank">Bug Reports</a></li>
-				<li><a href="https://goo.gl/forms/AkBzpOzgAmzWiZ8H2" target="_blank">Bot Reports</a></li>
+				<li><a href="https://gitlab.openrsc.com/open-rsc/Game/issues" target="_blank">Bug Reports</a></li>
 			</ul>
 		</li>
 	</ul>
