@@ -1,20 +1,18 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Handles table search tab
+ * Handles table search tab.
  *
  * display table search form, create SQL query from form data
  * and call Sql::executeQueryAndSendQueryResponse() to execute it
- *
- * @package PhpMyAdmin
  */
-
-use PhpMyAdmin\Controllers\Table\TableSearchController;
-use PhpMyAdmin\Di\Container;
 use PhpMyAdmin\Response;
+use PhpMyAdmin\Di\Container;
+use PhpMyAdmin\Controllers\Table\TableSearchController;
 
 /**
- * Gets some core libraries
+ * Gets some core libraries.
  */
 require_once 'libraries/common.inc.php';
 require_once 'libraries/tbl_common.inc.php';
@@ -28,10 +26,10 @@ $container->set('PhpMyAdmin\Response', Response::getInstance());
 $container->alias('response', 'PhpMyAdmin\Response');
 
 /* Define dependencies for the concerned controller */
-$dependency_definitions = array(
+$dependency_definitions = [
     'searchType' => 'normal',
-    'url_query' => &$url_query
-);
+    'url_query' => &$url_query,
+];
 
 /** @var TableSearchController $controller */
 $controller = $container->get('TableSearchController', $dependency_definitions);

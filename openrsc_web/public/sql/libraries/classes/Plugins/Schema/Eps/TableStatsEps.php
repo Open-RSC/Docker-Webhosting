@@ -1,47 +1,47 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Contains PhpMyAdmin\Plugins\Schema\Eps\TableStatsEps class
- *
- * @package PhpMyAdmin
+ * Contains PhpMyAdmin\Plugins\Schema\Eps\TableStatsEps class.
  */
+
 namespace PhpMyAdmin\Plugins\Schema\Eps;
 
 use PhpMyAdmin\Font;
-use PhpMyAdmin\Plugins\Schema\ExportRelationSchema;
 use PhpMyAdmin\Plugins\Schema\TableStats;
+use PhpMyAdmin\Plugins\Schema\ExportRelationSchema;
 
 /**
- * Table preferences/statistics
+ * Table preferences/statistics.
  *
  * This class preserves the table co-ordinates,fields
  * and helps in drawing/generating the Tables in EPS.
  *
- * @package PhpMyAdmin
  * @name    Table_Stats_Eps
  * @see     PMA_EPS
  */
 class TableStatsEps extends TableStats
 {
     /**
-     * Defines properties
+     * Defines properties.
      */
     public $height;
+
     public $currentCell = 0;
 
     /**
-     * The "PhpMyAdmin\Plugins\Schema\Eps\TableStatsEps" constructor
+     * The "PhpMyAdmin\Plugins\Schema\Eps\TableStatsEps" constructor.
      *
      * @param object  $diagram          The EPS diagram
      * @param string  $db               The database name
      * @param string  $tableName        The table name
      * @param string  $font             The font  name
-     * @param integer $fontSize         The font size
-     * @param integer $pageNumber       Page number
-     * @param integer &$same_wide_width The max width among tables
-     * @param boolean $showKeys         Whether to display keys or not
-     * @param boolean $tableDimension   Whether to display table position or not
-     * @param boolean $offline          Whether the coordinates are sent
+     * @param int $fontSize         The font size
+     * @param int $pageNumber       Page number
+     * @param int &$same_wide_width The max width among tables
+     * @param bool $showKeys         Whether to display keys or not
+     * @param bool $tableDimension   Whether to display table position or not
+     * @param bool $offline          Whether the coordinates are sent
      *                                  from the browser
      *
      * @see PMA_EPS, Table_Stats_Eps::Table_Stats_setWidth,
@@ -88,16 +88,16 @@ class TableStatsEps extends TableStats
     {
         ExportRelationSchema::dieSchema(
             $this->pageNumber,
-            "EPS",
+            'EPS',
             sprintf(__('The %s table doesn\'t exist!'), $this->tableName)
         );
     }
 
     /**
-     * Sets the width of the table
+     * Sets the width of the table.
      *
      * @param string  $font     The font name
-     * @param integer $fontSize The font size
+     * @param int $fontSize The font size
      *
      * @return void
      *
@@ -131,9 +131,9 @@ class TableStatsEps extends TableStats
     }
 
     /**
-     * Sets the height of the table
+     * Sets the height of the table.
      *
-     * @param integer $fontSize The font size
+     * @param int $fontSize The font size
      *
      * @return void
      */
@@ -144,9 +144,9 @@ class TableStatsEps extends TableStats
     }
 
     /**
-     * Draw the table
+     * Draw the table.
      *
-     * @param boolean $showColor Whether to display color
+     * @param bool $showColor Whether to display color
      *
      * @return void
      *

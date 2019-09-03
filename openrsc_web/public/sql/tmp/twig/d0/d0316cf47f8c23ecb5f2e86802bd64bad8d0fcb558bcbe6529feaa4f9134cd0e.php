@@ -16,17 +16,17 @@ class __TwigTemplate_e0d5203e5c83dc69595d08849f3042e9f4276488fdf0497169a595c98a8
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<td ";
-        echo twig_escape_filter($this->env, ($context["align"] ?? null), "html", null, true);
-        echo " class=\"";
-        echo twig_escape_filter($this->env, ($context["classes"] ?? null), "html", null, true);
-        echo "\"></td>
-";
+        echo '<td ';
+        echo twig_escape_filter($this->env, ($context['align'] ?? null), 'html', null, true);
+        echo ' class="';
+        echo twig_escape_filter($this->env, ($context['classes'] ?? null), 'html', null, true);
+        echo '"></td>
+';
     }
 
     public function getTemplateName()
     {
-        return "display/results/empty_display.twig";
+        return 'display/results/empty_display.twig';
     }
 
     public function isTraitable()
@@ -36,7 +36,7 @@ class __TwigTemplate_e0d5203e5c83dc69595d08849f3042e9f4276488fdf0497169a595c98a8
 
     public function getDebugInfo()
     {
-        return array (  19 => 1,);
+        return [19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -49,6 +49,6 @@ class __TwigTemplate_e0d5203e5c83dc69595d08849f3042e9f4276488fdf0497169a595c98a8
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/results/empty_display.twig", "/var/www/html/openrsc_web/public/sql/templates/display/results/empty_display.twig");
+        return new Twig_Source('', 'display/results/empty_display.twig', '/var/www/html/openrsc_web/public/sql/templates/display/results/empty_display.twig');
     }
 }

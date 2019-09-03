@@ -1,10 +1,10 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * User preferences form
- *
- * @package PhpMyAdmin
+ * User preferences form.
  */
+
 namespace PhpMyAdmin\Config\Forms\Setup;
 
 class FeaturesForm extends \PhpMyAdmin\Config\Forms\User\FeaturesForm
@@ -18,7 +18,7 @@ class FeaturesForm extends \PhpMyAdmin\Config\Forms\User\FeaturesForm
             ['Servers/1/only_db', 'Servers/1/hide_db']
         );
         /* Following are not available to user */
-        $result['Import_export'] = array(
+        $result['Import_export'] = [
             'UploadDir',
             'SaveDir',
             'RecodingEngine' => ':group',
@@ -27,9 +27,9 @@ class FeaturesForm extends \PhpMyAdmin\Config\Forms\User\FeaturesForm
             'ZipDump',
             'GZipDump',
             'BZipDump',
-            'CompressOnFly'
-        );
-        $result['Security'] = array(
+            'CompressOnFly',
+        ];
+        $result['Security'] = [
             'blowfish_secret',
             'CheckConfigurationPermissions',
             'TrustedProxies',
@@ -40,13 +40,13 @@ class FeaturesForm extends \PhpMyAdmin\Config\Forms\User\FeaturesForm
             'LoginCookieStore',
             'LoginCookieDeleteAll',
             'CaptchaLoginPublicKey',
-            'CaptchaLoginPrivateKey'
-        );
-        $result['Developer'] = array(
+            'CaptchaLoginPrivateKey',
+        ];
+        $result['Developer'] = [
             'UserprefsDeveloperTab',
             'DBG/sql',
-        );
-        $result['Other_core_settings'] = array(
+        ];
+        $result['Other_core_settings'] = [
             'OBGzip',
             'PersistentConnections',
             'ExecTimeLimit',
@@ -57,7 +57,8 @@ class FeaturesForm extends \PhpMyAdmin\Config\Forms\User\FeaturesForm
             'ProxyPass',
             'AllowThirdPartyFraming',
             'ZeroConf',
-        );
+        ];
+
         return $result;
     }
 }

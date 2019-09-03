@@ -1,26 +1,22 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Handles the binary to IPv4/IPv6 transformation for text plain
- *
- * @package    PhpMyAdmin-Transformations
- * @subpackage BinaryToIP
+ * Handles the binary to IPv4/IPv6 transformation for text plain.
  */
+
 namespace PhpMyAdmin\Plugins\Transformations\Output;
 
 use PhpMyAdmin\Plugins\TransformationsPlugin;
 
 /**
- * Handles the binary to IPv4/IPv6 transformation for text plain
- *
- * @package    PhpMyAdmin-Transformations
- * @subpackage BinaryToIP
+ * Handles the binary to IPv4/IPv6 transformation for text plain.
  */
 // @codingStandardsIgnoreLine
 class Text_Plain_Binarytoip extends TransformationsPlugin
 {
     /**
-     * Gets the transformation description of the plugin
+     * Gets the transformation description of the plugin.
      *
      * @return string
      */
@@ -28,7 +24,7 @@ class Text_Plain_Binarytoip extends TransformationsPlugin
     {
         return __(
             'Converts an Internet network address stored as a binary string'
-            . ' into a string in Internet standard (IPv4/IPv6) format.'
+            .' into a string in Internet standard (IPv4/IPv6) format.'
         );
     }
 
@@ -43,11 +39,11 @@ class Text_Plain_Binarytoip extends TransformationsPlugin
      *
      * @return string IP address
      */
-    public function applyTransformation($buffer, array $options = array(), $meta = '')
+    public function applyTransformation($buffer, array $options = [], $meta = '')
     {
         $length = strlen($buffer);
         if ($length == 4 || $length == 16) {
-            $val = @inet_ntop(pack('A' . $length, $buffer));
+            $val = @inet_ntop(pack('A'.$length, $buffer));
             if ($val !== false) {
                 return $val;
             }
@@ -56,36 +52,35 @@ class Text_Plain_Binarytoip extends TransformationsPlugin
         return $buffer;
     }
 
-
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the plugin
+     * Gets the transformation name of the plugin.
      *
      * @return string
      */
     public static function getName()
     {
-        return "Binary To IPv4/IPv6";
+        return 'Binary To IPv4/IPv6';
     }
 
     /**
-     * Gets the plugin`s MIME type
+     * Gets the plugin`s MIME type.
      *
      * @return string
      */
     public static function getMIMEType()
     {
-        return "Text";
+        return 'Text';
     }
 
     /**
-     * Gets the plugin`s MIME subtype
+     * Gets the plugin`s MIME subtype.
      *
      * @return string
      */
     public static function getMIMESubtype()
     {
-        return "Plain";
+        return 'Plain';
     }
 }

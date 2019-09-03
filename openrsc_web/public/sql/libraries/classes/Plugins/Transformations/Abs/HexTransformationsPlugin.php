@@ -1,24 +1,21 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the hex transformations plugins
- *
- * @package    PhpMyAdmin-Transformations
- * @subpackage Hex
+ * Abstract class for the hex transformations plugins.
  */
+
 namespace PhpMyAdmin\Plugins\Transformations\Abs;
 
 use PhpMyAdmin\Plugins\TransformationsPlugin;
 
 /**
  * Provides common methods for all of the hex transformations plugins.
- *
- * @package PhpMyAdmin
  */
 abstract class HexTransformationsPlugin extends TransformationsPlugin
 {
     /**
-     * Gets the transformation description of the specific plugin
+     * Gets the transformation description of the specific plugin.
      *
      * @return string
      */
@@ -26,8 +23,8 @@ abstract class HexTransformationsPlugin extends TransformationsPlugin
     {
         return __(
             'Displays hexadecimal representation of data. Optional first'
-            . ' parameter specifies how often space will be added (defaults'
-            . ' to 2 nibbles).'
+            .' parameter specifies how often space will be added (defaults'
+            .' to 2 nibbles).'
         );
     }
 
@@ -40,7 +37,7 @@ abstract class HexTransformationsPlugin extends TransformationsPlugin
      *
      * @return string
      */
-    public function applyTransformation($buffer, array $options = array(), $meta = '')
+    public function applyTransformation($buffer, array $options = [], $meta = '')
     {
         // possibly use a global transform and feed it with special options
         $cfg = $GLOBALS['cfg'];
@@ -57,12 +54,12 @@ abstract class HexTransformationsPlugin extends TransformationsPlugin
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the specific plugin
+     * Gets the transformation name of the specific plugin.
      *
      * @return string
      */
     public static function getName()
     {
-        return "Hex";
+        return 'Hex';
     }
 }

@@ -1,36 +1,44 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Contains abstract class to hold relation preferences/statistics
- *
- * @package PhpMyAdmin
+ * Contains abstract class to hold relation preferences/statistics.
  */
+
 namespace PhpMyAdmin\Plugins\Schema;
 
 /**
- * Relations preferences/statistics
+ * Relations preferences/statistics.
  *
  * This class fetches the table master and foreign fields positions
  * and helps in generating the Table references and then connects
  * master table's master field to foreign table's foreign key.
  *
- * @package PhpMyAdmin
  * @abstract
  */
 abstract class RelationStats
 {
     protected $diagram;
+
     /**
-     * Defines properties
+     * Defines properties.
      */
-    public $xSrc, $ySrc;
+    public $xSrc;
+
+    public $ySrc;
+
     public $srcDir;
+
     public $destDir;
-    public $xDest, $yDest;
+
+    public $xDest;
+
+    public $yDest;
+
     public $wTick;
 
     /**
-     * The constructor
+     * The constructor.
      *
      * @param object $diagram       The diagram
      * @param string $master_table  The master table name
@@ -91,24 +99,22 @@ abstract class RelationStats
     }
 
     /**
-     * Gets arrows coordinates
+     * Gets arrows coordinates.
      *
      * @param string $table  The current table name
      * @param string $column The relation column name
      *
      * @return array Arrows coordinates
-     *
-     * @access private
      */
     private function _getXy($table, $column)
     {
         $pos = array_search($column, $table->fields);
 
         // x_left, x_right, y
-        return array(
+        return [
             $table->x,
             $table->x + $table->width,
             $table->y + ($pos + 1.5) * $table->heightCell,
-        );
+        ];
     }
 }

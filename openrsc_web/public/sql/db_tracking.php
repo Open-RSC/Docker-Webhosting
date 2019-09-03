@@ -1,27 +1,26 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Tracking configuration for database
- *
- * @package PhpMyAdmin
+ * Tracking configuration for database.
  */
-use PhpMyAdmin\Display\CreateTable;
+use PhpMyAdmin\Util;
 use PhpMyAdmin\Message;
+use PhpMyAdmin\Tracker;
 use PhpMyAdmin\Relation;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\Tracker;
 use PhpMyAdmin\Tracking;
-use PhpMyAdmin\Util;
+use PhpMyAdmin\Display\CreateTable;
 
 /**
- * Run common work
+ * Run common work.
  */
 require_once 'libraries/common.inc.php';
 
 //Get some js files needed for Ajax requests
 $response = Response::getInstance();
-$header   = $response->getHeader();
-$scripts  = $header->getScripts();
+$header = $response->getHeader();
+$scripts = $header->getScripts();
 $scripts->addFile('vendor/jquery/jquery.tablesorter.js');
 $scripts->addFile('db_tracking.js');
 
@@ -49,41 +48,33 @@ list(
 ) = Util::getDbInfo($db, isset($sub_part) ? $sub_part : '');
 
 if (isset($_POST['delete_tracking']) && isset($_POST['table'])) {
-
     Tracker::deleteTracking($GLOBALS['db'], $_POST['table']);
     Message::success(
         __('Tracking data deleted successfully.')
     )->display();
-
 } elseif (isset($_POST['submit_create_version'])) {
-
     Tracking::createTrackingForMultipleTables($_POST['selected']);
     Message::success(
         sprintf(
             __(
                 'Version %1$s was created for selected tables,'
-                . ' tracking is active for them.'
+                .' tracking is active for them.'
             ),
             htmlspecialchars($_POST['version'])
         )
     )->display();
-
 } elseif (isset($_POST['submit_mult'])) {
-
     if (! empty($_POST['selected_tbl'])) {
         if ($_POST['submit_mult'] == 'delete_tracking') {
-
             foreach ($_POST['selected_tbl'] as $table) {
                 Tracker::deleteTracking($GLOBALS['db'], $table);
             }
             Message::success(
                 __('Tracking data deleted successfully.')
             )->display();
-
         } elseif ($_POST['submit_mult'] == 'track') {
-
             echo Tracking::getHtmlForDataDefinitionAndManipulationStatements(
-                'db_tracking.php' . $url_query,
+                'db_tracking.php'.$url_query,
                 0,
                 $GLOBALS['db'],
                 $_POST['selected_tbl']
@@ -115,12 +106,12 @@ $relation = new Relation();
 $cfgRelation = $relation->getRelationsParam();
 
 // Prepare statement to get HEAD version
-$all_tables_query = ' SELECT table_name, MAX(version) as version FROM ' .
-    Util::backquote($cfgRelation['db']) . '.' .
-    Util::backquote($cfgRelation['tracking']) .
-    ' WHERE db_name = \'' . $GLOBALS['dbi']->escapeString($GLOBALS['db']) .
-    '\' ' .
-    ' GROUP BY table_name' .
+$all_tables_query = ' SELECT table_name, MAX(version) as version FROM '.
+    Util::backquote($cfgRelation['db']).'.'.
+    Util::backquote($cfgRelation['tracking']).
+    ' WHERE db_name = \''.$GLOBALS['dbi']->escapeString($GLOBALS['db']).
+    '\' '.
+    ' GROUP BY table_name'.
     ' ORDER BY table_name ASC';
 
 $all_tables_result = $relation->queryAsControlUser($all_tables_query);
@@ -147,8 +138,8 @@ if (count($untracked_tables) > 0) {
 if (count($data['ddlog']) > 0) {
     $log = '';
     foreach ($data['ddlog'] as $entry) {
-        $log .= '# ' . $entry['date'] . ' ' . $entry['username'] . "\n"
-            . $entry['statement'] . "\n";
+        $log .= '# '.$entry['date'].' '.$entry['username']."\n"
+            .$entry['statement']."\n";
     }
     echo Util::getMessage(__('Database Log'), $log);
 }

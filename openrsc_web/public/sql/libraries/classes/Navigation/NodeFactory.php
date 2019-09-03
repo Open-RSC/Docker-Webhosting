@@ -1,24 +1,23 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * This class is responsible for creating Node objects
- *
- * @package PhpMyAdmin-navigation
+ * This class is responsible for creating Node objects.
  */
+
 namespace PhpMyAdmin\Navigation;
 
 use PhpMyAdmin\Navigation\Nodes\Node;
 
 /**
- * Node factory - instantiates Node objects or objects derived from the Node class
- *
- * @package PhpMyAdmin-Navigation
+ * Node factory - instantiates Node objects or objects derived from the Node class.
  */
 class NodeFactory
 {
     protected static $_namespace = 'PhpMyAdmin\\Navigation\\Nodes\\%s';
+
     /**
-     * Sanitizes the name of a Node class
+     * Sanitizes the name of a Node class.
      *
      * @param string $class The class name to be sanitized
      *
@@ -26,7 +25,7 @@ class NodeFactory
      */
     private static function _sanitizeClass($class)
     {
-        if (!preg_match('@^Node\w*$@', $class)) {
+        if (! preg_match('@^Node\w*$@', $class)) {
             $class = 'Node';
             trigger_error(
                 sprintf(
@@ -44,7 +43,7 @@ class NodeFactory
     /**
      * Checks if a class exists and try to load it.
      * Will return the default class name back if the
-     * file for some subclass is not available
+     * file for some subclass is not available.
      *
      * @param string $class The class name to check
      *
@@ -69,7 +68,7 @@ class NodeFactory
     }
 
     /**
-     * Instantiates a Node object
+     * Instantiates a Node object.
      *
      * @param string $class    The name of the class to instantiate
      * @param string $name     An identifier for the new node
@@ -86,6 +85,7 @@ class NodeFactory
         $is_group = false
     ) {
         $class = self::_sanitizeClass($class);
+
         return new $class($name, $type, $is_group);
     }
 }

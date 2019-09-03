@@ -1,25 +1,21 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the Bool2Text transformations plugins
- *
- * @package    PhpMyAdmin-Transformations
- * @subpackage Bool2Text
+ * Abstract class for the Bool2Text transformations plugins.
  */
+
 namespace PhpMyAdmin\Plugins\Transformations\Abs;
 
 use PhpMyAdmin\Plugins\TransformationsPlugin;
 
 /**
  * Provides common methods for all of the Bool2Text transformations plugins.
- *
- * @package    PhpMyAdmin-Transformations
- * @subpackage Bool2Text
  */
 abstract class Bool2TextTransformationsPlugin extends TransformationsPlugin
 {
     /**
-     * Gets the transformation description of the specific plugin
+     * Gets the transformation description of the specific plugin.
      *
      * @return string
      */
@@ -27,7 +23,7 @@ abstract class Bool2TextTransformationsPlugin extends TransformationsPlugin
     {
         return __(
             'Converts Boolean values to text (default \'T\' and \'F\').'
-            . ' First option is for TRUE, second for FALSE. Nonzero=true.'
+            .' First option is for TRUE, second for FALSE. Nonzero=true.'
         );
     }
 
@@ -40,7 +36,7 @@ abstract class Bool2TextTransformationsPlugin extends TransformationsPlugin
      *
      * @return string
      */
-    public function applyTransformation($buffer, array $options = array(), $meta = '')
+    public function applyTransformation($buffer, array $options = [], $meta = '')
     {
         $cfg = $GLOBALS['cfg'];
         $options = $this->getOptions($options, $cfg['DefaultTransformations']['Bool2Text']);
@@ -55,12 +51,12 @@ abstract class Bool2TextTransformationsPlugin extends TransformationsPlugin
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the specific plugin
+     * Gets the transformation name of the specific plugin.
      *
      * @return string
      */
     public static function getName()
     {
-        return "Bool2Text";
+        return 'Bool2Text';
     }
 }

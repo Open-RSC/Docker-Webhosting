@@ -1,14 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Handles server engines page.
- *
- * @package PhpMyAdmin
  */
-
-use PhpMyAdmin\Controllers\Server\ServerEnginesController;
-use PhpMyAdmin\Di\Container;
 use PhpMyAdmin\Response;
+use PhpMyAdmin\Di\Container;
+use PhpMyAdmin\Controllers\Server\ServerEnginesController;
 
 require_once 'libraries/common.inc.php';
 
@@ -25,6 +23,6 @@ $container->alias('response', 'PhpMyAdmin\Response');
 
 /** @var ServerEnginesController $controller */
 $controller = $container->get(
-    'ServerEnginesController', array()
+    'ServerEnginesController', []
 );
 $controller->indexAction();

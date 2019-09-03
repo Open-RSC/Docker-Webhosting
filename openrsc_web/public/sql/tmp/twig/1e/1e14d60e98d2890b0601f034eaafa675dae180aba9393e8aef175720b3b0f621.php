@@ -16,57 +16,57 @@ class __TwigTemplate_9f5f554b18e83b9ce81d7f39b4f7ce4bb21e821e9045c89d25d2ffa3104
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<select id=\"field_";
-        echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-        echo "_";
-        echo twig_escape_filter($this->env, (($context["ci"] ?? null) - ($context["ci_offset"] ?? null)), "html", null, true);
-        echo "\"
-    name=\"field_move_to[";
+        echo '<select id="field_';
+        echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+        echo '_';
+        echo twig_escape_filter($this->env, (($context['ci'] ?? null) - ($context['ci_offset'] ?? null)), 'html', null, true);
+        echo '"
+    name="field_move_to[';
         // line 2
-        echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-        echo "]\"
-    size=\"1\"
-    width=\"5em\">
-    <option value=\"\" selected=\"selected\">&nbsp;</option>
-    <option value=\"-first\"";
+        echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+        echo ']"
+    size="1"
+    width="5em">
+    <option value="" selected="selected">&nbsp;</option>
+    <option value="-first"';
         // line 6
-        echo (((($context["current_index"] ?? null) == 0)) ? (" disabled=\"disabled\"") : (""));
-        echo ">
-        ";
+        echo ((($context['current_index'] ?? null) == 0)) ? (' disabled="disabled"') : ('');
+        echo '>
+        ';
         // line 7
-        echo _gettext("first");
+        echo _gettext('first');
         // line 8
-        echo "    </option>
-    ";
+        echo '    </option>
+    ';
         // line 9
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(range(0, (twig_length_filter($this->env, ($context["move_columns"] ?? null)) - 1)));
-        foreach ($context['_seq'] as $context["_key"] => $context["mi"]) {
+        $context['_seq'] = twig_ensure_traversable(range(0, (twig_length_filter($this->env, ($context['move_columns'] ?? null)) - 1)));
+        foreach ($context['_seq'] as $context['_key'] => $context['mi']) {
             // line 10
-            echo "        <option value=\"";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["move_columns"] ?? null), $context["mi"], [], "array"), "name", []), "html", null, true);
-            echo "\"";
+            echo '        <option value="';
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context['move_columns'] ?? null), $context['mi'], [], 'array'), 'name', []), 'html', null, true);
+            echo '"';
             // line 11
-            echo ((((($context["current_index"] ?? null) == $context["mi"]) || (($context["current_index"] ?? null) == ($context["mi"] + 1)))) ? (" disabled=\"disabled\"") : (""));
-            echo ">
-            ";
+            echo (((($context['current_index'] ?? null) == $context['mi']) || (($context['current_index'] ?? null) == ($context['mi'] + 1)))) ? (' disabled="disabled"') : ('');
+            echo '>
+            ';
             // line 12
-            echo twig_escape_filter($this->env, sprintf(_gettext("after %s"), PhpMyAdmin\Util::backquote(twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["move_columns"] ?? null), $context["mi"], [], "array"), "name", [])))), "html", null, true);
-            echo "
+            echo twig_escape_filter($this->env, sprintf(_gettext('after %s'), PhpMyAdmin\Util::backquote(twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context['move_columns'] ?? null), $context['mi'], [], 'array'), 'name', [])))), 'html', null, true);
+            echo '
         </option>
-    ";
+    ';
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['mi'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 15
-        echo "</select>
-";
+        echo '</select>
+';
     }
 
     public function getTemplateName()
     {
-        return "columns_definitions/move_column.twig";
+        return 'columns_definitions/move_column.twig';
     }
 
     public function isTraitable()
@@ -76,7 +76,7 @@ class __TwigTemplate_9f5f554b18e83b9ce81d7f39b4f7ce4bb21e821e9045c89d25d2ffa3104
 
     public function getDebugInfo()
     {
-        return array (  63 => 15,  54 => 12,  50 => 11,  46 => 10,  42 => 9,  39 => 8,  37 => 7,  33 => 6,  26 => 2,  19 => 1,);
+        return [63 => 15,  54 => 12,  50 => 11,  46 => 10,  42 => 9,  39 => 8,  37 => 7,  33 => 6,  26 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -89,6 +89,6 @@ class __TwigTemplate_9f5f554b18e83b9ce81d7f39b4f7ce4bb21e821e9045c89d25d2ffa3104
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "columns_definitions/move_column.twig", "/var/www/html/sql/templates/columns_definitions/move_column.twig");
+        return new Twig_Source('', 'columns_definitions/move_column.twig', '/var/www/html/sql/templates/columns_definitions/move_column.twig');
     }
 }

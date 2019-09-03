@@ -1,21 +1,21 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Second authentication factor handling
- *
- * @package PhpMyAdmin
+ * Second authentication factor handling.
  */
+
 namespace PhpMyAdmin\Plugins\TwoFactor;
 
 use PhpMyAdmin\Response;
-use PhpMyAdmin\TwoFactor;
 use PhpMyAdmin\Template;
-use PhpMyAdmin\Plugins\TwoFactorPlugin;
+use PhpMyAdmin\TwoFactor;
 use Samyoul\U2F\U2FServer\U2FServer;
+use PhpMyAdmin\Plugins\TwoFactorPlugin;
 use Samyoul\U2F\U2FServer\U2FException;
 
 /**
- * Hardware key based two-factor authentication
+ * Hardware key based two-factor authentication.
  *
  * Supports FIDO U2F tokens
  */
@@ -27,20 +27,20 @@ class Key extends TwoFactorPlugin
     public static $id = 'key';
 
     /**
-     * Creates object
+     * Creates object.
      *
      * @param TwoFactor $twofactor TwoFactor instance
      */
     public function __construct(TwoFactor $twofactor)
     {
         parent::__construct($twofactor);
-        if (!isset($this->_twofactor->config['settings']['registrations'])) {
+        if (! isset($this->_twofactor->config['settings']['registrations'])) {
             $this->_twofactor->config['settings']['registrations'] = [];
         }
     }
 
     /**
-     * Returns array of U2F registration objects
+     * Returns array of U2F registration objects.
      *
      * @return array
      */
@@ -56,21 +56,23 @@ class Key extends TwoFactorPlugin
             $reg->index = $index;
             $result[] = $reg;
         }
+
         return $result;
     }
 
     /**
-     * Checks authentication, returns true on success
+     * Checks authentication, returns true on success.
      *
-     * @return boolean
+     * @return bool
      */
     public function check()
     {
         $this->_provided = false;
-        if (!isset($_POST['u2f_authentication_response']) || !isset($_SESSION['authenticationRequest'])) {
+        if (! isset($_POST['u2f_authentication_response']) || ! isset($_SESSION['authenticationRequest'])) {
             return false;
         }
         $this->_provided = true;
+
         try {
             $response = json_decode($_POST['u2f_authentication_response']);
             if (is_null($response)) {
@@ -83,15 +85,17 @@ class Key extends TwoFactorPlugin
             );
             $this->_twofactor->config['settings']['registrations'][$authentication->index]['counter'] = $authentication->counter;
             $this->_twofactor->save();
+
             return true;
         } catch (U2FException $e) {
             $this->_message = $e->getMessage();
+
             return false;
         }
     }
 
     /**
-     * Loads needed javascripts into the page
+     * Loads needed javascripts into the page.
      *
      * @return void
      */
@@ -104,7 +108,7 @@ class Key extends TwoFactorPlugin
     }
 
     /**
-     * Renders user interface to enter two-factor authentication
+     * Renders user interface to enter two-factor authentication.
      *
      * @return string HTML code
      */
@@ -116,6 +120,7 @@ class Key extends TwoFactorPlugin
         );
         $_SESSION['authenticationRequest'] = $request;
         $this->loadScripts();
+
         return Template::get('login/twofactor/key')->render([
             'request' => json_encode($request),
             'is_https' => $GLOBALS['PMA_Config']->isHttps(),
@@ -123,7 +128,7 @@ class Key extends TwoFactorPlugin
     }
 
     /**
-     * Renders user interface to configure two-factor authentication
+     * Renders user interface to configure two-factor authentication.
      *
      * @return string HTML code
      */
@@ -136,6 +141,7 @@ class Key extends TwoFactorPlugin
         $_SESSION['registrationRequest'] = $registrationData['request'];
 
         $this->loadScripts();
+
         return Template::get('login/twofactor/key_configure')->render([
             'request' => json_encode($registrationData['request']),
             'signatures' => json_encode($registrationData['signatures']),
@@ -144,9 +150,9 @@ class Key extends TwoFactorPlugin
     }
 
     /**
-     * Performs backend configuration
+     * Performs backend configuration.
      *
-     * @return boolean
+     * @return bool
      */
     public function configure()
     {
@@ -155,6 +161,7 @@ class Key extends TwoFactorPlugin
             return false;
         }
         $this->_provided = true;
+
         try {
             $response = json_decode($_POST['u2f_registration_response']);
             if (is_null($response)) {
@@ -169,15 +176,17 @@ class Key extends TwoFactorPlugin
                 'certificate' => $registration->getCertificate(),
                 'counter' => $registration->getCounter(),
             ];
+
             return true;
         } catch (U2FException $e) {
             $this->_message = $e->getMessage();
+
             return false;
         }
     }
 
     /**
-     * Get user visible name
+     * Get user visible name.
      *
      * @return string
      */
@@ -187,7 +196,7 @@ class Key extends TwoFactorPlugin
     }
 
     /**
-     * Get user visible description
+     * Get user visible description.
      *
      * @return string
      */

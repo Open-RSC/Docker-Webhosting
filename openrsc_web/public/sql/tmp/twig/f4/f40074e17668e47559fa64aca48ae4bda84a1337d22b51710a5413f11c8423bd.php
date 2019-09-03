@@ -16,48 +16,48 @@ class __TwigTemplate_933696f925b8d43d9c441fd290f55f02af77756c9b2f3b0cc373b0c2ccb
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        if ((($context["export_method"] ?? null) != "custom-no-form")) {
+        if ((($context['export_method'] ?? null) != 'custom-no-form')) {
             // line 2
-            echo "    <div class=\"exportoptions\" id=\"quick_or_custom\">
-        <h3>";
+            echo '    <div class="exportoptions" id="quick_or_custom">
+        <h3>';
             // line 3
-            echo _gettext("Export method:");
-            echo "</h3>
+            echo _gettext('Export method:');
+            echo '</h3>
         <ul>
             <li>
-                <input type=\"radio\" name=\"quick_or_custom\" value=\"quick\" id=\"radio_quick_export\"";
+                <input type="radio" name="quick_or_custom" value="quick" id="radio_quick_export"';
             // line 7
-            echo (((($context["export_method"] ?? null) == "quick")) ? (" checked") : (""));
-            echo ">
-                <label for=\"radio_quick_export\">
-                    ";
+            echo ((($context['export_method'] ?? null) == 'quick')) ? (' checked') : ('');
+            echo '>
+                <label for="radio_quick_export">
+                    ';
             // line 9
-            echo _gettext("Quick - display only the minimal options");
+            echo _gettext('Quick - display only the minimal options');
             // line 10
-            echo "                </label>
+            echo '                </label>
             </li>
 
             <li>
-                <input type=\"radio\" name=\"quick_or_custom\" value=\"custom\" id=\"radio_custom_export\"";
+                <input type="radio" name="quick_or_custom" value="custom" id="radio_custom_export"';
             // line 15
-            echo (((($context["export_method"] ?? null) == "custom")) ? (" checked") : (""));
-            echo ">
-                <label for=\"radio_custom_export\">
-                    ";
+            echo ((($context['export_method'] ?? null) == 'custom')) ? (' checked') : ('');
+            echo '>
+                <label for="radio_custom_export">
+                    ';
             // line 17
-            echo _gettext("Custom - display all possible options");
+            echo _gettext('Custom - display all possible options');
             // line 18
-            echo "                </label>
+            echo '                </label>
             </li>
         </ul>
     </div>
-";
+';
         }
     }
 
     public function getTemplateName()
     {
-        return "display/export/method.twig";
+        return 'display/export/method.twig';
     }
 
     public function isTraitable()
@@ -67,7 +67,7 @@ class __TwigTemplate_933696f925b8d43d9c441fd290f55f02af77756c9b2f3b0cc373b0c2ccb
 
     public function getDebugInfo()
     {
-        return array (  50 => 18,  48 => 17,  43 => 15,  37 => 10,  35 => 9,  30 => 7,  24 => 3,  21 => 2,  19 => 1,);
+        return [50 => 18,  48 => 17,  43 => 15,  37 => 10,  35 => 9,  30 => 7,  24 => 3,  21 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -80,6 +80,6 @@ class __TwigTemplate_933696f925b8d43d9c441fd290f55f02af77756c9b2f3b0cc373b0c2ccb
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/export/method.twig", "/var/www/html/sql/templates/display/export/method.twig");
+        return new Twig_Source('', 'display/export/method.twig', '/var/www/html/sql/templates/display/export/method.twig');
     }
 }

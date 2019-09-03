@@ -1,17 +1,16 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * MIME detection code.
  *
- * @package PhpMyAdmin
  * @todo Maybe we could try to use fileinfo module if loaded
  */
+
 namespace PhpMyAdmin;
 
 /**
- * PhpMyAdmin\Mime class;
- *
- * @package PhpMyAdmin
+ * PhpMyAdmin\Mime class;.
  */
 class Mime
 {
@@ -34,6 +33,7 @@ class Mime
         if ($len >= 4 && mb_substr($test, 0, 4) == "\x89PNG") {
             return 'image/png';
         }
+
         return 'application/octet-stream';
     }
 }

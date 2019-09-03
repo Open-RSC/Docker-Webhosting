@@ -1,28 +1,26 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * functions for displaying import for: server, database and table
- *
- * @package PhpMyAdmin
+ * functions for displaying import for: server, database and table.
  */
+
 namespace PhpMyAdmin\Display;
 
 use PhpMyAdmin\Core;
-use PhpMyAdmin\Display\ImportAjax;
-use PhpMyAdmin\Encoding;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Plugins;
+use PhpMyAdmin\Encoding;
 use PhpMyAdmin\Template;
+use PhpMyAdmin\Display\ImportAjax;
 
 /**
- * PhpMyAdmin\Display\Import class
- *
- * @package PhpMyAdmin
+ * PhpMyAdmin\Display\Import class.
  */
 class Import
 {
     /**
-     * Gets HTML to display import dialogs
+     * Gets HTML to display import dialogs.
      *
      * @param string $importType    Import type: server|database|table
      * @param string $db            Selected DB
@@ -38,13 +36,12 @@ class Import
 
         list(
             $SESSION_KEY,
-            $uploadId,
-        ) = ImportAjax::uploadProgressSetup();
+            $uploadId) = ImportAjax::uploadProgressSetup();
 
         /* Scan for plugins */
         /* @var $importList \PhpMyAdmin\Plugins\ImportPlugin[] */
         $importList = Plugins::getPlugins(
-            "import",
+            'import',
             'libraries/classes/Plugins/Import/',
             $importType
         );
@@ -72,7 +69,7 @@ class Import
         }
 
         // zip, gzip and bzip2 encode features
-        $compressions = array();
+        $compressions = [];
         if ($cfg['GZipDump'] && function_exists('gzopen')) {
             $compressions[] = 'gzip';
         }
@@ -85,7 +82,7 @@ class Import
 
         return Template::get('display/import/import')->render([
             'upload_id' => $uploadId,
-            'handler' => $_SESSION[$SESSION_KEY]["handler"],
+            'handler' => $_SESSION[$SESSION_KEY]['handler'],
             'id_key' => $_SESSION[$SESSION_KEY]['handler']::getIdKey(),
             'pma_theme_image' => $GLOBALS['pmaThemeImage'],
             'import_type' => $importType,

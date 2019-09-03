@@ -1,10 +1,10 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Verbose descriptions for settings.
- *
- * @package PhpMyAdmin
  */
+
 namespace PhpMyAdmin\Config;
 
 use PhpMyAdmin\Sanitize;
@@ -12,8 +12,6 @@ use PhpMyAdmin\Sanitize;
 /**
  * Base class for forms, loads default configuration options, checks allowed
  * values etc.
- *
- * @package PhpMyAdmin
  */
 class Descriptions
 {
@@ -29,8 +27,8 @@ class Descriptions
     public static function get($path, $type = 'name')
     {
         $key = str_replace(
-            array('Servers/1/', '/'),
-            array('Servers/', '_'),
+            ['Servers/1/', '/'],
+            ['Servers/', '_'],
             $path
         );
         $value = self::getString($key, $type);
@@ -57,7 +55,7 @@ class Descriptions
      */
     public static function getString($path, $type = 'name')
     {
-        switch ($path . '_' . $type) {
+        switch ($path.'_'.$type) {
             case 'AllowArbitraryServer_desc':
                 return __('If enabled, user can enter any MySQL server in login form for cookie auth.');
             case 'AllowArbitraryServer_name':
@@ -65,7 +63,7 @@ class Descriptions
             case 'ArbitraryServerRegexp_desc':
                 return __(
                     'Restricts the MySQL servers the user can enter when a login to an arbitrary '
-                    . 'MySQL server is enabled by matching the IP or hostname of the MySQL server ' .
+                    .'MySQL server is enabled by matching the IP or hostname of the MySQL server '.
                     'to the given regular expression.'
                 );
             case 'ArbitraryServerRegexp_name':
@@ -73,8 +71,8 @@ class Descriptions
             case 'AllowThirdPartyFraming_desc':
                 return __(
                     'Enabling this allows a page located on a different domain to call phpMyAdmin '
-                    . 'inside a frame, and is a potential [strong]security hole[/strong] allowing '
-                    . 'cross-frame scripting (XSS) attacks.'
+                    .'inside a frame, and is a potential [strong]security hole[/strong] allowing '
+                    .'cross-frame scripting (XSS) attacks.'
                 );
             case 'AllowThirdPartyFraming_name':
                 return __('Allow third party framing');
@@ -83,7 +81,7 @@ class Descriptions
             case 'blowfish_secret_desc':
                 return __(
                     'Secret passphrase used for encrypting cookies in [kbd]cookie[/kbd] '
-                    . 'authentication.'
+                    .'authentication.'
                 );
             case 'blowfish_secret_name':
                 return __('Blowfish secret');
@@ -98,44 +96,44 @@ class Descriptions
             case 'BZipDump_desc':
                 return __(
                     'Enable bzip2 compression for'
-                    . ' import operations.'
+                    .' import operations.'
                 );
             case 'BZipDump_name':
                 return __('Bzip2');
             case 'CharEditing_desc':
                 return __(
                     'Defines which type of editing controls should be used for CHAR and VARCHAR '
-                    . 'columns; [kbd]input[/kbd] - allows limiting of input length, '
-                    . '[kbd]textarea[/kbd] - allows newlines in columns.'
+                    .'columns; [kbd]input[/kbd] - allows limiting of input length, '
+                    .'[kbd]textarea[/kbd] - allows newlines in columns.'
                 );
             case 'CharEditing_name':
                 return __('CHAR columns editing');
             case 'CodemirrorEnable_desc':
                 return __(
                     'Use user-friendly editor for editing SQL queries '
-                    . '(CodeMirror) with syntax highlighting and '
-                    . 'line numbers.'
+                    .'(CodeMirror) with syntax highlighting and '
+                    .'line numbers.'
                 );
             case 'CodemirrorEnable_name':
                 return __('Enable CodeMirror');
             case 'LintEnable_desc':
                 return __(
                     'Find any errors in the query before executing it.'
-                    . ' Requires CodeMirror to be enabled.'
+                    .' Requires CodeMirror to be enabled.'
                 );
             case 'LintEnable_name':
                 return __('Enable linter');
             case 'MinSizeForInputField_desc':
                 return __(
                     'Defines the minimum size for input fields generated for CHAR and VARCHAR '
-                    . 'columns.'
+                    .'columns.'
                 );
             case 'MinSizeForInputField_name':
                 return __('Minimum size for input field');
             case 'MaxSizeForInputField_desc':
                 return __(
                     'Defines the maximum size for input fields generated for CHAR and VARCHAR '
-                    . 'columns.'
+                    .'columns.'
                 );
             case 'MaxSizeForInputField_name':
                 return __('Maximum size for input field');
@@ -152,14 +150,14 @@ class Descriptions
             case 'CompressOnFly_desc':
                 return __(
                     'Compress gzip exports on the fly without the need for much memory; if '
-                    . 'you encounter problems with created gzip files disable this feature.'
+                    .'you encounter problems with created gzip files disable this feature.'
                 );
             case 'CompressOnFly_name':
                 return __('Compress on the fly');
             case 'Confirm_desc':
                 return __(
                     'Whether a warning ("Are your really sure…") should be displayed '
-                    . 'when you\'re about to lose data.'
+                    .'when you\'re about to lose data.'
                 );
             case 'Confirm_name':
                 return __('Confirm DROP queries');
@@ -235,14 +233,14 @@ class Descriptions
             case 'DisableMultiTableMaintenance_desc':
                 return __(
                     'Disable the table maintenance mass operations, like optimizing or repairing '
-                    . 'the selected tables of a database.'
+                    .'the selected tables of a database.'
                 );
             case 'DisableMultiTableMaintenance_name':
                 return __('Disable multi table maintenance');
             case 'ExecTimeLimit_desc':
                 return __(
                     'Set the number of seconds a script is allowed to run ([kbd]0[/kbd] for no '
-                    . 'limit).'
+                    .'limit).'
                 );
             case 'ExecTimeLimit_name':
                 return __('Maximum execution time');
@@ -385,7 +383,7 @@ class Descriptions
             case 'Export_sql_if_not_exists_name':
                 return __(
                     'Add IF NOT EXISTS (less efficient as indexes will be generated during'
-                    . ' table creation)'
+                    .' table creation)'
                 );
             case 'Export_sql_ignore_name':
                 return __('Use ignore inserts');
@@ -418,7 +416,7 @@ class Descriptions
             case 'ForeignKeyDropdownOrder_desc':
                 return __(
                     'Sort order for items in a foreign-key dropdown box; [kbd]content[/kbd] is '
-                    . 'the referenced data, [kbd]id[/kbd] is the key value.'
+                    .'the referenced data, [kbd]id[/kbd] is the key value.'
                 );
             case 'ForeignKeyDropdownOrder_name':
                 return __('Foreign key dropdown order');
@@ -509,15 +507,15 @@ class Descriptions
             case 'Form_Page_titles_desc':
                 return __(
                     'Specify browser\'s title bar text. Refer to '
-                    . '[doc@faq6-27]documentation[/doc] for magic strings that can be used '
-                    . 'to get special values.'
+                    .'[doc@faq6-27]documentation[/doc] for magic strings that can be used '
+                    .'to get special values.'
                 );
             case 'Form_Security_name':
                 return __('Security');
             case 'Form_Security_desc':
                 return __(
                     'Please note that phpMyAdmin is just a user interface and its features do not '
-                    . 'limit MySQL.'
+                    .'limit MySQL.'
                 );
             case 'Form_Server_name':
                 return __('Basic settings');
@@ -530,7 +528,7 @@ class Descriptions
             case 'Form_Server_config_desc':
                 return __(
                     'Advanced server configuration, do not change these options unless you know '
-                    . 'what they are for.'
+                    .'what they are for.'
                 );
             case 'Form_Server_desc':
                 return __('Enter server connection parameters.');
@@ -539,15 +537,15 @@ class Descriptions
             case 'Form_Server_pmadb_desc':
                 return __(
                     'Configure phpMyAdmin configuration storage to gain access to additional '
-                    . 'features, see [doc@linked-tables]phpMyAdmin configuration storage[/doc] in '
-                    . 'documentation.'
+                    .'features, see [doc@linked-tables]phpMyAdmin configuration storage[/doc] in '
+                    .'documentation.'
                 );
             case 'Form_Server_tracking_name':
                 return __('Changes tracking');
             case 'Form_Server_tracking_desc':
                 return __(
                     'Tracking of changes made in database. Requires the phpMyAdmin configuration '
-                    . 'storage.'
+                    .'storage.'
                 );
             case 'Form_Sql_name':
                 return __('SQL');
@@ -604,7 +602,7 @@ class Descriptions
             case 'GZipDump_desc':
                 return __(
                     'Enable gzip compression for import '
-                    . 'and export operations.'
+                    .'and export operations.'
                 );
             case 'GZipDump_name':
                 return __('GZip');
@@ -613,15 +611,15 @@ class Descriptions
             case 'IgnoreMultiSubmitErrors_desc':
                 return __(
                     'If enabled, phpMyAdmin continues computing multiple-statement queries even if '
-                    . 'one of the queries failed.'
+                    .'one of the queries failed.'
                 );
             case 'IgnoreMultiSubmitErrors_name':
                 return __('Ignore multiple statement errors');
             case 'Import_allow_interrupt_desc':
                 return __(
                     'Allow interrupt of import in case script detects it is close to time limit. '
-                    . 'This might be a good way to import large files, however it can break '
-                    . 'transactions.'
+                    .'This might be a good way to import large files, however it can break '
+                    .'transactions.'
                 );
             case 'Import_allow_interrupt_name':
                 return __('Partial import: allow interrupt');
@@ -644,7 +642,7 @@ class Descriptions
             case 'Import_format_desc':
                 return __(
                     'Default format; be aware that this list depends on location (database, table) '
-                    . 'and only SQL is always available.'
+                    .'and only SQL is always available.'
                 );
             case 'Import_format_name':
                 return __('Format of imported file');
@@ -693,24 +691,24 @@ class Descriptions
             case 'LoginCookieDeleteAll_desc':
                 return __(
                     'If TRUE, logout deletes cookies for all servers; when set to FALSE, logout '
-                    . 'only occurs for the current server. Setting this to FALSE makes it easy to '
-                    . 'forget to log out from other servers when connected to multiple servers.'
+                    .'only occurs for the current server. Setting this to FALSE makes it easy to '
+                    .'forget to log out from other servers when connected to multiple servers.'
                 );
             case 'LoginCookieDeleteAll_name':
                 return __('Delete all cookies on logout');
             case 'LoginCookieRecall_desc':
                 return __(
                     'Define whether the previous login should be recalled or not in '
-                    . '[kbd]cookie[/kbd] authentication mode.'
+                    .'[kbd]cookie[/kbd] authentication mode.'
                 );
             case 'LoginCookieRecall_name':
                 return __('Recall user name');
             case 'LoginCookieStore_desc':
                 return __(
                     'Defines how long (in seconds) a login cookie should be stored in browser. '
-                    . 'The default of 0 means that it will be kept for the existing session only, '
-                    . 'and will be deleted as soon as you close the browser window. This is '
-                    . 'recommended for non-trusted environments.'
+                    .'The default of 0 means that it will be kept for the existing session only, '
+                    .'and will be deleted as soon as you close the browser window. This is '
+                    .'recommended for non-trusted environments.'
                 );
             case 'LoginCookieStore_name':
                 return __('Login cookie store');
@@ -735,7 +733,7 @@ class Descriptions
             case 'FirstLevelNavigationItems_desc':
                 return __(
                     'The number of items that can be displayed on each page on the first level'
-                    . ' of the navigation tree.'
+                    .' of the navigation tree.'
                 );
             case 'FirstLevelNavigationItems_name':
                 return __('Maximum items on first level');
@@ -746,8 +744,8 @@ class Descriptions
             case 'MaxRows_desc':
                 return __(
                     'Number of rows displayed when browsing a result set. If the result set '
-                    . 'contains more rows, "Previous" and "Next" links will be '
-                    . 'shown.'
+                    .'contains more rows, "Previous" and "Next" links will be '
+                    .'shown.'
                 );
             case 'MaxRows_name':
                 return __('Maximum number of rows to display');
@@ -760,7 +758,7 @@ class Descriptions
             case 'MemoryLimit_desc':
                 return __(
                     'The number of bytes a script is allowed to allocate, eg. [kbd]32M[/kbd] '
-                    . '([kbd]-1[/kbd] for no limit and [kbd]0[/kbd] for no change).'
+                    .'([kbd]-1[/kbd] for no limit and [kbd]0[/kbd] for no change).'
                 );
             case 'MemoryLimit_name':
                 return __('Memory limit');
@@ -787,7 +785,7 @@ class Descriptions
             case 'NavigationLogoLinkWindow_desc':
                 return __(
                     'Open the linked page in the main window ([kbd]main[/kbd]) or in a new one '
-                    . '([kbd]new[/kbd]).'
+                    .'([kbd]new[/kbd]).'
                 );
             case 'NavigationLogoLinkWindow_name':
                 return __('Logo link target');
@@ -802,7 +800,7 @@ class Descriptions
             case 'NavigationTreeDisplayItemFilterMinimum_desc':
                 return __(
                     'Defines the minimum number of items (tables, views, routines and events) to '
-                    . 'display a filter box.'
+                    .'display a filter box.'
                 );
             case 'NavigationTreeDisplayItemFilterMinimum_name':
                 return __('Minimum number of items to display the filter box');
@@ -810,7 +808,7 @@ class Descriptions
                 return __('Minimum number of databases to display the database filter box');
             case 'NavigationTreeEnableGrouping_desc':
                 return __(
-                    'Group items in the navigation tree (determined by the separator defined in ' .
+                    'Group items in the navigation tree (determined by the separator defined in '.
                     'the Databases and Tables tabs above).'
                 );
             case 'NavigationTreeEnableGrouping_name':
@@ -888,7 +886,7 @@ class Descriptions
             case 'Order_desc':
                 return __(
                     '[kbd]SMART[/kbd] - i.e. descending order for columns of type TIME, DATE, '
-                    . 'DATETIME and TIMESTAMP, ascending order otherwise.'
+                    .'DATETIME and TIMESTAMP, ascending order otherwise.'
                 );
             case 'Order_name':
                 return __('Default sorting order');
@@ -899,15 +897,15 @@ class Descriptions
             case 'PmaNoRelation_DisableWarning_desc':
                 return __(
                     'Disable the default warning that is displayed on the database details '
-                    . 'Structure page if any of the required tables for the phpMyAdmin '
-                    . 'configuration storage could not be found.'
+                    .'Structure page if any of the required tables for the phpMyAdmin '
+                    .'configuration storage could not be found.'
                 );
             case 'PmaNoRelation_DisableWarning_name':
                 return __('Missing phpMyAdmin configuration storage tables');
             case 'ReservedWordDisableWarning_desc':
                 return __(
                     'Disable the default warning that is displayed on the Structure page if column '
-                    . 'names in a table are reserved MySQL words.'
+                    .'names in a table are reserved MySQL words.'
                 );
             case 'ReservedWordDisableWarning_name':
                 return __('MySQL reserved word warning');
@@ -926,8 +924,8 @@ class Descriptions
             case 'QueryHistoryDB_desc':
                 return __(
                     'Enable if you want DB-based query history (requires phpMyAdmin configuration '
-                    . 'storage). If disabled, this utilizes JS-routines to display query history '
-                    . '(lost by window close).'
+                    .'storage). If disabled, this utilizes JS-routines to display query history '
+                    .'(lost by window close).'
                 );
             case 'QueryHistoryDB_name':
                 return __('Permanent query history');
@@ -982,7 +980,7 @@ class Descriptions
             case 'Servers_SessionTimeZone_desc':
                 return __(
                     'Sets the effective timezone; possibly different than the one from your '
-                    .  'database server'
+                    .'database server'
                 );
             case 'Servers_auth_http_realm_desc':
                 return __('HTTP Basic Auth Realm name to display when doing HTTP Auth.');
@@ -995,14 +993,14 @@ class Descriptions
             case 'Servers_bookmarktable_desc':
                 return __(
                     'Leave blank for no [doc@bookmarks@]bookmark[/doc] '
-                    . 'support, suggested: [kbd]pma__bookmark[/kbd]'
+                    .'support, suggested: [kbd]pma__bookmark[/kbd]'
                 );
             case 'Servers_bookmarktable_name':
                 return __('Bookmark table');
             case 'Servers_column_info_desc':
                 return __(
                     'Leave blank for no column comments/mime types, suggested: '
-                    . '[kbd]pma__column_info[/kbd].'
+                    .'[kbd]pma__column_info[/kbd].'
                 );
             case 'Servers_column_info_name':
                 return __('Column information table');
@@ -1015,22 +1013,22 @@ class Descriptions
             case 'Servers_controluser_desc':
                 return __(
                     'A special MySQL user configured with limited permissions, more information '
-                    . 'available on [doc@linked-tables]documentation[/doc].'
+                    .'available on [doc@linked-tables]documentation[/doc].'
                 );
             case 'Servers_controluser_name':
                 return __('Control user');
             case 'Servers_controlhost_desc':
                 return __(
                     'An alternate host to hold the configuration storage; leave blank to use the '
-                    . 'already defined host.'
+                    .'already defined host.'
                 );
             case 'Servers_controlhost_name':
                 return __('Control host');
             case 'Servers_controlport_desc':
                 return __(
                     'An alternate port to connect to the host that holds the configuration storage; '
-                    . 'leave blank to use the default port, or the already defined port, if the '
-                    . 'controlhost equals host.'
+                    .'leave blank to use the default port, or the already defined port, if the '
+                    .'controlhost equals host.'
                 );
             case 'Servers_controlport_name':
                 return __('Control port');
@@ -1039,7 +1037,7 @@ class Descriptions
             case 'Servers_DisableIS_desc':
                 return __(
                     'More information on [a@https://github.com/phpmyadmin/phpmyadmin/issues/8970]phpMyAdmin '
-                    .  'issue tracker[/a] and [a@https://bugs.mysql.com/19588]MySQL Bugs[/a]'
+                    .'issue tracker[/a] and [a@https://bugs.mysql.com/19588]MySQL Bugs[/a]'
                 );
             case 'Servers_DisableIS_name':
                 return __('Disable use of INFORMATION_SCHEMA');
@@ -1048,7 +1046,7 @@ class Descriptions
             case 'Servers_history_desc':
                 return __(
                     'Leave blank for no SQL query history support, suggested: '
-                    . '[kbd]pma__history[/kbd].'
+                    .'[kbd]pma__history[/kbd].'
                 );
             case 'Servers_history_name':
                 return __('SQL query history table');
@@ -1061,7 +1059,7 @@ class Descriptions
             case 'Servers_MaxTableUiprefs_desc':
                 return __(
                     'Limits number of table preferences which are stored in database, the oldest '
-                    . 'records are automatically removed.'
+                    .'records are automatically removed.'
                 );
             case 'Servers_MaxTableUiprefs_name':
                 return __('Maximal number of table preferences to store');
@@ -1070,27 +1068,27 @@ class Descriptions
             case 'Servers_savedsearches_desc':
                 return __(
                     'Leave blank for no QBE saved searches support, suggested: '
-                    . '[kbd]pma__savedsearches[/kbd].'
+                    .'[kbd]pma__savedsearches[/kbd].'
                 );
             case 'Servers_export_templates_name':
                 return __('Export templates table');
             case 'Servers_export_templates_desc':
                 return __(
                     'Leave blank for no export template support, suggested: '
-                    . '[kbd]pma__export_templates[/kbd].'
+                    .'[kbd]pma__export_templates[/kbd].'
                 );
             case 'Servers_central_columns_name':
                 return __('Central columns table');
             case 'Servers_central_columns_desc':
                 return __(
                     'Leave blank for no central columns support, suggested: '
-                    . '[kbd]pma__central_columns[/kbd].'
+                    .'[kbd]pma__central_columns[/kbd].'
                 );
             case 'Servers_only_db_desc':
                 return __(
                     'You can use MySQL wildcard characters (% and _), escape them if you want to '
-                    . 'use their literal instances, i.e. use [kbd]\'my\_db\'[/kbd] and not '
-                    . '[kbd]\'my_db\'[/kbd].'
+                    .'use their literal instances, i.e. use [kbd]\'my\_db\'[/kbd] and not '
+                    .'[kbd]\'my_db\'[/kbd].'
                 );
             case 'Servers_only_db_name':
                 return __('Show only listed databases');
@@ -1105,8 +1103,8 @@ class Descriptions
             case 'Servers_pmadb_desc':
                 return __(
                     'Database used for relations, bookmarks, and PDF features. See '
-                    . '[doc@linked-tables]pmadb[/doc] for complete information. '
-                    . 'Leave blank for no support. Suggested: [kbd]phpmyadmin[/kbd].'
+                    .'[doc@linked-tables]pmadb[/doc] for complete information. '
+                    .'Leave blank for no support. Suggested: [kbd]phpmyadmin[/kbd].'
                 );
             case 'Servers_pmadb_name':
                 return __('Database name');
@@ -1117,29 +1115,29 @@ class Descriptions
             case 'Servers_recent_desc':
                 return __(
                     'Leave blank for no "persistent" recently used tables across sessions, '
-                    . 'suggested: [kbd]pma__recent[/kbd].'
+                    .'suggested: [kbd]pma__recent[/kbd].'
                 );
             case 'Servers_recent_name':
                 return __('Recently used table');
             case 'Servers_favorite_desc':
                 return __(
                     'Leave blank for no "persistent" favorite tables across sessions, '
-                    . 'suggested: [kbd]pma__favorite[/kbd].'
+                    .'suggested: [kbd]pma__favorite[/kbd].'
                 );
             case 'Servers_favorite_name':
                 return __('Favorites table');
             case 'Servers_relation_desc':
                 return __(
                     'Leave blank for no '
-                    . '[doc@relations@]relation-links[/doc] support, '
-                    . 'suggested: [kbd]pma__relation[/kbd].'
+                    .'[doc@relations@]relation-links[/doc] support, '
+                    .'suggested: [kbd]pma__relation[/kbd].'
                 );
             case 'Servers_relation_name':
                 return __('Relation table');
             case 'Servers_SignonSession_desc':
                 return __(
                     'See [doc@authentication-modes]authentication '
-                    . 'types[/doc] for an example.'
+                    .'types[/doc] for an example.'
                 );
             case 'Servers_SignonSession_name':
                 return __('Signon session name');
@@ -1160,35 +1158,35 @@ class Descriptions
             case 'Servers_table_info_desc':
                 return __(
                     'Table to describe the display columns, leave blank for no support; '
-                    . 'suggested: [kbd]pma__table_info[/kbd].'
+                    .'suggested: [kbd]pma__table_info[/kbd].'
                 );
             case 'Servers_table_info_name':
                 return __('Display columns table');
             case 'Servers_table_uiprefs_desc':
                 return __(
                     'Leave blank for no "persistent" tables\' UI preferences across sessions, '
-                    . 'suggested: [kbd]pma__table_uiprefs[/kbd].'
+                    .'suggested: [kbd]pma__table_uiprefs[/kbd].'
                 );
             case 'Servers_table_uiprefs_name':
                 return __('UI preferences table');
             case 'Servers_tracking_add_drop_database_desc':
                 return __(
                     'Whether a DROP DATABASE IF EXISTS statement will be added as first line to '
-                    . 'the log when creating a database.'
+                    .'the log when creating a database.'
                 );
             case 'Servers_tracking_add_drop_database_name':
                 return __('Add DROP DATABASE');
             case 'Servers_tracking_add_drop_table_desc':
                 return __(
                     'Whether a DROP TABLE IF EXISTS statement will be added as first line to the '
-                    . 'log when creating a table.'
+                    .'log when creating a table.'
                 );
             case 'Servers_tracking_add_drop_table_name':
                 return __('Add DROP TABLE');
             case 'Servers_tracking_add_drop_view_desc':
                 return __(
                     'Whether a DROP VIEW IF EXISTS statement will be added as first line to the '
-                    . 'log when creating a view.'
+                    .'log when creating a view.'
                 );
             case 'Servers_tracking_add_drop_view_name':
                 return __('Add DROP VIEW');
@@ -1199,43 +1197,43 @@ class Descriptions
             case 'Servers_tracking_desc':
                 return __(
                     'Leave blank for no SQL query tracking support, suggested: '
-                    . '[kbd]pma__tracking[/kbd].'
+                    .'[kbd]pma__tracking[/kbd].'
                 );
             case 'Servers_tracking_name':
                 return __('SQL query tracking table');
             case 'Servers_tracking_version_auto_create_desc':
                 return __(
                     'Whether the tracking mechanism creates versions for tables and views '
-                    . 'automatically.'
+                    .'automatically.'
                 );
             case 'Servers_tracking_version_auto_create_name':
                 return __('Automatically create versions');
             case 'Servers_userconfig_desc':
                 return __(
                     'Leave blank for no user preferences storage in database, suggested: '
-                    .  '[kbd]pma__userconfig[/kbd].'
+                    .'[kbd]pma__userconfig[/kbd].'
                 );
             case 'Servers_userconfig_name':
                 return __('User preferences storage table');
             case 'Servers_users_desc':
                 return __(
-                    'Both this table and the user groups table are required to enable the ' .
-                    'configurable menus feature; leaving either one of them blank will disable ' .
+                    'Both this table and the user groups table are required to enable the '.
+                    'configurable menus feature; leaving either one of them blank will disable '.
                     'this feature, suggested: [kbd]pma__users[/kbd].'
                 );
             case 'Servers_users_name':
                 return __('Users table');
             case 'Servers_usergroups_desc':
                 return __(
-                    'Both this table and the users table are required to enable the configurable ' .
-                    'menus feature; leaving either one of them blank will disable this feature, ' .
+                    'Both this table and the users table are required to enable the configurable '.
+                    'menus feature; leaving either one of them blank will disable this feature, '.
                     'suggested: [kbd]pma__usergroups[/kbd].'
                 );
             case 'Servers_usergroups_name':
                 return __('User groups table');
             case 'Servers_navigationhiding_desc':
                 return __(
-                    'Leave blank to disable the feature to hide and show navigation items, ' .
+                    'Leave blank to disable the feature to hide and show navigation items, '.
                     'suggested: [kbd]pma__navigationhiding[/kbd].'
                 );
             case 'Servers_navigationhiding_name':
@@ -1246,7 +1244,7 @@ class Descriptions
                 return __('User for config auth');
             case 'Servers_verbose_desc':
                 return __(
-                    'A user-friendly description of this server. Leave blank to display the ' .
+                    'A user-friendly description of this server. Leave blank to display the '.
                     'hostname instead.'
                 );
             case 'Servers_verbose_name':
@@ -1257,8 +1255,8 @@ class Descriptions
                 return __('Allow to display all the rows');
             case 'ShowChgPassword_desc':
                 return __(
-                    'Please note that enabling this has no effect with [kbd]config[/kbd] ' .
-                    'authentication mode because the password is hard coded in the configuration ' .
+                    'Please note that enabling this has no effect with [kbd]config[/kbd] '.
+                    'authentication mode because the password is hard coded in the configuration '.
                     'file; this does not limit the ability to execute the same command directly.'
                 );
             case 'ShowChgPassword_name':
@@ -1287,7 +1285,7 @@ class Descriptions
                 return __('Show table charset');
             case 'ShowFieldTypesInDataEditView_desc':
                 return __(
-                    'Defines whether or not type fields should be initially displayed in ' .
+                    'Defines whether or not type fields should be initially displayed in '.
                     'edit/insert mode.'
                 );
             case 'ShowFieldTypesInDataEditView_name':
@@ -1302,7 +1300,7 @@ class Descriptions
                 return __('Show hint');
             case 'ShowPhpInfo_desc':
                 return __(
-                    'Shows link to [a@https://php.net/manual/function.phpinfo.php]phpinfo()[/a] ' .
+                    'Shows link to [a@https://php.net/manual/function.phpinfo.php]phpinfo()[/a] '.
                     'output.'
                 );
             case 'ShowPhpInfo_name':
@@ -1335,29 +1333,29 @@ class Descriptions
                 return __('Create PHP code');
             case 'SuhosinDisableWarning_desc':
                 return __(
-                    'Disable the default warning that is displayed on the main page if Suhosin is ' .
+                    'Disable the default warning that is displayed on the main page if Suhosin is '.
                     'detected.'
                 );
             case 'SuhosinDisableWarning_name':
                 return __('Suhosin warning');
             case 'LoginCookieValidityDisableWarning_desc':
                 return __(
-                    'Disable the default warning that is displayed on the main page if the value ' .
-                    'of the PHP setting session.gc_maxlifetime is less than the value of ' .
+                    'Disable the default warning that is displayed on the main page if the value '.
+                    'of the PHP setting session.gc_maxlifetime is less than the value of '.
                     '`LoginCookieValidity`.'
                 );
             case 'LoginCookieValidityDisableWarning_name':
                 return __('Login cookie validity warning');
             case 'TextareaCols_desc':
                 return __(
-                    'Textarea size (columns) in edit mode, this value will be emphasized for SQL ' .
+                    'Textarea size (columns) in edit mode, this value will be emphasized for SQL '.
                     'query textareas (*2).'
                 );
             case 'TextareaCols_name':
                 return __('Textarea columns');
             case 'TextareaRows_desc':
                 return __(
-                    'Textarea size (rows) in edit mode, this value will be emphasized for SQL ' .
+                    'Textarea size (rows) in edit mode, this value will be emphasized for SQL '.
                     'query textareas (*2).'
                 );
             case 'TextareaRows_name':
@@ -1380,9 +1378,9 @@ class Descriptions
                 return __('Table');
             case 'TrustedProxies_desc':
                 return __(
-                    'Input proxies as [kbd]IP: trusted HTTP header[/kbd]. The following example ' .
-                    'specifies that phpMyAdmin should trust a HTTP_X_FORWARDED_FOR ' .
-                    '(X-Forwarded-For) header coming from the proxy 1.2.3.4:[br][kbd]1.2.3.4: ' .
+                    'Input proxies as [kbd]IP: trusted HTTP header[/kbd]. The following example '.
+                    'specifies that phpMyAdmin should trust a HTTP_X_FORWARDED_FOR '.
+                    '(X-Forwarded-For) header coming from the proxy 1.2.3.4:[br][kbd]1.2.3.4: '.
                     'HTTP_X_FORWARDED_FOR[/kbd].'
                 );
             case 'TrustedProxies_name':
@@ -1397,7 +1395,7 @@ class Descriptions
                 return __('Use database search');
             case 'UserprefsDeveloperTab_desc':
                 return __(
-                    'When disabled, users cannot set any of the options below, regardless of the ' .
+                    'When disabled, users cannot set any of the options below, regardless of the '.
                     'checkbox on the right.'
                 );
             case 'UserprefsDeveloperTab_name':
@@ -1408,18 +1406,18 @@ class Descriptions
                 return __('Version check');
             case 'ProxyUrl_desc':
                 return __(
-                    'The url of the proxy to be used when retrieving the information about the ' .
-                    'latest version of phpMyAdmin or when submitting error reports. You need this ' .
-                    'if the server where phpMyAdmin is installed does not have direct access to ' .
+                    'The url of the proxy to be used when retrieving the information about the '.
+                    'latest version of phpMyAdmin or when submitting error reports. You need this '.
+                    'if the server where phpMyAdmin is installed does not have direct access to '.
                     'the internet. The format is: "hostname:portnumber".'
                 );
             case 'ProxyUrl_name':
                 return __('Proxy url');
             case 'ProxyUser_desc':
                 return __(
-                    'The username for authenticating with the proxy. By default, no ' .
-                    'authentication is performed. If a username is supplied, Basic ' .
-                    'Authentication will be performed. No other types of authentication are ' .
+                    'The username for authenticating with the proxy. By default, no '.
+                    'authentication is performed. If a username is supplied, Basic '.
+                    'Authentication will be performed. No other types of authentication are '.
                     'currently supported.'
                 );
             case 'ProxyUser_name':
@@ -1449,7 +1447,7 @@ class Descriptions
 
             case 'ConsoleEnterExecutes_desc':
                 return __(
-                    'Queries are executed by pressing Enter (instead of Ctrl+Enter). New lines ' .
+                    'Queries are executed by pressing Enter (instead of Ctrl+Enter). New lines '.
                     'will be inserted with Shift+Enter.'
                 );
             case 'ConsoleEnterExecutes_name':
@@ -1458,7 +1456,7 @@ class Descriptions
             case 'ZeroConf_desc':
                 return __(
                     'Enable Zero Configuration mode which lets you setup phpMyAdmin '
-                    . 'configuration storage tables automatically.'
+                    .'configuration storage tables automatically.'
                 );
             case 'ZeroConf_name':
                 return __('Enable Zero Configuration mode');
@@ -1487,7 +1485,5 @@ class Descriptions
             case 'DefaultConnectionCollation_name':
                 return __('Server connection collation');
         }
-        return null;
     }
 }
-

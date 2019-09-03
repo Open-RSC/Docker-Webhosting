@@ -1,11 +1,9 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Logout script
- *
- * @package PhpMyAdmin
+ * Logout script.
  */
-
 use PhpMyAdmin\Core;
 
 require_once 'libraries/common.inc.php';

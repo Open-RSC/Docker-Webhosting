@@ -1,37 +1,34 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the schema export plugins
- *
- * @package PhpMyAdmin
+ * Abstract class for the schema export plugins.
  */
 
 namespace PhpMyAdmin\Plugins;
 
 use PhpMyAdmin\Properties\Options\Items\BoolPropertyItem;
-use PhpMyAdmin\Properties\Options\Groups\OptionsPropertyMainGroup;
 use PhpMyAdmin\Properties\Plugins\SchemaPluginProperties;
+use PhpMyAdmin\Properties\Options\Groups\OptionsPropertyMainGroup;
 
 /**
  * Provides a common interface that will have to be implemented by all of the
  * schema export plugins. Some of the plugins will also implement other public
  * methods, but those are not declared here, because they are not implemented
  * by all export plugins.
- *
- * @package PhpMyAdmin
  */
 abstract class SchemaPlugin
 {
     /**
      * PhpMyAdmin\Properties\Plugins\SchemaPluginProperties object containing
-     * the specific schema export plugin type properties
+     * the specific schema export plugin type properties.
      *
      * @var SchemaPluginProperties
      */
     protected $properties;
 
     /**
-     * Gets the export specific format plugin properties
+     * Gets the export specific format plugin properties.
      *
      * @return SchemaPluginProperties
      */
@@ -42,11 +39,11 @@ abstract class SchemaPlugin
 
     /**
      * Sets the export plugins properties and is implemented by
-     * each schema export plugin
+     * each schema export plugin.
      *
      * @return void
      */
-    protected abstract function setProperties();
+    abstract protected function setProperties();
 
     /**
      * Exports the schema into the specified format.
@@ -55,7 +52,7 @@ abstract class SchemaPlugin
      *
      * @return bool Whether it succeeded
      */
-    public abstract function exportSchema($db);
+    abstract public function exportSchema($db);
 
     /**
      * Adds export options common to all plugins.
@@ -73,13 +70,13 @@ abstract class SchemaPlugin
     }
 
     /**
-     * Returns the array of paper sizes
+     * Returns the array of paper sizes.
      *
      * @return array array of paper sizes
      */
     protected function getPaperSizeArray()
     {
-        $ret = array();
+        $ret = [];
         foreach ($GLOBALS['cfg']['PDFPageSizes'] as $val) {
             $ret[$val] = $val;
         }

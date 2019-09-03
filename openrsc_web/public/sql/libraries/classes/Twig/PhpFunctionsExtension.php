@@ -1,19 +1,17 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\PhpFunctionsExtension class
- *
- * @package PhpMyAdmin\Twig
+ * hold PhpMyAdmin\Twig\PhpFunctionsExtension class.
  */
+
 namespace PhpMyAdmin\Twig;
 
-use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
 
 /**
- * Class PhpFunctionsExtension
- *
- * @package PhpMyAdmin\Twig
+ * Class PhpFunctionsExtension.
  */
 class PhpFunctionsExtension extends AbstractExtension
 {
@@ -24,7 +22,7 @@ class PhpFunctionsExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return array(
+        return [
             new TwigFunction('array_search', 'array_search'),
             new TwigFunction('bin2hex', 'bin2hex'),
             new TwigFunction('htmlentities', 'htmlentities'),
@@ -34,6 +32,6 @@ class PhpFunctionsExtension extends AbstractExtension
             new TwigFunction('strpos', 'strpos'),
             new TwigFunction('strstr', 'strstr'),
             new TwigFunction('strtotime', 'strtotime'),
-        );
+        ];
     }
 }

@@ -1,39 +1,37 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * This class includes various sanitization methods that can be called statically
- *
- * @package PhpMyAdmin
+ * This class includes various sanitization methods that can be called statically.
  */
+
 namespace PhpMyAdmin;
 
 use PhpMyAdmin\Core;
 use PhpMyAdmin\Util;
 
 /**
- * This class includes various sanitization methods that can be called statically
- *
- * @package PhpMyAdmin
+ * This class includes various sanitization methods that can be called statically.
  */
 class Sanitize
 {
     /**
-     * Checks whether given link is valid
+     * Checks whether given link is valid.
      *
      * @param string  $url   URL to check
-     * @param boolean $http  Whether to allow http links
-     * @param boolean $other Whether to allow ftp and mailto links
+     * @param bool $http  Whether to allow http links
+     * @param bool $other Whether to allow ftp and mailto links
      *
-     * @return boolean True if string can be used as link
+     * @return bool True if string can be used as link
      */
-    public static function checkLink($url, $http=false, $other=false)
+    public static function checkLink($url, $http = false, $other = false)
     {
         $url = strtolower($url);
-        $valid_starts = array(
+        $valid_starts = [
             'https://',
             './url.php?url=https%3a%2f%2f',
             './doc/html/',
-            # possible return values from Util::getScriptNameForOption
+            // possible return values from Util::getScriptNameForOption
             './index.php?',
             './server_databases.php?',
             './server_status.php?',
@@ -48,18 +46,18 @@ class Sanitize
             './tbl_select.php?',
             './tbl_change.php?',
             './sql.php?',
-            # Hardcoded options in libraries/special_schema_links.inc.php
+            // Hardcoded options in libraries/special_schema_links.inc.php
             './db_events.php?',
             './db_routines.php?',
             './server_privileges.php?',
             './tbl_structure.php?',
-        );
-        $is_setup = !is_null($GLOBALS['PMA_Config']) && $GLOBALS['PMA_Config']->get('is_setup');
+        ];
+        $is_setup = ! is_null($GLOBALS['PMA_Config']) && $GLOBALS['PMA_Config']->get('is_setup');
         // Adjust path to setup script location
         if ($is_setup) {
             foreach ($valid_starts as $key => $value) {
                 if (substr($value, 0, 2) === './') {
-                    $valid_starts[$key] = '.' . $value;
+                    $valid_starts[$key] = '.'.$value;
                 }
             }
         }
@@ -79,6 +77,7 @@ class Sanitize
                 return true;
             }
         }
+
         return false;
     }
 
@@ -103,7 +102,7 @@ class Sanitize
         /* Construct target */
         $target = '';
         if (! empty($found[3])) {
-            $target = ' target="' . $found[3] . '"';
+            $target = ' target="'.$found[3].'"';
             if ($found[3] == '_blank') {
                 $target .= ' rel="noopener noreferrer"';
             }
@@ -116,7 +115,7 @@ class Sanitize
             $url = $found[1];
         }
 
-        return '<a href="' . $url . '"' . $target . '>';
+        return '<a href="'.$url.'"'.$target.'>';
     }
 
     /**
@@ -143,7 +142,8 @@ class Sanitize
             }
         }
         $link = Util::getDocuLink($page, $anchor);
-        return '<a href="' . $link . '" target="documentation">';
+
+        return '<a href="'.$link.'" target="documentation">';
     }
 
     /**
@@ -159,19 +159,19 @@ class Sanitize
      * <a title="<?php echo Sanitize::sanitize($foo, true); ?>">bar</a>
      *
      * @param string  $message the message
-     * @param boolean $escape  whether to escape html in result
-     * @param boolean $safe    whether string is safe (can keep < and > chars)
+     * @param bool $escape  whether to escape html in result
+     * @param bool $safe    whether string is safe (can keep < and > chars)
      *
      * @return string   the sanitized message
      */
     public static function sanitize($message, $escape = false, $safe = false)
     {
-        if (!$safe) {
-            $message = strtr($message, array('<' => '&lt;', '>' => '&gt;'));
+        if (! $safe) {
+            $message = strtr($message, ['<' => '&lt;', '>' => '&gt;']);
         }
 
         /* Interpret bb code */
-        $replace_pairs = array(
+        $replace_pairs = [
             '[em]'      => '<em>',
             '[/em]'     => '</em>',
             '[strong]'  => '<strong>',
@@ -189,7 +189,7 @@ class Sanitize
             '[conferr]' => '<iframe src="show_config_errors.php"><a href="show_config_errors.php">show_config_errors.php</a></iframe>',
             // used in libraries/Util.php
             '[dochelpicon]' => Util::getImage('b_help', __('Documentation')),
-        );
+        ];
 
         $message = strtr($message, $replace_pairs);
 
@@ -197,14 +197,14 @@ class Sanitize
         $pattern = '/\[a@([^]"@]*)(@([^]"]*))?\]/';
 
         /* Find and replace all links */
-        $message = preg_replace_callback($pattern, function($match){
+        $message = preg_replace_callback($pattern, function ($match) {
             return self::replaceBBLink($match);
         }, $message);
 
         /* Replace documentation links */
         $message = preg_replace_callback(
             '/\[doc@([a-zA-Z0-9_-]+)(@([a-zA-Z0-9_-]*))?\]/',
-            function($match){
+            function ($match) {
                 return self::replaceDocLink($match);
             },
                 $message
@@ -218,9 +218,8 @@ class Sanitize
         return $message;
     }
 
-
     /**
-     * Sanitize a filename by removing anything besides legit characters
+     * Sanitize a filename by removing anything besides legit characters.
      *
      * Intended usecase:
      *    When using a filename in a Content-Disposition header
@@ -229,10 +228,9 @@ class Sanitize
      *    When exporting, avoiding generation of an unexpected double-extension file
      *
      * @param string  $filename    The filename
-     * @param boolean $replaceDots Whether to also replace dots
+     * @param bool $replaceDots Whether to also replace dots
      *
      * @return string  the sanitized filename
-     *
      */
     public static function sanitizeFilename($filename, $replaceDots = false)
     {
@@ -244,6 +242,7 @@ class Sanitize
         }
         $pattern .= '-]/';
         $filename = preg_replace($pattern, '_', $filename);
+
         return $filename;
     }
 
@@ -254,11 +253,9 @@ class Sanitize
      * "DROP/DELETE/ALTER" queries.
      *
      * @param string  $a_string       the string to format
-     * @param boolean $add_backquotes whether to add backquotes to the string or not
+     * @param bool $add_backquotes whether to add backquotes to the string or not
      *
      * @return string   the formatted string
-     *
-     * @access  public
      */
     public static function jsFormat($a_string = '', $add_backquotes = true)
     {
@@ -271,12 +268,14 @@ class Sanitize
         return $add_backquotes
             ? Util::backquote($a_string)
             : $a_string;
-    } // end of the 'jsFormat' function
+    }
+
+    // end of the 'jsFormat' function
 
     /**
      * escapes a string to be inserted as string a JavaScript block
      * enclosed by <![CDATA[ ... ]]>
-     * this requires only to escape ' with \' and end of script block
+     * this requires only to escape ' with \' and end of script block.
      *
      * We also remove NUL byte as some browsers (namely MSIE) ignore it and
      * inserting it anywhere inside </script would allow to bypass this check.
@@ -291,14 +290,14 @@ class Sanitize
             '@</script@i', '</\' + \'script',
             strtr(
                 $string,
-                array(
+                [
                     "\000" => '',
                     '\\' => '\\\\',
                     '\'' => '\\\'',
                     '"' => '\"',
                     "\n" => '\n',
-                    "\r" => '\r'
-                )
+                    "\r" => '\r',
+                ]
             )
         );
     }
@@ -321,10 +320,10 @@ class Sanitize
         }
 
         if (is_int($value)) {
-            return (int)$value;
+            return (int) $value;
         }
 
-        return '"' . self::escapeJsString($value) . '"';
+        return '"'.self::escapeJsString($value).'"';
     }
 
     /**
@@ -340,18 +339,19 @@ class Sanitize
      */
     public static function getJsValue($key, $value, $escape = true)
     {
-        $result = $key . ' = ';
-        if (!$escape) {
+        $result = $key.' = ';
+        if (! $escape) {
             $result .= $value;
         } elseif (is_array($value)) {
             $result .= '[';
             foreach ($value as $val) {
-                $result .= self::formatJsVal($val) . ",";
+                $result .= self::formatJsVal($val).',';
             }
             $result .= "];\n";
         } else {
-            $result .= self::formatJsVal($value) . ";\n";
+            $result .= self::formatJsVal($value).";\n";
         }
+
         return $result;
     }
 
@@ -375,14 +375,14 @@ class Sanitize
      *
      * @param string  $key   Name of value to set
      * @param string  $value Value to set
-     * @param boolean $addOn Check if $.validator.format is required or not
-     * @param boolean $comma Check if comma is required
+     * @param bool $addOn Check if $.validator.format is required or not
+     * @param bool $comma Check if comma is required
      *
      * @return string Javascript code.
      */
     public static function getJsValueForFormValidation($key, $value, $addOn, $comma)
     {
-        $result = $key . ': ';
+        $result = $key.': ';
         if ($addOn) {
             $result .= '$.validator.format(';
         }
@@ -393,6 +393,7 @@ class Sanitize
         if ($comma) {
             $result .= ', ';
         }
+
         return $result;
     }
 
@@ -402,12 +403,12 @@ class Sanitize
      *
      * @param string  $key   Name of value to set
      * @param string  $value Value to set
-     * @param boolean $addOn Check if $.validator.format is required or not
-     * @param boolean $comma Check if comma is required
+     * @param bool $addOn Check if $.validator.format is required or not
+     * @param bool $comma Check if comma is required
      *
      * @return void
      */
-    public static function printJsValueForFormValidation($key, $value, $addOn=false, $comma=true)
+    public static function printJsValueForFormValidation($key, $value, $addOn = false, $comma = true)
     {
         echo self::getJsValueForFormValidation($key, $value, $addOn, $comma);
     }
@@ -418,7 +419,6 @@ class Sanitize
      * @param string &$whitelist list of variables to allow
      *
      * @return void
-     * @access public
      */
     public static function removeRequestVars(&$whitelist)
     {
@@ -426,24 +426,25 @@ class Sanitize
         // and use type casting because the variables could have become
         // strings
         if (! isset($_REQUEST)) {
-            $_REQUEST = array();
+            $_REQUEST = [];
         }
         if (! isset($_GET)) {
-            $_GET = array();
+            $_GET = [];
         }
         if (! isset($_POST)) {
-            $_POST = array();
+            $_POST = [];
         }
         if (! isset($_COOKIE)) {
-            $_COOKIE = array();
+            $_COOKIE = [];
         }
         $keys = array_keys(
-            array_merge((array)$_REQUEST, (array)$_GET, (array)$_POST, (array)$_COOKIE)
+            array_merge((array) $_REQUEST, (array) $_GET, (array) $_POST, (array) $_COOKIE)
         );
 
         foreach ($keys as $key) {
             if (! in_array($key, $whitelist)) {
                 unset($_REQUEST[$key], $_GET[$key], $_POST[$key]);
+
                 continue;
             }
 

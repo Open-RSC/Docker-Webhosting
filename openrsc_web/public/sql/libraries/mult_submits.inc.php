@@ -1,24 +1,22 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Helper for multi submit forms
- *
- * @package PhpMyAdmin
+ * Helper for multi submit forms.
  */
-
-use PhpMyAdmin\CentralColumns;
-use PhpMyAdmin\Message;
-use PhpMyAdmin\MultSubmits;
-use PhpMyAdmin\Response;
 use PhpMyAdmin\Sql;
-use PhpMyAdmin\Template;
 use PhpMyAdmin\Util;
+use PhpMyAdmin\Message;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Template;
+use PhpMyAdmin\MultSubmits;
+use PhpMyAdmin\CentralColumns;
 
 if (! defined('PHPMYADMIN')) {
     exit;
 }
 
-$request_params = array(
+$request_params = [
     'clause_is_unique',
     'from_prefix',
     'goto',
@@ -33,8 +31,8 @@ $request_params = array(
     'submit_mult',
     'table_type',
     'to_prefix',
-    'url_query'
-);
+    'url_query',
+];
 
 foreach ($request_params as $one_request_param) {
     if (isset($_POST[$one_request_param])) {
@@ -50,7 +48,7 @@ global $db, $table,  $clause_is_unique, $from_prefix, $goto,
 
 $multSubmits = new MultSubmits();
 
-/**
+/*
  * Prepares the work and runs some other scripts if required
  */
 if (! empty($submit_mult)
@@ -64,7 +62,7 @@ if (! empty($submit_mult)
     if (! empty($_POST['selected_dbs'])) {
         // coming from server database view - do something with
         // selected databases
-        $selected   = $_POST['selected_dbs'];
+        $selected = $_POST['selected_dbs'];
         $query_type = 'drop_db';
     } elseif (! empty($_POST['selected_tbl'])) {
         // coming from database structure view - do something with
@@ -79,6 +77,7 @@ if (! empty($submit_mult)
         case 'drop_tbl':
         case 'empty_tbl':
             $what = $submit_mult;
+
             break;
         case 'check_tbl':
         case 'optimize_tbl':
@@ -87,7 +86,8 @@ if (! empty($submit_mult)
         case 'checksum_tbl':
             $query_type = $submit_mult;
             unset($submit_mult);
-            $mult_btn   = __('Yes');
+            $mult_btn = __('Yes');
+
             break;
         case 'export':
             unset($submit_mult);
@@ -101,8 +101,8 @@ if (! empty($submit_mult)
                 );
             $_url_params = $multSubmits->getUrlParams(
                 $submit_mult, $reload, $action, $db, $table, $selected, $views,
-                isset($original_sql_query)? $original_sql_query : null,
-                isset($original_url_query)? $original_url_query : null
+                isset($original_sql_query) ? $original_sql_query : null,
+                isset($original_url_query) ? $original_url_query : null
             );
             $response->disable();
             $response->addHTML(
@@ -114,11 +114,11 @@ if (! empty($submit_mult)
                 'database/structure/show_create'
             )
                 ->render(
-                    array(
+                    [
                         'db'         => $GLOBALS['db'],
                         'db_objects' => $selected,
                         'dbi'        => $GLOBALS['dbi'],
-                    )
+                    ]
                 );
             // Send response to client.
             $response->addJSON('message', $show_create);
@@ -127,20 +127,23 @@ if (! empty($submit_mult)
             $centralColsError = $centralColumns->syncUniqueColumns(
                 $selected
             );
+
             break;
         case 'delete_unique_columns_central_list':
             $centralColsError = $centralColumns->deleteColumnsFromList(
                 $selected
             );
+
             break;
         case 'make_consistent_with_central_list':
             $centralColsError = $centralColumns->makeConsistentWithList(
                 $GLOBALS['db'],
                 $selected
             );
+
             break;
         } // end switch
-    } elseif (isset($selected_fld) && !empty($selected_fld)) {
+    } elseif (isset($selected_fld) && ! empty($selected_fld)) {
         // coming from table structure view - do something with
         // selected columns
         // handled in StructrueController
@@ -159,10 +162,10 @@ if (empty($table)) {
 }
 $views = $GLOBALS['dbi']->getVirtualTables($db);
 
-/**
+/*
  * Displays the confirmation form if required
  */
-if (!empty($submit_mult) && !empty($what)) {
+if (! empty($submit_mult) && ! empty($what)) {
     unset($message);
 
     if (strlen($table) > 0) {
@@ -182,7 +185,6 @@ if (!empty($submit_mult) && !empty($what)) {
             $tooltip_aliasname,
             $pos
         ) = Util::getDbInfo($db, isset($sub_part) ? $sub_part : '');
-
     } else {
         include_once './libraries/server_common.inc.php';
     }
@@ -196,10 +198,9 @@ if (!empty($submit_mult) && !empty($what)) {
     // Displays the confirmation form
     $_url_params = $multSubmits->getUrlParams(
         $what, $reload, $action, $db, $table, $selected, $views,
-        isset($original_sql_query)? $original_sql_query : null,
-        isset($original_url_query)? $original_url_query : null
+        isset($original_sql_query) ? $original_sql_query : null,
+        isset($original_url_query) ? $original_url_query : null
     );
-
 
     if ($what == 'replace_prefix_tbl' || $what == 'copy_tbl_change_prefix') {
         $response->disable();
@@ -215,22 +216,21 @@ if (!empty($submit_mult) && !empty($what)) {
         );
     }
     exit;
-
 } elseif (! empty($mult_btn) && $mult_btn == __('Yes')) {
-    /**
+    /*
      * Executes the query - dropping rows, columns/fields, tables or dbs
      */
     if ($query_type == 'primary_fld') {
         // Gets table primary key
         $GLOBALS['dbi']->selectDb($db);
         $result = $GLOBALS['dbi']->query(
-            'SHOW KEYS FROM ' . Util::backquote($table) . ';'
+            'SHOW KEYS FROM '.Util::backquote($table).';'
         );
         $primary = '';
         while ($row = $GLOBALS['dbi']->fetchAssoc($result)) {
             // Backups the list of primary keys
             if ($row['Key_name'] == 'PRIMARY') {
-                $primary .= $row['Column_name'] . ', ';
+                $primary .= $row['Column_name'].', ';
             }
         } // end while
         $GLOBALS['dbi']->freeResult($result);
@@ -258,10 +258,10 @@ if (!empty($submit_mult) && !empty($what)) {
     }
 
     if ($query_type == 'drop_tbl') {
-        if (!empty($sql_query)) {
+        if (! empty($sql_query)) {
             $sql_query .= ';';
-        } elseif (!empty($sql_query_views)) {
-            $sql_query = $sql_query_views . ';';
+        } elseif (! empty($sql_query_views)) {
+            $sql_query = $sql_query_views.';';
             unset($sql_query_views);
         }
     }
@@ -299,11 +299,11 @@ if (!empty($submit_mult) && !empty($what)) {
             $selected, // selectedTables
             null // complete_query
         );
-    } elseif (!$run_parts) {
+    } elseif (! $run_parts) {
         $GLOBALS['dbi']->selectDb($db);
         $result = $GLOBALS['dbi']->tryQuery($sql_query);
-        if ($result && !empty($sql_query_views)) {
-            $sql_query .= ' ' . $sql_query_views . ';';
+        if ($result && ! empty($sql_query_views)) {
+            $sql_query .= ' '.$sql_query_views.';';
             $result = $GLOBALS['dbi']->tryQuery($sql_query_views);
             unset($sql_query_views);
         }

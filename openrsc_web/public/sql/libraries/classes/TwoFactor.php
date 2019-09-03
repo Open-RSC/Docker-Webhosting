@@ -1,16 +1,16 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Two authentication factor handling
- *
- * @package PhpMyAdmin
+ * Two authentication factor handling.
  */
+
 namespace PhpMyAdmin;
 
 use PhpMyAdmin\UserPreferences;
 
 /**
- * Two factor authentication wrapper class
+ * Two factor authentication wrapper class.
  */
 class TwoFactor
 {
@@ -25,7 +25,7 @@ class TwoFactor
     public $config;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $_writable;
 
@@ -45,7 +45,7 @@ class TwoFactor
     private $userPreferences;
 
     /**
-     * Creates new TwoFactor object
+     * Creates new TwoFactor object.
      *
      * @param string $user User name
      */
@@ -60,7 +60,7 @@ class TwoFactor
     }
 
     /**
-     * Reads the configuration
+     * Reads the configuration.
      *
      * @return array
      */
@@ -78,11 +78,12 @@ class TwoFactor
         if (! isset($result['settings'])) {
             $result['settings'] = [];
         }
+
         return $result;
     }
 
     /**
-     * Get any property of this class
+     * Get any property of this class.
      *
      * @param string $property name of the property
      *
@@ -99,12 +100,13 @@ class TwoFactor
                 return $this->_writable;
             case 'showSubmit':
                 $backend = $this->_backend;
+
                 return $backend::$showSubmit;
         }
     }
 
     /**
-     * Returns list of available backends
+     * Returns list of available backends.
      *
      * @return array
      */
@@ -120,40 +122,42 @@ class TwoFactor
         if (class_exists('Samyoul\U2F\U2FServer\U2FServer')) {
             $result[] = 'key';
         }
+
         return $result;
     }
 
     /**
-     * Returns list of missing dependencies
+     * Returns list of missing dependencies.
      *
      * @return array
      */
     public function getMissingDeps()
     {
         $result = [];
-        if (!class_exists('PragmaRX\Google2FA\Google2FA')) {
+        if (! class_exists('PragmaRX\Google2FA\Google2FA')) {
             $result[] = [
                 'class' => \PhpMyAdmin\Plugins\TwoFactor\Application::getName(),
                 'dep' => 'pragmarx/google2fa',
             ];
         }
-        if (!class_exists('BaconQrCode\Renderer\Image\Png')) {
+        if (! class_exists('BaconQrCode\Renderer\Image\Png')) {
             $result[] = [
                 'class' => \PhpMyAdmin\Plugins\TwoFactor\Application::getName(),
                 'dep' => 'bacon/bacon-qr-code',
             ];
         }
-        if (!class_exists('Samyoul\U2F\U2FServer\U2FServer')) {
+        if (! class_exists('Samyoul\U2F\U2FServer\U2FServer')) {
             $result[] = [
                 'class' => \PhpMyAdmin\Plugins\TwoFactor\Key::getName(),
                 'dep' => 'samyoul/u2f-php-server',
             ];
         }
+
         return $result;
     }
 
     /**
-     * Returns class name for given name
+     * Returns class name for given name.
      *
      * @param string $name Backend name
      *
@@ -163,30 +167,32 @@ class TwoFactor
     {
         $result = 'PhpMyAdmin\\Plugins\\TwoFactorPlugin';
         if (in_array($name, $this->_available)) {
-            $result = 'PhpMyAdmin\\Plugins\\TwoFactor\\' . ucfirst($name);
+            $result = 'PhpMyAdmin\\Plugins\\TwoFactor\\'.ucfirst($name);
         } elseif (! empty($name)) {
             $result = 'PhpMyAdmin\\Plugins\\TwoFactor\\Invalid';
         }
+
         return $result;
     }
 
     /**
-     * Returns backend for current user
+     * Returns backend for current user.
      *
      * @return PhpMyAdmin\Plugins\TwoFactorPlugin
      */
     public function getBackend()
     {
         $name = $this->getBackendClass($this->config['backend']);
+
         return new $name($this);
     }
 
     /**
-     * Checks authentication, returns true on success
+     * Checks authentication, returns true on success.
      *
-     * @param boolean $skip_session Skip session cache
+     * @param bool $skip_session Skip session cache
      *
-     * @return boolean
+     * @return bool
      */
     public function check($skip_session = false)
     {
@@ -196,27 +202,28 @@ class TwoFactor
         if (empty($_SESSION['two_factor_check'])) {
             $_SESSION['two_factor_check'] = $this->_backend->check();
         }
+
         return $_SESSION['two_factor_check'];
     }
 
     /**
-     * Renders user interface to enter two-factor authentication
+     * Renders user interface to enter two-factor authentication.
      *
      * @return string HTML code
      */
     public function render()
     {
-        return $this->_backend->getError() . $this->_backend->render();
+        return $this->_backend->getError().$this->_backend->render();
     }
 
     /**
-     * Renders user interface to configure two-factor authentication
+     * Renders user interface to configure two-factor authentication.
      *
      * @return string HTML code
      */
     public function setup()
     {
-        return $this->_backend->getError() . $this->_backend->setup();
+        return $this->_backend->getError().$this->_backend->setup();
     }
 
     /**
@@ -230,19 +237,19 @@ class TwoFactor
     }
 
     /**
-     * Changes two-factor authentication settings
+     * Changes two-factor authentication settings.
      *
      * The object might stay in partialy changed setup
      * if configuration fails.
      *
      * @param string $name Backend name
      *
-     * @return boolean
+     * @return bool
      */
     public function configure($name)
     {
         $this->config = [
-            'backend' => $name
+            'backend' => $name,
         ];
         if ($name === '') {
             $cls = $this->getBackendClass($name);
@@ -263,11 +270,12 @@ class TwoFactor
         if ($result !== true) {
             $result->display();
         }
+
         return true;
     }
 
     /**
-     * Returns array with all available backends
+     * Returns array with all available backends.
      *
      * @return array
      */
@@ -283,6 +291,7 @@ class TwoFactor
                 'description' => $cls::getDescription(),
             ];
         }
+
         return $backends;
     }
 }

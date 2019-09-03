@@ -1,27 +1,25 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * functions for displaying server status
+ * functions for displaying server status.
  *
  * @usedby  server_status.php
- *
- * @package PhpMyAdmin
  */
+
 namespace PhpMyAdmin\Server;
 
+use PhpMyAdmin\Util;
 use PhpMyAdmin\ReplicationGui;
 use PhpMyAdmin\Server\Status\Data;
-use PhpMyAdmin\Util;
 
 /**
- * PhpMyAdmin\Server\Status
- *
- * @package PhpMyAdmin
+ * PhpMyAdmin\Server\Status.
  */
 class Status
 {
     /**
-     * Prints server status information: processes, connections and traffic
+     * Prints server status information: processes, connections and traffic.
      *
      * @param Data $serverStatusData Server status data
      *
@@ -30,7 +28,7 @@ class Status
     public static function getHtml(Data $serverStatusData)
     {
         //display the server state General Information
-        $retval  = self::getHtmlForServerStateGeneralInfo($serverStatusData);
+        $retval = self::getHtmlForServerStateGeneralInfo($serverStatusData);
 
         //display the server state traffic information
         $retval .= self::getHtmlForServerStateTraffic($serverStatusData);
@@ -49,7 +47,7 @@ class Status
     }
 
     /**
-     * Prints server state General information
+     * Prints server state General information.
      *
      * @param Data $serverStatusData Server status data
      *
@@ -58,10 +56,10 @@ class Status
     public static function getHtmlForServerStateGeneralInfo(Data $serverStatusData)
     {
         $start_time = $GLOBALS['dbi']->fetchValue(
-            'SELECT UNIX_TIMESTAMP() - ' . $serverStatusData->status['Uptime']
+            'SELECT UNIX_TIMESTAMP() - '.$serverStatusData->status['Uptime']
         );
 
-        $retval  = '<h3>';
+        $retval = '<h3>';
         $bytes_received = $serverStatusData->status['Bytes_received'];
         $bytes_sent = $serverStatusData->status['Bytes_sent'];
         $retval .= sprintf(
@@ -81,14 +79,14 @@ class Status
             __('This MySQL server has been running for %1$s. It started up on %2$s.'),
             Util::timespanFormat($serverStatusData->status['Uptime']),
             Util::localisedDate($start_time)
-        ) . "\n";
+        )."\n";
         $retval .= '</p>';
 
         return $retval;
     }
 
     /**
-     * Returns HTML to display replication information
+     * Returns HTML to display replication information.
      *
      * @return string HTML on replication
      */
@@ -100,17 +98,17 @@ class Status
         ) {
             $retval .= __(
                 'This MySQL server works as <b>master</b> and '
-                . '<b>slave</b> in <b>replication</b> process.'
+                .'<b>slave</b> in <b>replication</b> process.'
             );
         } elseif ($GLOBALS['replication_info']['master']['status']) {
             $retval .= __(
                 'This MySQL server works as <b>master</b> '
-                . 'in <b>replication</b> process.'
+                .'in <b>replication</b> process.'
             );
         } elseif ($GLOBALS['replication_info']['slave']['status']) {
             $retval .= __(
                 'This MySQL server works as <b>slave</b> '
-                . 'in <b>replication</b> process.'
+                .'in <b>replication</b> process.'
             );
         }
         $retval .= '</p>';
@@ -135,7 +133,7 @@ class Status
     }
 
     /**
-     * Prints server state traffic information
+     * Prints server state traffic information.
      *
      * @param Data $serverStatusData Server status data
      *
@@ -143,26 +141,26 @@ class Status
      */
     public static function getHtmlForServerStateTraffic(Data $serverStatusData)
     {
-        $hour_factor    = 3600 / $serverStatusData->status['Uptime'];
-        $retval  = '<table id="serverstatustraffic" class="width100 data noclick">';
+        $hour_factor = 3600 / $serverStatusData->status['Uptime'];
+        $retval = '<table id="serverstatustraffic" class="width100 data noclick">';
         $retval .= '<thead>';
         $retval .= '<tr>';
         $retval .= '<th>';
-        $retval .= __('Traffic') . '&nbsp;';
-        $retval .=  Util::showHint(
+        $retval .= __('Traffic').'&nbsp;';
+        $retval .= Util::showHint(
             __(
                 'On a busy server, the byte counters may overrun, so those statistics '
-                . 'as reported by the MySQL server may be incorrect.'
+                .'as reported by the MySQL server may be incorrect.'
             )
         );
         $retval .= '</th>';
         $retval .= '<th>#</th>';
-        $retval .= '<th>&oslash; ' . __('per hour') . '</th>';
+        $retval .= '<th>&oslash; '.__('per hour').'</th>';
         $retval .= '</tr>';
         $retval .= '</thead>';
         $retval .= '<tbody>';
         $retval .= '<tr>';
-        $retval .= '<th class="name">' . __('Received') . '</th>';
+        $retval .= '<th class="name">'.__('Received').'</th>';
         $retval .= '<td class="value">';
         $retval .= implode(
             ' ',
@@ -181,7 +179,7 @@ class Status
         $retval .= '</td>';
         $retval .= '</tr>';
         $retval .= '<tr>';
-        $retval .= '<th class="name">' . __('Sent') . '</th>';
+        $retval .= '<th class="name">'.__('Sent').'</th>';
         $retval .= '<td class="value">';
         $retval .= implode(
             ' ',
@@ -200,7 +198,7 @@ class Status
         $retval .= '</td>';
         $retval .= '</tr>';
         $retval .= '<tr>';
-        $retval .= '<th class="name">' . __('Total') . '</th>';
+        $retval .= '<th class="name">'.__('Total').'</th>';
         $retval .= '<td class="value">';
         $bytes_received = $serverStatusData->status['Bytes_received'];
         $bytes_sent = $serverStatusData->status['Bytes_sent'];
@@ -224,11 +222,12 @@ class Status
         $retval .= '</tr>';
         $retval .= '</tbody>';
         $retval .= '</table>';
+
         return $retval;
     }
 
     /**
-     * Prints server state connections information
+     * Prints server state connections information.
      *
      * @param Data $serverStatusData Server status data
      *
@@ -236,19 +235,19 @@ class Status
      */
     public static function getHtmlForServerStateConnections(Data $serverStatusData)
     {
-        $hour_factor    = 3600 / $serverStatusData->status['Uptime'];
-        $retval  = '<table id="serverstatusconnections" class="width100 data noclick">';
+        $hour_factor = 3600 / $serverStatusData->status['Uptime'];
+        $retval = '<table id="serverstatusconnections" class="width100 data noclick">';
         $retval .= '<thead>';
         $retval .= '<tr>';
-        $retval .= '<th>' . __('Connections') . '</th>';
+        $retval .= '<th>'.__('Connections').'</th>';
         $retval .= '<th>#</th>';
-        $retval .= '<th>&oslash; ' . __('per hour') . '</th>';
+        $retval .= '<th>&oslash; '.__('per hour').'</th>';
         $retval .= '<th>%</th>';
         $retval .= '</tr>';
         $retval .= '</thead>';
         $retval .= '<tbody>';
         $retval .= '<tr>';
-        $retval .= '<th class="name">' . __('Max. concurrent connections') . '</th>';
+        $retval .= '<th class="name">'.__('Max. concurrent connections').'</th>';
         $retval .= '<td class="value">';
         $retval .= Util::formatNumber(
             $serverStatusData->status['Max_used_connections'], 0
@@ -258,7 +257,7 @@ class Status
         $retval .= '<td class="value">--- </td>';
         $retval .= '</tr>';
         $retval .= '<tr>';
-        $retval .= '<th class="name">' . __('Failed attempts') . '</th>';
+        $retval .= '<th class="name">'.__('Failed attempts').'</th>';
         $retval .= '<td class="value">';
         $retval .= Util::formatNumber(
             $serverStatusData->status['Aborted_connects'], 4, 1, true
@@ -285,7 +284,7 @@ class Status
         $retval .= '</td>';
         $retval .= '</tr>';
         $retval .= '<tr>';
-        $retval .= '<th class="name">' . __('Aborted') . '</th>';
+        $retval .= '<th class="name">'.__('Aborted').'</th>';
         $retval .= '<td class="value">';
         $retval .= Util::formatNumber(
             $serverStatusData->status['Aborted_clients'], 4, 1, true
@@ -312,7 +311,7 @@ class Status
         $retval .= '</td>';
         $retval .= '</tr>';
         $retval .= '<tr>';
-        $retval .= '<th class="name">' . __('Total') . '</th>';
+        $retval .= '<th class="name">'.__('Total').'</th>';
         $retval .= '<td class="value">';
         $retval .= Util::formatNumber(
             $serverStatusData->status['Connections'], 4, 0

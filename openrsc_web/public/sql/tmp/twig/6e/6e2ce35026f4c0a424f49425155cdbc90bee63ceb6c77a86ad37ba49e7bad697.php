@@ -16,32 +16,32 @@ class __TwigTemplate_fff5d852b3289d79b5d91227160119b134750ed2b7b74532081d597fa0f
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<input id=\"field_";
-        echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-        echo "_";
-        echo twig_escape_filter($this->env, (($context["ci"] ?? null) - ($context["ci_offset"] ?? null)), "html", null, true);
-        echo "\"
-    type=\"text\"
-    name=\"field_comments[";
+        echo '<input id="field_';
+        echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+        echo '_';
+        echo twig_escape_filter($this->env, (($context['ci'] ?? null) - ($context['ci_offset'] ?? null)), 'html', null, true);
+        echo '"
+    type="text"
+    name="field_comments[';
         // line 3
-        echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-        echo "]\"
-    size=\"12\"
-    maxlength=\"";
+        echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+        echo ']"
+    size="12"
+    maxlength="';
         // line 5
-        echo twig_escape_filter($this->env, ($context["max_length"] ?? null), "html", null, true);
-        echo "\"
-    value=\"";
+        echo twig_escape_filter($this->env, ($context['max_length'] ?? null), 'html', null, true);
+        echo '"
+    value="';
         // line 6
-        echo ($context["value"] ?? null);
-        echo "\"
-    class=\"textfield\" />
-";
+        echo $context['value'] ?? null;
+        echo '"
+    class="textfield" />
+';
     }
 
     public function getTemplateName()
     {
-        return "columns_definitions/column_comment.twig";
+        return 'columns_definitions/column_comment.twig';
     }
 
     public function isTraitable()
@@ -51,7 +51,7 @@ class __TwigTemplate_fff5d852b3289d79b5d91227160119b134750ed2b7b74532081d597fa0f
 
     public function getDebugInfo()
     {
-        return array (  36 => 6,  32 => 5,  27 => 3,  19 => 1,);
+        return [36 => 6,  32 => 5,  27 => 3,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -64,6 +64,6 @@ class __TwigTemplate_fff5d852b3289d79b5d91227160119b134750ed2b7b74532081d597fa0f
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "columns_definitions/column_comment.twig", "/var/www/html/sql/templates/columns_definitions/column_comment.twig");
+        return new Twig_Source('', 'columns_definitions/column_comment.twig', '/var/www/html/sql/templates/columns_definitions/column_comment.twig');
     }
 }

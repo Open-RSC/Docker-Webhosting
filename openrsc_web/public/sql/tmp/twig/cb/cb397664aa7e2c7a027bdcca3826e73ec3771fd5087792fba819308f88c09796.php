@@ -16,24 +16,24 @@ class __TwigTemplate_32421e56c72b4140fbd5232e6b266996aff18a5dfbaabb68a2143020864
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<li>
-    <input type=\"radio\" id=\"radio_view_as_text\" name=\"output_format\" value=\"astext\"";
+        echo '<li>
+    <input type="radio" id="radio_view_as_text" name="output_format" value="astext"';
         // line 3
-        echo (((($context["has_repopulate"] ?? null) || (($context["export_asfile"] ?? null) == false))) ? (" checked") : (""));
-        echo ">
-    <label for=\"radio_view_as_text\">
-        ";
+        echo ((($context['has_repopulate'] ?? null) || (($context['export_asfile'] ?? null) == false))) ? (' checked') : ('');
+        echo '>
+    <label for="radio_view_as_text">
+        ';
         // line 5
-        echo _gettext("View output as text");
+        echo _gettext('View output as text');
         // line 6
-        echo "    </label>
+        echo '    </label>
 </li>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "display/export/options_output_radio.twig";
+        return 'display/export/options_output_radio.twig';
     }
 
     public function isTraitable()
@@ -43,7 +43,7 @@ class __TwigTemplate_32421e56c72b4140fbd5232e6b266996aff18a5dfbaabb68a2143020864
 
     public function getDebugInfo()
     {
-        return array (  29 => 6,  27 => 5,  22 => 3,  19 => 1,);
+        return [29 => 6,  27 => 5,  22 => 3,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -56,6 +56,6 @@ class __TwigTemplate_32421e56c72b4140fbd5232e6b266996aff18a5dfbaabb68a2143020864
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/export/options_output_radio.twig", "/var/www/html/sql/templates/display/export/options_output_radio.twig");
+        return new Twig_Source('', 'display/export/options_output_radio.twig', '/var/www/html/sql/templates/display/export/options_output_radio.twig');
     }
 }

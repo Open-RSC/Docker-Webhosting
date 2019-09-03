@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Single signon for phpMyAdmin using OpenID
+ * Single signon for phpMyAdmin using OpenID.
  *
  * This is just example how to use single signon with phpMyAdmin, it is
  * not intended to be perfect code and look, only shows how you can
@@ -11,11 +11,7 @@
  *
  * User first authenticates using OpenID and based on content of $AUTH_MAP
  * the login information is passed to phpMyAdmin in session data.
- *
- * @package    PhpMyAdmin
- * @subpackage Example
  */
-
 if (false === @include_once 'OpenID/RelyingParty.php') {
     exit;
 }
@@ -26,12 +22,12 @@ $secure_cookie = false;
 /**
  * Map of authenticated users to MySQL user/password pairs.
  */
-$AUTH_MAP = array(
-    'https://launchpad.net/~username' => array(
+$AUTH_MAP = [
+    'https://launchpad.net/~username' => [
         'user' => 'root',
         'password' => '',
-        ),
-    );
+        ],
+    ];
 
 /**
  * Simple function to show HTML page with given content.
@@ -43,8 +39,7 @@ $AUTH_MAP = array(
 function Show_page($contents)
 {
     header('Content-Type: text/html; charset=utf-8');
-    echo '<?xml version="1.0" encoding="utf-8"?>' , "\n";
-    ?>
+    echo '<?xml version="1.0" encoding="utf-8"?>' , "\n"; ?>
     <!DOCTYPE HTML>
     <html lang="en" dir="ltr">
     <head>
@@ -59,15 +54,14 @@ function Show_page($contents)
         echo '<p class="error">' , $_SESSION['PMA_single_signon_message'] , '</p>';
         unset($_SESSION['PMA_single_signon_message']);
     }
-    echo $contents;
-    ?>
+    echo $contents; ?>
     </body>
     </html>
     <?php
 }
 
 /**
- * Display error and exit
+ * Display error and exit.
  *
  * @param Exception $e Exception object
  *
@@ -76,12 +70,11 @@ function Show_page($contents)
 function Die_error($e)
 {
     $contents = "<div class='relyingparty_results'>\n";
-    $contents .= "<pre>" . htmlspecialchars($e->getMessage()) . "</pre>\n";
+    $contents .= '<pre>'.htmlspecialchars($e->getMessage())."</pre>\n";
     $contents .= "</div class='relyingparty_results'>";
     Show_page($contents);
     exit;
 }
-
 
 /* Need to have cookie visible from parent directory */
 session_set_cookie_params(0, '/', '', $secure_cookie, true);
@@ -95,17 +88,17 @@ $base = 'http';
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
     $base .= 's';
 }
-$base .= '://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+$base .= '://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
 
-$realm = $base . '/';
-$returnTo = $base . dirname($_SERVER['PHP_SELF']);
+$realm = $base.'/';
+$returnTo = $base.dirname($_SERVER['PHP_SELF']);
 if ($returnTo[strlen($returnTo) - 1] != '/') {
     $returnTo .= '/';
 }
 $returnTo .= 'openid.php';
 
 /* Display form */
-if (!count($_GET) && !count($_POST) || isset($_GET['phpMyAdmin'])) {
+if (! count($_GET) && ! count($_POST) || isset($_GET['phpMyAdmin'])) {
     /* Show simple form */
     $content = '<form action="openid.php" method="post">
 OpenID: <input type="text" name="identifier" /><br />
@@ -147,7 +140,7 @@ if (isset($_POST['start'])) {
     exit;
 } else {
     /* Grab query string */
-    if (!count($_POST)) {
+    if (! count($_POST)) {
         list(, $queryString) = explode('?', $_SERVER['REQUEST_URI']);
     } else {
         // I hate php sometimes
@@ -163,7 +156,7 @@ if (isset($_POST['start'])) {
 
     $id = $message->get('openid.claimed_id');
 
-    if (!empty($id) && isset($AUTH_MAP[$id])) {
+    if (! empty($id) && isset($AUTH_MAP[$id])) {
         $_SESSION['PMA_single_signon_user'] = $AUTH_MAP[$id]['user'];
         $_SESSION['PMA_single_signon_password'] = $AUTH_MAP[$id]['password'];
         session_write_close();

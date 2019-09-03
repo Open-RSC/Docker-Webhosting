@@ -16,36 +16,36 @@ class __TwigTemplate_34dffca7227bbd4dbdf0579f3ddb485dc030d9e7ba693bdda3bc6c84d79
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        if (((($context["delete_link"] ?? null) == ($context["delete_row"] ?? null)) || (($context["delete_link"] ?? null) == ($context["kill_process"] ?? null)))) {
+        if (((($context['delete_link'] ?? null) == ($context['delete_row'] ?? null)) || (($context['delete_link'] ?? null) == ($context['kill_process'] ?? null)))) {
             // line 2
-            echo "    <form method=\"post\"
-        action=\"tbl_row_action.php\"
-        name=\"resultsForm\"
-        id=\"resultsForm_";
+            echo '    <form method="post"
+        action="tbl_row_action.php"
+        name="resultsForm"
+        id="resultsForm_';
             // line 5
-            echo twig_escape_filter($this->env, ($context["unique_id"] ?? null), "html", null, true);
-            echo "\"
-        class=\"ajax\">
-        ";
+            echo twig_escape_filter($this->env, ($context['unique_id'] ?? null), 'html', null, true);
+            echo '"
+        class="ajax">
+        ';
             // line 7
-            echo PhpMyAdmin\Url::getHiddenInputs(($context["db"] ?? null), ($context["table"] ?? null), 1);
-            echo "
-        <input type=\"hidden\" name=\"goto\" value=\"sql.php\" />
-";
+            echo PhpMyAdmin\Url::getHiddenInputs(($context['db'] ?? null), ($context['table'] ?? null), 1);
+            echo '
+        <input type="hidden" name="goto" value="sql.php" />
+';
         }
         // line 10
-        echo "
-<div class=\"responsivetable\">
-    <table class=\"table_results data ajax\" data-uniqueId=\"";
+        echo '
+<div class="responsivetable">
+    <table class="table_results data ajax" data-uniqueId="';
         // line 12
-        echo twig_escape_filter($this->env, ($context["unique_id"] ?? null), "html", null, true);
-        echo "\">
-";
+        echo twig_escape_filter($this->env, ($context['unique_id'] ?? null), 'html', null, true);
+        echo '">
+';
     }
 
     public function getTemplateName()
     {
-        return "display/results/multi_row_operations_form.twig";
+        return 'display/results/multi_row_operations_form.twig';
     }
 
     public function isTraitable()
@@ -55,7 +55,7 @@ class __TwigTemplate_34dffca7227bbd4dbdf0579f3ddb485dc030d9e7ba693bdda3bc6c84d79
 
     public function getDebugInfo()
     {
-        return array (  41 => 12,  37 => 10,  31 => 7,  26 => 5,  21 => 2,  19 => 1,);
+        return [41 => 12,  37 => 10,  31 => 7,  26 => 5,  21 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -68,6 +68,6 @@ class __TwigTemplate_34dffca7227bbd4dbdf0579f3ddb485dc030d9e7ba693bdda3bc6c84d79
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/results/multi_row_operations_form.twig", "/var/www/html/openrsc_web/public/sql/templates/display/results/multi_row_operations_form.twig");
+        return new Twig_Source('', 'display/results/multi_row_operations_form.twig', '/var/www/html/openrsc_web/public/sql/templates/display/results/multi_row_operations_form.twig');
     }
 }

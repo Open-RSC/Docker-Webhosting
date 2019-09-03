@@ -16,8 +16,8 @@ class GeneralController extends Controller
         die();
     }
 
-	public function faq()
-	{
-		return view('faq');
-	}
+    public function faq()
+    {
+        return view('faq');
+    }
 }

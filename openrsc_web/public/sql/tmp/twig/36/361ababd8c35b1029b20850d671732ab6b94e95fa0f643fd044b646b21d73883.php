@@ -16,40 +16,40 @@ class __TwigTemplate_e352bc3250760db3436ebb086b960481bfa4e577d2e22a439dd098f25ab
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<input type=\"checkbox\" name=\"";
-        echo twig_escape_filter($this->env, ($context["html_field_name"] ?? null), "html", null, true);
-        echo "\"";
+        echo '<input type="checkbox" name="';
+        echo twig_escape_filter($this->env, ($context['html_field_name'] ?? null), 'html', null, true);
+        echo '"';
         // line 2
-        if ((isset($context["html_field_id"]) || array_key_exists("html_field_id", $context))) {
-            echo " id=\"";
-            echo twig_escape_filter($this->env, ($context["html_field_id"] ?? null), "html", null, true);
-            echo "\"";
+        if ((isset($context['html_field_id']) || array_key_exists('html_field_id', $context))) {
+            echo ' id="';
+            echo twig_escape_filter($this->env, ($context['html_field_id'] ?? null), 'html', null, true);
+            echo '"';
         }
         // line 3
-        if (((isset($context["checked"]) || array_key_exists("checked", $context)) && ($context["checked"] ?? null))) {
-            echo " checked=\"checked\"";
+        if (((isset($context['checked']) || array_key_exists('checked', $context)) && ($context['checked'] ?? null))) {
+            echo ' checked="checked"';
         }
         // line 4
-        if (((isset($context["onclick"]) || array_key_exists("onclick", $context)) && ($context["onclick"] ?? null))) {
-            echo " class=\"autosubmit\"";
+        if (((isset($context['onclick']) || array_key_exists('onclick', $context)) && ($context['onclick'] ?? null))) {
+            echo ' class="autosubmit"';
         }
-        echo " /><label";
+        echo ' /><label';
         // line 5
-        if ((isset($context["html_field_id"]) || array_key_exists("html_field_id", $context))) {
-            echo " for=\"";
-            echo twig_escape_filter($this->env, ($context["html_field_id"] ?? null), "html", null, true);
-            echo "\"";
+        if ((isset($context['html_field_id']) || array_key_exists('html_field_id', $context))) {
+            echo ' for="';
+            echo twig_escape_filter($this->env, ($context['html_field_id'] ?? null), 'html', null, true);
+            echo '"';
         }
         // line 6
-        echo ">";
-        echo twig_escape_filter($this->env, ($context["label"] ?? null), "html", null, true);
-        echo "</label>
-";
+        echo '>';
+        echo twig_escape_filter($this->env, ($context['label'] ?? null), 'html', null, true);
+        echo '</label>
+';
     }
 
     public function getTemplateName()
     {
-        return "checkbox.twig";
+        return 'checkbox.twig';
     }
 
     public function isTraitable()
@@ -59,7 +59,7 @@ class __TwigTemplate_e352bc3250760db3436ebb086b960481bfa4e577d2e22a439dd098f25ab
 
     public function getDebugInfo()
     {
-        return array (  44 => 6,  38 => 5,  33 => 4,  29 => 3,  23 => 2,  19 => 1,);
+        return [44 => 6,  38 => 5,  33 => 4,  29 => 3,  23 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -72,6 +72,6 @@ class __TwigTemplate_e352bc3250760db3436ebb086b960481bfa4e577d2e22a439dd098f25ab
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "checkbox.twig", "/var/www/html/openrsc_web/public/sql/templates/checkbox.twig");
+        return new Twig_Source('', 'checkbox.twig', '/var/www/html/openrsc_web/public/sql/templates/checkbox.twig');
     }
 }

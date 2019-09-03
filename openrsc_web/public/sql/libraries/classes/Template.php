@@ -1,55 +1,53 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Template class
- *
- * @package PhpMyAdmin
+ * hold PhpMyAdmin\Template class.
  */
+
 namespace PhpMyAdmin;
 
-use PhpMyAdmin\Twig\CharsetsExtension;
+use Twig\Environment;
+use PhpMyAdmin\Twig\UrlExtension;
+use Twig\Loader\FilesystemLoader;
 use PhpMyAdmin\Twig\CoreExtension;
 use PhpMyAdmin\Twig\I18nExtension;
+use PhpMyAdmin\Twig\UtilExtension;
 use PhpMyAdmin\Twig\IndexExtension;
+use PhpMyAdmin\Twig\TableExtension;
 use PhpMyAdmin\Twig\MessageExtension;
-use PhpMyAdmin\Twig\PartitionExtension;
-use PhpMyAdmin\Twig\PhpFunctionsExtension;
 use PhpMyAdmin\Twig\PluginsExtension;
+use PhpMyAdmin\Twig\TrackerExtension;
+use PhpMyAdmin\Twig\CharsetsExtension;
 use PhpMyAdmin\Twig\RelationExtension;
 use PhpMyAdmin\Twig\SanitizeExtension;
-use PhpMyAdmin\Twig\ServerPrivilegesExtension;
+use PhpMyAdmin\Twig\PartitionExtension;
+use PhpMyAdmin\Twig\PhpFunctionsExtension;
 use PhpMyAdmin\Twig\StorageEngineExtension;
-use PhpMyAdmin\Twig\TableExtension;
-use PhpMyAdmin\Twig\TrackerExtension;
 use PhpMyAdmin\Twig\TransformationsExtension;
-use PhpMyAdmin\Twig\UrlExtension;
-use PhpMyAdmin\Twig\UtilExtension;
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
+use PhpMyAdmin\Twig\ServerPrivilegesExtension;
 
 /**
- * Class Template
+ * Class Template.
  *
  * Handle front end templating
- *
- * @package PhpMyAdmin
  */
 class Template
 {
     /**
-     * Name of the template
+     * Name of the template.
      */
     protected $name = null;
 
     /**
-     * Twig environment
+     * Twig environment.
      */
-    static protected $twig;
+    protected static $twig;
 
     const BASE_PATH = 'templates/';
 
     /**
-     * Template constructor
+     * Template constructor.
      *
      * @param string $name Template name
      */
@@ -64,11 +62,11 @@ class Template
             if (is_null($cache_dir)) {
                 $cache_dir = false;
             }
-            $twig = new Environment($loader, array(
+            $twig = new Environment($loader, [
                 'auto_reload' => true,
                 'cache' => $cache_dir,
                 'debug' => false,
-            ));
+            ]);
             $twig->addExtension(new CharsetsExtension());
             $twig->addExtension(new CoreExtension());
             $twig->addExtension(new I18nExtension());
@@ -91,7 +89,7 @@ class Template
     }
 
     /**
-     * Template getter
+     * Template getter.
      *
      * @param string $name Template name
      *
@@ -99,24 +97,24 @@ class Template
      */
     public static function get($name)
     {
-        return new Template($name);
+        return new self($name);
     }
 
     /**
-     * Render template
+     * Render template.
      *
      * @param array $data Variables to be provided to the template
      *
      * @return string
      */
-    public function render(array $data = array())
+    public function render(array $data = [])
     {
         try {
-            $template = $this::$twig->load($this->name . '.twig');
+            $template = $this::$twig->load($this->name.'.twig');
         } catch (\RuntimeException $e) {
             /* Retry with disabled cache */
             $this::$twig->setCache(false);
-            $template = $this::$twig->load($this->name . '.twig');
+            $template = $this::$twig->load($this->name.'.twig');
             /*
              * The trigger error is intentionally after second load
              * to avoid triggering error when disabling cache does not
@@ -130,6 +128,7 @@ class Template
                 E_USER_WARNING
             );
         }
+
         return $template->render($data);
     }
 }

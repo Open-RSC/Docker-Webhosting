@@ -1,24 +1,21 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the long to IPv4 transformations plugins
- *
- * @package    PhpMyAdmin-Transformations
- * @subpackage LongToIPv4
+ * Abstract class for the long to IPv4 transformations plugins.
  */
+
 namespace PhpMyAdmin\Plugins\Transformations\Abs;
 
 use PhpMyAdmin\Plugins\TransformationsPlugin;
 
 /**
  * Provides common methods for all of the long to IPv4 transformations plugins.
- *
- * @package PhpMyAdmin
  */
 abstract class LongToIPv4TransformationsPlugin extends TransformationsPlugin
 {
     /**
-     * Gets the transformation description of the specific plugin
+     * Gets the transformation description of the specific plugin.
      *
      * @return string
      */
@@ -26,7 +23,7 @@ abstract class LongToIPv4TransformationsPlugin extends TransformationsPlugin
     {
         return __(
             'Converts an (IPv4) Internet network address stored as a BIGINT'
-            . ' into a string in Internet standard dotted format.'
+            .' into a string in Internet standard dotted format.'
         );
     }
 
@@ -39,7 +36,7 @@ abstract class LongToIPv4TransformationsPlugin extends TransformationsPlugin
      *
      * @return string
      */
-    public function applyTransformation($buffer, array $options = array(), $meta = '')
+    public function applyTransformation($buffer, array $options = [], $meta = '')
     {
         if ($buffer < 0 || $buffer > 4294967295) {
             return htmlspecialchars($buffer);
@@ -48,16 +45,15 @@ abstract class LongToIPv4TransformationsPlugin extends TransformationsPlugin
         return long2ip($buffer);
     }
 
-
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the specific plugin
+     * Gets the transformation name of the specific plugin.
      *
      * @return string
      */
     public static function getName()
     {
-        return "Long To IPv4";
+        return 'Long To IPv4';
     }
 }

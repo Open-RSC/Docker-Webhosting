@@ -1,28 +1,26 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * General functions.
- *
- * @package PhpMyAdmin
  */
+
 namespace PhpMyAdmin\Rte;
 
+use PhpMyAdmin\Util;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
+use PhpMyAdmin\Rte\Words;
 use PhpMyAdmin\Rte\Events;
 use PhpMyAdmin\Rte\Triggers;
-use PhpMyAdmin\Rte\Words;
-use PhpMyAdmin\Util;
 
 /**
- * PhpMyAdmin\Rte\General class
- *
- * @package PhpMyAdmin
+ * PhpMyAdmin\Rte\General class.
  */
 class General
 {
     /**
-     * Check result
+     * Check result.
      *
      * @param resource|bool $result          Query result
      * @param string        $error           Error to add
@@ -42,10 +40,10 @@ class General
         // and now even the backup query does not execute!
         // This should not happen, but we better handle
         // this just in case.
-        $errors[] = $error . '<br />'
-            . __('The backed up query was:')
-            . "\"" . htmlspecialchars($createStatement) . "\"" . '<br />'
-            . __('MySQL said: ') . $GLOBALS['dbi']->getError();
+        $errors[] = $error.'<br />'
+            .__('The backed up query was:')
+            .'"'.htmlspecialchars($createStatement).'"'.'<br />'
+            .__('MySQL said: ').$GLOBALS['dbi']->getError();
 
         return $errors;
     }
@@ -81,7 +79,7 @@ class General
             }
             exit;
         } else {
-            $message  = __('Error in processing request:') . ' ';
+            $message = __('Error in processing request:').' ';
             $message .= sprintf(
                 Words::get('not_found'),
                 htmlspecialchars(Util::backquote($_REQUEST['item_name'])),

@@ -1,32 +1,29 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Responsible for retrieving version information and notifiying about latest version
- *
- * @package PhpMyAdmin
+ * Responsible for retrieving version information and notifiying about latest version.
  */
+
 namespace PhpMyAdmin;
 
 use PhpMyAdmin\Util;
 use PhpMyAdmin\Utils\HttpRequest;
 
 /**
- * Responsible for retrieving version information and notifiying about latest version
- *
- * @package PhpMyAdmin
- *
+ * Responsible for retrieving version information and notifiying about latest version.
  */
 class VersionInformation
 {
     /**
-     * Returns information with latest version from phpmyadmin.net
+     * Returns information with latest version from phpmyadmin.net.
      *
      * @return object JSON decoded object with the data
      */
     public function getLatestVersion()
     {
-        if (!$GLOBALS['cfg']['VersionCheck']) {
-            return null;
+        if (! $GLOBALS['cfg']['VersionCheck']) {
+            return;
         }
 
         // Get response text from phpmyadmin.net or from the session
@@ -52,20 +49,21 @@ class VersionInformation
             || empty($data->releases)
             || empty($data->date)
         ) {
-            return null;
+            return;
         }
 
         if ($save) {
-            $_SESSION['cache']['version_check'] = array(
+            $_SESSION['cache']['version_check'] = [
                 'response' => $response,
-                'timestamp' => time()
-            );
+                'timestamp' => time(),
+            ];
         }
+
         return $data;
     }
 
     /**
-     * Calculates numerical equivalent of phpMyAdmin version string
+     * Calculates numerical equivalent of phpMyAdmin version string.
      *
      * @param string $version version
      *
@@ -99,8 +97,8 @@ class VersionInformation
             $result += 1 * $parts[3];
         }
 
-        if (!empty($suffix)) {
-            $matches = array();
+        if (! empty($suffix)) {
+            $matches = [];
             if (preg_match('/^(\D+)(\d+)$/', $suffix, $matches)) {
                 $suffix = $matches[1];
                 $result += intval($matches[2]);
@@ -108,18 +106,23 @@ class VersionInformation
             switch ($suffix) {
             case 'pl':
                 $result += 60;
+
                 break;
             case 'rc':
                 $result += 30;
+
                 break;
             case 'beta':
                 $result += 20;
+
                 break;
             case 'alpha':
                 $result += 10;
+
                 break;
             case 'dev':
                 $result += 0;
+
                 break;
             }
         } else {
@@ -131,7 +134,7 @@ class VersionInformation
 
     /**
      * Returns the version and date of the latest phpMyAdmin version compatible
-     * with the available PHP and MySQL versions
+     * with the available PHP and MySQL versions.
      *
      * @param array $releases array of information related to each version
      *
@@ -141,9 +144,9 @@ class VersionInformation
     {
         foreach ($releases as $release) {
             $phpVersions = $release->php_versions;
-            $phpConditions = explode(",", $phpVersions);
+            $phpConditions = explode(',', $phpVersions);
             foreach ($phpConditions as $phpCondition) {
-                if (! $this->evaluateVersionCondition("PHP", $phpCondition)) {
+                if (! $this->evaluateVersionCondition('PHP', $phpCondition)) {
                     continue 2;
                 }
             }
@@ -152,40 +155,40 @@ class VersionInformation
             // one server configured.
             if (count($GLOBALS['cfg']['Servers']) == 1) {
                 $mysqlVersions = $release->mysql_versions;
-                $mysqlConditions = explode(",", $mysqlVersions);
+                $mysqlConditions = explode(',', $mysqlVersions);
                 foreach ($mysqlConditions as $mysqlCondition) {
-                    if (!$this->evaluateVersionCondition('MySQL', $mysqlCondition)) {
+                    if (! $this->evaluateVersionCondition('MySQL', $mysqlCondition)) {
                         continue 2;
                     }
                 }
             }
 
-            return array(
+            return [
                 'version' => $release->version,
                 'date' => $release->date,
-            );
+            ];
         }
 
         // no compatible version
-        return null;
     }
 
     /**
-     * Checks whether PHP or MySQL version meets supplied version condition
+     * Checks whether PHP or MySQL version meets supplied version condition.
      *
      * @param string $type      PHP or MySQL
      * @param string $condition version condition
      *
-     * @return boolean whether the condition is met
+     * @return bool whether the condition is met
      */
     public function evaluateVersionCondition($type, $condition)
     {
         $operator = null;
-        $operators = array("<=", ">=", "!=", "<>", "<", ">", "="); // preserve order
+        $operators = ['<=', '>=', '!=', '<>', '<', '>', '=']; // preserve order
         foreach ($operators as $oneOperator) {
             if (strpos($condition, $oneOperator) === 0) {
                 $operator = $oneOperator;
                 $version = substr($condition, strlen($oneOperator));
+
                 break;
             }
         }
@@ -200,11 +203,12 @@ class VersionInformation
         if ($myVersion != null && $operator != null) {
             return version_compare($myVersion, $version, $operator);
         }
+
         return false;
     }
 
     /**
-     * Returns the PHP version
+     * Returns the PHP version.
      *
      * @return string PHP version
      */
@@ -214,7 +218,7 @@ class VersionInformation
     }
 
     /**
-     * Returns the MySQL version if connected to a database
+     * Returns the MySQL version if connected to a database.
      *
      * @return string MySQL version
      */
@@ -223,6 +227,5 @@ class VersionInformation
         if (isset($GLOBALS['dbi'])) {
             return $GLOBALS['dbi']->getVersionString();
         }
-        return null;
     }
 }

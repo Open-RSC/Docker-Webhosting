@@ -1,54 +1,57 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Superclass for the single Property Item classes.
- *
- * @package PhpMyAdmin
  */
+
 namespace PhpMyAdmin\Properties\Options;
 
 /**
  * Parents only single property items (not groups).
  * Defines possible options and getters and setters for them.
- *
- * @package PhpMyAdmin
  */
 abstract class OptionsPropertyOneItem extends OptionsPropertyItem
 {
     /**
-     * Whether to force or not
+     * Whether to force or not.
      *
      * @var bool
      */
     private $_force_one;
+
     /**
-     * Values
+     * Values.
      *
      * @var array
      */
     private $_values;
+
     /**
-     * Doc
+     * Doc.
      *
      * @var string
      */
     private $_doc;
+
     /**
-     * Length
+     * Length.
      *
      * @var int
      */
     private $_len;
+
     /**
-     * Size
+     * Size.
      *
      * @var int
      */
     private $_size;
+
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the force parameter
+     * Gets the force parameter.
      *
      * @return string
      */
@@ -58,7 +61,7 @@ abstract class OptionsPropertyOneItem extends OptionsPropertyItem
     }
 
     /**
-     * Sets the force parameter
+     * Sets the force parameter.
      *
      * @param bool $force force parameter
      *
@@ -70,7 +73,7 @@ abstract class OptionsPropertyOneItem extends OptionsPropertyItem
     }
 
     /**
-     * Gets the values
+     * Gets the values.
      *
      * @return string
      */
@@ -80,7 +83,7 @@ abstract class OptionsPropertyOneItem extends OptionsPropertyItem
     }
 
     /**
-     * Sets the values
+     * Sets the values.
      *
      * @param array $values values
      *
@@ -92,7 +95,7 @@ abstract class OptionsPropertyOneItem extends OptionsPropertyItem
     }
 
     /**
-     * Gets MySQL documentation pointer
+     * Gets MySQL documentation pointer.
      *
      * @return array
      */
@@ -102,7 +105,7 @@ abstract class OptionsPropertyOneItem extends OptionsPropertyItem
     }
 
     /**
-     * Sets the doc
+     * Sets the doc.
      *
      * @param string $doc MySQL documentation pointer
      *
@@ -114,7 +117,7 @@ abstract class OptionsPropertyOneItem extends OptionsPropertyItem
     }
 
     /**
-     * Gets the length
+     * Gets the length.
      *
      * @return int
      */
@@ -124,7 +127,7 @@ abstract class OptionsPropertyOneItem extends OptionsPropertyItem
     }
 
     /**
-     * Sets the length
+     * Sets the length.
      *
      * @param int $len length
      *
@@ -136,7 +139,7 @@ abstract class OptionsPropertyOneItem extends OptionsPropertyItem
     }
 
     /**
-     * Gets the size
+     * Gets the size.
      *
      * @return int
      */
@@ -146,7 +149,7 @@ abstract class OptionsPropertyOneItem extends OptionsPropertyItem
     }
 
     /**
-     * Sets the size
+     * Sets the size.
      *
      * @param int $size size
      *

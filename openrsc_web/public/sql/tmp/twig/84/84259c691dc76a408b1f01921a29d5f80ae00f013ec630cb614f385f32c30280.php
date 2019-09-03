@@ -16,61 +16,61 @@ class __TwigTemplate_bae015a40e8a1a5edb926f41e0aad971e6a46153b1f0c1fe661b8419a8d
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<select name=\"";
-        echo twig_escape_filter($this->env, ($context["select_name"] ?? null), "html", null, true);
-        echo "\"";
-        if ( !twig_test_empty(($context["id"] ?? null))) {
-            echo " id=\"";
-            echo twig_escape_filter($this->env, ($context["id"] ?? null), "html", null, true);
-            echo "\"";
+        echo '<select name="';
+        echo twig_escape_filter($this->env, ($context['select_name'] ?? null), 'html', null, true);
+        echo '"';
+        if (! twig_test_empty(($context['id'] ?? null))) {
+            echo ' id="';
+            echo twig_escape_filter($this->env, ($context['id'] ?? null), 'html', null, true);
+            echo '"';
         }
         // line 2
-        if ( !twig_test_empty(($context["class"] ?? null))) {
-            echo " class=\"";
-            echo twig_escape_filter($this->env, ($context["class"] ?? null), "html", null, true);
-            echo "\"";
+        if (! twig_test_empty(($context['class'] ?? null))) {
+            echo ' class="';
+            echo twig_escape_filter($this->env, ($context['class'] ?? null), 'html', null, true);
+            echo '"';
         }
-        echo ">
-";
+        echo '>
+';
         // line 3
-        if ( !twig_test_empty(($context["placeholder"] ?? null))) {
+        if (! twig_test_empty(($context['placeholder'] ?? null))) {
             // line 4
-            echo "    <option value=\"\" disabled=\"disabled\"";
+            echo '    <option value="" disabled="disabled"';
             // line 5
-            if ( !($context["selected"] ?? null)) {
-                echo " selected=\"selected\"";
+            if (! ($context['selected'] ?? null)) {
+                echo ' selected="selected"';
             }
-            echo ">";
-            echo twig_escape_filter($this->env, ($context["placeholder"] ?? null), "html", null, true);
-            echo "</option>
-";
+            echo '>';
+            echo twig_escape_filter($this->env, ($context['placeholder'] ?? null), 'html', null, true);
+            echo '</option>
+';
         }
         // line 7
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["result_options"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["option"]) {
+        $context['_seq'] = twig_ensure_traversable(($context['result_options'] ?? null));
+        foreach ($context['_seq'] as $context['_key'] => $context['option']) {
             // line 8
-            echo "<option value=\"";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["option"], "value", [], "array"), "html", null, true);
-            echo "\"";
+            echo '<option value="';
+            echo twig_escape_filter($this->env, $this->getAttribute($context['option'], 'value', [], 'array'), 'html', null, true);
+            echo '"';
             // line 9
-            echo (($this->getAttribute($context["option"], "selected", [], "array")) ? (" selected=\"selected\"") : (""));
-            echo ">";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["option"], "label", [], "array"), "html", null, true);
-            echo "</option>
-";
+            echo ($this->getAttribute($context['option'], 'selected', [], 'array')) ? (' selected="selected"') : ('');
+            echo '>';
+            echo twig_escape_filter($this->env, $this->getAttribute($context['option'], 'label', [], 'array'), 'html', null, true);
+            echo '</option>
+';
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['option'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 11
-        echo "</select>
-";
+        echo '</select>
+';
     }
 
     public function getTemplateName()
     {
-        return "dropdown.twig";
+        return 'dropdown.twig';
     }
 
     public function isTraitable()
@@ -80,7 +80,7 @@ class __TwigTemplate_bae015a40e8a1a5edb926f41e0aad971e6a46153b1f0c1fe661b8419a8d
 
     public function getDebugInfo()
     {
-        return array (  67 => 11,  57 => 9,  53 => 8,  49 => 7,  40 => 5,  38 => 4,  36 => 3,  28 => 2,  19 => 1,);
+        return [67 => 11,  57 => 9,  53 => 8,  49 => 7,  40 => 5,  38 => 4,  36 => 3,  28 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -93,6 +93,6 @@ class __TwigTemplate_bae015a40e8a1a5edb926f41e0aad971e6a46153b1f0c1fe661b8419a8d
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "dropdown.twig", "/var/www/html/openrsc_web/public/sql/templates/dropdown.twig");
+        return new Twig_Source('', 'dropdown.twig', '/var/www/html/openrsc_web/public/sql/templates/dropdown.twig');
     }
 }

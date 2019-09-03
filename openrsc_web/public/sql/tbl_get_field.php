@@ -1,11 +1,9 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Provides download to a given field defined in parameters.
- *
- * @package PhpMyAdmin
  */
-
 use PhpMyAdmin\Core;
 use PhpMyAdmin\Mime;
 use PhpMyAdmin\Response;
@@ -22,11 +20,11 @@ $response->disable();
 
 /* Check parameters */
 PhpMyAdmin\Util::checkParameters(
-    array('db', 'table')
+    ['db', 'table']
 );
 
 /* Select database */
-if (!$GLOBALS['dbi']->selectDb($db)) {
+if (! $GLOBALS['dbi']->selectDb($db)) {
     PhpMyAdmin\Util::mysqlDie(
         sprintf(__('\'%s\' database does not exist.'), htmlspecialchars($db)),
         '', false
@@ -34,14 +32,14 @@ if (!$GLOBALS['dbi']->selectDb($db)) {
 }
 
 /* Check if table exists */
-if (!$GLOBALS['dbi']->getColumns($db, $table)) {
+if (! $GLOBALS['dbi']->getColumns($db, $table)) {
     PhpMyAdmin\Util::mysqlDie(__('Invalid table name'));
 }
 
 /* Grab data */
-$sql = 'SELECT ' . PhpMyAdmin\Util::backquote($_GET['transform_key'])
-    . ' FROM ' . PhpMyAdmin\Util::backquote($table)
-    . ' WHERE ' . $_GET['where_clause'] . ';';
+$sql = 'SELECT '.PhpMyAdmin\Util::backquote($_GET['transform_key'])
+    .' FROM '.PhpMyAdmin\Util::backquote($table)
+    .' WHERE '.$_GET['where_clause'].';';
 $result = $GLOBALS['dbi']->fetchValue($sql);
 
 /* Check return code */
@@ -55,7 +53,7 @@ if ($result === false) {
 ini_set('url_rewriter.tags', '');
 
 Core::downloadHeader(
-    $table . '-' .  $_GET['transform_key'] . '.bin',
+    $table.'-'.$_GET['transform_key'].'.bin',
     Mime::detect($result),
     strlen($result)
 );

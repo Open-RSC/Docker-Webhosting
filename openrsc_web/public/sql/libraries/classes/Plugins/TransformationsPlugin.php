@@ -1,17 +1,15 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the transformations plugins
- *
- * @package PhpMyAdmin
+ * Abstract class for the transformations plugins.
  */
+
 namespace PhpMyAdmin\Plugins;
 
 /**
  * Provides a common interface that will have to
  * be implemented by all of the transformations plugins.
- *
- * @package PhpMyAdmin
  */
 abstract class TransformationsPlugin implements TransformationsInterface
 {
@@ -22,9 +20,8 @@ abstract class TransformationsPlugin implements TransformationsInterface
      *
      * @return void
      */
-    public function applyTransformationNoWrap(array $options = array())
+    public function applyTransformationNoWrap(array $options = [])
     {
-        ;
     }
 
     /**
@@ -38,12 +35,12 @@ abstract class TransformationsPlugin implements TransformationsInterface
      */
     abstract public function applyTransformation(
         $buffer,
-        array $options = array(),
+        array $options = [],
         $meta = ''
     );
 
     /**
-     * Returns passed options or default values if they were not set
+     * Returns passed options or default values if they were not set.
      *
      * @param string[] $options  List of passed options
      * @param string[] $defaults List of default values
@@ -52,7 +49,7 @@ abstract class TransformationsPlugin implements TransformationsInterface
      */
     public function getOptions(array $options, array $defaults)
     {
-        $result = array();
+        $result = [];
         foreach ($defaults as $key => $value) {
             if (isset($options[$key]) && $options[$key] !== '') {
                 $result[$key] = $options[$key];

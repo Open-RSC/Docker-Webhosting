@@ -1,33 +1,31 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Various checks and message functions used on index page.
- *
- * @package PhpMyAdmin-Setup
  */
+
 namespace PhpMyAdmin\Setup;
 
-use PhpMyAdmin\VersionInformation;
 use PhpMyAdmin\Sanitize;
+use PhpMyAdmin\VersionInformation;
 
 /**
- * PhpMyAdmin\Setup\Index class
+ * PhpMyAdmin\Setup\Index class.
  *
  * Various checks and message functions used on index page.
- *
- * @package PhpMyAdmin-Setup
  */
 class Index
 {
     /**
-     * Initializes message list
+     * Initializes message list.
      *
      * @return void
      */
     public static function messagesBegin()
     {
-        if (! isset($_SESSION['messages']) || !is_array($_SESSION['messages'])) {
-            $_SESSION['messages'] = array('error' => array(), 'notice' => array());
+        if (! isset($_SESSION['messages']) || ! is_array($_SESSION['messages'])) {
+            $_SESSION['messages'] = ['error' => [], 'notice' => []];
         } else {
             // reset message states
             foreach ($_SESSION['messages'] as &$messages) {
@@ -40,7 +38,7 @@ class Index
     }
 
     /**
-     * Adds a new message to message list
+     * Adds a new message to message list.
      *
      * @param string $type    one of: notice, error
      * @param string $msgId   unique message identifier
@@ -52,22 +50,22 @@ class Index
     public static function messagesSet($type, $msgId, $title, $message)
     {
         $fresh = ! isset($_SESSION['messages'][$type][$msgId]);
-        $_SESSION['messages'][$type][$msgId] = array(
+        $_SESSION['messages'][$type][$msgId] = [
             'fresh' => $fresh,
             'active' => true,
             'title' => $title,
-            'message' => $message);
+            'message' => $message, ];
     }
 
     /**
-     * Cleans up message list
+     * Cleans up message list.
      *
      * @return void
      */
     public static function messagesEnd()
     {
         foreach ($_SESSION['messages'] as &$messages) {
-            $remove_ids = array();
+            $remove_ids = [];
             foreach ($messages as $id => &$msg) {
                 if ($msg['active'] == false) {
                     $remove_ids[] = $id;
@@ -80,7 +78,7 @@ class Index
     }
 
     /**
-     * Prints message list, must be called after self::messagesEnd()
+     * Prints message list, must be called after self::messagesEnd().
      *
      * @return void
      */
@@ -101,7 +99,7 @@ class Index
     }
 
     /**
-     * Checks for newest phpMyAdmin version and sets result as a new notice
+     * Checks for newest phpMyAdmin version and sets result as a new notice.
      *
      * @return void
      */
@@ -122,9 +120,10 @@ class Index
                 __('Version check'),
                 __(
                     'Reading of version failed. '
-                    . 'Maybe you\'re offline or the upgrade server does not respond.'
+                    .'Maybe you\'re offline or the upgrade server does not respond.'
                 )
             );
+
             return;
         }
 
@@ -145,6 +144,7 @@ class Index
                 __('Version check'),
                 __('Got invalid version string from server')
             );
+
             return;
         }
 
@@ -158,6 +158,7 @@ class Index
                 __('Version check'),
                 __('Unparsable version string')
             );
+
             return;
         }
 

@@ -1,22 +1,21 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * query by example the whole database
- *
- * @package PhpMyAdmin
+ * query by example the whole database.
  */
-use PhpMyAdmin\Database\Qbe;
+use PhpMyAdmin\Sql;
+use PhpMyAdmin\Url;
+use PhpMyAdmin\Util;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Relation;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\SavedSearches;
-use PhpMyAdmin\Sql;
 use PhpMyAdmin\Template;
-use PhpMyAdmin\Url;
-use PhpMyAdmin\Util;
+use PhpMyAdmin\Database\Qbe;
+use PhpMyAdmin\SavedSearches;
 
 /**
- * requirements
+ * requirements.
  */
 require_once 'libraries/common.inc.php';
 
@@ -26,7 +25,7 @@ $relation = new Relation();
 // Gets the relation settings
 $cfgRelation = $relation->getRelationsParam();
 
-$savedSearchList = array();
+$savedSearchList = [];
 $savedSearch = null;
 $currentSearchId = null;
 if ($cfgRelation['savedsearcheswork']) {
@@ -39,7 +38,7 @@ if ($cfgRelation['savedsearcheswork']) {
     $savedSearch->setUsername($GLOBALS['cfg']['Server']['user'])
         ->setDbname($GLOBALS['db']);
 
-    if (!empty($_POST['searchId'])) {
+    if (! empty($_POST['searchId'])) {
         $savedSearch->setId($_POST['searchId']);
     }
 
@@ -59,14 +58,14 @@ if ($cfgRelation['savedsearcheswork']) {
             $savedSearch = new SavedSearches($GLOBALS);
             $savedSearch->setUsername($GLOBALS['cfg']['Server']['user'])
                 ->setDbname($GLOBALS['db']);
-            $_POST = array();
+            $_POST = [];
         } elseif ('load' === $_POST['action']) {
             if (empty($_POST['searchId'])) {
                 //when not loading a search, reset the object.
                 $savedSearch = new SavedSearches($GLOBALS);
                 $savedSearch->setUsername($GLOBALS['cfg']['Server']['user'])
                     ->setDbname($GLOBALS['db']);
-                $_POST = array();
+                $_POST = [];
             } else {
                 $loadResult = $savedSearch->load();
             }
@@ -79,7 +78,7 @@ if ($cfgRelation['savedsearcheswork']) {
 }
 
 /**
- * A query has been submitted -> (maybe) execute it
+ * A query has been submitted -> (maybe) execute it.
  */
 $message_to_display = false;
 if (isset($_POST['submit_sql']) && ! empty($sql_query)) {
@@ -111,7 +110,7 @@ if (isset($_POST['submit_sql']) && ! empty($sql_query)) {
     }
 }
 
-$sub_part  = '_qbe';
+$sub_part = '_qbe';
 require 'libraries/db_common.inc.php';
 $url_query .= '&amp;goto=db_qbe.php';
 $url_params['goto'] = 'db_qbe.php';
@@ -156,23 +155,23 @@ $response->addHTML(
     ])
 );
 
-$url = 'db_designer.php' . Url::getCommon(
+$url = 'db_designer.php'.Url::getCommon(
     array_merge(
         $url_params,
-        array('query' => 1)
+        ['query' => 1]
     )
 );
 $response->addHTML(
     Message::notice(
         sprintf(
             __('Switch to %svisual builder%s'),
-            '<a href="' . $url . '">',
+            '<a href="'.$url.'">',
             '</a>'
         )
     )
 );
 
-/**
+/*
  * Displays the Query by example form
  */
 $response->addHTML($db_qbe->getSelectionForm());

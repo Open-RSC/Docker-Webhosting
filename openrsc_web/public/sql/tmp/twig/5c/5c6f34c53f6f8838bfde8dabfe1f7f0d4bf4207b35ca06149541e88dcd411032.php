@@ -9,27 +9,27 @@ class __TwigTemplate_d477ae55fd73915f007d2cca80d523877b5dde926bf6ceacf4faf5f86fe
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<a href=\"tbl_select.php";
-        echo ($context["tbl_url_query"] ?? null);
-        echo "\">
-    ";
+        echo '<a href="tbl_select.php';
+        echo $context['tbl_url_query'] ?? null;
+        echo '">
+    ';
         // line 2
-        echo ($context["title"] ?? null);
-        echo "
+        echo $context['title'] ?? null;
+        echo '
 </a>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "database/structure/search_table.twig";
+        return 'database/structure/search_table.twig';
     }
 
     public function isTraitable()
@@ -39,7 +39,7 @@ class __TwigTemplate_d477ae55fd73915f007d2cca80d523877b5dde926bf6ceacf4faf5f86fe
 
     public function getDebugInfo()
     {
-        return array (  24 => 2,  19 => 1,);
+        return [24 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -52,6 +52,6 @@ class __TwigTemplate_d477ae55fd73915f007d2cca80d523877b5dde926bf6ceacf4faf5f86fe
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/structure/search_table.twig", "/var/www/html/sql/templates/database/structure/search_table.twig");
+        return new Twig_Source('', 'database/structure/search_table.twig', '/var/www/html/sql/templates/database/structure/search_table.twig');
     }
 }

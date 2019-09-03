@@ -1,31 +1,29 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Controllers\TableController
- *
- * @package PhpMyAdmin\Controllers
+ * Holds the PhpMyAdmin\Controllers\TableController.
  */
+
 namespace PhpMyAdmin\Controllers;
 
 /**
- * Handles table related logic
- *
- * @package PhpMyAdmin\Controllers
+ * Handles table related logic.
  */
 abstract class TableController extends Controller
 {
     /**
-     * @var string $db
+     * @var string
      */
     protected $db;
 
     /**
-     * @var string $table
+     * @var string
      */
     protected $table;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct(
         $response,

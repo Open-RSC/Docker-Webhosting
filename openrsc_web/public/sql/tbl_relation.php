@@ -1,7 +1,8 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Display table relations for viewing and editing
+ * Display table relations for viewing and editing.
  *
  * includes phpMyAdmin relations and InnoDB relations
  *
@@ -11,15 +12,13 @@
  * @todo check foreign fields to be from same type and size, all other makes no sense
  * @todo if above todos are fullfilled we can add all fields meet requirements
  * in the select dropdown
- * @package PhpMyAdmin
  */
-
-use PhpMyAdmin\Controllers\Table\TableRelationController;
-use PhpMyAdmin\Di\Container;
+use PhpMyAdmin\Util;
+use PhpMyAdmin\Table;
 use PhpMyAdmin\Relation;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\Table;
-use PhpMyAdmin\Util;
+use PhpMyAdmin\Di\Container;
+use PhpMyAdmin\Controllers\Table\TableRelationController;
 
 require_once 'libraries/common.inc.php';
 
@@ -36,12 +35,12 @@ $container->alias('response', 'PhpMyAdmin\Response');
 $db = $container->get('db');
 $table = $container->get('table');
 $dbi = $container->get('dbi');
-$options_array = array(
+$options_array = [
     'CASCADE' => 'CASCADE',
     'SET_NULL' => 'SET NULL',
     'NO_ACTION' => 'NO ACTION',
     'RESTRICT' => 'RESTRICT',
-);
+];
 $relation = new Relation();
 $cfgRelation = $relation->getRelationsParam();
 $tbl_storage_engine = mb_strtoupper(
@@ -49,12 +48,12 @@ $tbl_storage_engine = mb_strtoupper(
 );
 $upd_query = new Table($table, $db, $dbi);
 
-$dependency_definitions = array(
-    "options_array" => $options_array,
-    "cfgRelation" => $cfgRelation,
-    "tbl_storage_engine" => $tbl_storage_engine,
-    "upd_query" => $upd_query
-);
+$dependency_definitions = [
+    'options_array' => $options_array,
+    'cfgRelation' => $cfgRelation,
+    'tbl_storage_engine' => $tbl_storage_engine,
+    'upd_query' => $upd_query,
+];
 if ($cfgRelation['relwork']) {
     $dependency_definitions['existrel'] = $relation->getForeigners(
         $db, $table, '', 'internal'

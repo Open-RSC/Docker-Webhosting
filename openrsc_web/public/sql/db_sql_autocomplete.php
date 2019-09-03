@@ -1,17 +1,16 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Table/Column autocomplete in SQL editors
- *
- * @package PhpMyAdmin
+ * Table/Column autocomplete in SQL editors.
  */
-
 use PhpMyAdmin\Response;
+
 require_once 'libraries/common.inc.php';
 
 if ($GLOBALS['cfg']['EnableAutocompleteForTablesAndColumns']) {
     $db = isset($_POST['db']) ? $_POST['db'] : $GLOBALS['db'];
-    $sql_autocomplete = array();
+    $sql_autocomplete = [];
     if ($db) {
         $tableNames = $GLOBALS['dbi']->getTables($db);
         foreach ($tableNames as $tableName) {
@@ -24,4 +23,4 @@ if ($GLOBALS['cfg']['EnableAutocompleteForTablesAndColumns']) {
     $sql_autocomplete = true;
 }
 $response = Response::getInstance();
-$response->addJSON("tables", json_encode($sql_autocomplete));
+$response->addJSON('tables', json_encode($sql_autocomplete));

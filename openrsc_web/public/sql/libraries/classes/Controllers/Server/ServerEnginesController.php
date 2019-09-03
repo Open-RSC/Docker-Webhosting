@@ -1,40 +1,37 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 
 /**
- * Holds the PhpMyAdmin\Controllers\Server\ServerEnginesController
- *
- * @package PhpMyAdmin\Controllers
+ * Holds the PhpMyAdmin\Controllers\Server\ServerEnginesController.
  */
 
 namespace PhpMyAdmin\Controllers\Server;
 
-use PhpMyAdmin\Controllers\Controller;
+use PhpMyAdmin\Util;
+use PhpMyAdmin\Template;
 use PhpMyAdmin\Server\Common;
 use PhpMyAdmin\StorageEngine;
-use PhpMyAdmin\Template;
-use PhpMyAdmin\Util;
+use PhpMyAdmin\Controllers\Controller;
 
 /**
- * Handles viewing storage engine details
- *
- * @package PhpMyAdmin\Controllers
+ * Handles viewing storage engine details.
  */
 class ServerEnginesController extends Controller
 {
     /**
-     * Index action
+     * Index action.
      *
      * @return void
      */
     public function indexAction()
     {
         /**
-         * Does the common work
+         * Does the common work.
          */
         require 'libraries/server_common.inc.php';
 
-        /**
+        /*
          * Displays the sub-page heading
          */
         $this->response->addHTML(
@@ -43,7 +40,7 @@ class ServerEnginesController extends Controller
             ])
         );
 
-        /**
+        /*
          * Did the user request information about a certain storage engine?
          */
         if (empty($_REQUEST['engine'])
@@ -57,19 +54,19 @@ class ServerEnginesController extends Controller
     }
 
     /**
-     * Return HTML with all Storage Engine information
+     * Return HTML with all Storage Engine information.
      *
      * @return string
      */
     private function _getHtmlForAllServerEngines()
     {
         return Template::get('server/engines/engines')->render(
-            array('engines' => StorageEngine::getStorageEngines())
+            ['engines' => StorageEngine::getStorageEngines()]
         );
     }
 
     /**
-     * Return HTML for a given Storage Engine
+     * Return HTML for a given Storage Engine.
      *
      * @param StorageEngine $engine storage engine
      *
@@ -80,11 +77,11 @@ class ServerEnginesController extends Controller
         $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : '';
         $pageOutput = ! empty($page) ? $engine->getPage($page) : '';
 
-        /**
+        /*
          * Displays details about a given Storage Engine
          */
         return Template::get('server/engines/engine')->render(
-            array(
+            [
                 'title' => $engine->getTitle(),
                 'help_page' => $engine->getMysqlHelpPage(),
                 'comment' => $engine->getComment(),
@@ -94,7 +91,7 @@ class ServerEnginesController extends Controller
                 'page_output' => $pageOutput,
                 'page' => $page,
                 'engine' => $_REQUEST['engine'],
-            )
+            ]
         );
     }
 }

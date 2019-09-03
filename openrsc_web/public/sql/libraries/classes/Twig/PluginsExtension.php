@@ -1,19 +1,17 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\PluginsExtension class
- *
- * @package PhpMyAdmin\Twig
+ * hold PhpMyAdmin\Twig\PluginsExtension class.
  */
+
 namespace PhpMyAdmin\Twig;
 
-use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
 
 /**
- * Class PluginsExtension
- *
- * @package PhpMyAdmin\Twig
+ * Class PluginsExtension.
  */
 class PluginsExtension extends AbstractExtension
 {
@@ -24,27 +22,27 @@ class PluginsExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return array(
+        return [
             new TwigFunction(
                 'Plugins_checkboxCheck',
                 'PhpMyAdmin\Plugins::checkboxCheck',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Plugins_getChoice',
                 'PhpMyAdmin\Plugins::getChoice',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Plugins_getDefault',
                 'PhpMyAdmin\Plugins::getDefault',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Plugins_getOptions',
                 'PhpMyAdmin\Plugins::getOptions',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
-        );
+        ];
     }
 }

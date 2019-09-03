@@ -16,21 +16,21 @@ class __TwigTemplate_bc8749edcffaca71e03afd6f72aa34667f3571ccb5f55b3f465cdd2be16
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<input type=\"hidden\" name=\"fk_checks\" value=\"0\">
-<input type=\"checkbox\" name=\"fk_checks\" id=\"fk_checks\" value=\"1\"";
+        echo '<input type="hidden" name="fk_checks" value="0">
+<input type="checkbox" name="fk_checks" id="fk_checks" value="1"';
         // line 3
-        echo ((($context["checked"] ?? null)) ? (" checked") : (""));
-        echo ">
-<label for=\"fk_checks\">";
+        echo (($context['checked'] ?? null)) ? (' checked') : ('');
+        echo '>
+<label for="fk_checks">';
         // line 4
-        echo _gettext("Enable foreign key checks");
-        echo "</label>
-";
+        echo _gettext('Enable foreign key checks');
+        echo '</label>
+';
     }
 
     public function getTemplateName()
     {
-        return "fk_checkbox.twig";
+        return 'fk_checkbox.twig';
     }
 
     public function isTraitable()
@@ -40,7 +40,7 @@ class __TwigTemplate_bc8749edcffaca71e03afd6f72aa34667f3571ccb5f55b3f465cdd2be16
 
     public function getDebugInfo()
     {
-        return array (  26 => 4,  22 => 3,  19 => 1,);
+        return [26 => 4,  22 => 3,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -53,6 +53,6 @@ class __TwigTemplate_bc8749edcffaca71e03afd6f72aa34667f3571ccb5f55b3f465cdd2be16
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "fk_checkbox.twig", "/var/www/html/openrsc_web/public/sql/templates/fk_checkbox.twig");
+        return new Twig_Source('', 'fk_checkbox.twig', '/var/www/html/openrsc_web/public/sql/templates/fk_checkbox.twig');
     }
 }

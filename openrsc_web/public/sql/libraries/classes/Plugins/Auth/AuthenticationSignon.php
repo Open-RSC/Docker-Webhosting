@@ -1,28 +1,25 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * SignOn Authentication plugin for phpMyAdmin
- *
- * @package    PhpMyAdmin-Authentication
- * @subpackage SignOn
+ * SignOn Authentication plugin for phpMyAdmin.
  */
+
 namespace PhpMyAdmin\Plugins\Auth;
 
 use PhpMyAdmin\Core;
-use PhpMyAdmin\Plugins\AuthenticationPlugin;
 use PhpMyAdmin\Util;
+use PhpMyAdmin\Plugins\AuthenticationPlugin;
 
 /**
- * Handles the SignOn authentication method
- *
- * @package PhpMyAdmin-Authentication
+ * Handles the SignOn authentication method.
  */
 class AuthenticationSignon extends AuthenticationPlugin
 {
     /**
-     * Displays authentication form
+     * Displays authentication form.
      *
-     * @return boolean   always true (no return indeed)
+     * @return bool   always true (no return indeed)
      */
     public function showLoginForm()
     {
@@ -33,7 +30,7 @@ class AuthenticationSignon extends AuthenticationPlugin
             Core::sendHeaderLocation($GLOBALS['cfg']['Server']['SignonURL']);
         }
 
-        if (!defined('TESTSUITE')) {
+        if (! defined('TESTSUITE')) {
             exit();
         } else {
             return false;
@@ -41,7 +38,7 @@ class AuthenticationSignon extends AuthenticationPlugin
     }
 
     /**
-     * Set cookie params
+     * Set cookie params.
      *
      * @param array $sessionCookieParams The cookie params
      * @return void
@@ -67,19 +64,18 @@ class AuthenticationSignon extends AuthenticationPlugin
                 case 'httponly':
                     return false;
             }
-            return null;
         };
 
-        foreach (array('lifetime', 'path', 'domain', 'secure', 'httponly') as $key) {
+        foreach (['lifetime', 'path', 'domain', 'secure', 'httponly'] as $key) {
             if (! isset($sessionCookieParams[$key])) {
                 $sessionCookieParams[$key] = $defaultCookieParams($key);
             }
         }
 
         if (isset($sessionCookieParams['samesite'])
-            && ! in_array($sessionCookieParams['samesite'], array('Lax', 'Strict'))) {
-                // Not a valid value for samesite
-                unset($sessionCookieParams['samesite']);
+            && ! in_array($sessionCookieParams['samesite'], ['Lax', 'Strict'])) {
+            // Not a valid value for samesite
+            unset($sessionCookieParams['samesite']);
         }
 
         if (version_compare(phpversion(), '7.3.0', '>=')) {
@@ -96,9 +92,9 @@ class AuthenticationSignon extends AuthenticationPlugin
     }
 
     /**
-     * Gets authentication credentials
+     * Gets authentication credentials.
      *
-     * @return boolean   whether we get authentication settings or not
+     * @return bool   whether we get authentication settings or not
      */
     public function readCredentials()
     {
@@ -126,30 +122,30 @@ class AuthenticationSignon extends AuthenticationPlugin
         $single_signon_port = $GLOBALS['cfg']['Server']['port'];
 
         /* No configuration updates */
-        $single_signon_cfgupdate = array();
+        $single_signon_cfgupdate = [];
 
         /* Handle script based auth */
-        if (!empty($script_name)) {
-            if (!@file_exists($script_name)) {
+        if (! empty($script_name)) {
+            if (! @file_exists($script_name)) {
                 Core::fatalError(
                     __('Can not find signon authentication script:')
-                    . ' ' . $script_name
+                    .' '.$script_name
                 );
             }
             include $script_name;
 
-            list ($this->user, $this->password)
+            list($this->user, $this->password)
                 = get_login_credentials($GLOBALS['cfg']['Server']['user']);
         } elseif (isset($_COOKIE[$session_name])) { /* Does session exist? */
             /* End current session */
             $old_session = session_name();
             $old_id = session_id();
             $oldCookieParams = session_get_cookie_params();
-            if (!defined('TESTSUITE')) {
+            if (! defined('TESTSUITE')) {
                 session_write_close();
             }
             /* Load single signon session */
-            if (!defined('TESTSUITE')) {
+            if (! defined('TESTSUITE')) {
                 $this->setCookieParams();
                 session_name($session_name);
                 session_id($_COOKIE[$session_name]);
@@ -185,15 +181,15 @@ class AuthenticationSignon extends AuthenticationPlugin
             }
 
             /* End single signon session */
-            if (!defined('TESTSUITE')) {
+            if (! defined('TESTSUITE')) {
                 session_write_close();
             }
 
             /* Restart phpMyAdmin session */
-            if (!defined('TESTSUITE')) {
+            if (! defined('TESTSUITE')) {
                 $this->setCookieParams($oldCookieParams);
                 session_name($old_session);
-                if (!empty($old_id)) {
+                if (! empty($old_id)) {
                     session_id($old_id);
                 }
                 session_start();
@@ -212,11 +208,11 @@ class AuthenticationSignon extends AuthenticationPlugin
             );
 
             /* Restore our token */
-            if (!empty($pma_token)) {
+            if (! empty($pma_token)) {
                 $_SESSION[' PMA_token '] = $pma_token;
             }
 
-            /**
+            /*
              * Clear user cache.
              */
             Util::clearUserCache();
@@ -235,7 +231,7 @@ class AuthenticationSignon extends AuthenticationPlugin
     }
 
     /**
-     * User is not allowed to login to MySQL -> authentication failed
+     * User is not allowed to login to MySQL -> authentication failed.
      *
      * @param string $failure String describing why authentication has failed
      *
@@ -250,7 +246,7 @@ class AuthenticationSignon extends AuthenticationPlugin
 
         /* Does session exist? */
         if (isset($_COOKIE[$session_name])) {
-            if (!defined('TESTSUITE')) {
+            if (! defined('TESTSUITE')) {
                 /* End current session */
                 session_write_close();
 

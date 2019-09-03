@@ -9,35 +9,35 @@ class __TwigTemplate_69404e017d791edd0d7237762e06f2d0108d68cb0bd9e137bf455579988
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        if (($this->getAttribute(($context["cfg_relation"] ?? null), "relwork", array(), "array") || ($context["is_foreign_key_supported"] ?? null))) {
+        if (($this->getAttribute(($context['cfg_relation'] ?? null), 'relwork', [], 'array') || ($context['is_foreign_key_supported'] ?? null))) {
             // line 2
-            echo "    <ul id=\"topmenu2\">
-        ";
+            echo '    <ul id="topmenu2">
+        ';
             // line 3
-            echo PhpMyAdmin\Util::getHtmlTab(array("icon" => "b_props", "link" => "tbl_structure.php", "text" => _gettext("Table structure"), "id" => "table_strucuture_id"),             // line 8
-($context["url_params"] ?? null));
-            echo "
-        ";
+            echo PhpMyAdmin\Util::getHtmlTab(['icon' => 'b_props', 'link' => 'tbl_structure.php', 'text' => _gettext('Table structure'), 'id' => 'table_strucuture_id'],             // line 8
+($context['url_params'] ?? null));
+            echo '
+        ';
             // line 9
-            echo PhpMyAdmin\Util::getHtmlTab(array("icon" => "b_relations", "link" => "tbl_relation.php", "text" => _gettext("Relation view"), "id" => "table_relation_id"),             // line 14
-($context["url_params"] ?? null));
-            echo "
+            echo PhpMyAdmin\Util::getHtmlTab(['icon' => 'b_relations', 'link' => 'tbl_relation.php', 'text' => _gettext('Relation view'), 'id' => 'table_relation_id'],             // line 14
+($context['url_params'] ?? null));
+            echo '
     </ul>
-    <div class=\"clearfloat\"></div>
-";
+    <div class="clearfloat"></div>
+';
         }
     }
 
     public function getTemplateName()
     {
-        return "table/secondary_tabs.twig";
+        return 'table/secondary_tabs.twig';
     }
 
     public function isTraitable()
@@ -47,7 +47,7 @@ class __TwigTemplate_69404e017d791edd0d7237762e06f2d0108d68cb0bd9e137bf455579988
 
     public function getDebugInfo()
     {
-        return array (  30 => 14,  29 => 9,  25 => 8,  24 => 3,  21 => 2,  19 => 1,);
+        return [30 => 14,  29 => 9,  25 => 8,  24 => 3,  21 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -60,6 +60,6 @@ class __TwigTemplate_69404e017d791edd0d7237762e06f2d0108d68cb0bd9e137bf455579988
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "table/secondary_tabs.twig", "/var/www/html/sql/templates/table/secondary_tabs.twig");
+        return new Twig_Source('', 'table/secondary_tabs.twig', '/var/www/html/sql/templates/table/secondary_tabs.twig');
     }
 }

@@ -1,26 +1,26 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Properties class for the export plug-in
- *
- * @package PhpMyAdmin
+ * Properties class for the export plug-in.
  */
+
 namespace PhpMyAdmin\Properties\Plugins;
 
 /**
  * Defines possible options and getters and setters for them.
  *
  * @todo    modify descriptions if needed, when the plug-in properties are integrated
- * @package PhpMyAdmin
  */
 class ExportPluginProperties extends PluginPropertyItem
 {
     /**
-     * Whether to force or not
+     * Whether to force or not.
      *
      * @var bool
      */
     private $_forceFile;
+
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
@@ -29,17 +29,17 @@ class ExportPluginProperties extends PluginPropertyItem
      *  "text", "radio", etc ) or
      *  - PhpMyAdmin\Properties\Options\OptionsPropertyGroup   ( "root", "main"
      *  or "subgroup" )
-     *  - PhpMyAdmin\Properties\Plugins\PluginPropertyItem     ( "export", "import", "transformations" )
+     *  - PhpMyAdmin\Properties\Plugins\PluginPropertyItem     ( "export", "import", "transformations" ).
      *
      * @return string
      */
     public function getItemType()
     {
-        return "export";
+        return 'export';
     }
 
     /**
-     * Gets the force file parameter
+     * Gets the force file parameter.
      *
      * @return bool
      */
@@ -49,7 +49,7 @@ class ExportPluginProperties extends PluginPropertyItem
     }
 
     /**
-     * Sets the force file parameter
+     * Sets the force file parameter.
      *
      * @param bool $forceFile the force file parameter
      *

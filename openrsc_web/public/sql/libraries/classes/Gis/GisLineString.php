@@ -1,9 +1,8 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Handles actions related to GIS LINESTRING objects
- *
- * @package PhpMyAdmin-GIS
+ * Handles actions related to GIS LINESTRING objects.
  */
 
 namespace PhpMyAdmin\Gis;
@@ -11,9 +10,7 @@ namespace PhpMyAdmin\Gis;
 use TCPDF;
 
 /**
- * Handles actions related to GIS LINESTRING objects
- *
- * @package PhpMyAdmin-GIS
+ * Handles actions related to GIS LINESTRING objects.
  */
 class GisLineString extends GisGeometry
 {
@@ -22,8 +19,6 @@ class GisLineString extends GisGeometry
 
     /**
      * A private constructor; prevents direct creation of object.
-     *
-     * @access private
      */
     private function __construct()
     {
@@ -33,11 +28,10 @@ class GisLineString extends GisGeometry
      * Returns the singleton.
      *
      * @return GisLineString the singleton
-     * @access public
      */
     public static function singleton()
     {
-        if (!isset(self::$_instance)) {
+        if (! isset(self::$_instance)) {
             $class = __CLASS__;
             self::$_instance = new $class;
         }
@@ -51,7 +45,6 @@ class GisLineString extends GisGeometry
      * @param string $spatial spatial data of a row
      *
      * @return array an array containing the min, max values for x and y coordinates
-     * @access public
      */
     public function scaleRow($spatial)
     {
@@ -63,7 +56,7 @@ class GisLineString extends GisGeometry
                 mb_strlen($spatial) - 12
             );
 
-        return $this->setMinMax($linestring, array());
+        return $this->setMinMax($linestring, []);
     }
 
     /**
@@ -76,7 +69,6 @@ class GisLineString extends GisGeometry
      * @param object $image      Image object
      *
      * @return resource the modified image object
-     * @access public
      */
     public function prepareRowAsPng(
         $spatial,
@@ -102,7 +94,7 @@ class GisLineString extends GisGeometry
         $points_arr = $this->extractPoints($linesrting, $scale_data);
 
         foreach ($points_arr as $point) {
-            if (!isset($temp_point)) {
+            if (! isset($temp_point)) {
                 $temp_point = $point;
             } else {
                 // draw line section
@@ -142,7 +134,6 @@ class GisLineString extends GisGeometry
      * @param TCPDF  $pdf        TCPDF instance
      *
      * @return TCPDF the modified TCPDF instance
-     * @access public
      */
     public function prepareRowAsPdf($spatial, $label, $line_color, array $scale_data, $pdf)
     {
@@ -150,7 +141,7 @@ class GisLineString extends GisGeometry
         $red = hexdec(mb_substr($line_color, 1, 2));
         $green = hexdec(mb_substr($line_color, 3, 2));
         $blue = hexdec(mb_substr($line_color, 4, 2));
-        $line = array('width' => 1.5, 'color' => array($red, $green, $blue));
+        $line = ['width' => 1.5, 'color' => [$red, $green, $blue]];
 
         // Trim to remove leading 'LINESTRING(' and trailing ')'
         $linesrting
@@ -162,7 +153,7 @@ class GisLineString extends GisGeometry
         $points_arr = $this->extractPoints($linesrting, $scale_data);
 
         foreach ($points_arr as $point) {
-            if (!isset($temp_point)) {
+            if (! isset($temp_point)) {
                 $temp_point = $point;
             } else {
                 // draw line section
@@ -195,18 +186,17 @@ class GisLineString extends GisGeometry
      * @param array  $scale_data Array containing data related to scaling
      *
      * @return string the code related to a row in the GIS dataset
-     * @access public
      */
     public function prepareRowAsSvg($spatial, $label, $line_color, array $scale_data)
     {
-        $line_options = array(
+        $line_options = [
             'name'         => $label,
-            'id'           => $label . rand(),
+            'id'           => $label.rand(),
             'class'        => 'linestring vector',
             'fill'         => 'none',
             'stroke'       => $line_color,
             'stroke-width' => 2,
-        );
+        ];
 
         // Trim to remove leading 'LINESTRING(' and trailing ')'
         $linesrting
@@ -219,11 +209,11 @@ class GisLineString extends GisGeometry
 
         $row = '<polyline points="';
         foreach ($points_arr as $point) {
-            $row .= $point[0] . ',' . $point[1] . ' ';
+            $row .= $point[0].','.$point[1].' ';
         }
         $row .= '"';
         foreach ($line_options as $option => $val) {
-            $row .= ' ' . $option . '="' . trim($val) . '"';
+            $row .= ' '.$option.'="'.trim($val).'"';
         }
         $row .= '/>';
 
@@ -241,16 +231,15 @@ class GisLineString extends GisGeometry
      * @param array  $scale_data Array containing data related to scaling
      *
      * @return string JavaScript related to a row in the GIS dataset
-     * @access public
      */
     public function prepareRowAsOl($spatial, $srid, $label, $line_color, array $scale_data)
     {
-        $style_options = array(
+        $style_options = [
             'strokeColor' => $line_color,
             'strokeWidth' => 2,
             'label'       => $label,
             'fontSize'    => 10,
-        );
+        ];
         if ($srid == 0) {
             $srid = 4326;
         }
@@ -266,8 +255,8 @@ class GisLineString extends GisGeometry
         $points_arr = $this->extractPoints($linesrting, null);
 
         $result .= 'vectorLayer.addFeatures(new OpenLayers.Feature.Vector('
-            . $this->getLineForOpenLayers($points_arr, $srid)
-            . ', null, ' . json_encode($style_options) . '));';
+            .$this->getLineForOpenLayers($points_arr, $srid)
+            .', null, '.json_encode($style_options).'));';
 
         return $result;
     }
@@ -280,7 +269,6 @@ class GisLineString extends GisGeometry
      * @param string $empty    Value for empty points
      *
      * @return string WKT with the set of parameters passed by the GIS editor
-     * @access public
      */
     public function generateWkt(array $gis_data, $index, $empty = '')
     {
@@ -294,9 +282,9 @@ class GisLineString extends GisGeometry
             $wkt .= ((isset($gis_data[$index]['LINESTRING'][$i]['x'])
                     && trim($gis_data[$index]['LINESTRING'][$i]['x']) != '')
                     ? $gis_data[$index]['LINESTRING'][$i]['x'] : $empty)
-                . ' ' . ((isset($gis_data[$index]['LINESTRING'][$i]['y'])
+                .' '.((isset($gis_data[$index]['LINESTRING'][$i]['y'])
                     && trim($gis_data[$index]['LINESTRING'][$i]['y']) != '')
-                    ? $gis_data[$index]['LINESTRING'][$i]['y'] : $empty) . ',';
+                    ? $gis_data[$index]['LINESTRING'][$i]['y'] : $empty).',';
         }
 
         $wkt
@@ -317,11 +305,10 @@ class GisLineString extends GisGeometry
      * @param int    $index of the geometry
      *
      * @return array params for the GIS data editor from the value of the GIS column
-     * @access public
      */
     public function generateParams($value, $index = -1)
     {
-        $params = array();
+        $params = [];
         if ($index == -1) {
             $index = 0;
             $data = GisGeometry::generateParams($value);

@@ -12,32 +12,35 @@ class ContactForm extends Mailable
     use Queueable, SerializesModels;
 
     public $email;
+
     public $name;
+
     public $subject;
+
     public $message;
 
-	/**
-	 * Create a new message instance.
-	 *
-	 * @param $request
-	 */
+    /**
+     * Create a new message instance.
+     *
+     * @param $request
+     */
     public function __construct($request)
     {
         $this->email = $request->email;
-		$this->name = $request->name;
-		$this->subject = $request->subject;
-		$this->message = $request->message;
+        $this->name = $request->name;
+        $this->subject = $request->subject;
+        $this->message = $request->message;
     }
 
-	/**
-	 * Build the message.
-	 *
-	 * @return $this
-	 */
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
     public function build()
     {
         return $this->from($this->email, $this->name)
-			->subject($this->subject)
-			->markdown('email.contact');
+            ->subject($this->subject)
+            ->markdown('email.contact');
     }
 }

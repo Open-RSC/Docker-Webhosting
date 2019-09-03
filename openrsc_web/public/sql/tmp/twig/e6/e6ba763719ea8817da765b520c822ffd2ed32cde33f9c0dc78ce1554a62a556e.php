@@ -16,63 +16,63 @@ class __TwigTemplate_c083806a88a7fc34c5b0a6a3aa0c86e6bf022a074e3f33cde8b2eb43077
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<ul";
-        if ( !twig_test_empty(($context["id"] ?? null))) {
-            echo " id=\"";
-            echo twig_escape_filter($this->env, ($context["id"] ?? null), "html", null, true);
-            echo "\"";
+        echo '<ul';
+        if (! twig_test_empty(($context['id'] ?? null))) {
+            echo ' id="';
+            echo twig_escape_filter($this->env, ($context['id'] ?? null), 'html', null, true);
+            echo '"';
         }
         // line 2
-        if ( !twig_test_empty(($context["class"] ?? null))) {
-            echo " class=\"";
-            echo twig_escape_filter($this->env, ($context["class"] ?? null), "html", null, true);
-            echo "\"";
+        if (! twig_test_empty(($context['class'] ?? null))) {
+            echo ' class="';
+            echo twig_escape_filter($this->env, ($context['class'] ?? null), 'html', null, true);
+            echo '"';
         }
-        echo ">
+        echo '>
 
-    ";
+    ';
         // line 4
-        if ( !twig_test_empty(($context["items"] ?? null))) {
+        if (! twig_test_empty(($context['items'] ?? null))) {
             // line 5
-            echo "        ";
+            echo '        ';
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(($context["items"] ?? null));
-            foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
+            $context['_seq'] = twig_ensure_traversable(($context['items'] ?? null));
+            foreach ($context['_seq'] as $context['_key'] => $context['item']) {
                 // line 6
-                echo "            ";
-                if ( !twig_test_iterable($context["item"])) {
+                echo '            ';
+                if (! twig_test_iterable($context['item'])) {
                     // line 7
-                    echo "                ";
-                    $context["item"] = ["content" => $context["item"]];
+                    echo '                ';
+                    $context['item'] = ['content' => $context['item']];
                     // line 8
-                    echo "            ";
+                    echo '            ';
                 }
                 // line 9
-                echo "            ";
-                $this->loadTemplate("list/item.twig", "list/unordered.twig", 9)->display($context["item"]);
+                echo '            ';
+                $this->loadTemplate('list/item.twig', 'list/unordered.twig', 9)->display($context['item']);
                 // line 10
-                echo "        ";
+                echo '        ';
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
             // line 11
-            echo "    ";
-        } elseif ( !twig_test_empty(($context["content"] ?? null))) {
+            echo '    ';
+        } elseif (! twig_test_empty(($context['content'] ?? null))) {
             // line 12
-            echo "        ";
-            echo ($context["content"] ?? null);
-            echo "
-    ";
+            echo '        ';
+            echo $context['content'] ?? null;
+            echo '
+    ';
         }
         // line 14
-        echo "</ul>
-";
+        echo '</ul>
+';
     }
 
     public function getTemplateName()
     {
-        return "list/unordered.twig";
+        return 'list/unordered.twig';
     }
 
     public function isTraitable()
@@ -82,7 +82,7 @@ class __TwigTemplate_c083806a88a7fc34c5b0a6a3aa0c86e6bf022a074e3f33cde8b2eb43077
 
     public function getDebugInfo()
     {
-        return array (  69 => 14,  63 => 12,  60 => 11,  54 => 10,  51 => 9,  48 => 8,  45 => 7,  42 => 6,  37 => 5,  35 => 4,  26 => 2,  19 => 1,);
+        return [69 => 14,  63 => 12,  60 => 11,  54 => 10,  51 => 9,  48 => 8,  45 => 7,  42 => 6,  37 => 5,  35 => 4,  26 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -95,6 +95,6 @@ class __TwigTemplate_c083806a88a7fc34c5b0a6a3aa0c86e6bf022a074e3f33cde8b2eb43077
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "list/unordered.twig", "/var/www/html/openrsc_web/public/sql/templates/list/unordered.twig");
+        return new Twig_Source('', 'list/unordered.twig', '/var/www/html/openrsc_web/public/sql/templates/list/unordered.twig');
     }
 }

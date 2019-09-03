@@ -9,36 +9,36 @@ class __TwigTemplate_6ddfe2d94e20fca7dbcd5e94e4be2e2e0a83efe9aaee71d2455ff0619a0
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<p class=\"print_ignore\">
-    <a href=\"#\" id=\"printView\">
-        ";
+        echo '<p class="print_ignore">
+    <a href="#" id="printView">
+        ';
         // line 3
-        echo PhpMyAdmin\Util::getIcon("b_print", _gettext("Print"), true);
-        echo "
+        echo PhpMyAdmin\Util::getIcon('b_print', _gettext('Print'), true);
+        echo '
     </a>
-    <a href=\"db_datadict.php";
+    <a href="db_datadict.php';
         // line 5
-        echo twig_escape_filter($this->env, ($context["url_query"] ?? null), "html", null, true);
-        echo "\" target=\"print_view\">
-        ";
+        echo twig_escape_filter($this->env, ($context['url_query'] ?? null), 'html', null, true);
+        echo '" target="print_view">
+        ';
         // line 6
-        echo PhpMyAdmin\Util::getIcon("b_tblanalyse", _gettext("Data dictionary"), true);
-        echo "
+        echo PhpMyAdmin\Util::getIcon('b_tblanalyse', _gettext('Data dictionary'), true);
+        echo '
     </a>
 </p>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "database/structure/print_view_data_dictionary_link.twig";
+        return 'database/structure/print_view_data_dictionary_link.twig';
     }
 
     public function isTraitable()
@@ -48,7 +48,7 @@ class __TwigTemplate_6ddfe2d94e20fca7dbcd5e94e4be2e2e0a83efe9aaee71d2455ff0619a0
 
     public function getDebugInfo()
     {
-        return array (  32 => 6,  28 => 5,  23 => 3,  19 => 1,);
+        return [32 => 6,  28 => 5,  23 => 3,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -61,6 +61,6 @@ class __TwigTemplate_6ddfe2d94e20fca7dbcd5e94e4be2e2e0a83efe9aaee71d2455ff0619a0
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/structure/print_view_data_dictionary_link.twig", "/var/www/html/sql/templates/database/structure/print_view_data_dictionary_link.twig");
+        return new Twig_Source('', 'database/structure/print_view_data_dictionary_link.twig', '/var/www/html/sql/templates/database/structure/print_view_data_dictionary_link.twig');
     }
 }

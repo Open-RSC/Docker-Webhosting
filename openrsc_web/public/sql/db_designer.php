@@ -1,13 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * phpMyAdmin designer general code
- *
- * @package PhpMyAdmin-Designer
+ * phpMyAdmin designer general code.
  */
+use PhpMyAdmin\Response;
 use PhpMyAdmin\Database\Designer;
 use PhpMyAdmin\Database\Designer\Common;
-use PhpMyAdmin\Response;
 
 require_once 'libraries/common.inc.php';
 
@@ -17,7 +16,6 @@ $databaseDesigner = new Designer();
 $designerCommon = new Common();
 
 if (isset($_POST['dialog'])) {
-
     if ($_POST['dialog'] == 'edit') {
         $html = $databaseDesigner->getHtmlForEditOrDeletePages($GLOBALS['db'], 'editPage');
     } elseif ($_POST['dialog'] == 'delete') {
@@ -30,22 +28,22 @@ if (isset($_POST['dialog'])) {
         );
     } elseif ($_POST['dialog'] == 'add_table') {
         $script_display_field = $designerCommon->getTablesInfo();
-        $required = $GLOBALS['db'] . '.' . $GLOBALS['table'];
+        $required = $GLOBALS['db'].'.'.$GLOBALS['table'];
         $tab_column = $designerCommon->getColumnsInfo();
         $tables_all_keys = $designerCommon->getAllKeys();
         $tables_pk_or_unique_keys = $designerCommon->getPkOrUniqueKeys();
 
         $req_key = array_search($required, $GLOBALS['designer']['TABLE_NAME']);
 
-        $GLOBALS['designer']['TABLE_NAME'] = array($GLOBALS['designer']['TABLE_NAME'][$req_key]);
-        $GLOBALS['designer_url']['TABLE_NAME_SMALL'] = array($GLOBALS['designer_url']['TABLE_NAME_SMALL'][$req_key]);
-        $GLOBALS['designer']['TABLE_NAME_SMALL'] = array($GLOBALS['designer']['TABLE_NAME_SMALL'][$req_key]);
-        $GLOBALS['designer_out']['TABLE_NAME_SMALL'] = array($GLOBALS['designer_out']['TABLE_NAME_SMALL'][$req_key]);
-        $GLOBALS['designer']['TABLE_TYPE'] = array($GLOBALS['designer_url']['TABLE_TYPE'][$req_key]);
-        $GLOBALS['designer_out']['OWNER'] = array($GLOBALS['designer_out']['OWNER'][$req_key]);
+        $GLOBALS['designer']['TABLE_NAME'] = [$GLOBALS['designer']['TABLE_NAME'][$req_key]];
+        $GLOBALS['designer_url']['TABLE_NAME_SMALL'] = [$GLOBALS['designer_url']['TABLE_NAME_SMALL'][$req_key]];
+        $GLOBALS['designer']['TABLE_NAME_SMALL'] = [$GLOBALS['designer']['TABLE_NAME_SMALL'][$req_key]];
+        $GLOBALS['designer_out']['TABLE_NAME_SMALL'] = [$GLOBALS['designer_out']['TABLE_NAME_SMALL'][$req_key]];
+        $GLOBALS['designer']['TABLE_TYPE'] = [$GLOBALS['designer_url']['TABLE_TYPE'][$req_key]];
+        $GLOBALS['designer_out']['OWNER'] = [$GLOBALS['designer_out']['OWNER'][$req_key]];
 
         $html = $databaseDesigner->getDatabaseTables(
-            array(), -1, $tab_column,
+            [], -1, $tab_column,
             $tables_all_keys, $tables_pk_or_unique_keys
         );
     }
@@ -53,11 +51,11 @@ if (isset($_POST['dialog'])) {
     if (! empty($html)) {
         $response->addHTML($html);
     }
+
     return;
 }
 
 if (isset($_POST['operation'])) {
-
     if ($_POST['operation'] == 'deletePage') {
         $success = $designerCommon->deletePage($_POST['selected_page']);
         $response->setRequestStatus($success);
@@ -133,17 +131,17 @@ if ($display_page != -1) {
 $tab_pos = $designerCommon->getTablePositions($display_page);
 $script_contr = $designerCommon->getScriptContr();
 
-$params = array('lang' => $GLOBALS['lang']);
+$params = ['lang' => $GLOBALS['lang']];
 if (isset($_GET['db'])) {
     $params['db'] = $_GET['db'];
 }
 
 $response = Response::getInstance();
 $response->getFooter()->setMinimal();
-$header   = $response->getHeader();
+$header = $response->getHeader();
 $header->setBodyId('designer_body');
 
-$scripts  = $header->getScripts();
+$scripts = $header->getScripts();
 $scripts->addFile('vendor/jquery/jquery.fullscreen.js');
 $scripts->addFile('designer/database.js');
 $scripts->addFile('designer/objects.js');
@@ -178,8 +176,6 @@ $response->addHTML(
         $classes_side_menu
     )
 );
-
-
 
 $response->addHTML('<div id="canvas_outer">');
 $response->addHTML(

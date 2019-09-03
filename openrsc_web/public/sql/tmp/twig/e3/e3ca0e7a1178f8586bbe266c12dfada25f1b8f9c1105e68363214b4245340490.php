@@ -9,25 +9,25 @@ class __TwigTemplate_17fbfca829a4fd9861b97a63e456b336f7351321f6d82be5b11c197ba09
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "</div>
-";
+        echo '</div>
+';
     }
 
     public function getTemplateName()
     {
-        return "login/footer.twig";
+        return 'login/footer.twig';
     }
 
     public function getDebugInfo()
     {
-        return array (  19 => 1,);
+        return [19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -40,6 +40,6 @@ class __TwigTemplate_17fbfca829a4fd9861b97a63e456b336f7351321f6d82be5b11c197ba09
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "login/footer.twig", "/var/www/html/openrsc_web/public/sql/templates/login/footer.twig");
+        return new Twig_Source('', 'login/footer.twig', '/var/www/html/openrsc_web/public/sql/templates/login/footer.twig');
     }
 }

@@ -1,25 +1,27 @@
-<?php /* vim: set expandtab sw=4 ts=4 sts=4: */
+<?php
+
+/* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Output buffering wrapper
- *
- * @package PhpMyAdmin
+ * Output buffering wrapper.
  */
+
 namespace PhpMyAdmin;
 
 /**
- * Output buffering wrapper class
- *
- * @package PhpMyAdmin
+ * Output buffering wrapper class.
  */
 class OutputBuffering
 {
     private static $_instance;
+
     private $_mode;
+
     private $_content;
+
     private $_on;
 
     /**
-     * Initializes class
+     * Initializes class.
      */
     private function __construct()
     {
@@ -30,7 +32,7 @@ class OutputBuffering
     /**
      * This function could be used eventually to support more modes.
      *
-     * @return integer  the output buffer mode
+     * @return int  the output buffer mode
      */
     private function _getMode()
     {
@@ -58,15 +60,16 @@ class OutputBuffering
     }
 
     /**
-     * Returns the singleton OutputBuffering object
+     * Returns the singleton OutputBuffering object.
      *
      * @return OutputBuffering object
      */
     public static function getInstance()
     {
         if (empty(self::$_instance)) {
-            self::$_instance = new OutputBuffering();
+            self::$_instance = new self();
         }
+
         return self::$_instance;
     }
 
@@ -85,10 +88,10 @@ class OutputBuffering
             }
             ob_start();
             if (! defined('TESTSUITE')) {
-                header('X-ob_mode: ' . $this->_mode);
+                header('X-ob_mode: '.$this->_mode);
             }
             register_shutdown_function(
-                array(OutputBuffering::class, 'stop')
+                [self::class, 'stop']
             );
             $this->_on = true;
         }
@@ -103,7 +106,7 @@ class OutputBuffering
      */
     public static function stop()
     {
-        $buffer = OutputBuffering::getInstance();
+        $buffer = self::getInstance();
         if ($buffer->_on) {
             $buffer->_on = false;
             $buffer->_content = ob_get_contents();
@@ -114,7 +117,7 @@ class OutputBuffering
     }
 
     /**
-     * Gets buffer content
+     * Gets buffer content.
      *
      * @return string buffer content
      */
@@ -124,7 +127,7 @@ class OutputBuffering
     }
 
     /**
-     * Flushes output buffer
+     * Flushes output buffer.
      *
      * @return void
      */

@@ -1,30 +1,27 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Config Authentication plugin for phpMyAdmin
- *
- * @package    PhpMyAdmin-Authentication
- * @subpackage Config
+ * Config Authentication plugin for phpMyAdmin.
  */
+
 namespace PhpMyAdmin\Plugins\Auth;
 
-use PhpMyAdmin\Plugins\AuthenticationPlugin;
-use PhpMyAdmin\Response;
-use PhpMyAdmin\Server\Select;
 use PhpMyAdmin\Url;
 use PhpMyAdmin\Util;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Server\Select;
+use PhpMyAdmin\Plugins\AuthenticationPlugin;
 
 /**
- * Handles the config authentication method
- *
- * @package PhpMyAdmin-Authentication
+ * Handles the config authentication method.
  */
 class AuthenticationConfig extends AuthenticationPlugin
 {
     /**
-     * Displays authentication form
+     * Displays authentication form.
      *
-     * @return boolean always true
+     * @return bool always true
      */
     public function showLoginForm()
     {
@@ -44,9 +41,9 @@ class AuthenticationConfig extends AuthenticationPlugin
     }
 
     /**
-     * Gets authentication credentials
+     * Gets authentication credentials.
      *
-     * @return boolean always true
+     * @return bool always true
      */
     public function readCredentials()
     {
@@ -61,7 +58,7 @@ class AuthenticationConfig extends AuthenticationPlugin
     }
 
     /**
-     * User is not allowed to login to MySQL -> authentication failed
+     * User is not allowed to login to MySQL -> authentication failed.
      *
      * @param string $failure String describing why authentication has failed
      *
@@ -71,7 +68,7 @@ class AuthenticationConfig extends AuthenticationPlugin
     {
         parent::showFailure($failure);
         $conn_error = $GLOBALS['dbi']->getError();
-        if (!$conn_error) {
+        if (! $conn_error) {
             $conn_error = __('Cannot connect: invalid settings.');
         }
 
@@ -103,13 +100,13 @@ class AuthenticationConfig extends AuthenticationPlugin
                 echo '<p>' , sprintf(
                     __(
                         'You probably did not create a configuration file.'
-                        . ' You might want to use the %1$ssetup script%2$s to'
-                        . ' create one.'
+                        .' You might want to use the %1$ssetup script%2$s to'
+                        .' create one.'
                     ),
                     '<a href="setup/">',
                     '</a>'
                 ) , '</p>' , "\n";
-            } elseif (!isset($GLOBALS['errno'])
+            } elseif (! isset($GLOBALS['errno'])
                 || (isset($GLOBALS['errno']) && $GLOBALS['errno'] != 2002)
                 && $GLOBALS['errno'] != 2003
             ) {
@@ -123,10 +120,10 @@ class AuthenticationConfig extends AuthenticationPlugin
                 trigger_error(
                     __(
                         'phpMyAdmin tried to connect to the MySQL server, and the'
-                        . ' server rejected the connection. You should check the'
-                        . ' host, username and password in your configuration and'
-                        . ' make sure that they correspond to the information given'
-                        . ' by the administrator of the MySQL server.'
+                        .' server rejected the connection. You should check the'
+                        .' host, username and password in your configuration and'
+                        .' make sure that they correspond to the information given'
+                        .' by the administrator of the MySQL server.'
                     ),
                     E_USER_WARNING
                 );
@@ -163,7 +160,7 @@ class AuthenticationConfig extends AuthenticationPlugin
             echo '</tr>' , "\n";
         }
         echo '</table>' , "\n";
-        if (!defined('TESTSUITE')) {
+        if (! defined('TESTSUITE')) {
             exit;
         }
     }

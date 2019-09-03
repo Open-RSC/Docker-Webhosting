@@ -1,18 +1,16 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Properties\Options\Items\HiddenPropertyItem class
- *
- * @package PhpMyAdmin
+ * Holds the PhpMyAdmin\Properties\Options\Items\HiddenPropertyItem class.
  */
+
 namespace PhpMyAdmin\Properties\Options\Items;
 
 use PhpMyAdmin\Properties\Options\OptionsPropertyOneItem;
 
 /**
- * Single property item class of type hidden
- *
- * @package PhpMyAdmin
+ * Single property item class of type hidden.
  */
 class HiddenPropertyItem extends OptionsPropertyOneItem
 {
@@ -22,12 +20,12 @@ class HiddenPropertyItem extends OptionsPropertyOneItem
      *  "text", "radio", etc ) or
      *  - PhpMyAdmin\Properties\Options\OptionsPropertyGroup   ( "root", "main"
      *  or "subgroup" )
-     *  - PhpMyAdmin\Properties\Plugins\PluginPropertyItem     ( "export", "import", "transformations" )
+     *  - PhpMyAdmin\Properties\Plugins\PluginPropertyItem     ( "export", "import", "transformations" ).
      *
      * @return string
      */
     public function getItemType()
     {
-        return "hidden";
+        return 'hidden';
     }
 }

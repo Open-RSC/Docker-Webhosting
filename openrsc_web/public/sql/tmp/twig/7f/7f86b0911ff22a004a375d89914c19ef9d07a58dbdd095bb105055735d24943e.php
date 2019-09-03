@@ -9,49 +9,49 @@ class __TwigTemplate_068a8ed54d2523ff857d9939bd583bfa8090f9320deca91b68eb9e0cdc8
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        $context["colspan"] = 2;
+        $context['colspan'] = 2;
         // line 2
-        if (($context["is_setup"] ?? null)) {
+        if (($context['is_setup'] ?? null)) {
             // line 3
-            echo "    ";
-            $context["colspan"] = (($context["colspan"] ?? null) + 1);
+            echo '    ';
+            $context['colspan'] = (($context['colspan'] ?? null) + 1);
         }
         // line 5
-        if (($context["show_buttons"] ?? null)) {
+        if (($context['show_buttons'] ?? null)) {
             // line 6
-            echo "    <tr>
-        <td colspan=\"";
+            echo '    <tr>
+        <td colspan="';
             // line 7
-            echo twig_escape_filter($this->env, ($context["colspan"] ?? null), "html", null, true);
-            echo "\" class=\"lastrow\">
-            <input type=\"submit\" name=\"submit_save\" value=\"";
+            echo twig_escape_filter($this->env, ($context['colspan'] ?? null), 'html', null, true);
+            echo '" class="lastrow">
+            <input type="submit" name="submit_save" value="';
             // line 8
-            echo _gettext("Apply");
-            echo "\" class=\"green\" />
-            <input type=\"button\" name=\"submit_reset\" value=\"";
+            echo _gettext('Apply');
+            echo '" class="green" />
+            <input type="button" name="submit_reset" value="';
             // line 9
-            echo _gettext("Reset");
-            echo "\" />
+            echo _gettext('Reset');
+            echo '" />
         </td>
     </tr>
-";
+';
         }
         // line 13
-        echo "</table>
+        echo '</table>
 </fieldset>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "config/form_display/fieldset_bottom.twig";
+        return 'config/form_display/fieldset_bottom.twig';
     }
 
     public function isTraitable()
@@ -61,7 +61,7 @@ class __TwigTemplate_068a8ed54d2523ff857d9939bd583bfa8090f9320deca91b68eb9e0cdc8
 
     public function getDebugInfo()
     {
-        return array (  47 => 13,  40 => 9,  36 => 8,  32 => 7,  29 => 6,  27 => 5,  23 => 3,  21 => 2,  19 => 1,);
+        return [47 => 13,  40 => 9,  36 => 8,  32 => 7,  29 => 6,  27 => 5,  23 => 3,  21 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -74,6 +74,6 @@ class __TwigTemplate_068a8ed54d2523ff857d9939bd583bfa8090f9320deca91b68eb9e0cdc8
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "config/form_display/fieldset_bottom.twig", "/var/www/html/openrsc_web/public/sql/templates/config/form_display/fieldset_bottom.twig");
+        return new Twig_Source('', 'config/form_display/fieldset_bottom.twig', '/var/www/html/openrsc_web/public/sql/templates/config/form_display/fieldset_bottom.twig');
     }
 }

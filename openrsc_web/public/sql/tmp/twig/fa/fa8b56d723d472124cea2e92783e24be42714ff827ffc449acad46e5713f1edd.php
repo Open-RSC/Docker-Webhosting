@@ -16,30 +16,30 @@ class __TwigTemplate_c0cd35917c9173c3438bcdc30de8c84d0d8be2585572cfbbd1e1e6b60d8
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<input name=\"field_extra[";
-        echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-        echo "]\"
-    id=\"field_";
+        echo '<input name="field_extra[';
+        echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+        echo ']"
+    id="field_';
         // line 2
-        echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-        echo "_";
-        echo twig_escape_filter($this->env, (($context["ci"] ?? null) - ($context["ci_offset"] ?? null)), "html", null, true);
-        echo "\"
-    ";
+        echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+        echo '_';
+        echo twig_escape_filter($this->env, (($context['ci'] ?? null) - ($context['ci_offset'] ?? null)), 'html', null, true);
+        echo '"
+    ';
         // line 3
-        if (($this->getAttribute(($context["column_meta"] ?? null), "Extra", [], "array", true, true) && (twig_lower_filter($this->env, $this->getAttribute(($context["column_meta"] ?? null), "Extra", [], "array")) == "auto_increment"))) {
+        if (($this->getAttribute(($context['column_meta'] ?? null), 'Extra', [], 'array', true, true) && (twig_lower_filter($this->env, $this->getAttribute(($context['column_meta'] ?? null), 'Extra', [], 'array')) == 'auto_increment'))) {
             // line 4
-            echo "checked=\"checked\"";
+            echo 'checked="checked"';
         }
         // line 6
-        echo "    type=\"checkbox\"
-    value=\"AUTO_INCREMENT\" />
-";
+        echo '    type="checkbox"
+    value="AUTO_INCREMENT" />
+';
     }
 
     public function getTemplateName()
     {
-        return "columns_definitions/column_auto_increment.twig";
+        return 'columns_definitions/column_auto_increment.twig';
     }
 
     public function isTraitable()
@@ -49,7 +49,7 @@ class __TwigTemplate_c0cd35917c9173c3438bcdc30de8c84d0d8be2585572cfbbd1e1e6b60d8
 
     public function getDebugInfo()
     {
-        return array (  35 => 6,  32 => 4,  30 => 3,  24 => 2,  19 => 1,);
+        return [35 => 6,  32 => 4,  30 => 3,  24 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -62,6 +62,6 @@ class __TwigTemplate_c0cd35917c9173c3438bcdc30de8c84d0d8be2585572cfbbd1e1e6b60d8
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "columns_definitions/column_auto_increment.twig", "/var/www/html/sql/templates/columns_definitions/column_auto_increment.twig");
+        return new Twig_Source('', 'columns_definitions/column_auto_increment.twig', '/var/www/html/sql/templates/columns_definitions/column_auto_increment.twig');
     }
 }

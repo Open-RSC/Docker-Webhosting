@@ -1,36 +1,33 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Fake database driver for testing purposes
+ * Fake database driver for testing purposes.
  *
  * It has hardcoded results for given queries what makes easy to use it
  * in testsuite. Feel free to include other queries which your test will
  * need.
- *
- * @package    PhpMyAdmin-DBI
- * @subpackage Dummy
  */
+
 namespace PhpMyAdmin\Dbi;
 
 require_once 'libraries/dbi/dbi_dummy.inc.php';
 
 /**
- * Fake database driver for testing purposes
+ * Fake database driver for testing purposes.
  *
  * It has hardcoded results for given queries what makes easy to use it
  * in testsuite. Feel free to include other queries which your test will
  * need.
- *
- * @package    PhpMyAdmin-DBI
- * @subpackage Dummy
  */
 class DbiDummy implements DbiExtension
 {
-    private $_queries = array();
+    private $_queries = [];
+
     const OFFSET_GLOBAL = 1000;
 
     /**
-     * connects to the database server
+     * connects to the database server.
      *
      * @param string $user     mysql user name
      * @param string $password mysql user password
@@ -47,7 +44,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * selects given database
+     * selects given database.
      *
      * @param string   $dbname name of db to select
      * @param resource $link   mysql link resource
@@ -62,7 +59,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * runs a query and returns the result
+     * runs a query and returns the result.
      *
      * @param string   $query   query to run
      * @param resource $link    mysql link resource
@@ -79,7 +76,7 @@ class DbiDummy implements DbiExtension
             }
 
             $this->_queries[$i]['pos'] = 0;
-            if (!is_array($this->_queries[$i]['result'])) {
+            if (! is_array($this->_queries[$i]['result'])) {
                 return false;
             }
 
@@ -91,7 +88,7 @@ class DbiDummy implements DbiExtension
             }
 
             $GLOBALS['dummy_queries'][$i]['pos'] = 0;
-            if (!is_array($GLOBALS['dummy_queries'][$i]['result'])) {
+            if (! is_array($GLOBALS['dummy_queries'][$i]['result'])) {
                 return false;
             }
 
@@ -103,7 +100,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * Run the multi query and output the results
+     * Run the multi query and output the results.
      *
      * @param resource $link  connection object
      * @param string   $query multi query statement to execute
@@ -116,7 +113,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns result data from $result
+     * returns result data from $result.
      *
      * @param object $result MySQL result
      *
@@ -135,7 +132,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns array of rows with associative and numeric keys from $result
+     * returns array of rows with associative and numeric keys from $result.
      *
      * @param object $result result  MySQL result
      *
@@ -145,8 +142,8 @@ class DbiDummy implements DbiExtension
     {
         $query_data = &$this->getQueryData($result);
         $data = $this->fetchAny($result);
-        if (!is_array($data)
-            || !isset($query_data['columns'])
+        if (! is_array($data)
+            || ! isset($query_data['columns'])
         ) {
             return $data;
         }
@@ -159,7 +156,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns array of rows with associative keys from $result
+     * returns array of rows with associative keys from $result.
      *
      * @param object $result MySQL result
      *
@@ -169,11 +166,11 @@ class DbiDummy implements DbiExtension
     {
         $data = $this->fetchAny($result);
         $query_data = &$this->getQueryData($result);
-        if (!is_array($data) || !isset($query_data['columns'])) {
+        if (! is_array($data) || ! isset($query_data['columns'])) {
             return $data;
         }
 
-        $ret = array();
+        $ret = [];
         foreach ($data as $key => $val) {
             $ret[$query_data['columns'][$key]] = $val;
         }
@@ -182,7 +179,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns array of rows with numeric keys from $result
+     * returns array of rows with numeric keys from $result.
      *
      * @param object $result MySQL result
      *
@@ -196,10 +193,10 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * Adjusts the result pointer to an arbitrary row in the result
+     * Adjusts the result pointer to an arbitrary row in the result.
      *
      * @param object  $result database result
-     * @param integer $offset offset to seek
+     * @param int $offset offset to seek
      *
      * @return bool true on success, false on failure
      */
@@ -215,7 +212,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * Frees memory associated with the result
+     * Frees memory associated with the result.
      *
      * @param object $result database result
      *
@@ -223,11 +220,10 @@ class DbiDummy implements DbiExtension
      */
     public function freeResult($result)
     {
-        return;
     }
 
     /**
-     * Check if there are any more query results from a multi query
+     * Check if there are any more query results from a multi query.
      *
      * @param resource $link the connection object
      *
@@ -239,11 +235,11 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * Prepare next result from multi_query
+     * Prepare next result from multi_query.
      *
      * @param resource $link the connection object
      *
-     * @return boolean false
+     * @return bool false
      */
     public function nextResult($link)
     {
@@ -251,7 +247,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * Store the result returned from multi query
+     * Store the result returned from multi query.
      *
      * @param resource $link the connection object
      *
@@ -263,7 +259,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * Returns a string representing the type of connection used
+     * Returns a string representing the type of connection used.
      *
      * @param resource $link mysql link
      *
@@ -275,11 +271,11 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * Returns the version of the MySQL protocol used
+     * Returns the version of the MySQL protocol used.
      *
      * @param resource $link mysql link
      *
-     * @return integer version of the MySQL protocol used
+     * @return int version of the MySQL protocol used
      */
     public function getProtoInfo($link)
     {
@@ -287,7 +283,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns a string that represents the client library version
+     * returns a string that represents the client library version.
      *
      * @return string MySQL client library version
      */
@@ -297,7 +293,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns last error message or false if no errors occurred
+     * returns last error message or false if no errors occurred.
      *
      * @param resource $link connection link
      *
@@ -309,7 +305,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns the number of rows returned by last query
+     * returns the number of rows returned by last query.
      *
      * @param object $result MySQL result
      *
@@ -327,7 +323,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns the number of rows affected by last query
+     * returns the number of rows affected by last query.
      *
      * @param resource $link           the mysql object
      * @param bool     $get_from_cache whether to retrieve from cache
@@ -340,7 +336,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns metainfo for fields in $result
+     * returns metainfo for fields in $result.
      *
      * @param object $result result set identifier
      *
@@ -348,11 +344,11 @@ class DbiDummy implements DbiExtension
      */
     public function getFieldsMeta($result)
     {
-        return array();
+        return [];
     }
 
     /**
-     * return number of fields in given $result
+     * return number of fields in given $result.
      *
      * @param object $result MySQL result
      *
@@ -361,7 +357,7 @@ class DbiDummy implements DbiExtension
     public function numFields($result)
     {
         $query_data = &$this->getQueryData($result);
-        if (!isset($query_data['columns'])) {
+        if (! isset($query_data['columns'])) {
             return 0;
         }
 
@@ -369,7 +365,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns the length of the given field $i in $result
+     * returns the length of the given field $i in $result.
      *
      * @param object $result result set identifier
      * @param int    $i      field
@@ -382,7 +378,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns name of $i. field in $result
+     * returns name of $i. field in $result.
      *
      * @param object $result result set identifier
      * @param int    $i      field
@@ -395,7 +391,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns concatenated string of human readable field flags
+     * returns concatenated string of human readable field flags.
      *
      * @param object $result result set identifier
      * @param int    $i      field
@@ -408,7 +404,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * returns properly escaped string for use in MySQL queries
+     * returns properly escaped string for use in MySQL queries.
      *
      * @param mixed  $link database link
      * @param string $str  string to be escaped
@@ -421,7 +417,7 @@ class DbiDummy implements DbiExtension
     }
 
     /**
-     * Adds query result for testing
+     * Adds query result for testing.
      *
      * @param string $query  SQL
      * @param array  $result Expected result
@@ -430,14 +426,14 @@ class DbiDummy implements DbiExtension
      */
     public function setResult($query, $result)
     {
-        $this->_queries[] = array(
+        $this->_queries[] = [
             'query' => $query,
             'result' => $result,
-        );
+        ];
     }
 
     /**
-     * Return query data for ID
+     * Return query data for ID.
      *
      * @param object $result result set identifier
      *

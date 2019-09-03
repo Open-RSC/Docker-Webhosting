@@ -16,84 +16,84 @@ class __TwigTemplate_ded411847d575ffa4cd9a95c456ae3c1218765418095f09d128a7fd9672
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "    <form method=\"get\" action=\"index.php\" class=\"disableAjax\">
-    ";
+        echo '    <form method="get" action="index.php" class="disableAjax">
+    ';
         // line 2
-        echo PhpMyAdmin\Url::getHiddenInputs(($context["_form_params"] ?? null));
-        echo "
+        echo PhpMyAdmin\Url::getHiddenInputs(($context['_form_params'] ?? null));
+        echo '
 
-    ";
+    ';
         // line 4
-        if (($context["use_fieldset"] ?? null)) {
+        if (($context['use_fieldset'] ?? null)) {
             // line 5
-            echo "        <fieldset>
-            <legend lang=\"en\" dir=\"ltr\">";
+            echo '        <fieldset>
+            <legend lang="en" dir="ltr">';
             // line 6
-            echo ($context["language_title"] ?? null);
-            echo "</legend>
-    ";
+            echo $context['language_title'] ?? null;
+            echo '</legend>
+    ';
         } else {
             // line 8
-            echo "        <bdo lang=\"en\" dir=\"ltr\">
-            <label for=\"sel-lang\">";
+            echo '        <bdo lang="en" dir="ltr">
+            <label for="sel-lang">';
             // line 9
-            echo ($context["language_title"] ?? null);
-            echo "</label>
+            echo $context['language_title'] ?? null;
+            echo '</label>
         </bdo>
-    ";
+    ';
         }
         // line 12
-        echo "
-    <select name=\"lang\" class=\"autosubmit\" lang=\"en\" dir=\"ltr\" id=\"sel-lang\">
+        echo '
+    <select name="lang" class="autosubmit" lang="en" dir="ltr" id="sel-lang">
 
-    ";
+    ';
         // line 15
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["available_languages"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["language"]) {
+        $context['_seq'] = twig_ensure_traversable(($context['available_languages'] ?? null));
+        foreach ($context['_seq'] as $context['_key'] => $context['language']) {
             // line 16
-            echo "        ";
+            echo '        ';
             // line 17
-            echo "        <option value=\"";
-            echo twig_escape_filter($this->env, twig_lower_filter($this->env, $this->getAttribute($context["language"], "getCode", [], "method")), "html", null, true);
-            echo "\"";
+            echo '        <option value="';
+            echo twig_escape_filter($this->env, twig_lower_filter($this->env, $this->getAttribute($context['language'], 'getCode', [], 'method')), 'html', null, true);
+            echo '"';
             // line 18
-            if ($this->getAttribute($context["language"], "isActive", [], "method")) {
+            if ($this->getAttribute($context['language'], 'isActive', [], 'method')) {
                 // line 19
-                echo "                selected=\"selected\"";
+                echo '                selected="selected"';
             }
             // line 21
-            echo ">
-        ";
+            echo '>
+        ';
             // line 22
-            echo $this->getAttribute($context["language"], "getName", [], "method");
-            echo "
+            echo $this->getAttribute($context['language'], 'getName', [], 'method');
+            echo '
         </option>
-    ";
+    ';
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['language'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 25
-        echo "
+        echo '
     </select>
 
-    ";
+    ';
         // line 28
-        if (($context["use_fieldset"] ?? null)) {
+        if (($context['use_fieldset'] ?? null)) {
             // line 29
-            echo "        </fieldset>
-    ";
+            echo '        </fieldset>
+    ';
         }
         // line 31
-        echo "
+        echo '
     </form>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "select_lang.twig";
+        return 'select_lang.twig';
     }
 
     public function isTraitable()
@@ -103,7 +103,7 @@ class __TwigTemplate_ded411847d575ffa4cd9a95c456ae3c1218765418095f09d128a7fd9672
 
     public function getDebugInfo()
     {
-        return array (  89 => 31,  85 => 29,  83 => 28,  78 => 25,  69 => 22,  66 => 21,  63 => 19,  61 => 18,  57 => 17,  55 => 16,  51 => 15,  46 => 12,  40 => 9,  37 => 8,  32 => 6,  29 => 5,  27 => 4,  22 => 2,  19 => 1,);
+        return [89 => 31,  85 => 29,  83 => 28,  78 => 25,  69 => 22,  66 => 21,  63 => 19,  61 => 18,  57 => 17,  55 => 16,  51 => 15,  46 => 12,  40 => 9,  37 => 8,  32 => 6,  29 => 5,  27 => 4,  22 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -116,6 +116,6 @@ class __TwigTemplate_ded411847d575ffa4cd9a95c456ae3c1218765418095f09d128a7fd9672
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "select_lang.twig", "/var/www/html/openrsc_web/public/sql/templates/select_lang.twig");
+        return new Twig_Source('', 'select_lang.twig', '/var/www/html/openrsc_web/public/sql/templates/select_lang.twig');
     }
 }

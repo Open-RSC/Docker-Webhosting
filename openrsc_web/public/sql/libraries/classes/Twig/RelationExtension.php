@@ -1,20 +1,18 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\RelationExtension class
- *
- * @package PhpMyAdmin\Twig
+ * hold PhpMyAdmin\Twig\RelationExtension class.
  */
+
 namespace PhpMyAdmin\Twig;
 
+use Twig\TwigFunction;
 use PhpMyAdmin\Relation;
 use Twig\Extension\AbstractExtension;
-use Twig\TwigFunction;
 
 /**
- * Class RelationExtension
- *
- * @package PhpMyAdmin\Twig
+ * Class RelationExtension.
  */
 class RelationExtension extends AbstractExtension
 {
@@ -26,16 +24,17 @@ class RelationExtension extends AbstractExtension
     public function getFunctions()
     {
         $relation = new Relation();
-        return array(
+
+        return [
             new TwigFunction(
                 'Relation_foreignDropdown',
                 [$relation, 'foreignDropdown'],
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Relation_getDisplayField',
                 [$relation, 'getDisplayField'],
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Relation_getForeignData',
@@ -49,6 +48,6 @@ class RelationExtension extends AbstractExtension
                 'Relation_searchColumnInForeigners',
                 [$relation, 'searchColumnInForeigners']
             ),
-        );
+        ];
     }
 }

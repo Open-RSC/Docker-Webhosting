@@ -1,26 +1,23 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the date format transformations plugins
- *
- * @package    PhpMyAdmin-Transformations
- * @subpackage DateFormat
+ * Abstract class for the date format transformations plugins.
  */
+
 namespace PhpMyAdmin\Plugins\Transformations\Abs;
 
-use PhpMyAdmin\Plugins\TransformationsPlugin;
-use PhpMyAdmin\Sanitize;
 use PhpMyAdmin\Util;
+use PhpMyAdmin\Sanitize;
+use PhpMyAdmin\Plugins\TransformationsPlugin;
 
 /**
  * Provides common methods for all of the date format transformations plugins.
- *
- * @package PhpMyAdmin
  */
 abstract class DateFormatTransformationsPlugin extends TransformationsPlugin
 {
     /**
-     * Gets the transformation description of the specific plugin
+     * Gets the transformation description of the specific plugin.
      *
      * @return string
      */
@@ -28,14 +25,14 @@ abstract class DateFormatTransformationsPlugin extends TransformationsPlugin
     {
         return __(
             'Displays a TIME, TIMESTAMP, DATETIME or numeric unix timestamp'
-            . ' column as formatted date. The first option is the offset (in'
-            . ' hours) which will be added to the timestamp (Default: 0). Use'
-            . ' second option to specify a different date/time format string.'
-            . ' Third option determines whether you want to see local date or'
-            . ' UTC one (use "local" or "utc" strings) for that. According to'
-            . ' that, date format has different value - for "local" see the'
-            . ' documentation for PHP\'s strftime() function and for "utc" it'
-            . ' is done using gmdate() function.'
+            .' column as formatted date. The first option is the offset (in'
+            .' hours) which will be added to the timestamp (Default: 0). Use'
+            .' second option to specify a different date/time format string.'
+            .' Third option determines whether you want to see local date or'
+            .' UTC one (use "local" or "utc" strings) for that. According to'
+            .' that, date format has different value - for "local" see the'
+            .' documentation for PHP\'s strftime() function and for "utc" it'
+            .' is done using gmdate() function.'
         );
     }
 
@@ -48,7 +45,7 @@ abstract class DateFormatTransformationsPlugin extends TransformationsPlugin
      *
      * @return string
      */
-    public function applyTransformation($buffer, array $options = array(), $meta = '')
+    public function applyTransformation($buffer, array $options = [], $meta = '')
     {
         // possibly use a global transform and feed it with special options
         $cfg = $GLOBALS['cfg'];
@@ -73,20 +70,19 @@ abstract class DateFormatTransformationsPlugin extends TransformationsPlugin
         if ($meta->type == 'int') {
             $timestamp = $buffer;
 
-            // Detect TIMESTAMP(6 | 8 | 10 | 12 | 14)
+        // Detect TIMESTAMP(6 | 8 | 10 | 12 | 14)
             // TIMESTAMP (2 | 4) not supported here.
             // (Note: prior to MySQL 4.1, TIMESTAMP has a display size
             // for example TIMESTAMP(8) means YYYYMMDD)
         } else {
             if (preg_match('/^(\d{2}){3,7}$/', $buffer)) {
-
                 if (mb_strlen($buffer) == 14 || mb_strlen($buffer) == 8) {
                     $offset = 4;
                 } else {
                     $offset = 2;
                 }
 
-                $aDate = array();
+                $aDate = [];
                 $aDate['year'] = (int)
                 mb_substr($buffer, 0, $offset);
                 $aDate['month'] = (int)
@@ -114,7 +110,7 @@ abstract class DateFormatTransformationsPlugin extends TransformationsPlugin
                 // (https://www.gnu.org/manual/tar-1.12/html_chapter/tar_7.html)
             } else {
                 if (preg_match('/^[0-9]\d{1,9}$/', $buffer)) {
-                    $timestamp = (int)$buffer;
+                    $timestamp = (int) $buffer;
                 } else {
                     $timestamp = strtotime($buffer);
                 }
@@ -140,8 +136,9 @@ abstract class DateFormatTransformationsPlugin extends TransformationsPlugin
             } else {
                 $text = 'INVALID DATE TYPE';
             }
-            return '<dfn onclick="alert(\'' . Sanitize::jsFormat($source, false) . '\');" title="'
-                . htmlspecialchars($source) . '">' . htmlspecialchars($text) . '</dfn>';
+
+            return '<dfn onclick="alert(\''.Sanitize::jsFormat($source, false).'\');" title="'
+                .htmlspecialchars($source).'">'.htmlspecialchars($text).'</dfn>';
         }
 
         return htmlspecialchars($buffer);
@@ -150,12 +147,12 @@ abstract class DateFormatTransformationsPlugin extends TransformationsPlugin
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the specific plugin
+     * Gets the transformation name of the specific plugin.
      *
      * @return string
      */
     public static function getName()
     {
-        return "Date Format";
+        return 'Date Format';
     }
 }
