@@ -1,8 +1,10 @@
 include .env
-MYSQL_DUMPS_DIR=./data
 
 start:
 	docker-compose up -d
+
+start-prod:
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 stop:
 	@docker-compose down -v
@@ -11,14 +13,15 @@ restart:
 	@docker-compose down -v
 	docker-compose up -d
 
+restart-prod:
+	@docker-compose down -v
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
 ps:
 	docker-compose ps
 
 logs:
 	@docker-compose logs -f
-
-init-laravel:
-	cp Website/openrsc_web/.env.example Website/openrsc_web/.env
 
 update-laravel:
 	docker exec -i php bash -c "cd /var/www/html/openrsc_web && composer install && composer update && php artisan key:generate && php artisan optimize && npm install && npm update && npm audit fix"
