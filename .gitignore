@@ -5,7 +5,6 @@
 /public/css/app.css
 /storage/*.key
 /vendor
-.env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
@@ -15,3 +14,7 @@ yarn-error.log
 /.idea
 .DS_Store
 sql/tmp
+
+inc/databases/
+
+logs/
