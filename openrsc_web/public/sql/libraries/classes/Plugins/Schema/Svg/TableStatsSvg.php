@@ -1,47 +1,47 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Contains PhpMyAdmin\Plugins\Schema\Svg\TableStatsSvg class
- *
- * @package PhpMyAdmin
+ * Contains PhpMyAdmin\Plugins\Schema\Svg\TableStatsSvg class.
  */
+
 namespace PhpMyAdmin\Plugins\Schema\Svg;
 
 use PhpMyAdmin\Font;
-use PhpMyAdmin\Plugins\Schema\ExportRelationSchema;
 use PhpMyAdmin\Plugins\Schema\TableStats;
+use PhpMyAdmin\Plugins\Schema\ExportRelationSchema;
 
 /**
- * Table preferences/statistics
+ * Table preferences/statistics.
  *
  * This class preserves the table co-ordinates,fields
  * and helps in drawing/generating the Tables in SVG XML document.
  *
- * @package PhpMyAdmin
  * @name    Table_Stats_Svg
  * @see     PMA_SVG
  */
 class TableStatsSvg extends TableStats
 {
     /**
-     * Defines properties
+     * Defines properties.
      */
     public $height;
+
     public $currentCell = 0;
 
     /**
-     * The "PhpMyAdmin\Plugins\Schema\Svg\TableStatsSvg" constructor
+     * The "PhpMyAdmin\Plugins\Schema\Svg\TableStatsSvg" constructor.
      *
      * @param object  $diagram          The current SVG image document
      * @param string  $db               The database name
      * @param string  $tableName        The table name
      * @param string  $font             Font face
-     * @param integer $fontSize         The font size
-     * @param integer $pageNumber       Page number
-     * @param integer &$same_wide_width The max. width among tables
-     * @param boolean $showKeys         Whether to display keys or not
-     * @param boolean $tableDimension   Whether to display table position or not
-     * @param boolean $offline          Whether the coordinates are sent
+     * @param int $fontSize         The font size
+     * @param int $pageNumber       Page number
+     * @param int &$same_wide_width The max. width among tables
+     * @param bool $showKeys         Whether to display keys or not
+     * @param bool $tableDimension   Whether to display table position or not
+     * @param bool $offline          Whether the coordinates are sent
      *
      *
      * @see PMA_SVG, Table_Stats_Svg::Table_Stats_setWidth,
@@ -88,19 +88,18 @@ class TableStatsSvg extends TableStats
     {
         ExportRelationSchema::dieSchema(
             $this->pageNumber,
-            "SVG",
+            'SVG',
             sprintf(__('The %s table doesn\'t exist!'), $this->tableName)
         );
     }
 
     /**
-     * Sets the width of the table
+     * Sets the width of the table.
      *
      * @param string  $font     The font size
-     * @param integer $fontSize The font size
+     * @param int $fontSize The font size
      *
      * @return void
-     * @access private
      *
      * @see    PMA_SVG
      */
@@ -126,9 +125,9 @@ class TableStatsSvg extends TableStats
     }
 
     /**
-     * Sets the height of the table
+     * Sets the height of the table.
      *
-     * @param integer $fontSize font size
+     * @param int $fontSize font size
      *
      * @return void
      */
@@ -139,11 +138,10 @@ class TableStatsSvg extends TableStats
     }
 
     /**
-     * draw the table
+     * draw the table.
      *
-     * @param boolean $showColor Whether to display color
+     * @param bool $showColor Whether to display color
      *
-     * @access public
      * @return void
      *
      * @see    PMA_SVG,PMA_SVG::printElement
@@ -186,7 +184,7 @@ class TableStatsSvg extends TableStats
                 $this->width,
                 $this->heightCell,
                 null,
-                'fill:' . $fillColor . ';stroke:black;'
+                'fill:'.$fillColor.';stroke:black;'
             );
             $this->diagram->printElement(
                 'text',

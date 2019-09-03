@@ -1,25 +1,26 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * PDF schema handling
- *
- * @package PhpMyAdmin
+ * PDF schema handling.
  */
+
 namespace PhpMyAdmin\Plugins\Schema\Pdf;
 
-use PhpMyAdmin\Pdf as PdfLib;
-use PhpMyAdmin\Relation;
 use PhpMyAdmin\Util;
+use PhpMyAdmin\Relation;
+use PhpMyAdmin\Pdf as PdfLib;
 
-/**
+/*
  * Skip the plugin if TCPDF is not available.
  */
 if (! class_exists('TCPDF')) {
     $GLOBALS['skip_import'] = true;
+
     return;
 }
 
-/**
+/*
  * block attempts to directly run this script
  */
 if (getcwd() == dirname(__FILE__)) {
@@ -28,34 +29,45 @@ if (getcwd() == dirname(__FILE__)) {
 
 /**
  * Extends the "TCPDF" class and helps
- * in developing the structure of PDF Schema Export
+ * in developing the structure of PDF Schema Export.
  *
- * @access  public
- * @package PhpMyAdmin
  * @see     TCPDF
  */
 class Pdf extends PdfLib
 {
     /**
-     * Defines properties
+     * Defines properties.
      */
-    var $_xMin;
-    var $_yMin;
-    var $leftMargin = 10;
-    var $topMargin = 10;
-    var $scale;
-    var $PMA_links;
-    var $Outlines = array();
-    var $def_outlines;
-    var $widths;
+    public $_xMin;
+
+    public $_yMin;
+
+    public $leftMargin = 10;
+
+    public $topMargin = 10;
+
+    public $scale;
+
+    public $PMA_links;
+
+    public $Outlines = [];
+
+    public $def_outlines;
+
+    public $widths;
+
     private $_ff = PdfLib::PMA_PDF_FONT;
+
     private $_offline;
+
     private $_pageNumber;
+
     private $_withDoc;
+
     private $_db;
 
     /**
-     * @var Relation $relation
+     * @var Relation
      */
     private $relation;
 
@@ -66,10 +78,8 @@ class Pdf extends PdfLib
      * @param string  $unit        unit
      * @param string  $paper       the format used for pages
      * @param int     $pageNumber  schema page number that is being exported
-     * @param boolean $withDoc     with document dictionary
+     * @param bool $withDoc     with document dictionary
      * @param string  $db          the database name
-     *
-     * @access public
      */
     public function __construct(
         $orientation, $unit, $paper, $pageNumber, $withDoc, $db
@@ -82,7 +92,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Sets the value for margins
+     * Sets the value for margins.
      *
      * @param float $c_margin margin
      *
@@ -94,7 +104,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Sets the scaling factor, defines minimum coordinates and margins
+     * Sets the scaling factor, defines minimum coordinates and margins.
      *
      * @param float|int $scale      The scaling factor
      * @param float|int $xMin       The minimum X coordinate
@@ -119,15 +129,15 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Outputs a scaled cell
+     * Outputs a scaled cell.
      *
      * @param float|int $w      The cell width
      * @param float|int $h      The cell height
      * @param string    $txt    The text to output
      * @param mixed     $border Whether to add borders or not
-     * @param integer   $ln     Where to put the cursor once the output is done
+     * @param int   $ln     Where to put the cursor once the output is done
      * @param string    $align  Align mode
-     * @param integer   $fill   Whether to fill the cell with a color or not
+     * @param int   $fill   Whether to fill the cell with a color or not
      * @param string    $link   Link
      *
      * @return void
@@ -143,7 +153,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Draws a scaled line
+     * Draws a scaled line.
      *
      * @param float $x1 The horizontal position of the starting point
      * @param float $y1 The vertical position of the starting point
@@ -164,7 +174,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Sets x and y scaled positions
+     * Sets x and y scaled positions.
      *
      * @param float $x The x position
      * @param float $y The y position
@@ -181,7 +191,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Sets the X scaled positions
+     * Sets the X scaled positions.
      *
      * @param float $x The x position
      *
@@ -196,7 +206,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Sets the scaled font size
+     * Sets the scaled font size.
      *
      * @param float $size The font size (in points)
      *
@@ -212,7 +222,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Sets the scaled line width
+     * Sets the scaled line width.
      *
      * @param float $width The line width
      *
@@ -241,13 +251,13 @@ class Pdf extends PdfLib
         // This function must be named "Header" to work with the TCPDF library
         if ($this->_withDoc) {
             if ($this->_offline || $this->_pageNumber == -1) {
-                $pg_name = __("PDF export page");
+                $pg_name = __('PDF export page');
             } else {
                 $test_query = 'SELECT * FROM '
-                    . Util::backquote($GLOBALS['cfgRelation']['db']) . '.'
-                    . Util::backquote($GLOBALS['cfgRelation']['pdf_pages'])
-                    . ' WHERE db_name = \'' . $GLOBALS['dbi']->escapeString($this->_db)
-                    . '\' AND page_nr = \'' . $this->_pageNumber . '\'';
+                    .Util::backquote($GLOBALS['cfgRelation']['db']).'.'
+                    .Util::backquote($GLOBALS['cfgRelation']['pdf_pages'])
+                    .' WHERE db_name = \''.$GLOBALS['dbi']->escapeString($this->_db)
+                    .'\' AND page_nr = \''.$this->_pageNumber.'\'';
                 $test_rs = $this->relation->queryAsControlUser($test_query);
                 $pages = @$GLOBALS['dbi']->fetchAssoc($test_rs);
                 $pg_name = ucfirst($pages['page_descr']);
@@ -261,7 +271,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * This function must be named "Footer" to work with the TCPDF library
+     * This function must be named "Footer" to work with the TCPDF library.
      *
      * @return void
      *
@@ -276,7 +286,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Sets widths
+     * Sets widths.
      *
      * @param array $w array of widths
      *
@@ -301,7 +311,7 @@ class Pdf extends PdfLib
         // line height
         $nb = 0;
         $data_cnt = count($data);
-        for ($i = 0;$i < $data_cnt;$i++) {
+        for ($i = 0; $i < $data_cnt; $i++) {
             $nb = max($nb, $this->numLines($this->widths[$i], $data[$i]));
         }
         $il = $this->FontSize;
@@ -310,7 +320,7 @@ class Pdf extends PdfLib
         $this->CheckPageBreak($h);
         // draw the cells
         $data_cnt = count($data);
-        for ($i = 0;$i < $data_cnt;$i++) {
+        for ($i = 0; $i < $data_cnt; $i++) {
             $w = $this->widths[$i];
             // save current position
             $x = $this->GetX();
@@ -330,7 +340,7 @@ class Pdf extends PdfLib
     }
 
     /**
-     * Compute number of lines used by a multicell of width w
+     * Compute number of lines used by a multicell of width w.
      *
      * @param int    $w   width
      * @param string $txt text
@@ -343,10 +353,10 @@ class Pdf extends PdfLib
         if ($w == 0) {
             $w = $this->w - $this->rMargin - $this->x;
         }
-        $wmax = ($w-2 * $this->cMargin) * 1000 / $this->FontSize;
+        $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
         $s = str_replace("\r", '', $txt);
         $nb = strlen($s);
-        if ($nb > 0 && $s[$nb-1] == "\n") {
+        if ($nb > 0 && $s[$nb - 1] == "\n") {
             $nb--;
         }
         $sep = -1;
@@ -362,12 +372,13 @@ class Pdf extends PdfLib
                 $j = $i;
                 $l = 0;
                 $nl++;
+
                 continue;
             }
             if ($c == ' ') {
                 $sep = $i;
             }
-            $l += isset($cw[mb_ord($c)])?$cw[mb_ord($c)]:0 ;
+            $l += isset($cw[mb_ord($c)]) ? $cw[mb_ord($c)] : 0;
             if ($l > $wmax) {
                 if ($sep == -1) {
                     if ($i == $j) {
@@ -384,17 +395,16 @@ class Pdf extends PdfLib
                 $i++;
             }
         }
+
         return $nl;
     }
 
     /**
-     * Set whether the document is generated from client side DB
+     * Set whether the document is generated from client side DB.
      *
      * @param string $value whether offline
      *
      * @return void
-     *
-     * @access private
      */
     public function setOffline($value)
     {

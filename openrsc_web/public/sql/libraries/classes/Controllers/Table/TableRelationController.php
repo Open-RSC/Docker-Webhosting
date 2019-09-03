@@ -1,65 +1,63 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Controllers\Table\TableRelationController
- *
- * @package PhpMyAdmin\Controllers
+ * Holds the PhpMyAdmin\Controllers\Table\TableRelationController.
  */
+
 namespace PhpMyAdmin\Controllers\Table;
 
-use PhpMyAdmin\Controllers\TableController;
 use PhpMyAdmin\Core;
-use PhpMyAdmin\DatabaseInterface;
-use PhpMyAdmin\Index;
-use PhpMyAdmin\Relation;
-use PhpMyAdmin\Table;
-use PhpMyAdmin\Template;
 use PhpMyAdmin\Util;
+use PhpMyAdmin\Index;
+use PhpMyAdmin\Table;
+use PhpMyAdmin\Relation;
+use PhpMyAdmin\Template;
+use PhpMyAdmin\DatabaseInterface;
+use PhpMyAdmin\Controllers\TableController;
 
 /**
- * Handles table relation logic
- *
- * @package PhpMyAdmin\Controllers
+ * Handles table relation logic.
  */
 class TableRelationController extends TableController
 {
     /**
-     * @var array $options_array
+     * @var array
      */
     protected $options_array;
 
     /**
-     * @var array $cfgRelation
+     * @var array
      */
     protected $cfgRelation;
 
     /**
-     * @var array $existrel
+     * @var array
      */
     protected $existrel;
 
     /**
-     * @var string $tbl_storage_engine
+     * @var string
      */
     protected $tbl_storage_engine;
 
     /**
-     * @var array $existrel_foreign
+     * @var array
      */
     protected $existrel_foreign;
 
     /**
-     * @var Table $udp_query
+     * @var Table
      */
     protected $upd_query;
 
     /**
-     * @var Relation $relation
+     * @var Relation
      */
     private $relation;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param array|null $options_array      Options
      * @param array|null $cfgRelation        Config relation
@@ -92,7 +90,7 @@ class TableRelationController extends TableController
     }
 
     /**
-     * Index
+     * Index.
      *
      * @return void
      */
@@ -109,14 +107,15 @@ class TableRelationController extends TableController
             } else { // if only the db is selected
                 $this->getDropdownValueForDbAction();
             }
+
             return;
         }
 
         $this->response->getHeader()->getScripts()->addFiles(
-            array(
+            [
                 'tbl_relation.js',
-                'indexes.js'
-            )
+                'indexes.js',
+            ]
         );
 
         // Set the database
@@ -154,27 +153,27 @@ class TableRelationController extends TableController
 
         $this->response->addHTML(
             Template::get('table/secondary_tabs')->render(
-                array(
-                    'url_params' => array(
+                [
+                    'url_params' => [
                         'db' => $GLOBALS['db'],
-                        'table' => $GLOBALS['table']
-                    ),
+                        'table' => $GLOBALS['table'],
+                    ],
                     'is_foreign_key_supported' => Util::isForeignKeySupported($engine),
                     'cfg_relation' => $this->relation->getRelationsParam(),
-                )
+                ]
             )
         );
         $this->response->addHTML('<div id="structure_content">');
 
         /**
-         * Dialog
+         * Dialog.
          */
         // Now find out the columns of our $table
         // need to use DatabaseInterface::QUERY_STORE with $this->dbi->numRows()
         // in mysqli
         $columns = $this->dbi->getColumns($this->db, $this->table);
 
-        $column_array = array();
+        $column_array = [];
         $column_array[''] = '';
         foreach ($columns as $column) {
             if (strtoupper($this->tbl_storage_engine) == 'INNODB'
@@ -194,9 +193,9 @@ class TableRelationController extends TableController
                 'table' => $this->table,
                 'cfg_relation' => $this->cfgRelation,
                 'tbl_storage_engine' => $this->tbl_storage_engine,
-                'existrel' => isset($this->existrel) ? $this->existrel : array(),
+                'existrel' => isset($this->existrel) ? $this->existrel : [],
                 'existrel_foreign' => isset($this->existrel_foreign)
-                    ? $this->existrel_foreign['foreign_keys_data'] : array(),
+                    ? $this->existrel_foreign['foreign_keys_data'] : [],
                 'options_array' => $this->options_array,
                 'column_array' => $column_array,
                 'save_row' => array_values($columns),
@@ -213,7 +212,7 @@ class TableRelationController extends TableController
     }
 
     /**
-     * Update for display field
+     * Update for display field.
      *
      * @return void
      */
@@ -233,7 +232,7 @@ class TableRelationController extends TableController
     }
 
     /**
-     * Update for FK
+     * Update for FK.
      *
      * @return void
      */
@@ -268,7 +267,7 @@ class TableRelationController extends TableController
             Core::previewSQL($preview_sql_data);
         }
 
-        if (!empty($display_query) && !$seen_error) {
+        if (! empty($display_query) && ! $seen_error) {
             $GLOBALS['display_query'] = $display_query;
             $this->response->addHTML(
                 Util::getMessage(
@@ -280,7 +279,7 @@ class TableRelationController extends TableController
     }
 
     /**
-     * Update for internal relation
+     * Update for internal relation.
      *
      * @return void
      */
@@ -309,10 +308,9 @@ class TableRelationController extends TableController
     }
 
     /**
-     * Send table columns for foreign table dropdown
+     * Send table columns for foreign table dropdown.
      *
      * @return void
-     *
      */
     public function getDropdownValueForTableAction()
     {
@@ -325,7 +323,7 @@ class TableRelationController extends TableController
         } else {
             $columnList = $table_obj->getIndexedColumns(false, false);
         }
-        $columns = array();
+        $columns = [];
         foreach ($columnList as $column) {
             $columns[] = htmlspecialchars($column);
         }
@@ -344,19 +342,18 @@ class TableRelationController extends TableController
     }
 
     /**
-     * Send database selection values for dropdown
+     * Send database selection values for dropdown.
      *
      * @return void
-     *
      */
     public function getDropdownValueForDbAction()
     {
-        $tables = array();
+        $tables = [];
         $foreign = isset($_POST['foreign']) && $_POST['foreign'] === 'true';
 
         if ($foreign) {
             $query = 'SHOW TABLE STATUS FROM '
-                . Util::backquote($_POST['foreignDb']);
+                .Util::backquote($_POST['foreignDb']);
             $tables_rs = $this->dbi->query(
                 $query,
                 DatabaseInterface::CONNECT_USER,
@@ -365,14 +362,14 @@ class TableRelationController extends TableController
 
             while ($row = $this->dbi->fetchArray($tables_rs)) {
                 if (isset($row['Engine'])
-                    &&  mb_strtoupper($row['Engine']) == $this->tbl_storage_engine
+                    && mb_strtoupper($row['Engine']) == $this->tbl_storage_engine
                 ) {
                     $tables[] = htmlspecialchars($row['Name']);
                 }
             }
         } else {
             $query = 'SHOW TABLES FROM '
-                . Util::backquote($_POST['foreignDb']);
+                .Util::backquote($_POST['foreignDb']);
             $tables_rs = $this->dbi->query(
                 $query,
                 DatabaseInterface::CONNECT_USER,

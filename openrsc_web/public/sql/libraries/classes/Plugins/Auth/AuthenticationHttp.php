@@ -1,33 +1,30 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * HTTP Authentication plugin for phpMyAdmin.
  * NOTE: Requires PHP loaded as a Apache module.
- *
- * @package    PhpMyAdmin-Authentication
- * @subpackage HTTP
  */
+
 namespace PhpMyAdmin\Plugins\Auth;
 
-use PhpMyAdmin\Plugins\AuthenticationPlugin;
+use PhpMyAdmin\Core;
+use PhpMyAdmin\Config;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\Config;
-use PhpMyAdmin\Core;
+use PhpMyAdmin\Plugins\AuthenticationPlugin;
 
 require_once './libraries/hash.lib.php';
 
 /**
- * Handles the HTTP authentication methods
- *
- * @package PhpMyAdmin-Authentication
+ * Handles the HTTP authentication methods.
  */
 class AuthenticationHttp extends AuthenticationPlugin
 {
     /**
-     * Displays authentication form and redirect as necessary
+     * Displays authentication form and redirect as necessary.
      *
-     * @return boolean   always true (no return indeed)
+     * @return bool   always true (no return indeed)
      */
     public function showLoginForm()
     {
@@ -47,9 +44,9 @@ class AuthenticationHttp extends AuthenticationPlugin
     }
 
     /**
-     * Displays authentication form
+     * Displays authentication form.
      *
-     * @return boolean
+     * @return bool
      */
     public function authForm()
     {
@@ -59,7 +56,7 @@ class AuthenticationHttp extends AuthenticationPlugin
             } else {
                 $server_message = $GLOBALS['cfg']['Server']['verbose'];
             }
-            $realm_message = 'phpMyAdmin ' . $server_message;
+            $realm_message = 'phpMyAdmin '.$server_message;
         } else {
             $realm_message = $GLOBALS['cfg']['Server']['auth_http_realm'];
         }
@@ -68,7 +65,7 @@ class AuthenticationHttp extends AuthenticationPlugin
 
         // remove non US-ASCII to respect RFC2616
         $realm_message = preg_replace('/[^\x20-\x7e]/i', '', $realm_message);
-        $response->header('WWW-Authenticate: Basic realm="' . $realm_message . '"');
+        $response->header('WWW-Authenticate: Basic realm="'.$realm_message.'"');
         $response->setHttpResponseCode(401);
 
         /* HTML header */
@@ -92,7 +89,7 @@ class AuthenticationHttp extends AuthenticationPlugin
 
         $response->addHTML(Config::renderFooter());
 
-        if (!defined('TESTSUITE')) {
+        if (! defined('TESTSUITE')) {
             exit;
         } else {
             return false;
@@ -100,9 +97,9 @@ class AuthenticationHttp extends AuthenticationPlugin
     }
 
     /**
-     * Gets authentication credentials
+     * Gets authentication credentials.
      *
-     * @return boolean   whether we get authentication settings or not
+     * @return bool   whether we get authentication settings or not
      */
     public function readCredentials()
     {
@@ -158,7 +155,7 @@ class AuthenticationHttp extends AuthenticationPlugin
         // (do not use explode() because a user might have a colon in his password
         if (strcmp(substr($this->user, 0, 6), 'Basic ') == 0) {
             $usr_pass = base64_decode(substr($this->user, 6));
-            if (!empty($usr_pass)) {
+            if (! empty($usr_pass)) {
                 $colon = strpos($usr_pass, ':');
                 if ($colon) {
                     $this->user = substr($usr_pass, 0, $colon);
@@ -181,11 +178,11 @@ class AuthenticationHttp extends AuthenticationPlugin
         }
 
         // Returns whether we get authentication settings or not
-        return !empty($this->user);
+        return ! empty($this->user);
     }
 
     /**
-     * User is not allowed to login to MySQL -> authentication failed
+     * User is not allowed to login to MySQL -> authentication failed.
      *
      * @param string $failure String describing why authentication has failed
      *
@@ -209,6 +206,6 @@ class AuthenticationHttp extends AuthenticationPlugin
      */
     public function getLoginFormURL()
     {
-        return './index.php?old_usr=' . $this->user;
+        return './index.php?old_usr='.$this->user;
     }
 }

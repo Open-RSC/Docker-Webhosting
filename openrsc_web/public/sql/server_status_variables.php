@@ -1,13 +1,11 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Displays a list of server status variables
- *
- * @package PhpMyAdmin
+ * Displays a list of server status variables.
  */
-
-use PhpMyAdmin\Response;
 use PhpMyAdmin\Message;
+use PhpMyAdmin\Response;
 use PhpMyAdmin\Server\Status\Data;
 use PhpMyAdmin\Server\Status\Variables;
 
@@ -15,18 +13,18 @@ require_once 'libraries/common.inc.php';
 require_once 'libraries/server_common.inc.php';
 require_once 'libraries/replication.inc.php';
 
-/**
+/*
  * flush status variables if requested
  */
 if (isset($_POST['flush'])) {
-    $_flush_commands = array(
+    $_flush_commands = [
         'STATUS',
         'TABLES',
         'QUERY CACHE',
-    );
+    ];
 
     if (in_array($_POST['flush'], $_flush_commands)) {
-        $GLOBALS['dbi']->query('FLUSH ' . $_POST['flush'] . ';');
+        $GLOBALS['dbi']->query('FLUSH '.$_POST['flush'].';');
     }
     unset($_flush_commands);
 }
@@ -34,8 +32,8 @@ if (isset($_POST['flush'])) {
 $serverStatusData = new Data();
 
 $response = Response::getInstance();
-$header   = $response->getHeader();
-$scripts  = $header->getScripts();
+$header = $response->getHeader();
+$scripts = $header->getScripts();
 $scripts->addFile('server_status_variables.js');
 $scripts->addFile('vendor/jquery/jquery.tablesorter.js');
 $scripts->addFile('server_status_sorter.js');

@@ -1,19 +1,17 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\CharsetsExtension class
- *
- * @package PhpMyAdmin\Twig
+ * hold PhpMyAdmin\Twig\CharsetsExtension class.
  */
+
 namespace PhpMyAdmin\Twig;
 
-use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
 
 /**
- * Class CharsetsExtension
- *
- * @package PhpMyAdmin\Twig
+ * Class CharsetsExtension.
  */
 class CharsetsExtension extends AbstractExtension
 {
@@ -24,7 +22,7 @@ class CharsetsExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return array(
+        return [
             new TwigFunction(
                 'Charsets_getCollationDescr',
                 'PhpMyAdmin\Charsets::getCollationDescr'
@@ -32,13 +30,13 @@ class CharsetsExtension extends AbstractExtension
             new TwigFunction(
                 'Charsets_getCharsetDropdownBox',
                 'PhpMyAdmin\Charsets::getCharsetDropdownBox',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Charsets_getCollationDropdownBox',
                 'PhpMyAdmin\Charsets::getCollationDropdownBox',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
-        );
+        ];
     }
 }

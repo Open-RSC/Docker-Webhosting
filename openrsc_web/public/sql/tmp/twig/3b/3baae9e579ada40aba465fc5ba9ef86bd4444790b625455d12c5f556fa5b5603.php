@@ -17,109 +17,109 @@ class __TwigTemplate_9e73eb0b467067067e575492b7081b363006b81fb905aa936af70b7aeeb
     {
         // line 3
         ob_start();
-        echo _pgettext(        "for default", "None");
-        $context["translation"] = ('' === $tmp = ob_get_clean()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
+        echo _pgettext('for default', 'None');
+        $context['translation'] = ('' === $tmp = ob_get_clean()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
         // line 4
-        $context["default_options"] = ["NONE" =>         // line 5
-($context["translation"] ?? null), "USER_DEFINED" => _gettext("As defined:"), "NULL" => "NULL", "CURRENT_TIMESTAMP" => "CURRENT_TIMESTAMP"];
+        $context['default_options'] = ['NONE' =>         // line 5
+($context['translation'] ?? null), 'USER_DEFINED' => _gettext('As defined:'), 'NULL' => 'NULL', 'CURRENT_TIMESTAMP' => 'CURRENT_TIMESTAMP', ];
         // line 10
-        echo "
-";
+        echo '
+';
         // line 12
-        $context["default_value"] = "";
+        $context['default_value'] = '';
         // line 13
-        if ($this->getAttribute(($context["column_meta"] ?? null), "DefaultValue", [], "array", true, true)) {
+        if ($this->getAttribute(($context['column_meta'] ?? null), 'DefaultValue', [], 'array', true, true)) {
             // line 14
-            echo "    ";
-            $context["default_value"] = $this->getAttribute(($context["column_meta"] ?? null), "DefaultValue", [], "array");
+            echo '    ';
+            $context['default_value'] = $this->getAttribute(($context['column_meta'] ?? null), 'DefaultValue', [], 'array');
         }
         // line 16
-        if ((($context["type_upper"] ?? null) == "BIT")) {
+        if ((($context['type_upper'] ?? null) == 'BIT')) {
             // line 17
-            echo "    ";
-            $context["default_value"] = PhpMyAdmin\Util::convertBitDefaultValue($this->getAttribute(($context["column_meta"] ?? null), "DefaultValue", [], "array"));
+            echo '    ';
+            $context['default_value'] = PhpMyAdmin\Util::convertBitDefaultValue($this->getAttribute(($context['column_meta'] ?? null), 'DefaultValue', [], 'array'));
         } elseif (((        // line 18
-($context["type_upper"] ?? null) == "BINARY") || (($context["type_upper"] ?? null) == "VARBINARY"))) {
+($context['type_upper'] ?? null) == 'BINARY') || (($context['type_upper'] ?? null) == 'VARBINARY'))) {
             // line 19
-            echo "    ";
-            $context["default_value"] = bin2hex($this->getAttribute(($context["column_meta"] ?? null), "DefaultValue", [], "array"));
+            echo '    ';
+            $context['default_value'] = bin2hex($this->getAttribute(($context['column_meta'] ?? null), 'DefaultValue', [], 'array'));
         }
         // line 21
-        echo "
-<select name=\"field_default_type[";
+        echo '
+<select name="field_default_type[';
         // line 22
-        echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-        echo "]\"
-    id=\"field_";
+        echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+        echo ']"
+    id="field_';
         // line 23
-        echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-        echo "_";
-        echo twig_escape_filter($this->env, (($context["ci"] ?? null) - ($context["ci_offset"] ?? null)), "html", null, true);
-        echo "\"
-    class=\"default_type\">
-    ";
+        echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+        echo '_';
+        echo twig_escape_filter($this->env, (($context['ci'] ?? null) - ($context['ci_offset'] ?? null)), 'html', null, true);
+        echo '"
+    class="default_type">
+    ';
         // line 25
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["default_options"] ?? null));
-        foreach ($context['_seq'] as $context["key"] => $context["value"]) {
+        $context['_seq'] = twig_ensure_traversable(($context['default_options'] ?? null));
+        foreach ($context['_seq'] as $context['key'] => $context['value']) {
             // line 26
-            echo "        <option value=\"";
-            echo twig_escape_filter($this->env, $context["key"], "html", null, true);
-            echo "\"";
+            echo '        <option value="';
+            echo twig_escape_filter($this->env, $context['key'], 'html', null, true);
+            echo '"';
             // line 27
-            if (($this->getAttribute(($context["column_meta"] ?? null), "DefaultType", [], "array", true, true) && ($this->getAttribute(            // line 28
-($context["column_meta"] ?? null), "DefaultType", [], "array") == $context["key"]))) {
+            if (($this->getAttribute(($context['column_meta'] ?? null), 'DefaultType', [], 'array', true, true) && ($this->getAttribute(            // line 28
+($context['column_meta'] ?? null), 'DefaultType', [], 'array') == $context['key']))) {
                 // line 29
-                echo "                selected=\"selected\"";
+                echo '                selected="selected"';
             }
             // line 30
-            echo ">
-            ";
+            echo '>
+            ';
             // line 31
-            echo twig_escape_filter($this->env, $context["value"], "html", null, true);
-            echo "
+            echo twig_escape_filter($this->env, $context['value'], 'html', null, true);
+            echo '
         </option>
-    ";
+    ';
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['key'], $context['value'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 34
-        echo "</select>
-";
+        echo '</select>
+';
         // line 35
-        if ((($context["char_editing"] ?? null) == "textarea")) {
+        if ((($context['char_editing'] ?? null) == 'textarea')) {
             // line 36
-            echo "    <textarea name=\"field_default_value[";
-            echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-            echo "]\"
-        cols=\"15\"
-        class=\"textfield
-        default_value\">";
+            echo '    <textarea name="field_default_value[';
+            echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+            echo ']"
+        cols="15"
+        class="textfield
+        default_value">';
             // line 39
-            echo twig_escape_filter($this->env, ($context["default_value"] ?? null), "html", null, true);
-            echo "</textarea>
-";
+            echo twig_escape_filter($this->env, ($context['default_value'] ?? null), 'html', null, true);
+            echo '</textarea>
+';
         } else {
             // line 41
-            echo "    <input type=\"text\"
-        name=\"field_default_value[";
+            echo '    <input type="text"
+        name="field_default_value[';
             // line 42
-            echo twig_escape_filter($this->env, ($context["column_number"] ?? null), "html", null, true);
-            echo "]\"
-        size=\"12\"
-        value=\"";
+            echo twig_escape_filter($this->env, ($context['column_number'] ?? null), 'html', null, true);
+            echo ']"
+        size="12"
+        value="';
             // line 44
-            echo twig_escape_filter($this->env, ($context["default_value"] ?? null), "html", null, true);
-            echo "\"
-        class=\"textfield default_value\" />
-";
+            echo twig_escape_filter($this->env, ($context['default_value'] ?? null), 'html', null, true);
+            echo '"
+        class="textfield default_value" />
+';
         }
     }
 
     public function getTemplateName()
     {
-        return "columns_definitions/column_default.twig";
+        return 'columns_definitions/column_default.twig';
     }
 
     public function isTraitable()
@@ -129,7 +129,7 @@ class __TwigTemplate_9e73eb0b467067067e575492b7081b363006b81fb905aa936af70b7aeeb
 
     public function getDebugInfo()
     {
-        return array (  113 => 44,  108 => 42,  105 => 41,  100 => 39,  93 => 36,  91 => 35,  88 => 34,  79 => 31,  76 => 30,  73 => 29,  71 => 28,  70 => 27,  66 => 26,  62 => 25,  55 => 23,  51 => 22,  48 => 21,  44 => 19,  42 => 18,  39 => 17,  37 => 16,  33 => 14,  31 => 13,  29 => 12,  26 => 10,  24 => 5,  23 => 4,  19 => 3,);
+        return [113 => 44,  108 => 42,  105 => 41,  100 => 39,  93 => 36,  91 => 35,  88 => 34,  79 => 31,  76 => 30,  73 => 29,  71 => 28,  70 => 27,  66 => 26,  62 => 25,  55 => 23,  51 => 22,  48 => 21,  44 => 19,  42 => 18,  39 => 17,  37 => 16,  33 => 14,  31 => 13,  29 => 12,  26 => 10,  24 => 5,  23 => 4,  19 => 3];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -142,6 +142,6 @@ class __TwigTemplate_9e73eb0b467067067e575492b7081b363006b81fb905aa936af70b7aeeb
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "columns_definitions/column_default.twig", "/var/www/html/sql/templates/columns_definitions/column_default.twig");
+        return new Twig_Source('', 'columns_definitions/column_default.twig', '/var/www/html/sql/templates/columns_definitions/column_default.twig');
     }
 }

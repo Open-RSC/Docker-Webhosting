@@ -1,15 +1,13 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Exporting of Core::$goto_whitelist from PHP to Javascript
- *
- * @package PhpMyAdmin
+ * Exporting of Core::$goto_whitelist from PHP to Javascript.
  */
-
 use PhpMyAdmin\Core;
 use PhpMyAdmin\OutputBuffering;
 
-if (!defined('TESTSUITE')) {
+if (! defined('TESTSUITE')) {
     chdir('..');
 
     // Send correct type:
@@ -17,7 +15,7 @@ if (!defined('TESTSUITE')) {
 
     // Cache output in client - the nocache query parameter makes sure that this
     // file is reloaded when config changes
-    header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
+    header('Expires: '.gmdate('D, d M Y H:i:s', time() + 3600).' GMT');
 
     // Avoid loading the full common.inc.php because this would add many
     // non-js-compatible stuff like DOCTYPE
@@ -30,7 +28,7 @@ if (!defined('TESTSUITE')) {
 
 $buffer = OutputBuffering::getInstance();
 $buffer->start();
-if (!defined('TESTSUITE')) {
+if (! defined('TESTSUITE')) {
     register_shutdown_function(
         function () {
             echo OutputBuffering::getInstance()->getContents();

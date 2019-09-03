@@ -16,42 +16,42 @@ class __TwigTemplate_937b4d64b5627d578326896b75bc4af42fc4fffd1bd18abc9264b88fcbd
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<div class=\"exportoptions\" id=\"header\">
+        echo '<div class="exportoptions" id="header">
     <h2>
-        ";
+        ';
         // line 3
-        echo PhpMyAdmin\Util::getImage("b_export", _gettext("Export"));
-        echo "
-        ";
+        echo PhpMyAdmin\Util::getImage('b_export', _gettext('Export'));
+        echo '
+        ';
         // line 4
-        if ((($context["export_type"] ?? null) == "server")) {
+        if ((($context['export_type'] ?? null) == 'server')) {
             // line 5
-            echo "            ";
-            echo _gettext("Exporting databases from the current server");
+            echo '            ';
+            echo _gettext('Exporting databases from the current server');
             // line 6
-            echo "        ";
-        } elseif ((($context["export_type"] ?? null) == "database")) {
+            echo '        ';
+        } elseif ((($context['export_type'] ?? null) == 'database')) {
             // line 7
-            echo "            ";
-            echo twig_escape_filter($this->env, sprintf(_gettext("Exporting tables from \"%s\" database"), ($context["db"] ?? null)), "html", null, true);
-            echo "
-        ";
+            echo '            ';
+            echo twig_escape_filter($this->env, sprintf(_gettext('Exporting tables from "%s" database'), ($context['db'] ?? null)), 'html', null, true);
+            echo '
+        ';
         } else {
             // line 9
-            echo "            ";
-            echo twig_escape_filter($this->env, sprintf(_gettext("Exporting rows from \"%s\" table"), ($context["table"] ?? null)), "html", null, true);
-            echo "
-        ";
+            echo '            ';
+            echo twig_escape_filter($this->env, sprintf(_gettext('Exporting rows from "%s" table'), ($context['table'] ?? null)), 'html', null, true);
+            echo '
+        ';
         }
         // line 11
-        echo "    </h2>
+        echo '    </h2>
 </div>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "display/export/option_header.twig";
+        return 'display/export/option_header.twig';
     }
 
     public function isTraitable()
@@ -61,7 +61,7 @@ class __TwigTemplate_937b4d64b5627d578326896b75bc4af42fc4fffd1bd18abc9264b88fcbd
 
     public function getDebugInfo()
     {
-        return array (  47 => 11,  41 => 9,  35 => 7,  32 => 6,  29 => 5,  27 => 4,  23 => 3,  19 => 1,);
+        return [47 => 11,  41 => 9,  35 => 7,  32 => 6,  29 => 5,  27 => 4,  23 => 3,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -74,6 +74,6 @@ class __TwigTemplate_937b4d64b5627d578326896b75bc4af42fc4fffd1bd18abc9264b88fcbd
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/export/option_header.twig", "/var/www/html/sql/templates/display/export/option_header.twig");
+        return new Twig_Source('', 'display/export/option_header.twig', '/var/www/html/sql/templates/display/export/option_header.twig');
     }
 }

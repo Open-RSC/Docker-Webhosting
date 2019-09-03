@@ -1,19 +1,17 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\UrlExtension class
- *
- * @package PhpMyAdmin\Twig
+ * hold PhpMyAdmin\Twig\UrlExtension class.
  */
+
 namespace PhpMyAdmin\Twig;
 
-use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
 
 /**
- * Class UrlExtension
- *
- * @package PhpMyAdmin\Twig
+ * Class UrlExtension.
  */
 class UrlExtension extends AbstractExtension
 {
@@ -24,31 +22,31 @@ class UrlExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return array(
+        return [
             new TwigFunction(
                 'Url_getHiddenInputs',
                 'PhpMyAdmin\Url::getHiddenInputs',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Url_getHiddenFields',
                 'PhpMyAdmin\Url::getHiddenFields',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Url_getCommon',
                 'PhpMyAdmin\Url::getCommon',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Url_getCommonRaw',
                 'PhpMyAdmin\Url::getCommonRaw',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
             new TwigFunction(
                 'Url_link',
                 'PhpMyAdmin\Core::linkURL'
             ),
-        );
+        ];
     }
 }

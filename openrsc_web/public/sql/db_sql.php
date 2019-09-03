@@ -1,27 +1,23 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Database SQL executor
- *
- * @package PhpMyAdmin
+ * Database SQL executor.
  */
-use PhpMyAdmin\Config\PageSettings;
 use PhpMyAdmin\Response;
 use PhpMyAdmin\SqlQueryForm;
+use PhpMyAdmin\Config\PageSettings;
 
-/**
- *
- */
 require_once 'libraries/common.inc.php';
 
 PageSettings::showGroup('Sql');
 
 /**
- * Runs common work
+ * Runs common work.
  */
 $response = Response::getInstance();
-$header   = $response->getHeader();
-$scripts  = $header->getScripts();
+$header = $response->getHeader();
+$scripts = $header->getScripts();
 $scripts->addFile('makegrid.js');
 $scripts->addFile('vendor/jquery/jquery.uitablefilter.js');
 $scripts->addFile('sql.js');
@@ -33,7 +29,7 @@ require 'libraries/db_common.inc.php';
 $goto = 'db_sql.php';
 $back = 'db_sql.php';
 
-/**
+/*
  * Query box, bookmark, insert data from textfile
  */
 $response->addHTML(

@@ -1,32 +1,28 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * SQL import plugin for phpMyAdmin
- *
- * @package    PhpMyAdmin-Import
- * @subpackage SQL
+ * SQL import plugin for phpMyAdmin.
  */
+
 namespace PhpMyAdmin\Plugins\Import;
 
 use PhpMyAdmin\Import;
 use PhpMyAdmin\Plugins\ImportPlugin;
+use PhpMyAdmin\SqlParser\Utils\BufferedQuery;
+use PhpMyAdmin\Properties\Options\Items\BoolPropertyItem;
 use PhpMyAdmin\Properties\Plugins\ImportPluginProperties;
+use PhpMyAdmin\Properties\Options\Items\SelectPropertyItem;
 use PhpMyAdmin\Properties\Options\Groups\OptionsPropertyMainGroup;
 use PhpMyAdmin\Properties\Options\Groups\OptionsPropertyRootGroup;
-use PhpMyAdmin\Properties\Options\Items\BoolPropertyItem;
-use PhpMyAdmin\Properties\Options\Items\SelectPropertyItem;
-use PhpMyAdmin\SqlParser\Utils\BufferedQuery;
 
 /**
- * Handles the import for the SQL format
- *
- * @package    PhpMyAdmin-Import
- * @subpackage SQL
+ * Handles the import for the SQL format.
  */
 class ImportSql extends ImportPlugin
 {
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -48,7 +44,7 @@ class ImportSql extends ImportPlugin
 
         $compats = $GLOBALS['dbi']->getCompatibilities();
         if (count($compats) > 0) {
-            $values = array();
+            $values = [];
             foreach ($compats as $val) {
                 $values[$val] = $val;
             }
@@ -57,34 +53,34 @@ class ImportSql extends ImportPlugin
             // $importPluginProperties
             // this will be shown as "Format specific options"
             $importSpecificOptions = new OptionsPropertyRootGroup(
-                "Format Specific Options"
+                'Format Specific Options'
             );
 
             // general options main group
-            $generalOptions = new OptionsPropertyMainGroup("general_opts");
+            $generalOptions = new OptionsPropertyMainGroup('general_opts');
             // create primary items and add them to the group
             $leaf = new SelectPropertyItem(
-                "compatibility",
+                'compatibility',
                 __('SQL compatibility mode:')
             );
             $leaf->setValues($values);
             $leaf->setDoc(
-                array(
+                [
                     'manual_MySQL_Database_Administration',
                     'Server_SQL_mode',
-                )
+                ]
             );
             $generalOptions->addProperty($leaf);
             $leaf = new BoolPropertyItem(
-                "no_auto_value_on_zero",
+                'no_auto_value_on_zero',
                 __('Do not use <code>AUTO_INCREMENT</code> for zero values')
             );
             $leaf->setDoc(
-                array(
+                [
                     'manual_MySQL_Database_Administration',
                     'Server_SQL_mode',
                     'sqlmode_no_auto_value_on_zero',
-                )
+                ]
             );
             $generalOptions->addProperty($leaf);
 
@@ -98,13 +94,13 @@ class ImportSql extends ImportPlugin
     }
 
     /**
-     * Handles the whole import logic
+     * Handles the whole import logic.
      *
      * @param array &$sql_data 2-element array with sql data
      *
      * @return void
      */
-    public function doImport(array &$sql_data = array())
+    public function doImport(array &$sql_data = [])
     {
         global $error, $timeout_passed;
 
@@ -116,14 +112,14 @@ class ImportSql extends ImportPlugin
             $bq->setDelimiter($_POST['sql_delimiter']);
         }
 
-        /**
+        /*
          * Will be set in Import::getNextChunk().
          *
          * @global bool $GLOBALS ['finished']
          */
         $GLOBALS['finished'] = false;
 
-        while ((!$error) && (!$timeout_passed)) {
+        while ((! $error) && (! $timeout_passed)) {
 
             // Getting the first statement, the remaining data and the last
             // delimiter.
@@ -138,12 +134,14 @@ class ImportSql extends ImportPlugin
                 // Subtract data we didn't handle yet and stop processing.
                 if ($newData === false) {
                     $GLOBALS['offset'] -= mb_strlen($bq->query);
+
                     break;
                 }
 
                 // Checking if the input buffer has finished.
                 if ($newData === true) {
                     $GLOBALS['finished'] = true;
+
                     break;
                 }
 
@@ -159,9 +157,9 @@ class ImportSql extends ImportPlugin
         }
 
         // Extracting remaining statements.
-        while ((!$error) && (!$timeout_passed) && (!empty($bq->query))) {
+        while ((! $error) && (! $timeout_passed) && (! empty($bq->query))) {
             $statement = $bq->extract(true);
-            if (!empty($statement)) {
+            if (! empty($statement)) {
                 Import::runQuery($statement, $statement, $sql_data);
             }
         }
@@ -171,7 +169,7 @@ class ImportSql extends ImportPlugin
     }
 
     /**
-     * Handle compatibility options
+     * Handle compatibility options.
      *
      * @param PhpMyAdmin\DatabaseInterface $dbi     Database interface
      * @param array                        $request Request array
@@ -180,7 +178,7 @@ class ImportSql extends ImportPlugin
      */
     private function _setSQLMode($dbi, array $request)
     {
-        $sql_modes = array();
+        $sql_modes = [];
         if (isset($request['sql_compatibility'])
             && 'NONE' != $request['sql_compatibility']
         ) {
@@ -191,7 +189,7 @@ class ImportSql extends ImportPlugin
         }
         if (count($sql_modes) > 0) {
             $dbi->tryQuery(
-                'SET SQL_MODE="' . implode(',', $sql_modes) . '"'
+                'SET SQL_MODE="'.implode(',', $sql_modes).'"'
             );
         }
     }

@@ -1,10 +1,10 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Form handling code.
- *
- * @package PhpMyAdmin
  */
+
 namespace PhpMyAdmin\Config;
 
 use PhpMyAdmin\Config\ConfigFile;
@@ -12,49 +12,47 @@ use PhpMyAdmin\Config\ConfigFile;
 /**
  * Base class for forms, loads default configuration options, checks allowed
  * values etc.
- *
- * @package PhpMyAdmin
  */
 class Form
 {
     /**
-     * Form name
+     * Form name.
      * @var string
      */
     public $name;
 
     /**
-     * Arbitrary index, doesn't affect class' behavior
+     * Arbitrary index, doesn't affect class' behavior.
      * @var int
      */
     public $index;
 
     /**
-     * Form fields (paths), filled by {@link readFormPaths()}, indexed by field name
+     * Form fields (paths), filled by {@link readFormPaths()}, indexed by field name.
      * @var array
      */
     public $fields;
 
     /**
-     * Stores default values for some fields (eg. pmadb tables)
+     * Stores default values for some fields (eg. pmadb tables).
      * @var array
      */
     public $default;
 
     /**
-     * Caches field types, indexed by field names
+     * Caches field types, indexed by field names.
      * @var array
      */
     private $_fieldsTypes;
 
     /**
-     * ConfigFile instance
+     * ConfigFile instance.
      * @var ConfigFile
      */
     private $_configFile;
 
     /**
-     * Constructor, reads default config values
+     * Constructor, reads default config values.
      *
      * @param string     $form_name Form name
      * @param array      $form      Form data
@@ -70,7 +68,7 @@ class Form
     }
 
     /**
-     * Returns type of given option
+     * Returns type of given option.
      *
      * @param string $option_name path or field name
      *
@@ -85,13 +83,14 @@ class Form
             ),
             '/'
         );
+
         return isset($this->_fieldsTypes[$key])
             ? $this->_fieldsTypes[$key]
             : null;
     }
 
     /**
-     * Returns allowed values for select fields
+     * Returns allowed values for select fields.
      *
      * @param string $option_path Option path
      *
@@ -102,11 +101,13 @@ class Form
         $value = $this->_configFile->getDbEntry($option_path);
         if ($value === null) {
             trigger_error("$option_path - select options not defined", E_USER_ERROR);
-            return array();
+
+            return [];
         }
-        if (!is_array($value)) {
+        if (! is_array($value)) {
             trigger_error("$option_path - not a static value list", E_USER_ERROR);
-            return array();
+
+            return [];
         }
         // convert array('#', 'a', 'b') to array('a', 'b')
         if (isset($value[0]) && $value[0] === '#') {
@@ -118,13 +119,14 @@ class Form
 
         // convert value list array('a', 'b') to array('a' => 'a', 'b' => 'b')
         $has_string_keys = false;
-        $keys = array();
+        $keys = [];
         for ($i = 0, $nb = count($value); $i < $nb; $i++) {
-            if (!isset($value[$i])) {
+            if (! isset($value[$i])) {
                 $has_string_keys = true;
+
                 break;
             }
-            $keys[] = is_bool($value[$i]) ? (int)$value[$i] : $value[$i];
+            $keys[] = is_bool($value[$i]) ? (int) $value[$i] : $value[$i];
         }
         if (! $has_string_keys) {
             $value = array_combine($keys, $value);
@@ -136,7 +138,7 @@ class Form
 
     /**
      * array_walk callback function, reads path of form fields from
-     * array (see docs for \PhpMyAdmin\Config\Forms\BaseForm::getForms)
+     * array (see docs for \PhpMyAdmin\Config\Forms\BaseForm::getForms).
      *
      * @param mixed $value  Value
      * @param mixed $key    Key
@@ -149,24 +151,25 @@ class Form
         static $group_counter = 0;
 
         if (is_array($value)) {
-            $prefix .= $key . '/';
-            array_walk($value, array($this, '_readFormPathsCallback'), $prefix);
+            $prefix .= $key.'/';
+            array_walk($value, [$this, '_readFormPathsCallback'], $prefix);
+
             return;
         }
 
-        if (!is_int($key)) {
-            $this->default[$prefix . $key] = $value;
+        if (! is_int($key)) {
+            $this->default[$prefix.$key] = $value;
             $value = $key;
         }
         // add unique id to group ends
         if ($value == ':group:end') {
-            $value .= ':' . $group_counter++;
+            $value .= ':'.$group_counter++;
         }
-        $this->fields[] = $prefix . $value;
+        $this->fields[] = $prefix.$value;
     }
 
     /**
-     * Reads form paths to {@link $fields}
+     * Reads form paths to {@link $fields}.
      *
      * @param array $form Form
      *
@@ -175,13 +178,13 @@ class Form
     protected function readFormPaths(array $form)
     {
         // flatten form fields' paths and save them to $fields
-        $this->fields = array();
-        array_walk($form, array($this, '_readFormPathsCallback'), '');
+        $this->fields = [];
+        array_walk($form, [$this, '_readFormPathsCallback'], '');
 
         // $this->fields is an array of the form: [0..n] => 'field path'
         // change numeric indexes to contain field names (last part of the path)
         $paths = $this->fields;
-        $this->fields = array();
+        $this->fields = [];
         foreach ($paths as $path) {
             $key = ltrim(
                 mb_substr($path, mb_strrpos($path, '/')),
@@ -193,7 +196,7 @@ class Form
     }
 
     /**
-     * Reads fields' types to $this->_fieldsTypes
+     * Reads fields' types to $this->_fieldsTypes.
      *
      * @return void
      */
@@ -203,6 +206,7 @@ class Form
         foreach ($this->fields as $name => $path) {
             if (mb_strpos($name, ':group:') === 0) {
                 $this->_fieldsTypes[$name] = 'group';
+
                 continue;
             }
             $v = $cf->getDbEntry($path);
@@ -217,7 +221,7 @@ class Form
 
     /**
      * Reads form settings and prepares class to work with given subset of
-     * config file
+     * config file.
      *
      * @param string $form_name Form name
      * @param array  $form      Form

@@ -1,9 +1,8 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Handles actions related to GIS MULTILINESTRING objects
- *
- * @package PhpMyAdmin-GIS
+ * Handles actions related to GIS MULTILINESTRING objects.
  */
 
 namespace PhpMyAdmin\Gis;
@@ -11,9 +10,7 @@ namespace PhpMyAdmin\Gis;
 use TCPDF;
 
 /**
- * Handles actions related to GIS MULTILINESTRING objects
- *
- * @package PhpMyAdmin-GIS
+ * Handles actions related to GIS MULTILINESTRING objects.
  */
 class GisMultiLineString extends GisGeometry
 {
@@ -22,8 +19,6 @@ class GisMultiLineString extends GisGeometry
 
     /**
      * A private constructor; prevents direct creation of object.
-     *
-     * @access private
      */
     private function __construct()
     {
@@ -33,11 +28,10 @@ class GisMultiLineString extends GisGeometry
      * Returns the singleton.
      *
      * @return GisMultiLineString the singleton
-     * @access public
      */
     public static function singleton()
     {
-        if (!isset(self::$_instance)) {
+        if (! isset(self::$_instance)) {
             $class = __CLASS__;
             self::$_instance = new $class;
         }
@@ -51,11 +45,10 @@ class GisMultiLineString extends GisGeometry
      * @param string $spatial spatial data of a row
      *
      * @return array an array containing the min, max values for x and y coordinates
-     * @access public
      */
     public function scaleRow($spatial)
     {
-        $min_max = array();
+        $min_max = [];
 
         // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
         $multilinestirng
@@ -65,7 +58,7 @@ class GisMultiLineString extends GisGeometry
                 mb_strlen($spatial) - 19
             );
         // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
+        $linestirngs = explode('),(', $multilinestirng);
 
         foreach ($linestirngs as $linestring) {
             $min_max = $this->setMinMax($linestring, $min_max);
@@ -84,7 +77,6 @@ class GisMultiLineString extends GisGeometry
      * @param object $image      Image object
      *
      * @return object the modified image object
-     * @access public
      */
     public function prepareRowAsPng(
         $spatial,
@@ -108,13 +100,13 @@ class GisMultiLineString extends GisGeometry
                 mb_strlen($spatial) - 19
             );
         // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
+        $linestirngs = explode('),(', $multilinestirng);
 
         $first_line = true;
         foreach ($linestirngs as $linestring) {
             $points_arr = $this->extractPoints($linestring, $scale_data);
             foreach ($points_arr as $point) {
-                if (!isset($temp_point)) {
+                if (! isset($temp_point)) {
                     $temp_point = $point;
                 } else {
                     // draw line section
@@ -157,7 +149,6 @@ class GisMultiLineString extends GisGeometry
      * @param TCPDF  $pdf        TCPDF instance
      *
      * @return TCPDF the modified TCPDF instance
-     * @access public
      */
     public function prepareRowAsPdf($spatial, $label, $line_color, array $scale_data, $pdf)
     {
@@ -165,7 +156,7 @@ class GisMultiLineString extends GisGeometry
         $red = hexdec(mb_substr($line_color, 1, 2));
         $green = hexdec(mb_substr($line_color, 3, 2));
         $blue = hexdec(mb_substr($line_color, 4, 2));
-        $line = array('width' => 1.5, 'color' => array($red, $green, $blue));
+        $line = ['width' => 1.5, 'color' => [$red, $green, $blue]];
 
         // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
         $multilinestirng
@@ -175,13 +166,13 @@ class GisMultiLineString extends GisGeometry
                 mb_strlen($spatial) - 19
             );
         // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
+        $linestirngs = explode('),(', $multilinestirng);
 
         $first_line = true;
         foreach ($linestirngs as $linestring) {
             $points_arr = $this->extractPoints($linestring, $scale_data);
             foreach ($points_arr as $point) {
-                if (!isset($temp_point)) {
+                if (! isset($temp_point)) {
                     $temp_point = $point;
                 } else {
                     // draw line section
@@ -217,17 +208,16 @@ class GisMultiLineString extends GisGeometry
      * @param array  $scale_data Array containing data related to scaling
      *
      * @return string the code related to a row in the GIS dataset
-     * @access public
      */
     public function prepareRowAsSvg($spatial, $label, $line_color, array $scale_data)
     {
-        $line_options = array(
+        $line_options = [
             'name'         => $label,
             'class'        => 'linestring vector',
             'fill'         => 'none',
             'stroke'       => $line_color,
             'stroke-width' => 2,
-        );
+        ];
 
         // Trim to remove leading 'MULTILINESTRING((' and trailing '))'
         $multilinestirng
@@ -237,7 +227,7 @@ class GisMultiLineString extends GisGeometry
                 mb_strlen($spatial) - 19
             );
         // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
+        $linestirngs = explode('),(', $multilinestirng);
 
         $row = '';
         foreach ($linestirngs as $linestring) {
@@ -245,12 +235,12 @@ class GisMultiLineString extends GisGeometry
 
             $row .= '<polyline points="';
             foreach ($points_arr as $point) {
-                $row .= $point[0] . ',' . $point[1] . ' ';
+                $row .= $point[0].','.$point[1].' ';
             }
             $row .= '"';
-            $line_options['id'] = $label . rand();
+            $line_options['id'] = $label.rand();
             foreach ($line_options as $option => $val) {
-                $row .= ' ' . $option . '="' . trim($val) . '"';
+                $row .= ' '.$option.'="'.trim($val).'"';
             }
             $row .= '/>';
         }
@@ -269,16 +259,15 @@ class GisMultiLineString extends GisGeometry
      * @param array  $scale_data Array containing data related to scaling
      *
      * @return string JavaScript related to a row in the GIS dataset
-     * @access public
      */
     public function prepareRowAsOl($spatial, $srid, $label, $line_color, array $scale_data)
     {
-        $style_options = array(
+        $style_options = [
             'strokeColor' => $line_color,
             'strokeWidth' => 2,
             'label'       => $label,
             'fontSize'    => 10,
-        );
+        ];
         if ($srid == 0) {
             $srid = 4326;
         }
@@ -292,12 +281,12 @@ class GisMultiLineString extends GisGeometry
                 mb_strlen($spatial) - 19
             );
         // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
+        $linestirngs = explode('),(', $multilinestirng);
 
         $row .= 'vectorLayer.addFeatures(new OpenLayers.Feature.Vector('
-            . 'new OpenLayers.Geometry.MultiLineString('
-            . $this->getLineArrayForOpenLayers($linestirngs, $srid)
-            . '), null, ' . json_encode($style_options) . '));';
+            .'new OpenLayers.Geometry.MultiLineString('
+            .$this->getLineArrayForOpenLayers($linestirngs, $srid)
+            .'), null, '.json_encode($style_options).'));';
 
         return $row;
     }
@@ -310,7 +299,6 @@ class GisMultiLineString extends GisGeometry
      * @param string $empty    Value for empty points
      *
      * @return string WKT with the set of parameters passed by the GIS editor
-     * @access public
      */
     public function generateWkt(array $gis_data, $index, $empty = '')
     {
@@ -334,9 +322,9 @@ class GisMultiLineString extends GisGeometry
                 $wkt .= ((isset($data_row[$i][$j]['x'])
                         && trim($data_row[$i][$j]['x']) != '')
                         ? $data_row[$i][$j]['x'] : $empty)
-                    . ' ' . ((isset($data_row[$i][$j]['y'])
+                    .' '.((isset($data_row[$i][$j]['y'])
                         && trim($data_row[$i][$j]['y']) != '')
-                        ? $data_row[$i][$j]['y'] : $empty) . ',';
+                        ? $data_row[$i][$j]['y'] : $empty).',';
             }
             $wkt
                 = mb_substr(
@@ -362,7 +350,6 @@ class GisMultiLineString extends GisGeometry
      * @param array $row_data GIS data
      *
      * @return string the WKT for the data from ESRI shape files
-     * @access public
      */
     public function getShape(array $row_data)
     {
@@ -370,7 +357,7 @@ class GisMultiLineString extends GisGeometry
         for ($i = 0; $i < $row_data['numparts']; $i++) {
             $wkt .= '(';
             foreach ($row_data['parts'][$i]['points'] as $point) {
-                $wkt .= $point['x'] . ' ' . $point['y'] . ',';
+                $wkt .= $point['x'].' '.$point['y'].',';
             }
             $wkt
                 = mb_substr(
@@ -398,11 +385,10 @@ class GisMultiLineString extends GisGeometry
      * @param int    $index Index of the geometry
      *
      * @return array params for the GIS data editor from the value of the GIS column
-     * @access public
      */
     public function generateParams($value, $index = -1)
     {
-        $params = array();
+        $params = [];
         if ($index == -1) {
             $index = 0;
             $data = GisGeometry::generateParams($value);
@@ -421,7 +407,7 @@ class GisMultiLineString extends GisGeometry
                 mb_strlen($wkt) - 19
             );
         // Separate each linestring
-        $linestirngs = explode("),(", $multilinestirng);
+        $linestirngs = explode('),(', $multilinestirng);
         $params[$index]['MULTILINESTRING']['no_of_lines'] = count($linestirngs);
 
         $j = 0;

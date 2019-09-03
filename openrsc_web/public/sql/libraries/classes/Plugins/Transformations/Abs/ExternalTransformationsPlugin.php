@@ -1,24 +1,21 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the external transformations plugins
- *
- * @package    PhpMyAdmin-Transformations
- * @subpackage External
+ * Abstract class for the external transformations plugins.
  */
+
 namespace PhpMyAdmin\Plugins\Transformations\Abs;
 
 use PhpMyAdmin\Plugins\TransformationsPlugin;
 
 /**
  * Provides common methods for all of the external transformations plugins.
- *
- * @package PhpMyAdmin
  */
 abstract class ExternalTransformationsPlugin extends TransformationsPlugin
 {
     /**
-     * Gets the transformation description of the specific plugin
+     * Gets the transformation description of the specific plugin.
      *
      * @return string
      */
@@ -26,30 +23,30 @@ abstract class ExternalTransformationsPlugin extends TransformationsPlugin
     {
         return __(
             'LINUX ONLY: Launches an external application and feeds it the column'
-            . ' data via standard input. Returns the standard output of the'
-            . ' application. The default is Tidy, to pretty-print HTML code.'
-            . ' For security reasons, you have to manually edit the file'
-            . ' libraries/classes/Plugins/Transformations/Output/Text_Plain_External'
-            . '.php and list the tools you want to make available.'
-            . ' The first option is then the number of the program you want to'
-            . ' use and the second option is the parameters for the program.'
-            . ' The third option, if set to 1, will convert the output using'
-            . ' htmlspecialchars() (Default 1). The fourth option, if set to 1,'
-            . ' will prevent wrapping and ensure that the output appears all on'
-            . ' one line (Default 1).'
+            .' data via standard input. Returns the standard output of the'
+            .' application. The default is Tidy, to pretty-print HTML code.'
+            .' For security reasons, you have to manually edit the file'
+            .' libraries/classes/Plugins/Transformations/Output/Text_Plain_External'
+            .'.php and list the tools you want to make available.'
+            .' The first option is then the number of the program you want to'
+            .' use and the second option is the parameters for the program.'
+            .' The third option, if set to 1, will convert the output using'
+            .' htmlspecialchars() (Default 1). The fourth option, if set to 1,'
+            .' will prevent wrapping and ensure that the output appears all on'
+            .' one line (Default 1).'
         );
     }
 
     /**
-     * Enables no-wrapping
+     * Enables no-wrapping.
      *
      * @param array $options transformation options
      *
      * @return bool
      */
-    public function applyTransformationNoWrap(array $options = array())
+    public function applyTransformationNoWrap(array $options = [])
     {
-        if (!isset($options[3]) || $options[3] == '') {
+        if (! isset($options[3]) || $options[3] == '') {
             $nowrap = true;
         } elseif ($options[3] == '1' || $options[3] == 1) {
             $nowrap = true;
@@ -69,13 +66,13 @@ abstract class ExternalTransformationsPlugin extends TransformationsPlugin
      *
      * @return string
      */
-    public function applyTransformation($buffer, array $options = array(), $meta = '')
+    public function applyTransformation($buffer, array $options = [], $meta = '')
     {
         // possibly use a global transform and feed it with special options
 
         // further operations on $buffer using the $options[] array.
 
-        $allowed_programs = array();
+        $allowed_programs = [];
 
         //
         // WARNING:
@@ -110,16 +107,16 @@ abstract class ExternalTransformationsPlugin extends TransformationsPlugin
 
         // needs PHP >= 4.3.0
         $newstring = '';
-        $descriptorspec = array(
-            0 => array("pipe", "r"),
-            1 => array("pipe", "w"),
-        );
-        $process = proc_open($program . ' ' . $options[1], $descriptorspec, $pipes);
+        $descriptorspec = [
+            0 => ['pipe', 'r'],
+            1 => ['pipe', 'w'],
+        ];
+        $process = proc_open($program.' '.$options[1], $descriptorspec, $pipes);
         if (is_resource($process)) {
             fwrite($pipes[0], $buffer);
             fclose($pipes[0]);
 
-            while (!feof($pipes[1])) {
+            while (! feof($pipes[1])) {
                 $newstring .= fgets($pipes[1], 1024);
             }
             fclose($pipes[1]);
@@ -136,16 +133,15 @@ abstract class ExternalTransformationsPlugin extends TransformationsPlugin
         return $retstring;
     }
 
-
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the specific plugin
+     * Gets the transformation name of the specific plugin.
      *
      * @return string
      */
     public static function getName()
     {
-        return "External";
+        return 'External';
     }
 }

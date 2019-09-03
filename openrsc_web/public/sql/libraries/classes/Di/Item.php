@@ -1,25 +1,22 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Di\Item class
- *
- * @package PhpMyAdmin\Di
+ * Holds the PhpMyAdmin\Di\Item class.
  */
+
 namespace PhpMyAdmin\Di;
 
 /**
- * Interface Item
- *
- * @package PhpMyAdmin\Di
+ * Interface Item.
  */
 interface Item
 {
-
     /**
-     * Get a value from the item
+     * Get a value from the item.
      *
      * @param array $params Parameters
      * @return mixed
      */
-    public function get(array $params = array());
+    public function get(array $params = []);
 }

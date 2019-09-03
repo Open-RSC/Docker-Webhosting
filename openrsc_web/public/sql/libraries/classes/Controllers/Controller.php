@@ -1,23 +1,20 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Controllers\Controller
- *
- * @package PhpMyAdmin\Controllers
+ * Holds the PhpMyAdmin\Controllers\Controller.
  */
+
 namespace PhpMyAdmin\Controllers;
 
-use PhpMyAdmin\DatabaseInterface;
 use PhpMyAdmin\Response;
+use PhpMyAdmin\DatabaseInterface;
 
 /**
- * Base class for all of controller
- *
- * @package PhpMyAdmin\Controllers
+ * Base class for all of controller.
  */
 abstract class Controller
 {
-
     /**
      * @var Response
      */
@@ -29,7 +26,7 @@ abstract class Controller
     protected $dbi;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct($response, $dbi)
     {

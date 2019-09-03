@@ -1,16 +1,14 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Helper functions for RTE
- *
- * @package PhpMyAdmin
+ * Helper functions for RTE.
  */
+
 namespace PhpMyAdmin\Rte;
 
 /**
- * PhpMyAdmin\Rte\Words class
- *
- * @package PhpMyAdmin
+ * PhpMyAdmin\Rte\Words class.
  */
 class Words
 {
@@ -28,7 +26,7 @@ class Words
 
         switch ($_PMA_RTE) {
         case 'RTN':
-            $words = array(
+            $words = [
                 'add'       => __('Add routine'),
                 'docu'      => 'STORED_ROUTINES',
                 'export'    => __('Export of routine %s'),
@@ -38,19 +36,20 @@ class Words
                 ),
                 'no_edit'   => __(
                     'No routine with name %1$s found in database %2$s. '
-                    . 'You might be lacking the necessary privileges to edit this routine.'
+                    .'You might be lacking the necessary privileges to edit this routine.'
                 ),
                 'no_view'   => __(
                     'No routine with name %1$s found in database %2$s. '
-                    . 'You might be lacking the necessary privileges to view/export this routine.'
+                    .'You might be lacking the necessary privileges to view/export this routine.'
                 ),
                 'not_found' => __('No routine with name %1$s found in database %2$s.'),
                 'nothing'   => __('There are no routines to display.'),
                 'title'     => __('Routines'),
-            );
+            ];
+
             break;
         case 'TRI':
-            $words = array(
+            $words = [
                 'add'       => __('Add trigger'),
                 'docu'      => 'TRIGGERS',
                 'export'    => __('Export of trigger %s'),
@@ -61,10 +60,11 @@ class Words
                 'not_found' => __('No trigger with name %1$s found in database %2$s.'),
                 'nothing'   => __('There are no triggers to display.'),
                 'title'     => __('Triggers'),
-            );
+            ];
+
             break;
         case 'EVN':
-            $words = array(
+            $words = [
                 'add'       => __('Add event'),
                 'docu'      => 'EVENTS',
                 'export'    => __('Export of event %s'),
@@ -75,13 +75,17 @@ class Words
                 'not_found' => __('No event with name %1$s found in database %2$s.'),
                 'nothing'   => __('There are no events to display.'),
                 'title'     => __('Events'),
-            );
+            ];
+
             break;
         default:
-            $words = array();
+            $words = [];
+
             break;
         }
 
         return isset($words[$index]) ? $words[$index] : '';
-    } // end self::get()
+    }
+
+    // end self::get()
 }

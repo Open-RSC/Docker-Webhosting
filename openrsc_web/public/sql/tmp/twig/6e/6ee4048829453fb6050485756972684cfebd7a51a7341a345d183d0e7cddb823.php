@@ -16,41 +16,41 @@ class __TwigTemplate_88ca4109b16f15a1616f5da643a90e893617a092147c0a589cd4b9ada23
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        if (($context["display_logo"] ?? null)) {
+        if (($context['display_logo'] ?? null)) {
             // line 2
-            echo "    <div id=\"pmalogo\">
-        ";
+            echo '    <div id="pmalogo">
+        ';
             // line 3
-            if (($context["use_logo_link"] ?? null)) {
+            if (($context['use_logo_link'] ?? null)) {
                 // line 4
-                echo "            <a href=\"";
-                echo (((isset($context["logo_link"]) || array_key_exists("logo_link", $context))) ? (_twig_default_filter(($context["logo_link"] ?? null), "#")) : ("#"));
-                echo "\"";
+                echo '            <a href="';
+                echo ((isset($context['logo_link']) || array_key_exists('logo_link', $context))) ? (_twig_default_filter(($context['logo_link'] ?? null), '#')) : ('#');
+                echo '"';
                 // line 5
-                echo twig_escape_filter($this->env, (((isset($context["link_attribs"]) || array_key_exists("link_attribs", $context))) ? ((" " . ($context["link_attribs"] ?? null))) : ("")), "html", null, true);
-                echo ">
-        ";
+                echo twig_escape_filter($this->env, (((isset($context['link_attribs']) || array_key_exists('link_attribs', $context))) ? ((' '.($context['link_attribs'] ?? null))) : ('')), 'html', null, true);
+                echo '>
+        ';
             }
             // line 7
-            echo "        ";
-            echo ($context["logo"] ?? null);
-            echo "
-        ";
+            echo '        ';
+            echo $context['logo'] ?? null;
+            echo '
+        ';
             // line 8
-            if (($context["use_logo_link"] ?? null)) {
+            if (($context['use_logo_link'] ?? null)) {
                 // line 9
-                echo "            </a>
-        ";
+                echo '            </a>
+        ';
             }
             // line 11
-            echo "    </div>
-";
+            echo '    </div>
+';
         }
     }
 
     public function getTemplateName()
     {
-        return "navigation/logo.twig";
+        return 'navigation/logo.twig';
     }
 
     public function isTraitable()
@@ -60,7 +60,7 @@ class __TwigTemplate_88ca4109b16f15a1616f5da643a90e893617a092147c0a589cd4b9ada23
 
     public function getDebugInfo()
     {
-        return array (  46 => 11,  42 => 9,  40 => 8,  35 => 7,  30 => 5,  26 => 4,  24 => 3,  21 => 2,  19 => 1,);
+        return [46 => 11,  42 => 9,  40 => 8,  35 => 7,  30 => 5,  26 => 4,  24 => 3,  21 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -73,6 +73,6 @@ class __TwigTemplate_88ca4109b16f15a1616f5da643a90e893617a092147c0a589cd4b9ada23
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "navigation/logo.twig", "/var/www/html/openrsc_web/public/sql/templates/navigation/logo.twig");
+        return new Twig_Source('', 'navigation/logo.twig', '/var/www/html/openrsc_web/public/sql/templates/navigation/logo.twig');
     }
 }

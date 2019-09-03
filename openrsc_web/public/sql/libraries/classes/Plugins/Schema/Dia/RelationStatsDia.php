@@ -1,42 +1,50 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Contains PhpMyAdmin\Plugins\Schema\Dia\RelationStatsDia class
- *
- * @package PhpMyAdmin
+ * Contains PhpMyAdmin\Plugins\Schema\Dia\RelationStatsDia class.
  */
+
 namespace PhpMyAdmin\Plugins\Schema\Dia;
 
 /**
- * Relation preferences/statistics
+ * Relation preferences/statistics.
  *
  * This class fetches the table master and foreign fields positions
  * and helps in generating the Table references and then connects
  * master table's master field to foreign table's foreign key
  * in dia XML document.
  *
- * @package PhpMyAdmin
  * @name    Relation_Stats_Dia
  * @see     PMA_DIA
  */
 class RelationStatsDia
 {
     protected $diagram;
+
     /**
-     * Defines properties
+     * Defines properties.
      */
     public $srcConnPointsRight;
+
     public $srcConnPointsLeft;
+
     public $destConnPointsRight;
+
     public $destConnPointsLeft;
+
     public $masterTableId;
+
     public $foreignTableId;
+
     public $masterTablePos;
+
     public $foreignTablePos;
+
     public $referenceColor;
 
     /**
-     * The "PhpMyAdmin\Plugins\Schema\Dia\RelationStatsDia" constructor
+     * The "PhpMyAdmin\Plugins\Schema\Dia\RelationStatsDia" constructor.
      *
      * @param object $diagram       The DIA diagram
      * @param string $master_table  The master table name
@@ -50,7 +58,7 @@ class RelationStatsDia
         $diagram, $master_table, $master_field, $foreign_table, $foreign_field
     ) {
         $this->diagram = $diagram;
-        $src_pos  = $this->_getXy($master_table, $master_field);
+        $src_pos = $this->_getXy($master_table, $master_field);
         $dest_pos = $this->_getXy($foreign_table, $foreign_field);
         $this->srcConnPointsLeft = $src_pos[0];
         $this->srcConnPointsRight = $src_pos[1];
@@ -73,8 +81,6 @@ class RelationStatsDia
      * @param string $column The relation column name
      *
      * @return array Table right,left connection points and key position
-     *
-     * @access private
      */
     private function _getXy($table, $column)
     {
@@ -82,13 +88,14 @@ class RelationStatsDia
         // left, right, position
         $value = 12;
         if ($pos != 0) {
-            return array($pos + $value + $pos, $pos + $value + $pos + 1, $pos);
+            return [$pos + $value + $pos, $pos + $value + $pos + 1, $pos];
         }
-        return array($pos + $value , $pos + $value + 1, $pos);
+
+        return [$pos + $value, $pos + $value + 1, $pos];
     }
 
     /**
-     * Draws relation references
+     * Draws relation references.
      *
      * connects master table's master field to foreign table's
      * foreign field using Dia object type Database - Reference
@@ -96,20 +103,19 @@ class RelationStatsDia
      * Database reference Object and their attributes are involved
      * in the combination of displaying Database - reference on Dia Document.
      *
-     * @param boolean $showColor Whether to use one color per relation or not
+     * @param bool $showColor Whether to use one color per relation or not
      *                           if showColor is true then an array of $listOfColors
      *                           will be used to choose the random colors for
      *                           references lines. we can change/add more colors to
      *                           this
      *
-     * @return boolean|void
+     * @return bool|void
      *
-     * @access public
      * @see    PDF
      */
     public function relationDraw($showColor)
     {
-        ++DiaRelationSchema::$objectId;
+        DiaRelationSchema::$objectId++;
         /*
          * if source connection points and destination connection
         * points are same then return it false and don't draw that
@@ -122,20 +128,20 @@ class RelationStatsDia
         }
 
         if ($showColor) {
-            $listOfColors = array(
+            $listOfColors = [
                 'FF0000',
                 '000099',
                 '00FF00',
-            );
+            ];
             shuffle($listOfColors);
-            $this->referenceColor = '#' . $listOfColors[0] . '';
+            $this->referenceColor = '#'.$listOfColors[0].'';
         } else {
             $this->referenceColor = '#000000';
         }
 
         $this->diagram->writeRaw(
             '<dia:object type="Database - Reference" version="0" id="'
-            . DiaRelationSchema::$objectId . '">
+            .DiaRelationSchema::$objectId.'">
             <dia:attribute name="obj_pos">
                 <dia:point val="3.27,18.9198"/>
             </dia:attribute>
@@ -167,7 +173,7 @@ class RelationStatsDia
                 <dia:color val="#000000"/>
             </dia:attribute>
             <dia:attribute name="line_colour">
-                <dia:color val="' . $this->referenceColor . '"/>
+                <dia:color val="'.$this->referenceColor.'"/>
             </dia:attribute>
             <dia:attribute name="line_width">
                 <dia:real val="0.10000000000000001"/>
@@ -202,11 +208,11 @@ class RelationStatsDia
             </dia:attribute>
             <dia:connections>
                 <dia:connection handle="0" to="'
-            . $this->masterTableId . '" connection="'
-            . $this->srcConnPointsRight . '"/>
+            .$this->masterTableId.'" connection="'
+            .$this->srcConnPointsRight.'"/>
                 <dia:connection handle="1" to="'
-            . $this->foreignTableId . '" connection="'
-            . $this->destConnPointsRight . '"/>
+            .$this->foreignTableId.'" connection="'
+            .$this->destConnPointsRight.'"/>
             </dia:connections>
             </dia:object>'
         );

@@ -16,23 +16,23 @@ class __TwigTemplate_1fdd9e387f76212f5fb2e425c54a131c5c3bd9588bfd3b25ec3a3ee157b
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<script type=\"text/javascript\">
-if (typeof configInlineParams === \"undefined\" || !Array.isArray(configInlineParams)) configInlineParams = [];
+        echo '<script type="text/javascript">
+if (typeof configInlineParams === "undefined" || !Array.isArray(configInlineParams)) configInlineParams = [];
 configInlineParams.push(function() {
-";
+';
         // line 4
-        echo twig_join_filter(($context["js_array"] ?? null), ";
-");
-        echo ";
+        echo twig_join_filter(($context['js_array'] ?? null), ';
+');
+        echo ';
 });
-if (typeof configScriptLoaded !== \"undefined\" && configInlineParams) loadInlineConfig();
+if (typeof configScriptLoaded !== "undefined" && configInlineParams) loadInlineConfig();
 </script>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "javascript/display.twig";
+        return 'javascript/display.twig';
     }
 
     public function isTraitable()
@@ -42,7 +42,7 @@ if (typeof configScriptLoaded !== \"undefined\" && configInlineParams) loadInlin
 
     public function getDebugInfo()
     {
-        return array (  24 => 4,  19 => 1,);
+        return [24 => 4,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -55,6 +55,6 @@ if (typeof configScriptLoaded !== \"undefined\" && configInlineParams) loadInlin
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "javascript/display.twig", "/var/www/html/openrsc_web/public/sql/templates/javascript/display.twig");
+        return new Twig_Source('', 'javascript/display.twig', '/var/www/html/openrsc_web/public/sql/templates/javascript/display.twig');
     }
 }

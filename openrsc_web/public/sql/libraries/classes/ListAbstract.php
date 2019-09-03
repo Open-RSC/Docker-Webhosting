@@ -1,20 +1,19 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold the ListAbstract base class
- *
- * @package PhpMyAdmin
+ * hold the ListAbstract base class.
  */
+
 namespace PhpMyAdmin;
 
 use ArrayObject;
 
 /**
- * Generic list class
+ * Generic list class.
  *
  * @todo add caching
  * @abstract
- * @package PhpMyAdmin
  * @since   phpMyAdmin 2.9.10
  */
 abstract class ListAbstract extends ArrayObject
@@ -25,7 +24,7 @@ abstract class ListAbstract extends ArrayObject
     protected $item_empty = '';
 
     /**
-     * ListAbstract constructor
+     * ListAbstract constructor.
      *
      * @param array  $array          The input parameter accepts an array or an
      *                               Object.
@@ -36,13 +35,13 @@ abstract class ListAbstract extends ArrayObject
      *                               ArrayIterator is the default class used.
      */
     public function __construct(
-        array $array = array(), $flags = 0, $iterator_class = "ArrayIterator"
+        array $array = [], $flags = 0, $iterator_class = 'ArrayIterator'
     ) {
         parent::__construct($array, $flags, $iterator_class);
     }
 
     /**
-     * defines what is an empty item (0, '', false or null)
+     * defines what is an empty item (0, '', false or null).
      *
      * @return mixed   an empty item
      */
@@ -53,9 +52,9 @@ abstract class ListAbstract extends ArrayObject
 
     /**
      * checks if the given db names exists in the current list, if there is
-     * missing at least one item it returns false otherwise true
+     * missing at least one item it returns false otherwise true.
      *
-     * @return boolean true if all items exists, otherwise false
+     * @return bool true if all items exists, otherwise false
      */
     public function exists()
     {
@@ -70,11 +69,11 @@ abstract class ListAbstract extends ArrayObject
     }
 
     /**
-     * returns HTML <option>-tags to be used inside <select></select>
+     * returns HTML <option>-tags to be used inside <select></select>.
      *
      * @param mixed   $selected                   the selected db or true for
      *                                            selecting current db
-     * @param boolean $include_information_schema whether include information schema
+     * @param bool $include_information_schema whether include information schema
      *
      * @return string  HTML option tags
      */
@@ -92,18 +91,18 @@ abstract class ListAbstract extends ArrayObject
             ) {
                 continue;
             }
-            $options .= '<option value="' . htmlspecialchars($each_item) . '"';
+            $options .= '<option value="'.htmlspecialchars($each_item).'"';
             if ($selected === $each_item) {
                 $options .= ' selected="selected"';
             }
-            $options .= '>' . htmlspecialchars($each_item) . '</option>' . "\n";
+            $options .= '>'.htmlspecialchars($each_item).'</option>'."\n";
         }
 
         return $options;
     }
 
     /**
-     * returns default item
+     * returns default item.
      *
      * @return string  default item
      */
@@ -113,7 +112,7 @@ abstract class ListAbstract extends ArrayObject
     }
 
     /**
-     * builds up the list
+     * builds up the list.
      *
      * @return void
      */

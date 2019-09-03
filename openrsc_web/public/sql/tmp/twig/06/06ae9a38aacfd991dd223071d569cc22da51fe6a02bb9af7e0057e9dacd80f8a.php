@@ -16,91 +16,91 @@ class __TwigTemplate_a33726972271d0818b96ab32dc1430503bd719460e6d2e91c23358f3a5b
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<table>
+        echo '<table>
     <thead>
         <tr>
-            <th colspan=\"4\">";
+            <th colspan="4">';
         // line 4
-        echo _gettext("Define new aliases");
-        echo "</th>
+        echo _gettext('Define new aliases');
+        echo '</th>
         </tr>
     </thead>
     <tr>
         <td>
-            <label>";
+            <label>';
         // line 9
-        echo _gettext("Select database:");
-        echo "</label>
+        echo _gettext('Select database:');
+        echo '</label>
         </td>
         <td>
-            <select id=\"db_alias_select\"><option value=\"\"></option></select>
+            <select id="db_alias_select"><option value=""></option></select>
         </td>
         <td>
-            <input id=\"db_alias_name\" placeholder=\"";
+            <input id="db_alias_name" placeholder="';
         // line 15
-        echo _gettext("New database name");
-        echo "\" disabled=\"1\" />
+        echo _gettext('New database name');
+        echo '" disabled="1" />
         </td>
         <td>
-            <button id=\"db_alias_button\" class=\"ui-button ui-corner-all ui-widget\" disabled=\"1\">";
+            <button id="db_alias_button" class="ui-button ui-corner-all ui-widget" disabled="1">';
         // line 18
-        echo _gettext("Add");
-        echo "</button>
+        echo _gettext('Add');
+        echo '</button>
         </td>
     </tr>
     <tr>
         <td>
-            <label>";
+            <label>';
         // line 23
-        echo _gettext("Select table:");
-        echo "</label>
+        echo _gettext('Select table:');
+        echo '</label>
         </td>
         <td>
-            <select id=\"table_alias_select\"><option value=\"\"></option></select>
+            <select id="table_alias_select"><option value=""></option></select>
         </td>
         <td>
-            <input id=\"table_alias_name\" placeholder=\"";
+            <input id="table_alias_name" placeholder="';
         // line 29
-        echo _gettext("New table name");
-        echo "\" disabled=\"1\" />
+        echo _gettext('New table name');
+        echo '" disabled="1" />
         </td>
         <td>
-            <button id=\"table_alias_button\" class=\"ui-button ui-corner-all ui-widget\" disabled=\"1\">";
+            <button id="table_alias_button" class="ui-button ui-corner-all ui-widget" disabled="1">';
         // line 32
-        echo _gettext("Add");
-        echo "</button>
+        echo _gettext('Add');
+        echo '</button>
         </td>
     </tr>
     <tr>
         <td>
-            <label>";
+            <label>';
         // line 37
-        echo _gettext("Select column:");
-        echo "</label>
+        echo _gettext('Select column:');
+        echo '</label>
         </td>
         <td>
-            <select id=\"column_alias_select\"><option value=\"\"></option></select>
+            <select id="column_alias_select"><option value=""></option></select>
         </td>
         <td>
-            <input id=\"column_alias_name\" placeholder=\"";
+            <input id="column_alias_name" placeholder="';
         // line 43
-        echo _gettext("New column name");
-        echo "\" disabled=\"1\" />
+        echo _gettext('New column name');
+        echo '" disabled="1" />
         </td>
         <td>
-            <button id=\"column_alias_button\" class=\"ui-button ui-corner-all ui-widget\" disabled=\"1\">";
+            <button id="column_alias_button" class="ui-button ui-corner-all ui-widget" disabled="1">';
         // line 46
-        echo _gettext("Add");
-        echo "</button>
+        echo _gettext('Add');
+        echo '</button>
         </td>
     </tr>
 </table>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "export/alias_add.twig";
+        return 'export/alias_add.twig';
     }
 
     public function isTraitable()
@@ -110,7 +110,7 @@ class __TwigTemplate_a33726972271d0818b96ab32dc1430503bd719460e6d2e91c23358f3a5b
 
     public function getDebugInfo()
     {
-        return array (  93 => 46,  87 => 43,  78 => 37,  70 => 32,  64 => 29,  55 => 23,  47 => 18,  41 => 15,  32 => 9,  24 => 4,  19 => 1,);
+        return [93 => 46,  87 => 43,  78 => 37,  70 => 32,  64 => 29,  55 => 23,  47 => 18,  41 => 15,  32 => 9,  24 => 4,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -123,6 +123,6 @@ class __TwigTemplate_a33726972271d0818b96ab32dc1430503bd719460e6d2e91c23358f3a5b
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "export/alias_add.twig", "/var/www/html/sql/templates/export/alias_add.twig");
+        return new Twig_Source('', 'export/alias_add.twig', '/var/www/html/sql/templates/export/alias_add.twig');
     }
 }

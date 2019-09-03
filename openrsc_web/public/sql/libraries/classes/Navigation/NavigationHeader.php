@@ -1,30 +1,28 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Header for the navigation panel
- *
- * @package PhpMyAdmin-Navigation
+ * Header for the navigation panel.
  */
+
 namespace PhpMyAdmin\Navigation;
 
-use PhpMyAdmin\Sanitize;
-use PhpMyAdmin\Server\Select;
-use PhpMyAdmin\Template;
 use PhpMyAdmin\Url;
 use PhpMyAdmin\Util;
+use PhpMyAdmin\Sanitize;
+use PhpMyAdmin\Template;
+use PhpMyAdmin\Server\Select;
 
 /**
  * This class renders the logo, links, server selection,
- * which are then displayed at the top of the navigation panel
- *
- * @package PhpMyAdmin-Navigation
+ * which are then displayed at the top of the navigation panel.
  */
 class NavigationHeader
 {
     /**
-     * Renders the navigation
+     * Renders the navigation.
      *
-     * @return String HTML
+     * @return string HTML
      */
     public function getDisplay()
     {
@@ -32,9 +30,9 @@ class NavigationHeader
             $GLOBALS['url_query'] = Url::getCommon();
         }
         $link_url = Url::getCommon(
-            array(
+            [
                 'ajax_request' => true,
-            )
+            ]
         );
         $class = ' class="list_container';
         if ($GLOBALS['cfg']['NavigationLinkWithMainPanel']) {
@@ -59,20 +57,20 @@ class NavigationHeader
         $buffer .= Util::getImage(
             'ajax_clock_small',
             __('Loading…'),
-            array(
+            [
                 'style' => 'visibility: hidden; display:none',
                 'class' => 'throbber',
-            )
+            ]
         );
         $buffer .= '</div>'; // pma_navigation_header
-        $buffer .= '<div id="pma_navigation_tree"' . $class . '>';
+        $buffer .= '<div id="pma_navigation_tree"'.$class.'>';
 
         return $buffer;
     }
 
     /**
      * Create the code for displaying the phpMyAdmin
-     * logo based on configuration settings
+     * logo based on configuration settings.
      *
      * @return string HTML code for the logo
      */
@@ -80,16 +78,16 @@ class NavigationHeader
     {
         $logo = 'phpMyAdmin';
         if (isset($GLOBALS['pmaThemeImage'])) {
-            $imgTag = '<img src="%s%s" ' . 'alt="' . $logo . '" id="imgpmalogo" />';
-            if (@file_exists($GLOBALS['pmaThemeImage'] . 'logo_left.png')) {
+            $imgTag = '<img src="%s%s" '.'alt="'.$logo.'" id="imgpmalogo" />';
+            if (@file_exists($GLOBALS['pmaThemeImage'].'logo_left.png')) {
                 $logo = sprintf($imgTag, $GLOBALS['pmaThemeImage'], 'logo_left.png');
-            } elseif (@file_exists($GLOBALS['pmaThemeImage'] . 'pma_logo2.png')) {
+            } elseif (@file_exists($GLOBALS['pmaThemeImage'].'pma_logo2.png')) {
                 $logo = sprintf($imgTag, $GLOBALS['pmaThemeImage'], 'pma_logo2.png');
             }
         }
 
         // display Logo, depending on $GLOBALS['cfg']['NavigationDisplayLogo']
-        if (!$GLOBALS['cfg']['NavigationDisplayLogo']) {
+        if (! $GLOBALS['cfg']['NavigationDisplayLogo']) {
             return Template::get('navigation/logo')->render([
                 'display_logo' => false,
                 'use_logo_link' => false,
@@ -99,7 +97,7 @@ class NavigationHeader
             ]);
         }
 
-        if (!$GLOBALS['cfg']['NavigationLogoLink']) {
+        if (! $GLOBALS['cfg']['NavigationLogoLink']) {
             return Template::get('navigation/logo')->render([
                 'display_logo' => true,
                 'use_logo_link' => false,
@@ -122,6 +120,7 @@ class NavigationHeader
         switch ($GLOBALS['cfg']['NavigationLogoLinkWindow']) {
         case 'new':
             $linkAttriks = 'target="_blank" rel="noopener noreferrer"';
+
             break;
         case 'main':
             // do not add our parameters for an external link
@@ -132,7 +131,7 @@ class NavigationHeader
             if (empty($host)) {
                 $hasStartChar = strpos($logoLink, '?');
                 $logoLink .= Url::getCommon(
-                    array(),
+                    [],
                     is_bool($hasStartChar) ? '?' : Url::getArgSeparator()
                 );
             } else {
@@ -151,7 +150,7 @@ class NavigationHeader
 
     /**
      * Creates the code for displaying the links
-     * at the top of the navigation panel
+     * at the top of the navigation panel.
      *
      * @return string HTML code for the links
      */
@@ -164,7 +163,7 @@ class NavigationHeader
         $retval = '<!-- LINKS START -->';
         $retval .= '<div id="navipanellinks">';
         $retval .= Util::getNavigationLink(
-            'index.php' . Url::getCommon(),
+            'index.php'.Url::getCommon(),
             $showText,
             __('Home'),
             $showIcon,
@@ -178,7 +177,7 @@ class NavigationHeader
             } else {
                 $text = __('Empty session data');
             }
-            $link = 'logout.php' . $GLOBALS['url_query'];
+            $link = 'logout.php'.$GLOBALS['url_query'];
             $retval .= Util::getNavigationLink(
                 $link,
                 $showText,
@@ -188,7 +187,7 @@ class NavigationHeader
                 '',
                 true,
                 '',
-                array('logout')
+                ['logout']
             );
         }
         $retval .= Util::getNavigationLink(
@@ -220,7 +219,7 @@ class NavigationHeader
             'pma_navigation_settings_icon',
             false,
             '',
-            defined('PMA_DISABLE_NAVI_SETTINGS') ? array('hide') : array()
+            defined('PMA_DISABLE_NAVI_SETTINGS') ? ['hide'] : []
         );
         $retval .= Util::getNavigationLink(
             '#',
@@ -237,7 +236,7 @@ class NavigationHeader
     }
 
     /**
-     * Displays the MySQL servers choice form
+     * Displays the MySQL servers choice form.
      *
      * @return string HTML code for the MySQL servers choice
      */

@@ -1,19 +1,17 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\IndexExtension class
- *
- * @package PhpMyAdmin\Twig
+ * hold PhpMyAdmin\Twig\IndexExtension class.
  */
+
 namespace PhpMyAdmin\Twig;
 
-use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
 
 /**
- * Class IndexExtension
- *
- * @package PhpMyAdmin\Twig
+ * Class IndexExtension.
  */
 class IndexExtension extends AbstractExtension
 {
@@ -24,12 +22,12 @@ class IndexExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return array(
+        return [
             new TwigFunction(
                 'Index_getHtmlForDisplayIndexes',
                 'PhpMyAdmin\Index::getHtmlForDisplayIndexes',
-                array('is_safe' => array('html'))
+                ['is_safe' => ['html']]
             ),
-        );
+        ];
     }
 }

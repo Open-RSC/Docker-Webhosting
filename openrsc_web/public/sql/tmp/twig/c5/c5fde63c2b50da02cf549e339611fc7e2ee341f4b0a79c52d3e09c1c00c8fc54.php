@@ -16,22 +16,22 @@ class __TwigTemplate_29a7b0ca17628eff68e5082ddc5b3721895b3e34dec69b585863be53b2e
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<a href=\"sql.php";
-        echo ($context["tbl_url_query"] ?? null);
-        echo "&amp;pos=0\" title=\"";
-        echo twig_escape_filter($this->env, ($context["title"] ?? null), "html", null, true);
-        echo "\">
-    ";
+        echo '<a href="sql.php';
+        echo $context['tbl_url_query'] ?? null;
+        echo '&amp;pos=0" title="';
+        echo twig_escape_filter($this->env, ($context['title'] ?? null), 'html', null, true);
+        echo '">
+    ';
         // line 2
-        echo twig_escape_filter($this->env, ($context["truename"] ?? null), "html", null, true);
-        echo "
+        echo twig_escape_filter($this->env, ($context['truename'] ?? null), 'html', null, true);
+        echo '
 </a>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "database/structure/browse_table_label.twig";
+        return 'database/structure/browse_table_label.twig';
     }
 
     public function isTraitable()
@@ -41,7 +41,7 @@ class __TwigTemplate_29a7b0ca17628eff68e5082ddc5b3721895b3e34dec69b585863be53b2e
 
     public function getDebugInfo()
     {
-        return array (  26 => 2,  19 => 1,);
+        return [26 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -54,6 +54,6 @@ class __TwigTemplate_29a7b0ca17628eff68e5082ddc5b3721895b3e34dec69b585863be53b2e
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/structure/browse_table_label.twig", "/var/www/html/openrsc_web/public/sql/templates/database/structure/browse_table_label.twig");
+        return new Twig_Source('', 'database/structure/browse_table_label.twig', '/var/www/html/openrsc_web/public/sql/templates/database/structure/browse_table_label.twig');
     }
 }

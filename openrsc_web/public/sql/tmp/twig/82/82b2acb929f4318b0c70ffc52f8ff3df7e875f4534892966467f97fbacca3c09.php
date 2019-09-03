@@ -21,49 +21,49 @@ class __TwigTemplate_5adb6699ece7c39aa2f64bef19490d643092f7498783f715ce4099dfe96
         <a href=\"#\" onclick=\"setSelectOptions('dump', 'db_select[]', true); return false;\">
             ";
         // line 4
-        echo _gettext("Select all");
+        echo _gettext('Select all');
         // line 5
         echo "        </a>
         /
         <a href=\"#\" onclick=\"setSelectOptions('dump', 'db_select[]', false); return false;\">
             ";
         // line 8
-        echo _gettext("Unselect all");
+        echo _gettext('Unselect all');
         // line 9
-        echo "        </a>
+        echo '        </a>
     </p>
 
-    <select name=\"db_select[]\" id=\"db_select\" size=\"10\" multiple>
-        ";
+    <select name="db_select[]" id="db_select" size="10" multiple>
+        ';
         // line 13
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["databases"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["database"]) {
+        $context['_seq'] = twig_ensure_traversable(($context['databases'] ?? null));
+        foreach ($context['_seq'] as $context['_key'] => $context['database']) {
             // line 14
-            echo "            <option value=\"";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["database"], "name", []), "html", null, true);
-            echo "\"";
-            echo (($this->getAttribute($context["database"], "is_selected", [])) ? (" selected") : (""));
-            echo ">
-                ";
+            echo '            <option value="';
+            echo twig_escape_filter($this->env, $this->getAttribute($context['database'], 'name', []), 'html', null, true);
+            echo '"';
+            echo ($this->getAttribute($context['database'], 'is_selected', [])) ? (' selected') : ('');
+            echo '>
+                ';
             // line 15
-            echo twig_escape_filter($this->env, $this->getAttribute($context["database"], "name", []), "html", null, true);
-            echo "
+            echo twig_escape_filter($this->env, $this->getAttribute($context['database'], 'name', []), 'html', null, true);
+            echo '
             </option>
-        ";
+        ';
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['database'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 18
-        echo "    </select>
+        echo '    </select>
 </div>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "display/export/select_options.twig";
+        return 'display/export/select_options.twig';
     }
 
     public function isTraitable()
@@ -73,7 +73,7 @@ class __TwigTemplate_5adb6699ece7c39aa2f64bef19490d643092f7498783f715ce4099dfe96
 
     public function getDebugInfo()
     {
-        return array (  59 => 18,  50 => 15,  43 => 14,  39 => 13,  33 => 9,  31 => 8,  26 => 5,  24 => 4,  19 => 1,);
+        return [59 => 18,  50 => 15,  43 => 14,  39 => 13,  33 => 9,  31 => 8,  26 => 5,  24 => 4,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -86,6 +86,6 @@ class __TwigTemplate_5adb6699ece7c39aa2f64bef19490d643092f7498783f715ce4099dfe96
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/export/select_options.twig", "/var/www/html/openrsc_web/public/sql/templates/display/export/select_options.twig");
+        return new Twig_Source('', 'display/export/select_options.twig', '/var/www/html/openrsc_web/public/sql/templates/display/export/select_options.twig');
     }
 }

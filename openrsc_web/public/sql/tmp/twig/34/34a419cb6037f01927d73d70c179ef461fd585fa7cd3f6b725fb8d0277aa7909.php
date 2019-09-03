@@ -16,22 +16,22 @@ class __TwigTemplate_b127f490822f2d3c1a8b9245da6b316992c266b15504f9b7b562fc1c652
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<div class=\"exportoptions\" id=\"format\">
-    <h3>";
+        echo '<div class="exportoptions" id="format">
+    <h3>';
         // line 2
-        echo _gettext("Format:");
-        echo "</h3>
-    ";
+        echo _gettext('Format:');
+        echo '</h3>
+    ';
         // line 3
-        echo ($context["dropdown"] ?? null);
-        echo "
+        echo $context['dropdown'] ?? null;
+        echo '
 </div>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "display/export/format_dropdown.twig";
+        return 'display/export/format_dropdown.twig';
     }
 
     public function isTraitable()
@@ -41,7 +41,7 @@ class __TwigTemplate_b127f490822f2d3c1a8b9245da6b316992c266b15504f9b7b562fc1c652
 
     public function getDebugInfo()
     {
-        return array (  26 => 3,  22 => 2,  19 => 1,);
+        return [26 => 3,  22 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -54,6 +54,6 @@ class __TwigTemplate_b127f490822f2d3c1a8b9245da6b316992c266b15504f9b7b562fc1c652
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/export/format_dropdown.twig", "/var/www/html/sql/templates/display/export/format_dropdown.twig");
+        return new Twig_Source('', 'display/export/format_dropdown.twig', '/var/www/html/sql/templates/display/export/format_dropdown.twig');
     }
 }

@@ -1,16 +1,14 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Ensure the database and the table exist (else move to the "parent" script)
- * and display headers
- *
- * @package PhpMyAdmin
+ * and display headers.
  */
-
+use PhpMyAdmin\Url;
 use PhpMyAdmin\Core;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\Url;
 
 if (! defined('PHPMYADMIN')) {
     exit;
@@ -34,7 +32,7 @@ if (empty($is_db)) {
                     Message::error(__('No databases selected.'))
                 );
             } else {
-                $url_params = array('reload' => 1);
+                $url_params = ['reload' => 1];
                 if (isset($message)) {
                     $url_params['message'] = $message;
                 }
@@ -46,7 +44,7 @@ if (empty($is_db)) {
                 }
                 Core::sendHeaderLocation(
                     './index.php'
-                    . Url::getCommonRaw($url_params)
+                    .Url::getCommonRaw($url_params)
                 );
             }
             exit;
@@ -55,18 +53,18 @@ if (empty($is_db)) {
 } // end if (ensures db exists)
 
 if (empty($is_table)
-    && !defined('PMA_SUBMIT_MULT')
-    && !defined('TABLE_MAY_BE_ABSENT')
+    && ! defined('PMA_SUBMIT_MULT')
+    && ! defined('TABLE_MAY_BE_ABSENT')
 ) {
     // Not a valid table name -> back to the db_sql.php
 
     if (strlen($table) > 0) {
-        $is_table = $GLOBALS['dbi']->getCachedTableContent(array($db, $table), false);
+        $is_table = $GLOBALS['dbi']->getCachedTableContent([$db, $table], false);
 
         if (! $is_table) {
             $_result = $GLOBALS['dbi']->tryQuery(
                 'SHOW TABLES LIKE \''
-                . $GLOBALS['dbi']->escapeString($table) . '\';',
+                .$GLOBALS['dbi']->escapeString($table).'\';',
                 PhpMyAdmin\DatabaseInterface::CONNECT_USER,
                 PhpMyAdmin\DatabaseInterface::QUERY_STORE
             );
@@ -78,7 +76,7 @@ if (empty($is_table)
     }
 
     if (! $is_table) {
-        if (!defined('IS_TRANSFORMATION_WRAPPER')) {
+        if (! defined('IS_TRANSFORMATION_WRAPPER')) {
             if (strlen($table) > 0) {
                 // SHOW TABLES doesn't show temporary tables, so try select
                 // (as it can happen just in case temporary table, it should be
@@ -89,8 +87,8 @@ if (empty($is_table)
                  * only happen if IS_TRANSFORMATION_WRAPPER?
                  */
                 $_result = $GLOBALS['dbi']->tryQuery(
-                    'SELECT COUNT(*) FROM ' . PhpMyAdmin\Util::backquote($table)
-                    . ';',
+                    'SELECT COUNT(*) FROM '.PhpMyAdmin\Util::backquote($table)
+                    .';',
                     PhpMyAdmin\DatabaseInterface::CONNECT_USER,
                     PhpMyAdmin\DatabaseInterface::QUERY_STORE
                 );

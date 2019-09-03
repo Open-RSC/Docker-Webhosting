@@ -1,11 +1,10 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Interface to the classic MySQL extension
- *
- * @package    PhpMyAdmin-DBI
- * @subpackage MySQL
+ * Interface to the classic MySQL extension.
  */
+
 namespace PhpMyAdmin\Dbi;
 
 use PhpMyAdmin\Core;
@@ -23,15 +22,12 @@ if (! extension_loaded('mysql')) {
 }
 
 /**
- * Interface to the classic MySQL extension
- *
- * @package    PhpMyAdmin-DBI
- * @subpackage MySQL
+ * Interface to the classic MySQL extension.
  */
 class DbiMysql implements DbiExtension
 {
     /**
-     * Helper function for connecting to the database server
+     * Helper function for connecting to the database server.
      *
      * @param string $server       host/port/socket
      * @param string $user         mysql user name
@@ -70,12 +66,12 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * Run the multi query and output the results
+     * Run the multi query and output the results.
      *
      * @param mysqli $link  mysqli object
      * @param string $query multi query statement to execute
      *
-     * @return boolean false always false since mysql extension not support
+     * @return bool false always false since mysql extension not support
      *                       for multi query executions
      */
     public function realMultiQuery($link, $query)
@@ -88,7 +84,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * connects to the database server
+     * connects to the database server.
      *
      * @param string $user     mysql user name
      * @param string $password mysql user password
@@ -102,13 +98,13 @@ class DbiMysql implements DbiExtension
         if ($server['port'] === 0) {
             $server_port = '';
         } else {
-            $server_port = ':' . $server['port'];
+            $server_port = ':'.$server['port'];
         }
 
         if (is_null($server['socket'])) {
             $server_socket = '';
         } else {
-            $server_socket = ':' . $server['socket'];
+            $server_socket = ':'.$server['socket'];
         }
 
         $client_flags = 0;
@@ -130,19 +126,20 @@ class DbiMysql implements DbiExtension
             $client_flags |= MYSQL_CLIENT_SSL;
         }
 
-        if (!isset($server['host'])) {
+        if (! isset($server['host'])) {
             $link = $this->_realConnect($server_socket, $user, $password, null);
         } else {
             $link = $this->_realConnect(
-                $server['host'] . $server_port . $server_socket,
+                $server['host'].$server_port.$server_socket,
                 $user, $password, null
             );
         }
+
         return $link;
     }
 
     /**
-     * selects given database
+     * selects given database.
      *
      * @param string        $dbname name of db to select
      * @param resource|null $link   mysql link resource
@@ -155,7 +152,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * runs a query and returns the result
+     * runs a query and returns the result.
      *
      * @param string        $query   query to run
      * @param resource|null $link    mysql link resource
@@ -175,7 +172,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns array of rows with associative and numeric keys from $result
+     * returns array of rows with associative and numeric keys from $result.
      *
      * @param resource $result result  MySQL result
      *
@@ -187,7 +184,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns array of rows with associative keys from $result
+     * returns array of rows with associative keys from $result.
      *
      * @param resource $result MySQL result
      *
@@ -199,7 +196,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns array of rows with numeric keys from $result
+     * returns array of rows with numeric keys from $result.
      *
      * @param resource $result MySQL result
      *
@@ -211,10 +208,10 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * Adjusts the result pointer to an arbitrary row in the result
+     * Adjusts the result pointer to an arbitrary row in the result.
      *
      * @param resource $result database result
-     * @param integer  $offset offset to seek
+     * @param int  $offset offset to seek
      *
      * @return bool true on success, false on failure
      */
@@ -224,7 +221,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * Frees memory associated with the result
+     * Frees memory associated with the result.
      *
      * @param resource $result database result
      *
@@ -238,7 +235,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * Check if there are any more query results from a multi query
+     * Check if there are any more query results from a multi query.
      *
      * @param resource $link the connection object
      *
@@ -254,11 +251,11 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * Prepare next result from multi_query
+     * Prepare next result from multi_query.
      *
      * @param resource $link the connection object
      *
-     * @return boolean false
+     * @return bool false
      */
     public function nextResult($link)
     {
@@ -270,7 +267,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * Returns a string representing the type of connection used
+     * Returns a string representing the type of connection used.
      *
      * @param resource|null $link mysql link
      *
@@ -282,7 +279,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * Returns the version of the MySQL protocol used
+     * Returns the version of the MySQL protocol used.
      *
      * @param resource|null $link mysql link
      *
@@ -294,7 +291,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns a string that represents the client library version
+     * returns a string that represents the client library version.
      *
      * @return string MySQL client library version
      */
@@ -304,7 +301,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns last error message or false if no errors occurred
+     * returns last error message or false if no errors occurred.
      *
      * @param resource|null $link mysql link
      *
@@ -333,7 +330,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns the number of rows returned by last query
+     * returns the number of rows returned by last query.
      *
      * @param resource $result MySQL result
      *
@@ -349,7 +346,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns the number of rows affected by last query
+     * returns the number of rows affected by last query.
      *
      * @param resource|null $link the mysql object
      *
@@ -361,7 +358,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns metainfo for fields in $result
+     * returns metainfo for fields in $result.
      *
      * @param resource $result MySQL result
      *
@@ -371,8 +368,8 @@ class DbiMysql implements DbiExtension
      */
     public function getFieldsMeta($result)
     {
-        $fields       = array();
-        $num_fields   = mysql_num_fields($result);
+        $fields = [];
+        $num_fields = mysql_num_fields($result);
         for ($i = 0; $i < $num_fields; $i++) {
             $field = mysql_fetch_field($result, $i);
             $field->flags = mysql_field_flags($result, $i);
@@ -380,11 +377,12 @@ class DbiMysql implements DbiExtension
             $field->orgname = mysql_field_name($result, $i);
             $fields[] = $field;
         }
+
         return $fields;
     }
 
     /**
-     * return number of fields in given $result
+     * return number of fields in given $result.
      *
      * @param resource $result MySQL result
      *
@@ -396,7 +394,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns the length of the given field $i in $result
+     * returns the length of the given field $i in $result.
      *
      * @param resource $result MySQL result
      * @param int      $i      field
@@ -409,7 +407,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns name of $i. field in $result
+     * returns name of $i. field in $result.
      *
      * @param resource $result MySQL result
      * @param int      $i      field
@@ -422,7 +420,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns concatenated string of human readable field flags
+     * returns concatenated string of human readable field flags.
      *
      * @param resource $result MySQL result
      * @param int      $i      field
@@ -435,7 +433,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * Store the result returned from multi query
+     * Store the result returned from multi query.
      *
      * @param resource $result MySQL result
      *
@@ -447,7 +445,7 @@ class DbiMysql implements DbiExtension
     }
 
     /**
-     * returns properly escaped string for use in MySQL queries
+     * returns properly escaped string for use in MySQL queries.
      *
      * @param mixed  $link database link
      * @param string $str  string to be escaped

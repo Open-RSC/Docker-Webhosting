@@ -1,14 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Handles server databases page.
- *
- * @package PhpMyAdmin
  */
-
-use PhpMyAdmin\Controllers\Server\ServerDatabasesController;
-use PhpMyAdmin\Di\Container;
 use PhpMyAdmin\Response;
+use PhpMyAdmin\Di\Container;
+use PhpMyAdmin\Controllers\Server\ServerDatabasesController;
 
 require_once 'libraries/common.inc.php';
 
@@ -25,6 +23,6 @@ $container->alias('response', 'PhpMyAdmin\Response');
 
 /** @var ServerDatabasesController $controller */
 $controller = $container->get(
-    'ServerDatabasesController', array()
+    'ServerDatabasesController', []
 );
 $controller->indexAction();

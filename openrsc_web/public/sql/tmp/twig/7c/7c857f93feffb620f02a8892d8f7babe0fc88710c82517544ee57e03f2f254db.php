@@ -9,57 +9,57 @@ class __TwigTemplate_6999ba294f82acec6fdd6137f1c7ea9deac5bd521b7b6be73ac819e62f1
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 2
-        $this->loadTemplate("server/sub_page_header.twig", "server/databases/index.twig", 2)->display(array("type" => ((        // line 3
-($context["dbstats"] ?? null)) ? ("database_statistics") : ("databases"))));
+        $this->loadTemplate('server/sub_page_header.twig', 'server/databases/index.twig', 2)->display(['type' => ((        // line 3
+($context['dbstats'] ?? null)) ? ('database_statistics') : ('databases'))]);
         // line 5
-        echo "
-";
+        echo '
+';
         // line 7
-        if (($context["show_create_db"] ?? null)) {
+        if (($context['show_create_db'] ?? null)) {
             // line 8
-            echo "    ";
-            $this->loadTemplate("server/databases/create.twig", "server/databases/index.twig", 8)->display(array("is_create_db_priv" =>             // line 9
-($context["is_create_db_priv"] ?? null), "dbstats" =>             // line 10
-($context["dbstats"] ?? null), "db_to_create" =>             // line 11
-($context["db_to_create"] ?? null), "server_collation" =>             // line 12
-($context["server_collation"] ?? null), "dbi" =>             // line 13
-($context["dbi"] ?? null), "disable_is" =>             // line 14
-($context["disable_is"] ?? null)));
+            echo '    ';
+            $this->loadTemplate('server/databases/create.twig', 'server/databases/index.twig', 8)->display(['is_create_db_priv' =>             // line 9
+($context['is_create_db_priv'] ?? null), 'dbstats' =>             // line 10
+($context['dbstats'] ?? null), 'db_to_create' =>             // line 11
+($context['db_to_create'] ?? null), 'server_collation' =>             // line 12
+($context['server_collation'] ?? null), 'dbi' =>             // line 13
+($context['dbi'] ?? null), 'disable_is' =>             // line 14
+($context['disable_is'] ?? null), ]);
         }
         // line 17
-        echo "
-";
+        echo '
+';
         // line 18
-        $this->loadTemplate("filter.twig", "server/databases/index.twig", 18)->display(array("filter_value" => ""));
+        $this->loadTemplate('filter.twig', 'server/databases/index.twig', 18)->display(['filter_value' => '']);
         // line 19
-        echo "
-";
+        echo '
+';
         // line 21
-        if ( !(null === ($context["databases"] ?? null))) {
+        if (! (null === ($context['databases'] ?? null))) {
             // line 22
-            echo "    ";
-            echo ($context["databases"] ?? null);
-            echo "
-";
+            echo '    ';
+            echo $context['databases'] ?? null;
+            echo '
+';
         } else {
             // line 24
-            echo "    <p>";
-            echo _gettext("No databases");
-            echo "</p>
-";
+            echo '    <p>';
+            echo _gettext('No databases');
+            echo '</p>
+';
         }
     }
 
     public function getTemplateName()
     {
-        return "server/databases/index.twig";
+        return 'server/databases/index.twig';
     }
 
     public function isTraitable()
@@ -69,7 +69,7 @@ class __TwigTemplate_6999ba294f82acec6fdd6137f1c7ea9deac5bd521b7b6be73ac819e62f1
 
     public function getDebugInfo()
     {
-        return array (  53 => 24,  47 => 22,  45 => 21,  42 => 19,  40 => 18,  37 => 17,  34 => 14,  33 => 13,  32 => 12,  31 => 11,  30 => 10,  29 => 9,  27 => 8,  25 => 7,  22 => 5,  20 => 3,  19 => 2,);
+        return [53 => 24,  47 => 22,  45 => 21,  42 => 19,  40 => 18,  37 => 17,  34 => 14,  33 => 13,  32 => 12,  31 => 11,  30 => 10,  29 => 9,  27 => 8,  25 => 7,  22 => 5,  20 => 3,  19 => 2];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -82,6 +82,6 @@ class __TwigTemplate_6999ba294f82acec6fdd6137f1c7ea9deac5bd521b7b6be73ac819e62f1
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "server/databases/index.twig", "/var/www/html/sql/templates/server/databases/index.twig");
+        return new Twig_Source('', 'server/databases/index.twig', '/var/www/html/sql/templates/server/databases/index.twig');
     }
 }

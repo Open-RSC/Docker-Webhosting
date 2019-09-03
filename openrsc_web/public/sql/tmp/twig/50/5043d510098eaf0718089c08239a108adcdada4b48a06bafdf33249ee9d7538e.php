@@ -16,36 +16,36 @@ class __TwigTemplate_fed45ed29c23830cc04b9ea571163e1dc58c8c9cfe4d022d60dd289be2c
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<tr>
-    <th>";
+        echo '<tr>
+    <th>';
         // line 2
-        echo twig_escape_filter($this->env, ($context["type"] ?? null), "html", null, true);
-        echo "</th>
-    <td>";
+        echo twig_escape_filter($this->env, ($context['type'] ?? null), 'html', null, true);
+        echo '</th>
+    <td>';
         // line 3
-        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
-        echo "</td>
+        echo twig_escape_filter($this->env, ($context['name'] ?? null), 'html', null, true);
+        echo '</td>
     <td>
-        <input name=\"";
+        <input name="';
         // line 5
-        echo twig_escape_filter($this->env, ($context["field"] ?? null), "html", null, true);
-        echo "\" value=\"";
-        echo twig_escape_filter($this->env, ($context["value"] ?? null), "html", null, true);
-        echo "\" type=\"text\" />
+        echo twig_escape_filter($this->env, ($context['field'] ?? null), 'html', null, true);
+        echo '" value="';
+        echo twig_escape_filter($this->env, ($context['value'] ?? null), 'html', null, true);
+        echo '" type="text" />
     </td>
     <td>
-        <button class=\"alias_remove ui-button ui-corner-all ui-widget\">";
+        <button class="alias_remove ui-button ui-corner-all ui-widget">';
         // line 8
-        echo _gettext("Remove");
-        echo "</button>
+        echo _gettext('Remove');
+        echo '</button>
     </td>
 </tr>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "export/alias_item.twig";
+        return 'export/alias_item.twig';
     }
 
     public function isTraitable()
@@ -55,7 +55,7 @@ class __TwigTemplate_fed45ed29c23830cc04b9ea571163e1dc58c8c9cfe4d022d60dd289be2c
 
     public function getDebugInfo()
     {
-        return array (  39 => 8,  31 => 5,  26 => 3,  22 => 2,  19 => 1,);
+        return [39 => 8,  31 => 5,  26 => 3,  22 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -68,6 +68,6 @@ class __TwigTemplate_fed45ed29c23830cc04b9ea571163e1dc58c8c9cfe4d022d60dd289be2c
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "export/alias_item.twig", "/var/www/html/sql/templates/export/alias_item.twig");
+        return new Twig_Source('', 'export/alias_item.twig', '/var/www/html/sql/templates/export/alias_item.twig');
     }
 }

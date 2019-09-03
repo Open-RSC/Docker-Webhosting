@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class news_response extends Model
 {
-	public function news_post()
-	{
-		return $this->belongsTo('App\news_post');
-	}
+    public function news_post()
+    {
+        return $this->belongsTo(\App\news_post::class);
+    }
 
-	public function user()
-	{
-		return $this->belongsTo('App\User');
-	}
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class);
+    }
 }

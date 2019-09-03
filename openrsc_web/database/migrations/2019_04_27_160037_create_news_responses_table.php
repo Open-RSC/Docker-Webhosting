@@ -11,31 +11,31 @@ class CreateNewsResponsesTable extends Migration
      *
      * @return void
      */
-	public function up()
-	{
-		Schema::create('news_responses', function (Blueprint $table) {
-			$table->increments('id');
-			$table->integer('news_post_id')->unsigned();
-			$table->text('reply');
-			$table->timestamps();
-			$table->foreign('news_post_id')->
-			references('id')->
-			on('news_posts')->
-			onDelete('cascade');
-		});
-	}
+    public function up()
+    {
+        Schema::create('news_responses', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('news_post_id')->unsigned();
+            $table->text('reply');
+            $table->timestamps();
+            $table->foreign('news_post_id')->
+            references('id')->
+            on('news_posts')->
+            onDelete('cascade');
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::table('news_responses', function (Blueprint $table) {
-			$table->dropForeign('news_responses_news_post_id_foreign');
-		});
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('news_responses', function (Blueprint $table) {
+            $table->dropForeign('news_responses_news_post_id_foreign');
+        });
 
-		Schema::dropIfExists('news_responses');
-	}
+        Schema::dropIfExists('news_responses');
+    }
 }

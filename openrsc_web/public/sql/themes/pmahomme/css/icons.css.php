@@ -1,12 +1,8 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
-/**
- * Icon CSS
- *
- * @package    PhpMyAdmin-theme
- * @subpackage PMAHomme
- */
-
+ /**
+  * Icon CSS.
+  */
  $theme->getImgPath('designer/left_panel_butt.png');
 
 // unplanned execution path

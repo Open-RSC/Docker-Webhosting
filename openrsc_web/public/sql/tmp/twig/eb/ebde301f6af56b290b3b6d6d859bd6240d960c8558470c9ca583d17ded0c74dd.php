@@ -16,53 +16,53 @@ class __TwigTemplate_3b27fc69fad1607344c0a9c10a522be78a8d6154c7b7dfd238680d45b65
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<form id=\"create_table_form_minimal\" method=\"post\" action=\"tbl_create.php\" class=\"lock-page\">
+        echo '<form id="create_table_form_minimal" method="post" action="tbl_create.php" class="lock-page">
     <fieldset>
         <legend>
-        ";
+        ';
         // line 4
-        if (PhpMyAdmin\Util::showIcons("ActionLinksMode")) {
+        if (PhpMyAdmin\Util::showIcons('ActionLinksMode')) {
             // line 5
-            echo PhpMyAdmin\Util::getImage("b_table_add");
+            echo PhpMyAdmin\Util::getImage('b_table_add');
         }
         // line 7
-        echo "        ";
-        echo _gettext("Create table");
+        echo '        ';
+        echo _gettext('Create table');
         // line 8
-        echo "        </legend>
-        ";
+        echo '        </legend>
+        ';
         // line 9
-        echo PhpMyAdmin\Url::getHiddenInputs(($context["db"] ?? null));
-        echo "
-        <div class=\"formelement\">
-            ";
+        echo PhpMyAdmin\Url::getHiddenInputs(($context['db'] ?? null));
+        echo '
+        <div class="formelement">
+            ';
         // line 11
-        echo _gettext("Name");
-        echo ":
-            <input type=\"text\" name=\"table\" maxlength=\"64\" size=\"30\" required=\"required\" />
+        echo _gettext('Name');
+        echo ':
+            <input type="text" name="table" maxlength="64" size="30" required="required" />
         </div>
-        <div class=\"formelement\">
-            ";
+        <div class="formelement">
+            ';
         // line 15
-        echo _gettext("Number of columns");
-        echo ":
-            <input type=\"number\" min=\"1\" name=\"num_fields\" value=\"4\" required=\"required\" />
+        echo _gettext('Number of columns');
+        echo ':
+            <input type="number" min="1" name="num_fields" value="4" required="required" />
         </div>
-        <div class=\"clearfloat\"></div>
+        <div class="clearfloat"></div>
     </fieldset>
-    <fieldset class=\"tblFooters\">
-        <input type=\"submit\" value=\"";
+    <fieldset class="tblFooters">
+        <input type="submit" value="';
         // line 21
-        echo _gettext("Go");
-        echo "\" />
+        echo _gettext('Go');
+        echo '" />
     </fieldset>
 </form>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "database/create_table.twig";
+        return 'database/create_table.twig';
     }
 
     public function isTraitable()
@@ -72,7 +72,7 @@ class __TwigTemplate_3b27fc69fad1607344c0a9c10a522be78a8d6154c7b7dfd238680d45b65
 
     public function getDebugInfo()
     {
-        return array (  56 => 21,  47 => 15,  40 => 11,  35 => 9,  32 => 8,  29 => 7,  26 => 5,  24 => 4,  19 => 1,);
+        return [56 => 21,  47 => 15,  40 => 11,  35 => 9,  32 => 8,  29 => 7,  26 => 5,  24 => 4,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -85,6 +85,6 @@ class __TwigTemplate_3b27fc69fad1607344c0a9c10a522be78a8d6154c7b7dfd238680d45b65
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "database/create_table.twig", "/var/www/html/openrsc_web/public/sql/templates/database/create_table.twig");
+        return new Twig_Source('', 'database/create_table.twig', '/var/www/html/openrsc_web/public/sql/templates/database/create_table.twig');
     }
 }

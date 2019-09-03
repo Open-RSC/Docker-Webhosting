@@ -16,49 +16,49 @@ class __TwigTemplate_b0563d727770908c311e69dea0a99093fbbc5de4ee9ce742b2ee9115c98
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<li>
-    <label for=\"select_charset\" class=\"desc\">
-        ";
+        echo '<li>
+    <label for="select_charset" class="desc">
+        ';
         // line 3
-        echo _gettext("Character set of the file:");
+        echo _gettext('Character set of the file:');
         // line 4
-        echo "    </label>
-    <select id=\"select_charset\" name=\"charset\" size=\"1\">
-        ";
+        echo '    </label>
+    <select id="select_charset" name="charset" size="1">
+        ';
         // line 6
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["encodings"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["charset"]) {
+        $context['_seq'] = twig_ensure_traversable(($context['encodings'] ?? null));
+        foreach ($context['_seq'] as $context['_key'] => $context['charset']) {
             // line 7
-            echo "            <option value=\"";
-            echo twig_escape_filter($this->env, $context["charset"], "html", null, true);
-            echo "\"";
+            echo '            <option value="';
+            echo twig_escape_filter($this->env, $context['charset'], 'html', null, true);
+            echo '"';
             // line 8
-            if (((twig_test_empty(($context["export_charset"] ?? null)) && ($context["charset"] == "utf-8")) || (            // line 9
-$context["charset"] == ($context["export_charset"] ?? null)))) {
+            if (((twig_test_empty(($context['export_charset'] ?? null)) && ($context['charset'] == 'utf-8')) || (            // line 9
+$context['charset'] == ($context['export_charset'] ?? null)))) {
                 // line 10
-                echo "                    selected";
+                echo '                    selected';
             }
             // line 11
-            echo ">";
+            echo '>';
             // line 12
-            echo twig_escape_filter($this->env, $context["charset"], "html", null, true);
+            echo twig_escape_filter($this->env, $context['charset'], 'html', null, true);
             // line 13
-            echo "</option>
-        ";
+            echo '</option>
+        ';
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['charset'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 15
-        echo "    </select>
+        echo '    </select>
 </li>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "display/export/options_output_charset.twig";
+        return 'display/export/options_output_charset.twig';
     }
 
     public function isTraitable()
@@ -68,7 +68,7 @@ $context["charset"] == ($context["export_charset"] ?? null)))) {
 
     public function getDebugInfo()
     {
-        return array (  54 => 15,  47 => 13,  45 => 12,  43 => 11,  40 => 10,  38 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 4,  23 => 3,  19 => 1,);
+        return [54 => 15,  47 => 13,  45 => 12,  43 => 11,  40 => 10,  38 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 4,  23 => 3,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -81,6 +81,6 @@ $context["charset"] == ($context["export_charset"] ?? null)))) {
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/export/options_output_charset.twig", "/var/www/html/sql/templates/display/export/options_output_charset.twig");
+        return new Twig_Source('', 'display/export/options_output_charset.twig', '/var/www/html/sql/templates/display/export/options_output_charset.twig');
     }
 }

@@ -1,11 +1,9 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * object the server status page: processes, connections and traffic
- *
- * @package PhpMyAdmin
+ * object the server status page: processes, connections and traffic.
  */
-
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
 use PhpMyAdmin\Server\Status;
@@ -15,12 +13,12 @@ require_once 'libraries/common.inc.php';
 require_once 'libraries/server_common.inc.php';
 
 /**
- * Replication library
+ * Replication library.
  */
 require_once 'libraries/replication.inc.php';
 
 /**
- * start output
+ * start output.
  */
 $response = Response::getInstance();
 $response->addHTML('<div>');

@@ -9,32 +9,32 @@ class __TwigTemplate_ef181e96c46db13bab5d12d62cf022087e73f87f44bec00e50db1868534
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<tr class=\"group-header group-header-";
-        echo twig_escape_filter($this->env, ($context["group"] ?? null), "html", null, true);
-        echo "\">
-    <th colspan=\"";
+        echo '<tr class="group-header group-header-';
+        echo twig_escape_filter($this->env, ($context['group'] ?? null), 'html', null, true);
+        echo '">
+    <th colspan="';
         // line 2
-        echo twig_escape_filter($this->env, ($context["colspan"] ?? null), "html", null, true);
-        echo "\">
-        ";
+        echo twig_escape_filter($this->env, ($context['colspan'] ?? null), 'html', null, true);
+        echo '">
+        ';
         // line 3
-        echo twig_escape_filter($this->env, ($context["header_text"] ?? null), "html", null, true);
-        echo "
+        echo twig_escape_filter($this->env, ($context['header_text'] ?? null), 'html', null, true);
+        echo '
     </th>
 </tr>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "config/form_display/group_header.twig";
+        return 'config/form_display/group_header.twig';
     }
 
     public function isTraitable()
@@ -44,7 +44,7 @@ class __TwigTemplate_ef181e96c46db13bab5d12d62cf022087e73f87f44bec00e50db1868534
 
     public function getDebugInfo()
     {
-        return array (  28 => 3,  24 => 2,  19 => 1,);
+        return [28 => 3,  24 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -57,6 +57,6 @@ class __TwigTemplate_ef181e96c46db13bab5d12d62cf022087e73f87f44bec00e50db1868534
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "config/form_display/group_header.twig", "/var/www/html/sql/templates/config/form_display/group_header.twig");
+        return new Twig_Source('', 'config/form_display/group_header.twig', '/var/www/html/sql/templates/config/form_display/group_header.twig');
     }
 }

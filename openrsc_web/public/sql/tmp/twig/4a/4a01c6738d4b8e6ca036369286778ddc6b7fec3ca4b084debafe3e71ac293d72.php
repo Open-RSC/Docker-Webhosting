@@ -16,36 +16,36 @@ class __TwigTemplate_08d3285661807c0ac51722d087ff15aa55b4181c24bc01c28962fde2009
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        if (($this->getAttribute(($context["comments_map"] ?? null), $this->getAttribute(($context["fields_meta"] ?? null), "table", []), [], "array", true, true) && $this->getAttribute($this->getAttribute(        // line 2
-($context["comments_map"] ?? null), $this->getAttribute(($context["fields_meta"] ?? null), "table", []), [], "array", false, true), $this->getAttribute(($context["fields_meta"] ?? null), "name", []), [], "array", true, true))) {
+        if (($this->getAttribute(($context['comments_map'] ?? null), $this->getAttribute(($context['fields_meta'] ?? null), 'table', []), [], 'array', true, true) && $this->getAttribute($this->getAttribute(        // line 2
+($context['comments_map'] ?? null), $this->getAttribute(($context['fields_meta'] ?? null), 'table', []), [], 'array', false, true), $this->getAttribute(($context['fields_meta'] ?? null), 'name', []), [], 'array', true, true))) {
             // line 3
-            echo "    <span class=\"tblcomment\" title=\"";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["comments_map"] ?? null), $this->getAttribute(($context["fields_meta"] ?? null), "table", []), [], "array"), $this->getAttribute(($context["fields_meta"] ?? null), "name", []), [], "array"), "html", null, true);
-            echo "\">
-        ";
+            echo '    <span class="tblcomment" title="';
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context['comments_map'] ?? null), $this->getAttribute(($context['fields_meta'] ?? null), 'table', []), [], 'array'), $this->getAttribute(($context['fields_meta'] ?? null), 'name', []), [], 'array'), 'html', null, true);
+            echo '">
+        ';
             // line 4
-            if ((twig_length_filter($this->env, $this->getAttribute($this->getAttribute(($context["comments_map"] ?? null), $this->getAttribute(($context["fields_meta"] ?? null), "table", []), [], "array"), $this->getAttribute(($context["fields_meta"] ?? null), "name", []), [], "array")) > ($context["limit_chars"] ?? null))) {
+            if ((twig_length_filter($this->env, $this->getAttribute($this->getAttribute(($context['comments_map'] ?? null), $this->getAttribute(($context['fields_meta'] ?? null), 'table', []), [], 'array'), $this->getAttribute(($context['fields_meta'] ?? null), 'name', []), [], 'array')) > ($context['limit_chars'] ?? null))) {
                 // line 5
-                echo "            ";
-                echo twig_escape_filter($this->env, twig_slice($this->env, $this->getAttribute($this->getAttribute(($context["comments_map"] ?? null), $this->getAttribute(($context["fields_meta"] ?? null), "table", []), [], "array"), $this->getAttribute(($context["fields_meta"] ?? null), "name", []), [], "array"), 0, ($context["limit_chars"] ?? null)), "html", null, true);
-                echo "…
-        ";
+                echo '            ';
+                echo twig_escape_filter($this->env, twig_slice($this->env, $this->getAttribute($this->getAttribute(($context['comments_map'] ?? null), $this->getAttribute(($context['fields_meta'] ?? null), 'table', []), [], 'array'), $this->getAttribute(($context['fields_meta'] ?? null), 'name', []), [], 'array'), 0, ($context['limit_chars'] ?? null)), 'html', null, true);
+                echo '…
+        ';
             } else {
                 // line 7
-                echo "            ";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["comments_map"] ?? null), $this->getAttribute(($context["fields_meta"] ?? null), "table", []), [], "array"), $this->getAttribute(($context["fields_meta"] ?? null), "name", []), [], "array"), "html", null, true);
-                echo "
-        ";
+                echo '            ';
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context['comments_map'] ?? null), $this->getAttribute(($context['fields_meta'] ?? null), 'table', []), [], 'array'), $this->getAttribute(($context['fields_meta'] ?? null), 'name', []), [], 'array'), 'html', null, true);
+                echo '
+        ';
             }
             // line 9
-            echo "    </span>
-";
+            echo '    </span>
+';
         }
     }
 
     public function getTemplateName()
     {
-        return "display/results/comment_for_row.twig";
+        return 'display/results/comment_for_row.twig';
     }
 
     public function isTraitable()
@@ -55,7 +55,7 @@ class __TwigTemplate_08d3285661807c0ac51722d087ff15aa55b4181c24bc01c28962fde2009
 
     public function getDebugInfo()
     {
-        return array (  41 => 9,  35 => 7,  29 => 5,  27 => 4,  22 => 3,  20 => 2,  19 => 1,);
+        return [41 => 9,  35 => 7,  29 => 5,  27 => 4,  22 => 3,  20 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -68,6 +68,6 @@ class __TwigTemplate_08d3285661807c0ac51722d087ff15aa55b4181c24bc01c28962fde2009
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/results/comment_for_row.twig", "/var/www/html/openrsc_web/public/sql/templates/display/results/comment_for_row.twig");
+        return new Twig_Source('', 'display/results/comment_for_row.twig', '/var/www/html/openrsc_web/public/sql/templates/display/results/comment_for_row.twig');
     }
 }

@@ -9,45 +9,45 @@ class __TwigTemplate_b434a2bcabf42d9c9dcf866f3035b41d102d9c729a40996ab5da87e036d
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<input type=\"hidden\" name=\"sql_query\" value=\"";
-        echo ($context["sql_query"] ?? null);
-        echo "\" />
-<input type=\"hidden\" name=\"goto\" value=\"";
+        echo '<input type="hidden" name="sql_query" value="';
+        echo $context['sql_query'] ?? null;
+        echo '" />
+<input type="hidden" name="goto" value="';
         // line 2
-        echo twig_escape_filter($this->env, ($context["goto"] ?? null), "html", null, true);
-        echo "\" />
-";
+        echo twig_escape_filter($this->env, ($context['goto'] ?? null), 'html', null, true);
+        echo '" />
+';
         // line 4
-        echo "<input type=\"hidden\" name=\"pos\" size=\"3\" value=\"";
-        echo twig_escape_filter($this->env, ($context["pos"] ?? null), "html", null, true);
-        echo "\" />
-<input type=\"hidden\" name=\"is_browse_distinct\" value=\"";
+        echo '<input type="hidden" name="pos" size="3" value="';
+        echo twig_escape_filter($this->env, ($context['pos'] ?? null), 'html', null, true);
+        echo '" />
+<input type="hidden" name="is_browse_distinct" value="';
         // line 5
-        echo twig_escape_filter($this->env, ($context["is_browse_distinct"] ?? null), "html", null, true);
-        echo "\" />
-";
+        echo twig_escape_filter($this->env, ($context['is_browse_distinct'] ?? null), 'html', null, true);
+        echo '" />
+';
         // line 6
-        echo _gettext("Number of rows:");
+        echo _gettext('Number of rows:');
         // line 7
-        echo PhpMyAdmin\Util::getDropdown("session_max_rows",         // line 9
-($context["number_of_rows_choices"] ?? null),         // line 10
-($context["max_rows"] ?? null), "", "autosubmit",         // line 13
-($context["number_of_rows_placeholder"] ?? null));
+        echo PhpMyAdmin\Util::getDropdown('session_max_rows',         // line 9
+($context['number_of_rows_choices'] ?? null),         // line 10
+($context['max_rows'] ?? null), '', 'autosubmit',         // line 13
+($context['number_of_rows_placeholder'] ?? null));
         // line 14
-        echo "
-";
+        echo '
+';
     }
 
     public function getTemplateName()
     {
-        return "display/results/additional_fields.twig";
+        return 'display/results/additional_fields.twig';
     }
 
     public function isTraitable()
@@ -57,7 +57,7 @@ class __TwigTemplate_b434a2bcabf42d9c9dcf866f3035b41d102d9c729a40996ab5da87e036d
 
     public function getDebugInfo()
     {
-        return array (  44 => 14,  42 => 13,  41 => 10,  40 => 9,  39 => 7,  37 => 6,  33 => 5,  28 => 4,  24 => 2,  19 => 1,);
+        return [44 => 14,  42 => 13,  41 => 10,  40 => 9,  39 => 7,  37 => 6,  33 => 5,  28 => 4,  24 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -70,6 +70,6 @@ class __TwigTemplate_b434a2bcabf42d9c9dcf866f3035b41d102d9c729a40996ab5da87e036d
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/results/additional_fields.twig", "/var/www/html/sql/templates/display/results/additional_fields.twig");
+        return new Twig_Source('', 'display/results/additional_fields.twig', '/var/www/html/sql/templates/display/results/additional_fields.twig');
     }
 }

@@ -38,4 +38,3 @@ $cfg['QueryHistoryDB'] = true;
 $cfg['Export']['method'] = 'custom';
 $cfg['Export']['compression'] = 'zip';
 $cfg['ZeroConf'] = 'false';
-?>

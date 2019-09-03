@@ -9,75 +9,75 @@ class __TwigTemplate_d20046f341ce7aebd42c1a090b73b991e9b9d61df8a87c69e8169fb37ce
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<thead>
+        echo '<thead>
     <tr>
-        <th class=\"print_ignore\"></th>
+        <th class="print_ignore"></th>
         <th>#</th>
-        <th>";
+        <th>';
         // line 5
-        echo _gettext("Name");
-        echo "</th>
-        <th>";
+        echo _gettext('Name');
+        echo '</th>
+        <th>';
         // line 6
-        echo _gettext("Type");
-        echo "</th>
-        <th>";
+        echo _gettext('Type');
+        echo '</th>
+        <th>';
         // line 7
-        echo _gettext("Collation");
-        echo "</th>
-        <th>";
+        echo _gettext('Collation');
+        echo '</th>
+        <th>';
         // line 8
-        echo _gettext("Attributes");
-        echo "</th>
-        <th>";
+        echo _gettext('Attributes');
+        echo '</th>
+        <th>';
         // line 9
-        echo _gettext("Null");
-        echo "</th>
-        <th>";
+        echo _gettext('Null');
+        echo '</th>
+        <th>';
         // line 10
-        echo _gettext("Default");
-        echo "</th>
-        ";
+        echo _gettext('Default');
+        echo '</th>
+        ';
         // line 11
-        if (($context["show_column_comments"] ?? null)) {
+        if (($context['show_column_comments'] ?? null)) {
             // line 12
-            echo "<th>";
-            echo _gettext("Comments");
-            echo "</th>";
+            echo '<th>';
+            echo _gettext('Comments');
+            echo '</th>';
         }
         // line 14
-        echo "        <th>";
-        echo _gettext("Extra");
-        echo "</th>
-        ";
+        echo '        <th>';
+        echo _gettext('Extra');
+        echo '</th>
+        ';
         // line 16
-        echo "        ";
-        if (( !($context["db_is_system_schema"] ?? null) &&  !($context["tbl_is_view"] ?? null))) {
+        echo '        ';
+        if ((! ($context['db_is_system_schema'] ?? null) && ! ($context['tbl_is_view'] ?? null))) {
             // line 17
-            echo "            <th colspan=\"";
-            echo ((PhpMyAdmin\Util::showIcons("ActionLinksMode")) ? ("8") : ("9"));
+            echo '            <th colspan="';
+            echo (PhpMyAdmin\Util::showIcons('ActionLinksMode')) ? ('8') : ('9');
             // line 18
-            echo "\" class=\"action print_ignore\">";
-            echo _gettext("Action");
-            echo "</th>
-        ";
+            echo '" class="action print_ignore">';
+            echo _gettext('Action');
+            echo '</th>
+        ';
         }
         // line 20
-        echo "    </tr>
+        echo '    </tr>
 </thead>
-";
+';
     }
 
     public function getTemplateName()
     {
-        return "table/structure/table_structure_header.twig";
+        return 'table/structure/table_structure_header.twig';
     }
 
     public function isTraitable()
@@ -87,7 +87,7 @@ class __TwigTemplate_d20046f341ce7aebd42c1a090b73b991e9b9d61df8a87c69e8169fb37ce
 
     public function getDebugInfo()
     {
-        return array (  73 => 20,  67 => 18,  64 => 17,  61 => 16,  56 => 14,  51 => 12,  49 => 11,  45 => 10,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return [73 => 20,  67 => 18,  64 => 17,  61 => 16,  56 => 14,  51 => 12,  49 => 11,  45 => 10,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -100,6 +100,6 @@ class __TwigTemplate_d20046f341ce7aebd42c1a090b73b991e9b9d61df8a87c69e8169fb37ce
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "table/structure/table_structure_header.twig", "/var/www/html/sql/templates/table/structure/table_structure_header.twig");
+        return new Twig_Source('', 'table/structure/table_structure_header.twig', '/var/www/html/sql/templates/table/structure/table_structure_header.twig');
     }
 }

@@ -1,16 +1,14 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Editor for Geometry data types.
- *
- * @package PhpMyAdmin
  */
-
+use PhpMyAdmin\Url;
 use PhpMyAdmin\Core;
+use PhpMyAdmin\Response;
 use PhpMyAdmin\Gis\GisFactory;
 use PhpMyAdmin\Gis\GisVisualization;
-use PhpMyAdmin\Response;
-use PhpMyAdmin\Url;
 
 /**
  * Escapes special characters if the variable is set.
@@ -28,24 +26,24 @@ function escape($variable)
 require_once 'libraries/common.inc.php';
 
 if (! isset($_POST['field'])) {
-    PhpMyAdmin\Util::checkParameters(array('field'));
+    PhpMyAdmin\Util::checkParameters(['field']);
 }
 
 // Get data if any posted
-$gis_data = array();
+$gis_data = [];
 if (Core::isValid($_POST['gis_data'], 'array')) {
     $gis_data = $_POST['gis_data'];
 }
 
-$gis_types = array(
+$gis_types = [
     'POINT',
     'MULTIPOINT',
     'LINESTRING',
     'MULTILINESTRING',
     'POLYGON',
     'MULTIPOLYGON',
-    'GEOMETRYCOLLECTION'
-);
+    'GEOMETRYCOLLECTION',
+];
 
 // Extract type from the initial call and make sure that it's a valid one.
 // Extract from field's values if available, if not use the column type passed.
@@ -58,7 +56,7 @@ if (! isset($gis_data['gis_type'])) {
         $gis_data['gis_type'] = mb_substr(
             $_POST['value'],
             $start,
-            mb_strpos($_POST['value'], "(") - $start
+            mb_strpos($_POST['value'], '(') - $start
         );
     }
     if ((! isset($gis_data['gis_type']))
@@ -82,16 +80,16 @@ $srid = (isset($gis_data['srid']) && $gis_data['srid'] != '')
     ? htmlspecialchars($gis_data['srid']) : 0;
 $wkt = $gis_obj->generateWkt($gis_data, 0);
 $wkt_with_zero = $gis_obj->generateWkt($gis_data, 0, '0');
-$result = "'" . $wkt . "'," . $srid;
+$result = "'".$wkt."',".$srid;
 
 // Generate SVG based visualization
-$visualizationSettings = array(
+$visualizationSettings = [
     'width' => 450,
     'height' => 300,
     'spatialColumn' => 'wkt',
-    'mysqlVersion' => $GLOBALS['dbi']->getVersion()
-);
-$data = array(array('wkt' => $wkt_with_zero, 'srid' => $srid));
+    'mysqlVersion' => $GLOBALS['dbi']->getVersion(),
+];
+$data = [['wkt' => $wkt_with_zero, 'srid' => $srid]];
 $visualization = GisVisualization::getByData($data, $visualizationSettings)
     ->toImage('svg');
 
@@ -100,11 +98,11 @@ $open_layers = GisVisualization::getByData($data, $visualizationSettings)
 
 // If the call is to update the WKT and visualization make an AJAX response
 if (isset($_POST['generate']) && $_POST['generate'] == true) {
-    $extra_data = array(
+    $extra_data = [
         'result'        => $result,
         'visualization' => $visualization,
         'openLayers'    => $open_layers,
-    );
+    ];
     $response = Response::getInstance();
     $response->addJSON($extra_data);
     exit;
@@ -141,21 +139,20 @@ echo $visualization;
 echo '</div>';
 
 // No not remove inline style or it will cause "Cannot read property 'w' of null" on GIS editor map init
-echo '<div id="openlayersmap" style="width: ' . $visualizationSettings['width'] . 'px; height: ' . $visualizationSettings['height'] . 'px;" '
+echo '<div id="openlayersmap" style="width: '.$visualizationSettings['width'].'px; height: '.$visualizationSettings['height'].'px;" '
     , ($srid == 0 ? 'class="hide"' : '') , '>';
 echo '</div>';
 
 echo '<div class="choice floatright">';
 echo '<input type="checkbox" id="choice" value="useBaseLayer"'
     , ($srid != 0 ? ' checked="checked"' : '') , '/>';
-echo '<label for="choice">' ,  __("Use OpenStreetMaps as Base Layer") , '</label>';
+echo '<label for="choice">' ,  __('Use OpenStreetMaps as Base Layer') , '</label>';
 echo '</div>';
 
 echo '<script language="javascript" type="text/javascript">';
 echo $open_layers;
 echo '</script>';
 echo '<!-- End of visualization section -->';
-
 
 echo '<!-- Header section - Inclueds GIS type selector and input field for SRID -->';
 echo '<div id="gis_data_header">';
@@ -219,13 +216,12 @@ for ($a = 0; $a < $geom_count; $a++) {
     if ($type == 'POINT') {
         echo '<br/>';
         echo __('Point:');
-        echo '<label for="x">' , __("X") , '</label>';
+        echo '<label for="x">' , __('X') , '</label>';
         echo '<input name="gis_data[' , $a , '][POINT][x]" type="text"'
             , ' value="' , escape($gis_data[$a]['POINT']['x']) , '" />';
-        echo '<label for="y">' , __("Y") , '</label>';
+        echo '<label for="y">' , __('Y') , '</label>';
         echo '<input name="gis_data[' , $a , '][POINT][y]" type="text"'
             , ' value="' , escape($gis_data[$a]['POINT']['y']) , '" />';
-
     } elseif ($type == 'MULTIPOINT' || $type == 'LINESTRING') {
         $no_of_points = isset($gis_data[$a][$type]['no_of_points'])
             ? intval($gis_data[$a][$type]['no_of_points']) : 1;
@@ -246,19 +242,18 @@ for ($a = 0; $a < $geom_count; $a++) {
             echo '<br/>';
             printf(__('Point %d'), $i + 1);
             echo ': ';
-            echo '<label for="x">' ,  __("X") , '</label>';
+            echo '<label for="x">' ,  __('X') , '</label>';
             echo '<input type="text"'
                 , ' name="gis_data[' , $a , '][' , $type , '][' , $i , '][x]"'
                 , ' value="' , escape($gis_data[$a][$type][$i]['x']) , '" />';
-            echo '<label for="y">' , __("Y") , '</label>';
+            echo '<label for="y">' , __('Y') , '</label>';
             echo '<input type="text"'
                 , ' name="gis_data[' , $a , '][' , $type , '][' , $i , '][y]"'
                 , ' value="' , escape($gis_data[$a][$type][$i]['y']) , '" />';
         }
         echo '<input type="submit"'
             , ' name="gis_data[' , $a , '][' , $type , '][add_point]"'
-            , ' class="add addPoint" value="' , __("Add a point") , '" />';
-
+            , ' class="add addPoint" value="' , __('Add a point') , '" />';
     } elseif ($type == 'MULTILINESTRING' || $type == 'POLYGON') {
         $no_of_lines = isset($gis_data[$a][$type]['no_of_lines'])
             ? intval($gis_data[$a][$type]['no_of_lines']) : 1;
@@ -299,21 +294,21 @@ for ($a = 0; $a < $geom_count; $a++) {
                 , '][no_of_points]" />';
 
             for ($j = 0; $j < $no_of_points; $j++) {
-                echo('<br/>');
+                echo '<br/>';
                 printf(__('Point %d'), $j + 1);
                 echo ': ';
-                echo '<label for="x">' ,  __("X") , '</label>';
-                echo '<input type="text" name="gis_data[' , $a , '][' , $type . ']['
+                echo '<label for="x">' ,  __('X') , '</label>';
+                echo '<input type="text" name="gis_data[' , $a , '][' , $type.']['
                     , $i , '][' , $j , '][x]" value="'
                     , escape($gis_data[$a][$type][$i][$j]['x']) , '" />';
-                echo '<label for="y">' , __("Y") , '</label>';
+                echo '<label for="y">' , __('Y') , '</label>';
                 echo '<input type="text" name="gis_data[' , $a , '][' , $type , ']['
                     , $i , '][' , $j , '][y]"' , ' value="'
                     , escape($gis_data[$a][$type][$i][$j]['y']) , '" />';
             }
             echo '<input type="submit" name="gis_data[' , $a , '][' , $type , ']['
                 , $i , '][add_point]"'
-                , ' class="add addPoint" value="' , __("Add a point") , '" />';
+                , ' class="add addPoint" value="' , __('Add a point') , '" />';
         }
         $caption = ($type == 'MULTILINESTRING')
             ? __('Add a linestring')
@@ -322,7 +317,6 @@ for ($a = 0; $a < $geom_count; $a++) {
         echo '<input type="submit"'
             , ' name="gis_data[' , $a , '][' , $type , '][add_line]"'
             , ' class="add addLine" value="' , $caption , '" />';
-
     } elseif ($type == 'MULTIPOLYGON') {
         $no_of_polygons = isset($gis_data[$a][$type]['no_of_polygons'])
             ? intval($gis_data[$a][$type]['no_of_polygons']) : 1;
@@ -375,13 +369,13 @@ for ($a = 0; $a < $geom_count; $a++) {
                     echo '<br/>';
                     printf(__('Point %d'), $j + 1);
                     echo ': ';
-                    echo '<label for="x">' ,  __("X") , '</label>';
+                    echo '<label for="x">' ,  __('X') , '</label>';
                     echo '<input type="text"'
                         , ' name="gis_data[' , $a , '][' , $type , '][' , $k , ']['
                         , $i , '][' , $j , '][x]"'
                         , ' value="' , escape($gis_data[$a][$type][$k][$i][$j]['x'])
                         , '" />';
-                    echo '<label for="y">' , __("Y") , '</label>';
+                    echo '<label for="y">' , __('Y') , '</label>';
                     echo '<input type="text"'
                         , ' name="gis_data[' , $a , '][' , $type , '][' , $k , ']['
                         , $i , '][' , $j , '][y]"'
@@ -391,7 +385,7 @@ for ($a = 0; $a < $geom_count; $a++) {
                 echo '<input type="submit"'
                     , ' name="gis_data[' , $a , '][' , $type , '][' , $k , '][' , $i
                     , '][add_point]"'
-                    , ' class="add addPoint" value="' , __("Add a point") , '" />';
+                    , ' class="add addPoint" value="' , __('Add a point') , '" />';
             }
             echo '<br/>';
             echo '<input type="submit"'
@@ -408,7 +402,7 @@ for ($a = 0; $a < $geom_count; $a++) {
 if ($geom_type == 'GEOMETRYCOLLECTION') {
     echo '<br/><br/>';
     echo '<input type="submit" name="gis_data[GEOMETRYCOLLECTION][add_geom]"'
-        , 'class="add addGeom" value="' , __("Add geometry") , '" />';
+        , 'class="add addGeom" value="' , __('Add geometry') , '" />';
 }
 echo '</div>';
 echo '<!-- End of data section -->';
@@ -421,7 +415,7 @@ echo '<h3>' , __('Output') , '</h3>';
 echo '<p>';
 echo __(
     'Choose "ST_GeomFromText" from the "Function" column and paste the'
-    . ' string below into the "Value" field.'
+    .' string below into the "Value" field.'
 );
 echo '</p>';
 echo '<textarea id="gis_data_textarea" cols="95" rows="5">';

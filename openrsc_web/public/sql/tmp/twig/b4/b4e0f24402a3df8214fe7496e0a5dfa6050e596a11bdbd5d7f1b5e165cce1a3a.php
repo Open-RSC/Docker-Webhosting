@@ -9,25 +9,25 @@ class __TwigTemplate_8b99bc806ab2ee4c516f8cff600a8e0ef788cbca60edd1a8116731ce4fa
 
         $this->parent = false;
 
-        $this->blocks = array(
-        );
+        $this->blocks = [
+        ];
     }
 
-    protected function doDisplay(array $context, array $blocks = array())
+    protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "</form>
-";
+        echo '</form>
+';
     }
 
     public function getTemplateName()
     {
-        return "config/form_display/form_bottom.twig";
+        return 'config/form_display/form_bottom.twig';
     }
 
     public function getDebugInfo()
     {
-        return array (  19 => 1,);
+        return [19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -40,6 +40,6 @@ class __TwigTemplate_8b99bc806ab2ee4c516f8cff600a8e0ef788cbca60edd1a8116731ce4fa
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "config/form_display/form_bottom.twig", "/var/www/html/openrsc_web/public/sql/templates/config/form_display/form_bottom.twig");
+        return new Twig_Source('', 'config/form_display/form_bottom.twig', '/var/www/html/openrsc_web/public/sql/templates/config/form_display/form_bottom.twig');
     }
 }

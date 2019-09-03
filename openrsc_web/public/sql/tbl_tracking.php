@@ -1,21 +1,20 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Table tracking page
- *
- * @package PhpMyAdmin
+ * Table tracking page.
  */
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Tracker;
-use PhpMyAdmin\Tracking;
 use PhpMyAdmin\Response;
+use PhpMyAdmin\Tracking;
 
 require_once './libraries/common.inc.php';
 
 //Get some js files needed for Ajax requests
 $response = Response::getInstance();
-$header   = $response->getHeader();
-$scripts  = $header->getScripts();
+$header = $response->getHeader();
+$scripts = $header->getScripts();
 $scripts->addFile('vendor/jquery/jquery.tablesorter.js');
 $scripts->addFile('tbl_tracking.js');
 
@@ -23,7 +22,7 @@ define('TABLE_MAY_BE_ABSENT', true);
 require './libraries/tbl_common.inc.php';
 
 if (Tracker::isActive()
-    && Tracker::isTracked($GLOBALS["db"], $GLOBALS["table"])
+    && Tracker::isTracked($GLOBALS['db'], $GLOBALS['table'])
     && ! (isset($_POST['toggle_activation'])
     && $_POST['toggle_activation'] == 'deactivate_now')
     && ! (isset($_POST['report_export'])
@@ -32,7 +31,7 @@ if (Tracker::isActive()
     $msg = Message::notice(
         sprintf(
             __('Tracking of %s is activated.'),
-            htmlspecialchars($GLOBALS["db"] . '.' . $GLOBALS["table"])
+            htmlspecialchars($GLOBALS['db'].'.'.$GLOBALS['table'])
         )
     );
     $response->addHTML($msg->getDisplay());
@@ -49,8 +48,8 @@ if (isset($_POST['report']) || isset($_POST['report_export'])) {
     );
 
     $selection_schema = false;
-    $selection_data   = false;
-    $selection_both  = false;
+    $selection_data = false;
+    $selection_both = false;
 
     if (! isset($_POST['logtype'])) {
         $_POST['logtype'] = 'schema_and_data';
@@ -58,9 +57,9 @@ if (isset($_POST['report']) || isset($_POST['report_export'])) {
     if ($_POST['logtype'] == 'schema') {
         $selection_schema = true;
     } elseif ($_POST['logtype'] == 'data') {
-        $selection_data   = true;
+        $selection_data = true;
     } else {
-        $selection_both   = true;
+        $selection_both = true;
     }
     if (! isset($_POST['date_from'])) {
         $_POST['date_from'] = $data['date_from'];
@@ -72,8 +71,8 @@ if (isset($_POST['report']) || isset($_POST['report_export'])) {
         $_POST['users'] = '*';
     }
     $filter_ts_from = strtotime($_POST['date_from']);
-    $filter_ts_to   = strtotime($_POST['date_to']);
-    $filter_users   = array_map('trim', explode(',', $_POST['users']));
+    $filter_ts_to = strtotime($_POST['date_to']);
+    $filter_users = array_map('trim', explode(',', $_POST['users']));
 }
 
 // Prepare export
@@ -90,7 +89,7 @@ if (isset($_POST['report_export'])
 
 $html = '<br />';
 
-/**
+/*
  * Actions
  */
 if (isset($_POST['submit_mult'])) {
@@ -195,10 +194,10 @@ if ($last_version > 0) {
 $type = $GLOBALS['dbi']->getTable($GLOBALS['db'], $GLOBALS['table'])
     ->isView() ? 'view' : 'table';
 $html .= Tracking::getHtmlForDataDefinitionAndManipulationStatements(
-    'tbl_tracking.php' . $url_query,
+    'tbl_tracking.php'.$url_query,
     $last_version,
     $GLOBALS['db'],
-    array($GLOBALS['table']),
+    [$GLOBALS['table']],
     $type
 );
 

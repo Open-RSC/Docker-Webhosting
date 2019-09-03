@@ -16,66 +16,66 @@ class __TwigTemplate_25355cdedd229bdfb35bd82b6b2cb211489d9daa5096eec1248959a7da7
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        if ((($context["is_zip"] ?? null) || ($context["is_gzip"] ?? null))) {
+        if ((($context['is_zip'] ?? null) || ($context['is_gzip'] ?? null))) {
             // line 2
-            echo "    <li>
-        <label for=\"compression\" class=\"desc\">
-            ";
+            echo '    <li>
+        <label for="compression" class="desc">
+            ';
             // line 4
-            echo _gettext("Compression:");
+            echo _gettext('Compression:');
             // line 5
-            echo "        </label>
-        <select id=\"compression\" name=\"compression\">
-            <option value=\"none\">";
+            echo '        </label>
+        <select id="compression" name="compression">
+            <option value="none">';
             // line 7
-            echo _gettext("None");
-            echo "</option>
-            ";
+            echo _gettext('None');
+            echo '</option>
+            ';
             // line 8
-            if (($context["is_zip"] ?? null)) {
+            if (($context['is_zip'] ?? null)) {
                 // line 9
-                echo "                <option value=\"zip\"";
+                echo '                <option value="zip"';
                 // line 10
-                echo (((($context["selected_compression"] ?? null) == "zip")) ? (" selected") : (""));
-                echo ">
-                    ";
+                echo ((($context['selected_compression'] ?? null) == 'zip')) ? (' selected') : ('');
+                echo '>
+                    ';
                 // line 11
-                echo _gettext("zipped");
+                echo _gettext('zipped');
                 // line 12
-                echo "                </option>
-            ";
+                echo '                </option>
+            ';
             }
             // line 14
-            echo "            ";
-            if (($context["is_gzip"] ?? null)) {
+            echo '            ';
+            if (($context['is_gzip'] ?? null)) {
                 // line 15
-                echo "                <option value=\"gzip\"";
+                echo '                <option value="gzip"';
                 // line 16
-                echo (((($context["selected_compression"] ?? null) == "gzip")) ? (" selected") : (""));
-                echo ">
-                    ";
+                echo ((($context['selected_compression'] ?? null) == 'gzip')) ? (' selected') : ('');
+                echo '>
+                    ';
                 // line 17
-                echo _gettext("gzipped");
+                echo _gettext('gzipped');
                 // line 18
-                echo "                </option>
-            ";
+                echo '                </option>
+            ';
             }
             // line 20
-            echo "        </select>
+            echo '        </select>
     </li>
-";
+';
         } else {
             // line 23
-            echo "    <input type=\"hidden\" name=\"compression\" value=\"";
-            echo twig_escape_filter($this->env, ($context["selected_compression"] ?? null), "html", null, true);
-            echo "\">
-";
+            echo '    <input type="hidden" name="compression" value="';
+            echo twig_escape_filter($this->env, ($context['selected_compression'] ?? null), 'html', null, true);
+            echo '">
+';
         }
     }
 
     public function getTemplateName()
     {
-        return "display/export/options_output_compression.twig";
+        return 'display/export/options_output_compression.twig';
     }
 
     public function isTraitable()
@@ -85,7 +85,7 @@ class __TwigTemplate_25355cdedd229bdfb35bd82b6b2cb211489d9daa5096eec1248959a7da7
 
     public function getDebugInfo()
     {
-        return array (  69 => 23,  64 => 20,  60 => 18,  58 => 17,  54 => 16,  52 => 15,  49 => 14,  45 => 12,  43 => 11,  39 => 10,  37 => 9,  35 => 8,  31 => 7,  27 => 5,  25 => 4,  21 => 2,  19 => 1,);
+        return [69 => 23,  64 => 20,  60 => 18,  58 => 17,  54 => 16,  52 => 15,  49 => 14,  45 => 12,  43 => 11,  39 => 10,  37 => 9,  35 => 8,  31 => 7,  27 => 5,  25 => 4,  21 => 2,  19 => 1];
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -98,6 +98,6 @@ class __TwigTemplate_25355cdedd229bdfb35bd82b6b2cb211489d9daa5096eec1248959a7da7
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "display/export/options_output_compression.twig", "/var/www/html/sql/templates/display/export/options_output_compression.twig");
+        return new Twig_Source('', 'display/export/options_output_compression.twig', '/var/www/html/sql/templates/display/export/options_output_compression.twig');
     }
 }

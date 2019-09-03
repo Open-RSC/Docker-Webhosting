@@ -1,20 +1,19 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Handle error report submission
- *
- * @package PhpMyAdmin
+ * Handle error report submission.
  */
-use PhpMyAdmin\ErrorReport;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
+use PhpMyAdmin\ErrorReport;
 use PhpMyAdmin\UserPreferences;
 use PhpMyAdmin\Utils\HttpRequest;
 
 require_once 'libraries/common.inc.php';
 
-if (!isset($_POST['exception_type'])
-    ||!in_array($_POST['exception_type'], array('js', 'php'))
+if (! isset($_POST['exception_type'])
+    || ! in_array($_POST['exception_type'], ['js', 'php'])
 ) {
     die('Oops, something went wrong!!');
 }
@@ -28,7 +27,7 @@ if (isset($_POST['send_error_report'])
     || $_POST['send_error_report'] == '1')
 ) {
     if ($_POST['exception_type'] == 'php') {
-        /**
+        /*
          * Prevent infinite error submission.
          * Happens in case error submissions fails.
          * If reporting is done in some time interval,
@@ -37,7 +36,7 @@ if (isset($_POST['send_error_report'])
         if (isset($_SESSION['prev_error_subm_time'])
             && isset($_SESSION['error_subm_count'])
             && $_SESSION['error_subm_count'] >= 3
-            && ($_SESSION['prev_error_subm_time']-time()) <= 3000
+            && ($_SESSION['prev_error_subm_time'] - time()) <= 3000
         ) {
             $_SESSION['error_subm_count'] = 0;
             $_SESSION['prev_errors'] = '';
@@ -46,7 +45,7 @@ if (isset($_POST['send_error_report'])
             $_SESSION['prev_error_subm_time'] = time();
             $_SESSION['error_subm_count'] = (
                 (isset($_SESSION['error_subm_count']))
-                    ? ($_SESSION['error_subm_count']+1)
+                    ? ($_SESSION['error_subm_count'] + 1)
                     : (0)
             );
         }
@@ -59,19 +58,19 @@ if (isset($_POST['send_error_report'])
             $success = false;
         } else {
             $decoded_response = json_decode($server_response, true);
-            $success = !empty($decoded_response) ?
-                $decoded_response["success"] : false;
+            $success = ! empty($decoded_response) ?
+                $decoded_response['success'] : false;
         }
 
         /* Message to show to the user */
         if ($success) {
             if ((isset($_POST['automatic'])
-                && $_POST['automatic'] === "true")
+                && $_POST['automatic'] === 'true')
                 || $GLOBALS['cfg']['SendErrorReports'] == 'always'
             ) {
                 $msg = __(
                     'An error has been detected and an error report has been '
-                    . 'automatically submitted based on your settings.'
+                    .'automatically submitted based on your settings.'
                 );
             } else {
                 $msg = __('Thank you for submitting this report.');
@@ -79,15 +78,15 @@ if (isset($_POST['send_error_report'])
         } else {
             $msg = __(
                 'An error has been detected and an error report has been '
-                . 'generated but failed to be sent.'
+                .'generated but failed to be sent.'
             )
-            . ' '
-            . __(
+            .' '
+            .__(
                 'If you experience any '
-                . 'problems please submit a bug report manually.'
+                .'problems please submit a bug report manually.'
             );
         }
-        $msg .= ' ' . __('You may want to refresh the page.');
+        $msg .= ' '.__('You may want to refresh the page.');
 
         /* Create message object */
         if ($success) {
@@ -105,8 +104,8 @@ if (isset($_POST['send_error_report'])
             }
         } elseif ($_POST['exception_type'] == 'php') {
             $jsCode = 'PMA_ajaxShowMessage("<div class=\"error\">'
-                    . $msg
-                    . '</div>", false);';
+                    .$msg
+                    .'</div>", false);';
             $response->getFooter()->getScripts()->addCode($jsCode);
         }
 
@@ -117,10 +116,10 @@ if (isset($_POST['send_error_report'])
 
         /* Persist always send settings */
         if (isset($_POST['always_send'])
-            && $_POST['always_send'] === "true"
+            && $_POST['always_send'] === 'true'
         ) {
             $userPreferences = new UserPreferences();
-            $userPreferences->persistOption("SendErrorReports", "always", "ask");
+            $userPreferences->persistOption('SendErrorReports', 'always', 'ask');
         }
     }
 } elseif (! empty($_POST['get_settings'])) {

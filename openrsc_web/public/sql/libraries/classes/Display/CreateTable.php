@@ -1,7 +1,8 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Displays form for creating a table (if user has privileges for that)
+ * Displays form for creating a table (if user has privileges for that).
  *
  * for MySQL >= 4.1.0, we should be able to detect if user has a CREATE
  * privilege by looking at SHOW GRANTS output;
@@ -21,9 +22,8 @@
  * We cannot reliably detect the db-specific privileges, so no more
  * warnings about the lack of privileges for CREATE TABLE. Tested
  * on MySQL 5.0.18.
- *
- * @package PhpMyAdmin
  */
+
 namespace PhpMyAdmin\Display;
 
 use PhpMyAdmin\Template;
@@ -31,9 +31,7 @@ use PhpMyAdmin\Template;
 require_once './libraries/check_user_privileges.inc.php';
 
 /**
- * PhpMyAdmin\Display\CreateTable class
- *
- * @package PhpMyAdmin
+ * PhpMyAdmin\Display\CreateTable class.
  */
 class CreateTable
 {
@@ -47,7 +45,7 @@ class CreateTable
     public static function getHtml($db)
     {
         return Template::get('database/create_table')->render(
-            array('db' => $db)
+            ['db' => $db]
         );
     }
 }

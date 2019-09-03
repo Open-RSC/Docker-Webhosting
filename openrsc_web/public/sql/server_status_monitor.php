@@ -1,14 +1,12 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Server status monitor feature
- *
- * @package PhpMyAdmin
+ * Server status monitor feature.
  */
-
-use PhpMyAdmin\Server\Status\Monitor;
-use PhpMyAdmin\Server\Status\Data;
 use PhpMyAdmin\Response;
+use PhpMyAdmin\Server\Status\Data;
+use PhpMyAdmin\Server\Status\Monitor;
 
 require_once 'libraries/common.inc.php';
 require_once 'libraries/server_common.inc.php';
@@ -16,7 +14,7 @@ require_once 'libraries/replication.inc.php';
 
 $response = Response::getInstance();
 
-/**
+/*
  * Ajax request
  */
 if ($response->isAjax()) {
@@ -25,7 +23,7 @@ if ($response->isAjax()) {
 
     // real-time charting data
     if (isset($_POST['chart_data'])) {
-        switch($_POST['type']) {
+        switch ($_POST['type']) {
         case 'chartgrid': // Data for the monitor
             $ret = Monitor::getJsonForChartingData();
             $response->addJSON('message', $ret);
@@ -34,7 +32,6 @@ if ($response->isAjax()) {
     }
 
     if (isset($_POST['log_data'])) {
-
         $start = intval($_POST['time_start']);
         $end = intval($_POST['time_end']);
 
@@ -65,10 +62,10 @@ if ($response->isAjax()) {
 }
 
 /**
- * JS Includes
+ * JS Includes.
  */
-$header   = $response->getHeader();
-$scripts  = $header->getScripts();
+$header = $response->getHeader();
+$scripts = $header->getScripts();
 $scripts->addFile('vendor/jquery/jquery.tablesorter.js');
 $scripts->addFile('vendor/jquery/jquery.sortableTable.js');
 // for charting
@@ -85,13 +82,12 @@ $scripts->addFile('jqplot/plugins/jqplot.byteFormatter.js');
 $scripts->addFile('server_status_monitor.js');
 $scripts->addFile('server_status_sorter.js');
 
-
 /**
- * start output
+ * start output.
  */
 $serverStatusData = new Data();
 
-/**
+/*
  * Output
  */
 $response->addHTML('<div>');

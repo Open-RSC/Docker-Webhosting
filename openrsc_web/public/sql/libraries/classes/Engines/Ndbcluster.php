@@ -1,36 +1,34 @@
 <?php
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * The NDBCLUSTER storage engine
- *
- * @package PhpMyAdmin-Engines
+ * The NDBCLUSTER storage engine.
  */
+
 namespace PhpMyAdmin\Engines;
 
 use PhpMyAdmin\StorageEngine;
 
 /**
- * The NDBCLUSTER storage engine
- *
- * @package PhpMyAdmin-Engines
+ * The NDBCLUSTER storage engine.
  */
 class Ndbcluster extends StorageEngine
 {
     /**
-     * Returns array with variable names related to NDBCLUSTER storage engine
+     * Returns array with variable names related to NDBCLUSTER storage engine.
      *
      * @return array   variable names
      */
     public function getVariables()
     {
-        return array(
-            'ndb_connectstring' => array(),
-        );
+        return [
+            'ndb_connectstring' => [],
+        ];
     }
 
     /**
      * Returns the pattern to be used in the query for SQL variables
-     * related to NDBCLUSTER storage engine
+     * related to NDBCLUSTER storage engine.
      *
      * @return string  SQL query LIKE pattern
      */
@@ -41,7 +39,7 @@ class Ndbcluster extends StorageEngine
 
     /**
      * Returns string with filename for the MySQL help page
-     * about this storage engine
+     * about this storage engine.
      *
      * @return string  mysql helppage filename
      */
@@ -50,4 +48,3 @@ class Ndbcluster extends StorageEngine
         return 'ndbcluster';
     }
 }
-

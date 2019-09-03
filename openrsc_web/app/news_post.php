@@ -14,13 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class news_post extends Model
 {
-	public function news_responses()
-	{
-		return $this->hasMany('App\news_response');
-	}
+    public function news_responses()
+    {
+        return $this->hasMany(\App\news_response::class);
+    }
 
-	public function user()
-	{
-		return $this->belongsTo('App\User');
-	}
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class);
+    }
 }
