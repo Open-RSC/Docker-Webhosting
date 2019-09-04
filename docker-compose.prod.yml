@@ -18,44 +18,8 @@ services:
       - "/opt/Game/server/avatars:/var/www/html/avatars"
 
   php:
-    image: openrsc/php-laravel:latest
-    container_name: php
-    ports:
-      - "127.0.0.1:9000:9000"
-    volumes:
-      - "./inc/php.ini:/usr/local/etc/php/conf.d/php.ini"
-      - "./openrsc_web:/var/www/html/openrsc_web"
-
-  mysqldb:
-    image: mariadb:latest
-    container_name: mysql
-    restart: always
-    env_file:
-      - ".env"
-    command: [
-      '--wait_timeout=360000',
-      '--log-bin=bin.log',
-      '--log-bin-index=bin-log.index',
-      '--max_binlog_size=100M',
-      '--binlog-format=MIXED',
-      '--slow-query-log',
-      '--general_log=1',
-      '--expire_logs_days=10',
-      '--sync_binlog=1'
-    ]
     environment:
-      - MYSQL_DATABASE=mysql
-      - MYSQL_ROOT_USER=${MARIADB_ROOT_USER}
-      - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
-      - MYSQL_ALLOW_EMPTY_PASSWORD=no
-      - MYSQL_USER=${MARIADB_USER}
-      - MYSQL_PASSWORD=${MARIADB_PASS}
-    ports:
-      - "3306:3306"
-    volumes:
-      - "./inc/databases:/var/lib/mysql"
-      - "./inc/innodb.cnf:/etc/mysql/conf.d/innodb.cnf:ro"
-      - "./logs:/var/log/mysql"
+      - XDEBUG=false
 
 networks:
   default:
