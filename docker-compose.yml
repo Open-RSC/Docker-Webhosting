@@ -9,7 +9,7 @@ services:
     volumes:
       - "./inc/default.conf:/etc/nginx/conf.d/default.conf"
       - "./openrsc_web:/var/www/html/openrsc_web"
-      - "./logs:/var/log/nginx"
+      - "./log:/var/log/nginx"
       - "./avatars:/var/www/html/avatars"
 
   php:
@@ -50,4 +50,4 @@ services:
     volumes:
       - "./inc/databases:/var/lib/mysql"
       - "./inc/innodb.cnf:/etc/mysql/conf.d/innodb.cnf:ro"
-      - "./logs:/var/log/mysql"
+      - "./log:/var/log/mysql"

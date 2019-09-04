@@ -18,3 +18,5 @@ sql/tmp
 inc/databases/
 
 logs/
+
+log/
