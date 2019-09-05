@@ -30,7 +30,7 @@
 				<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/openrsc.apk') }}">Android
 					App</a>
 				<a class="dropdown-item text-white-50 bg-dark"
-				   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/archive/master/Single-Player-master.zip">Single
+				   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
 					Player</a>
 				<a class="dropdown-item text-white-50 bg-dark" href="https://gitlab.openrsc.com/open-rsc/Game"
 				   target="_blank">Source Code</a>
