@@ -67,3 +67,6 @@ npm-run-prod:
 
 npm-run-watch:
 	docker exec -i php bash -c "cd /var/www/html/openrsc_web && npm run watch"
+
+create-database-website:
+	docker exec -i mysql mysql -u${MARIADB_ROOT_USER} -p${MARIADB_ROOT_PASSWORD} -e "create database website;"

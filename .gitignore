@@ -17,6 +17,6 @@ sql/tmp
 
 inc/databases/
 
-logs/
-
 log/
+
+openrsc_web/public/sql/tmp/
