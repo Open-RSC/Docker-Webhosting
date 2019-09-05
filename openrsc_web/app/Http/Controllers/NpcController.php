@@ -19,7 +19,7 @@ class NpcController extends Controller
          * @var $npcs
          * fetches the table row of the npc in view and paginates the results
          */
-        $npcs = DB::connection('openrsc')
+        $npcs = DB::connection()
             ->table('openrsc_npcdef')
             ->where('id', '<=', '793')
             ->orderBy('id', 'asc')
@@ -39,7 +39,7 @@ class NpcController extends Controller
          * @var
          * queries the npc and returns a 404 error if not found in database
          */
-        $npcdef = DB::connection('openrsc')
+        $npcdef = DB::connection()
             ->table('openrsc_npcdef')
             ->find($id);
         if (! $npcdef) {
@@ -50,7 +50,7 @@ class NpcController extends Controller
          * @var
          * gathers a list of the npcs and their associated drop tables, then paginates the table
          */
-        $npc_drops = DB::connection('openrsc')
+        $npc_drops = DB::connection()
             ->table('openrsc_npcdrops AS B')
             ->join('openrsc_npcdef AS A', 'A.id', '=', 'B.npcdef_id')
             ->join('openrsc_itemdef AS C', 'B.id', '=', 'C.id')

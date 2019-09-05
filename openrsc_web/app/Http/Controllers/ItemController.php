@@ -19,7 +19,7 @@ class ItemController extends Controller
          * @var $items
          * fetches the table row of the item in view and paginates the results
          */
-        $items = DB::connection('openrsc')
+        $items = DB::connection()
             ->table('openrsc_itemdef')
             ->where('id', '<=', '1289')
             ->orderBy('id', 'asc')
@@ -39,7 +39,7 @@ class ItemController extends Controller
          * @var
          * queries the item and returns a 404 error if not found in database
          */
-        $itemdef = DB::connection('openrsc')
+        $itemdef = DB::connection()
             ->table('openrsc_itemdef')
             ->find($id);
         if (! $itemdef) {
@@ -50,7 +50,7 @@ class ItemController extends Controller
          * @var
          * determines a count for how many of the item the player base has total in their bank
          */
-        $totalPlayerHeld_bank = DB::connection('openrsc')
+        $totalPlayerHeld_bank = DB::connection()
             ->table('openrsc_bank')
             ->select('openrsc_bank.id', 'openrsc_bank.playerID', 'openrsc_bank.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned')
             ->join('openrsc_players', function ($join) use ($id) {
@@ -67,7 +67,7 @@ class ItemController extends Controller
          * @var
          * determines a count for how many of the item the player base has total in their inventory
          */
-        $totalPlayerHeld_invitems = DB::connection('openrsc')
+        $totalPlayerHeld_invitems = DB::connection()
             ->table('openrsc_invitems')
             ->select('openrsc_invitems.id', 'openrsc_invitems.playerID', 'openrsc_invitems.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned')
             ->join('openrsc_players', function ($join) use ($id) {
@@ -90,7 +90,7 @@ class ItemController extends Controller
          * @var
          * determines a count for how many of the item the player base has for those active within the last 3 months in their bank
          */
-        $last3moPlayerHeld_bank = DB::connection('openrsc')
+        $last3moPlayerHeld_bank = DB::connection()
             ->table('openrsc_bank')
             ->select('openrsc_bank.id', 'openrsc_bank.playerID', 'openrsc_bank.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned', 'openrsc_players.login_date')
             ->join('openrsc_players', function ($join) use ($id) {
@@ -110,7 +110,7 @@ class ItemController extends Controller
          * @var
          * determines a count for how many of the item the player base has for those active within the last 3 months in their inventory
          */
-        $last3moPlayerHeld_invitems = DB::connection('openrsc')
+        $last3moPlayerHeld_invitems = DB::connection()
             ->table('openrsc_invitems')
             ->select('openrsc_invitems.id', 'openrsc_invitems.playerID', 'openrsc_invitems.amount', 'openrsc_players.id', 'openrsc_players.group_id', 'openrsc_players.banned', 'openrsc_players.login_date')
             ->join('openrsc_players', function ($join) use ($id) {
@@ -137,7 +137,7 @@ class ItemController extends Controller
          * @var
          * gathers a list of the npcs and their associated drop tables, then paginates the table
          */
-        $item_drops = DB::connection('openrsc')
+        $item_drops = DB::connection()
             ->table('openrsc_npcdrops AS B')
             ->join('openrsc_npcdef AS A', 'A.id', '=', 'B.npcdef_id')
             ->join('openrsc_itemdef AS C', 'B.id', '=', 'C.id')

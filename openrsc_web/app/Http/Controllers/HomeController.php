@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -15,36 +17,66 @@ class HomeController extends Controller
 	 */
 	public function index()
 	{
-		$openrsc_online = DB::connection('openrsc')->table('openrsc_players')->where('online', 1)->count();
-		$openrsc_status = @fsockopen('game.openrsc.com', '43594', $num, $error, 5);
+		$online = DB::connection()->table('openrsc_players')->where('online', 1)->count();
+		$status = @fsockopen('game.openrsc.com', '43594', $num, $error, 5);
 
-		if ($openrsc_status) {
-			$openrsc_status = '<span style="color: lime">Online</span>';
+		if ($status) {
+			$status = '<span style="color: lime">Online</span>';
 		} else {
-			$openrsc_status = '<span style="red">Offline</span>';
+			$status = '<span style="red">Offline</span>';
 		}
 
-		$openrsc_registrations = DB::connection('openrsc')->table('openrsc_players')->where('creation_date', today())->count() ?? '0';
-		$openrsc_logins = DB::connection('openrsc')->table('openrsc_players')->where('login_date', today())->count();
-		$openrsc_totalPlayers = DB::connection('openrsc')->table('openrsc_players')->count();
-		$openrsc_uniquePlayers = DB::connection('openrsc')->table('openrsc_players')->distinct('creation_ip')->count('creation_ip');
+		$registrations = DB::connection()->table('openrsc_players')->where('creation_date', today())->count() ?? '0';
+		$logins = DB::connection()->table('openrsc_players')->where('login_date', today())->count();
+		$totalPlayers = DB::connection()->table('openrsc_players')->count();
+		$uniquePlayers = DB::connection()->table('openrsc_players')->distinct('creation_ip')->count('creation_ip');
 
-		$seconds = DB::connection('openrsc')->table('openrsc_player_cache')->where('key', 'total_played')->sum('value');
+		$seconds = DB::connection()->table('openrsc_player_cache')->where('key', 'total_played')->sum('value');
 		$days = intval(floor($seconds / (24 * 60 * 60)));
 		$hours = intval(floor(($seconds - ($days * 24 * 60 * 60)) / (60 * 60)));
-		$openrsc_totalTime = "{$days}d {$hours}h";
+		$totalTime = "{$days}d {$hours}h";
 
 		return view(
 			'home',
 			[
-				'openrsc_online' => $openrsc_online,
-				'openrsc_status' => $openrsc_status,
-				'openrsc_registrations' => $openrsc_registrations,
-				'openrsc_logins' => $openrsc_logins,
-				'openrsc_totalPlayers' => $openrsc_totalPlayers,
-				'openrsc_uniquePlayers' => $openrsc_uniquePlayers,
-				'openrsc_totalTime' => $openrsc_totalTime,
+				'online' => $online,
+				'status' => $status,
+				'registrations' => $registrations,
+				'logins' => $logins,
+				'totalPlayers' => $totalPlayers,
+				'uniquePlayers' => $uniquePlayers,
+				'totalTime' => $totalTime,
 			]
 		);
+	}
+
+	/**
+	 * Display the live world map.
+	 *
+	 * @return Response
+	 */
+	public function world()
+	{
+		return view('worldmap');
+	}
+
+	/**
+	 * Display the wilderness map.
+	 *
+	 * @return Response
+	 */
+	public function wilderness()
+	{
+		return view('wilderness');
+	}
+
+	/**
+	 * Display the FAQ
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|View
+	 */
+	public function faq()
+	{
+		return view('faq');
 	}
 }

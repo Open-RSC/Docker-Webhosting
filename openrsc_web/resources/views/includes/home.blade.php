@@ -43,62 +43,62 @@
 				<h4 class="text-info">Statistics</h4>
 				<div>
 					Players Online:
-					<a href="openrsc_online">
+					<a href="online">
                     <span class="text-info float-right">
-                        {{ $openrsc_online }}
+                        {{ $online }}
                     </span>
 					</a>
 				</div>
 				<div>
 					Server Status:
 					<span class="float-right">
-                    {!! $openrsc_status !!}
+                    {!! $status !!}
                 </span>
 				</div>
 				<div>
 					Registrations Today:
-					<a href="openrsc_registrationstoday">
+					<a href="registrationstoday">
                         <span class="text-info float-right">
-                            {{ $openrsc_registrations }}
+                            {{ $registrations }}
                         </span>
 					</a>
 				</div>
 				<div>
 					Online Last 48 Hours:
-					<a href="openrsc_logins48">
+					<a href="logins48">
                         <span class="text-info float-right">
-                            {{ $openrsc_logins }}
+                            {{ $logins }}
                         </span>
 					</a>
 				</div>
 				<div>
 					Unique Players:
-					<a href="openrsc_stats">
+					<a href="stats">
                         <span class="text-info float-right">
-                            {{ $openrsc_uniquePlayers }}
+                            {{ $uniquePlayers }}
                         </span>
 					</a>
 				</div>
 				<div>
 					Total Players:
-					<a href="openrsc_stats">
+					<a href="stats">
                         <span class="text-info float-right">
-                            {{ $openrsc_totalPlayers }}
+                            {{ $totalPlayers }}
                         </span>
 					</a>
 				</div>
 				<div>
 					Sum Gold:
-					<a href="openrsc_stats">
+					<a href="stats">
                         <span class="text-info float-right">
                         </span>
 					</a>
 				</div>
 				<div>
 					Cumulative Play:
-					<a href="openrsc_stats">
+					<a href="stats">
                         <span class="text-info float-right">
-                            {{ $openrsc_totalTime }}
+                            {{ $totalTime }}
                         </span>
 					</a>
 				</div>
