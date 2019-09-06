@@ -28,6 +28,9 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+	'game_hostname' => env('GAME_HOSTNAME', 'localhost'),
+	'game_port' => env('GAME_PORT', '43594'),
+
     'log_sql' => env('LOG_SQL'),
 
     /*
