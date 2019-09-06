@@ -28,8 +28,8 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
-	'game_hostname' => env('GAME_HOSTNAME', 'localhost'),
-	'game_port' => env('GAME_PORT', '43594'),
+	'game_hostname' => env('game_hostname', 'localhost'),
+	'game_port' => env('game_port', '43594'),
 
     'log_sql' => env('LOG_SQL'),
 
@@ -72,7 +72,7 @@ return [
     |
     */
 
-    'timezone' => 'America/New_York',
+    'timezone' => env('TIMEZONE', 'America/New_York'),
 
     /*
     |--------------------------------------------------------------------------
