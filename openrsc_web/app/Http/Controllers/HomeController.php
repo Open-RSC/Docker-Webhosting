@@ -18,10 +18,10 @@ class HomeController extends Controller
 	public function index()
 	{
 		$GAME_HOSTNAME = config('app.game_hostname');
-		$GAME_PORT = config('app.game_ip');
+		$GAME_PORT = config('app.game_port');
 
 		$online = DB::connection()->table('openrsc_players')->where('online', 1)->count();
-		$status = @fsockopen($GAME_HOSTNAME, $GAME_PORT, $num, $error, 5);
+		$status = @fsockopen($GAME_HOSTNAME, $GAME_PORT, $num, $error, 1);
 
 		if ($status) {
 			$status = '<span style="color: lime">Online</span>';
