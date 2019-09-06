@@ -23,7 +23,7 @@ class ItemController extends Controller
             ->table('openrsc_itemdef')
             ->where('id', '<=', '1289')
             ->orderBy('id', 'asc')
-            ->paginate(50);
+            ->paginate(150);
 
         return view('items')
             ->with(compact('items'));

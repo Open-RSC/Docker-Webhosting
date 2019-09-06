@@ -23,7 +23,7 @@ class NpcController extends Controller
             ->table('openrsc_npcdef')
             ->where('id', '<=', '793')
             ->orderBy('id', 'asc')
-            ->paginate(50);
+            ->paginate(150);
 
         return view('npcs')
             ->with(compact('npcs'));

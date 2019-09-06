@@ -1,12 +1,11 @@
 <section id="home">
 	<div class="text-info table-dark">
 		<div class="container">
-
-			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
+			<h2 class="h2 text-center pt-5 pb-3 text-capitalize display-3">
 				<a class="text-info text-capitalize" href="{{ route('items') }}">{{ $itemdef->name }}</a>
 			</h2>
 
-			<div class="row">
+			<div class="row align-items-center">
 				<div class="col-md d-inline-block text-center">
 					<img class="display-glow pb-2" style="transform: scale(1.3);"
 						 src="{{ asset('img/items') }}/{{ $itemdef->id }}.png" alt="{{ $itemdef->name }}"/>
@@ -137,11 +136,11 @@
 				</div>
 			</div>
 
-			<label for="inputBox"></label>
-			<input type="text" class="pl-2 pt-1 mb-3" id="inputBox" onkeyup="search()"
-				   placeholder="Search for a NPC"/>
-
-			<a href="{{ route('items') }}">Go Back</a>
+			<div class="d-block text-center pt-4">
+				<label for="inputBox"></label>
+				<input type="text" class="pl-2 pt-1 mb-3 w-25 text-center" id="inputBox" onkeyup="search()"
+					   placeholder="Search for a NPC"/>
+			</div>
 
 			{{ $item_drops->links('pagination::bootstrap-4') }}
 			<table id="itemList" class="container table-striped table-hover table-dark text-primary">

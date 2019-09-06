@@ -1,12 +1,11 @@
 <section id="home">
 	<div class="text-info table-dark">
 		<div class="container">
-
-			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">
+			<h2 class="h2 text-center pt-5 pb-3 text-capitalize display-3">
 				<a class="text-info text-capitalize" href="{{ route('npcs') }}">{{ $npcdef->name }}</a>
 			</h2>
 
-			<div class="row">
+			<div class="row align-items-center">
 				<div class="col-md d-inline-block text-center">
 					<img class="display-glow pb-2" style="transform: scale(1.3);"
 						 src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"/>
@@ -16,38 +15,37 @@
 				<div class="col-md d-inline-block text-center">
 					@if ($npcdef->attack > 0)
 						<div class="d-block">
-							<span class="">Attack:</span>
+							<img class="mb-1" src="{{ asset('img/skill_icons/attack.svg') }}" alt="attack" height="16px"
+								 width="16px"/>
 							<span class=" text-primary">{{ $npcdef->attack }}</span>
+						</div>
+					@endif
+					@if ($npcdef->defense > 0)
+						<div class="d-block">
+							<img class="mb-1" src="{{ asset('img/skill_icons/defense.svg') }}" alt="defense"
+								 height="16px" width="16px"/>
+							<span class=" text-primary">{{ $npcdef->defense }}</span>
 						</div>
 					@endif
 					@if ($npcdef->strength > 0)
 						<div class="d-block">
-							<span class="">Strength:</span>
+							<img class="mb-1" src="{{ asset('img/skill_icons/strength.svg') }}" alt="strength"
+								 height="16px" width="16px"/>
 							<span class=" text-primary">{{ $npcdef->strength }}</span>
 						</div>
 					@endif
 					@if ($npcdef->hits > 0)
 						<div class="d-block">
-							<span class="">Hits:</span>
+							<img class="mb-1" src="{{ asset('img/skill_icons/hits.svg') }}" alt="hits" height="16px"
+								 width="16px"/>
 							<span class=" text-primary">{{ $npcdef->hits }}</span>
-						</div>
-					@endif
-					@if ($npcdef->defense > 0)
-						<div class="d-block">
-							<span class="">Defense:</span>
-							<span class=" text-primary">{{ $npcdef->defense }}</span>
 						</div>
 					@endif
 					@if ($npcdef->ranged > 0)
 						<div class="d-block">
-							<span class="">Ranged:</span>
+							<img class="mb-1" src="{{ asset('img/skill_icons/ranged.svg') }}" alt="ranged" height="16px"
+								 width="16px"/>
 							<span class=" text-primary">{{ $npcdef->ranged }}</span>
-						</div>
-					@endif
-					@if ($npcdef->combatlvl > 0)
-						<div class="d-block">
-							<span class="">Combat:</span>
-							<span class=" text-primary">{{ $npcdef->combatlvl }}</span>
 						</div>
 					@endif
 				</div>
@@ -82,13 +80,11 @@
 				</div>
 			</div>
 
-			<div class="d-block pt-4"></div>
-
-			<label for="inputBox"></label>
-			<input type="text" class="pl-2 pt-1 mb-3" id="inputBox" onkeyup="search()"
-				   placeholder="Search for an item"/>
-
-			<a href="{{ route('npcs') }}">Go Back</a>
+			<div class="d-block text-center pt-4">
+				<label for="inputBox"></label>
+				<input type="text" class="pl-2 pt-1 mb-3 w-25 text-center" id="inputBox" onkeyup="search()"
+					   placeholder="Search for an item"/>
+			</div>
 
 			{{ $npc_drops->links('pagination::bootstrap-4') }}
 			<table id="itemList" class="container table-striped table-hover table-dark text-primary">
