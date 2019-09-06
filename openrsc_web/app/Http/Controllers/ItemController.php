@@ -101,7 +101,7 @@ class ItemController extends Controller
                         ['openrsc_players.banned', '=', '0'],
                         ['openrsc_players.login_date', '>=', Carbon::now()
                             ->subMonth(3)
-                            ->timestamp, ],
+                            ->timestamp,],
                     ]);
             })
             ->sum('amount');
@@ -122,7 +122,7 @@ class ItemController extends Controller
                         ['openrsc_players.banned', '=', '0'],
                         ['openrsc_players.login_date', '>=', Carbon::now()
                             ->subMonth(3)
-                            ->timestamp, ],
+                            ->timestamp,],
                     ]);
             })
             ->sum('amount');

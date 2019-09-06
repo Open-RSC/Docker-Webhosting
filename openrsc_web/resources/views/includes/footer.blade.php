@@ -1,5 +1,5 @@
 <footer class="card-footer text-center pb-1 pt-3">
-	<a href="https://discordapp.com/invite/94vVKND" target="_blank"><i
+	<a href="https://discord.gg/ABdFCqn" target="_blank"><i
 			class="text-info h3 fab fa-discord mr-md-2 clickable-row"></i></a>
 	<a href="https://www.reddit.com/r/openrsc" target="_blank"><i
 			class="text-info h3 fab fa-reddit mr-md-2 clickable-row"></i></a>
