@@ -5,6 +5,24 @@
 	<div
 		class="side-left text-info border-secondary border-right">
 		<h4 class="pl-3 pr-3">Latest Achievements</h4>
+		<div class="text-primary ml-3 mr-3 pt-3" style="font-size: 13px;">
+			@foreach ($activityfeed as $activity)
+				<div class="row clickable-row" data-href="../player/{{ $activity->user }}">
+					<div class="col-sm text-info font-weight-bold">
+						<time class="timeago" datetime="{{ $activity->timestamp }}"></time>
+					</div>
+					<div class="col-9 pr-1 pl-1">
+						@if($activity->group != 10)
+							<img class="mb-1" src="../img/{{ $activity->group }}.svg" width="9" height="9">
+						@endif
+						<img class="pr-2 float-left" src="/img/avatars/{{ $activity->pid }}.png"
+							 width="36" height="48">
+						<span class="font-weight-bold">{{ ucfirst($activity->user) }}</span>
+						{{ $activity->msg }}
+					</div>
+				</div>
+			@endforeach
+		</div>
 	</div>
 
 	<!-- Center column with title text -->
@@ -24,7 +42,8 @@
 				Downloads
 			</div>
 			<div class="dropdown-menu bg-dark" style="padding: 0;">
-				<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/OpenRSC%20Launcher.exe') }}">Windows</a>
+				<a class="dropdown-item text-white-50 bg-dark"
+				   href="{{ asset('downloads/OpenRSC%20Launcher.exe') }}">Windows</a>
 				<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/OpenRSC.jar') }}">Mac /
 					Linux</a>
 				<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/openrsc.apk') }}">Android
