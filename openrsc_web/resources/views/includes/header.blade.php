@@ -6,7 +6,8 @@
 
 	<title>Open RSC</title>
 	<meta name="description" content="Striving for a replica RSC game and more.">
-	<meta name="keywords" content="openrsc,open rsc,rsc,open-rsc,rs classic,rsc cabbage,runescape classic">
+	<meta name="keywords"
+		  content="openrsc,open rsc,rsc,open-rsc,rs classic,rsc cabbage,runescape classic,rsc cabbage,open pk,openpk,authentic runescape classic,vanilla rsc, rs1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -17,15 +18,18 @@
 	<link rel="manifest" href="{{ asset('img/favicons/site.webmanifest') }}">
 	<link rel="mask-icon" href="{{ asset('img/favicons/safari-pinned-tab.svg') }}" color="#5bbad5">
 
-	<!-- Custom fonts for this template -->
-	<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"
-			integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1"
-			crossorigin="anonymous"></script>
+	<!-- JavaScript -->
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/js/all.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+
+	<!-- CSS -->
 	<link
 		href="https://fonts.googleapis.com/css?family=Exo:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 		rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-	<title>Open RSC</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
 </head>
 
 <!-- Fullscreen video background -->

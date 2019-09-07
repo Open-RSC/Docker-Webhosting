@@ -5,9 +5,21 @@
 			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Item Database</h2>
 			<div class="text-center">
 				<label for="inputBox"></label>
-				<input type="text" class="pl-2 pt-1 mb-3 w-25 text-center" id="inputBox" onkeyup="search()" onsubmit="fullsearch()"
+				<input type="text" class="typeahead form-control pl-2 pt-1 mb-3 w-25 text-center" id="inputBox"
+					   onkeyup="search()" onsubmit="searchresults()"
 					   placeholder="Search for an Item"/>
 			</div>
+
+			<script type="text/javascript">
+                var path = "{{ route('itemautocomplete') }}";
+                $('input.typeahead').typeahead({
+                    source: function (query, process) {
+                        return $.get(path, {query: query}, function (data) {
+                            return process(data);
+                        });
+                    }
+                });
+			</script>
 
 			{{ $items->links('pagination::bootstrap-4') }}
 			<table id="itemList" class="container table-striped table-hover table-dark text-primary">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +28,24 @@ class ItemController extends Controller
 
 		return view('items')
 			->with(compact('items'));
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @param Request $request
+	 * @return void
+	 */
+	public function autocomplete(Request $request)
+	{
+		$data = DB::connection()
+			->table('openrsc_itemdef')
+			->where("name", "LIKE", "%{$request->input('query')}%")
+			->where('id', '<=', '1289')
+			->orderBy('id', 'asc')
+			->get();
+
+		return response()->json($data);
 	}
 
 	/**

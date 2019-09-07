@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^6.0",
+        "laravel/scout": "^7.1",
         "laravel/tinker": "^1.0",
         "wildbit/swiftmailer-postmark": "^3.0"
     },
