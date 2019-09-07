@@ -1,28 +1,30 @@
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Exo:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 body {
     font-family: 'Exo', sans-serif;
     background-color: #343a40;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .h2 {
     font-size: 4rem;
 }
 
-section#home {
+section {
+    background: rgba(20, 20, 20, 0.9);
+    flex: 1 0 auto;
 }
 
 .table-wrapper-scroll-y {
@@ -40,9 +42,7 @@ a:hover {
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    flex-shrink: 0;
     width: 100%;
     text-align: center;
 }
@@ -369,7 +369,33 @@ li > a:only-child:after {
         display: block;
         width: 94%;
     }
+}
 
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.picture {
+    width: 450px;
+    height: auto;
+    object-fit: scale-down;
+    filter: drop-shadow(0px 0px 3px #17a2b8) brightness(70%);
+    margin-bottom: 20px;
 }
 
 @media (max-width: 968px) {
@@ -390,6 +416,10 @@ li > a:only-child:after {
     }
 
     .side-right {
+        display: none;
+    }
+
+    .fullscreen-bg__video {
         display: none;
     }
 
@@ -432,6 +462,11 @@ li > a:only-child:after {
     .btn {
         width: 225px;
     }
+}
+
+.timePosted {
+    width: 20%;
+    float: left;
 }
 
 .skill-dropdown {

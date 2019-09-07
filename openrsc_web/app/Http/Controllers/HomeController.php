@@ -64,6 +64,7 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orderBy('time', 'desc')
 			->limit(100)
 			->paginate(5);
 

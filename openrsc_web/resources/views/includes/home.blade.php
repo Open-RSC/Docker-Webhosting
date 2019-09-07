@@ -1,6 +1,7 @@
 <!-- Title Section -->
 <section id="home">
-<div class="row">
+
+	<div class="row">
 
 	<!-- Left column -->
 	<div class="col side-left text-info border-secondary border-right">
@@ -13,13 +14,14 @@
 					</div>
 					<div class="col-9 pr-1 pl-1">
 						@if($activity->group_id != 10)
-							<img class="mb-1" src="/img/{{ $activity->group_id }}.svg" width="9" height="9">
+							<img class="mb-1" src="./img/{{ $activity->group_id }}.svg" width="15" height="15">
 						@endif
-						<img class="pr-2 float-left" src="/img/avatars/{{ $activity->id }}.png"
+						<img class="pr-2 float-left" src="./img/avatars/{{ $activity->id }}.png"
 							 width="36" height="48">
 						<span class="font-weight-bold">{{ ucfirst($activity->username) }}</span>
-						{{ $activity->message }}
+						{!! $activity->message !!}
 					</div>
+					<div class="border-top border-info mt-3"></div>
 				</div>
 			@endforeach
 		</div>

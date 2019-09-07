@@ -171,5 +171,6 @@
 				@endforeach
 				</tbody>
 			</table>
+			{{ $item_drops->links('pagination::bootstrap-4') }}
 		</div>
 	</div>
