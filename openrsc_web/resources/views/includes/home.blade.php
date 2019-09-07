@@ -1,24 +1,24 @@
 <!-- Title Section -->
 <section id="home">
+<div class="row">
 
 	<!-- Left column -->
-	<div
-		class="side-left text-info border-secondary border-right">
+	<div class="col side-left text-info border-secondary border-right">
 		<h4 class="pl-3 pr-3">Latest Achievements</h4>
-		<div class="text-primary ml-3 mr-3 pt-3" style="font-size: 13px;">
+		<div class="text-primary ml-3 mr-3" style="font-size: 13px;">
 			@foreach ($activityfeed as $activity)
-				<div class="row clickable-row" data-href="../player/{{ $activity->user }}">
+				<div class="row clickable-row" data-href="../player/{{ $activity->id }}">
 					<div class="col-sm text-info font-weight-bold">
-						<time class="timeago" datetime="{{ $activity->timestamp }}"></time>
+						<time class="timeago" datetime="{{ $activity->time }}"></time>
 					</div>
 					<div class="col-9 pr-1 pl-1">
-						@if($activity->group != 10)
-							<img class="mb-1" src="../img/{{ $activity->group }}.svg" width="9" height="9">
+						@if($activity->group_id != 10)
+							<img class="mb-1" src="/img/{{ $activity->group_id }}.svg" width="9" height="9">
 						@endif
-						<img class="pr-2 float-left" src="/img/avatars/{{ $activity->pid }}.png"
+						<img class="pr-2 float-left" src="/img/avatars/{{ $activity->id }}.png"
 							 width="36" height="48">
-						<span class="font-weight-bold">{{ ucfirst($activity->user) }}</span>
-						{{ $activity->msg }}
+						<span class="font-weight-bold">{{ ucfirst($activity->username) }}</span>
+						{{ $activity->message }}
 					</div>
 				</div>
 			@endforeach
@@ -26,8 +26,8 @@
 	</div>
 
 	<!-- Center column with title text -->
-	<div class="container text-center">
-		<div class="d-block pt-5">
+	<div class="col container text-center">
+		<div class="d-block pt-4">
 			<img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="logo">
 		</div>
 
@@ -125,4 +125,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </section>

@@ -59,12 +59,13 @@ class HomeController extends Controller
 
 		$activityfeed = DB::connection()
 			->table('openrsc_live_feeds as B')
-			->select('B.id, A.group_id AS group, B.username AS user, B.message AS msg, B.time AS timestamp, A.id AS pid, A.username')
 			->join('openrsc_players AS A', 'A.username', '=', 'B.username')
 			->where([
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
-			]);
+			])
+			->limit(100)
+			->paginate(5);
 
 		//$activityfeed_time = $time->formatLocalized('%Y-%m-%dT%H:%M:%S');
 		//SELECT B.id, A.group_id, B.username, B.message, B.time, A.id AS pid, A.username FROM openrsc_live_feeds as B LEFT JOIN openrsc_players as A on B.username = A.username WHERE B.time >= unix_timestamp( current_date - interval 10 day) AND A.banned = '0' AND A.group_id >= '10' ORDER BY B.time DESC LIMIT 100"
@@ -81,7 +82,7 @@ class HomeController extends Controller
 				'totalTime' => $totalTime,
 				'activityfeed' => $activityfeed,
 			]
-		);
+		)->with(compact('home'));
 	}
 
 	/**

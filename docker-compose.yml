@@ -10,7 +10,7 @@ services:
       - "./inc/default.conf:/etc/nginx/conf.d/default.conf"
       - "./openrsc_web:/var/www/html/openrsc_web"
       - "./log:/var/log/nginx"
-      - "./avatars:/var/www/html/avatars"
+      - "./avatars:/var/www/html/openrsc_web/public/img/avatars"
 
   php:
     image: openrsc/php-laravel:latest
@@ -20,7 +20,7 @@ services:
     volumes:
       - "./inc/php.ini:/usr/local/etc/php/conf.d/php.ini"
       - "./openrsc_web:/var/www/html/openrsc_web"
-    
+
   mysqldb:
     image: mariadb:latest
     container_name: mysql
