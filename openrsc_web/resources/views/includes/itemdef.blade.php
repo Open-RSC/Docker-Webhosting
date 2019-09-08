@@ -1,6 +1,6 @@
 <section id="home">
-	<div class="text-info table-dark">
-		<div class="container">
+	<div class="text-info">
+		<div class="container table-black">
 			<h2 class="h2 text-center pt-5 pb-3 text-capitalize display-3">
 				<a class="text-info text-capitalize" href="{{ route('items') }}">{{ $itemdef->name }}</a>
 			</h2>
@@ -143,7 +143,7 @@
 			</div>
 
 			{{ $item_drops->links('pagination::bootstrap-4') }}
-			<table id="itemList" class="container table-striped table-hover table-dark text-primary">
+			<table id="itemList" class="container table-striped table-hover text-primary">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
 					<th class="w-25 pl-1">Name (ID)</th>

@@ -45,7 +45,7 @@
                     "3",
                     "4",
                 ], videos = videos[Math.floor(Math.random() * videos.length)];
-                videoPlayer.src = "./img/" + videos + ".mp4";
+                videoPlayer.src = "/img/" + videos + ".mp4";
             }
 
             videoPlayer.addEventListener('ended', playIt, false);

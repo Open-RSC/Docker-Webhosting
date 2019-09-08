@@ -115,4 +115,14 @@ class HomeController extends Controller
 	{
 		return view('faq');
 	}
+
+	/**
+	 * Display the chat
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|View
+	 */
+	public function chat()
+	{
+		return view('chat');
+	}
 }

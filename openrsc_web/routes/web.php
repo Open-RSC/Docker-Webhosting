@@ -8,6 +8,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/worldmap', 'HomeController@world')->name('worldmap');
 Route::get('/wilderness', 'HomeController@wilderness')->name('wilderness');
 Route::get('/faq', 'HomeController@faq')->name('faq');
+Route::get('/chat', 'HomeController@chat')->name('chat');
 
 Route::get('/items', 'ItemController@index')->name('items');
 Route::post('/items', 'ItemController@search')->name('search');
