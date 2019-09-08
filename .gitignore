@@ -19,8 +19,8 @@ inc/databases/
 
 log/
 
-openrsc_web/public/sql/tmp/
+sql/tmp/
 
 avatars/
 
-openrsc_web/public/board/cache/production
+board/cache/production

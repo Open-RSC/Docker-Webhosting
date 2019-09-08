@@ -11,6 +11,9 @@ services:
       - "./openrsc_web:/var/www/html/openrsc_web"
       - "./log:/var/log/nginx"
       - "./avatars:/var/www/html/openrsc_web/public/img/avatars"
+      - "./board:/var/www/html/openrsc_web/public/board"
+      - "./sql:/var/www/html/openrsc_web/public/sql"
+      - "./downloads:/var/www/html/openrsc_web/public/downloads"
 
   php:
     image: openrsc/php-laravel:latest
@@ -20,6 +23,9 @@ services:
     volumes:
       - "./inc/php.ini:/usr/local/etc/php/conf.d/php.ini"
       - "./openrsc_web:/var/www/html/openrsc_web"
+      - "./board:/var/www/html/openrsc_web/public/board"
+      - "./sql:/var/www/html/openrsc_web/public/sql"
+      - "./downloads:/var/www/html/openrsc_web/public/downloads"
 
   mysqldb:
     image: mariadb:latest
