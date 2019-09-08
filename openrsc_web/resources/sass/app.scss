@@ -24,11 +24,9 @@ body {
 
 section {
     background: rgba(20, 20, 20, 0.9);
-    display: flex;
-    flex-direction: column;
     flex-grow: 1;
     justify-content: space-around;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .table-wrapper-scroll-y {
@@ -39,7 +37,6 @@ section {
 
 .table-black {
     background: rgba(20, 20, 20, 0.7);
-
 }
 
 .nav-link {
@@ -48,13 +45,6 @@ section {
 
 a:hover {
     text-decoration: none;
-}
-
-.footer {
-    width: 100%;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
 }
 
 #inputBox {
@@ -393,6 +383,7 @@ li > a:only-child:after {
     flex-direction: column;
     flex-grow: 1;
     justify-content: space-around;
+    z-index: -100;
 }
 
 .fullscreen-bg {

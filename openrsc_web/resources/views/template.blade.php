@@ -6,7 +6,6 @@
 <section id="home">
 	@yield('content')
 </section>
-@include('includes.footer')
 @include('includes.footerscripts')
 </body>
 </html>
