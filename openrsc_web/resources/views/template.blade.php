@@ -3,15 +3,9 @@
 @include('includes.header')
 <body>
 @include('includes.navbar')
-
 <section id="home">
-	<div class="panel position-fixed table-wrapper-scroll-y">
-		<div class="text-info table-dark spaced-body full-width">
-			<div class="container border-left border-info border-right table-wrapper-scroll-y">
-				@yield('content')
-			</div>
-		</div>
-
+	@yield('content')
+</section>
 @include('includes.footer')
 @include('includes.footerscripts')
 </body>

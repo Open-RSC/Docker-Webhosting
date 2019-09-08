@@ -1,8 +1,6 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-@include('includes.header')
-<body>
-@include('includes.navbar')
-@include('includes.chat')
-</body>
-</html>
+@extends('template')
+
+@section('content')
+	<div class="text-center">
+	</div>
+@endsection
