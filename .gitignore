@@ -24,3 +24,5 @@ sql/tmp/
 avatars/
 
 board/cache/production
+
+openrsc_web/public/css/app.css

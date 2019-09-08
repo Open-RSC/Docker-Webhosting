@@ -1,10 +1,10 @@
 <section id="home">
-	<div class="text-info table-dark">
+	<div class="text-info">
 		<div class="container">
 			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">FAQ</h2>
 
 			<div class="row justify-content-center">
-				<div class="col-lg-5 text-primary">
+				<div class="col-lg-5 text-primary table-black">
 					<span class="text-info font-weight-bold d-block">What is Open RSC?</span>
 					The project was officially begun in June 2018, though has roots spanning as far back as 2009 with Open RSCD v25. The Open RSC project has been a non-profit, community driven, open source initiative to build as close of a replica RSC game experience as possible, to allow custom features to be enabled with simple configuration file edits, and to keep the memory alive of what is now considered to be an abandonware game, Runescape Classic (2001-2018). For over a decade, many private servers have come and gone and nearly all have had profit from donations, subscriptions, microtransactions, and bribery as their sole interest. Education, open source, and information sharing were spurned in the interest of "leech proofing" code, money grabs, toxic individuals, DDoS attacks, and deception. The Open RSC core team consists of real life professional developers, security consultants, dev ops managers, and more.
 
