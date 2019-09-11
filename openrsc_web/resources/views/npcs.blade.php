@@ -3,12 +3,14 @@
 @section('content')
 	<div class="text-info">
 		<div class="container table-black">
+			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">NPC Database</h2>
+			<div class="text-center">
+				<label for="inputBox"></label>
+				<input type="text" class="pl-2 pt-1 mb-4 w-25 text-center" id="inputBox" onkeyup="search()"
+					   placeholder="Search for a NPC">
+			</div>
 
-			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">NPC Database</h2>
-			<label for="inputBox"></label>
-			<input type="text" class="pl-2 pt-1 mb-3" id="inputBox" onkeyup="search()"
-				   placeholder="Search for a NPC">
-
+			{{ $npcs->links('pagination::bootstrap-4') }}
 			<table id="npcList" class="container table-striped table-hover text-primary">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">

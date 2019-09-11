@@ -3,18 +3,15 @@
 @section('content')
 	<div class="text-info">
 		<div class="container table-black">
-
-			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Item Database</h2>
+			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">Item Database</h2>
 			<div class="text-center">
-				<form method="POST" action="{{ route('search') }}">
-					@csrf
-					<label for="inputBox"></label>
-					<input type="text" class="pl-2 pt-1 mb-3 w-25 text-center" id="inputBox"
-						   placeholder="Search for an Item"/>
-				</form>
+				<label for="inputBox"></label>
+				<input type="text" class="pl-2 pt-1 mb-4 w-25 text-center" id="inputBox" onkeyup="search()"
+					   placeholder="Search for an Item">
 			</div>
 
-			<table id="itemList" class="container table-striped table-hover text-primary">
+			{{ $items->links('pagination::bootstrap-4') }}
+			<table id="itemList" class="container table-striped table-hover table-black text-primary">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
 					<th class="pl-2">Item Name</th>
@@ -112,6 +109,7 @@
 				@endforeach
 				</tbody>
 			</table>
+			{{ $items->links('pagination::bootstrap-4') }}
 		</div>
 	</div>
 @endsection

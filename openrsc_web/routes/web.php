@@ -11,8 +11,6 @@ Route::get('/faq', 'HomeController@faq')->name('faq');
 Route::get('/chat', 'HomeController@chat')->name('chat');
 
 Route::get('/items', 'ItemController@index')->name('items');
-Route::post('/items', 'ItemController@search')->name('search');
-
 Route::get('/itemdef/{id}', 'ItemController@show')->name('itemdef');
 
 Route::get('/npcs', 'NpcController@index')->name('npcs');

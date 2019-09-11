@@ -22,8 +22,9 @@ class ItemController extends Controller
 		 */
 		$items = DB::connection()
 			->table('openrsc_itemdef')
-			->where('id', '=', '-1')
-			->get();
+			->where('bankNoteID', '!=', '-1')
+			->orderBy('id', 'asc')
+			->paginate(300);
 
 		return view('items')
 			->with(compact('items'));
@@ -32,19 +33,19 @@ class ItemController extends Controller
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @param Request $name
+	 * @param Request $request
 	 * @return void
 	 */
-	public function search(Request $name)
+	public function autocomplete(Request $request)
 	{
-		$items = DB::connection()
+		$data = DB::connection()
 			->table('openrsc_itemdef')
-			->where("name","LIKE","%{$name}%")
+			->where("name", "LIKE", "%{$request->input('query')}%")
+			->where('id', '<=', '1289')
 			->orderBy('id', 'asc')
 			->get();
 
-		return view('items')
-			->with(compact('items'));
+		return response()->json($data);
 	}
 
 	/**
