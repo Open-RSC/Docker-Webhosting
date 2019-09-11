@@ -10,7 +10,7 @@
 				@foreach ($activityfeed as $activity)
 					<div class="row clickable-row" data-href="../player/{{ $activity->id }}">
 						<div class="col-sm text-info font-weight-bold">
-							<time class="timeago" datetime="{{ $activity->time }}"></time>
+							<span class="small">{{ Carbon\Carbon::parse($activity->time)->diffForHumans() }}</span>
 						</div>
 						<div class="col-9 pr-1 pl-1">
 							@if($activity->group_id != 10)
