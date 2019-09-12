@@ -37,13 +37,13 @@ class HomeController extends Controller
 				->count() ?? '0';
 
 		$logins = DB::connection()
-			->table('openrsc_players')
-			->where('login_date', today())
-			->count();
+				->table('openrsc_players')
+				->where('login_date', today())
+				->count() ?? '0';
 
 		$totalPlayers = DB::connection()
-			->table('openrsc_players')
-			->count();
+				->table('openrsc_players')
+				->count() ?? '0';
 
 		$uniquePlayers = DB::connection()
 			->table('openrsc_players')
