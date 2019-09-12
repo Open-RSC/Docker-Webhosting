@@ -49,13 +49,14 @@ class HomeController extends Controller
 			->distinct('creation_ip')
 			->count('creation_ip');
 
-		$seconds = DB::connection()
+		$milliseconds = DB::connection()
 			->table('openrsc_player_cache')
 			->where('key', 'total_played')
 			->sum('value');
-		$days = intval(floor($seconds / (24 * 60 * 60)));
-		$hours = intval(floor(($seconds - ($days * 24 * 60 * 60)) / (60 * 60)));
-		$totalTime = "{$days}d {$hours}h";
+		$years = intval(floor($milliseconds / (1000 * 24 * 60 * 60 * 360)));
+		$days = intval(floor($milliseconds / (1000 * 24 * 60 * 60)));
+		$hours = intval(floor(($milliseconds - ($days * 1000 * 24 * 60 * 60)) / (60 * 60)));
+		$totalTime = "{$years}y {$days}d {$hours}h";
 
 		$activityfeed = DB::connection()
 			->table('openrsc_live_feeds as B')
