@@ -35,7 +35,7 @@
 		   muted="muted"
 		   loop="loop">
 		<script>
-            var videoPlayer = document.getElementById('video');
+            let videoPlayer = document.getElementById('video');
 
             function playIt() {
                 videoPlayer.play();
@@ -44,7 +44,8 @@
                     "2",
                     "3",
                     "4",
-                ], videos = videos[Math.floor(Math.random() * videos.length)];
+                ];
+                videos = videos[Math.floor(Math.random() * videos.length)];
                 videoPlayer.src = "/img/" + videos + ".mp4";
             }
 
