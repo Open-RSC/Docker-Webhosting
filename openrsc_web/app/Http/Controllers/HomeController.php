@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -53,10 +54,52 @@ class HomeController extends Controller
 			->table('openrsc_player_cache')
 			->where('key', 'total_played')
 			->sum('value');
-		$years = intval(floor($milliseconds / (1000 * 24 * 60 * 60 * 360)));
-		$days = intval(floor($milliseconds / (1000 * 24 * 60 * 60)));
-		$hours = intval(floor(($milliseconds - ($days * 1000 * 24 * 60 * 60)) / (60 * 60)));
-		$totalTime = "{$years}y {$days}d {$hours}h";
+
+		function secondsToTime($inputSeconds)
+		{
+			$secondsInAMinute = 60;
+			$secondsInAnHour = 60 * $secondsInAMinute;
+			$secondsInADay = 24 * $secondsInAnHour;
+			$secondsInAYear = 365 * $secondsInADay;
+
+			// Extract years
+			$years = floor($inputSeconds / $secondsInAYear);
+
+			// Extract days
+			$daySeconds = $inputSeconds % $secondsInAYear;
+			$days = floor($daySeconds / $secondsInADay);
+
+			// Extract hours
+			$hourSeconds = $inputSeconds % $secondsInADay;
+			$hours = floor($hourSeconds / $secondsInAnHour);
+
+			// Extract minutes
+			$minuteSeconds = $hourSeconds % $secondsInAnHour;
+			$minutes = floor($minuteSeconds / $secondsInAMinute);
+
+			// Extract the remaining seconds
+			$remainingSeconds = $minuteSeconds % $secondsInAMinute;
+			$seconds = ceil($remainingSeconds);
+
+			// Format and return
+			$timeParts = [];
+			$sections = [
+				'year' => (int)$years,
+				'day' => (int)$days,
+				'hour' => (int)$hours,
+			];
+
+			foreach ($sections as $name => $value) {
+				if ($value > 0) {
+					$timeParts[] = $value . ' ' . $name . ($value == 1 ? '' : 's');
+				}
+			}
+
+			return implode(', ', $timeParts);
+		}
+
+		$seconds = round($milliseconds / 1000);
+		$totalTime = secondsToTime($seconds);
 
 		$activityfeed = DB::connection()
 			->table('openrsc_live_feeds as B')
@@ -108,7 +151,7 @@ class HomeController extends Controller
 	/**
 	 * Display the FAQ
 	 *
-	 * @return \Illuminate\Contracts\View\Factory|View
+	 * @return Factory|View
 	 */
 	public function faq()
 	{
@@ -118,7 +161,7 @@ class HomeController extends Controller
 	/**
 	 * Display the chat
 	 *
-	 * @return \Illuminate\Contracts\View\Factory|View
+	 * @return Factory|View
 	 */
 	public function chat()
 	{
