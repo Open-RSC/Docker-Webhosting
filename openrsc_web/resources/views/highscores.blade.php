@@ -15,13 +15,15 @@
 					</div>
 
 					{{ $highscores->links('pagination::bootstrap-4') }}
-					<table id="itemList" class="container-fluid table-striped table-hover text-primary table-transparent">
+					<table id="itemList"
+						   class="container-fluid table-striped table-hover text-primary table-transparent">
 						<thead class="border-bottom border-info thead-dark">
 						<tr class="row text-info">
 							<th class="col text-right pt-1 pb-1">Rank</th>
 							<th class="col text-left pt-1 pb-1">Player</th>
 							<th class="col text-right pt-1 pb-1">Level</th>
 							<th class="col text-left pt-1 pb-1">XP</th>
+							<th class="col text-right pt-1 pb-1">Last Online</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -38,6 +40,13 @@
 								</td>
 								<td class="col text-left pt-1 pb-1">
 									<span>{{ $player->id }}</span>
+								</td>
+								<td class="col text-right pt-1 pb-1">
+									@if($player->login_date != 0)
+										<span>{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}</span>
+									@else
+										<span>Never</span>
+									@endif
 								</td>
 							</tr>
 						@endforeach

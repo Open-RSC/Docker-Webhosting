@@ -22,7 +22,7 @@ class HighscoresController extends Controller
 		$highscores = DB::connection()
 			->table('openrsc_experience as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('b.id', 'b.username as username', 'b.group_id', 'b.banned', 'b.highscoreopt')
+			->select('b.id', 'b.username as username', 'b.group_id', 'b.banned', 'b.highscoreopt', 'b.skill_total', 'b.login_date')
 			->where([
 				['b.banned', '=', '0'],
 				['b.group_id', '=', '10'],
