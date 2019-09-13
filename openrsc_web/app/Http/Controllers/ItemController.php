@@ -38,14 +38,15 @@ class ItemController extends Controller
 	 */
 	public function autocomplete(Request $request)
 	{
-		$data = DB::connection()
+		$items = DB::connection()
 			->table('openrsc_itemdef')
 			->where("name", "LIKE", "%{$request->input('query')}%")
 			->where('id', '<=', '1289')
 			->orderBy('id', 'asc')
 			->get();
 
-		return response()->json($data);
+		return view('items')
+			->with(compact('items'));
 	}
 
 	/**

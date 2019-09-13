@@ -16,4 +16,7 @@ Route::get('/itemdef/{id}', 'ItemController@show')->name('itemdef');
 Route::get('/npcs', 'NpcController@index')->name('npcs');
 Route::get('/npcdef/{id}', 'NpcController@show')->name('npcdef');
 
+Route::get('/highscores', 'HighscoresController@index')->name('highscores');
+Route::get('/highscores/{id}', 'HighscoresController@show')->name('highscorestat');
+
 Auth::routes();
