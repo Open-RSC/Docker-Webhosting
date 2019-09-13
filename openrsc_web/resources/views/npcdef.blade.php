@@ -2,14 +2,14 @@
 
 @section('content')
 	<div class="text-info">
-		<div class="container table-black">
+		<div class="container">
 			<h2 class="h2 text-center pt-5 pb-3 text-capitalize display-3">
-				<a class="text-info text-capitalize" href="{{ route('npcs') }}">{{ $npcdef->name }}</a>
+				<a href="{{ route('npcs') }}">{{ $npcdef->name }}</a>
 			</h2>
 
 			<div class="row align-items-center">
 				<div class="col-md d-inline-block text-center">
-					<img class="display-glow pb-2" style="transform: scale(1.3);"
+					<img class="display-glow pb-3" style="transform: scale(1.3);"
 						 src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"/>
 					<span class="col d-inline-block">{{ $npcdef->description }}</span>
 				</div>
@@ -89,7 +89,7 @@
 			</div>
 
 			{{ $npc_drops->links('pagination::bootstrap-4') }}
-			<table id="itemList" class="container table-striped table-hover text-primary">
+			<table id="itemList" class="container table-striped table-hover text-primary table-transparent">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
 					<th class="w-25 pl-1">Name (ID)</th>

@@ -2,82 +2,69 @@
 
 @section('content')
 	<div class="text-info">
-		<div class="container table-black">
+		<div class="container">
 			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">Highscores</h2>
-			<div class="text-center">
-				<label for="inputBox"></label>
-				<input type="text" class="pl-2 pt-1 mb-4 w-25 text-center" id="inputBox" onkeyup="search()"
-					   placeholder="Search for a player">
-			</div>
 
-			{{ $highscores->links('pagination::bootstrap-4') }}
-			<table id="itemList" class="container table-striped table-hover table-black text-primary">
-				<thead class="border-bottom border-info">
-				<tr class="text-info">
-					<th class="text-center">Username</th>
-					<th class="text-center">Rank</th>
-					<th class="text-center">Level</th>
-					<th class="text-center">Experience</th>
-					<th class="text-center">
-						<img class="mb-1" src="{{ asset('img/skill_icons/attack.svg') }}" alt="attack"
-							 height="16px" width="16px"/>
-					</th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/defense.svg') }}"
-												 alt="defense"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/strength.svg') }}"
-												 alt="strength" height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/hits.svg') }}" alt="hits"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/ranged.svg') }}"
-												 alt="ranged"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/prayer.svg') }}"
-												 alt="prayer"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/magic.svg') }}" alt="magic"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/cooking.svg') }}"
-												 alt="cooking"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/woodcut.svg') }}"
-												 alt="woodcut"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/fletching.svg') }}"
-												 alt="fletching" height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/fishing.svg') }}"
-												 alt="fishing"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/firemaking.svg') }}"
-												 alt="firemaking" height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/crafting.svg') }}"
-												 alt="crafting" height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/smithing.svg') }}"
-												 alt="smithing" height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/mining.svg') }}"
-												 alt="mining"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/herblaw.svg') }}"
-												 alt="herblaw"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/agility.svg') }}"
-												 alt="agility"
-												 height="16px" width="16px"/></th>
-					<th class="text-center"><img class="mb-1" src="{{ asset('img/skill_icons/thieving.svg') }}"
-												 alt="thieving" height="16px" width="16px"/></th>
-				</tr>
-				</thead>
-				<tbody>
-				@foreach ($highscores as $skill)
-					<tr class="clickable-row" data-href="highscoreskill/{{ $skill->id }}">
-						<td class="w-10 text-center pt-1 pb-1">
-							<span>{{ $skill->username }}</span>
-						</td>
-					</tr>
-				@endforeach
-				</tbody>
-			</table>
-			{{ $highscores->links('pagination::bootstrap-4') }}
+			<div class="row">
+
+				<div class="col">
+					<div class="pt-1 mb-3 text-center">
+						<label for="inputBox"></label>
+						<input type="text" class="text-center" id="inputBox" onkeyup="search()"
+							   placeholder="Search for a player">
+					</div>
+
+					{{ $highscores->links('pagination::bootstrap-4') }}
+					<table id="itemList" class="container-fluid table-striped table-hover text-primary table-transparent">
+						<thead class="border-bottom border-info thead-dark">
+						<tr class="row text-info">
+							<th class="col text-right pt-1 pb-1">Rank</th>
+							<th class="col text-left pt-1 pb-1">Player</th>
+							<th class="col text-right pt-1 pb-1">Level</th>
+							<th class="col text-left pt-1 pb-1">XP</th>
+						</tr>
+						</thead>
+						<tbody>
+						@foreach ($highscores as $player)
+							<tr class="row clickable-row" data-href="player/{{ $player->id }}">
+								<td class="col text-right pt-1 pb-1">
+									<span>{{ $player->id }}</span>
+								</td>
+								<td class="col text-left pt-1 pb-1">
+									<span>{{ $player->username }}</span>
+								</td>
+								<td class="col text-right pt-1 pb-1">
+									<span>{{ $player->id }}</span>
+								</td>
+								<td class="col text-left pt-1 pb-1">
+									<span>{{ $player->id }}</span>
+								</td>
+							</tr>
+						@endforeach
+						</tbody>
+					</table>
+					{{ $highscores->links('pagination::bootstrap-4') }}
+				</div>
+
+				<div class="col-sm-auto">
+					<div class="dropdown skill-dropdown text-center">
+						<a class="dropdown-toggle text-secondary" href="#" role="button" id="highscoresDropdown"
+						   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+							Select a skill
+						</a>
+						<div class="dropdown-menu" aria-labelledby="highscoresDropdown"
+							 style="width: 140px; background-color: rgba(19, 36, 47, 0.95);">
+							@foreach ($skill_array as $skill)
+								<a class="dropdown-item text-secondary" href="/highscores/{{ $skill }}">
+									<img src="/img/skill_icons/{{ $skill }}.svg"
+										 alt="{{ $skill }}" height="20px"/>
+									{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
+								</a>
+							@endforeach
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 @endsection

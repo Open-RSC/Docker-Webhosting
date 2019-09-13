@@ -35,6 +35,15 @@ section {
     overflow-y: auto;
 }
 
+.table-hover tbody tr:hover td {
+    color: #3490dc;
+    background-color: rgba(104, 105, 117, 0.1);
+}
+
+.table-transparent {
+    background-color: rgba(19, 36, 47, 0.5);
+}
+
 .table-black {
     background: rgba(20, 20, 20, 0.7);
 }
