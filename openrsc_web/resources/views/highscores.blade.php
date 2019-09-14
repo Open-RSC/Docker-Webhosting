@@ -55,21 +55,16 @@
 							   placeholder="Search for a player">
 					</div>
 
-					<div class="dropdown skill-dropdown text-center">
-						<a class="dropdown-toggle text-secondary" href="#" role="button" id="highscoresDropdown"
-						   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-							Select a skill
-						</a>
-						<div class="dropdown-menu" aria-labelledby="highscoresDropdown"
-							 style="width: 140px; background-color: rgba(19, 36, 47, 0.95);">
-							@foreach ($skill_array as $skill)
-								<a class="dropdown-item text-secondary" href="/highscores/{{ $skill }}">
-									<img src="/img/skill_icons/{{ $skill }}.svg"
-										 alt="{{ $skill }}" height="20px"/>
-									{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
-								</a>
-							@endforeach
-						</div>
+					<div class="float-left"
+						 style="background-color: rgba(19, 36, 47, 0.8); width: 160px; border: 1px solid #17a2b8; padding-left: 10px; padding-top: 3px; padding-bottom: 3px; font-size: 16px;">
+						@foreach ($skill_array as $skill)
+							<a class="text-secondary" style="padding: 0.25rem 1.5rem; white-space: nowrap; display: block;"
+							   href="/highscores/{{ $skill }}">
+								<img src="/img/skill_icons/{{ $skill }}.svg"
+									 alt="{{ $skill }}" height="20px"/>
+								{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
+							</a>
+						@endforeach
 					</div>
 				</div>
 			</div>
