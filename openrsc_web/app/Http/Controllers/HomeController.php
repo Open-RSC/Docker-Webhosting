@@ -149,43 +149,48 @@ class HomeController extends Controller
 		)->with(compact('home'));
 	}
 
-	/**
-	 * Display the live world map.
-	 *
-	 * @return Response
-	 */
 	public function world()
 	{
 		return view('worldmap');
 	}
 
-	/**
-	 * Display the wilderness map.
-	 *
-	 * @return Response
-	 */
 	public function wilderness()
 	{
 		return view('wilderness');
 	}
 
-	/**
-	 * Display the FAQ
-	 *
-	 * @return Factory|View
-	 */
 	public function faq()
 	{
 		return view('faq');
 	}
 
-	/**
-	 * Display the chat
-	 *
-	 * @return Factory|View
-	 */
-	public function chat()
+	public function online()
 	{
-		return view('chat');
+		$players = DB::connection()
+				->table('openrsc_players')
+				->where('online', '=', '1')
+				->get();
+
+		return view(
+			'online',
+			[
+				'players' => $players,
+			]
+		)->with(compact('online'));
+	}
+
+	public function registrationstoday()
+	{
+		return view('registrationstoday');
+	}
+
+	public function logins48()
+	{
+		return view('logins48');
+	}
+
+	public function stats()
+	{
+		return view('stats');
 	}
 }

@@ -64,7 +64,7 @@
 					<h4 class="text-info">Statistics</h4>
 					<div>
 						Players Online:
-						<a href="online">
+						<a href="{{ route('online') }}">
                     <span class="text-info float-right">
                         {{ $online }}
                     </span>
@@ -78,7 +78,7 @@
 					</div>
 					<div>
 						Registrations Today:
-						<a href="registrationstoday">
+						<a href="{{ route('registrationstoday') }}">
                         <span class="text-info float-right">
                             {{ $registrations }}
                         </span>
@@ -86,7 +86,7 @@
 					</div>
 					<div>
 						Online Last 48 Hours:
-						<a href="logins48">
+						<a href="{{ route('logins48') }}">
                         <span class="text-info float-right">
                             {{ $logins }}
                         </span>
@@ -94,7 +94,7 @@
 					</div>
 					<div>
 						Unique Players:
-						<a href="stats">
+						<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
                             {{ $uniquePlayers }}
                         </span>
@@ -102,7 +102,7 @@
 					</div>
 					<div>
 						Total Players:
-						<a href="stats">
+						<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
                             {{ $totalPlayers }}
                         </span>
@@ -110,7 +110,7 @@
 					</div>
 					<div>
 						Sum Gold:
-						<a href="stats">
+						<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
 							{{ number_format($sumgold) }}
 							<img class="mt-n2 ml-n2" src="{{ asset('img/items/10.png') }}"
@@ -120,7 +120,7 @@
 					</div>
 					<div>
 						Cumulative Play:
-						<a href="stats">
+						<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
                             {{ $totalTime }}
                         </span>

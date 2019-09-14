@@ -103,7 +103,7 @@
 					<li><a href="{{ asset('generic_logs') }}">Generic Logs</a></li>
 					<li><a href="{{ asset('shop_logs') }}">Shop Logs</a></li>
 					@if (Config::get('app.authentic') == false)
-						<li><a href="{{ asset('trade') }}">Auction Logs</a></li>
+						<li><a href="{{ asset('auction_logs') }}">Auction Logs</a></li>
 					@endif
 					<li><a href="{{ asset('live_feed_logs') }}">Live Feed Logs</a></li>
 					<li><a href="{{ asset('player_cache_logs') }}">Player Cache Logs</a></li>
