@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use phpbb\install\helper\database;
 
 class HighscoresController extends Controller
 {
@@ -22,7 +25,7 @@ class HighscoresController extends Controller
 		$highscores = DB::connection()
 			->table('openrsc_experience as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('b.id', 'b.username as username', 'b.group_id', 'b.banned', 'b.highscoreopt', 'b.skill_total', 'b.login_date')
+			->select('b.id', 'b.username as username', 'b.group_id', 'b.banned', 'b.highscoreopt', 'b.skill_total', 'b.login_date', 'b.deaths', 'b.kills', 'b.kills2', 'b.iron_man', 'b.hc_ironman_death')
 			->where([
 				['b.banned', '=', '0'],
 				['b.group_id', '=', '10'],
@@ -31,7 +34,12 @@ class HighscoresController extends Controller
 			->orderBy('id', 'desc')
 			->paginate(300);
 
-		$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft');
+		// prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
+		if (Config::get('app.database') == 'openrsc') {
+			$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
+		} else {
+			$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft');
+		}
 
 		function totalXP($skills)
 		{
@@ -43,6 +51,17 @@ class HighscoresController extends Controller
 			}
 			return $skill_total;
 		}
+
+		/*if ($subpage == $skill_array[0]) {
+			$query = array('openrsc_players.' . $subpage . ', openrsc_experience.*', 'openrsc_players.' . $subpage);
+		} else {
+			$query = array('openrsc_experience.exp_' . $subpage, 'exp_' . $subpage);
+		}
+		$args = $query[0];
+		$order = $query[1];
+
+		$xp = number_format(($subpage == $skill_array[0]) ? intval(totalXP($highscores) / 4.0) : intval($highscores['exp_' . $skill_array] / 4.0));
+		*/
 
 		return view('highscores', [
 			'skill_array' => $skill_array,
