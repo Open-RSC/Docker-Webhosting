@@ -31,7 +31,7 @@ return [
 	'game_hostname' => env('game_hostname', 'localhost'),
 	'game_port' => env('game_port', '43594'),
 
-	'database' => env('DB_DATABASE', 'openrsc'),
+	'authentic' => env('AUTHENTIC', 'true'),
 
     'log_sql' => env('LOG_SQL'),
 
