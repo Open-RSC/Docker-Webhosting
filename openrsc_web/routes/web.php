@@ -19,4 +19,6 @@ Route::get('/npcdef/{id}', 'NpcController@show')->name('npcdef');
 Route::get('/highscores', 'HighscoresController@index')->name('highscores');
 Route::get('/highscores/{id}', 'HighscoresController@show')->name('highscorestat');
 
+Route::get('/chat_logs', 'AdminController@chat_logs')->middleware('is_admin')->name('chat_logs');
+
 Auth::routes();

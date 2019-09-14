@@ -82,8 +82,6 @@
 				<li><a href="{{ asset('npcs') }}">NPC Database</a></li>
 			</ul>
 		</li>
-		<li><a href="{{ asset('chat') }}">Recent Chat</a></li>
-		<li><a href="{{ asset('worldmap') }}">Live Map</a></li>
 		<li>
 			<label for="drop-5" class="toggle">Reports ▾</label>
 			<a href="#">Reports</a>
@@ -92,6 +90,28 @@
 				<li><a href="https://gitlab.openrsc.com/open-rsc/Game/issues" target="_blank">Bug Reports</a></li>
 			</ul>
 		</li>
+		<li><a href="{{ asset('worldmap') }}">Live Map</a></li>
+		@if(Auth::user())
+			<li>
+				<label for="drop-5" class="toggle">Staff ▾</label>
+				<a href="#">Staff</a>
+				<input type="checkbox" id="drop-5"/>
+				<ul>
+					<li><a href="{{ asset('chat_logs') }}">Chat Logs</a></li>
+					<li><a href="{{ asset('pm_logs') }}">PM Logs</a></li>
+					<li><a href="{{ asset('trade_logs') }}">Trade Logs</a></li>
+					<li><a href="{{ asset('generic_logs') }}">Generic Logs</a></li>
+					<li><a href="{{ asset('shop_logs') }}">Shop Logs</a></li>
+					@if (Config::get('app.authentic') == false)
+						<li><a href="{{ asset('trade') }}">Auction Logs</a></li>
+					@endif
+					<li><a href="{{ asset('live_feed_logs') }}">Live Feed Logs</a></li>
+					<li><a href="{{ asset('player_cache_logs') }}">Player Cache Logs</a></li>
+					<li><a href="{{ asset('report_logs') }}">Report Logs</a></li>
+					<li><a href="{{ asset('staff_logs') }}">Staff Logs</a></li>
+				</ul>
+			</li>
+		@endif
 	</ul>
 
 	<!-- Right side of Navbar -->

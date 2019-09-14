@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
@@ -24,6 +25,13 @@ class AppServiceProvider extends ServiceProvider
                 }
             });
         }
+
+		Blade::if('admin', function () {
+			if (auth()->user() && auth()->user()->isAdmin()) {
+				return 1;
+			}
+			return 0;
+		});
     }
 
     /**
