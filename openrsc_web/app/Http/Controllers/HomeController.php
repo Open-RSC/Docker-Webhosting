@@ -28,7 +28,7 @@ class HomeController extends Controller
 		if ($status) {
 			$status = '<span style="color: lime">Online</span>';
 		} else {
-			$status = '<span style="red">Offline</span>';
+			$status = '<span style="color: red">Offline</span>';
 		}
 
 		$registrations = DB::connection()
