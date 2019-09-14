@@ -11,6 +11,47 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
+	public function secondsToTime($inputSeconds)
+	{
+		$secondsInAMinute = 60;
+		$secondsInAnHour = 60 * $secondsInAMinute;
+		$secondsInADay = 24 * $secondsInAnHour;
+		$secondsInAYear = 365 * $secondsInADay;
+
+		// Extract years
+		$years = floor($inputSeconds / $secondsInAYear);
+
+		// Extract days
+		$daySeconds = $inputSeconds % $secondsInAYear;
+		$days = floor($daySeconds / $secondsInADay);
+
+		// Extract hours
+		$hourSeconds = $inputSeconds % $secondsInADay;
+		$hours = floor($hourSeconds / $secondsInAnHour);
+
+		// Extract minutes
+		$minuteSeconds = $hourSeconds % $secondsInAnHour;
+		$minutes = floor($minuteSeconds / $secondsInAMinute);
+
+		// Extract the remaining seconds
+		$remainingSeconds = $minuteSeconds % $secondsInAMinute;
+		$seconds = ceil($remainingSeconds);
+
+		// Format and return
+		$timeParts = [];
+		$sections = [
+			'year' => (int)$years,
+			'day' => (int)$days,
+			'hour' => (int)$hours,
+		];
+		foreach ($sections as $name => $value) {
+			if ($value > 0) {
+				$timeParts[] = $value . ' ' . $name . ($value == 1 ? '' : 's');
+			}
+		}
+		return implode(', ', $timeParts);
+	}
+
 	/**
 	 * Show the application dashboard.
 	 *
@@ -55,49 +96,8 @@ class HomeController extends Controller
 			->where('key', 'total_played')
 			->sum('value');
 
-		function secondsToTime($inputSeconds)
-		{
-			$secondsInAMinute = 60;
-			$secondsInAnHour = 60 * $secondsInAMinute;
-			$secondsInADay = 24 * $secondsInAnHour;
-			$secondsInAYear = 365 * $secondsInADay;
-
-			// Extract years
-			$years = floor($inputSeconds / $secondsInAYear);
-
-			// Extract days
-			$daySeconds = $inputSeconds % $secondsInAYear;
-			$days = floor($daySeconds / $secondsInADay);
-
-			// Extract hours
-			$hourSeconds = $inputSeconds % $secondsInADay;
-			$hours = floor($hourSeconds / $secondsInAnHour);
-
-			// Extract minutes
-			$minuteSeconds = $hourSeconds % $secondsInAnHour;
-			$minutes = floor($minuteSeconds / $secondsInAMinute);
-
-			// Extract the remaining seconds
-			$remainingSeconds = $minuteSeconds % $secondsInAMinute;
-			$seconds = ceil($remainingSeconds);
-
-			// Format and return
-			$timeParts = [];
-			$sections = [
-				'year' => (int)$years,
-				'day' => (int)$days,
-				'hour' => (int)$hours,
-			];
-			foreach ($sections as $name => $value) {
-				if ($value > 0) {
-					$timeParts[] = $value . ' ' . $name . ($value == 1 ? '' : 's');
-				}
-			}
-			return implode(', ', $timeParts);
-		}
-
 		$seconds = round($milliseconds / 1000);
-		$totalTime = secondsToTime($seconds);
+		$totalTime = HomeController::secondsToTime($seconds);
 
 		$activityfeed = DB::connection()
 			->table('openrsc_live_feeds as B')
@@ -167,9 +167,13 @@ class HomeController extends Controller
 	public function online()
 	{
 		$players = DB::connection()
-				->table('openrsc_players')
-				->where('online', '=', '1')
-				->get();
+			->table('openrsc_players as B')
+			->join('openrsc_player_cache AS A', 'A.playerID', '=', 'B.id')
+			->where([
+				['B.online', '=', '1'],
+				['A.key', '=', 'total_played']
+			])
+			->get();
 
 		return view(
 			'online',

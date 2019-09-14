@@ -3,7 +3,7 @@
 @section('content')
 	<div class="text-info">
 		<div class="container">
-			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">Players Online</h2>
+			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">Players Registered Today</h2>
 
 			<table id="npcList" class="container table-striped table-hover text-primary table-transparent">
 				<thead class="border-bottom border-info">
