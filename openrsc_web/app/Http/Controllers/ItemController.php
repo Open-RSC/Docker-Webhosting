@@ -26,7 +26,7 @@ class ItemController extends Controller
 				->table('openrsc_itemdef')
 				->where([
 					['bankNoteID', '!=', '-1'],
-					['id', '<=', '1289'], // limits to show only authentic items
+					['id', '<=', '2091'], // limits to show only authentic items
 				])
 				->orderBy('id', 'asc')
 				->paginate(300);
@@ -50,12 +50,20 @@ class ItemController extends Controller
 	 */
 	public function autocomplete(Request $request)
 	{
-		$items = DB::connection()
-			->table('openrsc_itemdef')
-			->where("name", "LIKE", "%{$request->input('query')}%")
-			->where('id', '<=', '1289')
-			->orderBy('id', 'asc')
-			->get();
+		if (Config::get('app.authentic') == true) {
+			$items = DB::connection()
+				->table('openrsc_itemdef')
+				->where("name", "LIKE", "%{$request->input('query')}%")
+				->where('id', '<=', '2091') // limits to show only authentic items
+				->orderBy('id', 'asc')
+				->get();
+		} else {
+			$items = DB::connection()
+				->table('openrsc_itemdef')
+				->where("name", "LIKE", "%{$request->input('query')}%")
+				->orderBy('id', 'asc')
+				->get();
+		}
 
 		return view('items')
 			->with(compact('items'));
@@ -71,12 +79,23 @@ class ItemController extends Controller
 		 * @var
 		 * queries the item and returns a 404 error if not found in database
 		 */
-		$itemdef = DB::connection()
-			->table('openrsc_itemdef')
-			->find($id);
-		if (!$itemdef) {
-			abort(404);
+		if (Config::get('app.authentic') == true) {
+			$itemdef = DB::connection()
+				->table('openrsc_itemdef')
+				->where('id', '<=', '2091') // limits to show only authentic items
+				->find($id);
+			if (!$itemdef) {
+				abort(404);
+			}
+		} else {
+			$itemdef = DB::connection()
+				->table('openrsc_itemdef')
+				->find($id);
+			if (!$itemdef) {
+				abort(404);
+			}
 		}
+
 
 		/**
 		 * @var
