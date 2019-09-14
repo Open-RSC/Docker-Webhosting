@@ -96,8 +96,7 @@ class HomeController extends Controller
 			->where('key', 'total_played')
 			->sum('value');
 
-		$seconds = round($milliseconds / 1000);
-		$totalTime = HomeController::secondsToTime($seconds);
+		$totalTime = HomeController::secondsToTime(round($milliseconds/1000));
 
 		$activityfeed = DB::connection()
 			->table('openrsc_live_feeds as B')
