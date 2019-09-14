@@ -8,21 +8,14 @@
 			<div class="row">
 
 				<div class="col">
-					<div class="pt-1 mb-3 text-center">
-						<label for="inputBox"></label>
-						<input type="text" class="text-center" id="inputBox" onkeyup="search()"
-							   placeholder="Search for a player">
-					</div>
-
-					{{ $highscores->links('pagination::bootstrap-4') }}
 					<table id="itemList"
 						   class="container-fluid table-striped table-hover text-primary table-transparent">
 						<thead class="border-bottom border-info thead-dark">
 						<tr class="row text-info">
 							<th class="col text-right pt-1 pb-1">Rank</th>
 							<th class="col text-left pt-1 pb-1">Player</th>
-							<th class="col text-right pt-1 pb-1">Level</th>
-							<th class="col text-left pt-1 pb-1">XP</th>
+							<th class="col text-right pt-1 pb-1">Total Level</th>
+							<th class="col text-left pt-1 pb-1">Total XP</th>
 							<th class="col text-right pt-1 pb-1">Last Online</th>
 						</tr>
 						</thead>
@@ -56,6 +49,12 @@
 				</div>
 
 				<div class="col-sm-auto">
+					<div class="pt-1 mb-3 text-center">
+						<label for="inputBox"></label>
+						<input type="text" class="text-center" id="inputBox" onkeyup="search()"
+							   placeholder="Search for a player">
+					</div>
+
 					<div class="dropdown skill-dropdown text-center">
 						<a class="dropdown-toggle text-secondary" href="#" role="button" id="highscoresDropdown"
 						   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
