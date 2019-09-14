@@ -88,13 +88,11 @@ class HomeController extends Controller
 				'day' => (int)$days,
 				'hour' => (int)$hours,
 			];
-
 			foreach ($sections as $name => $value) {
 				if ($value > 0) {
 					$timeParts[] = $value . ' ' . $name . ($value == 1 ? '' : 's');
 				}
 			}
-
 			return implode(', ', $timeParts);
 		}
 
@@ -113,6 +111,28 @@ class HomeController extends Controller
 			->limit(20)
 			->get();
 
+		$sumgoldbank = DB::connection()
+			->table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '10'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$sumgoldinvitems = DB::connection()
+			->table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '10'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$sumgold = $sumgoldbank + $sumgoldinvitems;
+
 		return view(
 			'home',
 			[
@@ -124,6 +144,7 @@ class HomeController extends Controller
 				'uniquePlayers' => $uniquePlayers,
 				'totalTime' => $totalTime,
 				'activityfeed' => $activityfeed,
+				'sumgold' => $sumgold,
 			]
 		)->with(compact('home'));
 	}

@@ -112,6 +112,9 @@
 						Sum Gold:
 						<a href="stats">
                         <span class="text-info float-right">
+							{{ number_format($sumgold) }}
+							<img class="mt-n2 ml-n2" src="{{ asset('img/items/10.png') }}"
+								 alt="coins" height="24px" width="32px"/>
                         </span>
 						</a>
 					</div>
