@@ -40,9 +40,11 @@ class HomeController extends Controller
 		// Format and return
 		$timeParts = [];
 		$sections = [
-			'year' => (int)$years,
+			'yr' => (int)$years,
 			'day' => (int)$days,
-			'hour' => (int)$hours,
+			'hr' => (int)$hours,
+			'min' => (int)$minutes,
+			'sec' => (int)$seconds,
 		];
 		foreach ($sections as $name => $value) {
 			if ($value > 0) {
@@ -96,7 +98,7 @@ class HomeController extends Controller
 			->where('key', 'total_played')
 			->sum('value');
 
-		$totalTime = HomeController::secondsToTime(round($milliseconds/1000));
+		$totalTime = HomeController::secondsToTime(round($milliseconds / 1000));
 
 		$activityfeed = DB::connection()
 			->table('openrsc_live_feeds as B')
