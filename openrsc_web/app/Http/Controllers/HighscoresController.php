@@ -35,7 +35,7 @@ class HighscoresController extends Controller
 			->paginate(300);
 
 		// prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
-		if (Config::get('app.authentic') == 'true') {
+		if (Config::get('app.authentic') == true) {
 			$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
 		} else {
 			$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -20,11 +21,22 @@ class ItemController extends Controller
 		 * @var $items
 		 * fetches the table row of the item in view and paginates the results
 		 */
-		$items = DB::connection()
-			->table('openrsc_itemdef')
-			->where('bankNoteID', '!=', '-1')
-			->orderBy('id', 'asc')
-			->paginate(300);
+		if (Config::get('app.authentic') == true) {
+			$items = DB::connection()
+				->table('openrsc_itemdef')
+				->where([
+					['bankNoteID', '!=', '-1'],
+					['id', '<=', '1289'], // limits to show only authentic items
+				])
+				->orderBy('id', 'asc')
+				->paginate(300);
+		} else {
+			$items = DB::connection()
+				->table('openrsc_itemdef')
+				->where('bankNoteID', '!=', '-1')
+				->orderBy('id', 'asc')
+				->paginate(300);
+		}
 
 		return view('items')
 			->with(compact('items'));
