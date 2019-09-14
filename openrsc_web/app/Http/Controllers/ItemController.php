@@ -96,7 +96,6 @@ class ItemController extends Controller
 			}
 		}
 
-
 		/**
 		 * @var
 		 * determines a count for how many of the item the player base has total in their bank
@@ -188,14 +187,30 @@ class ItemController extends Controller
 		 * @var
 		 * gathers a list of the npcs and their associated drop tables, then paginates the table
 		 */
-		$item_drops = DB::connection()
-			->table('openrsc_npcdrops AS B')
-			->join('openrsc_npcdef AS A', 'A.id', '=', 'B.npcdef_id')
-			->join('openrsc_itemdef AS C', 'B.id', '=', 'C.id')
-			->select('A.id', 'A.name AS npcName', 'B.npcdef_id AS npcID', 'B.amount AS dropAmount', 'B.id AS dropID', 'B.weight AS dropWeight', 'C.id AS itemID', 'C.name AS itemName')
-			->where('B.id', '=', $id)
-			->limit('793')
-			->paginate(50);
+		if (Config::get('app.authentic') == true) {
+			$item_drops = DB::connection()
+				->table('openrsc_npcdrops AS B')
+				->join('openrsc_npcdef AS A', 'A.id', '=', 'B.npcdef_id')
+				->join('openrsc_itemdef AS C', 'B.id', '=', 'C.id')
+				->select('A.id', 'A.name AS npcName', 'B.npcdef_id AS npcID', 'B.amount AS dropAmount', 'B.id AS dropID', 'B.weight AS dropWeight', 'C.id AS itemID', 'C.name AS itemName')
+				->where([
+					['B.id', '=', $id],
+					['B.npcdef_id', '<=', '793'],
+					['C.id', '<=', '2091'],
+				])
+				->limit('793')
+				->orderBy('id', 'asc')
+				->paginate(50);
+		} else {
+			$item_drops = DB::connection()
+				->table('openrsc_npcdrops AS B')
+				->join('openrsc_npcdef AS A', 'A.id', '=', 'B.npcdef_id')
+				->join('openrsc_itemdef AS C', 'B.id', '=', 'C.id')
+				->select('A.id', 'A.name AS npcName', 'B.npcdef_id AS npcID', 'B.amount AS dropAmount', 'B.id AS dropID', 'B.weight AS dropWeight', 'C.id AS itemID', 'C.name AS itemName')
+				->where('B.id', '=', $id)
+				->orderBy('id', 'asc')
+				->paginate(50);
+		}
 
 		return view('itemdef', [
 			'totalPlayerHeld' => $totalPlayerHeld,
