@@ -7,6 +7,12 @@ use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
 {
+	/**
+	 * @function secondsToTime()
+	 * @param $inputSeconds
+	 * @return int
+	 * Used to calculate the total input of seconds into years, days, hours, minutes, and seconds
+	 */
 	public function secondsToTime($inputSeconds)
 	{
 		$secondsInAMinute = 60;
@@ -51,9 +57,9 @@ class HomeController extends Controller
 	}
 
 	/**
-	 * Show the application dashboard.
-	 *
+	 * @function index()
 	 * @return Renderable
+	 * Shows the main home page and associated database queries
 	 */
 	public function index()
 	{
