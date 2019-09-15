@@ -141,7 +141,7 @@
 			<div class="d-block text-center pt-4">
 				<label for="inputBox"></label>
 				<input type="text" class="pl-2 pt-1 mb-3 w-25 text-center" id="inputBox" onkeyup="search()"
-					   placeholder="Search for a NPC"/>
+					   placeholder="Search this page"/>
 			</div>
 
 			{{ $item_drops->links('pagination::bootstrap-4') }}

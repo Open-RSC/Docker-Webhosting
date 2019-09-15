@@ -139,7 +139,7 @@
 					<div class="text-center">
 						<label for="inputBox"></label>
 						<input type="text" class="text-center" id="inputBox" onkeyup="search()"
-							   placeholder="Search for a player" style="height: 33px;">
+							   placeholder="Search this page" style="height: 33px;">
 					</div>
 				</div>
 			</div>

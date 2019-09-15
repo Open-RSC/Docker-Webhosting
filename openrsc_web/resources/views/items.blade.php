@@ -7,7 +7,7 @@
 			<div class="text-center">
 				<label for="inputBox"></label>
 				<input type="text" class="pl-2 pt-1 mb-4 w-25 text-center" id="inputBox" onkeyup="search()"
-					   placeholder="Search for an Item">
+					   placeholder="Search this page">
 			</div>
 
 			{{ $items->links('pagination::bootstrap-4') }}
