@@ -70,52 +70,7 @@
 								</td>
 								<td class="col text-left pt-1 pb-1">
 									<span>
-										@if (Config::get('app.authentic') == true)
-											{{number_format((
-											$player->exp_attack +
-											$player->exp_defense +
-											$player->exp_strength +
-											$player->exp_hits +
-											$player->exp_ranged +
-											$player->exp_prayer +
-											$player->exp_magic +
-											$player->exp_cooking +
-											$player->exp_woodcut +
-											$player->exp_fletching +
-											$player->exp_fishing +
-											$player->exp_firemaking +
-											$player->exp_crafting +
-											$player->exp_smithing +
-											$player->exp_mining +
-											$player->exp_herblaw +
-											$player->exp_agility +
-											$player->exp_thieving
-											)/4.0)
-									 	}}
-										@else
-											{{number_format((
-											$player->exp_attack +
-											$player->exp_defense +
-											$player->exp_strength +
-											$player->exp_hits +
-											$player->exp_ranged +
-											$player->exp_prayer +
-											$player->exp_magic +
-											$player->exp_cooking +
-											$player->exp_woodcut +
-											$player->exp_fletching +
-											$player->exp_fishing +
-											$player->exp_firemaking +
-											$player->exp_crafting +
-											$player->exp_smithing +
-											$player->exp_mining +
-											$player->exp_herblaw +
-											$player->exp_agility +
-											$player->exp_thieving +
-											$player->exp_runecraft
-											)/4.0)
-									 	}}
-										@endif
+										{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
 									</span>
 								</td>
 								<td class="col text-right pt-1 pb-1">

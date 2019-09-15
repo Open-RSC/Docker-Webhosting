@@ -36,12 +36,36 @@ class HighscoresController extends Controller
 		$highscores = DB::connection()
 			->table('openrsc_experience as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->select('*', DB::raw('
+			(SUM(a.exp_attack +
+			a.exp_defense + 
+			a.exp_strength +
+			a.exp_defense +
+			a.exp_hits +
+			a.exp_ranged) +
+			a.exp_prayer +
+			a.exp_magic +
+			a.exp_cooking +
+			a.exp_woodcut +
+			a.exp_fletching +
+			a.exp_fishing +
+			a.exp_firemaking +
+			a.exp_crafting +
+			a.exp_smithing +
+			a.exp_mining +
+			a.exp_herblaw +
+			a.exp_agility +
+			a.exp_thieving
+			/4.0)
+			as total_xp'))
 			->where([
 				['b.banned', '=', '0'],
 				['b.group_id', '=', '10'],
 				['b.highscoreopt', '=', '0'],
 			])
-			->orderBy('skill_total', 'desc')
+			->groupBy('b.username')
+			->orderBy('b.skill_total', 'desc')
+			->orderBy('total_xp', 'desc')
 			->paginate(300);
 
 		// prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
