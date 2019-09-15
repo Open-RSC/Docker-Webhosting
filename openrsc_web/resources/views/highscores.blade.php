@@ -15,12 +15,14 @@
 
 					<div class="float-right">
 						<nav>
-							<ul class="menu">
+							<ul class="menu skill-dropdown">
 								<li>
 									<label for="drop-skills" class="toggle">Skills ▾</label>
-									<a href="#">Skills</a>
+									<a href="#" style="padding-top: 0; padding-bottom: 0;">
+										Skills
+									</a>
 									<input type="checkbox" id="drop-skills"/>
-									<ul>
+									<ul style="margin-top: -15px; margin-left: -6px;">
 										<li>
 											@foreach ($skill_array as $skill)
 												<a class="dropdown-item text-secondary"
@@ -79,10 +81,10 @@
 
 				<!-- right column -->
 				<div class="col">
-					<div class="pt-1 mb-3 text-center">
+					<div class="text-center">
 						<label for="inputBox"></label>
 						<input type="text" class="text-center" id="inputBox" onkeyup="search()"
-							   placeholder="Search for a player">
+							   placeholder="Search for a player" style="height: 33px;">
 					</div>
 				</div>
 			</div>
