@@ -36,13 +36,12 @@ class HighscoresController extends Controller
 		$highscores = DB::connection()
 			->table('openrsc_experience as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('b.id', 'b.username as username', 'b.group_id', 'b.banned', 'b.highscoreopt', 'b.skill_total', 'b.login_date', 'b.deaths', 'b.kills', 'b.kills2', 'b.iron_man', 'b.hc_ironman_death')
 			->where([
 				['b.banned', '=', '0'],
 				['b.group_id', '=', '10'],
-				['b.highscoreopt', '=', '0']
+				['b.highscoreopt', '=', '0'],
 			])
-			->orderBy('id', 'desc')
+			->orderBy('skill_total', 'desc')
 			->paginate(300);
 
 		// prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
