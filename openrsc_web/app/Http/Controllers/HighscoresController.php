@@ -12,6 +12,17 @@ use phpbb\install\helper\database;
 
 class HighscoresController extends Controller
 {
+	public function totalXP($skills)
+	{
+		$skill_total = 0;
+		foreach ($skills as $key => $value) {
+			if (substr($key, 0, 4) == "exp_") {
+				$skill_total += $value;
+			}
+		}
+		return $skill_total;
+	}
+
 	/**
 	 * @return Factory|View
 	 */
@@ -39,17 +50,6 @@ class HighscoresController extends Controller
 			$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving');
 		} else {
 			$skill_array = array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft');
-		}
-
-		function totalXP($skills)
-		{
-			$skill_total = 0;
-			foreach ($skills as $key => $value) {
-				if (substr($key, 0, 4) == "exp_") {
-					$skill_total += $value;
-				}
-			}
-			return $skill_total;
 		}
 
 		/*if ($subpage == $skill_array[0]) {
