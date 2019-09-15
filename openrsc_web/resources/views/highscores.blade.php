@@ -11,7 +11,7 @@
 
 				<!-- center column -->
 				<div class="col-auto" style="width: 600px;">
-					<div class="float-left h3">Overall</div>
+					<div class="float-left h3">Overall Total</div>
 
 					<div class="float-right">
 						<nav>

@@ -25,6 +25,7 @@ Route::get('/npcdef/{id}', 'NpcController@show')->name('npcdef');
 
 // Highscores
 Route::get('/highscores', 'HighscoresController@index')->name('highscores');
+Route::get('/highscores/skill_total', 'HighscoresController@index')->name('highscores');
 Route::get('/highscores/{subpage}', 'HighscoresController@show')->name('highscorestat');
 
 // Afman staff zone
