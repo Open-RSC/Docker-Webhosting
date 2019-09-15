@@ -54,13 +54,19 @@
 						@foreach ($highscores as $key=>$player)
 							<tr class="row clickable-row" data-href="player/{{ $player->id }}">
 								<td class="col text-right pt-1 pb-1">
-									<span>{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}</span>
+									<span>
+										{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
+									</span>
 								</td>
 								<td class="col text-left pt-1 pb-1">
-									<span>{{ $player->username }}</span>
+									<span>
+										{{ ucfirst($player->username) }}
+									</span>
 								</td>
 								<td class="col text-right pt-1 pb-1">
-									<span>{{ $player->skill_total }}</span>
+									<span>
+										{{ number_format($player->skill_total) }}
+									</span>
 								</td>
 								<td class="col text-left pt-1 pb-1">
 									<span>
@@ -114,7 +120,9 @@
 								</td>
 								<td class="col text-right pt-1 pb-1">
 									@if($player->login_date != 0)
-										<span>{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}</span>
+										<span>
+											{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
+										</span>
 									@else
 										<span>Never</span>
 									@endif
