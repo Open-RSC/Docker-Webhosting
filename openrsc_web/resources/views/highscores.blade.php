@@ -27,7 +27,7 @@
 											@foreach ($skill_array as $skill)
 												<a class="dropdown-item text-secondary"
 												   href="/highscores/{{ $skill }}">
-													<img src="/img/skill_icons/{{ $skill }}.svg"
+													<img src="{{ asset('img/skill_icons') }}/{{ $skill }}.svg"
 														 alt="{{ $skill }}" height="20px"/>
 													{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
 												</a>

@@ -47,7 +47,7 @@ class PlayerController extends Controller
 			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot'))
 			->where([
 				['b.banned', '=', '0'],
-				['a.playerID', '=', $subpage]
+				['b.username', '=', $subpage]
 			])
 			->orderBy('a.slot', 'asc')
 			->get();
