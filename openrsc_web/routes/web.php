@@ -11,6 +11,7 @@ Route::get('/worldmap', 'HomeController@world')->name('worldmap');
 Route::get('/wilderness', 'HomeController@wilderness')->name('wilderness');
 Route::get('/faq', 'HomeController@faq')->name('faq');
 Route::get('/rules', 'HomeController@rules')->name('rules');
+Route::get('/player/bank/{subpage}', 'PlayerController@bank')->name('bank');
 Route::get('/online', 'HomeController@online')->name('online');
 Route::get('/registrationstoday', 'HomeController@registrationstoday')->name('registrationstoday');
 Route::get('/logins48', 'HomeController@logins48')->name('logins48');

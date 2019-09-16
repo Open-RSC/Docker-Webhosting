@@ -66,7 +66,7 @@
 			<ul>
 				<li><a href="{{ asset('faq') }}">FAQ</a></li>
 				<li><a href="{{ asset('rules') }}">Rules</a></li>
-				<li><a href="{{ asset('shar') }}">Shar's Bank</a></li>
+				<li><a href="{{ asset('/player/bank/shar') }}">Shar's Bank</a></li>
 				<li><a href="{{ asset('stats') }}">Game Statistics</a></li>
 			</ul>
 		</li>
