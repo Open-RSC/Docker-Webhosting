@@ -44,14 +44,17 @@ class PlayerController extends Controller
 		$banks = DB::connection()
 			->table('openrsc_bank as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot'))
 			->where([
 				['b.banned', '=', '0'],
+				['a.playerID', '=', $subpage]
 			])
-			->orderBy('a.id', 'desc')
+			->orderBy('a.slot', 'asc')
 			->get();
 
 		return view('bank', [
 			'subpage' => $subpage,
+			'banks' => $banks,
 		])
 			->with(compact('$banks'));
 	}
