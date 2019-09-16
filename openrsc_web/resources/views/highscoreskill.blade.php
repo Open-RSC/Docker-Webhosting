@@ -46,8 +46,8 @@
 							<th class="col text-right pt-1 pb-1">Rank</th>
 							<th class="col text-left pt-1 pb-1">Player</th>
 							<th class="col text-right pt-1 pb-1">Last Login</th>
-							<th class="col text-right pt-1 pb-1">Total Level</th>
-							<th class="col text-left pt-1 pb-1">Total XP</th>
+							<th class="col text-right pt-1 pb-1">Level</th>
+							<th class="col text-left pt-1 pb-1">XP</th>
 						</tr>
 						</thead>
 						<tbody>
