@@ -167,6 +167,11 @@ class HomeController extends Controller
 		return view('faq');
 	}
 
+	public function rules()
+	{
+		return view('rules');
+	}
+
 	public function online()
 	{
 		$players = DB::connection()
