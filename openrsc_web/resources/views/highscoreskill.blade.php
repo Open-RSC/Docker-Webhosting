@@ -74,7 +74,7 @@
 								</td>
 								<td class="col text-right pt-1 pb-1">
 									<span>
-										{{ (new App\Http\Controllers\HighscoresController)->experienceToLevel($player) }}
+										{{ number_format(($subpage == $skill_array[0]) ? $row['skill_total'] : (new App\Http\Controllers\HighscoresController)->experienceToLevel((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0)) }}
 									</span>
 								</td>
 								<td class="col text-left pt-1 pb-1">
