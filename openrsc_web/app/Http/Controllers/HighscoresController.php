@@ -137,46 +137,22 @@ class HighscoresController extends Controller
 		$highscores = DB::connection()
 			->table('openrsc_experience as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('(SUM(a.exp_'.$subpage.')/4.0) as total_xp'))
+			->select('*', DB::raw('a.exp_'.$subpage))
 			->where([
 				['b.banned', '=', '0'],
 				['b.group_id', '=', '10'],
 				['b.highscoreopt', '=', '0'],
 			])
 			->groupBy('b.username')
-			->orderBy('total_xp', 'desc')
+			->orderBy('a.exp_'.$subpage, 'desc')
 			->paginate(300);
 
-		/**
-		 * @var $subpage
-		 * Saved for future use
-		 */
-		if ($subpage == $skill_array[0]) {
-			$query = array('openrsc_players.' . $subpage . ', openrsc_experience.*', 'openrsc_players.' . $subpage);
-		} else {
-			$query = array('openrsc_experience.exp_' . $subpage, 'exp_' . $subpage);
-		}
-		$args = $query[0];
-		$order = $query[1];
-
-		/**
-		 * @var $subpage
-		 * Saved for future use
-		 */
-		/*if ($subpage == $skill_array[0]) {
-			$query = array('openrsc_players.' . $subpage . ', openrsc_experience.*', 'openrsc_players.' . $subpage);
-		} else {
-			$query = array('openrsc_experience.exp_' . $subpage, 'exp_' . $subpage);
-		}
-		$args = $query[0];
-		$order = $query[1];
-
-		$xp = number_format(($subpage == $skill_array[0]) ? intval(totalXP($highscores) / 4.0) : intval($highscores['exp_' . $skill_array] / 4.0));
-		*/
+		$skill = 'exp_'.$subpage;
 
 		return view('highscoreskill', [
 			'skill_array' => $skill_array,
 			'subpage' => $subpage,
+			'exp_'.$subpage => $skill,
 		])
 			->with(compact('highscores'));
 	}
