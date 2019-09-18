@@ -29,28 +29,81 @@
 					</div>
 				</div>
 
-
-				<div class="stats pl-5 pr-5 d-none d-md-block d-lg-block" align="center">
+				<!-- Extra large version -->
+				<div class="stats pl-5 pr-5 d-none d-xl-block" align="center">
 					<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
-						@foreach ($banks as $key=>$player)
+						@if ($banks->count() > 0)
 							<tr>
-								<!--if ($banks->count($player->id) > 0)-->
+								@foreach ($banks as $key=>$player)
 									<td style="border: 1px solid black;">
 										<div class="clickable-row"
 											 data-href="{{ route('itemdef', $player->id) }}"
 											 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $player->number }}
 										</div>
-										<img src="{{ asset('img/items').'/'.$player->id }}.png"
+										<img class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+											 src="{{ asset('img/items').'/'.$player->id }}.png"
 											 alt="{{ $player->id }}"/>
 									</td>
-								<!--endif-->
-								<!--if (($key % 10 == 0) && ($key < $banks))-->
+									@if ($key % 19 == 18)
 							</tr>
-							<!--else
-								No bank items found.
-							endif-->
+						@endif
 						@endforeach
+						@else
+							No items found.
+						@endif
+					</table>
+				</div>
+
+				<!-- Medium view version -->
+				<div class="stats pl-5 pr-5 d-none d-md-block d-xl-none" align="center">
+					<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+						@if ($banks->count() > 0)
+							<tr>
+								@foreach ($banks as $key=>$player)
+									<td style="border: 1px solid black;">
+										<div class="clickable-row"
+											 data-href="{{ route('itemdef', $player->id) }}"
+											 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+											{{ $player->number }}
+										</div>
+										<img class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+											 src="{{ asset('img/items').'/'.$player->id }}.png"
+											 alt="{{ $player->id }}"/>
+									</td>
+									@if ($key % 11 == 10)
+							</tr>
+						@endif
+						@endforeach
+						@else
+							No items found.
+						@endif
+					</table>
+				</div>
+
+				<!-- Mobile view version -->
+				<div class="stats pl-5 pr-5 d-sm d-md-none d-lg-none" align="center">
+					<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+						@if ($banks->count() > 0)
+							<tr>
+								@foreach ($banks as $key=>$player)
+									<td style="border: 1px solid black;">
+										<div class="clickable-row"
+											 data-href="{{ route('itemdef', $player->id) }}"
+											 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+											{{ $player->number }}
+										</div>
+										<img class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+											 src="{{ asset('img/items').'/'.$player->id }}.png"
+											 alt="{{ $player->id }}"/>
+									</td>
+									@if ($key % 8 == 7)
+							</tr>
+						@endif
+						@endforeach
+						@else
+							No items found.
+						@endif
 					</table>
 				</div>
 			</div>

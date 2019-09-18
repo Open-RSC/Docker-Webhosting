@@ -52,9 +52,12 @@ class PlayerController extends Controller
 			->orderBy('a.slot', 'asc')
 			->get();
 
+		$count_inv = $banks->count();
+
 		return view('bank', [
 			'subpage' => $subpage,
 			'banks' => $banks,
+			'count_inv' => $count_inv,
 		])
 			->with(compact('$banks'));
 	}
