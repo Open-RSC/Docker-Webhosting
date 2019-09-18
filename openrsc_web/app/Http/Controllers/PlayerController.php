@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class PlayerController extends Controller
 {
@@ -55,6 +58,40 @@ class PlayerController extends Controller
 			->with(compact('$banks'));
 	}
 
+	/**
+	 * @return Factory|View
+	 */
+	public function shar()
+	{
+		/**
+		 * @var $banks
+		 * Fetches the table row of the player experience in view and paginates the results
+		 */
+		$banks = DB::connection()
+			->table('openrsc_bank as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot'))
+			->Where([
+				['b.banned', '=', '0'],
+				['b.username', '=', 'shar'],
+			])
+			->orderBy('a.slot', 'asc')
+			->get();
+
+		if (!$banks) {
+			abort(404);
+		}
+
+		return view('bank', [
+			'banks' => $banks,
+		])
+			->with(compact('$banks'));
+	}
+
+	/**
+	 * @param $subpage
+	 * @return Factory|View
+	 */
 	public function bank($subpage)
 	{
 		/**
@@ -81,8 +118,13 @@ class PlayerController extends Controller
 			])
 			->orderBy('a.slot', 'asc')
 			->get();
+
 		if (!$banks) {
 			abort(404);
+		}
+
+		if (!Auth::check()) {
+			return redirect('home');
 		}
 
 		return view('bank', [
