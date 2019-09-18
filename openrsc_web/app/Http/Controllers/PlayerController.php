@@ -21,7 +21,7 @@ class PlayerController extends Controller
 		return number_format($n);
 	}
 
-	public function bank($subpage)
+	public function index($subpage)
 	{
 		/**
 		 * @var $subpage
@@ -30,12 +30,38 @@ class PlayerController extends Controller
 		$subpage = preg_replace("/[^A-Za-z0-9 ]/", "_", $subpage);
 
 		/**
-		 * @var $subpage
-		 * queries the npc and returns a 404 error if not found in database
+		 * @var $players
+		 * Fetches the table row of the player experience in view and paginates the results
 		 */
-		/*if (!in_array($subpage, $skill_array)) {
+		$players = DB::connection()
+			->table('openrsc_players')
+			->where([
+				['banned', '=', '0'],
+				['id', '=', $subpage],
+			])
+			->orWhere([
+				['banned', '=', '0'],
+				['username', '=', $subpage],
+			])
+			->get();
+		if (!$players) {
 			abort(404);
-		}*/
+		}
+
+		return view('player', [
+			'subpage' => $subpage,
+			'players' => $players,
+		])
+			->with(compact('$banks'));
+	}
+
+	public function bank($subpage)
+	{
+		/**
+		 * @var $subpage
+		 * Replaces spaces with underlines
+		 */
+		$subpage = preg_replace("/[^A-Za-z0-9 ]/", "_", $subpage);
 
 		/**
 		 * @var $banks
@@ -47,17 +73,21 @@ class PlayerController extends Controller
 			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot'))
 			->where([
 				['b.banned', '=', '0'],
-				['b.username', '=', $subpage]
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['b.banned', '=', '0'],
+				['b.username', '=', $subpage],
 			])
 			->orderBy('a.slot', 'asc')
 			->get();
-
-		$count_inv = $banks->count();
+		if (!$banks) {
+			abort(404);
+		}
 
 		return view('bank', [
 			'subpage' => $subpage,
 			'banks' => $banks,
-			'count_inv' => $count_inv,
 		])
 			->with(compact('$banks'));
 	}

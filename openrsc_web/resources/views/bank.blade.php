@@ -3,7 +3,7 @@
 @section('content')
 	<div class="text-info">
 		<div class="container">
-			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Shar's Bank</h2>
+			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">{{ ucfirst($banks->first()->username) }}'s Bank</h2>
 
 			<div class="sm-stats pl-3 pr-3">
 				<div class="pb-0 stats row justify-content-center text-primary">

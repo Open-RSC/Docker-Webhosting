@@ -11,11 +11,14 @@ Route::get('/worldmap', 'HomeController@world')->name('worldmap');
 Route::get('/wilderness', 'HomeController@wilderness')->name('wilderness');
 Route::get('/faq', 'HomeController@faq')->name('faq');
 Route::get('/rules', 'HomeController@rules')->name('rules');
-Route::get('/player/bank/{subpage}', 'PlayerController@bank')->name('bank');
 Route::get('/online', 'HomeController@online')->name('online');
 Route::get('/registrationstoday', 'HomeController@registrationstoday')->name('registrationstoday');
 Route::get('/logins48', 'HomeController@logins48')->name('logins48');
 Route::get('/stats', 'HomeController@stats')->name('stats');
+
+// Player pages
+Route::get('/player/{subpage}', 'PlayerController@index')->name('player');
+Route::get('/player/{subpage}/bank', 'PlayerController@bank')->name('bank');
 
 // Item lookup
 Route::get('/items', 'ItemController@index')->name('items');
