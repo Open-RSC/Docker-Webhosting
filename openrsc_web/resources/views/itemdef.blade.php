@@ -145,29 +145,32 @@
 			</div>
 
 			{{ $item_drops->links('pagination::bootstrap-4') }}
-			<table class="container table-striped table-hover text-primary table-transparent" id="itemList">
+			<table class="container table-striped table-hover text-primary table-transparent" id="List">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
-					<th class="w-25 pl-1">Name (ID)</th>
-					<th class="text-center w-25">Picture</th>
-					<th class="text-center w-25 pl-5">Quantity</th>
+					<th class="pl-3 float-left pl-1">Name (ID)</th>
+					<th class="text-center">Picture</th>
+					<th class="pr-3 float-right pl-5">Quantity</th>
 				</tr>
 				</thead>
 				<tbody>
 				@foreach($item_drops as $item_drop)
 					<tr class="clickable-row" data-href="/npcdef/{{ $item_drop->npcID }}">
-						<td class="text-capitalize w-25">
-							<a href="/npcdef/{{ $item_drop->npcID }}"
-							   class="text-capitalize pl-1">{{ $item_drop->npcName }} ({{ $item_drop->npcID }})</a>
+						<td>
+							<span class="pl-3 float-left text-capitalize">
+								{{ $item_drop->npcName }} ({{ $item_drop->npcID }})
+							</span>
 						</td>
-						<td class="w-10 text-center pt-1 pb-1">
+						<td class="text-center pt-1 pb-1">
 							<div>
 								<img src="{{ asset('img/npc') }}/{{ $item_drop->npcID }}.png"
 									 alt="{{ $item_drop->npcName }}"/>
 							</div>
 						</td>
-						<td class="text-center w-25 pl-5">
+						<td>
+							<div class="pr-3 float-right pl-5 pt-1">
 							{{ $item_drop->dropAmount }}
+							</div>
 						</td>
 					</tr>
 				@endforeach

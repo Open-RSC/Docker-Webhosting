@@ -11,22 +11,21 @@
 			</div>
 
 			{{ $items->links('pagination::bootstrap-4') }}
-			<table id="itemList" class="container table-striped table-hover text-primary table-transparent">
+			<table id="List" class="container table-striped table-hover text-primary table-transparent">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
-					<th class="pl-2">Item Name</th>
+					<th class="pl-3 float-left">Item Name</th>
 					<th class="text-center">Picture</th>
 					<th class="text-center">Required Level</th>
 					<th class="text-center">Shop Value</th>
-					<th class="text-center">Alch Value (Low / High)</th>
+					<th class="pr-3 float-right">Alch Value (Low / High)</th>
 				</tr>
 				</thead>
 				<tbody>
 				@foreach ($items as $itemdef)
 					<tr class="clickable-row" data-href="itemdef/{{ $itemdef->id }}">
-						<td class="w-25">
-							<a href="itemdef/{{ $itemdef->id }}"
-							   class="text-capitalize pl-1">{{ $itemdef->name }} ({{ $itemdef->id }})</a>
+						<td class="pl-3 w-25">
+							<span class="text-capitalize pl-1">{{ $itemdef->name }} ({{ $itemdef->id }})</span>
 							<span class="text-white-50 pl-1 d-block">{{ $itemdef->description }}</span>
 						</td>
 						<td class="w-10 text-center pt-1 pb-1">
@@ -102,7 +101,8 @@
 							<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
 								 alt="coins" height="24px" width="32px"/>
 						</td>
-						<td class="text-center pt-1">
+						<td>
+							<div class="pr-3 float-right pt-1">
 							{{ number_format($itemdef->basePrice * 0.4) }}
 							<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
 								 alt="coins" height="24px" width="32px"/>
@@ -110,6 +110,7 @@
 							{{ number_format($itemdef->basePrice * 0.6) }}
 							<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
 								 alt="coins" height="24px" width="32px"/>
+							</div>
 						</td>
 					</tr>
 				@endforeach

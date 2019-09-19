@@ -39,7 +39,7 @@
 						</nav>
 					</div>
 
-					<table id="itemList"
+					<table id="List"
 						   class="container-fluid table-striped table-hover text-primary table-transparent">
 						<thead class="border-bottom border-info thead-dark">
 						<tr class="row text-info">
