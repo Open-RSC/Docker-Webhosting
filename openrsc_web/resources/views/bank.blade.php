@@ -49,14 +49,13 @@
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td style="border: 1px solid black;">
-										<div class="clickable-row"
-											 data-href="{{ route('itemdef', $player->id) }}"
-											 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+									<td class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+										style="border: 1px solid black;">
+										<div
+											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $player->number }}
 										</div>
-										<img class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
-											 src="{{ asset('img/items').'/'.$player->id }}.png"
+										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
 											 alt="{{ $player->id }}"/>
 									</td>
 									@if ($key % 19 == 18)
@@ -75,14 +74,13 @@
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td style="border: 1px solid black;">
-										<div class="clickable-row"
-											 data-href="{{ route('itemdef', $player->id) }}"
-											 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+									<td class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+										style="border: 1px solid black;">
+										<div
+											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $player->number }}
 										</div>
-										<img class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
-											 src="{{ asset('img/items').'/'.$player->id }}.png"
+										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
 											 alt="{{ $player->id }}"/>
 									</td>
 									@if ($key % 11 == 10)
@@ -101,14 +99,13 @@
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td style="border: 1px solid black;">
-										<div class="clickable-row"
-											 data-href="{{ route('itemdef', $player->id) }}"
-											 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+									<td class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+										style="border: 1px solid black;">
+										<div
+											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $player->number }}
 										</div>
-										<img class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
-											 src="{{ asset('img/items').'/'.$player->id }}.png"
+										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
 											 alt="{{ $player->id }}"/>
 									</td>
 									@if ($key % 8 == 7)

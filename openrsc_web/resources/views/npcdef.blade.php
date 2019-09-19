@@ -82,32 +82,33 @@
 				</div>
 			</div>
 
-			{{ $npc_drops->links('pagination::bootstrap-4') }}
-			<table id="List" class="table-both-hover table-transparent"
-				   style="border-collapse: collapse;">
-				@if ($npc_drops->count() > 0)
-					<tr>
-						@foreach($npc_drops as $key=>$npc_drop)
-							<td class="text-center clickable-row" data-href="/itemdef/{{ $npc_drop->itemID }}"
-								style="border: 1px solid black;">
-								<div class="pt-1"
-									 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
-									{{ $npc_drop->dropAmount }}
-									<img src="{{ asset('img/items') }}/{{ $npc_drop->itemID }}.png"
-										 alt="{{ $npc_drop->itemID }}"/>
-								</div>
-								<span class="text-capitalize d-block">
-								{{ $npc_drop->itemName }} ({{ $npc_drop->itemID }})
-							</span>
-							</td>
-							@if ($key % 11 == 10)
-					</tr>
-				@endif
-				@endforeach
-				@else
-					No items found.
-				@endif
-			</table>
+			<div class="stats pl-5 pr-5">
+				<table id="List" class="table-both-hover table-transparent"
+					   style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+					@if ($npc_drops->count() > 0)
+						<tr>
+							@foreach($npc_drops as $key=>$npc_drop)
+								<td class="text-center clickable-row" data-href="/itemdef/{{ $npc_drop->itemID }}"
+									style="border: 1px solid black;">
+									<div class="pt-1"
+										 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+										{{ $npc_drop->dropAmount }}
+										<img src="{{ asset('img/items') }}/{{ $npc_drop->itemID }}.png"
+											 alt="{{ $npc_drop->itemID }}"/>
+									</div>
+									<!--<span class="text-capitalize d-block">
+									{ $npc_drop->itemName }} ({ $npc_drop->itemID }})
+								</span>-->
+								</td>
+								@if ($key % 11 == 10)
+						</tr>
+					@endif
+					@endforeach
+					@else
+						No items found.
+					@endif
+				</table>
+			</div>
 		</div>
 	</div>
 @endsection
