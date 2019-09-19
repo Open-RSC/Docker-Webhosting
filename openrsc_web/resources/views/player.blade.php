@@ -8,7 +8,7 @@
 					<img class="mb-3" src="{{ asset('img') }}/{{ $players->first()->group_id }}.svg" height="34px"
 						 width="auto" alt="group {{ $players->first()->group_id }}"/>
 				@endif
-					<span class="ml-n3">{{ ucfirst($players->first()->username) }}</span>
+				<span class="ml-n3">{{ ucfirst($players->first()->username) }}</span>
 			</h2>
 
 			<div class="sm-stats pl-3 pr-3">
@@ -27,8 +27,15 @@
 							</span>
 						@endif
 					</span>
+						<span class="sm-stats text-info">Created:
+								{{ Carbon\Carbon::parse($players->first()->creation_date)->diffForHumans() }}
+					</span>
 						<span class="sm-stats text-info">Last Online:
+							@if ($players->first()->login_date)
 								{{ Carbon\Carbon::parse($players->first()->login_date)->diffForHumans() }}
+							@else
+								Never
+							@endif
 					</span>
 					</div>
 				</div>

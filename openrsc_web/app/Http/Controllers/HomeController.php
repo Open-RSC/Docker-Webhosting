@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Support\Renderable;
 
@@ -78,12 +79,12 @@ class HomeController extends Controller
 
 		$registrations = DB::connection()
 				->table('openrsc_players')
-				->where('creation_date', today())
+				->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
 				->count() ?? '0';
 
 		$logins = DB::connection()
 				->table('openrsc_players')
-				->where('login_date', today())
+				->whereRaw('login_date >= unix_timestamp(login_date - interval 48 hour)')
 				->count() ?? '0';
 
 		$totalPlayers = DB::connection()
@@ -181,6 +182,7 @@ class HomeController extends Controller
 				['B.online', '=', '1'],
 				['A.key', '=', 'total_played']
 			])
+			->orderBy('B.login_date')
 			->get();
 
 		return view(
@@ -191,14 +193,38 @@ class HomeController extends Controller
 		)->with(compact('online'));
 	}
 
-	public function registrationstoday()
+	public function createdtoday()
 	{
-		return view('registrationstoday');
+		$players = DB::connection()
+			->table('openrsc_players')
+			->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
+			->orderBy('login_date', 'desc')
+			->orderBy('creation_date', 'desc')
+			->get();
+
+		return view(
+			'createdtoday',
+			[
+				'players' => $players,
+			]
+		)->with(compact('createdtoday'));
 	}
 
 	public function logins48()
 	{
-		return view('logins48');
+		$players = DB::connection()
+			->table('openrsc_players')
+			->whereRaw('login_date >= unix_timestamp(login_date - interval 48 hour)')
+			->orderBy('login_date', 'desc')
+			->orderBy('creation_date', 'desc')
+			->get();
+
+		return view(
+			'logins48',
+			[
+				'players' => $players,
+			]
+		)->with(compact('logins48'));
 	}
 
 	public function stats()

@@ -12,7 +12,7 @@ Route::get('/wilderness', 'HomeController@wilderness')->name('wilderness');
 Route::get('/faq', 'HomeController@faq')->name('faq');
 Route::get('/rules', 'HomeController@rules')->name('rules');
 Route::get('/online', 'HomeController@online')->name('online');
-Route::get('/registrationstoday', 'HomeController@registrationstoday')->name('registrationstoday');
+Route::get('/createdtoday', 'HomeController@createdtoday')->name('createdtoday');
 Route::get('/logins48', 'HomeController@logins48')->name('logins48');
 Route::get('/stats', 'HomeController@stats')->name('stats');
 

@@ -77,8 +77,8 @@
                 </span>
 					</div>
 					<div>
-						Registrations Today:
-						<a href="{{ route('registrationstoday') }}">
+						Players Created Today:
+						<a href="{{ route('createdtoday') }}">
                         <span class="text-info float-right">
                             {{ $registrations }}
                         </span>

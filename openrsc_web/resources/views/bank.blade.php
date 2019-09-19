@@ -3,7 +3,8 @@
 @section('content')
 	<div class="text-info">
 		<div class="container">
-			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">{{ ucfirst($banks->first()->username) }}'s Bank</h2>
+			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">{{ ucfirst($banks->first()->username) }}'s
+				Bank</h2>
 
 			<div class="sm-stats pl-3 pr-3">
 				<div class="pb-0 stats row justify-content-center text-primary">
@@ -21,11 +22,18 @@
 							</span>
 						@endif
 					</span>
+						<span class="sm-stats text-info">Created:
+								{{ Carbon\Carbon::parse($banks->first()->creation_date)->diffForHumans() }}
+					</span>
 						<span class="sm-stats text-info">Last Online:
+							@if ($banks->first()->login_date)
 								{{ Carbon\Carbon::parse($banks->first()->login_date)->diffForHumans() }}
+							@else
+								Never
+							@endif
 					</span>
 						<span class="sm-stats pt-2">Shar accepts player item donations for drop parties.</span>
-						<span class="sm-stats pt-2">To donate in-game items to Shar, contact a staff member.</span>
+						<span class="sm-stats">To donate in-game items to Shar, contact a staff member.</span>
 					</div>
 				</div>
 
