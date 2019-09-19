@@ -7,7 +7,7 @@
 				<a href="{{ route('npcs') }}">{{ $npcdef->name }}</a>
 			</h2>
 
-			<div class="row align-items-center">
+			<div class="row align-items-center pb-3">
 				<div class="col-md d-inline-block text-center">
 					<img class="display-glow pb-3" style="transform: scale(1.3);"
 						 src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"/>
@@ -82,41 +82,31 @@
 				</div>
 			</div>
 
-			<div class="d-block text-center pt-4">
-				<label for="inputBox"></label>
-				<input type="text" class="pl-2 pt-1 mb-3 w-25 text-center" id="inputBox" onkeyup="search()"
-					   placeholder="Search this page"/>
-			</div>
-
 			{{ $npc_drops->links('pagination::bootstrap-4') }}
-			<table id="List" class="container table-striped table-hover text-primary table-transparent">
-				<thead class="border-bottom border-info">
-				<tr class="text-info">
-					<th class="pl-3 float-left pl-1">Name (ID)</th>
-					<th class="text-center">Picture</th>
-					<th class="pr-3 float-right pl-5">Quantity</th>
-				</tr>
-				</thead>
-				<tbody>
-				@foreach($npc_drops as $npc_drop)
-					<tr class="clickable-row" data-href="/itemdef/{{ $npc_drop->itemID }}">
-						<td>
-							<span class="pl-3 float-left text-capitalize">
+			<table id="List" class="table-both-hover table-transparent"
+				   style="border-collapse: collapse;">
+				@if ($npc_drops->count() > 0)
+					<tr>
+						@foreach($npc_drops as $key=>$npc_drop)
+							<td class="text-center clickable-row" data-href="/itemdef/{{ $npc_drop->itemID }}"
+								style="border: 1px solid black;">
+								<div class="pt-1"
+									 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+									{{ $npc_drop->dropAmount }}
+									<img src="{{ asset('img/items') }}/{{ $npc_drop->itemID }}.png"
+										 alt="{{ $npc_drop->itemID }}"/>
+								</div>
+								<span class="text-capitalize d-block">
 								{{ $npc_drop->itemName }} ({{ $npc_drop->itemID }})
 							</span>
-						</td>
-						<td class="text-center pt-1 pb-1">
-							<div class="display-glow">
-								<img src="{{ asset('img/items') }}/{{ $npc_drop->itemID }}.png"
-									 alt="{{ $npc_drop->itemID }}"/>
-							</div>
-						</td>
-						<td class="pr-3 float-right pl-5">
-							{{ $npc_drop->dropAmount }}
-						</td>
+							</td>
+							@if ($key % 11 == 10)
 					</tr>
+				@endif
 				@endforeach
-				</tbody>
+				@else
+					No items found.
+				@endif
 			</table>
 		</div>
 	</div>

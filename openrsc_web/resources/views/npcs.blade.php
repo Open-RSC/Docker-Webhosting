@@ -9,7 +9,6 @@
 			<div class="d-none d-md-block">
 				{{ $npcs->links('pagination::bootstrap-4') }}
 				<table id="List" class="container table-striped table-both-hover text-primary table-transparent">
-					<tbody>
 					<tr>
 						@foreach ($npcs as $key=>$npcdef)
 							<td class="text-center clickable-row" data-href="npcdef/{{ $npcdef->id }}">
@@ -28,37 +27,34 @@
 					</tr>
 					@endif
 					@endforeach
-					</tbody>
 				</table>
 				{{ $npcs->links('pagination::bootstrap-4') }}
 			</div>
 
 			<!-- Mobile view version -->
 			<div class="d-md-none d-lg-none">
-			{{ $npcs->links('pagination::bootstrap-4') }}
-			<table id="List" class="container table-striped table-both-hover text-primary table-transparent">
-				<tbody>
-				<tr>
-					@foreach ($npcs as $key=>$npcdef)
-						<td class="text-center clickable-row" data-href="npcdef/{{ $npcdef->id }}">
-							<div class="display-glow pt-1">
-								<img src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"
-									 style="max-height: 52px; max-width: 65px;"/>
-							</div>
-							<span class="text-capitalize">
+				{{ $npcs->links('pagination::bootstrap-4') }}
+				<table id="List" class="container table-striped table-both-hover text-primary table-transparent">
+					<tr>
+						@foreach ($npcs as $key=>$npcdef)
+							<td class="text-center clickable-row" data-href="npcdef/{{ $npcdef->id }}">
+								<div class="display-glow pt-1">
+									<img src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"
+										 style="max-height: 52px; max-width: 65px;"/>
+								</div>
+								<span class="text-capitalize">
 									{{ $npcdef->name }} ({{ $npcdef->id }})
 								</span>
-							<span class="text-white-50 d-block">
+								<span class="text-white-50 d-block">
 								{{ $npcdef->description }}
 							</span>
-						</td>
-						@if ($key % 4 == 3)
-				</tr>
-				@endif
-				@endforeach
-				</tbody>
-			</table>
-			{{ $npcs->links('pagination::bootstrap-4') }}
+							</td>
+							@if ($key % 4 == 3)
+					</tr>
+					@endif
+					@endforeach
+				</table>
+				{{ $npcs->links('pagination::bootstrap-4') }}
 			</div>
 		</div>
 	</div>
