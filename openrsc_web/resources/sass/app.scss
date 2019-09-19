@@ -62,8 +62,12 @@ a:hover {
     background-repeat: no-repeat; /* Do not repeat the icon image */
     width: 160px; /* Full-width */
     font-size: 16px; /* Increase font-size */
-    color: #64a19d;
+    color: #17a2b8;
     border: 1px solid #17a2b8; /* Add a grey border */
+}
+
+::placeholder {
+    color: #17a2b8;
 }
 
 .tableFixHead {

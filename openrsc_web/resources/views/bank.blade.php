@@ -3,15 +3,16 @@
 @section('content')
 	<div class="text-info">
 		<div class="container">
-			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">{{ ucfirst($banks->first()->username) }}'s
-				Bank</h2>
-
-			<div class="sm-stats pl-3 pr-3">
+			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">
+				{{ ucfirst($banks->first()->username) }}'s Bank
+			</h2>
+			<div class="pl-3 pr-3">
 				<div class="pb-0 stats row justify-content-center text-primary">
 					<img class="pl-5" src="{{ asset('img/avatars').'/'.$banks->first()->playerID }}.png"
 						 style="height: 125px;" alt="{{ $banks->first()->username }}">
 					<div class="pl-5 col-6">
-					<span class="sm-stats text-info pt-3">Status:
+					<span class="sm-stats text-info pt-3">
+						Status:
 						@if ($banks->first()->online == 1)
 							<span style="color: lime">
 								<strong>Online</strong>
@@ -22,23 +23,28 @@
 							</span>
 						@endif
 					</span>
-						<span class="sm-stats text-info">Created:
-								{{ Carbon\Carbon::parse($banks->first()->creation_date)->diffForHumans() }}
+						<span class="sm-stats text-info">
+						Created: {{ Carbon\Carbon::parse($banks->first()->creation_date)->diffForHumans() }}
 					</span>
-						<span class="sm-stats text-info">Last Online:
-							@if ($banks->first()->login_date)
+						<span class="sm-stats text-info">
+						Last Online:
+						@if ($banks->first()->login_date)
 								{{ Carbon\Carbon::parse($banks->first()->login_date)->diffForHumans() }}
 							@else
 								Never
 							@endif
 					</span>
-						<span class="sm-stats pt-2">Shar accepts player item donations for drop parties.</span>
-						<span class="sm-stats">To donate in-game items to Shar, contact a staff member.</span>
+						<span class="sm-stats pt-2">
+						Shar accepts player item donations for drop parties.
+					</span>
+						<span class="sm-stats">
+						To donate in-game items to Shar, contact a staff member.
+					</span>
 					</div>
 				</div>
 
 				<!-- Extra large version -->
-				<div class="stats pl-5 pr-5 d-none d-xl-block" align="center">
+				<div class="stats pl-5 pr-5 d-none d-xl-block">
 					<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
 						@if ($banks->count() > 0)
 							<tr>
@@ -64,7 +70,7 @@
 				</div>
 
 				<!-- Medium view version -->
-				<div class="stats pl-5 pr-5 d-none d-md-block d-xl-none" align="center">
+				<div class="stats pl-5 pr-5 d-none d-md-block d-xl-none">
 					<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
 						@if ($banks->count() > 0)
 							<tr>
@@ -90,7 +96,7 @@
 				</div>
 
 				<!-- Mobile view version -->
-				<div class="stats pl-5 pr-5 d-sm d-md-none d-lg-none" align="center">
+				<div class="stats pl-5 pr-5 d-sm d-md-none d-lg-none">
 					<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
 						@if ($banks->count() > 0)
 							<tr>

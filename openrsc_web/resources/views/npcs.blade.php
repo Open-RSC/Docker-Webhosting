@@ -7,35 +7,64 @@
 			<div class="text-center">
 				<label for="inputBox"></label>
 				<input type="text" class="pl-2 pt-1 mb-4 w-25 text-center" id="inputBox" onkeyup="search()"
-					   placeholder="Search this page">
+					   placeholder="Search">
 			</div>
 
+			<!-- Large view version -->
+			<div class="d-none d-md-block">
+				{{ $npcs->links('pagination::bootstrap-4') }}
+				<table id="npcList" class="container table-striped table-hover text-primary table-transparent">
+					<tbody>
+					<tr>
+						@foreach ($npcs as $key=>$npcdef)
+							<td class="pl-3 text-center clickable-row" data-href="npcdef/{{ $npcdef->id }}">
+								<div class="display-glow pt-1">
+									<img src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"
+										 style="max-height: 52px; max-width: 65px;"/>
+								</div>
+								<span class="text-capitalize">
+									{{ $npcdef->name }} ({{ $npcdef->id }})
+								</span>
+								<span class="text-white-50 d-block">
+								{{ $npcdef->description }}
+							</span>
+							</td>
+							@if ($key % 6 == 5)
+					</tr>
+					@endif
+					@endforeach
+					</tbody>
+				</table>
+				{{ $npcs->links('pagination::bootstrap-4') }}
+			</div>
+
+			<!-- Mobile view version -->
+			<div class="d-md-none d-lg-none">
 			{{ $npcs->links('pagination::bootstrap-4') }}
 			<table id="npcList" class="container table-striped table-hover text-primary table-transparent">
-				<thead class="border-bottom border-info">
-				<tr class="text-info">
-					<th class="pl-2">NPC Name</th>
-					<th class="text-center">Picture</th>
-				</tr>
-				</thead>
 				<tbody>
-				@foreach ($npcs as $npcdef)
-					<tr class="clickable-row" data-href="npcdef/{{ $npcdef->id }}">
-						<td>
-							<a href="npcdef/{{ $npcdef->id }}"
-							   class="text-capitalize pl-1">{{ $npcdef->name }} ({{ $npcdef->id }})</a>
-							<span class="text-white-50 pl-1 d-block">{{ $npcdef->description }}</span>
-						</td>
-						<td class="text-center pt-1 pb-1">
-							<div class="display-glow">
-								<img src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"/>
+				<tr>
+					@foreach ($npcs as $key=>$npcdef)
+						<td class="pl-3 text-center clickable-row" data-href="npcdef/{{ $npcdef->id }}">
+							<div class="display-glow pt-1">
+								<img src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"
+									 style="max-height: 52px; max-width: 65px;"/>
 							</div>
+							<span class="text-capitalize">
+									{{ $npcdef->name }} ({{ $npcdef->id }})
+								</span>
+							<span class="text-white-50 d-block">
+								{{ $npcdef->description }}
+							</span>
 						</td>
-					</tr>
+						@if ($key % 4 == 3)
+				</tr>
+				@endif
 				@endforeach
 				</tbody>
 			</table>
 			{{ $npcs->links('pagination::bootstrap-4') }}
+			</div>
 		</div>
 	</div>
 @endsection
