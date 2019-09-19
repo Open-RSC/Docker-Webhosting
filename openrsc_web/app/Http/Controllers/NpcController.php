@@ -73,6 +73,8 @@ class NpcController extends Controller
 				->join('openrsc_npcdef AS A', 'A.id', '=', 'B.npcdef_id')
 				->join('openrsc_itemdef AS C', 'B.id', '=', 'C.id')
 				->select('A.id', 'A.name AS npcName', 'B.npcdef_id AS npcID', 'B.amount AS dropAmount', 'B.id AS dropID', 'B.weight AS dropWeight', 'C.id AS itemID', 'C.name AS itemName')
+				->orderBy('C.basePrice', 'asc')
+				->orderBy('C.id', 'asc')
 				->where([
 					['B.npcdef_id', '=', $id],
 					['B.npcdef_id', '<=', '793'],
@@ -88,6 +90,7 @@ class NpcController extends Controller
 				->select('A.id', 'A.name AS npcName', 'B.npcdef_id AS npcID', 'B.amount AS dropAmount', 'B.id AS dropID', 'B.weight AS dropWeight', 'C.id AS itemID', 'C.name AS itemName')
 				->where('B.npcdef_id', '=', $id)
 				->orderBy('C.basePrice', 'asc')
+				->orderBy('C.id', 'asc')
 				->paginate(50);
 		}
 
