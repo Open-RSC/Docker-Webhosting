@@ -6,7 +6,8 @@
 			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">
 				{{ ucfirst($banks->first()->username) }}'s Bank
 			</h2>
-			<div class="pl-3 pr-3">
+
+			<div class="row align-items-center pb-3">
 				<div class="pb-0 stats row justify-content-center text-primary">
 					<img class="pl-5" src="{{ asset('img/avatars').'/'.$banks->first()->playerID }}.png"
 						 style="height: 125px;" alt="{{ $banks->first()->username }}">
@@ -42,14 +43,16 @@
 					</span>
 					</div>
 				</div>
+			</div>
 
-				<!-- Extra large version -->
-				<div class="stats pl-5 pr-5 d-none d-xl-block">
-					<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+			<!-- Extra large version -->
+			<div class="row align-items-center d-none d-xl-block">
+				<div class="col">
+					<table style="background: rgba(255,255,255,0.2);">
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
 										style="border: 1px solid black;">
 										<div
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
@@ -58,7 +61,7 @@
 										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
 											 alt="{{ $player->id }}"/>
 									</td>
-									@if ($key % 19 == 18)
+									@if ($key % 18 == 17)
 							</tr>
 						@endif
 						@endforeach
@@ -67,14 +70,43 @@
 						@endif
 					</table>
 				</div>
+			</div>
 
-				<!-- Medium view version -->
-				<div class="stats pl-5 pr-5 d-none d-md-block d-xl-none">
-					<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+			<!-- Large version -->
+			<div class="row align-items-center d-none d-md-none d-lg-block d-xl-none">
+				<div class="col">
+					<table style="background: rgba(255,255,255,0.2);">
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+										style="border: 1px solid black;">
+										<div
+											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+											{{ $player->number }}
+										</div>
+										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
+											 alt="{{ $player->id }}"/>
+									</td>
+									@if ($key % 14 == 13)
+							</tr>
+						@endif
+						@endforeach
+						@else
+							No items found.
+						@endif
+					</table>
+				</div>
+			</div>
+
+			<!-- Medium view version -->
+			<div class="row align-items-center pl-5 pr-5 d-none d-md-block d-lg-none d-xl-none">
+				<div class="col">
+					<table style="background: rgba(255,255,255,0.2);">
+						@if ($banks->count() > 0)
+							<tr>
+								@foreach ($banks as $key=>$player)
+									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
 										style="border: 1px solid black;">
 										<div
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
@@ -92,14 +124,16 @@
 						@endif
 					</table>
 				</div>
+			</div>
 
-				<!-- Mobile view version -->
-				<div class="stats pl-5 pr-5 d-sm d-md-none d-lg-none">
-					<table style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
+			<!-- Mobile view version -->
+			<div class="row align-items-center pl-4 pr-4 d-sm d-md-none d-lg-none">
+				<div class="col">
+					<table style="background: rgba(255,255,255,0.2);">
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td class="clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
 										style="border: 1px solid black;">
 										<div
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
@@ -119,5 +153,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 @endsection

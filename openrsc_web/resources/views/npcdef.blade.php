@@ -82,32 +82,126 @@
 				</div>
 			</div>
 
-			<div class="stats pl-5 pr-5">
-				<table id="List" class="table-both-hover table-transparent"
-					   style="background: rgba(255,255,255,0.2); border-collapse: collapse;">
-					@if ($npc_drops->count() > 0)
-						<tr>
-							@foreach($npc_drops as $key=>$npc_drop)
-								<td class="text-center clickable-row" data-href="/itemdef/{{ $npc_drop->itemID }}"
-									style="border: 1px solid black;">
-									<div class="pt-1"
-										 style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
-										{{ $npc_drop->dropAmount }}
-										<img src="{{ asset('img/items') }}/{{ $npc_drop->itemID }}.png"
+			<!-- Extra large version -->
+			<div class="row align-items-center d-none d-xl-block">
+				<div class="col">
+					<table style="background: rgba(255,255,255,0.2);">
+						@if ($npc_drops->count() > 0)
+							<tr>
+								@foreach ($npc_drops as $key=>$npc_drop)
+									<td class="pl-1 pr-1 clickable-row"
+										data-href="{{ route('itemdef', $npc_drop->itemID) }}"
+										style="border: 1px solid black;">
+										<div
+											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+											{{ $npc_drop->dropAmount }}
+										</div>
+										<img class="mt-n2 pb-1" src="{{ asset('img/items').'/'.$npc_drop->itemID }}.png"
 											 alt="{{ $npc_drop->itemID }}"/>
-									</div>
-									<!--<span class="text-capitalize d-block">
-									{ $npc_drop->itemName }} ({ $npc_drop->itemID }})
-								</span>-->
-								</td>
-								@if ($key % 11 == 10)
-						</tr>
-					@endif
-					@endforeach
-					@else
-						No items found.
-					@endif
-				</table>
+										<!--<span class="text-capitalize d-block">
+										{ $npc_drop->itemName }} ({ $npc_drop->itemID }})
+									</span>-->
+									</td>
+									@if ($key % 18 == 17)
+							</tr>
+						@endif
+						@endforeach
+						@else
+							No items found.
+						@endif
+					</table>
+				</div>
+			</div>
+
+			<!-- Large version -->
+			<div class="row align-items-center d-none d-md-none d-lg-block d-xl-none">
+				<div class="col">
+					<table style="background: rgba(255,255,255,0.2);">
+						@if ($npc_drops->count() > 0)
+							<tr>
+								@foreach ($npc_drops as $key=>$npc_drop)
+									<td class="pl-1 pr-1 clickable-row"
+										data-href="{{ route('itemdef', $npc_drop->itemID) }}"
+										style="border: 1px solid black;">
+										<div
+											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+											{{ $npc_drop->dropAmount }}
+										</div>
+										<img class="mt-n2 pb-1" src="{{ asset('img/items').'/'.$npc_drop->itemID }}.png"
+											 alt="{{ $npc_drop->itemID }}"/>
+										<!--<span class="text-capitalize d-block">
+										{ $npc_drop->itemName }} ({ $npc_drop->itemID }})
+									</span>-->
+									</td>
+									@if ($key % 14 == 13)
+							</tr>
+						@endif
+						@endforeach
+						@else
+							No items found.
+						@endif
+					</table>
+				</div>
+			</div>
+
+			<!-- Medium view version -->
+			<div class="row align-items-center pl-5 pr-5 d-none d-md-block d-lg-none d-xl-none">
+				<div class="col">
+					<table style="background: rgba(255,255,255,0.2);">
+						@if ($npc_drops->count() > 0)
+							<tr>
+								@foreach ($npc_drops as $key=>$npc_drop)
+									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $npc_drop->itemID) }}"
+										style="border: 1px solid black;">
+										<div
+											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+											{{ $npc_drop->dropAmount }}
+										</div>
+										<img class="mt-n2" src="{{ asset('img/items').'/'.$npc_drop->itemID }}.png"
+											 alt="{{ $npc_drop->itemID }}"/>
+										<!--<span class="text-capitalize d-block">
+										{ $npc_drop->itemName }} ({ $npc_drop->itemID }})
+									</span>-->
+									</td>
+									@if ($key % 11 == 10)
+							</tr>
+						@endif
+						@endforeach
+						@else
+							No items found.
+						@endif
+					</table>
+				</div>
+			</div>
+
+			<!-- Mobile view version -->
+			<div class="row align-items-center pl-4 pr-4 d-sm d-md-none d-lg-none">
+				<div class="col">
+					<table style="background: rgba(255,255,255,0.2);">
+						@if ($npc_drops->count() > 0)
+							<tr>
+								@foreach ($npc_drops as $key=>$npc_drop)
+									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $npc_drop->itemID) }}"
+										style="border: 1px solid black;">
+										<div
+											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+											{{ $npc_drop->dropAmount }}
+										</div>
+										<img class="mt-n2" src="{{ asset('img/items').'/'.$npc_drop->itemID }}.png"
+											 alt="{{ $npc_drop->itemID }}"/>
+										<!--<span class="text-capitalize d-block">
+										{ $npc_drop->itemName }} ({ $npc_drop->itemID }})
+									</span>-->
+									</td>
+									@if ($key % 8 == 7)
+							</tr>
+						@endif
+						@endforeach
+						@else
+							No items found.
+						@endif
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
