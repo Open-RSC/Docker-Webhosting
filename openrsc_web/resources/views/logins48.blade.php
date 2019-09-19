@@ -8,10 +8,11 @@
 			<table id="npcList" class="container table-striped table-hover text-primary table-transparent">
 				<thead class="border-bottom border-info">
 				<tr class="text-info">
-					<th class="float-left">Player</th>
+					<th class="pl-3 float-left">Player</th>
 					<th class="text-center">Picture</th>
 					<th class="text-center">Created</th>
-					<th class="text-center">Last Online</th>
+					<th class="text-center">Last Login</th>
+					<th class="pr-3 float-right">Cumulative Play</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -19,7 +20,7 @@
 					<tr class="clickable-row" data-href="player/{{ $player->id }}">
 						<td>
 							<a href="player/{{ $player->id }}"
-							   class="float-left text-capitalize pl-1 h5">
+							   class="pl-3 float-left text-capitalize pl-1 h5">
 								@if ($player->group_id < '10')
 									<img class="mb-1" src="{{ asset('img') }}/{{ $player->group_id }}.svg" height="14px"
 										 width="auto" alt="group {{ $player->group_id }}"/>
@@ -30,7 +31,7 @@
 								(Combat {{ $player->combat }})
 							</span>
 						</td>
-						<td class="text-center" height="100px">
+						<td class="text-center">
 							@if ($player->login_date)
 								<img class="display-glow float-center pt-2"
 									 src="{{ asset('img/avatars') }}/{{ $player->id }}.png" height="100px" width="auto"
@@ -48,10 +49,19 @@
 								@endif
 							</span>
 						</td>
-						<td class="text-center" height="100px">
+						<td class="text-center">
 							<span class="pt-1 pb-1 h5">
 								@if ($player->login_date)
 									{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
+								@else
+									Never
+								@endif
+							</span>
+						</td>
+						<td>
+							<span class="pr-3 float-right pt-1 pb-1 h5">
+								@if ($player->value)
+									{{ (new App\Http\Controllers\HomeController)->secondsToTime($player->value/1000) }}
 								@else
 									Never
 								@endif
