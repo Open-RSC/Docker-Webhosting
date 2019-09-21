@@ -229,6 +229,178 @@ class HomeController extends Controller
 
 	public function stats()
 	{
-		return view('stats');
+		$stats = DB::connection()
+			->table('openrsc_bank as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot'))
+			->Where([
+				['b.banned', '=', '0'],
+				['b.username', '=', 'shar'],
+			])
+			->orderBy('a.slot', 'asc')
+			->get();
+
+		if (!$stats) {
+			abort(404);
+		}
+
+		$online = DB::connection()
+			->table('openrsc_players')
+			->where('online', '=', '1')
+			->count('online');
+
+		$registrations = DB::connection()
+				->table('openrsc_players')
+				->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
+				->count() ?? '0';
+
+		$logins48 = DB::connection()
+				->table('openrsc_players')
+				->whereRaw('login_date >= unix_timestamp(login_date - interval 48 hour)')
+				->count() ?? '0';
+
+		$totalPlayers = DB::connection()
+				->table('openrsc_players')
+				->count() ?? '0';
+
+		$uniquePlayers = DB::connection()
+			->table('openrsc_players')
+			->distinct('creation_ip')
+			->count('creation_ip');
+
+		$milliseconds = DB::connection()
+			->table('openrsc_player_cache')
+			->where('key', 'total_played')
+			->sum('value');
+
+		$totalTime = HomeController::secondsToTime(round($milliseconds / 1000));
+
+		$sumgoldBank = DB::connection()
+			->table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '10'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$sumgoldInvitems = DB::connection()
+			->table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '10'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$sumGold = $sumgoldBank + $sumgoldInvitems;
+
+		$topCombat = DB::connection()
+			->table('openrsc_players')
+			->where([
+				['group_id', '=', '10'],
+				['banned', '=', '0'],
+			])
+			->orderBy('combat', 'desc')
+			->limit('1')
+			->get();
+
+		$createdToday = DB::connection()
+			->table('openrsc_players')
+			->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
+			->orderBy('login_date', 'desc')
+			->orderBy('creation_date', 'desc')
+			->count();
+
+		$combat30 = DB::connection()
+			->table('openrsc_players')
+			->where([
+				['combat', '>=', '30'],
+				['group_id', '=', '10'],
+				['banned', '=', 0],
+			])
+			->count();
+
+		$combat50 = DB::connection()
+			->table('openrsc_players')
+			->where([
+				['combat', '>=', '50'],
+				['group_id', '=', '10'],
+				['banned', '=', 0],
+			])
+			->count();
+
+		$combat80 = DB::connection()
+			->table('openrsc_players')
+			->where([
+				['combat', '>=', '50'],
+				['group_id', '=', '10'],
+				['banned', '=', 0],
+			])
+			->count();
+
+		$combat90 = DB::connection()
+			->table('openrsc_players')
+			->where([
+				['combat', '>=', '90'],
+				['group_id', '=', '10'],
+				['banned', '=', 0],
+			])
+			->count();
+
+		$combat100 = DB::connection()
+			->table('openrsc_players')
+			->where([
+				['combat', '>=', '100'],
+				['group_id', '=', '10'],
+				['banned', '=', 0],
+			])
+			->count();
+
+		$combat123 = DB::connection()
+			->table('openrsc_players')
+			->where([
+				['combat', '>=', '123'],
+				['group_id', '=', '10'],
+				['banned', '=', 0],
+			])
+			->count();
+
+		$startedQuest = DB::connection()
+			->table('openrsc_quests as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->select('*', DB::raw('DISTINCT B.playerID'))
+			->where([
+				['A.group_id', '=', '10'],
+				['A.banned', '=', 0],
+			])
+			->count('B.playerID');
+
+
+		return view(
+			'stats',
+			[
+				'online' => $online,
+				'stats' => $stats,
+				'registrations' => $registrations,
+				'logins48' => $logins48,
+				'totalPlayers' => $totalPlayers,
+				'uniquePlayers' => $uniquePlayers,
+				'totalTime' => $totalTime,
+				'createdToday' => $createdToday,
+				'sumgold' => $sumGold,
+				'topCombat' => $topCombat,
+				'combat30' => $combat30,
+				'combat50' => $combat50,
+				'combat80' => $combat80,
+				'combat90' => $combat90,
+				'combat100' => $combat100,
+				'combat123' => $combat123,
+				'startedQuest' => $startedQuest,
+
+			]
+		)->with(compact('stats'));
 	}
 }
