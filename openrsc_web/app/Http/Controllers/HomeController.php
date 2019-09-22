@@ -237,6 +237,8 @@ class HomeController extends Controller
 				['b.banned', '=', '0'],
 				['b.username', '=', 'shar'],
 			])
+			->where('a.id', '=', '1278')
+			->orWhere('a.id', '=', '795')
 			->orderBy('a.slot', 'asc')
 			->get();
 
@@ -613,7 +615,7 @@ class HomeController extends Controller
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
-				['B.amount', '>=', '2000000'],
+				['B.amount', '>=', '10000000'],
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])

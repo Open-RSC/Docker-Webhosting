@@ -3,12 +3,12 @@
 @section('content')
 	<div class="text-info">
 		<div class="container">
-			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">
+			<h2 class="h2 text-center pt-5 pb-3 text-capitalize display-3">
 				Statistics
 			</h2>
 
 			<div class="row justify-content-center">
-				<div class="col-lg-4 text-primary">
+				<div class="text-primary">
 					<h4 class="pt-4 h4 text-warning">Accounts</h4>
 					<span class="d-block">
 						<a class="text-info font-weight-bold" href="{{ route('online') }}">{{ $online }}</a> players currently logged in.
@@ -90,8 +90,7 @@
 						<span class="text-info font-weight-bold">{{ number_format($gold10m) }}</span> players have over 10M gp.
 					</span>
 
-
-
+					<h4 class="pt-4 h4 text-warning">Important Total Item Summary</h4>
 				</div>
 			</div>
 
@@ -99,25 +98,22 @@
 			<div class="row align-items-center d-none d-xl-block">
 				<div class="col">
 					<table>
-						@if ($stats->count() > 0)
-							<tr>
-								@foreach ($stats as $key=>$player)
-									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
-										style="border: 1px solid black; background: rgba(255,255,255,0.2);">
-										<div
-											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
-											{{ $player->number }}
-										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
-											 alt="{{ $player->id }}"/>
-									</td>
-									@if ($key % 18 == 17)
-							</tr>
+						<tr>
+							@foreach ($stats as $key=>$player)
+								<td class="pl-1 pr-1 clickable-row"
+									data-href="{{ route('itemdef', $player->id) }}"
+									style="border: 1px solid black; background: rgba(255,255,255,0.2);">
+									<div
+										style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+										{{ $player->number }}
+									</div>
+									<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
+										 alt="{{ $player->id }}"/>
+								</td>
+								@if ($key % 18 == 17)
+						</tr>
 						@endif
 						@endforeach
-						@else
-							No items found.
-						@endif
 					</table>
 				</div>
 			</div>
@@ -126,25 +122,22 @@
 			<div class="row align-items-center d-none d-md-none d-lg-block d-xl-none">
 				<div class="col">
 					<table>
-						@if ($stats->count() > 0)
-							<tr>
-								@foreach ($stats as $key=>$player)
-									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
-										style="border: 1px solid black; background: rgba(255,255,255,0.2);">
-										<div
-											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
-											{{ $player->number }}
-										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
-											 alt="{{ $player->id }}"/>
-									</td>
-									@if ($key % 14 == 13)
-							</tr>
+						<tr>
+							@foreach ($stats as $key=>$player)
+								<td class="pl-1 pr-1 clickable-row"
+									data-href="{{ route('itemdef', $player->id) }}"
+									style="border: 1px solid black; background: rgba(255,255,255,0.2);">
+									<div
+										style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+										{{ $player->number }}
+									</div>
+									<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
+										 alt="{{ $player->id }}"/>
+								</td>
+								@if ($key % 14 == 13)
+						</tr>
 						@endif
 						@endforeach
-						@else
-							No items found.
-						@endif
 					</table>
 				</div>
 			</div>
@@ -153,25 +146,22 @@
 			<div class="row align-items-center pl-5 pr-5 d-none d-md-block d-lg-none d-xl-none">
 				<div class="col">
 					<table>
-						@if ($stats->count() > 0)
-							<tr>
-								@foreach ($stats as $key=>$player)
-									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
-										style="border: 1px solid black; background: rgba(255,255,255,0.2);">
-										<div
-											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
-											{{ $player->number }}
-										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
-											 alt="{{ $player->id }}"/>
-									</td>
-									@if ($key % 11 == 10)
-							</tr>
+						<tr>
+							@foreach ($stats as $key=>$player)
+								<td class="pl-1 pr-1 clickable-row"
+									data-href="{{ route('itemdef', $player->id) }}"
+									style="border: 1px solid black; background: rgba(255,255,255,0.2);">
+									<div
+										style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+										{{ $player->number }}
+									</div>
+									<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
+										 alt="{{ $player->id }}"/>
+								</td>
+								@if ($key % 11 == 10)
+						</tr>
 						@endif
 						@endforeach
-						@else
-							No items found.
-						@endif
 					</table>
 				</div>
 			</div>
@@ -180,29 +170,26 @@
 			<div class="row align-items-center pl-4 pr-4 d-sm d-md-none d-lg-none">
 				<div class="col">
 					<table>
-						@if ($stats->count() > 0)
-							<tr>
-								@foreach ($stats as $key=>$player)
-									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
-										style="border: 1px solid black; background: rgba(255,255,255,0.2);">
-										<div
-											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
-											{{ $player->number }}
-										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
-											 alt="{{ $player->id }}"/>
-									</td>
-									@if ($key % 8 == 7)
-							</tr>
+						<tr>
+							@foreach ($stats as $key=>$player)
+								<td class="pl-1 pr-1 clickable-row"
+									data-href="{{ route('itemdef', $player->id) }}"
+									style="border: 1px solid black; background: rgba(255,255,255,0.2);">
+									<div
+										style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+										{{ $player->number }}
+									</div>
+									<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
+										 alt="{{ $player->id }}"/>
+								</td>
+								@if ($key % 8 == 7)
+						</tr>
 						@endif
 						@endforeach
-						@else
-							No items found.
-						@endif
 					</table>
 				</div>
 			</div>
+
 		</div>
-	</div>
 	</div>
 @endsection
