@@ -565,52 +565,422 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$stats = DB::table('openrsc_bank as a')
-			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->join('openrsc_itemdef as c', 'a.id', '=', 'c.id')
-			->select('*', DB::raw('b.username, a.id, a.amount number, a.slot, c.name'))
-			->where(function ($query) {
-				$query->where([
-						['b.group_id', '=', '10'],
-						['b.banned', '=', '0'],
-					])
-					->where('a.id', '=', '422') // pumpkin
-					->orwhere('a.id', '=', '575') // cracker
-					->orwhere('a.id', '=', '577') // yellow phat
-					->orwhere('a.id', '=', '581') // white phat
-					->orwhere('a.id', '=', '580') // purple phat
-					->orwhere('a.id', '=', '576') // red phat
-					->orwhere('a.id', '=', '578') // blue phat
-					->orwhere('a.id', '=', '579') // green phat
-					->orwhere('a.id', '=', '677') // easter egg
-					->orwhere('a.id', '=', '831') // red mask
-					->orwhere('a.id', '=', '832') // blue mask
-					->orwhere('a.id', '=', '828') // green mask
-					->orwhere('a.id', '=', '971') // santa hat
-					->orwhere('a.id', '=', '1156') // bunny ears
-					->orwhere('a.id', '=', '1289') // scythe
-					->orwhere('a.id', '=', '1278') // dragon square
-					->orWhere('a.id', '=', '795') // dragon med
-					->orwhere('a.id', '=', '522') // dragon ammy
-					->orwhere('a.id', '=', '597') // charged dragon ammy
-					->orwhere('a.id', '=', '594') // dragon battle
-					->orwhere('a.id', '=', '593') // dragon long
-				;
-			})
-			->orderBy('a.id', 'asc')
-			->get();
-
-		if (!$stats) {
-			abort(404);
-		}
-
 		$gold10m = $goldBank10m + $goldInvitems10m;
+
+		$pumpkinInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '422'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$pumpkinBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '422'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$pumpkin = $pumpkinInvitems + $pumpkinBank;
+
+		$crackerInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '575'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$crackerBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '575'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$cracker = $crackerInvitems + $crackerBank;
+
+		$yellowphatInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '577'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$yellowphatBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '577'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$yellowphat = $yellowphatInvitems + $yellowphatBank;
+
+		$whitephatInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '581'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$whitephatBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '581'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$whitephat = $whitephatInvitems + $whitephatBank;
+
+		$purplephatInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '580'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$purplephatBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '580'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$purplephat = $purplephatInvitems + $purplephatBank;
+
+		$redphatInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '576'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$redphatBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '576'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$redphat = $redphatInvitems + $redphatBank;
+
+		$bluephatInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '578'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$bluephatBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '578'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$bluephat = $bluephatInvitems + $bluephatBank;
+
+		$greenphatInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '579'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$greenphatBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '579'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$greenphat = $greenphatInvitems + $greenphatBank;
+
+		$eastereggInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '677'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$eastereggBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '677'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$easteregg = $eastereggInvitems + $eastereggBank;
+
+		$redmaskInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '831'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$redmaskBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '831'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$redmask = $redmaskInvitems + $redmaskBank;
+
+		$bluemaskInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '832'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$bluemaskBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '832'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$bluemask = $bluemaskInvitems + $bluemaskBank;
+
+		$greenmaskInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '828'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$greenmaskBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '828'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$greenmask = $greenmaskInvitems + $greenmaskBank;
+
+		$santahatInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '971'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$santahatBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '971'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$santahat = $santahatInvitems + $santahatBank;
+
+		$bunnyearsInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '1156'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$bunnyearsBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '1156'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$bunnyears = $bunnyearsInvitems + $bunnyearsBank;
+
+		$scytheInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '1289'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$scytheBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '1289'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$scythe = $scytheInvitems + $scytheBank;
+
+		$dsqInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '1278'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dsqBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '1278'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dsq = $dsqInvitems + $dsqBank;
+
+		$dmedInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '795'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dmedBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '795'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dmed = $dmedInvitems + $dmedBank;
+
+		$dammyInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '522'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '597'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dammyBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '522'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '597'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dammy = $dammyInvitems + $dammyBank;
+
+		$dbattleInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '594'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dbattleBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '594'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dbattle = $dbattleInvitems + $dbattleBank;
+
+		$dlongInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '593'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dlongBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '593'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$dlong = $dlongInvitems + $dlongBank;
 
 		return view(
 			'stats',
 			[
 				'online' => $online,
-				'stats' => $stats,
 				'registrations' => $registrations,
 				'logins48' => $logins48,
 				'totalPlayers' => $totalPlayers,
@@ -636,6 +1006,26 @@ class HomeController extends Controller
 				'gold2m' => $gold2m,
 				'gold4m' => $gold4m,
 				'gold10m' => $gold10m,
+				'pumpkin' => $pumpkin,
+				'cracker' => $cracker,
+				'yellowphat' => $yellowphat,
+				'whitephat' => $whitephat,
+				'purplephat' => $purplephat,
+				'redphat' => $redphat,
+				'bluephat' => $bluephat,
+				'greenphat' => $greenphat,
+				'easteregg' => $easteregg,
+				'redmask' => $redmask,
+				'bluemask' => $bluemask,
+				'greenmask' => $greenmask,
+				'santahat' => $santahat,
+				'bunnyears' => $bunnyears,
+				'scythe' => $scythe,
+				'dsq' => $dsq,
+				'dmed' => $dmed,
+				'dammy' => $dammy,
+				'dbattle' => $dbattle,
+				'dlong' => $dlong,
 			]
 		)->with(compact('stats'));
 	}
