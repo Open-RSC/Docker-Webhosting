@@ -70,7 +70,8 @@ class PlayerController extends Controller
 		$banks = DB::connection()
 			->table('openrsc_bank as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot'))
+			->join('openrsc_itemdef as c', 'a.id', '=', 'c.id')
+			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot, c.name'))
 			->Where([
 				['b.banned', '=', '0'],
 				['b.username', '=', 'shar'],
@@ -107,7 +108,8 @@ class PlayerController extends Controller
 		$banks = DB::connection()
 			->table('openrsc_bank as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot'))
+			->join('openrsc_itemdef as c', 'a.id', '=', 'c.id')
+			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot, c.name'))
 			->where([
 				['b.banned', '=', '0'],
 				['b.id', '=', $subpage],

@@ -66,8 +66,7 @@ class HomeController extends Controller
 	{
 		$game_hostname = config('app.game_hostname');
 		$game_port = config('app.game_port');
-		$online = DB::connection()
-			->table('openrsc_players')
+		$online = DB::table('openrsc_players')
 			->where('online', 1)
 			->count();
 		$status = @fsockopen($game_hostname, $game_port, $num, $error, 2);
@@ -77,34 +76,28 @@ class HomeController extends Controller
 			$status = '<span style="color: red">Offline</span>';
 		}
 
-		$registrations = DB::connection()
-				->table('openrsc_players')
+		$registrations = DB::table('openrsc_players')
 				->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
 				->count() ?? '0';
 
-		$logins = DB::connection()
-				->table('openrsc_players')
+		$logins = DB::table('openrsc_players')
 				->whereRaw('login_date >= unix_timestamp(login_date - interval 48 hour)')
 				->count() ?? '0';
 
-		$totalPlayers = DB::connection()
-				->table('openrsc_players')
+		$totalPlayers = DB::table('openrsc_players')
 				->count() ?? '0';
 
-		$uniquePlayers = DB::connection()
-			->table('openrsc_players')
+		$uniquePlayers = DB::table('openrsc_players')
 			->distinct('creation_ip')
 			->count('creation_ip');
 
-		$milliseconds = DB::connection()
-			->table('openrsc_player_cache')
+		$milliseconds = DB::table('openrsc_player_cache')
 			->where('key', 'total_played')
 			->sum('value');
 
 		$totalTime = HomeController::secondsToTime(round($milliseconds / 1000));
 
-		$activityfeed = DB::connection()
-			->table('openrsc_live_feeds as B')
+		$activityfeed = DB::table('openrsc_live_feeds as B')
 			->join('openrsc_players AS A', 'A.username', '=', 'B.username')
 			->where([
 				['A.group_id', '=', '10'],
@@ -115,8 +108,7 @@ class HomeController extends Controller
 			->limit(20)
 			->get();
 
-		$sumgoldbank = DB::connection()
-			->table('openrsc_bank as B')
+		$sumgoldbank = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -125,8 +117,7 @@ class HomeController extends Controller
 			])
 			->sum('B.amount');
 
-		$sumgoldinvitems = DB::connection()
-			->table('openrsc_invitems as B')
+		$sumgoldinvitems = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -175,8 +166,7 @@ class HomeController extends Controller
 
 	public function online()
 	{
-		$players = DB::connection()
-			->table('openrsc_players as B')
+		$players = DB::table('openrsc_players as B')
 			->join('openrsc_player_cache AS A', 'A.playerID', '=', 'B.id')
 			->where([
 				['B.online', '=', '1'],
@@ -195,8 +185,7 @@ class HomeController extends Controller
 
 	public function createdtoday()
 	{
-		$players = DB::connection()
-			->table('openrsc_players')
+		$players = DB::table('openrsc_players')
 			->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
 			->orderBy('login_date', 'desc')
 			->orderBy('creation_date', 'desc')
@@ -212,8 +201,7 @@ class HomeController extends Controller
 
 	public function logins48()
 	{
-		$players = DB::connection()
-			->table('openrsc_players')
+		$players = DB::table('openrsc_players')
 			->whereRaw('login_date >= unix_timestamp(login_date - interval 48 hour)')
 			->orderBy('login_date', 'desc')
 			->orderBy('creation_date', 'desc')
@@ -229,56 +217,38 @@ class HomeController extends Controller
 
 	public function stats()
 	{
-		$stats = DB::connection()
-			->table('openrsc_bank as a')
-			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot'))
-			->Where([
-				['b.banned', '=', '0'],
-				['b.username', '=', 'shar'],
-			])
-			->where('a.id', '=', '1278')
-			->orWhere('a.id', '=', '795')
-			->orderBy('a.slot', 'asc')
-			->get();
-
-		if (!$stats) {
-			abort(404);
-		}
-
-		$online = DB::connection()
-			->table('openrsc_players')
+		$online = DB::table('openrsc_players')
 			->where('online', '=', '1')
 			->count('online');
 
-		$registrations = DB::connection()
-				->table('openrsc_players')
+		$registrations = DB::table('openrsc_players')
 				->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
 				->count() ?? '0';
 
-		$logins48 = DB::connection()
-				->table('openrsc_players')
+		$logins48 = DB::table('openrsc_players')
 				->whereRaw('login_date >= unix_timestamp(login_date - interval 48 hour)')
 				->count() ?? '0';
 
-		$totalPlayers = DB::connection()
-				->table('openrsc_players')
+		$totalPlayers = DB::table('openrsc_players')
 				->count() ?? '0';
 
-		$uniquePlayers = DB::connection()
-			->table('openrsc_players')
+		$uniquePlayers = DB::table('openrsc_players')
 			->distinct('creation_ip')
 			->count('creation_ip');
 
-		$milliseconds = DB::connection()
-			->table('openrsc_player_cache')
+		$createdToday = DB::table('openrsc_players')
+			->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
+			->orderBy('login_date', 'desc')
+			->orderBy('creation_date', 'desc')
+			->count();
+
+		$milliseconds = DB::table('openrsc_player_cache')
 			->where('key', 'total_played')
 			->sum('value');
 
 		$totalTime = HomeController::secondsToTime(round($milliseconds / 1000));
 
-		$sumgoldBank = DB::connection()
-			->table('openrsc_bank as B')
+		$sumgoldBank = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -287,8 +257,7 @@ class HomeController extends Controller
 			])
 			->sum('B.amount');
 
-		$sumgoldInvitems = DB::connection()
-			->table('openrsc_invitems as B')
+		$sumgoldInvitems = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -299,15 +268,7 @@ class HomeController extends Controller
 
 		$sumGold = $sumgoldBank + $sumgoldInvitems;
 
-		$createdToday = DB::connection()
-			->table('openrsc_players')
-			->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
-			->orderBy('login_date', 'desc')
-			->orderBy('creation_date', 'desc')
-			->count();
-
-		$combat30 = DB::connection()
-			->table('openrsc_players')
+		$combat30 = DB::table('openrsc_players')
 			->where([
 				['combat', '>=', '30'],
 				['group_id', '=', '10'],
@@ -315,8 +276,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$combat50 = DB::connection()
-			->table('openrsc_players')
+		$combat50 = DB::table('openrsc_players')
 			->where([
 				['combat', '>=', '50'],
 				['group_id', '=', '10'],
@@ -324,8 +284,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$combat80 = DB::connection()
-			->table('openrsc_players')
+		$combat80 = DB::table('openrsc_players')
 			->where([
 				['combat', '>=', '50'],
 				['group_id', '=', '10'],
@@ -333,8 +292,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$combat90 = DB::connection()
-			->table('openrsc_players')
+		$combat90 = DB::table('openrsc_players')
 			->where([
 				['combat', '>=', '90'],
 				['group_id', '=', '10'],
@@ -342,8 +300,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$combat100 = DB::connection()
-			->table('openrsc_players')
+		$combat100 = DB::table('openrsc_players')
 			->where([
 				['combat', '>=', '100'],
 				['group_id', '=', '10'],
@@ -351,8 +308,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$combat123 = DB::connection()
-			->table('openrsc_players')
+		$combat123 = DB::table('openrsc_players')
 			->where([
 				['combat', '>=', '123'],
 				['group_id', '=', '10'],
@@ -360,8 +316,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$startedQuest = DB::connection()
-			->table('openrsc_quests as B')
+		$startedQuest = DB::table('openrsc_quests as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['A.group_id', '=', '10'],
@@ -370,8 +325,7 @@ class HomeController extends Controller
 			->distinct('B.playerID')
 			->count();
 
-		$goldBank30 = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank30 = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -381,8 +335,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems30 = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems30 = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -394,8 +347,7 @@ class HomeController extends Controller
 
 		$gold30 = $goldBank30 + $goldInvitems30;
 
-		$goldBank50 = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank50 = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -405,8 +357,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems50 = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems50 = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -418,8 +369,7 @@ class HomeController extends Controller
 
 		$gold50 = $goldBank50 + $goldInvitems50;
 
-		$goldBank80 = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank80 = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -429,8 +379,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems80 = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems80 = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -442,8 +391,7 @@ class HomeController extends Controller
 
 		$gold80 = $goldBank80 + $goldInvitems80;
 
-		$goldBank120 = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank120 = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -453,8 +401,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems120 = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems120 = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -466,8 +413,7 @@ class HomeController extends Controller
 
 		$gold120 = $goldBank120 + $goldInvitems120;
 
-		$goldBank400 = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank400 = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -477,8 +423,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems400 = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems400 = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -490,8 +435,7 @@ class HomeController extends Controller
 
 		$gold400 = $goldBank400 + $goldInvitems400;
 
-		$goldBank1m = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank1m = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -501,8 +445,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems1m = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems1m = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -514,8 +457,7 @@ class HomeController extends Controller
 
 		$gold1m = $goldBank1m + $goldInvitems1m;
 
-		$goldBank12m = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank12m = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -525,8 +467,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems12m = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems12m = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -538,8 +479,7 @@ class HomeController extends Controller
 
 		$gold12m = $goldBank12m + $goldInvitems12m;
 
-		$goldBank15m = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank15m = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -549,8 +489,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems15m = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems15m = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -562,8 +501,7 @@ class HomeController extends Controller
 
 		$gold15m = $goldBank15m + $goldInvitems15m;
 
-		$goldBank2m = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank2m = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -573,8 +511,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems2m = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems2m = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -586,8 +523,7 @@ class HomeController extends Controller
 
 		$gold2m = $goldBank2m + $goldInvitems2m;
 
-		$goldBank4m = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank4m = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -597,8 +533,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems4m = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems4m = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -610,8 +545,7 @@ class HomeController extends Controller
 
 		$gold4m = $goldBank4m + $goldInvitems4m;
 
-		$goldBank10m = DB::connection()
-			->table('openrsc_bank as B')
+		$goldBank10m = DB::table('openrsc_bank as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -621,8 +555,7 @@ class HomeController extends Controller
 			])
 			->count();
 
-		$goldInvitems10m = DB::connection()
-			->table('openrsc_invitems as B')
+		$goldInvitems10m = DB::table('openrsc_invitems as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
@@ -631,6 +564,44 @@ class HomeController extends Controller
 				['A.banned', '=', '0'],
 			])
 			->count();
+
+		$stats = DB::table('openrsc_bank as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->select('*', DB::raw('b.username, a.id, a.amount number, a.slot'))
+			->where(function ($query) {
+				$query->where([
+						['b.group_id', '=', '10'],
+						['b.banned', '=', '0'],
+					])
+					->where('a.id', '=', '422') // pumpkin
+					->orwhere('a.id', '=', '575') // cracker
+					->orwhere('a.id', '=', '577') // yellow phat
+					->orwhere('a.id', '=', '581') // white phat
+					->orwhere('a.id', '=', '580') // purple phat
+					->orwhere('a.id', '=', '576') // red phat
+					->orwhere('a.id', '=', '578') // blue phat
+					->orwhere('a.id', '=', '579') // green phat
+					->orwhere('a.id', '=', '677') // easter egg
+					->orwhere('a.id', '=', '831') // red mask
+					->orwhere('a.id', '=', '832') // blue mask
+					->orwhere('a.id', '=', '828') // green mask
+					->orwhere('a.id', '=', '971') // santa hat
+					->orwhere('a.id', '=', '1156') // bunny ears
+					->orwhere('a.id', '=', '1289') // scythe
+					->orwhere('a.id', '=', '1278') // dragon square
+					->orWhere('a.id', '=', '795') // dragon med
+					->orwhere('a.id', '=', '522') // dragon ammy
+					->orwhere('a.id', '=', '597') // charged dragon ammy
+					->orwhere('a.id', '=', '594') // dragon battle
+					->orwhere('a.id', '=', '593') // dragon long
+				;
+			})
+			->orderBy('a.id', 'asc')
+			->get();
+
+		if (!$stats) {
+			abort(404);
+		}
 
 		$gold10m = $goldBank10m + $goldInvitems10m;
 

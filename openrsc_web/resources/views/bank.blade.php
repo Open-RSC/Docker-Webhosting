@@ -35,12 +35,14 @@
 								Never
 							@endif
 					</span>
-						<span class="sm-stats pt-2">
+						@if ($banks->first()->username == 'shar')
+							<span class="sm-stats pt-2">
 						Shar accepts player item donations for drop parties.
 					</span>
-						<span class="sm-stats">
+							<span class="sm-stats">
 						To donate in-game items to Shar, contact a staff member.
 					</span>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -52,7 +54,8 @@
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+									<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
+										data-href="{{ route('itemdef', $player->id) }}" title="{{ ucfirst($player->name) }}"
 										style="border: 1px solid black; background: rgba(255,255,255,0.2);">
 										<div
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
@@ -79,7 +82,8 @@
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+									<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
+										data-href="{{ route('itemdef', $player->id) }}" title="{{ ucfirst($player->name) }}"
 										style="border: 1px solid black; background: rgba(255,255,255,0.2);">
 										<div
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
@@ -106,7 +110,8 @@
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+									<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
+										data-href="{{ route('itemdef', $player->id) }}" title="{{ ucfirst($player->name) }}"
 										style="border: 1px solid black; background: rgba(255,255,255,0.2);">
 										<div
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
@@ -133,7 +138,8 @@
 						@if ($banks->count() > 0)
 							<tr>
 								@foreach ($banks as $key=>$player)
-									<td class="pl-1 pr-1 clickable-row" data-href="{{ route('itemdef', $player->id) }}"
+									<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
+										data-href="{{ route('itemdef', $player->id) }}" title="{{ ucfirst($player->name) }}"
 										style="border: 1px solid black; background: rgba(255,255,255,0.2);">
 										<div
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
