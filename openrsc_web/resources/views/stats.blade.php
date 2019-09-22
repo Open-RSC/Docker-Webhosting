@@ -90,7 +90,7 @@
 						<span class="text-info font-weight-bold">{{ number_format($gold10m) }}</span> players have over 10M gp.
 					</span>
 
-					<h4 class="pt-4 h4 text-warning">Important Total Item Summary</h4>
+					<h4 class="pt-4 h4 text-warning">Important Items Summary</h4>
 
 					<table>
 						<tr>
