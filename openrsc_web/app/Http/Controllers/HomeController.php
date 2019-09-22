@@ -567,7 +567,8 @@ class HomeController extends Controller
 
 		$stats = DB::table('openrsc_bank as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('b.username, a.id, a.amount number, a.slot'))
+			->join('openrsc_itemdef as c', 'a.id', '=', 'c.id')
+			->select('*', DB::raw('b.username, a.id, a.amount number, a.slot, c.name'))
 			->where(function ($query) {
 				$query->where([
 						['b.group_id', '=', '10'],
