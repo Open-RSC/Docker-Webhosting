@@ -977,6 +977,36 @@ class HomeController extends Controller
 
 		$dlong = $dlongInvitems + $dlongBank;
 
+		$cabbageInvitems = DB::table('openrsc_bank as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '18'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '228'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$cabbageBank = DB::table('openrsc_invitems as B')
+			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
+			->where([
+				['B.id', '=', '18'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '228'],
+				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->sum('B.amount');
+
+		$cabbage = $cabbageInvitems + $cabbageBank;
+
 		return view(
 			'stats',
 			[
@@ -1026,6 +1056,7 @@ class HomeController extends Controller
 				'dammy' => $dammy,
 				'dbattle' => $dbattle,
 				'dlong' => $dlong,
+				'cabbage' => $cabbage,
 			]
 		)->with(compact('stats'));
 	}

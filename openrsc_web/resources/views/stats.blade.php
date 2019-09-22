@@ -378,6 +378,20 @@
 								<img class="mt-n2" src="{{ asset('img/items') }}/593.png"
 									 alt="Dragon Sword"/>
 							</td>
+							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
+								data-href="{{ route('itemdef', '18') }}" title="Cabbage"
+								style="border: 1px solid black; background: rgba(255,255,255,0.2);">
+								<div
+									style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
+									@if ($cabbage)
+										{{ number_format($cabbage) }}
+									@else
+										0
+									@endif
+								</div>
+								<img class="mt-n2" src="{{ asset('img/items') }}/18.png"
+									 alt="Cabbage"/>
+							</td>
 						</tr>
 					</table>
 				</div>
