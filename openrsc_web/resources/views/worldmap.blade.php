@@ -35,9 +35,9 @@
                     context.arc(e.layerX, e.layerY, 3, 0, 2 * Math.PI, false);
                     context.closePath();
                     context.fill();
-                    let realx = Math.round((-e.offsetX/3 + 767));
-                    let realy = Math.round(e.layerY/3 + 433);
-                    let text = '(' + realx + ', ' + realy + ')';
+                    let realX = Math.round((-e.offsetX/3 + 767));
+                    let realY = Math.round(e.layerY/3 + 433);
+                    let text = '(' + realX + ', ' + realY + ')';
                     context.fillText(text, e.layerX + 5, e.layerY);
                 });
             }
