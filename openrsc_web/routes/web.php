@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/worldmap', 'HomeController@world')->name('worldmap');
+Route::get('/worldmap', 'HomeController@worldmap')->name('worldmap');
 Route::get('/wilderness', 'HomeController@wilderness')->name('wilderness');
 Route::get('/faq', 'HomeController@faq')->name('faq');
 Route::get('/rules', 'HomeController@rules')->name('rules');
