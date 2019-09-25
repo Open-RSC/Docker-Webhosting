@@ -20,6 +20,7 @@ Route::get('/stats', 'HomeController@stats')->name('stats');
 Route::get('/player/{subpage}', 'PlayerController@index')->name('player');
 Route::get('/player/shar/bank', 'PlayerController@shar')->name('bank');
 Route::get('/player/{subpage}/bank', 'PlayerController@bank')->middleware('is_admin')->name('bank');
+Route::get('/player/{subpage}/inventory', 'PlayerController@invitem')->middleware('is_admin')->name('invitem');
 
 // Item lookup
 Route::get('/items', 'ItemController@index')->name('items');

@@ -135,4 +135,51 @@ class PlayerController extends Controller
 		])
 			->with(compact('$banks'));
 	}
+
+	/**
+	 * @param $subpage
+	 * @return Factory|View
+	 */
+	public function invitem($subpage)
+	{
+		/**
+		 * @var $subpage
+		 * Replaces spaces with underlines
+		 */
+		$subpage = preg_replace("/[^A-Za-z0-9 ]/", "_", $subpage);
+
+		/**
+		 * @var $banks
+		 * Fetches the table row of the player experience in view and paginates the results
+		 */
+		$invitems = DB::connection()
+			->table('openrsc_invitems as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->join('openrsc_itemdef as c', 'a.id', '=', 'c.id')
+			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot, c.name'))
+			->where([
+				['b.banned', '=', '0'],
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['b.banned', '=', '0'],
+				['b.username', '=', $subpage],
+			])
+			->orderBy('a.slot', 'asc')
+			->get();
+
+		if (!$invitems) {
+			abort(404);
+		}
+
+		if (!Auth::check()) {
+			return redirect('home');
+		}
+
+		return view('invitem', [
+			'subpage' => $subpage,
+			'invitems' => $invitems,
+		])
+			->with(compact('$invitems'));
+	}
 }
