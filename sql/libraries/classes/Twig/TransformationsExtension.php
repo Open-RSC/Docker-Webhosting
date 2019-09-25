@@ -1,17 +1,19 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\TransformationsExtension class.
+ * hold PhpMyAdmin\Twig\TransformationsExtension class
+ *
+ * @package PhpMyAdmin\Twig
  */
-
 namespace PhpMyAdmin\Twig;
 
-use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
- * Class TransformationsExtension.
+ * Class TransformationsExtension
+ *
+ * @package PhpMyAdmin\Twig
  */
 class TransformationsExtension extends AbstractExtension
 {
@@ -22,7 +24,7 @@ class TransformationsExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return [
+        return array(
             new TwigFunction(
                 'Transformations_getDescription',
                 'PhpMyAdmin\Transformations::getDescription'
@@ -31,6 +33,6 @@ class TransformationsExtension extends AbstractExtension
                 'Transformations_getName',
                 'PhpMyAdmin\Transformations::getName'
             ),
-        ];
+        );
     }
 }

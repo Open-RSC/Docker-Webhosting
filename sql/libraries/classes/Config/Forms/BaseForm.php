@@ -1,22 +1,22 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Base class for preferences.
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Config\Forms;
 
 use PhpMyAdmin\Config\ConfigFile;
 use PhpMyAdmin\Config\FormDisplay;
 
 /**
- * Base form for user preferences.
+ * Base form for user preferences
  */
 abstract class BaseForm extends FormDisplay
 {
     /**
-     * Constructor.
+     * Constructor
      *
      * @param ConfigFile $cf        Config file instance
      * @param int|null   $server_id 0 if new server, validation; >= 1 if editing a server
@@ -52,7 +52,7 @@ abstract class BaseForm extends FormDisplay
      */
     public static function getForms()
     {
-        return [];
+        return array();
     }
 
     /**
@@ -68,12 +68,11 @@ abstract class BaseForm extends FormDisplay
                 $names[] = is_int($k) ? $v : $k;
             }
         }
-
         return $names;
     }
 
     /**
-     * Returns name of the form.
+     * Returns name of the form
      *
      * @todo This should be abstract, but that does not work in PHP 5
      *

@@ -1,12 +1,14 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 
 /**
- * Displays query statistics for the server.
+ * Displays query statistics for the server
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Message;
+
 use PhpMyAdmin\Response;
+use PhpMyAdmin\Message;
 use PhpMyAdmin\Server\Status\Data;
 use PhpMyAdmin\Server\Status\Queries;
 
@@ -17,8 +19,8 @@ require_once 'libraries/replication.inc.php';
 $serverStatusData = new Data();
 
 $response = Response::getInstance();
-$header = $response->getHeader();
-$scripts = $header->getScripts();
+$header   = $response->getHeader();
+$scripts  = $header->getScripts();
 
 // for charting
 $scripts->addFile('chart.js');

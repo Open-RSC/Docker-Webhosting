@@ -1,25 +1,27 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Server config checks management.
+ * Server config checks management
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Config;
 
-use PhpMyAdmin\Url;
-use PhpMyAdmin\Core;
-use PhpMyAdmin\Util;
-use PhpMyAdmin\Sanitize;
 use PhpMyAdmin\Config\ConfigFile;
 use PhpMyAdmin\Config\Descriptions;
+use PhpMyAdmin\Core;
+use PhpMyAdmin\Sanitize;
 use PhpMyAdmin\Setup\Index as SetupIndex;
+use PhpMyAdmin\Url;
+use PhpMyAdmin\Util;
 
 /**
- * Performs various compatibility, security and consistency checks on current config.
+ * Performs various compatibility, security and consistency checks on current config
  *
  * Outputs results to message list, must be called between SetupIndex::messagesBegin()
  * and SetupIndex::messagesEnd()
+ *
+ * @package PhpMyAdmin
  */
 class ServerConfigChecks
 {
@@ -39,7 +41,7 @@ class ServerConfigChecks
     }
 
     /**
-     * Perform config checks.
+     * Perform config checks
      *
      * @return void
      */
@@ -67,17 +69,17 @@ class ServerConfigChecks
             $sAllowArbitraryServerWarn = sprintf(
                 __(
                     'This %soption%s should be disabled as it allows attackers to '
-                    .'bruteforce login to any MySQL server. If you feel this is necessary, '
-                    .'use %srestrict login to MySQL server%s or %strusted proxies list%s. '
-                    .'However, IP-based protection with trusted proxies list may not be '
-                    .'reliable if your IP belongs to an ISP where thousands of users, '
-                    .'including you, are connected to.'
+                    . 'bruteforce login to any MySQL server. If you feel this is necessary, '
+                    . 'use %srestrict login to MySQL server%s or %strusted proxies list%s. '
+                    . 'However, IP-based protection with trusted proxies list may not be '
+                    . 'reliable if your IP belongs to an ISP where thousands of users, '
+                    . 'including you, are connected to.'
                 ),
-                '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Security]',
+                '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Security]',
                 '[/a]',
-                '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Security]',
+                '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Security]',
                 '[/a]',
-                '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Security]',
+                '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Security]',
                 '[/a]'
             );
             SetupIndex::messagesSet(
@@ -92,8 +94,8 @@ class ServerConfigChecks
 
         $sDirectoryNotice = __(
             'This value should be double checked to ensure that this directory is '
-            .'neither world accessible nor readable or writable by other users on '
-            .'your server.'
+            . 'neither world accessible nor readable or writable by other users on '
+            . 'your server.'
         );
 
         //
@@ -126,11 +128,11 @@ class ServerConfigChecks
     }
 
     /**
-     * Check config of servers.
+     * Check config of servers
      *
-     * @param bool $cookieAuthUsed    Cookie auth is used
+     * @param boolean $cookieAuthUsed    Cookie auth is used
      * @param string  $blowfishSecret    Blowfish secret
-     * @param bool $blowfishSecretSet Blowfish secret set
+     * @param boolean $blowfishSecretSet Blowfish secret set
      *
      * @return array
      */
@@ -157,28 +159,28 @@ class ServerConfigChecks
             // $cfg['Servers'][$i]['ssl']
             // should be enabled if possible
             //
-            if (! $this->cfg->getValue("Servers/$i/ssl")) {
-                $title = Descriptions::get('Servers/1/ssl')." ($serverName)";
+            if (!$this->cfg->getValue("Servers/$i/ssl")) {
+                $title = Descriptions::get('Servers/1/ssl') . " ($serverName)";
                 SetupIndex::messagesSet(
                     'notice',
                     "Servers/$i/ssl",
                     $title,
                     __(
                         'You should use SSL connections if your database server '
-                        .'supports it.'
+                        . 'supports it.'
                     )
                 );
             }
             $sSecurityInfoMsg = Sanitize::sanitize(sprintf(
                 __(
                     'If you feel this is necessary, use additional protection settings - '
-                    .'%1$shost authentication%2$s settings and %3$strusted proxies list%4%s. '
-                    .'However, IP-based protection may not be reliable if your IP belongs '
-                    .'to an ISP where thousands of users, including you, are connected to.'
+                    . '%1$shost authentication%2$s settings and %3$strusted proxies list%4%s. '
+                    . 'However, IP-based protection may not be reliable if your IP belongs '
+                    . 'to an ISP where thousands of users, including you, are connected to.'
                 ),
-                '[a@'.Url::getCommon(['page' => 'servers', 'mode' => 'edit', 'id' => $i]).'#tab_Server_config]',
+                '[a@' . Url::getCommon(array('page' => 'servers', 'mode' => 'edit', 'id' => $i)) . '#tab_Server_config]',
                 '[/a]',
-                '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Security]',
+                '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Security]',
                 '[/a]'
             ));
 
@@ -191,7 +193,7 @@ class ServerConfigChecks
                 && $this->cfg->getValue("Servers/$i/password") != ''
             ) {
                 $title = Descriptions::get('Servers/1/auth_type')
-                    ." ($serverName)";
+                    . " ($serverName)";
                 SetupIndex::messagesSet(
                     'notice',
                     "Servers/$i/auth_type",
@@ -199,15 +201,15 @@ class ServerConfigChecks
                     Sanitize::sanitize(sprintf(
                         __(
                             'You set the [kbd]config[/kbd] authentication type and included '
-                            .'username and password for auto-login, which is not a desirable '
-                            .'option for live hosts. Anyone who knows or guesses your phpMyAdmin '
-                            .'URL can directly access your phpMyAdmin panel. Set %1$sauthentication '
-                            .'type%2$s to [kbd]cookie[/kbd] or [kbd]http[/kbd].'
+                            . 'username and password for auto-login, which is not a desirable '
+                            . 'option for live hosts. Anyone who knows or guesses your phpMyAdmin '
+                            . 'URL can directly access your phpMyAdmin panel. Set %1$sauthentication '
+                            . 'type%2$s to [kbd]cookie[/kbd] or [kbd]http[/kbd].'
                         ),
-                        '[a@'.Url::getCommon(['page' => 'servers', 'mode' => 'edit', 'id' => $i]).'#tab_Server]',
+                        '[a@' . Url::getCommon(array('page' => 'servers', 'mode' => 'edit', 'id' => $i)) . '#tab_Server]',
                         '[/a]'
                     ))
-                    .' '.$sSecurityInfoMsg
+                    . ' ' . $sSecurityInfoMsg
                 );
             }
 
@@ -220,26 +222,25 @@ class ServerConfigChecks
                 && $this->cfg->getValue("Servers/$i/AllowNoPassword")
             ) {
                 $title = Descriptions::get('Servers/1/AllowNoPassword')
-                    ." ($serverName)";
+                    . " ($serverName)";
                 SetupIndex::messagesSet(
                     'notice',
                     "Servers/$i/AllowNoPassword",
                     $title,
                     __('You allow for connecting to the server without a password.')
-                    .' '.$sSecurityInfoMsg
+                    . ' ' . $sSecurityInfoMsg
                 );
             }
         }
-
-        return [$cookieAuthUsed, $blowfishSecret, $blowfishSecretSet];
+        return array($cookieAuthUsed, $blowfishSecret, $blowfishSecretSet);
     }
 
     /**
-     * Set blowfish secret.
+     * Set blowfish secret
      *
      * @param string  $blowfishSecret    Blowfish secret
-     * @param bool $cookieAuthServer  Cookie auth is used
-     * @param bool $blowfishSecretSet Blowfish secret set
+     * @param boolean $cookieAuthServer  Cookie auth is used
+     * @param boolean $blowfishSecretSet Blowfish secret set
      *
      * @return array
      */
@@ -250,12 +251,11 @@ class ServerConfigChecks
             $blowfishSecretSet = true;
             $this->cfg->set('blowfish_secret', Util::generateRandom(32));
         }
-
-        return [$blowfishSecret, $blowfishSecretSet];
+        return array($blowfishSecret, $blowfishSecretSet);
     }
 
     /**
-     * Define server name.
+     * Define server name
      *
      * @param string $serverName Server name
      * @param int    $serverId   Server id
@@ -267,10 +267,8 @@ class ServerConfigChecks
     ) {
         if ($serverName == 'localhost') {
             $serverName .= " [$serverId]";
-
             return $serverName;
         }
-
         return $serverName;
     }
 
@@ -279,8 +277,7 @@ class ServerConfigChecks
      *
      * @return void
      */
-    protected function performConfigChecksZips()
-    {
+    protected function performConfigChecksZips() {
         $this->performConfigChecksServerGZipdump();
         $this->performConfigChecksServerBZipdump();
         $this->performConfigChecksServersZipdump();
@@ -291,13 +288,12 @@ class ServerConfigChecks
      *
      * @return void
      */
-    protected function performConfigChecksServersZipdump()
-    {
+    protected function performConfigChecksServersZipdump() {
         //
         // $cfg['ZipDump']
         // requires zip_open in import
         //
-        if ($this->cfg->getValue('ZipDump') && ! $this->functionExists('zip_open')) {
+        if ($this->cfg->getValue('ZipDump') && !$this->functionExists('zip_open')) {
             SetupIndex::messagesSet(
                 'error',
                 'ZipDump_import',
@@ -305,9 +301,9 @@ class ServerConfigChecks
                 Sanitize::sanitize(sprintf(
                     __(
                         '%sZip decompression%s requires functions (%s) which are unavailable '
-                        .'on this system.'
+                        . 'on this system.'
                     ),
-                    '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Import_export]',
+                    '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Import_export]',
                     '[/a]',
                     'zip_open'
                 ))
@@ -318,7 +314,7 @@ class ServerConfigChecks
         // $cfg['ZipDump']
         // requires gzcompress in export
         //
-        if ($this->cfg->getValue('ZipDump') && ! $this->functionExists('gzcompress')) {
+        if ($this->cfg->getValue('ZipDump') && !$this->functionExists('gzcompress')) {
             SetupIndex::messagesSet(
                 'error',
                 'ZipDump_export',
@@ -326,9 +322,9 @@ class ServerConfigChecks
                 Sanitize::sanitize(sprintf(
                     __(
                         '%sZip compression%s requires functions (%s) which are unavailable on '
-                        .'this system.'
+                        . 'this system.'
                     ),
-                    '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Import_export]',
+                    '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Import_export]',
                     '[/a]',
                     'gzcompress'
                 ))
@@ -337,10 +333,10 @@ class ServerConfigChecks
     }
 
     /**
-     * Check config of servers.
+     * Check config of servers
      *
-     * @param bool $cookieAuthUsed    Cookie auth is used
-     * @param bool $blowfishSecretSet Blowfish secret set
+     * @param boolean $cookieAuthUsed    Cookie auth is used
+     * @param boolean $blowfishSecretSet Blowfish secret set
      * @param string  $blowfishSecret    Blowfish secret
      *
      * @return array
@@ -362,13 +358,13 @@ class ServerConfigChecks
                     Descriptions::get('blowfish_secret'),
                     Sanitize::sanitize(__(
                         'You didn\'t have blowfish secret set and have enabled '
-                        .'[kbd]cookie[/kbd] authentication, so a key was automatically '
-                        .'generated for you. It is used to encrypt cookies; you don\'t need to '
-                        .'remember it.'
+                        . '[kbd]cookie[/kbd] authentication, so a key was automatically '
+                        . 'generated for you. It is used to encrypt cookies; you don\'t need to '
+                        . 'remember it.'
                     ))
                 );
             } else {
-                $blowfishWarnings = [];
+                $blowfishWarnings = array();
                 // check length
                 if (strlen($blowfishSecret) < 32) {
                     // too short key
@@ -377,21 +373,21 @@ class ServerConfigChecks
                     );
                 }
                 // check used characters
-                $hasDigits = (bool) preg_match('/\d/', $blowfishSecret);
-                $hasChars = (bool) preg_match('/\S/', $blowfishSecret);
-                $hasNonword = (bool) preg_match('/\W/', $blowfishSecret);
-                if (! $hasDigits || ! $hasChars || ! $hasNonword) {
+                $hasDigits = (bool)preg_match('/\d/', $blowfishSecret);
+                $hasChars = (bool)preg_match('/\S/', $blowfishSecret);
+                $hasNonword = (bool)preg_match('/\W/', $blowfishSecret);
+                if (!$hasDigits || !$hasChars || !$hasNonword) {
                     $blowfishWarnings[] = Sanitize::sanitize(
                         __(
                             'Key should contain letters, numbers [em]and[/em] '
-                            .'special characters.'
+                            . 'special characters.'
                         )
                     );
                 }
-                if (! empty($blowfishWarnings)) {
+                if (!empty($blowfishWarnings)) {
                     SetupIndex::messagesSet(
                         'error',
-                        'blowfish_warnings'.count($blowfishWarnings),
+                        'blowfish_warnings' . count($blowfishWarnings),
                         Descriptions::get('blowfish_secret'),
                         implode('<br />', $blowfishWarnings)
                     );
@@ -401,12 +397,11 @@ class ServerConfigChecks
     }
 
     /**
-     * Check configuration for login cookie.
+     * Check configuration for login cookie
      *
      * @return void
      */
-    protected function performConfigChecksLoginCookie()
-    {
+    protected function performConfigChecksLoginCookie() {
         //
         // $cfg['LoginCookieValidity']
         // value greater than session.gc_maxlifetime will cause
@@ -421,12 +416,12 @@ class ServerConfigChecks
                 Sanitize::sanitize(sprintf(
                     __(
                         '%1$sLogin cookie validity%2$s greater than %3$ssession.gc_maxlifetime%4$s may '
-                        .'cause random session invalidation (currently session.gc_maxlifetime '
-                        .'is %5$d).'
+                        . 'cause random session invalidation (currently session.gc_maxlifetime '
+                        . 'is %5$d).'
                     ),
-                    '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Security]',
+                    '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Security]',
                     '[/a]',
-                    '[a@'.Core::getPHPDocLink('session.configuration.php#ini.session.gc-maxlifetime').']',
+                    '[a@' . Core::getPHPDocLink('session.configuration.php#ini.session.gc-maxlifetime') . ']',
                     '[/a]',
                     ini_get('session.gc_maxlifetime')
                 ))
@@ -445,10 +440,10 @@ class ServerConfigChecks
                 Sanitize::sanitize(sprintf(
                     __(
                         '%sLogin cookie validity%s should be set to 1800 seconds (30 minutes) '
-                        .'at most. Values larger than 1800 may pose a security risk such as '
-                        .'impersonation.'
+                        . 'at most. Values larger than 1800 may pose a security risk such as '
+                        . 'impersonation.'
                     ),
-                    '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Security]',
+                    '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Security]',
                     '[/a]'
                 ))
             );
@@ -469,12 +464,12 @@ class ServerConfigChecks
                 Sanitize::sanitize(sprintf(
                     __(
                         'If using [kbd]cookie[/kbd] authentication and %sLogin cookie store%s '
-                        .'is not 0, %sLogin cookie validity%s must be set to a value less or '
-                        .'equal to it.'
+                        . 'is not 0, %sLogin cookie validity%s must be set to a value less or '
+                        . 'equal to it.'
                     ),
-                    '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Security]',
+                    '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Security]',
                     '[/a]',
-                    '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Security]',
+                    '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Security]',
                     '[/a]'
                 ))
             );
@@ -482,7 +477,7 @@ class ServerConfigChecks
     }
 
     /**
-     * Check GZipDump configuration.
+     * Check GZipDump configuration
      *
      * @return void
      */
@@ -493,14 +488,14 @@ class ServerConfigChecks
         // requires bzip2 functions
         //
         if ($this->cfg->getValue('BZipDump')
-            && (! $this->functionExists('bzopen') || ! $this->functionExists('bzcompress'))
+            && (!$this->functionExists('bzopen') || !$this->functionExists('bzcompress'))
         ) {
             $functions = $this->functionExists('bzopen')
                 ? '' :
                 'bzopen';
             $functions .= $this->functionExists('bzcompress')
                 ? ''
-                : ($functions ? ', ' : '').'bzcompress';
+                : ($functions ? ', ' : '') . 'bzcompress';
             SetupIndex::messagesSet(
                 'error',
                 'BZipDump',
@@ -509,9 +504,9 @@ class ServerConfigChecks
                     sprintf(
                          __(
                             '%1$sBzip2 compression and decompression%2$s requires functions (%3$s) which '
-                            .'are unavailable on this system.'
+                            . 'are unavailable on this system.'
                         ),
-                        '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Import_export]',
+                        '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Import_export]',
                         '[/a]',
                         $functions
                     )
@@ -521,7 +516,7 @@ class ServerConfigChecks
     }
 
     /**
-     * Check GZipDump configuration.
+     * Check GZipDump configuration
      *
      * @return void
      */
@@ -532,7 +527,7 @@ class ServerConfigChecks
         // requires zlib functions
         //
         if ($this->cfg->getValue('GZipDump')
-            && (! $this->functionExists('gzopen') || ! $this->functionExists('gzencode'))
+            && (!$this->functionExists('gzopen') || !$this->functionExists('gzencode'))
         ) {
             SetupIndex::messagesSet(
                 'error',
@@ -541,9 +536,9 @@ class ServerConfigChecks
                 Sanitize::sanitize(sprintf(
                     __(
                         '%1$sGZip compression and decompression%2$s requires functions (%3$s) which '
-                        .'are unavailable on this system.'
+                        . 'are unavailable on this system.'
                     ),
-                    '[a@'.Url::getCommon(['page' => 'form', 'formset' => 'Features']).'#tab_Import_export]',
+                    '[a@' . Url::getCommon(array('page' => 'form', 'formset' => 'Features')) . '#tab_Import_export]',
                     '[/a]',
                     'gzencode'
                 ))
@@ -552,11 +547,11 @@ class ServerConfigChecks
     }
 
     /**
-     * Wrapper around function_exists to allow mock in test.
+     * Wrapper around function_exists to allow mock in test
      *
      * @param string $name Function name
      *
-     * @return bool
+     * @return boolean
      */
     protected function functionExists($name)
     {

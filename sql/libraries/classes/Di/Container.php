@@ -1,23 +1,25 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Di\Container class.
+ * Holds the PhpMyAdmin\Di\Container class
+ *
+ * @package PhpMyAdmin\Di
  */
-
 namespace PhpMyAdmin\Di;
 
 use Psr\Container\ContainerInterface;
 
 /**
- * Class Container.
+ * Class Container
+ *
+ * @package PhpMyAdmin\Di
  */
 class Container implements ContainerInterface
 {
     /**
-     * @var Item[]
+     * @var Item[] $content
      */
-    protected $content = [];
+    protected $content = array();
 
     /**
      * @var Container
@@ -25,11 +27,11 @@ class Container implements ContainerInterface
     protected static $defaultContainer;
 
     /**
-     * Create a dependency injection container.
+     * Create a dependency injection container
      *
      * @param Container $base Container
      */
-    public function __construct(self $base = null)
+    public function __construct(Container $base = null)
     {
         if (isset($base)) {
             $this->content = $base->content;
@@ -40,7 +42,7 @@ class Container implements ContainerInterface
     }
 
     /**
-     * Get an object with given name and parameters.
+     * Get an object with given name and parameters
      *
      * @param string $name   Name
      * @param array  $params Parameters
@@ -50,9 +52,9 @@ class Container implements ContainerInterface
      *
      * @return mixed
      */
-    public function get($name, array $params = [])
+    public function get($name, array $params = array())
     {
-        if (! $this->has($name)) {
+        if (!$this->has($name)) {
             throw new NotFoundException("No entry was found for $name identifier.");
         }
 
@@ -61,7 +63,7 @@ class Container implements ContainerInterface
         } elseif (isset($GLOBALS[$name])) {
             return $GLOBALS[$name];
         } else {
-            throw new ContainerException('Error while retrieving the entry.');
+            throw new ContainerException("Error while retrieving the entry.");
         }
     }
 
@@ -82,7 +84,7 @@ class Container implements ContainerInterface
     }
 
     /**
-     * Remove an object from container.
+     * Remove an object from container
      *
      * @param string $name Name
      *
@@ -94,7 +96,7 @@ class Container implements ContainerInterface
     }
 
     /**
-     * Rename an object in container.
+     * Rename an object in container
      *
      * @param string $name    Name
      * @param string $newName New name
@@ -108,7 +110,7 @@ class Container implements ContainerInterface
     }
 
     /**
-     * Set values in the container.
+     * Set values in the container
      *
      * @param string|array $name  Name
      * @param mixed        $value Value
@@ -121,14 +123,13 @@ class Container implements ContainerInterface
             foreach ($name as $key => $val) {
                 $this->set($key, $val);
             }
-
             return;
         }
         $this->content[$name] = new ValueItem($value);
     }
 
     /**
-     * Register a service in the container.
+     * Register a service in the container
      *
      * @param string $name    Name
      * @param mixed  $service Service
@@ -137,14 +138,14 @@ class Container implements ContainerInterface
      */
     public function service($name, $service = null)
     {
-        if (! isset($service)) {
+        if (!isset($service)) {
             $service = $name;
         }
         $this->content[$name] = new ServiceItem($this, $service);
     }
 
     /**
-     * Register a factory in the container.
+     * Register a factory in the container
      *
      * @param string $name    Name
      * @param mixed  $factory Factory
@@ -153,14 +154,14 @@ class Container implements ContainerInterface
      */
     public function factory($name, $factory = null)
     {
-        if (! isset($factory)) {
+        if (!isset($factory)) {
             $factory = $name;
         }
         $this->content[$name] = new FactoryItem($this, $factory);
     }
 
     /**
-     * Register an alias in the container.
+     * Register an alias in the container
      *
      * @param string $name   Name
      * @param string $target Target
@@ -174,16 +175,15 @@ class Container implements ContainerInterface
     }
 
     /**
-     * Get the global default container.
+     * Get the global default container
      *
      * @return Container
      */
     public static function getDefaultContainer()
     {
-        if (! isset(static::$defaultContainer)) {
-            static::$defaultContainer = new self();
+        if (!isset(static::$defaultContainer)) {
+            static::$defaultContainer = new Container();
         }
-
         return static::$defaultContainer;
     }
 }

@@ -1,45 +1,48 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Page-related settings.
+ * Page-related settings
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Config;
 
+use PhpMyAdmin\Config\ConfigFile;
+use PhpMyAdmin\Config\FormDisplay;
+use PhpMyAdmin\Config\Forms\Page\PageFormList;
 use PhpMyAdmin\Core;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
 use PhpMyAdmin\UserPreferences;
-use PhpMyAdmin\Config\ConfigFile;
-use PhpMyAdmin\Config\FormDisplay;
-use PhpMyAdmin\Config\Forms\Page\PageFormList;
 
 /**
- * Page-related settings.
+ * Page-related settings
+ *
+ * @package PhpMyAdmin
  */
 class PageSettings
 {
+
     /**
-     * Contains id of the form element.
+     * Contains id of the form element
      * @var string
      */
     private $_elemId = 'page_settings_modal';
 
     /**
-     * Name of the group to show.
+     * Name of the group to show
      * @var string
      */
     private $_groupName = '';
 
     /**
-     * Contains HTML of errors.
+     * Contains HTML of errors
      * @var string
      */
     private $_errorHTML = '';
 
     /**
-     * Contains HTML of settings.
+     * Contains HTML of settings
      * @var string
      */
     private $_HTML = '';
@@ -50,7 +53,7 @@ class PageSettings
     private $userPreferences;
 
     /**
-     * Constructor.
+     * Constructor
      *
      * @param string $formGroupName The name of config form group to display
      * @param string $elemId        Id of the div containing settings
@@ -68,7 +71,7 @@ class PageSettings
             return;
         }
 
-        if (! empty($elemId)) {
+        if (!empty($elemId)) {
             $this->_elemId = $elemId;
         }
         $this->_groupName = $formGroupName;
@@ -91,7 +94,7 @@ class PageSettings
     }
 
     /**
-     * Process response to form.
+     * Process response to form
      *
      * @param FormDisplay  &$form_display Form
      * @param ConfigFile   &$cf           Configuration file
@@ -101,7 +104,7 @@ class PageSettings
      */
     private function _processPageSettings(&$form_display, &$cf, &$error)
     {
-        if ($form_display->process(false) && ! $form_display->hasErrors()) {
+        if ($form_display->process(false) && !$form_display->hasErrors()) {
             // save settings
             $result = $this->userPreferences->save($cf->getConfigArray());
             if ($result === true) {
@@ -118,7 +121,7 @@ class PageSettings
     }
 
     /**
-     * Store errors in _errorHTML.
+     * Store errors in _errorHTML
      *
      * @param FormDisplay  &$form_display Form
      * @param Message|null &$error        Error message
@@ -134,18 +137,18 @@ class PageSettings
         if ($form_display->hasErrors()) {
             // form has errors
             $retval .= '<div class="error config-form">'
-                .'<b>'.__(
+                . '<b>' . __(
                     'Cannot save settings, submitted configuration form contains '
-                    .'errors!'
-                ).'</b>'
-                .$form_display->displayErrors()
-                .'</div>';
+                    . 'errors!'
+                ) . '</b>'
+                . $form_display->displayErrors()
+                . '</div>';
         }
         $this->_errorHTML = $retval;
     }
 
     /**
-     * Display page-related settings.
+     * Display page-related settings
      *
      * @param FormDisplay &$form_display Form
      * @param Message     &$error        Error message
@@ -160,16 +163,16 @@ class PageSettings
 
         $this->_storeError($form_display, $error);
 
-        $retval .= '<div id="'.$this->_elemId.'">';
+        $retval .= '<div id="' . $this->_elemId . '">';
         $retval .= '<div class="page_settings">';
         $retval .= $form_display->getDisplay(
             true,
             true,
             false,
             $response->getFooter()->getSelfUrl(),
-            [
-                'submit_save' => $this->_groupName,
-            ]
+            array(
+                'submit_save' => $this->_groupName
+            )
         );
         $retval .= '</div>';
         $retval .= '</div>';
@@ -178,7 +181,7 @@ class PageSettings
     }
 
     /**
-     * Get HTML output.
+     * Get HTML output
      *
      * @return string
      */
@@ -188,7 +191,7 @@ class PageSettings
     }
 
     /**
-     * Get error HTML output.
+     * Get error HTML output
      *
      * @return string
      */
@@ -198,13 +201,13 @@ class PageSettings
     }
 
     /**
-     * Group to show for Page-related settings.
+     * Group to show for Page-related settings
      * @param string $formGroupName The name of config form group to display
      * @return PageSettings
      */
     public static function showGroup($formGroupName)
     {
-        $object = new self($formGroupName);
+        $object = new PageSettings($formGroupName);
 
         $response = Response::getInstance();
         $response->addHTML($object->getErrorHTML());
@@ -214,16 +217,15 @@ class PageSettings
     }
 
     /**
-     * Get HTML for navigation settings.
+     * Get HTML for navigation settings
      * @return string
      */
     public static function getNaviSettings()
     {
-        $object = new self('Navi', 'pma_navigation_settings');
+        $object = new PageSettings('Navi', 'pma_navigation_settings');
 
         $response = Response::getInstance();
         $response->addHTML($object->getErrorHTML());
-
         return $object->getHTML();
     }
 }

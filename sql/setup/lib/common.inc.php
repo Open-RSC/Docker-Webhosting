@@ -1,19 +1,20 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Loads libraries/common.inc.php and preforms some additional actions.
+ * Loads libraries/common.inc.php and preforms some additional actions
+ *
+ * @package PhpMyAdmin-Setup
  */
 use PhpMyAdmin\Config\ConfigFile;
 
-/*
+/**
  * Do not include full common.
  * @ignore
  */
 define('PMA_MINIMUM_COMMON', true);
 chdir('..');
 
-if (! file_exists('./libraries/common.inc.php')) {
+if (!file_exists('./libraries/common.inc.php')) {
     die('Bad invocation!');
 }
 
@@ -29,7 +30,7 @@ $GLOBALS['PMA_Config']->set('is_setup', true);
 
 $GLOBALS['ConfigFile'] = new ConfigFile();
 $GLOBALS['ConfigFile']->setPersistKeys(
-    [
+    array(
         'DefaultLang',
         'ServerDefault',
         'UploadDir',
@@ -40,8 +41,8 @@ $GLOBALS['ConfigFile']->setPersistKeys(
         'Servers/1/socket',
         'Servers/1/auth_type',
         'Servers/1/user',
-        'Servers/1/password',
-    ]
+        'Servers/1/password'
+    )
 );
 
 // allows for redirection even after sending some data

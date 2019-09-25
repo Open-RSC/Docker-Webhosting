@@ -1,14 +1,16 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Contains the factory class that handles the creation of geometric objects.
+ * Contains the factory class that handles the creation of geometric objects
+ *
+ * @package PhpMyAdmin-GIS
  */
-
 namespace PhpMyAdmin\Gis;
 
 /**
  * Factory class that handles the creation of geometric objects.
+ *
+ * @package PhpMyAdmin-GIS
  */
 class GisFactory
 {
@@ -20,26 +22,27 @@ class GisFactory
      * @return GisGeometry the singleton instance of geometric class
      *                          of the given type
      *
+     * @access public
      * @static
      */
     public static function factory($type)
     {
         switch (strtoupper($type)) {
-        case 'MULTIPOLYGON':
+        case 'MULTIPOLYGON' :
             return GisMultiPolygon::singleton();
-        case 'POLYGON':
+        case 'POLYGON' :
             return GisPolygon::singleton();
-        case 'MULTIPOINT':
+        case 'MULTIPOINT' :
             return GisMultiPoint::singleton();
-        case 'POINT':
+        case 'POINT' :
             return GisPoint::singleton();
-        case 'MULTILINESTRING':
+        case 'MULTILINESTRING' :
             return GisMultiLineString::singleton();
-        case 'LINESTRING':
+        case 'LINESTRING' :
             return GisLineString::singleton();
-        case 'GEOMETRYCOLLECTION':
+        case 'GEOMETRYCOLLECTION' :
             return GisGeometryCollection::singleton();
-        default:
+        default :
             return false;
         }
     }

@@ -1,14 +1,16 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Library for extracting information about the sub-partitions.
+ * Library for extracting information about the sub-partitions
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
 /**
- * Represents a sub partition of a table.
+ * Represents a sub partition of a table
+ *
+ * @package PhpMyAdmin
  */
 class SubPartition
 {
@@ -16,54 +18,45 @@ class SubPartition
      * @var string the database
      */
     protected $db;
-
     /**
      * @var string the table
      */
     protected $table;
-
     /**
      * @var string partition name
      */
     protected $name;
-
     /**
-     * @var int ordinal
+     * @var integer ordinal
      */
     protected $ordinal;
-
     /**
      * @var string partition method
      */
     protected $method;
-
     /**
      * @var string partition expression
      */
     protected $expression;
-
     /**
-     * @var int no of table rows in the partition
+     * @var integer no of table rows in the partition
      */
     protected $rows;
-
     /**
-     * @var int data length
+     * @var integer data length
      */
     protected $dataLength;
-
     /**
-     * @var int index length
+     * @var integer index length
      */
     protected $indexLength;
-
     /**
      * @var string partition comment
      */
     protected $comment;
 
     /**
-     * Constructs a partition.
+     * Constructs a partition
      *
      * @param array $row fetched row from information_schema.PARTITIONS
      */
@@ -75,7 +68,7 @@ class SubPartition
     }
 
     /**
-     * Loads data from the fetched row from information_schema.PARTITIONS.
+     * Loads data from the fetched row from information_schema.PARTITIONS
      *
      * @param array $row fetched row
      *
@@ -91,7 +84,7 @@ class SubPartition
     }
 
     /**
-     * Loads some data that is common to both partitions and sub partitions.
+     * Loads some data that is common to both partitions and sub partitions
      *
      * @param array $row fetched row
      *
@@ -106,7 +99,7 @@ class SubPartition
     }
 
     /**
-     * Return the partition name.
+     * Return the partition name
      *
      * @return string partition name
      */
@@ -116,7 +109,7 @@ class SubPartition
     }
 
     /**
-     * Return the ordinal of the partition.
+     * Return the ordinal of the partition
      *
      * @return number the ordinal
      */
@@ -126,7 +119,7 @@ class SubPartition
     }
 
     /**
-     * Returns the partition method.
+     * Returns the partition method
      *
      * @return string partition method
      */
@@ -136,7 +129,7 @@ class SubPartition
     }
 
     /**
-     * Returns the partition expression.
+     * Returns the partition expression
      *
      * @return string partition expression
      */
@@ -146,9 +139,9 @@ class SubPartition
     }
 
     /**
-     * Returns the number of data rows.
+     * Returns the number of data rows
      *
-     * @return int number of rows
+     * @return integer number of rows
      */
     public function getRows()
     {
@@ -156,9 +149,9 @@ class SubPartition
     }
 
     /**
-     * Returns the data length.
+     * Returns the data length
      *
-     * @return int data length
+     * @return integer data length
      */
     public function getDataLength()
     {
@@ -166,9 +159,9 @@ class SubPartition
     }
 
     /**
-     * Returns the index length.
+     * Returns the index length
      *
-     * @return int index length
+     * @return integer index length
      */
     public function getIndexLength()
     {
@@ -176,7 +169,7 @@ class SubPartition
     }
 
     /**
-     * Returns the partition comment.
+     * Returns the partition comment
      *
      * @return string partition comment
      */

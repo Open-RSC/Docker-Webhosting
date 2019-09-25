@@ -1,14 +1,15 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Common code for Routines, Triggers and Events.
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Url;
 use PhpMyAdmin\Response;
 use PhpMyAdmin\Rte\Events;
 use PhpMyAdmin\Rte\Routines;
 use PhpMyAdmin\Rte\Triggers;
+use PhpMyAdmin\Url;
 
 if (! defined('PHPMYADMIN')) {
     exit;
@@ -17,7 +18,7 @@ if (! defined('PHPMYADMIN')) {
 $response = Response::getInstance();
 
 if (! $response->isAjax()) {
-    /*
+    /**
      * Displays the header and tabs
      */
     if (! empty($table) && in_array($table, $GLOBALS['dbi']->getTables($db))) {
@@ -39,7 +40,7 @@ if (! $response->isAjax()) {
         ) = PhpMyAdmin\Util::getDbInfo($db, isset($sub_part) ? $sub_part : '');
     }
 } else {
-    /*
+    /**
      * Since we did not include some libraries, we need
      * to manually select the required database and
      * create the missing $url_query variable
@@ -48,16 +49,16 @@ if (! $response->isAjax()) {
         $GLOBALS['dbi']->selectDb($db);
         if (! isset($url_query)) {
             $url_query = Url::getCommon(
-                [
-                    'db' => $db, 'table' => $table,
-                ]
+                array(
+                    'db' => $db, 'table' => $table
+                )
             );
         }
     }
 }
 
 /**
- * Create labels for the list.
+ * Create labels for the list
  */
 $titles = PhpMyAdmin\Util::buildActionTitles();
 
@@ -65,9 +66,10 @@ $titles = PhpMyAdmin\Util::buildActionTitles();
  * Keep a list of errors that occurred while
  * processing an 'Add' or 'Edit' operation.
  */
-$errors = [];
+$errors = array();
 
-/*
+
+/**
  * Call the appropriate main function
  */
 switch ($_PMA_RTE) {
@@ -77,14 +79,11 @@ case 'RTN':
         $type = $_REQUEST['type'];
     }
     Routines::main($type);
-
     break;
 case 'TRI':
     Triggers::main();
-
     break;
 case 'EVN':
     Events::main();
-
     break;
 }

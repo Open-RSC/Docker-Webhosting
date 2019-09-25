@@ -1,32 +1,34 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Controllers\Server\ServerBinlogController.
+ * Holds the PhpMyAdmin\Controllers\Server\ServerBinlogController
+ *
+ * @package PhpMyAdmin\Controllers
  */
-
 namespace PhpMyAdmin\Controllers\Server;
 
+use PhpMyAdmin\Controllers\Controller;
+use PhpMyAdmin\DatabaseInterface;
+use PhpMyAdmin\Message;
+use PhpMyAdmin\Server\Common;
+use PhpMyAdmin\Template;
 use PhpMyAdmin\Url;
 use PhpMyAdmin\Util;
-use PhpMyAdmin\Message;
-use PhpMyAdmin\Template;
-use PhpMyAdmin\Server\Common;
-use PhpMyAdmin\DatabaseInterface;
-use PhpMyAdmin\Controllers\Controller;
 
 /**
- * Handles viewing binary logs.
+ * Handles viewing binary logs
+ *
+ * @package PhpMyAdmin\Controllers
  */
 class ServerBinlogController extends Controller
 {
     /**
-     * array binary log files.
+     * array binary log files
      */
     protected $binary_logs;
 
     /**
-     * Constructs ServerBinlogController.
+     * Constructs ServerBinlogController
      */
     public function __construct($response, $dbi)
     {
@@ -41,18 +43,18 @@ class ServerBinlogController extends Controller
     }
 
     /**
-     * Index action.
+     * Index action
      *
      * @return void
      */
     public function indexAction()
     {
         /**
-         * Does the common work.
+         * Does the common work
          */
         include_once 'libraries/server_common.inc.php';
 
-        $url_params = [];
+        $url_params = array();
         if (! isset($_POST['log'])
             || ! array_key_exists($_POST['log'], $this->binary_logs)
         ) {
@@ -61,7 +63,7 @@ class ServerBinlogController extends Controller
             $url_params['log'] = $_POST['log'];
         }
 
-        if (! empty($_POST['dontlimitchars'])) {
+        if (!empty($_POST['dontlimitchars'])) {
             $url_params['dontlimitchars'] = 1;
         }
 
@@ -84,11 +86,11 @@ class ServerBinlogController extends Controller
     private function _getLogSelector(array $url_params)
     {
         return Template::get('server/binlog/log_selector')->render(
-            [
+            array(
                 'url_params' => $url_params,
                 'binary_logs' => $this->binary_logs,
                 'log' => $_POST['log'],
-            ]
+            )
         );
     }
 
@@ -101,7 +103,7 @@ class ServerBinlogController extends Controller
      */
     private function _getLogInfo(array $url_params)
     {
-        /*
+        /**
          * Need to find the real end of rows?
          */
         if (! isset($_POST['pos'])) {
@@ -113,16 +115,16 @@ class ServerBinlogController extends Controller
 
         $sql_query = 'SHOW BINLOG EVENTS';
         if (! empty($_POST['log'])) {
-            $sql_query .= ' IN \''.$_POST['log'].'\'';
+            $sql_query .= ' IN \'' . $_POST['log'] . '\'';
         }
-        $sql_query .= ' LIMIT '.$pos.', '.intval($GLOBALS['cfg']['MaxRows']);
+        $sql_query .= ' LIMIT ' . $pos . ', ' . intval($GLOBALS['cfg']['MaxRows']);
 
         /**
-         * Sends the query.
+         * Sends the query
          */
         $result = $this->dbi->query($sql_query);
 
-        /*
+        /**
          * prepare some vars for displaying the result table
          */
         // Gets the list of fields properties
@@ -140,31 +142,31 @@ class ServerBinlogController extends Controller
         }
 
         //html output
-        $html = Util::getMessage(Message::success(), $sql_query);
+        $html  = Util::getMessage(Message::success(), $sql_query);
         $html .= '<table id="binlogTable">'
-            .'<thead>'
-            .'<tr>'
-            .'<td colspan="6" class="center">';
+            . '<thead>'
+            . '<tr>'
+            . '<td colspan="6" class="center">';
 
         $html .= $this->_getNavigationRow($url_params, $pos, $num_rows, $dontlimitchars);
 
-        $html .= '</td>'
-            .'</tr>'
-            .'<tr>'
-            .'<th>'.__('Log name').'</th>'
-            .'<th>'.__('Position').'</th>'
-            .'<th>'.__('Event type').'</th>'
-            .'<th>'.__('Server ID').'</th>'
-            .'<th>'.__('Original position').'</th>'
-            .'<th>'.__('Information').'</th>'
-            .'</tr>'
-            .'</thead>'
-            .'<tbody>';
+        $html .=  '</td>'
+            . '</tr>'
+            . '<tr>'
+            . '<th>' . __('Log name') . '</th>'
+            . '<th>' . __('Position') . '</th>'
+            . '<th>' . __('Event type') . '</th>'
+            . '<th>' . __('Server ID') . '</th>'
+            . '<th>' . __('Original position') . '</th>'
+            . '<th>' . __('Information') . '</th>'
+            . '</tr>'
+            . '</thead>'
+            . '<tbody>';
 
         $html .= $this->_getAllLogItemInfo($result, $dontlimitchars);
 
         $html .= '</tbody>'
-            .'</table>';
+            . '</table>';
 
         return $html;
     }
@@ -181,7 +183,7 @@ class ServerBinlogController extends Controller
      */
     private function _getNavigationRow(array $url_params, $pos, $num_rows, $dontlimitchars)
     {
-        $html = '';
+        $html = "";
         // we do not know how much rows are in the binlog
         // so we can just force 'NEXT' button
         if ($pos > 0) {
@@ -191,11 +193,11 @@ class ServerBinlogController extends Controller
             }
 
             $html .= '<a href="server_binlog.php" data-post="'
-                .Url::getCommon($this_url_params, '').'"';
+                . Url::getCommon($this_url_params, '') . '"';
             if (Util::showIcons('TableNavigationLinksMode')) {
-                $html .= ' title="'._pgettext('Previous page', 'Previous').'">';
+                $html .= ' title="' . _pgettext('Previous page', 'Previous') . '">';
             } else {
-                $html .= '>'._pgettext('Previous page', 'Previous');
+                $html .= '>' . _pgettext('Previous page', 'Previous');
             } // end if... else...
             $html .= ' &lt; </a> - ';
         }
@@ -213,10 +215,10 @@ class ServerBinlogController extends Controller
             $tempTitle = __('Show Full Queries');
             $tempImgMode = 'full';
         }
-        $html .= '<a href="server_binlog.php" data-post="'.Url::getCommon($this_url_params, '')
-            .'" title="'.$tempTitle.'">'
-            .'<img src="'.$GLOBALS['pmaThemeImage'].'s_'.$tempImgMode
-            .'text.png" alt="'.$tempTitle.'" /></a>';
+        $html .= '<a href="server_binlog.php" data-post="' . Url::getCommon($this_url_params, '')
+            . '" title="' . $tempTitle . '">'
+            . '<img src="' . $GLOBALS['pmaThemeImage'] . 's_' . $tempImgMode
+            . 'text.png" alt="' . $tempTitle . '" /></a>';
 
         // we do not now how much rows are in the binlog
         // so we can just force 'NEXT' button
@@ -224,12 +226,12 @@ class ServerBinlogController extends Controller
             $this_url_params = $url_params;
             $this_url_params['pos'] = $pos + $GLOBALS['cfg']['MaxRows'];
             $html .= ' - <a href="server_binlog.php" data-post="'
-                .Url::getCommon($this_url_params, '')
-                .'"';
+                . Url::getCommon($this_url_params, '')
+                . '"';
             if (Util::showIcons('TableNavigationLinksMode')) {
-                $html .= ' title="'._pgettext('Next page', 'Next').'">';
+                $html .= ' title="' . _pgettext('Next page', 'Next') . '">';
             } else {
-                $html .= '>'._pgettext('Next page', 'Next');
+                $html .= '>' . _pgettext('Next page', 'Next');
             } // end if... else...
             $html .= ' &gt; </a>';
         }
@@ -247,16 +249,15 @@ class ServerBinlogController extends Controller
      */
     private function _getAllLogItemInfo($result, $dontlimitchars)
     {
-        $html = '';
+        $html = "";
         while ($value = $this->dbi->fetchAssoc($result)) {
             $html .= Template::get('server/binlog/log_row')->render(
-                [
+                array(
                     'value' => $value,
                     'dontlimitchars' => $dontlimitchars,
-                ]
+                )
             );
         }
-
         return $html;
     }
 }

@@ -1,28 +1,30 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Hold PhpMyAdmin\SysInfoLinux class.
+ * Hold PhpMyAdmin\SysInfoLinux class
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
 use PhpMyAdmin\SysInfo;
 use PhpMyAdmin\SysInfoBase;
 
 /**
- * Linux based SysInfo class.
+ * Linux based SysInfo class
+ *
+ * @package PhpMyAdmin
  */
 class SysInfoLinux extends SysInfoBase
 {
     public $os = 'Linux';
 
     /**
-     * Gets load information.
+     * Gets load information
      *
      * @return array with load data
      */
-    public function loadavg()
+    function loadavg()
     {
         $buf = file_get_contents('/proc/stat');
         $nums = preg_split(
@@ -34,14 +36,14 @@ class SysInfoLinux extends SysInfoBase
             )
         );
 
-        return [
+        return Array(
             'busy' => $nums[1] + $nums[2] + $nums[3],
             'idle' => intval($nums[4]),
-        ];
+        );
     }
 
     /**
-     * Checks whether class is supported in this environment.
+     * Checks whether class is supported in this environment
      *
      * @return true on success
      */
@@ -51,11 +53,11 @@ class SysInfoLinux extends SysInfoBase
     }
 
     /**
-     * Gets information about memory usage.
+     * Gets information about memory usage
      *
      * @return array with memory usage data
      */
-    public function memory()
+    function memory()
     {
         preg_match_all(
             SysInfo::MEMORY_REGEXP,
@@ -65,7 +67,7 @@ class SysInfoLinux extends SysInfoBase
 
         $mem = array_combine($matches[1], $matches[2]);
 
-        $defaults = [
+        $defaults = array(
             'MemTotal'   => 0,
             'MemFree'    => 0,
             'Cached'     => 0,
@@ -73,7 +75,7 @@ class SysInfoLinux extends SysInfoBase
             'SwapTotal'  => 0,
             'SwapFree'   => 0,
             'SwapCached' => 0,
-        ];
+        );
 
         $mem = array_merge($defaults, $mem);
 

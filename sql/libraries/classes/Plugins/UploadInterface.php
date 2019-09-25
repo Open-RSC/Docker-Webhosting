@@ -1,20 +1,22 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Interface for the import->upload plugins.
+ * Interface for the import->upload plugins
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Plugins;
 
 /**
  * Provides a common interface that will have to implemented by all of the
  * import->upload plugins.
+ *
+ * @package PhpMyAdmin
  */
 interface UploadInterface
 {
     /**
-     * Gets the specific upload ID Key.
+     * Gets the specific upload ID Key
      *
      * @return string ID Key
      */

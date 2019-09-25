@@ -1,21 +1,24 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the download transformations plugins.
+ * Abstract class for the download transformations plugins
+ *
+ * @package    PhpMyAdmin-Transformations
+ * @subpackage Download
  */
-
 namespace PhpMyAdmin\Plugins\Transformations\Abs;
 
 use PhpMyAdmin\Plugins\TransformationsPlugin;
 
 /**
  * Provides common methods for all of the download transformations plugins.
+ *
+ * @package PhpMyAdmin
  */
 abstract class DownloadTransformationsPlugin extends TransformationsPlugin
 {
     /**
-     * Gets the transformation description of the specific plugin.
+     * Gets the transformation description of the specific plugin
      *
      * @return string
      */
@@ -23,10 +26,10 @@ abstract class DownloadTransformationsPlugin extends TransformationsPlugin
     {
         return __(
             'Displays a link to download the binary data of the column. You can'
-            .' use the first option to specify the filename, or use the second'
-            .' option as the name of a column which contains the filename. If'
-            .' you use the second option, you need to set the first option to'
-            .' the empty string.'
+            . ' use the first option to specify the filename, or use the second'
+            . ' option as the name of a column which contains the filename. If'
+            . ' you use the second option, you need to set the first option to'
+            . ' the empty string.'
         );
     }
 
@@ -39,18 +42,17 @@ abstract class DownloadTransformationsPlugin extends TransformationsPlugin
      *
      * @return string
      */
-    public function applyTransformation($buffer, array $options = [], $meta = '')
+    public function applyTransformation($buffer, array $options = array(), $meta = '')
     {
         global $row, $fields_meta;
 
-        if (isset($options[0]) && ! empty($options[0])) {
+        if (isset($options[0]) && !empty($options[0])) {
             $cn = $options[0]; // filename
         } else {
-            if (isset($options[1]) && ! empty($options[1])) {
+            if (isset($options[1]) && !empty($options[1])) {
                 foreach ($fields_meta as $key => $val) {
                     if ($val->name == $options[1]) {
                         $pos = $key;
-
                         break;
                     }
                 }
@@ -65,7 +67,7 @@ abstract class DownloadTransformationsPlugin extends TransformationsPlugin
 
         return sprintf(
             '<a href="transformation_wrapper.php%s&amp;ct=application'
-            .'/octet-stream&amp;cn=%s" title="%s" class="disableAjax">%s</a>',
+            . '/octet-stream&amp;cn=%s" title="%s" class="disableAjax">%s</a>',
             $options['wrapper_link'],
             htmlspecialchars(urlencode($cn)),
             htmlspecialchars($cn),
@@ -73,15 +75,16 @@ abstract class DownloadTransformationsPlugin extends TransformationsPlugin
         );
     }
 
+
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the specific plugin.
+     * Gets the transformation name of the specific plugin
      *
      * @return string
      */
     public static function getName()
     {
-        return 'Download';
+        return "Download";
     }
 }

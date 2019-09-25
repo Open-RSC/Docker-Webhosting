@@ -1,43 +1,45 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Controllers\Table\TableChartController.
+ * Holds the PhpMyAdmin\Controllers\Table\TableChartController
+ *
+ * @package PhpMyAdmin\Controllers
  */
-
 namespace PhpMyAdmin\Controllers\Table;
 
-use PhpMyAdmin\Util;
-use PhpMyAdmin\Table;
+use PhpMyAdmin\Controllers\TableController;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\Template;
-use PhpMyAdmin\SqlParser\Parser;
 use PhpMyAdmin\SqlParser\Components\Limit;
-use PhpMyAdmin\Controllers\TableController;
+use PhpMyAdmin\SqlParser\Parser;
+use PhpMyAdmin\Table;
+use PhpMyAdmin\Template;
+use PhpMyAdmin\Util;
 
 /**
- * Handles table related logic.
+ * Handles table related logic
+ *
+ * @package PhpMyAdmin\Controllers
  */
 class TableChartController extends TableController
 {
     /**
-     * @var string
+     * @var string $sql_query
      */
     protected $sql_query;
 
     /**
-     * @var string
+     * @var string $url_query
      */
     protected $url_query;
 
     /**
-     * @var array
+     * @var array $cfg
      */
     protected $cfg;
 
     /**
-     * Constructor.
+     * Constructor
      *
      * @param string $sql_query Query
      * @param string $url_query Query URL
@@ -60,7 +62,7 @@ class TableChartController extends TableController
     }
 
     /**
-     * Execute the query and return the result.
+     * Execute the query and return the result
      *
      * @return void
      */
@@ -72,22 +74,20 @@ class TableChartController extends TableController
             && isset($_REQUEST['session_max_rows'])
         ) {
             $this->ajaxAction();
-
             return;
         }
 
         // Throw error if no sql query is set
-        if (! isset($this->sql_query) || $this->sql_query == '') {
+        if (!isset($this->sql_query) || $this->sql_query == '') {
             $this->response->setRequestStatus(false);
             $this->response->addHTML(
                 Message::error(__('No SQL query was set to fetch data.'))
             );
-
             return;
         }
 
         $this->response->getHeader()->getScripts()->addFiles(
-            [
+            array(
                 'chart.js',
                 'tbl_chart.js',
                 'vendor/jqplot/jquery.jqplot.js',
@@ -99,19 +99,19 @@ class TableChartController extends TableController
                 'vendor/jqplot/plugins/jqplot.pointLabels.js',
                 'vendor/jqplot/plugins/jqplot.pieRenderer.js',
                 'vendor/jqplot/plugins/jqplot.enhancedPieLegendRenderer.js',
-                'vendor/jqplot/plugins/jqplot.highlighter.js',
-            ]
+                'vendor/jqplot/plugins/jqplot.highlighter.js'
+            )
         );
 
         /**
-         * Extract values for common work.
+         * Extract values for common work
          * @todo Extract common files
          */
         $db = &$this->db;
         $table = &$this->table;
-        $url_params = [];
+        $url_params = array();
 
-        /*
+        /**
          * Runs common work
          */
         if (strlen($this->table) > 0) {
@@ -135,7 +135,7 @@ class TableChartController extends TableController
             include 'libraries/server_common.inc.php';
         }
 
-        $data = [];
+        $data = array();
 
         $result = $this->dbi->tryQuery($this->sql_query);
         $fields_meta = $this->dbi->getFieldsMeta($result);
@@ -145,7 +145,7 @@ class TableChartController extends TableController
 
         $keys = array_keys($data[0]);
 
-        $numeric_types = ['int', 'real'];
+        $numeric_types = array('int', 'real');
         $numeric_column_count = 0;
         foreach ($keys as $idx => $key) {
             if (in_array($fields_meta[$idx]->type, $numeric_types)) {
@@ -159,40 +159,39 @@ class TableChartController extends TableController
                 'message',
                 __('No numeric columns present in the table to plot.')
             );
-
             return;
         }
 
         $url_params['db'] = $this->db;
         $url_params['reload'] = 1;
 
-        /*
+        /**
          * Displays the page
          */
         $this->response->addHTML(
             Template::get('table/chart/tbl_chart')->render(
-                [
+                array(
                     'url_query' => $this->url_query,
                     'url_params' => $url_params,
                     'keys' => $keys,
                     'fields_meta' => $fields_meta,
                     'numeric_types' => $numeric_types,
                     'numeric_column_count' => $numeric_column_count,
-                    'sql_query' => $this->sql_query,
-                ]
+                    'sql_query' => $this->sql_query
+                )
             )
         );
     }
 
     /**
-     * Handle ajax request.
+     * Handle ajax request
      *
      * @return void
      */
     public function ajaxAction()
     {
         /**
-         * Extract values for common work.
+         * Extract values for common work
          * @todo Extract common files
          */
         $db = &$this->db;
@@ -218,7 +217,7 @@ class TableChartController extends TableController
         }
         $sql_with_limit = $statement->build();
 
-        $data = [];
+        $data = array();
         $result = $this->dbi->tryQuery($sql_with_limit);
         while ($row = $this->dbi->fetchAssoc($result)) {
             $data[] = $row;
@@ -227,13 +226,12 @@ class TableChartController extends TableController
         if (empty($data)) {
             $this->response->setRequestStatus(false);
             $this->response->addJSON('message', __('No data to display'));
-
             return;
         }
-        $sanitized_data = [];
+        $sanitized_data = array();
 
         foreach ($data as $data_row_number => $data_row) {
-            $tmp_row = [];
+            $tmp_row = array();
             foreach ($data_row as $data_column => $data_value) {
                 $tmp_row[htmlspecialchars($data_column)] = htmlspecialchars(
                     $data_value

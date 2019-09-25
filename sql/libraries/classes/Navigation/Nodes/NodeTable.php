@@ -1,21 +1,23 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Functionality for the navigation tree.
+ * Functionality for the navigation tree
+ *
+ * @package PhpMyAdmin-Navigation
  */
-
 namespace PhpMyAdmin\Navigation\Nodes;
 
 use PhpMyAdmin\Util;
 
 /**
- * Represents a columns node in the navigation tree.
+ * Represents a columns node in the navigation tree
+ *
+ * @package PhpMyAdmin-Navigation
  */
 class NodeTable extends NodeDatabaseChild
 {
     /**
-     * Initialises the class.
+     * Initialises the class
      *
      * @param string $name     An identifier for the new node
      * @param int    $type     Type of node, may be one of CONTAINER or OBJECT
@@ -25,7 +27,7 @@ class NodeTable extends NodeDatabaseChild
     public function __construct($name, $type = Node::OBJECT, $is_group = false)
     {
         parent::__construct($name, $type, $is_group);
-        $this->icon = [];
+        $this->icon = array();
         $this->_addIcon(
             Util::getScriptNameForOption(
                 $GLOBALS['cfg']['NavigationTreeDefaultTabTable'],
@@ -47,34 +49,34 @@ class NodeTable extends NodeDatabaseChild
             $GLOBALS['cfg']['DefaultTabTable'],
             'table'
         );
-        $this->links = [
+        $this->links = array(
             'text'  => $script_name
-                .'?server='.$GLOBALS['server']
-                .'&amp;db=%2$s&amp;table=%1$s'
-                .'&amp;pos=0',
-            'icon'  => [
+                . '?server=' . $GLOBALS['server']
+                . '&amp;db=%2$s&amp;table=%1$s'
+                . '&amp;pos=0',
+            'icon'  => array(
                 Util::getScriptNameForOption(
                     $GLOBALS['cfg']['NavigationTreeDefaultTabTable'],
                     'table'
                 )
-                .'?server='.$GLOBALS['server']
-                .'&amp;db=%2$s&amp;table=%1$s',
+                . '?server=' . $GLOBALS['server']
+                . '&amp;db=%2$s&amp;table=%1$s',
                 Util::getScriptNameForOption(
                     $GLOBALS['cfg']['NavigationTreeDefaultTabTable2'],
                     'table'
                 )
-                .'?server='.$GLOBALS['server']
-                .'&amp;db=%2$s&amp;table=%1$s',
-            ],
+                . '?server=' . $GLOBALS['server']
+                . '&amp;db=%2$s&amp;table=%1$s',
+            ),
             'title' => $this->title,
-        ];
+        );
         $this->classes = 'table';
     }
 
     /**
      * Returns the number of children of type $type present inside this container
      * This method is overridden by the PhpMyAdmin\Navigation\Nodes\NodeDatabase
-     * and PhpMyAdmin\Navigation\Nodes\NodeTable classes.
+     * and PhpMyAdmin\Navigation\Nodes\NodeTable classes
      *
      * @param string $type         The type of item we are looking for
      *                             ('columns' or 'indexes')
@@ -89,53 +91,50 @@ class NodeTable extends NodeDatabaseChild
         $table = $this->real_name;
         switch ($type) {
         case 'columns':
-            if (! $GLOBALS['cfg']['Server']['DisableIS']) {
+            if (!$GLOBALS['cfg']['Server']['DisableIS']) {
                 $db = $GLOBALS['dbi']->escapeString($db);
                 $table = $GLOBALS['dbi']->escapeString($table);
-                $query = 'SELECT COUNT(*) ';
-                $query .= 'FROM `INFORMATION_SCHEMA`.`COLUMNS` ';
+                $query = "SELECT COUNT(*) ";
+                $query .= "FROM `INFORMATION_SCHEMA`.`COLUMNS` ";
                 $query .= "WHERE `TABLE_NAME`='$table' ";
                 $query .= "AND `TABLE_SCHEMA`='$db'";
-                $retval = (int) $GLOBALS['dbi']->fetchValue($query);
+                $retval = (int)$GLOBALS['dbi']->fetchValue($query);
             } else {
                 $db = Util::backquote($db);
                 $table = Util::backquote($table);
                 $query = "SHOW COLUMNS FROM $table FROM $db";
-                $retval = (int) $GLOBALS['dbi']->numRows(
+                $retval = (int)$GLOBALS['dbi']->numRows(
                     $GLOBALS['dbi']->tryQuery($query)
                 );
             }
-
             break;
         case 'indexes':
             $db = Util::backquote($db);
             $table = Util::backquote($table);
             $query = "SHOW INDEXES FROM $table FROM $db";
-            $retval = (int) $GLOBALS['dbi']->numRows(
+            $retval = (int)$GLOBALS['dbi']->numRows(
                 $GLOBALS['dbi']->tryQuery($query)
             );
-
             break;
         case 'triggers':
-            if (! $GLOBALS['cfg']['Server']['DisableIS']) {
+            if (!$GLOBALS['cfg']['Server']['DisableIS']) {
                 $db = $GLOBALS['dbi']->escapeString($db);
                 $table = $GLOBALS['dbi']->escapeString($table);
-                $query = 'SELECT COUNT(*) ';
-                $query .= 'FROM `INFORMATION_SCHEMA`.`TRIGGERS` ';
-                $query .= 'WHERE `EVENT_OBJECT_SCHEMA` '
-                    .Util::getCollateForIS()."='$db' ";
-                $query .= 'AND `EVENT_OBJECT_TABLE` '
-                    .Util::getCollateForIS()."='$table'";
-                $retval = (int) $GLOBALS['dbi']->fetchValue($query);
+                $query = "SELECT COUNT(*) ";
+                $query .= "FROM `INFORMATION_SCHEMA`.`TRIGGERS` ";
+                $query .= "WHERE `EVENT_OBJECT_SCHEMA` "
+                    . Util::getCollateForIS() . "='$db' ";
+                $query .= "AND `EVENT_OBJECT_TABLE` "
+                    . Util::getCollateForIS() . "='$table'";
+                $retval = (int)$GLOBALS['dbi']->fetchValue($query);
             } else {
                 $db = Util::backquote($db);
                 $table = $GLOBALS['dbi']->escapeString($table);
                 $query = "SHOW TRIGGERS FROM $db WHERE `Table` = '$table'";
-                $retval = (int) $GLOBALS['dbi']->numRows(
+                $retval = (int)$GLOBALS['dbi']->numRows(
                     $GLOBALS['dbi']->tryQuery($query)
                 );
             }
-
             break;
         default:
             break;
@@ -147,7 +146,7 @@ class NodeTable extends NodeDatabaseChild
     /**
      * Returns the names of children of type $type present inside this container
      * This method is overridden by the PhpMyAdmin\Navigation\Nodes\NodeDatabase
-     * and PhpMyAdmin\Navigation\Nodes\NodeTable classes.
+     * and PhpMyAdmin\Navigation\Nodes\NodeTable classes
      *
      * @param string $type         The type of item we are looking for
      *                             ('tables', 'views', etc)
@@ -159,22 +158,21 @@ class NodeTable extends NodeDatabaseChild
     public function getData($type, $pos, $searchClause = '')
     {
         $maxItems = $GLOBALS['cfg']['MaxNavigationItems'];
-        $retval = [];
+        $retval = array();
         $db = $this->realParent()->real_name;
         $table = $this->real_name;
         switch ($type) {
         case 'columns':
-            if (! $GLOBALS['cfg']['Server']['DisableIS']) {
+            if (!$GLOBALS['cfg']['Server']['DisableIS']) {
                 $db = $GLOBALS['dbi']->escapeString($db);
                 $table = $GLOBALS['dbi']->escapeString($table);
-                $query = 'SELECT `COLUMN_NAME` AS `name` ';
-                $query .= 'FROM `INFORMATION_SCHEMA`.`COLUMNS` ';
+                $query = "SELECT `COLUMN_NAME` AS `name` ";
+                $query .= "FROM `INFORMATION_SCHEMA`.`COLUMNS` ";
                 $query .= "WHERE `TABLE_NAME`='$table' ";
                 $query .= "AND `TABLE_SCHEMA`='$db' ";
-                $query .= 'ORDER BY `COLUMN_NAME` ASC ';
-                $query .= 'LIMIT '.intval($pos).", $maxItems";
+                $query .= "ORDER BY `COLUMN_NAME` ASC ";
+                $query .= "LIMIT " . intval($pos) . ", $maxItems";
                 $retval = $GLOBALS['dbi']->fetchResult($query);
-
                 break;
             }
 
@@ -197,7 +195,6 @@ class NodeTable extends NodeDatabaseChild
                     }
                 }
             }
-
             break;
         case 'indexes':
             $db = Util::backquote($db);
@@ -219,22 +216,20 @@ class NodeTable extends NodeDatabaseChild
                 }
                 $pos--;
             }
-
             break;
         case 'triggers':
-            if (! $GLOBALS['cfg']['Server']['DisableIS']) {
+            if (!$GLOBALS['cfg']['Server']['DisableIS']) {
                 $db = $GLOBALS['dbi']->escapeString($db);
                 $table = $GLOBALS['dbi']->escapeString($table);
-                $query = 'SELECT `TRIGGER_NAME` AS `name` ';
-                $query .= 'FROM `INFORMATION_SCHEMA`.`TRIGGERS` ';
-                $query .= 'WHERE `EVENT_OBJECT_SCHEMA` '
-                    .Util::getCollateForIS()."='$db' ";
-                $query .= 'AND `EVENT_OBJECT_TABLE` '
-                    .Util::getCollateForIS()."='$table' ";
-                $query .= 'ORDER BY `TRIGGER_NAME` ASC ';
-                $query .= 'LIMIT '.intval($pos).", $maxItems";
+                $query = "SELECT `TRIGGER_NAME` AS `name` ";
+                $query .= "FROM `INFORMATION_SCHEMA`.`TRIGGERS` ";
+                $query .= "WHERE `EVENT_OBJECT_SCHEMA` "
+                    . Util::getCollateForIS() . "='$db' ";
+                $query .= "AND `EVENT_OBJECT_TABLE` "
+                    . Util::getCollateForIS() . "='$table' ";
+                $query .= "ORDER BY `TRIGGER_NAME` ASC ";
+                $query .= "LIMIT " . intval($pos) . ", $maxItems";
                 $retval = $GLOBALS['dbi']->fetchResult($query);
-
                 break;
             }
 
@@ -257,7 +252,6 @@ class NodeTable extends NodeDatabaseChild
                     }
                 }
             }
-
             break;
         default:
             break;
@@ -277,7 +271,7 @@ class NodeTable extends NodeDatabaseChild
     }
 
     /**
-     * Add an icon to navigation tree.
+     * Add an icon to navigation tree
      *
      * @param string $page Page name to redirect
      *
@@ -292,24 +286,20 @@ class NodeTable extends NodeDatabaseChild
         switch ($page) {
         case 'tbl_structure.php':
             $this->icon[] = Util::getImage('b_props', __('Structure'));
-
             break;
         case 'tbl_select.php':
             $this->icon[] = Util::getImage('b_search', __('Search'));
-
             break;
         case 'tbl_change.php':
             $this->icon[] = Util::getImage('b_insrow', __('Insert'));
-
             break;
         case 'tbl_sql.php':
             $this->icon[] = Util::getImage('b_sql', __('SQL'));
-
             break;
         case 'sql.php':
             $this->icon[] = Util::getImage('b_browse', __('Browse'));
-
             break;
         }
     }
 }
+

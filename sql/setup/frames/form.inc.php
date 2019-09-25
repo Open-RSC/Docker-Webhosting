@@ -1,14 +1,16 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Form edit view.
+ * Form edit view
+ *
+ * @package PhpMyAdmin-Setup
  */
+
+use PhpMyAdmin\Config\Forms\Setup\SetupFormList;
 use PhpMyAdmin\Core;
 use PhpMyAdmin\Setup\FormProcessing;
-use PhpMyAdmin\Config\Forms\Setup\SetupFormList;
 
-if (! defined('PHPMYADMIN')) {
+if (!defined('PHPMYADMIN')) {
     exit;
 }
 

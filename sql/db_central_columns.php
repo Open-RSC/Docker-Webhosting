@@ -2,16 +2,19 @@
 
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Central Columns view/edit.
+ * Central Columns view/edit
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Url;
+
+use PhpMyAdmin\CentralColumns;
 use PhpMyAdmin\Core;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\CentralColumns;
+use PhpMyAdmin\Url;
 
 /**
- * Gets some core libraries.
+ * Gets some core libraries
  */
 require_once 'libraries/common.inc.php';
 
@@ -24,10 +27,10 @@ if (isset($_POST['edit_save']) || isset($_POST['add_new_column'])) {
     }
     $col_default = $_POST['col_default'];
     if ($col_default == 'NONE' && $_POST['col_default_sel'] != 'USER_DEFINED') {
-        $col_default = '';
+        $col_default = "";
     }
     $col_extra = isset($_POST['col_extra']) ? $_POST['col_extra'] : '';
-    $col_isNull = isset($_POST['col_isNull']) ? 1 : 0;
+    $col_isNull = isset($_POST['col_isNull'])?1:0;
     $col_length = $_POST['col_length'];
     $col_attribute = $_POST['col_attribute'];
     $col_type = $_POST['col_type'];
@@ -40,7 +43,7 @@ if (isset($_POST['edit_save']) || isset($_POST['add_new_column'])) {
         exit;
     } else {
         $tmp_msg = $centralColumns->updateOneColumn(
-            $db, '', $col_name, $col_type, $col_attribute,
+            $db, "", $col_name, $col_type, $col_attribute,
             $col_length, $col_isNull, $collation, $col_extra, $col_default
         );
     }
@@ -61,7 +64,7 @@ if (isset($_POST['getColumnList'])) {
     exit;
 }
 if (isset($_POST['add_column'])) {
-    $selected_col = [];
+    $selected_col = array();
     $selected_tbl = $_POST['table-select'];
     $selected_col[] = $_POST['column-select'];
     $tmp_msg = $centralColumns->syncUniqueColumns(
@@ -93,20 +96,20 @@ if (isset($_POST['edit_central_columns_page'])) {
 }
 if (isset($_POST['multi_edit_central_column_save'])) {
     $message = $centralColumns->updateMultipleColumn();
-    if (! is_bool($message)) {
+    if (!is_bool($message)) {
         $response->setRequestStatus(false);
         $response->addJSON('message', $message);
     }
 }
 if (isset($_POST['delete_save'])) {
-    $col_name = [];
+    $col_name = array();
     parse_str($_POST['col_name'], $col_name);
     $tmp_msg = $centralColumns->deleteColumnsFromList(
         $col_name['selected_fld'],
         false
     );
 }
-if (! empty($_POST['total_rows'])
+if (!empty($_POST['total_rows'])
     && Core::isValid($_POST['total_rows'], 'integer')
 ) {
     $total_rows = $_POST['total_rows'];
@@ -122,9 +125,9 @@ $addNewColumn = $centralColumns->getHtmlForAddNewColumn($db, $total_rows);
 $response->addHTML($addNewColumn);
 if ($total_rows <= 0) {
     $response->addHTML(
-        '<fieldset>'.__(
+        '<fieldset>' . __(
             'The central list of columns for the current database is empty.'
-        ).'</fieldset>'
+        ) . '</fieldset>'
     );
     $columnAdd = $centralColumns->getHtmlForAddColumn($total_rows, $pos, $db);
     $response->addHTML($columnAdd);
@@ -139,17 +142,17 @@ $response->addHTML($table_navigation_html);
 $columnAdd = $centralColumns->getHtmlForAddColumn($total_rows, $pos, $db);
 $response->addHTML($columnAdd);
 $deleteRowForm = '<form method="post" id="del_form" action="db_central_columns.php">'
-        .Url::getHiddenInputs(
+        . Url::getHiddenInputs(
             $db
         )
-        .'<input id="del_col_name" type="hidden" name="col_name" value="">'
-        .'<input type="hidden" name="pos" value="'.$pos.'">'
-        .'<input type="hidden" name="delete_save" value="delete"></form>';
+        . '<input id="del_col_name" type="hidden" name="col_name" value="">'
+        . '<input type="hidden" name="pos" value="' . $pos . '">'
+        . '<input type="hidden" name="delete_save" value="delete"></form>';
 $response->addHTML($deleteRowForm);
 $table_struct = '<div id="tableslistcontainer">'
-        .'<form name="tableslistcontainer">'
-        .'<table id="table_columns" class="tablesorter" '
-        .'class="data">';
+        . '<form name="tableslistcontainer">'
+        . '<table id="table_columns" class="tablesorter" '
+        . 'class="data">';
 $response->addHTML($table_struct);
 $tableheader = $centralColumns->getTableHeader(
     'column_heading', __('Click to sort.'), 2

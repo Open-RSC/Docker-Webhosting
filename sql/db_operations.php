@@ -1,5 +1,4 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * handles miscellaneous db operations:
@@ -8,26 +7,28 @@
  *  - changing collation
  *  - changing comment
  *  - adding tables
- *  - viewing PDF schemas.
+ *  - viewing PDF schemas
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Util;
-use PhpMyAdmin\Message;
-use PhpMyAdmin\Plugins;
-use PhpMyAdmin\Relation;
-use PhpMyAdmin\Response;
-use PhpMyAdmin\Operations;
-use PhpMyAdmin\RelationCleanup;
 use PhpMyAdmin\DatabaseInterface;
 use PhpMyAdmin\Display\CreateTable;
+use PhpMyAdmin\Message;
+use PhpMyAdmin\Operations;
+use PhpMyAdmin\Plugins;
 use PhpMyAdmin\Plugins\Export\ExportSql;
+use PhpMyAdmin\Relation;
+use PhpMyAdmin\RelationCleanup;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Util;
 
 /**
- * requirements.
+ * requirements
  */
 require_once 'libraries/common.inc.php';
 
 /**
- * functions implementation for this script.
+ * functions implementation for this script
  */
 require_once 'libraries/check_user_privileges.inc.php';
 
@@ -41,7 +42,7 @@ $sql_query = '';
 
 $operations = new Operations();
 
-/*
+/**
  * Rename/move or copy database
  */
 if (strlen($GLOBALS['db']) > 0
@@ -89,13 +90,13 @@ if (strlen($GLOBALS['db']) > 0
             // remove all foreign key constraints, otherwise we can get errors
             /* @var $export_sql_plugin ExportSql */
             $export_sql_plugin = Plugins::getPlugin(
-                'export',
-                'sql',
+                "export",
+                "sql",
                 'libraries/classes/Plugins/Export/',
-                [
+                array(
                     'single_table' => isset($single_table),
-                    'export_type'  => 'database',
-                ]
+                    'export_type'  => 'database'
+                )
             );
 
             // create stand-in tables for views
@@ -140,15 +141,15 @@ if (strlen($GLOBALS['db']) > 0
                     $operations->adjustPrivilegesMoveDb($GLOBALS['db'], $_POST['newname']);
                 }
 
-                /*
+                /**
                  * cleanup pmadb stuff for this db
                  */
                 RelationCleanup::database($GLOBALS['db']);
 
                 // if someday the RENAME DATABASE reappears, do not DROP
                 $local_query = 'DROP DATABASE '
-                    .Util::backquote($GLOBALS['db']).';';
-                $sql_query .= "\n".$local_query;
+                    . Util::backquote($GLOBALS['db']) . ';';
+                $sql_query .= "\n" . $local_query;
                 $GLOBALS['dbi']->query($local_query);
 
                 $message = Message::success(
@@ -171,7 +172,7 @@ if (strlen($GLOBALS['db']) > 0
             } else {
                 $message = Message::error();
             }
-            $reload = true;
+            $reload     = true;
 
             /* Change database to be used */
             if (! $_error && $move) {
@@ -189,7 +190,7 @@ if (strlen($GLOBALS['db']) > 0
         }
     }
 
-    /*
+    /**
      * Database has been successfully renamed/moved.  If in an Ajax request,
      * generate the output with {@link PhpMyAdmin\Response} and exit
      */
@@ -207,13 +208,13 @@ if (strlen($GLOBALS['db']) > 0
 }
 
 /**
- * Settings for relations stuff.
+ * Settings for relations stuff
  */
 $relation = new Relation();
 
 $cfgRelation = $relation->getRelationsParam();
 
-/*
+/**
  * Check if comments were updated
  * (must be done before displaying the menu tabs)
  */
@@ -249,9 +250,9 @@ if (isset($message)) {
 $db_collation = $GLOBALS['dbi']->getDbCollation($GLOBALS['db']);
 $is_information_schema = $GLOBALS['dbi']->isSystemSchema($GLOBALS['db']);
 
-if (! $is_information_schema) {
+if (!$is_information_schema) {
     if ($cfgRelation['commwork']) {
-        /*
+        /**
          * database comment
          */
         $response->addHTML($operations->getHtmlForDatabaseComment($GLOBALS['db']));
@@ -261,7 +262,7 @@ if (! $is_information_schema) {
     $response->addHTML(CreateTable::getHtml($db));
     $response->addHTML('</div>');
 
-    /*
+    /**
      * rename database
      */
     if ($GLOBALS['db'] != 'mysql') {
@@ -278,12 +279,12 @@ if (! $is_information_schema) {
     ) {
         $response->addHTML($operations->getHtmlForDropDatabaseLink($GLOBALS['db']));
     }
-    /*
+    /**
      * Copy database
      */
     $response->addHTML($operations->getHtmlForCopyDatabase($GLOBALS['db'], $db_collation));
 
-    /*
+    /**
      * Change database charset
      */
     $response->addHTML($operations->getHtmlForChangeDatabaseCharset($GLOBALS['db'], $db_collation));
@@ -293,14 +294,14 @@ if (! $is_information_schema) {
     ) {
         $message = Message::notice(
             __(
-                'The phpMyAdmin configuration storage has been deactivated. '.
+                'The phpMyAdmin configuration storage has been deactivated. ' .
                 '%sFind out why%s.'
             )
         );
-        $message->addParamHtml('<a href="./chk_rel.php" data-post="'.$url_query.'">');
+        $message->addParamHtml('<a href="./chk_rel.php" data-post="' . $url_query . '">');
         $message->addParamHtml('</a>');
         /* Show error if user has configured something, notice elsewhere */
-        if (! empty($cfg['Servers'][$server]['pmadb'])) {
+        if (!empty($cfg['Servers'][$server]['pmadb'])) {
             $message->isError(true);
         }
     } // end if

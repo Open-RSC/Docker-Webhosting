@@ -1,16 +1,17 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Simple wrapper just to enable error reporting and include config.
+ * Simple wrapper just to enable error reporting and include config
+ *
+ * @package PhpMyAdmin
  */
 
 // rfc2616 - Section 14.21
-header('Expires: '.gmdate(DATE_RFC1123));
+header('Expires: ' . gmdate(DATE_RFC1123));
 // HTTP/1.1
 header(
     'Cache-Control: no-store, no-cache, must-revalidate,'
-    .'  pre-check=0, post-check=0, max-age=0'
+    . '  pre-check=0, post-check=0, max-age=0'
 );
 if (isset($_SERVER['HTTP_USER_AGENT'])
     && stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE')
@@ -23,14 +24,14 @@ if (isset($_SERVER['HTTP_USER_AGENT'])
     // test case: exporting a database into a .gz file with Safari
     // would produce files not having the current time
     // (added this header for Safari but should not harm other browsers)
-    header('Last-Modified: '.gmdate(DATE_RFC1123));
+    header('Last-Modified: ' . gmdate(DATE_RFC1123));
 }
 header('Content-Type: text/html; charset=utf-8');
 
 require 'libraries/vendor_config.php';
 
 error_reporting(E_ALL);
-/*
+/**
  * Read config file.
  */
 if (is_readable(CONFIG_FILE)) {

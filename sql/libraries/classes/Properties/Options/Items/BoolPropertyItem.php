@@ -1,16 +1,18 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Properties\Options\Items\BoolPropertyItem class.
+ * Holds the PhpMyAdmin\Properties\Options\Items\BoolPropertyItem class
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Properties\Options\Items;
 
 use PhpMyAdmin\Properties\Options\OptionsPropertyOneItem;
 
 /**
- * Single property item class of type bool.
+ * Single property item class of type bool
+ *
+ * @package PhpMyAdmin
  */
 class BoolPropertyItem extends OptionsPropertyOneItem
 {
@@ -20,12 +22,12 @@ class BoolPropertyItem extends OptionsPropertyOneItem
      *  "text", "radio", etc ) or
      *  - PhpMyAdmin\Properties\Options\OptionsPropertyGroup   ( "root", "main"
      *  or "subgroup" )
-     *  - PhpMyAdmin\Properties\Plugins\PluginPropertyItem     ( "export", "import", "transformations" ).
+     *  - PhpMyAdmin\Properties\Plugins\PluginPropertyItem     ( "export", "import", "transformations" )
      *
      * @return string
      */
     public function getItemType()
     {
-        return 'bool';
+        return "bool";
     }
 }

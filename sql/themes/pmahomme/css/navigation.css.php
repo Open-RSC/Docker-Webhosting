@@ -1,7 +1,10 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Navigation styles for the pmahomme theme.
+ * Navigation styles for the pmahomme theme
+ *
+ * @package    PhpMyAdmin-theme
+ * @subpackage PMAHomme
  */
 
 // unplanned execution path
@@ -63,7 +66,7 @@ if (! defined('PHPMYADMIN') && ! defined('TESTSUITE')) {
 }
 
 #pma_navigation div#pmalogo {
-    <?php //better echo $GLOBALS['cfg']['logoBGC'];?>
+    <?php //better echo $GLOBALS['cfg']['logoBGC']; ?>
 }
 
 #pma_navigation #pmalogo,

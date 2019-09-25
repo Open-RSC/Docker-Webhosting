@@ -1,38 +1,40 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Manipulation of table data like inserting, replacing and updating.
+ * Manipulation of table data like inserting, replacing and updating
  *
  * Usually called as form action from tbl_change.php to insert or update table rows
  *
  * @todo 'edit_next' tends to not work as expected if used ...
  * at least there is no order by it needs the original query
  * and the row number and than replace the LIMIT clause
+ *
+ * @package PhpMyAdmin
  */
+
 use PhpMyAdmin\Core;
 use PhpMyAdmin\File;
-use PhpMyAdmin\Util;
-use PhpMyAdmin\Table;
+use PhpMyAdmin\InsertEdit;
 use PhpMyAdmin\Message;
+use PhpMyAdmin\Plugins\IOTransformationsPlugin;
 use PhpMyAdmin\Relation;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\InsertEdit;
+use PhpMyAdmin\Table;
 use PhpMyAdmin\Transformations;
-use PhpMyAdmin\Plugins\IOTransformationsPlugin;
+use PhpMyAdmin\Util;
 
 /**
- * Gets some core libraries.
+ * Gets some core libraries
  */
 require_once 'libraries/common.inc.php';
 
 // Check parameters
-Util::checkParameters(['db', 'table', 'goto']);
+Util::checkParameters(array('db', 'table', 'goto'));
 
 $GLOBALS['dbi']->selectDb($GLOBALS['db']);
 
 /**
- * Initializes some variables.
+ * Initializes some variables
  */
 $goto_include = false;
 
@@ -52,7 +54,7 @@ $insertEdit = new InsertEdit($GLOBALS['dbi']);
 // check whether insert row mode, if so include tbl_change.php
 $insertEdit->isInsertRow();
 
-$after_insert_actions = ['new_insert', 'same_insert', 'edit_next'];
+$after_insert_actions = array('new_insert', 'same_insert', 'edit_next');
 if (isset($_POST['after_insert'])
     && in_array($_POST['after_insert'], $after_insert_actions)
 ) {
@@ -73,15 +75,15 @@ $goto_include = $insertEdit->getGotoInclude($goto_include);
 // Defines the url to return in case of failure of the query
 $err_url = $insertEdit->getErrorUrl($url_params);
 
-/*
+/**
  * Prepares the update/insert of a row
  */
 list($loop_array, $using_key, $is_insert, $is_insertignore)
     = $insertEdit->getParamsForUpdateOrInsert();
 
-$query = [];
-$value_sets = [];
-$func_no_param = [
+$query = array();
+$value_sets = array();
+$func_no_param = array(
     'CONNECTION_ID',
     'CURRENT_USER',
     'CURDATE',
@@ -102,13 +104,13 @@ $func_no_param = [
     'UUID',
     'UUID_SHORT',
     'VERSION',
-];
-$func_optional_param = [
+);
+$func_optional_param = array(
     'RAND',
     'UNIX_TIMESTAMP',
-];
+);
 
-$gis_from_text_functions = [
+$gis_from_text_functions = array(
     'GeomFromText',
     'GeomCollFromText',
     'LineFromText',
@@ -117,10 +119,10 @@ $gis_from_text_functions = [
     'MPointFromText',
     'PolyFromText',
     'MPolyFromText',
-];
+);
 
 if ($GLOBALS['dbi']->getVersion() >= 50600) {
-    $gis_from_text_functions = [
+    $gis_from_text_functions = array(
         'ST_GeomFromText',
         'ST_GeomCollFromText',
         'ST_LineFromText',
@@ -129,10 +131,10 @@ if ($GLOBALS['dbi']->getVersion() >= 50600) {
         'ST_MPointFromText',
         'ST_PolyFromText',
         'ST_MPolyFromText',
-    ];
+    );
 }
 
-$gis_from_wkb_functions = [
+$gis_from_wkb_functions = array(
     'GeomFromWKB',
     'GeomCollFromWKB',
     'LineFromWKB',
@@ -141,36 +143,36 @@ $gis_from_wkb_functions = [
     'MPointFromWKB',
     'PolyFromWKB',
     'MPolyFromWKB',
-];
+);
 
 //if some posted fields need to be transformed.
 $mime_map = Transformations::getMIME($GLOBALS['db'], $GLOBALS['table']);
 if ($mime_map === false) {
-    $mime_map = [];
+    $mime_map = array();
 }
 
-$query_fields = [];
-$insert_errors = [];
+$query_fields = array();
+$insert_errors = array();
 $row_skipped = false;
-$unsaved_values = [];
+$unsaved_values = array();
 foreach ($loop_array as $rownumber => $where_clause) {
     // skip fields to be ignored
-    if (! $using_key && isset($_POST['insert_ignore_'.$where_clause])) {
+    if (! $using_key && isset($_POST['insert_ignore_' . $where_clause])) {
         continue;
     }
 
     // Defines the SET part of the sql query
-    $query_values = [];
+    $query_values = array();
 
     // Map multi-edit keys to single-level arrays, dependent on how we got the fields
     $multi_edit_columns
         = isset($_POST['fields']['multi_edit'][$rownumber])
         ? $_POST['fields']['multi_edit'][$rownumber]
-        : [];
+        : array();
     $multi_edit_columns_name
         = isset($_POST['fields_name']['multi_edit'][$rownumber])
         ? $_POST['fields_name']['multi_edit'][$rownumber]
-        : [];
+        : array();
     $multi_edit_columns_prev
         = isset($_POST['fields_prev']['multi_edit'][$rownumber])
         ? $_POST['fields_prev']['multi_edit'][$rownumber]
@@ -182,7 +184,7 @@ foreach ($loop_array as $rownumber => $where_clause) {
     $multi_edit_salt
         = isset($_POST['salt']['multi_edit'][$rownumber])
         ? $_POST['salt']['multi_edit'][$rownumber]
-        : null;
+        :null;
     $multi_edit_columns_type
         = isset($_POST['fields_type']['multi_edit'][$rownumber])
         ? $_POST['fields_type']['multi_edit'][$rownumber]
@@ -229,11 +231,11 @@ foreach ($loop_array as $rownumber => $where_clause) {
             $current_value = $possibly_uploaded_val;
         }
         // Apply Input Transformation if defined
-        if (! empty($mime_map[$column_name])
-            && ! empty($mime_map[$column_name]['input_transformation'])
+        if (!empty($mime_map[$column_name])
+            && !empty($mime_map[$column_name]['input_transformation'])
         ) {
             $filename = 'libraries/classes/Plugins/Transformations/'
-                .$mime_map[$column_name]['input_transformation'];
+                . $mime_map[$column_name]['input_transformation'];
             if (is_file($filename)) {
                 $classname = Transformations::getClassName($filename);
                 if (class_exists($classname)) {
@@ -248,7 +250,7 @@ foreach ($loop_array as $rownumber => $where_clause) {
                     // check if transformation was successful or not
                     // and accordingly set error messages & insert_fail
                     if (method_exists($transformation_plugin, 'isSuccess')
-                        && ! $transformation_plugin->isSuccess()
+                        && !$transformation_plugin->isSuccess()
                     ) {
                         $insert_fail = true;
                         $row_skipped = true;
@@ -302,15 +304,15 @@ foreach ($loop_array as $rownumber => $where_clause) {
     if ($insert_fail) {
         $unsaved_values[$rownumber] = $multi_edit_columns;
     }
-    if (! $insert_fail && count($query_values) > 0) {
+    if (!$insert_fail && count($query_values) > 0) {
         if ($is_insert) {
             $value_sets[] = implode(', ', $query_values);
         } else {
             // build update query
-            $query[] = 'UPDATE '.Util::backquote($GLOBALS['table'])
-                .' SET '.implode(', ', $query_values)
-                .' WHERE '.$where_clause
-                .($_POST['clause_is_unique'] ? '' : ' LIMIT 1');
+            $query[] = 'UPDATE ' . Util::backquote($GLOBALS['table'])
+                . ' SET ' . implode(', ', $query_values)
+                . ' WHERE ' . $where_clause
+                . ($_POST['clause_is_unique'] ? '' : ' LIMIT 1');
         }
     }
 } // end foreach ($loop_array as $where_clause)
@@ -325,7 +327,7 @@ unset(
 // Builds the sql query
 if ($is_insert && count($value_sets) > 0) {
     $query = $insertEdit->buildSqlQuery($is_insertignore, $query_fields, $value_sets);
-} elseif (empty($query) && ! isset($_POST['preview_sql']) && ! $row_skipped) {
+} elseif (empty($query) && ! isset($_POST['preview_sql']) && !$row_skipped) {
     // No change -> move back to the calling script
     //
     // Note: logic passes here for inline edit
@@ -335,7 +337,7 @@ if ($is_insert && count($value_sets) > 0) {
         $goto_include = 'tbl_change.php';
     }
     $active_page = $goto_include;
-    include ''.Core::securePath($goto_include);
+    include '' . Core::securePath($goto_include);
     exit;
 }
 unset($multi_edit_columns, $is_insertignore);
@@ -345,11 +347,11 @@ if (isset($_POST['preview_sql'])) {
     Core::previewSQL($query);
 }
 
-/*
+/**
  * Executes the sql query and get the result, then move back to the calling
  * page
  */
-list($url_params, $total_affected_rows, $last_messages, $warning_messages,
+list ($url_params, $total_affected_rows, $last_messages, $warning_messages,
     $error_messages, $return_to_sql_query)
         = $insertEdit->executeSqlQuery($url_params, $query);
 
@@ -384,29 +386,30 @@ unset(
     $last_messages, $last_message, $row_skipped, $insert_errors
 );
 
-/*
+/**
  * The following section only applies to grid editing.
  * However, verifying isAjax() is not enough to ensure we are coming from
  * grid editing. If we are coming from the Edit or Copy link in Browse mode,
  * ajax_page_request is present in the POST parameters.
  */
 if ($response->isAjax() && ! isset($_POST['ajax_page_request'])) {
-    /*
+    /**
      * If we are in grid editing, we need to process the relational and
      * transformed fields, if they were edited. After that, output the correct
      * link/transformed value and exit
      */
     if (isset($_POST['rel_fields_list']) && $_POST['rel_fields_list'] != '') {
+
         $map = $relation->getForeigners($db, $table, '', 'both');
 
-        $relation_fields = [];
+        $relation_fields = array();
         parse_str($_POST['rel_fields_list'], $relation_fields);
 
         // loop for each relation cell
         /** @var array $relation_fields */
         foreach ($relation_fields as $cell_index => $curr_rel_field) {
             foreach ($curr_rel_field as $relation_field => $relation_field_value) {
-                $where_comparison = "='".$relation_field_value."'";
+                $where_comparison = "='" . $relation_field_value . "'";
                 $dispval = $insertEdit->getDisplayValueForForeignTableColumn(
                     $where_comparison, $map, $relation_field
                 );
@@ -422,16 +425,16 @@ if ($response->isAjax() && ! isset($_POST['ajax_page_request'])) {
     if (isset($_POST['do_transformations'])
         && $_POST['do_transformations'] == true
     ) {
-        $edited_values = [];
+        $edited_values = array();
         parse_str($_POST['transform_fields_list'], $edited_values);
 
         if (! isset($extra_data)) {
-            $extra_data = [];
+            $extra_data = array();
         }
-        $transformation_types = [
-            'input_transformation',
-            'transformation',
-        ];
+        $transformation_types = array(
+            "input_transformation",
+            "transformation"
+        );
         foreach ($mime_map as $transformation) {
             $column_name = $transformation['column_name'];
             foreach ($transformation_types as $type) {
@@ -479,7 +482,7 @@ $scripts->addFile('tbl_change.js');
 
 $active_page = $goto_include;
 
-/*
+/**
  * If user asked for "and then Insert another new row" we have to remove
  * WHERE clause information so that tbl_change.php does not go back
  * to the current record
@@ -491,5 +494,5 @@ if (isset($_POST['after_insert']) && 'new_insert' == $_POST['after_insert']) {
 /**
  * Load target page.
  */
-require ''.Core::securePath($goto_include);
+require '' . Core::securePath($goto_include);
 exit;

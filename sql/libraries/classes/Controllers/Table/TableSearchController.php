@@ -1,76 +1,79 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Controllers\Table\TableSearchController.
+ * Holds the PhpMyAdmin\Controllers\Table\TableSearchController
+ *
+ * @package PhpMyAdmin\Controllers
  */
-
 namespace PhpMyAdmin\Controllers\Table;
 
-use PhpMyAdmin\Sql;
-use PhpMyAdmin\Util;
-use PhpMyAdmin\Relation;
-use PhpMyAdmin\Template;
-use PhpMyAdmin\DatabaseInterface;
 use PhpMyAdmin\Controllers\TableController;
+use PhpMyAdmin\DatabaseInterface;
+use PhpMyAdmin\Relation;
+use PhpMyAdmin\Sql;
+use PhpMyAdmin\Template;
+use PhpMyAdmin\Util;
 
 /**
- * Class TableSearchController.
+ * Class TableSearchController
+ *
+ * @package PhpMyAdmin\Controllers
  */
 class TableSearchController extends TableController
 {
     /**
-     * Normal search or Zoom search.
+     * Normal search or Zoom search
      *
+     * @access private
      * @var string
      */
     private $_searchType;
-
     /**
-     * Names of columns.
+     * Names of columns
      *
+     * @access private
      * @var array
      */
     private $_columnNames;
-
     /**
-     * Types of columns.
+     * Types of columns
      *
+     * @access private
      * @var array
      */
     private $_columnTypes;
-
     /**
-     * Collations of columns.
+     * Collations of columns
      *
+     * @access private
      * @var array
      */
     private $_columnCollations;
-
     /**
-     * Null Flags of columns.
+     * Null Flags of columns
      *
+     * @access private
      * @var array
      */
     private $_columnNullFlags;
-
     /**
-     * Whether a geometry column is present.
+     * Whether a geometry column is present
      *
-     * @var bool
+     * @access private
+     * @var boolean
      */
     private $_geomColumnFlag;
-
     /**
-     * Foreign Keys.
+     * Foreign Keys
      *
+     * @access private
      * @var array
      */
     private $_foreigners;
-
     /**
-     * Connection charset.
+     * Connection charset
      *
+     * @access private
      * @var string
      */
     private $_connectionCharSet;
@@ -78,12 +81,12 @@ class TableSearchController extends TableController
     protected $url_query;
 
     /**
-     * @var Relation
+     * @var Relation $relation
      */
     private $relation;
 
     /**
-     * Constructor.
+     * Constructor
      *
      * @param string $searchType Search type
      * @param string $url_query  URL query
@@ -100,17 +103,17 @@ class TableSearchController extends TableController
 
         $this->url_query = $url_query;
         $this->_searchType = $searchType;
-        $this->_columnNames = [];
-        $this->_columnNullFlags = [];
-        $this->_columnTypes = [];
-        $this->_columnCollations = [];
+        $this->_columnNames = array();
+        $this->_columnNullFlags = array();
+        $this->_columnTypes = array();
+        $this->_columnCollations = array();
         $this->_geomColumnFlag = false;
-        $this->_foreigners = [];
+        $this->_foreigners = array();
         $this->relation = new Relation();
         // Loads table's information
         $this->_loadTableInfo();
         $this->_connectionCharSet = $this->dbi->fetchValue(
-            'SELECT @@character_set_connection'
+            "SELECT @@character_set_connection"
         );
     }
 
@@ -169,7 +172,7 @@ class TableSearchController extends TableController
     }
 
     /**
-     * Index action.
+     * Index action
      *
      * @return void
      */
@@ -193,21 +196,20 @@ class TableSearchController extends TableController
 
             // Displays the find and replace form
             $this->displaySelectionFormAction();
-
             break;
 
         case 'normal':
             $this->response->getHeader()
                 ->getScripts()
                 ->addFiles(
-                    [
+                    array(
                         'makegrid.js',
                         'sql.js',
                         'tbl_select.js',
                         'tbl_change.js',
                         'vendor/jquery/jquery.uitablefilter.js',
                         'gis_data_editor.js',
-                    ]
+                    )
                 );
 
             if (isset($_POST['range_search'])) {
@@ -216,24 +218,23 @@ class TableSearchController extends TableController
                 return;
             }
 
-            /*
+            /**
              * No selection criteria received -> display the selection form
              */
-            if (! isset($_POST['columnsToDisplay'])
-                && ! isset($_POST['displayAllColumns'])
+            if (!isset($_POST['columnsToDisplay'])
+                && !isset($_POST['displayAllColumns'])
             ) {
                 $this->displaySelectionFormAction();
             } else {
                 $this->doSelectionAction();
             }
-
             break;
 
         case 'zoom':
             $this->response->getHeader()
                 ->getScripts()
                 ->addFiles(
-                    [
+                    array(
                         'makegrid.js',
                         'sql.js',
                         'vendor/jqplot/jquery.jqplot.js',
@@ -244,10 +245,10 @@ class TableSearchController extends TableController
                         'vendor/jqplot/plugins/jqplot.cursor.js',
                         'tbl_zoom_plot_jqplot.js',
                         'tbl_change.js',
-                    ]
+                    )
                 );
 
-            /*
+            /**
              * Handle AJAX request for data row on point select
              *
              * @var boolean Object containing parameters for the POST request
@@ -259,7 +260,7 @@ class TableSearchController extends TableController
 
                 return;
             }
-            /*
+            /**
              * Handle AJAX request for changing field information
              * (value,collation,operators,field values) in input form
              *
@@ -274,7 +275,7 @@ class TableSearchController extends TableController
             }
 
             //Set default datalabel if not selected
-            if (! isset($_POST['zoom_submit']) || $_POST['dataLabel'] == '') {
+            if (!isset($_POST['zoom_submit']) || $_POST['dataLabel'] == '') {
                 $dataLabel = $this->relation->getDisplayField($this->db, $this->table);
             } else {
                 $dataLabel = $_POST['dataLabel'];
@@ -299,13 +300,12 @@ class TableSearchController extends TableController
                 }
                 $this->zoomSubmitAction($dataLabel, $goto);
             }
-
             break;
         }
     }
 
     /**
-     * Zoom submit action.
+     * Zoom submit action
      *
      * @param string $dataLabel Data label
      * @param string $goto      Goto
@@ -316,20 +316,20 @@ class TableSearchController extends TableController
     {
         //Query generation part
         $sql_query = $this->_buildSqlQuery();
-        $sql_query .= ' LIMIT '.$_POST['maxPlotLimit'];
+        $sql_query .= ' LIMIT ' . $_POST['maxPlotLimit'];
 
         //Query execution part
         $result = $this->dbi->query(
-            $sql_query.';',
+            $sql_query . ";",
             DatabaseInterface::CONNECT_USER,
             DatabaseInterface::QUERY_STORE
         );
         $fields_meta = $this->dbi->getFieldsMeta($result);
-        $data = [];
+        $data = array();
         while ($row = $this->dbi->fetchAssoc($result)) {
             //Need a row with indexes as 0,1,2 for the getUniqueCondition
             // hence using a temporary array
-            $tmpRow = [];
+            $tmpRow = array();
             foreach ($row as $val) {
                 $tmpRow[] = $val;
             }
@@ -346,23 +346,25 @@ class TableSearchController extends TableController
             //Append it to row array as where_clause
             $row['where_clause'] = $uniqueCondition[0];
 
-            $tmpData = [
-                $_POST['criteriaColumnNames'][0] => $row[$_POST['criteriaColumnNames'][0]],
-                $_POST['criteriaColumnNames'][1] => $row[$_POST['criteriaColumnNames'][1]],
-                'where_clause' => $uniqueCondition[0],
-            ];
+            $tmpData = array(
+                $_POST['criteriaColumnNames'][0] =>
+                    $row[$_POST['criteriaColumnNames'][0]],
+                $_POST['criteriaColumnNames'][1] =>
+                    $row[$_POST['criteriaColumnNames'][1]],
+                'where_clause' => $uniqueCondition[0]
+            );
             $tmpData[$dataLabel] = ($dataLabel) ? $row[$dataLabel] : '';
             $data[] = $tmpData;
         }
         unset($tmpData);
 
         //Displays form for point data and scatter plot
-        $titles = [
+        $titles = array(
             'Browse' => Util::getIcon(
                 'b_browse',
                 __('Browse foreign values')
-            ),
-        ];
+            )
+        );
         $this->response->addHTML(
             Template::get('table/search/zoom_result_form')->render([
                 'db' => $this->db,
@@ -382,7 +384,7 @@ class TableSearchController extends TableController
     }
 
     /**
-     * Change table info action.
+     * Change table info action
      *
      * @return void
      */
@@ -394,7 +396,6 @@ class TableSearchController extends TableController
             $this->response->addJSON('field_collation', '');
             $this->response->addJSON('field_operators', '');
             $this->response->addJSON('field_value', '');
-
             return;
         }
         $key = array_search($field, $this->_columnNames);
@@ -412,17 +413,17 @@ class TableSearchController extends TableController
     }
 
     /**
-     * Get data row action.
+     * Get data row action
      *
      * @return void
      */
     public function getDataRowAction()
     {
-        $extra_data = [];
-        $row_info_query = 'SELECT * FROM `'.$_POST['db'].'`.`'
-            .$_POST['table'].'` WHERE '.$_POST['where_clause'];
+        $extra_data = array();
+        $row_info_query = 'SELECT * FROM `' . $_POST['db'] . '`.`'
+            . $_POST['table'] . '` WHERE ' .  $_POST['where_clause'];
         $result = $this->dbi->query(
-            $row_info_query.';',
+            $row_info_query . ";",
             DatabaseInterface::CONNECT_USER,
             DatabaseInterface::QUERY_STORE
         );
@@ -444,14 +445,14 @@ class TableSearchController extends TableController
     }
 
     /**
-     * Do selection action.
+     * Do selection action
      *
      * @return void
      */
     public function doSelectionAction()
     {
         /**
-         * Selection criteria have been submitted -> do the work.
+         * Selection criteria have been submitted -> do the work
          */
         $sql_query = $this->_buildSqlQuery();
 
@@ -484,7 +485,7 @@ class TableSearchController extends TableController
     }
 
     /**
-     * Display selection form action.
+     * Display selection form action
      *
      * @param string $dataLabel Data label
      *
@@ -502,17 +503,17 @@ class TableSearchController extends TableController
         $this->response->addHTML(
             Template::get('secondary_tabs')
                 ->render(
-                    [
-                        'url_params' => [
+                    array(
+                        'url_params' => array(
                             'db'    => $this->db,
                             'table' => $this->table,
-                        ],
+                        ),
                         'sub_tabs'   => $this->_getSubTabs(),
-                    ]
+                    )
                 )
         );
         $this->response->addHTML(
-            Template::get('table/search/selection_form')->render([
+            Template::get('table/search/selection_form')->render(array(
                 'search_type' => $this->_searchType,
                 'db' => $this->db,
                 'table' => $this->table,
@@ -530,12 +531,12 @@ class TableSearchController extends TableController
                 'max_plot_limit' => ((! empty($_POST['maxPlotLimit']))
                     ? intval($_POST['maxPlotLimit'])
                     : intval($GLOBALS['cfg']['maxRowPlotLimit'])),
-            ])
+            ))
         );
     }
 
     /**
-     * Range search action.
+     * Range search action
      *
      * @return void
      */
@@ -546,7 +547,7 @@ class TableSearchController extends TableController
     }
 
     /**
-     * Find action.
+     * Find action
      *
      * @return void
      */
@@ -566,7 +567,7 @@ class TableSearchController extends TableController
     }
 
     /**
-     * Replace action.
+     * Replace action
      *
      * @return void
      */
@@ -588,17 +589,17 @@ class TableSearchController extends TableController
     }
 
     /**
-     * Returns HTML for previewing strings found and their replacements.
+     * Returns HTML for previewing strings found and their replacements
      *
      * @param int     $columnIndex index of the column
      * @param string  $find        string to find in the column
      * @param string  $replaceWith string to replace with
-     * @param bool $useRegex    to use Regex replace or not
+     * @param boolean $useRegex    to use Regex replace or not
      * @param string  $charSet     character set of the connection
      *
      * @return string HTML for previewing strings found and their replacements
      */
-    public function getReplacePreview(
+    function getReplacePreview(
         $columnIndex, $find, $replaceWith, $useRegex, $charSet
     ) {
         $column = $this->_columnNames[$columnIndex];
@@ -607,41 +608,41 @@ class TableSearchController extends TableController
                 $columnIndex, $find, $replaceWith, $charSet
             );
         } else {
-            $sql_query = 'SELECT '
-                .Util::backquote($column).','
-                .' REPLACE('
-                .Util::backquote($column).", '".$find."', '"
-                .$replaceWith
-                ."'),"
-                .' COUNT(*)'
-                .' FROM '.Util::backquote($this->db)
-                .'.'.Util::backquote($this->table)
-                .' WHERE '.Util::backquote($column)
-                ." LIKE '%".$find."%' COLLATE ".$charSet.'_bin'; // here we
+            $sql_query = "SELECT "
+                . Util::backquote($column) . ","
+                . " REPLACE("
+                . Util::backquote($column) . ", '" . $find . "', '"
+                . $replaceWith
+                . "'),"
+                . " COUNT(*)"
+                . " FROM " . Util::backquote($this->db)
+                . "." . Util::backquote($this->table)
+                . " WHERE " . Util::backquote($column)
+                . " LIKE '%" . $find . "%' COLLATE " . $charSet . "_bin"; // here we
             // change the collation of the 2nd operand to a case sensitive
             // binary collation to make sure that the comparison
             // is case sensitive
-            $sql_query .= ' GROUP BY '.Util::backquote($column)
-                .' ORDER BY '.Util::backquote($column).' ASC';
+            $sql_query .= " GROUP BY " . Util::backquote($column)
+                . " ORDER BY " . Util::backquote($column) . " ASC";
 
             $result = $this->dbi->fetchResult($sql_query, 0);
         }
 
         return Template::get('table/search/replace_preview')->render(
-            [
+            array(
                 'db' => $this->db,
                 'table' => $this->table,
                 'column_index' => $columnIndex,
                 'find' => $find,
                 'replace_with' => $replaceWith,
                 'use_regex' => $useRegex,
-                'result' => $result,
-            ]
+                'result' => $result
+            )
         );
     }
 
     /**
-     * Finds and returns Regex pattern and their replacements.
+     * Finds and returns Regex pattern and their replacements
      *
      * @param int    $columnIndex index of the column
      * @param string $find        string to find in the column
@@ -654,37 +655,36 @@ class TableSearchController extends TableController
         $columnIndex, $find, $replaceWith, $charSet
     ) {
         $column = $this->_columnNames[$columnIndex];
-        $sql_query = 'SELECT '
-            .Util::backquote($column).','
-            .' 1,' // to add an extra column that will have replaced value
-            .' COUNT(*)'
-            .' FROM '.Util::backquote($this->db)
-            .'.'.Util::backquote($this->table)
-            .' WHERE '.Util::backquote($column)
-            ." RLIKE '".$GLOBALS['dbi']->escapeString($find)."' COLLATE "
-            .$charSet.'_bin'; // here we
+        $sql_query = "SELECT "
+            . Util::backquote($column) . ","
+            . " 1," // to add an extra column that will have replaced value
+            . " COUNT(*)"
+            . " FROM " . Util::backquote($this->db)
+            . "." . Util::backquote($this->table)
+            . " WHERE " . Util::backquote($column)
+            . " RLIKE '" . $GLOBALS['dbi']->escapeString($find) . "' COLLATE "
+            . $charSet . "_bin"; // here we
         // change the collation of the 2nd operand to a case sensitive
         // binary collation to make sure that the comparison is case sensitive
-        $sql_query .= ' GROUP BY '.Util::backquote($column)
-            .' ORDER BY '.Util::backquote($column).' ASC';
+        $sql_query .= " GROUP BY " . Util::backquote($column)
+            . " ORDER BY " . Util::backquote($column) . " ASC";
 
         $result = $this->dbi->fetchResult($sql_query, 0);
 
         if (is_array($result)) {
             /* Iterate over possible delimiters to get one */
-            $delimiters = ['/', '@', '#', '~', '!', '$', '%', '^', '&', '_'];
+            $delimiters = array('/', '@', '#', '~', '!', '$', '%', '^', '&', '_');
             $found = false;
             for ($i = 0, $l = count($delimiters); $i < $l; $i++) {
                 if (strpos($find, $delimiters[$i]) === false) {
                     $found = true;
-
                     break;
                 }
             }
             if (! $found) {
                 return false;
             }
-            $find = $delimiters[$i].$find.$delimiters[$i];
+            $find = $delimiters[$i] . $find . $delimiters[$i];
             foreach ($result as $index=>$row) {
                 $result[$index][1] = preg_replace(
                     $find,
@@ -693,17 +693,16 @@ class TableSearchController extends TableController
                 );
             }
         }
-
         return $result;
     }
 
     /**
-     * Replaces a given string in a column with a give replacement.
+     * Replaces a given string in a column with a give replacement
      *
      * @param int     $columnIndex index of the column
      * @param string  $find        string to find in the column
      * @param string  $replaceWith string to replace with
-     * @param bool $useRegex    to use Regex replace or not
+     * @param boolean $useRegex    to use Regex replace or not
      * @param string  $charSet     character set of the connection
      *
      * @return void
@@ -716,31 +715,31 @@ class TableSearchController extends TableController
             $toReplace = $this->_getRegexReplaceRows(
                 $columnIndex, $find, $replaceWith, $charSet
             );
-            $sql_query = 'UPDATE '.Util::backquote($this->table)
-                .' SET '.Util::backquote($column).' = CASE';
+            $sql_query = "UPDATE " . Util::backquote($this->table)
+                . " SET " . Util::backquote($column) . " = CASE";
             if (is_array($toReplace)) {
                 foreach ($toReplace as $row) {
-                    $sql_query .= "\n WHEN ".Util::backquote($column)
-                        ." = '".$GLOBALS['dbi']->escapeString($row[0])
-                        ."' THEN '".$GLOBALS['dbi']->escapeString($row[1])."'";
+                    $sql_query .= "\n WHEN " . Util::backquote($column)
+                        . " = '" . $GLOBALS['dbi']->escapeString($row[0])
+                        . "' THEN '" . $GLOBALS['dbi']->escapeString($row[1]) . "'";
                 }
             }
-            $sql_query .= ' END'
-                .' WHERE '.Util::backquote($column)
-                ." RLIKE '".$GLOBALS['dbi']->escapeString($find)."' COLLATE "
-                .$charSet.'_bin'; // here we
+            $sql_query .= " END"
+                . " WHERE " . Util::backquote($column)
+                . " RLIKE '" . $GLOBALS['dbi']->escapeString($find) . "' COLLATE "
+                . $charSet . "_bin"; // here we
             // change the collation of the 2nd operand to a case sensitive
             // binary collation to make sure that the comparison
             // is case sensitive
         } else {
-            $sql_query = 'UPDATE '.Util::backquote($this->table)
-                .' SET '.Util::backquote($column).' ='
-                .' REPLACE('
-                .Util::backquote($column).", '".$find."', '"
-                .$replaceWith
-                ."')"
-                .' WHERE '.Util::backquote($column)
-                ." LIKE '%".$find."%' COLLATE ".$charSet.'_bin'; // here we
+            $sql_query = "UPDATE " . Util::backquote($this->table)
+                . " SET " . Util::backquote($column) . " ="
+                . " REPLACE("
+                . Util::backquote($column) . ", '" . $find . "', '"
+                . $replaceWith
+                . "')"
+                . " WHERE " . Util::backquote($column)
+                . " LIKE '%" . $find . "%' COLLATE " . $charSet . "_bin"; // here we
             // change the collation of the 2nd operand to a case sensitive
             // binary collation to make sure that the comparison
             // is case sensitive
@@ -762,10 +761,10 @@ class TableSearchController extends TableController
      */
     public function getColumnMinMax($column)
     {
-        $sql_query = 'SELECT MIN('.Util::backquote($column).') AS `min`, '
-            .'MAX('.Util::backquote($column).') AS `max` '
-            .'FROM '.Util::backquote($this->db).'.'
-            .Util::backquote($this->table);
+        $sql_query = 'SELECT MIN(' . Util::backquote($column) . ') AS `min`, '
+            . 'MAX(' . Util::backquote($column) . ') AS `max` '
+            . 'FROM ' . Util::backquote($this->db) . '.'
+            . Util::backquote($this->table);
 
         $result = $this->dbi->fetchSingleRow($sql_query);
 
@@ -781,7 +780,7 @@ class TableSearchController extends TableController
      */
     private function _getSubTabs()
     {
-        $subtabs = [];
+        $subtabs = array();
         $subtabs['search']['icon'] = 'b_search';
         $subtabs['search']['text'] = __('Table search');
         $subtabs['search']['link'] = 'tbl_select.php';
@@ -802,7 +801,7 @@ class TableSearchController extends TableController
     }
 
     /**
-     * Builds the sql search query from the post parameters.
+     * Builds the sql search query from the post parameters
      *
      * @return string the generated SQL query
      */
@@ -829,25 +828,25 @@ class TableSearchController extends TableController
         } // end if
 
         $sql_query .= ' FROM '
-            .Util::backquote($_POST['table']);
+            . Util::backquote($_POST['table']);
         $whereClause = $this->_generateWhereClause();
         $sql_query .= $whereClause;
 
         // if the search results are to be ordered
         if (isset($_POST['orderByColumn']) && $_POST['orderByColumn'] != '--nil--') {
             $sql_query .= ' ORDER BY '
-                .Util::backquote($_POST['orderByColumn'])
-                .' '.$_POST['order'];
+                . Util::backquote($_POST['orderByColumn'])
+                . ' ' . $_POST['order'];
         } // end if
         return $sql_query;
     }
 
     /**
      * Provides a column's type, collation, operators list, and criteria value
-     * to display in table search form.
+     * to display in table search form
      *
-     * @param int $search_index Row number in table search form
-     * @param int $column_index Column index in ColumnNames array
+     * @param integer $search_index Row number in table search form
+     * @param integer $column_index Column index in ColumnNames array
      *
      * @return array Array containing column's properties
      */
@@ -857,11 +856,11 @@ class TableSearchController extends TableController
             ? $_POST['criteriaColumnOperators'][$search_index] : '');
         $entered_value = (isset($_POST['criteriaValues'])
             ? $_POST['criteriaValues'] : '');
-        $titles = [
+        $titles = array(
             'Browse' => Util::getIcon(
                 'b_browse', __('Browse foreign values')
-            ),
-        ];
+            )
+        );
         //Gets column's type and collation
         $type = $this->_columnTypes[$column_index];
         $collation = $this->_columnCollations[$column_index];
@@ -871,17 +870,17 @@ class TableSearchController extends TableController
             $this->_columnNullFlags[$column_index], $selected_operator
         );
         $func = Template::get('table/search/column_comparison_operators')->render(
-            [
+            array(
                 'search_index' => $search_index,
-                'type_operators' => $typeOperators,
-            ]
+                'type_operators' => $typeOperators
+            )
         );
         //Gets link to browse foreign data(if any) and criteria inputbox
         $foreignData = $this->relation->getForeignData(
             $this->_foreigners, $this->_columnNames[$column_index], false, '', ''
         );
         $value = Template::get('table/search/input_box')->render(
-            [
+            array(
                 'str' => '',
                 'column_type' => (string) $type,
                 'column_id' => 'fieldID_',
@@ -896,20 +895,19 @@ class TableSearchController extends TableController
                 'criteria_values' => $entered_value,
                 'db' => $this->db,
                 'titles' => $titles,
-                'in_fbs' => true,
-            ]
+                'in_fbs' => true
+            )
         );
-
-        return [
+        return array(
             'type' => $type,
             'collation' => $collation,
             'func' => $func,
-            'value' => $value,
-        ];
+            'value' => $value
+        );
     }
 
     /**
-     * Generates the where clause for the SQL search query to be executed.
+     * Generates the where clause for the SQL search query to be executed
      *
      * @return string the generated where clause
      */
@@ -918,7 +916,7 @@ class TableSearchController extends TableController
         if (isset($_POST['customWhereClause'])
             && trim($_POST['customWhereClause']) != ''
         ) {
-            return ' WHERE '.$_POST['customWhereClause'];
+            return ' WHERE ' . $_POST['customWhereClause'];
         }
 
         // If there are no search criteria set or no unary criteria operators,
@@ -931,9 +929,9 @@ class TableSearchController extends TableController
         }
 
         // else continue to form the where clause from column criteria values
-        $fullWhereClause = [];
+        $fullWhereClause = array();
         foreach ($_POST['criteriaColumnOperators'] as $column_index => $operator) {
-            $unaryFlag = $GLOBALS['dbi']->types->isUnaryOperator($operator);
+            $unaryFlag =  $GLOBALS['dbi']->types->isUnaryOperator($operator);
             $tmp_geom_func = isset($_POST['geom_func'][$column_index])
                 ? $_POST['geom_func'][$column_index] : null;
 
@@ -951,10 +949,9 @@ class TableSearchController extends TableController
             }
         } // end foreach
 
-        if (! empty($fullWhereClause)) {
-            return ' WHERE '.implode(' AND ', $fullWhereClause);
+        if (!empty($fullWhereClause)) {
+            return ' WHERE ' . implode(' AND ', $fullWhereClause);
         }
-
         return '';
     }
 
@@ -973,26 +970,28 @@ class TableSearchController extends TableController
         }
         $enum_selected_count = count($criteriaValues);
         if ($func_type == '=' && $enum_selected_count > 1) {
-            $func_type = 'IN';
-            $parens_open = '(';
+            $func_type    = 'IN';
+            $parens_open  = '(';
             $parens_close = ')';
+
         } elseif ($func_type == '!=' && $enum_selected_count > 1) {
-            $func_type = 'NOT IN';
-            $parens_open = '(';
+            $func_type    = 'NOT IN';
+            $parens_open  = '(';
             $parens_close = ')';
+
         } else {
-            $parens_open = '';
+            $parens_open  = '';
             $parens_close = '';
         }
         $enum_where = '\''
-            .$GLOBALS['dbi']->escapeString($criteriaValues[0]).'\'';
+            . $GLOBALS['dbi']->escapeString($criteriaValues[0]) . '\'';
         for ($e = 1; $e < $enum_selected_count; $e++) {
             $enum_where .= ', \''
-                .$GLOBALS['dbi']->escapeString($criteriaValues[$e]).'\'';
+                . $GLOBALS['dbi']->escapeString($criteriaValues[$e]) . '\'';
         }
 
-        return ' '.$func_type.' '.$parens_open
-        .$enum_where.$parens_close;
+        return ' ' . $func_type . ' ' . $parens_open
+        . $enum_where . $parens_close;
     }
 
     /**
@@ -1009,52 +1008,51 @@ class TableSearchController extends TableController
     private function _getGeomWhereClause($criteriaValues, $names,
         $func_type, $types, $geom_func = null
     ) {
-        $geom_unary_functions = [
+        $geom_unary_functions = array(
             'IsEmpty' => 1,
             'IsSimple' => 1,
             'IsRing' => 1,
             'IsClosed' => 1,
-        ];
+        );
         $where = '';
 
         // Get details about the geometry functions
         $geom_funcs = Util::getGISFunctions($types, true, false);
 
         // If the function takes multiple parameters
-        if (strpos($func_type, 'IS NULL') !== false || strpos($func_type, 'IS NOT NULL') !== false) {
-            $where = Util::backquote($names).' '.$func_type;
-
+        if(strpos($func_type, "IS NULL") !== false || strpos($func_type, "IS NOT NULL") !== false) {
+            $where = Util::backquote($names) . " " . $func_type;
             return $where;
         } elseif ($geom_funcs[$geom_func]['params'] > 1) {
             // create gis data from the criteria input
             $gis_data = Util::createGISData($criteriaValues, $this->dbi->getVersion());
-            $where = $geom_func.'('.Util::backquote($names)
-                .', '.$gis_data.')';
-
+            $where = $geom_func . '(' . Util::backquote($names)
+                . ', ' . $gis_data . ')';
             return $where;
         }
 
         // New output type is the output type of the function being applied
         $type = $geom_funcs[$geom_func]['type'];
         $geom_function_applied = $geom_func
-            .'('.Util::backquote($names).')';
+            . '(' . Util::backquote($names) . ')';
 
         // If the where clause is something like 'IsEmpty(`spatial_col_name`)'
         if (isset($geom_unary_functions[$geom_func])
             && trim($criteriaValues) == ''
         ) {
             $where = $geom_function_applied;
+
         } elseif (in_array($type, Util::getGISDatatypes())
             && ! empty($criteriaValues)
         ) {
             // create gis data from the criteria input
             $gis_data = Util::createGISData($criteriaValues, $this->dbi->getVersion());
-            $where = $geom_function_applied.' '.$func_type.' '.$gis_data;
-        } elseif (strlen($criteriaValues) > 0) {
-            $where = $geom_function_applied.' '
-                .$func_type." '".$criteriaValues."'";
-        }
+            $where = $geom_function_applied . " " . $func_type . " " . $gis_data;
 
+        } elseif (strlen($criteriaValues) > 0) {
+            $where = $geom_function_applied . " "
+                . $func_type . " '" . $criteriaValues . "'";
+        }
         return $where;
     }
 
@@ -1083,17 +1081,18 @@ class TableSearchController extends TableController
         $backquoted_name = Util::backquote($names);
         $where = '';
         if ($unaryFlag) {
-            $where = $backquoted_name.' '.$func_type;
+            $where = $backquoted_name . ' ' . $func_type;
         } elseif (strncasecmp($types, 'enum', 4) == 0 && (! empty($criteriaValues) || $criteriaValues[0] === '0')) {
             $where = $backquoted_name;
             $where .= $this->_getEnumWhereClause($criteriaValues, $func_type);
+
         } elseif ($criteriaValues != '') {
             // For these types we quote the value. Even if it's another type
             // (like INT), for a LIKE we always quote the value. MySQL converts
             // strings to numbers and numbers to strings as necessary
             // during the comparison
             if (preg_match('@char|binary|blob|text|set|date|time|year@i', $types)
-                || mb_strpos(' '.$func_type, 'LIKE')
+                || mb_strpos(' ' . $func_type, 'LIKE')
             ) {
                 $quot = '\'';
             } else {
@@ -1103,11 +1102,11 @@ class TableSearchController extends TableController
             // LIKE %...%
             if ($func_type == 'LIKE %...%') {
                 $func_type = 'LIKE';
-                $criteriaValues = '%'.$criteriaValues.'%';
+                $criteriaValues = '%' . $criteriaValues . '%';
             }
             if ($func_type == 'REGEXP ^...$') {
                 $func_type = 'REGEXP';
-                $criteriaValues = '^'.$criteriaValues.'$';
+                $criteriaValues = '^' . $criteriaValues . '$';
             }
 
             if ('IN (...)' != $func_type
@@ -1115,8 +1114,8 @@ class TableSearchController extends TableController
                 && 'BETWEEN' != $func_type
                 && 'NOT BETWEEN' != $func_type
             ) {
-                return $backquoted_name.' '.$func_type.' '.$quot
-                        .$GLOBALS['dbi']->escapeString($criteriaValues).$quot;
+                return $backquoted_name . ' ' . $func_type . ' ' . $quot
+                        . $GLOBALS['dbi']->escapeString($criteriaValues) . $quot;
             }
             $func_type = str_replace(' (...)', '', $func_type);
 
@@ -1133,32 +1132,31 @@ class TableSearchController extends TableController
                 if ('' === $value) {
                     $emptyKey = $key;
                     $value = 'NULL';
-
                     continue;
                 }
-                $value = $quot.$GLOBALS['dbi']->escapeString(trim($value))
-                    .$quot;
+                $value = $quot . $GLOBALS['dbi']->escapeString(trim($value))
+                    . $quot;
             }
 
             if ('BETWEEN' == $func_type || 'NOT BETWEEN' == $func_type) {
-                $where = $backquoted_name.' '.$func_type.' '
-                    .(isset($values[0]) ? $values[0] : '')
-                    .' AND '.(isset($values[1]) ? $values[1] : '');
+                $where = $backquoted_name . ' ' . $func_type . ' '
+                    . (isset($values[0]) ? $values[0] : '')
+                    . ' AND ' . (isset($values[1]) ? $values[1] : '');
             } else { //[NOT] IN
                 if (false !== $emptyKey) {
                     unset($values[$emptyKey]);
                 }
-                $wheres = [];
-                if (! empty($values)) {
-                    $wheres[] = $backquoted_name.' '.$func_type
-                        .' ('.implode(',', $values).')';
+                $wheres = array();
+                if (!empty($values)) {
+                    $wheres[] = $backquoted_name . ' ' . $func_type
+                        . ' (' . implode(',', $values) . ')';
                 }
                 if (false !== $emptyKey) {
-                    $wheres[] = $backquoted_name.' IS NULL';
+                    $wheres[] = $backquoted_name . ' IS NULL';
                 }
                 $where = implode(' OR ', $wheres);
                 if (1 < count($wheres)) {
-                    $where = '('.$where.')';
+                    $where = '(' . $where . ')';
                 }
             }
         } // end if

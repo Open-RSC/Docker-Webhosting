@@ -1,21 +1,21 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Classes to create relation schema in EPS format.
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Plugins\Schema\Eps;
 
-use PhpMyAdmin\Relation;
+use PhpMyAdmin\Plugins\Schema\Dia\RelationStatsDia;
 use PhpMyAdmin\Plugins\Schema\Dia\TableStatsDia;
+use PhpMyAdmin\Plugins\Schema\ExportRelationSchema;
 use PhpMyAdmin\Plugins\Schema\Pdf\TableStatsPdf;
 use PhpMyAdmin\Plugins\Schema\Svg\TableStatsSvg;
-use PhpMyAdmin\Plugins\Schema\Dia\RelationStatsDia;
-use PhpMyAdmin\Plugins\Schema\ExportRelationSchema;
+use PhpMyAdmin\Relation;
 
 /**
- * EPS Relation Schema Class.
+ * EPS Relation Schema Class
  *
  * Purpose of this class is to generate the EPS Document
  * which is used for representing the database diagrams.
@@ -25,6 +25,7 @@ use PhpMyAdmin\Plugins\Schema\ExportRelationSchema;
  * This class inherits ExportRelationSchema class has common functionality added
  * to this class
  *
+ * @package PhpMyAdmin
  * @name    Eps_Relation_Schema
  */
 class EpsRelationSchema extends ExportRelationSchema
@@ -32,15 +33,15 @@ class EpsRelationSchema extends ExportRelationSchema
     /**
      * @var TableStatsDia[]|TableStatsEps[]|TableStatsPdf[]|TableStatsSvg[]
      */
-    private $_tables = [];
+    private $_tables = array();
 
     /** @var RelationStatsDia[] Relations */
-    private $_relations = [];
+    private $_relations = array();
 
     private $_tablewidth;
 
     /**
-     * The "PMA_EPS_Relation_Schema" constructor.
+     * The "PMA_EPS_Relation_Schema" constructor
      *
      * Upon instantiation This starts writing the EPS document
      * user will be prompted for download as .eps extension
@@ -66,8 +67,8 @@ class EpsRelationSchema extends ExportRelationSchema
                 $this->pageNumber
             )
         );
-        $this->diagram->setAuthor('phpMyAdmin '.PMA_VERSION);
-        $this->diagram->setDate(date('j F Y, g:i a'));
+        $this->diagram->setAuthor('phpMyAdmin ' . PMA_VERSION);
+        $this->diagram->setDate(date("j F Y, g:i a"));
         $this->diagram->setOrientation($this->orientation);
         $this->diagram->setFont('Verdana', '10');
 
@@ -92,7 +93,7 @@ class EpsRelationSchema extends ExportRelationSchema
         $seen_a_relation = false;
         foreach ($alltables as $one_table) {
             $exist_rel = $this->relation->getForeigners($this->db, $one_table, '', 'both');
-            if (! $exist_rel) {
+            if (!$exist_rel) {
                 continue;
             }
 
@@ -111,12 +112,11 @@ class EpsRelationSchema extends ExportRelationSchema
                             $rel['foreign_field'], $this->tableDimension
                         );
                     }
-
                     continue;
                 }
 
                 foreach ($rel as $one_key) {
-                    if (! in_array($one_key['ref_table_name'], $alltables)) {
+                    if (!in_array($one_key['ref_table_name'], $alltables)) {
                         continue;
                     }
 
@@ -143,7 +143,7 @@ class EpsRelationSchema extends ExportRelationSchema
     }
 
     /**
-     * Output Eps Document for download.
+     * Output Eps Document for download
      *
      * @return void
      */
@@ -153,7 +153,7 @@ class EpsRelationSchema extends ExportRelationSchema
     }
 
     /**
-     * Defines relation objects.
+     * Defines relation objects
      *
      * @param string  $masterTable    The master table name
      * @param string  $font           The font
@@ -161,7 +161,7 @@ class EpsRelationSchema extends ExportRelationSchema
      * @param string  $masterField    The relation field in the master table
      * @param string  $foreignTable   The foreign table name
      * @param string  $foreignField   The relation field in the foreign table
-     * @param bool $tableDimension Whether to display table position or not
+     * @param boolean $tableDimension Whether to display table position or not
      *
      * @return void
      *
@@ -195,7 +195,7 @@ class EpsRelationSchema extends ExportRelationSchema
 
     /**
      * Draws relation arrows and lines connects master table's master field to
-     * foreign table's foreign field.
+     * foreign table's foreign field
      *
      * @return void
      *
@@ -209,7 +209,7 @@ class EpsRelationSchema extends ExportRelationSchema
     }
 
     /**
-     * Draws tables.
+     * Draws tables
      *
      * @return void
      *

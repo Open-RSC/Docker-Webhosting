@@ -1,8 +1,9 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Common includes for the table level views.
+ * Common includes for the table level views
+ *
+ * @package PhpMyAdmin
  */
 use PhpMyAdmin\Url;
 
@@ -11,37 +12,38 @@ if (! defined('PHPMYADMIN')) {
 }
 
 // Check parameters
-PhpMyAdmin\Util::checkParameters(['db', 'table']);
+PhpMyAdmin\Util::checkParameters(array('db', 'table'));
 
 $db_is_system_schema = $GLOBALS['dbi']->isSystemSchema($db);
 
 /**
- * Set parameters for links.
+ * Set parameters for links
  * @deprecated
  */
-$url_query = Url::getCommon(['db' => $db, 'table' => $table]);
+$url_query = Url::getCommon(array('db' => $db, 'table' => $table));
 
 /**
- * Set parameters for links.
+ * Set parameters for links
  */
-$url_params = [];
-$url_params['db'] = $db;
+$url_params = array();
+$url_params['db']    = $db;
 $url_params['table'] = $table;
 
 /**
- * Defines the urls to return to in case of error in a sql statement.
+ * Defines the urls to return to in case of error in a sql statement
  */
 $err_url_0 = PhpMyAdmin\Util::getScriptNameForOption(
     $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
 )
-    .Url::getCommon(['db' => $db]);
+    . Url::getCommon(array('db' => $db));
 
 $err_url = PhpMyAdmin\Util::getScriptNameForOption(
     $GLOBALS['cfg']['DefaultTabTable'], 'table'
 )
-    .Url::getCommon($url_params);
+    . Url::getCommon($url_params);
 
-/*
+
+/**
  * Ensures the database and the table exist (else move to the "parent" script)
  * Skip test if we are exporting as we can't tell whether a table name is an alias (which would fail the test).
  */

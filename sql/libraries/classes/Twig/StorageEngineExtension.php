@@ -1,17 +1,19 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\StorageEngineExtension class.
+ * hold PhpMyAdmin\Twig\StorageEngineExtension class
+ *
+ * @package PhpMyAdmin\Twig
  */
-
 namespace PhpMyAdmin\Twig;
 
-use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
- * Class StorageEngineExtension.
+ * Class StorageEngineExtension
+ *
+ * @package PhpMyAdmin\Twig
  */
 class StorageEngineExtension extends AbstractExtension
 {
@@ -22,12 +24,12 @@ class StorageEngineExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return [
+        return array(
             new TwigFunction(
                 'StorageEngine_getHtmlSelect',
                 'PhpMyAdmin\StorageEngine::getHtmlSelect',
-                ['is_safe' => ['html']]
+                array('is_safe' => array('html'))
             ),
-        ];
+        );
     }
 }

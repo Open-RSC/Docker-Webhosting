@@ -1,22 +1,26 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Various table operations.
+ * Various table operations
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Util;
 use PhpMyAdmin\Index;
-use PhpMyAdmin\Table;
 use PhpMyAdmin\Message;
-use PhpMyAdmin\Relation;
-use PhpMyAdmin\Response;
 use PhpMyAdmin\Partition;
 use PhpMyAdmin\Operations;
+use PhpMyAdmin\Relation;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Table;
+use PhpMyAdmin\Util;
 
+/**
+ *
+ */
 require_once 'libraries/common.inc.php';
 
 /**
- * functions implementation for this script.
+ * functions implementation for this script
  */
 require_once 'libraries/check_user_privileges.inc.php';
 
@@ -32,22 +36,22 @@ if ($lowerCaseNames) {
 $pma_table = new Table($GLOBALS['table'], $GLOBALS['db']);
 
 /**
- * Load JavaScript files.
+ * Load JavaScript files
  */
 $response = Response::getInstance();
-$header = $response->getHeader();
-$scripts = $header->getScripts();
+$header   = $response->getHeader();
+$scripts  = $header->getScripts();
 $scripts->addFile('tbl_operations.js');
 
 /**
- * Runs common work.
+ * Runs common work
  */
 require 'libraries/tbl_common.inc.php';
 $url_query .= '&amp;goto=tbl_operations.php&amp;back=tbl_operations.php';
 $url_params['goto'] = $url_params['back'] = 'tbl_operations.php';
 
 /**
- * Gets relation settings.
+ * Gets relation settings
  */
 $relation = new Relation();
 $cfgRelation = $relation->getRelationsParam();
@@ -57,7 +61,7 @@ $cfgRelation = $relation->getRelationsParam();
 $GLOBALS['dbi']->selectDb($GLOBALS['db']);
 
 /**
- * Gets tables information.
+ * Gets tables information
  */
 $pma_table = $GLOBALS['dbi']->getTable(
     $GLOBALS['db'],
@@ -98,11 +102,11 @@ $pma_table = $GLOBALS['dbi']->getTable(
     $GLOBALS['table']
 );
 $reread_info = false;
-$table_alters = [];
+$table_alters = array();
 
 $operations = new Operations();
 
-/*
+/**
  * If the table has to be moved to some other database
  */
 if (isset($_POST['submit_move']) || isset($_POST['submit_copy'])) {
@@ -111,19 +115,19 @@ if (isset($_POST['submit_move']) || isset($_POST['submit_copy'])) {
     // This was ended in an Ajax call
     exit;
 }
-/*
+/**
  * If the table has to be maintained
  */
 if (isset($_POST['table_maintenance'])) {
     include_once 'sql.php';
     unset($result);
 }
-/*
+/**
  * Updates table comment, type and options if required
  */
 if (isset($_POST['submitoptions'])) {
     $_message = '';
-    $warning_messages = [];
+    $warning_messages = array();
 
     if (isset($_POST['new_name'])) {
         // lower_case_table_names=1 `DB` becomes `db`
@@ -191,12 +195,12 @@ if (isset($_POST['submitoptions'])) {
     );
 
     if (count($table_alters) > 0) {
-        $sql_query = 'ALTER TABLE '
-            .Util::backquote($GLOBALS['table']);
-        $sql_query .= "\r\n".implode("\r\n", $table_alters);
-        $sql_query .= ';';
-        $result .= $GLOBALS['dbi']->query($sql_query) ? true : false;
-        $reread_info = true;
+        $sql_query      = 'ALTER TABLE '
+            . Util::backquote($GLOBALS['table']);
+        $sql_query     .= "\r\n" . implode("\r\n", $table_alters);
+        $sql_query     .= ';';
+        $result        .= $GLOBALS['dbi']->query($sql_query) ? true : false;
+        $reread_info    = true;
         unset($table_alters);
         $warning_messages = $operations->getWarningMessagesArray();
     }
@@ -210,15 +214,27 @@ if (isset($_POST['submitoptions'])) {
             $GLOBALS['db'], $GLOBALS['table'], $_POST['tbl_collation']
         );
     }
+
+    if (isset($_POST['tbl_collation']) && empty($_POST['tbl_collation'])) {
+        $response = Response::getInstance();
+        if ($response->isAjax()) {
+            $response->setRequestStatus(false);
+            $response->addJSON(
+                'message',
+                Message::error(__('No collation provided.'))
+            );
+            exit;
+        }
+    }
 }
-/*
+/**
  * Reordering the table has been requested by the user
  */
 if (isset($_POST['submitorderby']) && ! empty($_POST['order_field'])) {
     list($sql_query, $result) = $operations->getQueryAndResultForReorderingTable();
 } // end if
 
-/*
+/**
  * A partition operation has been requested by the user
  */
 if (isset($_POST['submit_partition'])
@@ -263,7 +279,7 @@ if (isset($result) && empty($message_to_show)) {
         if ($response->isAjax()) {
             $response->setRequestStatus($_message->isSuccess());
             $response->addJSON('message', $_message);
-            if (! empty($sql_query)) {
+            if (!empty($sql_query)) {
                 $response->addJSON(
                     'sql_query', Util::getMessage(null, $sql_query)
                 );
@@ -283,7 +299,7 @@ if (isset($result) && empty($message_to_show)) {
         if ($response->isAjax()) {
             $response->setRequestStatus(false);
             $response->addJSON('message', $_message);
-            if (! empty($sql_query)) {
+            if (!empty($sql_query)) {
                 $response->addJSON(
                     'sql_query', Util::getMessage(null, $sql_query)
                 );
@@ -310,16 +326,16 @@ $url_params['goto']
         = 'tbl_operations.php';
 
 /**
- * Get columns names.
+ * Get columns names
  */
 $columns = $GLOBALS['dbi']->getColumns($GLOBALS['db'], $GLOBALS['table']);
 
 /**
- * Displays the page.
+ * Displays the page
  */
 
 /**
- * Order the table.
+ * Order the table
  */
 $hideOrderTable = false;
 // `ALTER TABLE ORDER BY` does not make sense for InnoDB tables that contain
@@ -330,20 +346,17 @@ if ($tbl_storage_engine == 'INNODB') {
     foreach ($indexes as $name => $idx) {
         if ($name == 'PRIMARY') {
             $hideOrderTable = true;
-
             break;
         } elseif (! $idx->getNonUnique()) {
             $notNull = true;
             foreach ($idx->getColumns() as $column) {
                 if ($column->getNull()) {
                     $notNull = false;
-
                     break;
                 }
             }
             if ($notNull) {
                 $hideOrderTable = true;
-
                 break;
             }
         }
@@ -353,7 +366,7 @@ if (! $hideOrderTable) {
     $response->addHTML($operations->getHtmlForOrderTheTable($columns));
 }
 
-/*
+/**
  * Move table
  */
 $response->addHTML($operations->getHtmlForMoveTable());
@@ -391,12 +404,12 @@ $response->addHTML(
     )
 );
 
-/*
+/**
  * Copy table
  */
 $response->addHTML($operations->getHtmlForCopytable());
 
-/*
+/**
  * Table maintenance
  */
 $response->addHTML(
@@ -404,17 +417,17 @@ $response->addHTML(
 );
 
 if (! (isset($db_is_system_schema) && $db_is_system_schema)) {
-    $truncate_table_url_params = [];
-    $drop_table_url_params = [];
+    $truncate_table_url_params = array();
+    $drop_table_url_params = array();
 
     if (! $tbl_is_view
         && ! (isset($db_is_system_schema) && $db_is_system_schema)
     ) {
         $this_sql_query = 'TRUNCATE TABLE '
-            .Util::backquote($GLOBALS['table']);
+            . Util::backquote($GLOBALS['table']);
         $truncate_table_url_params = array_merge(
             $url_params,
-            [
+            array(
                 'sql_query' => $this_sql_query,
                 'goto' => 'tbl_structure.php',
                 'reload' => '1',
@@ -422,15 +435,15 @@ if (! (isset($db_is_system_schema) && $db_is_system_schema)) {
                     __('Table %s has been emptied.'),
                     htmlspecialchars($table)
                 ),
-            ]
+            )
         );
     }
     if (! (isset($db_is_system_schema) && $db_is_system_schema)) {
         $this_sql_query = 'DROP TABLE '
-            .Util::backquote($GLOBALS['table']);
+            . Util::backquote($GLOBALS['table']);
         $drop_table_url_params = array_merge(
             $url_params,
-            [
+            array(
                 'sql_query' => $this_sql_query,
                 'goto' => 'db_operations.php',
                 'reload' => '1',
@@ -445,7 +458,7 @@ if (! (isset($db_is_system_schema) && $db_is_system_schema)) {
                 // table name is needed to avoid running
                 // PhpMyAdmin\RelationCleanup::database() on the whole db later
                 'table' => $GLOBALS['table'],
-            ]
+            )
         );
     }
     $response->addHTML(
@@ -473,7 +486,7 @@ unset($partition_names);
 // so I assume that if the current table is InnoDB, I don't display
 // this choice (InnoDB maintains integrity by itself)
 
-if ($cfgRelation['relwork'] && ! $pma_table->isEngine('INNODB')) {
+if ($cfgRelation['relwork'] && ! $pma_table->isEngine("INNODB")) {
     $GLOBALS['dbi']->selectDb($GLOBALS['db']);
     $foreign = $relation->getForeigners($GLOBALS['db'], $GLOBALS['table'], '', 'internal');
 
@@ -482,4 +495,5 @@ if ($cfgRelation['relwork'] && ! $pma_table->isEngine('INNODB')) {
             $operations->getHtmlForReferentialIntegrityCheck($foreign, $url_params)
         );
     } // end if ($foreign)
+
 } // end  if (!empty($cfg['Server']['relation']))

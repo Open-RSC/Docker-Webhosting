@@ -1,26 +1,30 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * ESRI Shape file import plugin for phpMyAdmin.
+ * ESRI Shape file import plugin for phpMyAdmin
+ *
+ * @package    PhpMyAdmin-Import
+ * @subpackage ESRI_Shape
  */
-
 namespace PhpMyAdmin\Plugins\Import;
 
+use PhpMyAdmin\Gis\GisFactory;
+use PhpMyAdmin\Gis\GisMultiLineString;
+use PhpMyAdmin\Gis\GisMultiPoint;
+use PhpMyAdmin\Gis\GisPoint;
+use PhpMyAdmin\Gis\GisPolygon;
 use PhpMyAdmin\Import;
 use PhpMyAdmin\Message;
-use PhpMyAdmin\Sanitize;
-use PhpMyAdmin\Gis\GisPoint;
-use PhpMyAdmin\ZipExtension;
-use PhpMyAdmin\Gis\GisFactory;
-use PhpMyAdmin\Gis\GisPolygon;
-use PhpMyAdmin\Gis\GisMultiPoint;
 use PhpMyAdmin\Plugins\ImportPlugin;
-use PhpMyAdmin\Gis\GisMultiLineString;
 use PhpMyAdmin\Properties\Plugins\ImportPluginProperties;
+use PhpMyAdmin\Sanitize;
+use PhpMyAdmin\ZipExtension;
 
 /**
- * Handles the import for ESRI Shape files.
+ * Handles the import for ESRI Shape files
+ *
+ * @package    PhpMyAdmin-Import
+ * @subpackage ESRI_Shape
  */
 class ImportShp extends ImportPlugin
 {
@@ -30,7 +34,7 @@ class ImportShp extends ImportPlugin
     private $zipExtension;
 
     /**
-     * Constructor.
+     * Constructor
      */
     public function __construct()
     {
@@ -51,20 +55,20 @@ class ImportShp extends ImportPlugin
         $importPluginProperties = new ImportPluginProperties();
         $importPluginProperties->setText(__('ESRI Shape File'));
         $importPluginProperties->setExtension('shp');
-        $importPluginProperties->setOptions([]);
+        $importPluginProperties->setOptions(array());
         $importPluginProperties->setOptionsText(__('Options'));
 
         $this->properties = $importPluginProperties;
     }
 
     /**
-     * Handles the whole import logic.
+     * Handles the whole import logic
      *
      * @param array &$sql_data 2-element array with sql data
      *
      * @return void
      */
-    public function doImport(array &$sql_data = [])
+    public function doImport(array &$sql_data = array())
     {
         global $db, $error, $finished,
                $import_file, $local_import_file, $message;
@@ -108,8 +112,8 @@ class ImportShp extends ImportPlugin
                         $dbf_file_name
                     );
                     if ($extracted !== false) {
-                        $dbf_file_path = $temp.(PMA_IS_WINDOWS ? '\\' : '/')
-                            .Sanitize::sanitizeFilename($dbf_file_name, true);
+                        $dbf_file_path = $temp . (PMA_IS_WINDOWS ? '\\' : '/')
+                            . Sanitize::sanitizeFilename($dbf_file_name, true);
                         $handle = fopen($dbf_file_path, 'wb');
                         if ($handle !== false) {
                             fwrite($handle, $extracted);
@@ -119,13 +123,13 @@ class ImportShp extends ImportPlugin
                             // by the bsShapeFiles library.
                             $file_name = substr(
                                 $dbf_file_path, 0, strlen($dbf_file_path) - 4
-                            ).'.*';
+                            ) . '.*';
                             $shp->FileName = $file_name;
                         }
                     }
                 }
-            } elseif (! empty($local_import_file)
-                && ! empty($GLOBALS['cfg']['UploadDir'])
+            } elseif (!empty($local_import_file)
+                && !empty($GLOBALS['cfg']['UploadDir'])
                 && $compression == 'none'
             ) {
                 // If file is in UploadDir, use .dbf file in the same UploadDir
@@ -136,7 +140,7 @@ class ImportShp extends ImportPlugin
                     $import_file,
                     0,
                     mb_strlen($import_file) - 4
-                ).'.*';
+                ) . '.*';
                 $shp->FileName = $file_name;
             }
         }
@@ -151,7 +155,7 @@ class ImportShp extends ImportPlugin
 
         // Load data
         $shp->loadFromFile('');
-        if ($shp->lastError != '') {
+        if ($shp->lastError != "") {
             $error = true;
             $message = Message::error(
                 __('There was an error importing the ESRI shape file: "%s".')
@@ -168,22 +172,18 @@ class ImportShp extends ImportPlugin
             // ESRI Point
         case 1:
             $gis_type = 'point';
-
             break;
             // ESRI PolyLine
         case 3:
             $gis_type = 'multilinestring';
-
             break;
             // ESRI Polygon
         case 5:
             $gis_type = 'multipolygon';
-
             break;
             // ESRI MultiPoint
         case 8:
             $gis_type = 'multipoint';
-
             break;
         default:
             $error = true;
@@ -191,7 +191,6 @@ class ImportShp extends ImportPlugin
                 __('MySQL Spatial Extension does not support ESRI type "%s".')
             );
             $message->addParam($shp->getShapeName());
-
             return;
         }
 
@@ -206,23 +205,23 @@ class ImportShp extends ImportPlugin
         // If .dbf file is loaded, the number of extra data columns
         $num_data_cols = isset($shp->DBFHeader) ? count($shp->DBFHeader) : 0;
 
-        $rows = [];
-        $col_names = [];
+        $rows = array();
+        $col_names = array();
         if ($num_rows != 0) {
             foreach ($shp->records as $record) {
-                $tempRow = [];
+                $tempRow = array();
                 if ($gis_obj == null) {
                     $tempRow[] = null;
                 } else {
                     $tempRow[] = "GeomFromText('"
-                        .$gis_obj->getShape($record->SHPData)."')";
+                        . $gis_obj->getShape($record->SHPData) . "')";
                 }
 
                 if (isset($shp->DBFHeader)) {
                     foreach ($shp->DBFHeader as $c) {
                         $cell = trim($record->DBFData[$c[0]]);
 
-                        if (! strcmp($cell, '')) {
+                        if (!strcmp($cell, '')) {
                             $cell = 'NULL';
                         }
 
@@ -252,14 +251,14 @@ class ImportShp extends ImportPlugin
         // Set table name based on the number of tables
         if (strlen($db) > 0) {
             $result = $GLOBALS['dbi']->fetchResult('SHOW TABLES');
-            $table_name = 'TABLE '.(count($result) + 1);
+            $table_name = 'TABLE ' . (count($result) + 1);
         } else {
             $table_name = 'TBL_NAME';
         }
-        $tables = [[$table_name, $col_names, $rows]];
+        $tables = array(array($table_name, $col_names, $rows));
 
         // Use data from shape file to chose best-fit MySQL types for each column
-        $analyses = [];
+        $analyses = array();
         $analyses[] = Import::analyzeTable($tables[0]);
 
         $table_no = 0;
@@ -270,7 +269,7 @@ class ImportShp extends ImportPlugin
         // Set database name to the currently selected one, if applicable
         if (strlen($db) > 0) {
             $db_name = $db;
-            $options = ['create_db' => false];
+            $options = array('create_db' => false);
         } else {
             $db_name = 'SHP_DB';
             $options = null;

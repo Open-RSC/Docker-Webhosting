@@ -1,17 +1,20 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Di\ReflectorItem class.
+ * Holds the PhpMyAdmin\Di\ReflectorItem class
+ *
+ * @package PhpMyAdmin\Di
  */
-
 namespace PhpMyAdmin\Di;
 
 /**
- * Reflector manager.
+ * Reflector manager
+ *
+ * @package PhpMyAdmin\Di
  */
 abstract class ReflectorItem implements Item
 {
+
     /** @var Container */
     private $_container;
 
@@ -19,7 +22,7 @@ abstract class ReflectorItem implements Item
     private $_reflector;
 
     /**
-     * Constructor.
+     * Constructor
      *
      * @param Container $container  Container
      * @param mixed     $definition Definition
@@ -31,14 +34,14 @@ abstract class ReflectorItem implements Item
     }
 
     /**
-     * Invoke the reflector with given parameters.
+     * Invoke the reflector with given parameters
      *
      * @param array $params Parameters
      * @return mixed
      */
-    protected function invoke(array $params = [])
+    protected function invoke(array $params = array())
     {
-        $args = [];
+        $args = array();
         $reflector = $this->_reflector;
         if ($reflector instanceof \ReflectionClass) {
             $constructor = $reflector->getConstructor();
@@ -48,7 +51,6 @@ abstract class ReflectorItem implements Item
                     $params
                 );
             }
-
             return $reflector->newInstanceArgs($args);
         }
         /** @var \ReflectionFunctionAbstract $reflector */
@@ -57,24 +59,24 @@ abstract class ReflectorItem implements Item
             $params
         );
         if ($reflector instanceof \ReflectionMethod) {
-            /* @var \ReflectionMethod $reflector */
+            /** @var \ReflectionMethod $reflector */
             return $reflector->invokeArgs(null, $args);
         }
-        /* @var \ReflectionFunction $reflector */
+        /** @var \ReflectionFunction $reflector */
         return $reflector->invokeArgs($args);
     }
 
     /**
-     * Getting required arguments with given parameters.
+     * Getting required arguments with given parameters
      *
      * @param \ReflectionParameter[] $required Arguments
      * @param array                  $params   Parameters
      *
-     *@return array
+*@return array
      */
-    private function _resolveArgs($required, array $params = [])
+    private function _resolveArgs($required, array $params = array())
     {
-        $args = [];
+        $args = array();
         foreach ($required as $param) {
             $name = $param->getName();
             $type = $param->getClass();
@@ -100,12 +102,11 @@ abstract class ReflectorItem implements Item
                 }
             }
         }
-
         return $args;
     }
 
     /**
-     * Resolve the reflection.
+     * Resolve the reflection
      *
      * @param mixed $definition Definition
      *
@@ -119,10 +120,9 @@ abstract class ReflectorItem implements Item
         if (is_string($definition)) {
             $definition = explode('::', $definition);
         }
-        if (! isset($definition[1])) {
+        if (!isset($definition[1])) {
             return new \ReflectionClass($definition[0]);
         }
-
         return new \ReflectionMethod($definition[0], $definition[1]);
     }
 }

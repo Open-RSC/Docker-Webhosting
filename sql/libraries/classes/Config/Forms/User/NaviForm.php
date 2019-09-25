@@ -1,10 +1,10 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * User preferences form.
+ * User preferences form
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Config\Forms\User;
 
 use PhpMyAdmin\Config\Forms\BaseForm;
@@ -13,8 +13,8 @@ class NaviForm extends BaseForm
 {
     public static function getForms()
     {
-        return [
-            'Navi_panel' => [
+        return array(
+            'Navi_panel' => array(
                 'ShowDatabasesNavigationAsTree',
                 'NavigationLinkWithMainPanel',
                 'NavigationDisplayLogo',
@@ -26,8 +26,8 @@ class NaviForm extends BaseForm
                 'NumRecentTables',
                 'NumFavoriteTables',
                 'NavigationWidth',
-            ],
-            'Navi_tree' => [
+            ),
+            'Navi_tree' => array(
                 'MaxNavigationItems',
                 'NavigationTreeEnableGrouping',
                 'NavigationTreeEnableExpansion',
@@ -35,23 +35,23 @@ class NaviForm extends BaseForm
                 'NavigationTreeShowViews',
                 'NavigationTreeShowFunctions',
                 'NavigationTreeShowProcedures',
-                'NavigationTreeShowEvents',
-            ],
-            'Navi_servers' => [
+                'NavigationTreeShowEvents'
+            ),
+            'Navi_servers' => array(
                 'NavigationDisplayServers',
                 'DisplayServersList',
-            ],
-            'Navi_databases' => [
+            ),
+            'Navi_databases' => array(
                 'NavigationTreeDisplayDbFilterMinimum',
-                'NavigationTreeDbSeparator',
-            ],
-            'Navi_tables' => [
+                'NavigationTreeDbSeparator'
+            ),
+            'Navi_tables' => array(
                 'NavigationTreeDefaultTabTable',
                 'NavigationTreeDefaultTabTable2',
                 'NavigationTreeTableSeparator',
                 'NavigationTreeTableLevel',
-            ],
-        ];
+            ),
+        );
     }
 
     public static function getName()

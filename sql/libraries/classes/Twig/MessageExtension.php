@@ -1,18 +1,20 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\MessageExtension class.
+ * hold PhpMyAdmin\Twig\MessageExtension class
+ *
+ * @package PhpMyAdmin\Twig
  */
-
 namespace PhpMyAdmin\Twig;
 
-use Twig\TwigFunction;
 use PhpMyAdmin\Message;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
- * Class MessageExtension.
+ * Class MessageExtension
+ *
+ * @package PhpMyAdmin\Twig
  */
 class MessageExtension extends AbstractExtension
 {
@@ -23,21 +25,21 @@ class MessageExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return [
+        return array(
             new TwigFunction(
                 'Message_notice',
                 function ($string) {
                     return Message::notice($string)->getDisplay();
                 },
-                ['is_safe' => ['html']]
+                array('is_safe' => array('html'))
             ),
             new TwigFunction(
                 'Message_error',
                 function ($string) {
                     return Message::error($string)->getDisplay();
                 },
-                ['is_safe' => ['html']]
+                array('is_safe' => array('html'))
             ),
-        ];
+        );
     }
 }

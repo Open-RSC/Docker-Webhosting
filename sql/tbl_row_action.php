@@ -1,18 +1,23 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * handle row specific actions like edit, delete, export.
+ * handle row specific actions like edit, delete, export
+ *
+ * @package PhpMyAdmin
  */
+
+use PhpMyAdmin\Response;
 use PhpMyAdmin\Sql;
 use PhpMyAdmin\Url;
-use PhpMyAdmin\Response;
 
+/**
+ *
+ */
 require_once 'libraries/common.inc.php';
 
 if (isset($_POST['submit_mult'])) {
     $submit_mult = $_POST['submit_mult'];
-// workaround for IE problem:
+    // workaround for IE problem:
 } elseif (isset($_POST['submit_mult_delete_x'])) {
     $submit_mult = 'row_delete';
 } elseif (isset($_POST['submit_mult_change_x'])) {
@@ -31,7 +36,7 @@ if (! isset($submit_mult)) {
     $submit_mult = 'row_edit';
 }
 
-switch ($submit_mult) {
+switch($submit_mult) {
 case 'row_delete':
 case 'row_edit':
 case 'row_copy':
@@ -41,27 +46,24 @@ case 'row_export':
 
 case 'export':
     $submit_mult = 'row_export';
-
     break;
 
 case 'delete':
     $submit_mult = 'row_delete';
-
     break;
 
 case 'copy':
     $submit_mult = 'row_copy';
-
     break;
 
 case 'edit':
 default:
     $submit_mult = 'row_edit';
-
     break;
 }
 
-if (! empty($submit_mult)) {
+if (!empty($submit_mult)) {
+
     if (isset($_POST['goto'])
         && (! isset($_POST['rows_to_delete'])
         || ! is_array($_POST['rows_to_delete']))
@@ -71,8 +73,8 @@ if (! empty($submit_mult)) {
         $response->addJSON('message', __('No row selected.'));
     }
 
-    switch ($submit_mult) {
-    /* @noinspection PhpMissingBreakStatementInspection */
+    switch($submit_mult) {
+    /** @noinspection PhpMissingBreakStatementInspection */
     case 'row_copy':
         $_POST['default_action'] = 'insert';
         // no break to allow for fallthough
@@ -81,7 +83,7 @@ if (! empty($submit_mult)) {
         // 'rows_to_delete' checkbox, we use the index of it as the
         // indicating WHERE clause. Then we build the array which is used
         // for the tbl_change.php script.
-        $where_clause = [];
+        $where_clause = array();
         if (isset($_POST['rows_to_delete'])
             && is_array($_POST['rows_to_delete'])
         ) {
@@ -91,7 +93,6 @@ if (! empty($submit_mult)) {
         }
         $active_page = 'tbl_change.php';
         include 'tbl_change.php';
-
         break;
 
     case 'row_export':
@@ -102,7 +103,7 @@ if (! empty($submit_mult)) {
         // 'rows_to_delete' checkbox, we use the index of it as the
         // indicating WHERE clause. Then we build the array which is used
         // for the tbl_change.php script.
-        $where_clause = [];
+        $where_clause = array();
         if (isset($_POST['rows_to_delete'])
             && is_array($_POST['rows_to_delete'])
         ) {
@@ -112,14 +113,13 @@ if (! empty($submit_mult)) {
         }
         $active_page = 'tbl_export.php';
         include 'tbl_export.php';
-
         break;
 
     case 'row_delete':
     default:
         $action = 'tbl_row_action.php';
         $err_url = 'tbl_row_action.php'
-            .Url::getCommon($GLOBALS['url_params']);
+            . Url::getCommon($GLOBALS['url_params']);
         if (! isset($_POST['mult_btn'])) {
             $original_sql_query = $sql_query;
             if (! empty($url_query)) {
@@ -131,7 +131,8 @@ if (! empty($submit_mult)) {
         $_url_params['goto'] = 'tbl_sql.php';
         $url_query = Url::getCommon($_url_params);
 
-        /*
+
+        /**
          * Show result of multi submit operation
          */
         // sql_query is not set when user does not confirm multi-delete

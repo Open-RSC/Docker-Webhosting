@@ -1,31 +1,34 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * OpenDocument Spreadsheet import plugin for phpMyAdmin.
+ * OpenDocument Spreadsheet import plugin for phpMyAdmin
  *
  * @todo       Pretty much everything
  * @todo       Importing of accented characters seems to fail
+ * @package    PhpMyAdmin-Import
+ * @subpackage ODS
  */
-
 namespace PhpMyAdmin\Plugins\Import;
 
-use SimpleXMLElement;
 use PhpMyAdmin\Import;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Plugins\ImportPlugin;
-use PhpMyAdmin\Properties\Options\Items\BoolPropertyItem;
 use PhpMyAdmin\Properties\Plugins\ImportPluginProperties;
 use PhpMyAdmin\Properties\Options\Groups\OptionsPropertyMainGroup;
 use PhpMyAdmin\Properties\Options\Groups\OptionsPropertyRootGroup;
+use PhpMyAdmin\Properties\Options\Items\BoolPropertyItem;
+use SimpleXMLElement;
 
 /**
- * Handles the import for the ODS format.
+ * Handles the import for the ODS format
+ *
+ * @package    PhpMyAdmin-Import
+ * @subpackage ODS
  */
 class ImportOds extends ImportPlugin
 {
     /**
-     * Constructor.
+     * Constructor
      */
     public function __construct()
     {
@@ -49,35 +52,35 @@ class ImportOds extends ImportPlugin
         // $importPluginProperties
         // this will be shown as "Format specific options"
         $importSpecificOptions = new OptionsPropertyRootGroup(
-            'Format Specific Options'
+            "Format Specific Options"
         );
 
         // general options main group
-        $generalOptions = new OptionsPropertyMainGroup('general_opts');
+        $generalOptions = new OptionsPropertyMainGroup("general_opts");
         // create primary items and add them to the group
         $leaf = new BoolPropertyItem(
-            'col_names',
+            "col_names",
             __(
                 'The first line of the file contains the table column names'
-                .' <i>(if this is unchecked, the first line will become part'
-                .' of the data)</i>'
+                . ' <i>(if this is unchecked, the first line will become part'
+                . ' of the data)</i>'
             )
         );
         $generalOptions->addProperty($leaf);
         $leaf = new BoolPropertyItem(
-            'empty_rows',
+            "empty_rows",
             __('Do not import empty rows')
         );
         $generalOptions->addProperty($leaf);
         $leaf = new BoolPropertyItem(
-            'recognize_percentages',
+            "recognize_percentages",
             __(
                 'Import percentages as proper decimals <i>(ex. 12.00% to .12)</i>'
             )
         );
         $generalOptions->addProperty($leaf);
         $leaf = new BoolPropertyItem(
-            'recognize_currency',
+            "recognize_currency",
             __('Import currencies <i>(ex. $5.00 to 5.00)</i>')
         );
         $generalOptions->addProperty($leaf);
@@ -91,30 +94,29 @@ class ImportOds extends ImportPlugin
     }
 
     /**
-     * Handles the whole import logic.
+     * Handles the whole import logic
      *
      * @param array &$sql_data 2-element array with sql data
      *
      * @return void
      */
-    public function doImport(array &$sql_data = [])
+    public function doImport(array &$sql_data = array())
     {
         global $db, $error, $timeout_passed, $finished;
 
         $i = 0;
         $len = 0;
-        $buffer = '';
+        $buffer = "";
 
-        /*
+        /**
          * Read in the file via Import::getNextChunk so that
          * it can process compressed files
          */
-        while (! ($finished && $i >= $len) && ! $error && ! $timeout_passed) {
+        while (!($finished && $i >= $len) && !$error && !$timeout_passed) {
             $data = Import::getNextChunk();
             if ($data === false) {
                 /* subtract data we didn't handle yet and stop processing */
                 $GLOBALS['offset'] -= strlen($buffer);
-
                 break;
             } elseif ($data === true) {
                 /* Handle rest of buffer */
@@ -127,28 +129,28 @@ class ImportOds extends ImportPlugin
 
         unset($data);
 
-        /*
+        /**
          * Disable loading of external XML entities.
          */
         libxml_disable_entity_loader();
 
         /**
-         * Load the XML string.
+         * Load the XML string
          *
          * The option LIBXML_COMPACT is specified because it can
          * result in increased performance without the need to
          * alter the code in any way. It's basically a freebee.
          */
-        $xml = @simplexml_load_string($buffer, 'SimpleXMLElement', LIBXML_COMPACT);
+        $xml = @simplexml_load_string($buffer, "SimpleXMLElement", LIBXML_COMPACT);
 
         unset($buffer);
 
         if ($xml === false) {
-            $sheets = [];
+            $sheets = array();
             $GLOBALS['message'] = Message::error(
                 __(
                     'The XML file specified was either malformed or incomplete.'
-                    .' Please correct the issue and try again.'
+                    . ' Please correct the issue and try again.'
                 )
             );
             $GLOBALS['error'] = true;
@@ -156,7 +158,7 @@ class ImportOds extends ImportPlugin
             /** @var SimpleXMLElement $root */
             $root = $xml->children('office', true)->{'body'}->{'spreadsheet'};
             if (empty($root)) {
-                $sheets = [];
+                $sheets = array();
                 $GLOBALS['message'] = Message::error(
                     __('Could not parse OpenDocument Spreadsheet!')
                 );
@@ -166,16 +168,16 @@ class ImportOds extends ImportPlugin
             }
         }
 
-        $tables = [];
+        $tables = array();
 
         $max_cols = 0;
 
         $col_count = 0;
-        $col_names = [];
+        $col_names = array();
 
-        $tempRow = [];
-        $tempRows = [];
-        $rows = [];
+        $tempRow = array();
+        $tempRows = array();
+        $rows = array();
 
         /* Iterate over tables */
         /** @var SimpleXMLElement $sheet */
@@ -200,12 +202,12 @@ class ImportOds extends ImportPlugin
 
                     if (count($text) != 0) {
                         $attr = $cell->attributes('table', true);
-                        $num_repeat = (int) $attr['number-columns-repeated'];
+                        $num_repeat = (int)$attr['number-columns-repeated'];
                         $num_iterations = $num_repeat ? $num_repeat : 1;
 
                         for ($k = 0; $k < $num_iterations; $k++) {
                             $value = $this->getValue($cell_attrs, $text);
-                            if (! $col_names_in_first_row) {
+                            if (!$col_names_in_first_row) {
                                 $tempRow[] = $value;
                             } else {
                                 // MySQL column names can't end with a space
@@ -213,9 +215,8 @@ class ImportOds extends ImportPlugin
                                 $col_names[] = rtrim($value);
                             }
 
-                            $col_count++;
+                            ++$col_count;
                         }
-
                         continue;
                     }
 
@@ -225,24 +226,24 @@ class ImportOds extends ImportPlugin
                     }
 
                     $attr = $cell->attributes('table', true);
-                    $num_null = (int) $attr['number-columns-repeated'];
+                    $num_null = (int)$attr['number-columns-repeated'];
 
                     if ($num_null) {
-                        if (! $col_names_in_first_row) {
-                            for ($i = 0; $i < $num_null; $i++) {
+                        if (!$col_names_in_first_row) {
+                            for ($i = 0; $i < $num_null; ++$i) {
                                 $tempRow[] = 'NULL';
-                                $col_count++;
+                                ++$col_count;
                             }
                         } else {
-                            for ($i = 0; $i < $num_null; $i++) {
+                            for ($i = 0; $i < $num_null; ++$i) {
                                 $col_names[] = Import::getColumnAlphaName(
                                     $col_count + 1
                                 );
-                                $col_count++;
+                                ++$col_count;
                             }
                         }
                     } else {
-                        if (! $col_names_in_first_row) {
+                        if (!$col_names_in_first_row) {
                             $tempRow[] = 'NULL';
                         } else {
                             $col_names[] = Import::getColumnAlphaName(
@@ -250,7 +251,7 @@ class ImportOds extends ImportPlugin
                             );
                         }
 
-                        $col_count++;
+                        ++$col_count;
                     }
                 } //Endforeach
 
@@ -260,12 +261,11 @@ class ImportOds extends ImportPlugin
                 }
 
                 /* Don't include a row that is full of NULL values */
-                if (! $col_names_in_first_row) {
+                if (!$col_names_in_first_row) {
                     if ($_REQUEST['ods_empty_rows']) {
                         foreach ($tempRow as $cell) {
                             if (strcmp('NULL', $cell)) {
                                 $tempRows[] = $tempRow;
-
                                 break;
                             }
                         }
@@ -276,45 +276,44 @@ class ImportOds extends ImportPlugin
 
                 $col_count = 0;
                 $col_names_in_first_row = false;
-                $tempRow = [];
+                $tempRow = array();
             }
 
             /* Skip over empty sheets */
             if (count($tempRows) == 0 || count($tempRows[0]) == 0) {
-                $col_names = [];
-                $tempRow = [];
-                $tempRows = [];
-
+                $col_names = array();
+                $tempRow = array();
+                $tempRows = array();
                 continue;
             }
 
-            /*
+            /**
              * Fill out each row as necessary to make
              * every one exactly as wide as the widest
              * row. This included column names.
              */
 
             /* Fill out column names */
-            for ($i = count($col_names); $i < $max_cols; $i++) {
+            for ($i = count($col_names); $i < $max_cols; ++$i) {
                 $col_names[] = Import::getColumnAlphaName($i + 1);
             }
 
             /* Fill out all rows */
             $num_rows = count($tempRows);
-            for ($i = 0; $i < $num_rows; $i++) {
-                for ($j = count($tempRows[$i]); $j < $max_cols; $j++) {
+            for ($i = 0; $i < $num_rows; ++$i) {
+                for ($j = count($tempRows[$i]); $j < $max_cols; ++$j) {
                     $tempRows[$i][] = 'NULL';
                 }
             }
 
             /* Store the table name so we know where to place the row set */
             $tbl_attr = $sheet->attributes('table', true);
-            $tables[] = [(string) $tbl_attr['name']];
+            $tables[] = array((string)$tbl_attr['name']);
 
             /* Store the current sheet in the accumulator */
-            $rows[] = [(string) $tbl_attr['name'], $col_names, $tempRows];
-            $tempRows = [];
-            $col_names = [];
+            $rows[] = array((string)$tbl_attr['name'], $col_names, $tempRows);
+            $tempRows = array();
+            $col_names = array();
             $max_cols = 0;
         }
 
@@ -325,17 +324,17 @@ class ImportOds extends ImportPlugin
         unset($xml);
 
         /**
-         * Bring accumulated rows into the corresponding table.
+         * Bring accumulated rows into the corresponding table
          */
         $num_tables = count($tables);
-        for ($i = 0; $i < $num_tables; $i++) {
+        for ($i = 0; $i < $num_tables; ++$i) {
             $num_rows = count($rows);
-            for ($j = 0; $j < $num_rows; $j++) {
+            for ($j = 0; $j < $num_rows; ++$j) {
                 if (strcmp($tables[$i][Import::TBL_NAME], $rows[$j][Import::TBL_NAME])) {
                     continue;
                 }
 
-                if (! isset($tables[$i][Import::COL_NAMES])) {
+                if (!isset($tables[$i][Import::COL_NAMES])) {
                     $tables[$i][] = $rows[$j][Import::COL_NAMES];
                 }
 
@@ -347,15 +346,15 @@ class ImportOds extends ImportPlugin
         unset($rows);
 
         /* Obtain the best-fit MySQL types for each column */
-        $analyses = [];
+        $analyses = array();
 
         $len = count($tables);
-        for ($i = 0; $i < $len; $i++) {
+        for ($i = 0; $i < $len; ++$i) {
             $analyses[] = Import::analyzeTable($tables[$i]);
         }
 
         /**
-         * string $db_name (no backquotes).
+         * string $db_name (no backquotes)
          *
          * array $table = array(table_name, array() column_names, array()() rows)
          * array $tables = array of "$table"s
@@ -385,7 +384,7 @@ class ImportOds extends ImportPlugin
     }
 
     /**
-     * Get value.
+     * Get value
      *
      * @param array $cell_attrs Cell attributes
      * @param array $text       Texts
@@ -395,26 +394,26 @@ class ImportOds extends ImportPlugin
     protected function getValue($cell_attrs, $text)
     {
         if ($_REQUEST['ods_recognize_percentages']
-            && ! strcmp(
+            && !strcmp(
                 'percentage',
                 $cell_attrs['value-type']
             )
         ) {
-            $value = (float) $cell_attrs['value'];
+            $value = (double)$cell_attrs['value'];
 
             return $value;
         } elseif ($_REQUEST['ods_recognize_currency']
-            && ! strcmp('currency', $cell_attrs['value-type'])
+            && !strcmp('currency', $cell_attrs['value-type'])
         ) {
-            $value = (float) $cell_attrs['value'];
+            $value = (double)$cell_attrs['value'];
 
             return $value;
         }
 
         /* We need to concatenate all paragraphs */
-        $values = [];
+        $values = array();
         foreach ($text as $paragraph) {
-            $values[] = (string) $paragraph;
+            $values[] = (string)$paragraph;
         }
         $value = implode("\n", $values);
 

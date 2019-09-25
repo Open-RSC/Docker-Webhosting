@@ -1,17 +1,19 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * User preferences page.
+ * User preferences page
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Url;
-use PhpMyAdmin\Core;
-use PhpMyAdmin\Response;
-use PhpMyAdmin\UserPreferences;
 use PhpMyAdmin\Config\ConfigFile;
 use PhpMyAdmin\Config\Forms\User\UserFormList;
+use PhpMyAdmin\Core;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Url;
+use PhpMyAdmin\UserPreferences;
 
 /**
- * Gets some core libraries and displays a top message if required.
+ * Gets some core libraries and displays a top message if required
  */
 require_once 'libraries/common.inc.php';
 
@@ -34,16 +36,16 @@ if (isset($_POST['revert'])) {
     // revert erroneous fields to their default values
     $form_display->fixErrors();
     // redirect
-    $url_params = ['form' => $form_param];
+    $url_params = array('form' => $form_param);
     Core::sendHeaderLocation(
         './prefs_forms.php'
-        .Url::getCommonRaw($url_params)
+        . Url::getCommonRaw($url_params)
     );
     exit;
 }
 
 $error = null;
-if ($form_display->process(false) && ! $form_display->hasErrors()) {
+if ($form_display->process(false) && !$form_display->hasErrors()) {
     // save settings
     $result = $userPreferences->save($cf->getConfigArray());
     if ($result === true) {
@@ -53,7 +55,7 @@ if ($form_display->process(false) && ! $form_display->hasErrors()) {
         $hash = ltrim($tabHash, '#');
         $userPreferences->redirect(
             'prefs_forms.php',
-            ['form' => $form_param],
+            array('form' => $form_param),
             $hash
         );
         exit;
@@ -64,8 +66,8 @@ if ($form_display->process(false) && ! $form_display->hasErrors()) {
 
 // display forms
 $response = Response::getInstance();
-$header = $response->getHeader();
-$scripts = $header->getScripts();
+$header   = $response->getHeader();
+$scripts  = $header->getScripts();
 $scripts->addFile('config.js');
 
 require 'libraries/user_preferences.inc.php';
@@ -73,7 +75,8 @@ if ($error) {
     $error->display();
 }
 if ($form_display->hasErrors()) {
-    // form has errors?>
+    // form has errors
+    ?>
     <div class="error config-form">
         <b>
             <?php echo __('Cannot save settings, submitted form contains errors!') ?>
@@ -82,9 +85,9 @@ if ($form_display->hasErrors()) {
     </div>
     <?php
 }
-echo $form_display->getDisplay(true, true, true, 'prefs_forms.php?form='.$form_param, [
-    'server' => $GLOBALS['server'],
-]);
+echo $form_display->getDisplay(true, true, true, 'prefs_forms.php?form=' . $form_param, array(
+    'server' => $GLOBALS['server']
+));
 
 if ($response->isAjax()) {
     $response->addJSON('_disableNaviSettings', true);

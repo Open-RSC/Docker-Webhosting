@@ -1,17 +1,19 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\PartitionExtension class.
+ * hold PhpMyAdmin\Twig\PartitionExtension class
+ *
+ * @package PhpMyAdmin\Twig
  */
-
 namespace PhpMyAdmin\Twig;
 
-use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
- * Class PartitionExtension.
+ * Class PartitionExtension
+ *
+ * @package PhpMyAdmin\Twig
  */
 class PartitionExtension extends AbstractExtension
 {
@@ -22,12 +24,12 @@ class PartitionExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return [
+        return array(
             new TwigFunction(
                 'Partition_getPartitions',
                 'PhpMyAdmin\Partition::getPartitions',
-                ['is_safe' => ['html']]
+                array('is_safe' => array('html'))
             ),
-        ];
+        );
     }
 }

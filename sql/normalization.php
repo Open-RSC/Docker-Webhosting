@@ -1,21 +1,23 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Normalization process (temporarily specific to 1NF).
+ * Normalization process (temporarily specific to 1NF)
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Url;
+
 use PhpMyAdmin\Core;
-use PhpMyAdmin\Response;
 use PhpMyAdmin\Normalization;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Url;
 
 require_once 'libraries/common.inc.php';
 
 $normalization = new Normalization($GLOBALS['dbi']);
 
 if (isset($_POST['getColumns'])) {
-    $html = '<option selected disabled>'.__('Select one…').'</option>'
-        .'<option value="no_such_col">'.__('No such column').'</option>';
+    $html = '<option selected disabled>' . __('Select one…') . '</option>'
+        . '<option value="no_such_col">' . __('No such column') . '</option>';
     //get column whose datatype falls under string category
     $html .= $normalization->getHtmlForColumnsList(
         $db,
@@ -34,7 +36,7 @@ if (isset($_POST['splitColumn'])) {
 }
 if (isset($_POST['addNewPrimary'])) {
     $num_fields = 1;
-    $columnMeta = ['Field'=>$table.'_id', 'Extra'=>'auto_increment'];
+    $columnMeta = array('Field'=>$table . "_id", 'Extra'=>'auto_increment');
     $html = $normalization->getHtmlForCreateNewColumn(
         $num_fields, $db, $table, $columnMeta
     );
@@ -72,7 +74,7 @@ $scripts = $header->getScripts();
 $scripts->addFile('normalization.js');
 $scripts->addFile('vendor/jquery/jquery.uitablefilter.js');
 $normalForm = '1nf';
-if (Core::isValid($_POST['normalizeTo'], ['1nf', '2nf', '3nf'])) {
+if (Core::isValid($_POST['normalizeTo'], array('1nf', '2nf', '3nf'))) {
     $normalForm = $_POST['normalizeTo'];
 }
 if (isset($_POST['createNewTables2NF'])) {

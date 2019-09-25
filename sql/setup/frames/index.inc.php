@@ -1,20 +1,22 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Overview (main page).
+ * Overview (main page)
+ *
+ * @package PhpMyAdmin-Setup
  */
-use PhpMyAdmin\Url;
-use PhpMyAdmin\Core;
-use PhpMyAdmin\Sanitize;
-use PhpMyAdmin\LanguageManager;
+
 use PhpMyAdmin\Config\ConfigFile;
 use PhpMyAdmin\Config\FormDisplay;
-use PhpMyAdmin\Config\ServerConfigChecks;
-use PhpMyAdmin\Setup\Index as SetupIndex;
 use PhpMyAdmin\Config\FormDisplayTemplate;
+use PhpMyAdmin\Config\ServerConfigChecks;
+use PhpMyAdmin\Core;
+use PhpMyAdmin\LanguageManager;
+use PhpMyAdmin\Sanitize;
+use PhpMyAdmin\Setup\Index as SetupIndex;
+use PhpMyAdmin\Url;
 
-if (! defined('PHPMYADMIN')) {
+if (!defined('PHPMYADMIN')) {
     exit;
 }
 
@@ -45,12 +47,12 @@ $configChecker->performConfigChecks();
 //
 $text = __(
     'You are not using a secure connection; all data (including potentially '
-    .'sensitive information, like passwords) is transferred unencrypted!'
+    . 'sensitive information, like passwords) is transferred unencrypted!'
 );
 $text .= ' <a href="#">';
 $text .= __(
     'If your server is also configured to accept HTTPS requests '
-    .'follow this link to use a secure connection.'
+    . 'follow this link to use a secure connection.'
 );
 $text .= '</a>';
 SetupIndex::messagesSet('notice', 'no_https', __('Insecure connection'), $text);
@@ -63,7 +65,7 @@ echo '</label></bdo><br />';
 echo '<select id="lang" name="lang" class="autosubmit" lang="en" dir="ltr">';
 
 // create language list
-$lang_list = [];
+$lang_list = array();
 foreach ($all_languages as $each_lang) {
     //Is current one active?
     $selected = $each_lang->isActive() ? ' selected="selected"' : '';
@@ -83,12 +85,11 @@ case 'config_saved':
         Sanitize::sanitize(
             __(
                 'Configuration saved to file config/config.inc.php in phpMyAdmin '
-                .'top level directory, copy it to top level one and delete '
-                .'directory config to use it.'
+                . 'top level directory, copy it to top level one and delete '
+                . 'directory config to use it.'
             )
         )
     );
-
     break;
 case 'config_not_saved':
     /* Use uniqid to display this message every time configuration is saved */
@@ -97,13 +98,12 @@ case 'config_not_saved':
         Sanitize::sanitize(
             __(
                 'Please create web server writable folder [em]config[/em] in '
-                .'phpMyAdmin top level directory as described in '
-                .'[doc@setup_script]documentation[/doc]. Otherwise you will be '
-                .'only able to download or display it.'
+                . 'phpMyAdmin top level directory as described in '
+                . '[doc@setup_script]documentation[/doc]. Otherwise you will be '
+                . 'only able to download or display it.'
             )
         )
     );
-
     break;
 default:
     break;
@@ -128,10 +128,10 @@ echo '</legend>';
 //
 echo FormDisplayTemplate::displayFormTop(
     'index.php', 'get',
-    [
+    array(
         'page' => 'servers',
-        'mode' => 'add',
-    ]
+        'mode' => 'add'
+    )
 );
 echo '<div class="form">';
 if ($cf->getServerCount() > 0) {
@@ -153,11 +153,12 @@ if ($cf->getServerCount() > 0) {
         echo '<td>' , htmlspecialchars($cf->getServerDSN($id)) , '</td>';
         echo '<td class="nowrap">';
         echo '<small>';
-        echo '<a href="' , Url::getCommon(['page' => 'servers', 'mode' => 'edit', 'id' => $id]), '">'
+        echo '<a href="' , Url::getCommon(array('page' => 'servers', 'mode' => 'edit', 'id' => $id)), '">'
             , __('Edit') , '</a>';
         echo ' | ';
-        echo '<a href="' , Url::getCommon(['page' => 'servers', 'mode' => 'remove', 'id' => $id]), '">'
-            , __('Delete') , '</a>';
+        echo '<a class="delete-server" href="' . Url::getCommon(array('page' => 'servers', 'mode' => 'remove', 'id' => $id));
+        echo '" data-post="' . Url::getCommon(array('token' => $_SESSION[' PMA_token ']), '') . '">';
+        echo __('Delete') . '</a>';
         echo '</small>';
         echo '</td>';
         echo '</tr>';
@@ -197,10 +198,10 @@ echo FormDisplayTemplate::displayFormTop('config.php');
 echo '<table width="100%" cellspacing="0">';
 
 // Display language list
-$opts = [
+$opts = array(
     'doc' => $form_display->getDocLink('DefaultLang'),
-    'values' => [],
-    'values_escaped' => true, ];
+    'values' => array(),
+    'values_escaped' => true);
 foreach ($all_languages as $each_lang) {
     $opts['values'][$each_lang->getCode()] = $each_lang->getName();
 }
@@ -210,10 +211,10 @@ echo FormDisplayTemplate::displayInput(
 );
 
 // Display server list
-$opts = [
+$opts = array(
     'doc' => $form_display->getDocLink('ServerDefault'),
-    'values' => [],
-    'values_disabled' => [], ];
+    'values' => array(),
+    'values_disabled' => array());
 if ($cf->getServerCount() > 0) {
     $opts['values']['0'] = __('let the user choose');
     $opts['values']['-'] = '------------------------------';
@@ -223,7 +224,7 @@ if ($cf->getServerCount() > 0) {
     $opts['values_disabled'][] = '-';
 
     foreach ($cf->getServers() as $id => $server) {
-        $opts['values'][(string) $id] = $cf->getServerName($id)." [$id]";
+        $opts['values'][(string)$id] = $cf->getServerName($id) . " [$id]";
     }
 } else {
     $opts['values']['1'] = __('- none -');
@@ -235,11 +236,11 @@ echo FormDisplayTemplate::displayInput(
 );
 
 // Display EOL list
-$opts = [
-    'values' => [
+$opts = array(
+    'values' => array(
         'unix' => 'UNIX / Linux (\n)',
-        'win' => 'Windows (\r\n)', ],
-    'values_escaped' => true, ];
+        'win' => 'Windows (\r\n)'),
+    'values_escaped' => true);
 $eol = Core::ifSetOr($_SESSION['eol'], (PMA_IS_WINDOWS ? 'win' : 'unix'));
 echo FormDisplayTemplate::displayInput(
     'eol', __('End of line'), 'select',
@@ -264,6 +265,6 @@ echo '<div id="footer">';
 echo '<a href="../url.php?url=https://www.phpmyadmin.net/">' , __('phpMyAdmin homepage') , '</a>';
 echo '<a href="../url.php?url=https://www.phpmyadmin.net/donate/">'
     ,  __('Donate') , '</a>';
-echo '<a href="' ,  Url::getCommon(['version_check' => '1']), '">'
+echo '<a href="' ,  Url::getCommon(array('version_check' => '1')), '">'
     , __('Check for latest version') , '</a>';
 echo '</div>';

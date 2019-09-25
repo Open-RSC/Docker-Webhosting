@@ -1,56 +1,58 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * The BDB storage engine.
+ * The BDB storage engine
+ *
+ * @package PhpMyAdmin-Engines
  */
-
 namespace PhpMyAdmin\Engines;
 
 use PhpMyAdmin\StorageEngine;
 
 /**
- * The BDB storage engine.
+ * The BDB storage engine
+ *
+ * @package PhpMyAdmin-Engines
  */
 class Bdb extends StorageEngine
 {
     /**
-     * Returns array with variable names related to this storage engine.
+     * Returns array with variable names related to this storage engine
      *
      * @return array   variable names
      */
     public function getVariables()
     {
-        return [
-            'version_bdb'         => [
+        return array(
+            'version_bdb'         => array(
                 'title' => __('Version information'),
-            ],
-            'bdb_cache_size'      => [
+            ),
+            'bdb_cache_size'      => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_SIZE,
-            ],
-            'bdb_home'            => [],
-            'bdb_log_buffer_size' => [
+            ),
+            'bdb_home'            => array(),
+            'bdb_log_buffer_size' => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_SIZE,
-            ],
-            'bdb_logdir'          => [],
-            'bdb_max_lock'        => [
+            ),
+            'bdb_logdir'          => array(),
+            'bdb_max_lock'        => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'bdb_shared_data'     => [],
-            'bdb_tmpdir'          => [],
-            'bdb_data_direct'     => [],
-            'bdb_lock_detect'     => [],
-            'bdb_log_direct'      => [],
-            'bdb_no_recover'      => [],
-            'bdb_no_sync'         => [],
-            'skip_sync_bdb_logs'  => [],
-            'sync_bdb_logs'       => [],
-        ];
+            ),
+            'bdb_shared_data'     => array(),
+            'bdb_tmpdir'          => array(),
+            'bdb_data_direct'     => array(),
+            'bdb_lock_detect'     => array(),
+            'bdb_log_direct'      => array(),
+            'bdb_no_recover'      => array(),
+            'bdb_no_sync'         => array(),
+            'skip_sync_bdb_logs'  => array(),
+            'sync_bdb_logs'       => array(),
+        );
     }
 
     /**
      * Returns the pattern to be used in the query for SQL variables
-     * related to this storage engine.
+     * related to this storage engine
      *
      * @return string LIKE pattern
      */
@@ -61,7 +63,7 @@ class Bdb extends StorageEngine
 
     /**
      * returns string with filename for the MySQL helppage
-     * about this storage engine.
+     * about this storage engine
      *
      * @return string  mysql helppage filename
      */
@@ -70,3 +72,4 @@ class Bdb extends StorageEngine
         return 'bdb';
     }
 }
+

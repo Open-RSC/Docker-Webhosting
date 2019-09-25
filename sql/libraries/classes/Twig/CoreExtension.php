@@ -1,17 +1,19 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\CoreExtension class.
+ * hold PhpMyAdmin\Twig\CoreExtension class
+ *
+ * @package PhpMyAdmin\Twig
  */
-
 namespace PhpMyAdmin\Twig;
 
-use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
- * Class CoreExtension.
+ * Class CoreExtension
+ *
+ * @package PhpMyAdmin\Twig
  */
 class CoreExtension extends AbstractExtension
 {
@@ -22,12 +24,12 @@ class CoreExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return [
+        return array(
             new TwigFunction(
                 'Core_mimeDefaultFunction',
                 'PhpMyAdmin\Core::mimeDefaultFunction',
-                ['is_safe' => ['html']]
+                array('is_safe' => array('html'))
             ),
-        ];
+        );
     }
 }

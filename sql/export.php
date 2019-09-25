@@ -1,28 +1,30 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Main export handling code.
+ * Main export handling code
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Url;
+
 use PhpMyAdmin\Core;
-use PhpMyAdmin\Util;
+use PhpMyAdmin\Encoding;
 use PhpMyAdmin\Export;
 use PhpMyAdmin\Plugins;
-use PhpMyAdmin\Encoding;
-use PhpMyAdmin\Relation;
-use PhpMyAdmin\Response;
-use PhpMyAdmin\Sanitize;
 use PhpMyAdmin\Plugins\ExportPlugin;
+use PhpMyAdmin\Relation;
+use PhpMyAdmin\Sanitize;
+use PhpMyAdmin\Url;
+use PhpMyAdmin\Util;
+use PhpMyAdmin\Response;
 
 /**
- * Get the variables sent or posted to this script and a core script.
+ * Get the variables sent or posted to this script and a core script
  */
 include_once 'libraries/common.inc.php';
 
 $response = Response::getInstance();
-$header = $response->getHeader();
-$scripts = $header->getScripts();
+$header   = $response->getHeader();
+$scripts  = $header->getScripts();
 $scripts->addFile('export_output.js');
 
 //check if it's the GET request to check export time out
@@ -30,15 +32,15 @@ if (isset($_GET['check_time_out'])) {
     if (isset($_SESSION['pma_export_error'])) {
         $err = $_SESSION['pma_export_error'];
         unset($_SESSION['pma_export_error']);
-        echo 'timeout';
+        echo "timeout";
     } else {
-        echo 'success';
+        echo "success";
     }
     exit;
 }
 
 /**
- * Sets globals from $_POST.
+ * Sets globals from $_POST
  *
  * - Please keep the parameters in order of their appearance in the form
  * - Some of these parameters are not used, as the code below directly
@@ -46,7 +48,7 @@ if (isset($_GET['check_time_out'])) {
  * TODO: this should be removed to avoid passing user input to GLOBALS
  * without checking
  */
-$post_params = [
+$post_params = array(
         'db',
         'table',
         'what',
@@ -161,8 +163,8 @@ $post_params = [
         'latex_data_continued_caption',
         'latex_data_label',
         'latex_null',
-        'aliases',
-];
+        'aliases'
+);
 
 foreach ($post_params as $one_post_param) {
     if (isset($_POST[$one_post_param])) {
@@ -172,7 +174,7 @@ foreach ($post_params as $one_post_param) {
 
 $table = $GLOBALS['table'];
 
-PhpMyAdmin\Util::checkParameters(['what', 'export_type']);
+PhpMyAdmin\Util::checkParameters(array('what', 'export_type'));
 
 // sanitize this parameter which will be used below in a file inclusion
 $what = Core::securePath($_POST['what']);
@@ -180,13 +182,13 @@ $what = Core::securePath($_POST['what']);
 // export class instance, not array of properties, as before
 /* @var $export_plugin ExportPlugin */
 $export_plugin = Plugins::getPlugin(
-    'export',
+    "export",
     $what,
     'libraries/classes/Plugins/Export/',
-    [
+    array(
         'export_type' => $export_type,
-        'single_table' => isset($single_table),
-    ]
+        'single_table' => isset($single_table)
+    )
 );
 
 // Check export type
@@ -195,15 +197,15 @@ if (empty($export_plugin)) {
 }
 
 /**
- * valid compression methods.
+ * valid compression methods
  */
-$compression_methods = [
+$compression_methods = array(
     'zip',
-    'gzip',
-];
+    'gzip'
+);
 
 /**
- * init and variable checking.
+ * init and variable checking
  */
 $compression = false;
 $onserver = false;
@@ -257,7 +259,7 @@ if ($_POST['output_format'] == 'astext') {
     }
 }
 
-/*
+/**
  * If we are sending the export file (as opposed to just displaying it
  * as text), we have to bypass the usual PhpMyAdmin\Response mechanism
  */
@@ -269,20 +271,20 @@ if (isset($_POST['output_format']) && $_POST['output_format'] == 'sendit' && ! $
 
 // Generate error url and check for needed variables
 if ($export_type == 'server') {
-    $err_url = 'server_export.php'.Url::getCommon();
+    $err_url = 'server_export.php' . Url::getCommon();
 } elseif ($export_type == 'database' && strlen($db) > 0) {
-    $err_url = 'db_export.php'.Url::getCommon(['db' => $db]);
+    $err_url = 'db_export.php' . Url::getCommon(array('db' => $db));
     // Check if we have something to export
     if (isset($table_select)) {
         $tables = $table_select;
     } else {
-        $tables = [];
+        $tables = array();
     }
 } elseif ($export_type == 'table' && strlen($db) > 0 && strlen($table) > 0) {
-    $err_url = 'tbl_export.php'.Url::getCommon(
-        [
-            'db' => $db, 'table' => $table,
-        ]
+    $err_url = 'tbl_export.php' . Url::getCommon(
+        array(
+            'db' => $db, 'table' => $table
+        )
     );
 } else {
     Core::fatalError(__('Bad parameters!'));
@@ -292,18 +294,18 @@ if ($export_type == 'server') {
 // export page, Export page aliases are given more
 // preference over SQL Query aliases.
 $parser = new \PhpMyAdmin\SqlParser\Parser($sql_query);
-$aliases = [];
-if ((! empty($parser->statements[0]))
+$aliases = array();
+if ((!empty($parser->statements[0]))
     && ($parser->statements[0] instanceof \PhpMyAdmin\SqlParser\Statements\SelectStatement)
 ) {
     $aliases = \PhpMyAdmin\SqlParser\Utils\Misc::getAliases($parser->statements[0], $db);
 }
-if (! empty($_POST['aliases'])) {
+if (!empty($_POST['aliases'])) {
     $aliases = Export::mergeAliases($aliases, $_POST['aliases']);
     $_SESSION['tmpval']['aliases'] = $_POST['aliases'];
 }
 
-/*
+/**
  * Increase time limit for script execution and initializes some variables
  */
 Util::setTimeLimit();
@@ -316,7 +318,7 @@ $dump_buffer = '';
 $dump_buffer_len = 0;
 
 // Array of dump_buffers - used in separate file exports
-$dump_buffer_objects = [];
+$dump_buffer_objects = array();
 
 // We send fake headers to avoid browser timeout when buffering
 $time_start = time();
@@ -367,7 +369,7 @@ if ($save_on_server) {
         Export::showPage($db, $table, $export_type);
     }
 } else {
-    /*
+    /**
      * Send headers depending on whether the user chose to download a dump file
      * or not
      */
@@ -415,20 +417,20 @@ do {
     }
 
     // Will we need relation & co. setup?
-    $do_relation = isset($GLOBALS[$what.'_relation']);
-    $do_comments = isset($GLOBALS[$what.'_include_comments'])
-        || isset($GLOBALS[$what.'_comments']);
-    $do_mime = isset($GLOBALS[$what.'_mime']);
+    $do_relation = isset($GLOBALS[$what . '_relation']);
+    $do_comments = isset($GLOBALS[$what . '_include_comments'])
+        || isset($GLOBALS[$what . '_comments']);
+    $do_mime     = isset($GLOBALS[$what . '_mime']);
     if ($do_relation || $do_comments || $do_mime) {
         $cfgRelation = $relation->getRelationsParam();
     }
 
     // Include dates in export?
-    $do_dates = isset($GLOBALS[$what.'_dates']);
+    $do_dates = isset($GLOBALS[$what . '_dates']);
 
-    $whatStrucOrData = $GLOBALS[$what.'_structure_or_data'];
+    $whatStrucOrData = $GLOBALS[$what . '_structure_or_data'];
 
-    /*
+    /**
      * Builds the dump
      */
     if ($export_type == 'server') {
@@ -441,19 +443,18 @@ do {
             $aliases, $separate_files
         );
     } elseif ($export_type == 'database') {
-        if (! isset($table_structure) || ! is_array($table_structure)) {
-            $table_structure = [];
+        if (!isset($table_structure) || !is_array($table_structure)) {
+            $table_structure = array();
         }
-        if (! isset($table_data) || ! is_array($table_data)) {
-            $table_data = [];
+        if (!isset($table_data) || !is_array($table_data)) {
+            $table_data = array();
         }
-        if (! empty($_POST['structure_or_data_forced'])) {
+        if (!empty($_POST['structure_or_data_forced'])) {
             $table_structure = $tables;
             $table_data = $tables;
         }
         if (isset($lock_tables)) {
-            Export::lockTables($db, $tables, 'READ');
-
+            Export::lockTables($db, $tables, "READ");
             try {
                 Export::exportDatabase(
                     $db, $tables, $whatStrucOrData, $table_structure,
@@ -485,7 +486,7 @@ do {
         }
         if (isset($lock_tables)) {
             try {
-                Export::lockTables($db, [$table], 'READ');
+                Export::lockTables($db, array($table), "READ");
                 Export::exportTable(
                     $db, $table, $whatStrucOrData, $export_plugin, $crlf,
                     $err_url, $export_type, $do_relation, $do_comments,
@@ -506,6 +507,7 @@ do {
     if (! $export_plugin->exportFooter()) {
         break;
     }
+
 } while (false);
 // End of fake loop
 
@@ -513,12 +515,11 @@ if ($save_on_server && ! empty($message)) {
     Export::showPage($db, $table, $export_type);
 }
 
-/*
+/**
  * Send the dump as a file...
  */
 if (empty($asfile)) {
     echo Export::getHtmlForDisplayedExportFooter($back_button, $refreshButton);
-
     return;
 } // end if
 
@@ -540,6 +541,7 @@ if ($compression) {
     } else {
         $dump_buffer = Export::compress($dump_buffer, $compression, $filename);
     }
+
 }
 
 /* If we saved on server, we have to close file now */

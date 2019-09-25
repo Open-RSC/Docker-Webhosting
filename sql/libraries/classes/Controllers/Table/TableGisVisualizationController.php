@@ -1,49 +1,52 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Controllers\Table\TableIndexesController.
+ * Holds the PhpMyAdmin\Controllers\Table\TableIndexesController
+ *
+ * @package PhpMyAdmin\Controllers
  */
-
 namespace PhpMyAdmin\Controllers\Table;
 
-use PhpMyAdmin\Url;
+use PhpMyAdmin\Controllers\TableController;
 use PhpMyAdmin\Core;
+use PhpMyAdmin\Gis\GisVisualization;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Template;
-use PhpMyAdmin\Gis\GisVisualization;
-use PhpMyAdmin\Controllers\TableController;
+use PhpMyAdmin\Url;
 
 require_once 'libraries/common.inc.php';
 require_once 'libraries/db_common.inc.php';
 
 /**
- * Class TableGisVisualizationController.
+ * Class TableGisVisualizationController
+ *
+ * @package PhpMyAdmin\Controllers
  */
 class TableGisVisualizationController extends TableController
 {
+
     /**
-     * @var array
+     * @var array $url_params
      */
     protected $url_params;
 
     /**
-     * @var string
+     * @var string $sql_query
      */
     protected $sql_query;
 
     /**
-     * @var array
+     * @var array $visualizationSettings
      */
     protected $visualizationSettings;
 
     /**
-     * @var \PhpMyAdmin\Gis\GisVisualization
+     * @var \PhpMyAdmin\Gis\GisVisualization $visualization
      */
     protected $visualization;
 
     /**
-     * Constructor.
+     * Constructor
      *
      * @param string $sql_query             SQL query for retrieving GIS data
      * @param array  $url_params            array of URL parameters
@@ -72,7 +75,7 @@ class TableGisVisualizationController extends TableController
     }
 
     /**
-     * Save to file.
+     * Save to file
      *
      * @return void
      */
@@ -80,12 +83,12 @@ class TableGisVisualizationController extends TableController
     {
         $this->response->disable();
         $file_name = $this->visualizationSettings['spatialColumn'];
-        $save_format = $_REQUEST['fileFormat'];
+        $save_format = $_GET['fileFormat'];
         $this->visualization->toFile($file_name, $save_format);
     }
 
     /**
-     * Index.
+     * Index
      *
      * @return void
      */
@@ -97,7 +100,6 @@ class TableGisVisualizationController extends TableController
             $this->response->addHTML(
                 Message::error(__('No SQL query was set to fetch data.'))
             );
-
             return;
         }
 
@@ -107,8 +109,8 @@ class TableGisVisualizationController extends TableController
         $meta = $this->dbi->getFieldsMeta($result);
 
         // Find the candidate fields for label column and spatial column
-        $labelCandidates = [];
-        $spatialCandidates = [];
+        $labelCandidates = array();
+        $spatialCandidates = array();
         foreach ($meta as $column_meta) {
             if ($column_meta->type == 'geometry') {
                 $spatialCandidates[] = $column_meta->name;
@@ -118,14 +120,14 @@ class TableGisVisualizationController extends TableController
         }
 
         // Get settings if any posted
-        if (Core::isValid($_REQUEST['visualizationSettings'], 'array')) {
-            $this->visualizationSettings = $_REQUEST['visualizationSettings'];
+        if (Core::isValid($_POST['visualizationSettings'], 'array')) {
+            $this->visualizationSettings = $_POST['visualizationSettings'];
         }
 
         // Check mysql version
         $this->visualizationSettings['mysqlVersion'] = $this->dbi->getVersion();
 
-        if (! isset($this->visualizationSettings['labelColumn'])
+        if (!isset($this->visualizationSettings['labelColumn'])
             && isset($labelCandidates[0])
         ) {
             $this->visualizationSettings['labelColumn'] = '';
@@ -137,10 +139,10 @@ class TableGisVisualizationController extends TableController
         }
 
         // Convert geometric columns from bytes to text.
-        $pos = isset($_REQUEST['pos']) ? $_REQUEST['pos']
+        $pos = isset($_GET['pos']) ? $_GET['pos']
             : $_SESSION['tmpval']['pos'];
-        if (isset($_REQUEST['session_max_rows'])) {
-            $rows = $_REQUEST['session_max_rows'];
+        if (isset($_GET['session_max_rows'])) {
+            $rows = $_GET['session_max_rows'];
         } else {
             if ($_SESSION['tmpval']['max_rows'] != 'all') {
                 $rows = $_SESSION['tmpval']['max_rows'];
@@ -155,22 +157,21 @@ class TableGisVisualizationController extends TableController
             $pos
         );
 
-        if (isset($_REQUEST['saveToFile'])) {
+        if (isset($_GET['saveToFile'])) {
             $this->saveToFileAction();
-
             return;
         }
 
         $this->response->getHeader()->getScripts()->addFiles(
-            [
+            array(
                 'vendor/openlayers/OpenLayers.js',
                 'vendor/jquery/jquery.svg.js',
                 'tbl_gis_visualization.js',
-            ]
+            )
         );
 
         // If all the rows contain SRID, use OpenStreetMaps on the initial loading.
-        if (! isset($_REQUEST['displayVisualization'])) {
+        if (! isset($_POST['displayVisualization'])) {
             if ($this->visualization->hasSrid()) {
                 $this->visualizationSettings['choice'] = 'useBaseLayer';
             } else {
@@ -187,22 +188,23 @@ class TableGisVisualizationController extends TableController
             }
         }
 
-        /*
+        /**
          * Displays the page
          */
         $this->url_params['sql_query'] = $this->sql_query;
-        $downloadUrl = 'tbl_gis_visualization.php'.Url::getCommon(
+        $downloadUrl = 'tbl_gis_visualization.php' . Url::getCommon(
             array_merge(
                 $this->url_params,
-                [
+                array(
+                    'sql_signature' => Core::signSqlQuery($this->sql_query),
                     'saveToFile' => true,
                     'session_max_rows' => $rows,
-                    'pos' => $pos,
-                ]
+                    'pos' => $pos
+                )
             )
         );
         $html = Template::get('table/gis_visualization/gis_visualization')->render(
-            [
+            array(
                 'url_params' => $this->url_params,
                 'download_url' => $downloadUrl,
                 'label_candidates' => $labelCandidates,
@@ -211,8 +213,8 @@ class TableGisVisualizationController extends TableController
                 'sql_query' => $this->sql_query,
                 'visualization' => $this->visualization->toImage('svg'),
                 'draw_ol' => $this->visualization->asOl(),
-                'pma_theme_image' => $GLOBALS['pmaThemeImage'],
-            ]
+                'pma_theme_image' => $GLOBALS['pmaThemeImage']
+            )
         );
 
         $this->response->addHTML($html);

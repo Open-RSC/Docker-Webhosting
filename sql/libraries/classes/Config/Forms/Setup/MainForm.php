@@ -1,10 +1,10 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * User preferences form.
+ * User preferences form
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Config\Forms\Setup;
 
 class MainForm extends \PhpMyAdmin\Config\Forms\User\MainForm
@@ -15,7 +15,6 @@ class MainForm extends \PhpMyAdmin\Config\Forms\User\MainForm
         /* Following are not available to user */
         $result['Startup'][] = 'ShowPhpInfo';
         $result['Startup'][] = 'ShowChgPassword';
-
         return $result;
     }
 }

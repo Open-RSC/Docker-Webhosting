@@ -1,33 +1,36 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * JavaScript management.
+ * JavaScript management
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
-use PhpMyAdmin\Url;
 use PhpMyAdmin\Header;
 use PhpMyAdmin\Sanitize;
+use PhpMyAdmin\Url;
 
 /**
  * Collects information about which JavaScript
  * files and objects are necessary to render
  * the page and generates the relevant code.
+ *
+ * @package PhpMyAdmin
  */
 class Scripts
 {
     /**
-     * An array of SCRIPT tags.
+     * An array of SCRIPT tags
      *
+     * @access private
      * @var array of strings
      */
     private $_files;
-
     /**
-     * An array of discrete javascript code snippets.
+     * An array of discrete javascript code snippets
      *
+     * @access private
      * @var array of strings
      */
     private $_code;
@@ -43,31 +46,32 @@ class Scripts
     {
         $result = '';
         foreach ($files as $value) {
-            if (strpos($value['filename'], '.php') !== false) {
-                $file_name = $value['filename'].Url::getCommon($value['params'] + ['v' => PMA_VERSION]);
+            if (strpos($value['filename'], ".php") !== false) {
+                $file_name = $value['filename'] . Url::getCommon($value['params'] + array('v' => PMA_VERSION));
                 $result .= "<script data-cfasync='false' "
-                    ."type='text/javascript' src='js/".$file_name
-                    ."'></script>\n";
+                    . "type='text/javascript' src='js/" . $file_name
+                    . "'></script>\n";
             } else {
                 $result .= '<script data-cfasync="false" type="text/javascript" src="js/'
-                    .$value['filename'].'?'.Header::getVersionParameter().'"></script>'."\n";
+                    .  $value['filename'] . '?' . Header::getVersionParameter() . '"></script>' . "\n";
             }
         }
-
         return $result;
     }
 
     /**
-     * Generates new Scripts objects.
+     * Generates new Scripts objects
+     *
      */
     public function __construct()
     {
-        $this->_files = [];
-        $this->_code = '';
+        $this->_files  = array();
+        $this->_code   = '';
+
     }
 
     /**
-     * Adds a new file to the list of scripts.
+     * Adds a new file to the list of scripts
      *
      * @param string $filename The name of the file to include
      * @param array  $params   Additional parameters to pass to the file
@@ -76,23 +80,23 @@ class Scripts
      */
     public function addFile(
         $filename,
-        array $params = []
+        array $params = array()
     ) {
         $hash = md5($filename);
-        if (! empty($this->_files[$hash])) {
+        if (!empty($this->_files[$hash])) {
             return;
         }
 
         $has_onload = $this->_eventBlacklist($filename);
-        $this->_files[$hash] = [
+        $this->_files[$hash] = array(
             'has_onload' => $has_onload,
             'filename' => $filename,
             'params' => $params,
-        ];
+        );
     }
 
     /**
-     * Add new files to the list of scripts.
+     * Add new files to the list of scripts
      *
      * @param array $filelist The array of file names
      *
@@ -106,7 +110,7 @@ class Scripts
     }
 
     /**
-     * Determines whether to fire up an onload event for a file.
+     * Determines whether to fire up an onload event for a file
      *
      * @param string $filename The name of the file to be checked
      *                         against the blacklist
@@ -128,7 +132,7 @@ class Scripts
     }
 
     /**
-     * Adds a new code snippet to the code to be executed.
+     * Adds a new code snippet to the code to be executed
      *
      * @param string $code The JS code to be added
      *
@@ -141,29 +145,29 @@ class Scripts
 
     /**
      * Returns a list with filenames and a flag to indicate
-     * whether to register onload events for this file.
+     * whether to register onload events for this file
      *
      * @return array
      */
     public function getFiles()
     {
-        $retval = [];
+        $retval = array();
         foreach ($this->_files as $file) {
             //If filename contains a "?", continue.
-            if (strpos($file['filename'], '?') !== false) {
+            if (strpos($file['filename'], "?") !== false) {
                 continue;
             }
-            $retval[] = [
+            $retval[] = array(
                 'name' => $file['filename'],
-                'fire' => $file['has_onload'],
-            ];
-        }
+                'fire' => $file['has_onload']
+            );
 
+        }
         return $retval;
     }
 
     /**
-     * Renders all the JavaScript file inclusions, code and events.
+     * Renders all the JavaScript file inclusions, code and events
      *
      * @return string
      */

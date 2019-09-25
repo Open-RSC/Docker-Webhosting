@@ -1,10 +1,10 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * User preferences form.
+ * User preferences form
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Config\Forms\User;
 
 use PhpMyAdmin\Config\Forms\BaseForm;
@@ -13,23 +13,23 @@ class MainForm extends BaseForm
 {
     public static function getForms()
     {
-        return [
-            'Startup' => [
+        return array(
+            'Startup' => array(
                 'ShowCreateDb',
                 'ShowStats',
-                'ShowServerInfo',
-            ],
-            'DbStructure' => [
+                'ShowServerInfo'
+            ),
+            'DbStructure' => array(
                 'ShowDbStructureCharset',
                 'ShowDbStructureComment',
                 'ShowDbStructureCreation',
                 'ShowDbStructureLastUpdate',
-                'ShowDbStructureLastCheck',
-            ],
-            'TableStructure' => [
+                'ShowDbStructureLastCheck'
+            ),
+            'TableStructure' => array(
                 'HideStructureActions',
                 'ShowColumnComments',
-                ':group:'.__('Default transformations'),
+                ':group:' . __('Default transformations'),
                 'DefaultTransformations/Hex',
                 'DefaultTransformations/Substring',
                 'DefaultTransformations/Bool2Text',
@@ -39,9 +39,9 @@ class MainForm extends BaseForm
                 'DefaultTransformations/Inline',
                 'DefaultTransformations/TextImageLink',
                 'DefaultTransformations/TextLink',
-                ':group:end',
-            ],
-            'Browse' => [
+                ':group:end'
+            ),
+            'Browse' => array(
                 'TableNavigationLinksMode',
                 'ActionLinksMode',
                 'ShowAll',
@@ -57,26 +57,26 @@ class MainForm extends BaseForm
                 'RowActionLinksWithoutUnique',
                 'TablePrimaryKeyOrder',
                 'RememberSorting',
-                'RelationalDisplay',
-            ],
-            'Edit' => [
+                'RelationalDisplay'
+            ),
+            'Edit' => array(
                 'ProtectBinary',
                 'ShowFunctionFields',
                 'ShowFieldTypesInDataEditView',
                 'InsertRows',
                 'ForeignKeyDropdownOrder',
-                'ForeignKeyMaxLimit',
-            ],
-            'Tabs' => [
+                'ForeignKeyMaxLimit'
+            ),
+            'Tabs' => array(
                 'TabsMode',
                 'DefaultTabServer',
                 'DefaultTabDatabase',
-                'DefaultTabTable',
-            ],
-            'DisplayRelationalSchema' => [
-                'PDFDefaultPageSize',
-            ],
-        ];
+                'DefaultTabTable'
+            ),
+            'DisplayRelationalSchema' => array(
+                'PDFDefaultPageSize'
+            ),
+        );
     }
 
     public static function getName()

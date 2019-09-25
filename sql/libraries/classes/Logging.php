@@ -1,23 +1,25 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Logging functionality for webserver.
  *
  * This includes web server specific code to log some information.
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
 use PhpMyAdmin\Core;
 
 /**
- * Misc logging functions.
+ * Misc logging functions
+ *
+ * @package PhpMyAdmin
  */
 class Logging
 {
     /**
-     * Get authentication logging destination.
+     * Get authentication logging destination
      *
      * @return string
      */
@@ -35,12 +37,11 @@ class Logging
                 $log_file = '';
             }
         }
-
         return $log_file;
     }
 
     /**
-     * Generate log message for authentication logging.
+     * Generate log message for authentication logging
      *
      * @param string $user   user name
      * @param string $status status message
@@ -50,10 +51,9 @@ class Logging
     public static function getLogMessage($user, $status)
     {
         if ($status == 'ok') {
-            return 'user authenticated: '.$user.' from '.Core::getIp();
+            return 'user authenticated: ' . $user . ' from ' .  Core::getIp();
         }
-
-        return 'user denied: '.$user.' ('.$status.') from '.Core::getIp();
+        return 'user denied: ' . $user . ' (' . $status . ') from ' .  Core::getIp();
     }
 
     /**
@@ -91,7 +91,7 @@ class Logging
             @error_log($message, 4);
         } else {
             @error_log(
-                date('M d H:i:s').' phpmyadmin: '.$message."\n",
+                date('M d H:i:s') . ' phpmyadmin: ' . $message . "\n",
                 3, $log_file
             );
         }

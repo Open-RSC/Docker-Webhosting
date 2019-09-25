@@ -1,9 +1,12 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Exporting of translated messages from PHP to Javascript.
+ * Exporting of translated messages from PHP to Javascript
+ *
+ * @package PhpMyAdmin
  */
-if (! defined('TESTSUITE')) {
+
+if (!defined('TESTSUITE')) {
     chdir('..');
 
     // Send correct type:
@@ -11,22 +14,23 @@ if (! defined('TESTSUITE')) {
 
     // Cache output in client - the nocache query parameter makes sure that this
     // file is reloaded when config changes
-    header('Expires: '.gmdate('D, d M Y H:i:s', time() + 3600).' GMT');
+    header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
 
     // Avoid loading the full common.inc.php because this would add many
     // non-js-compatible stuff like DOCTYPE
     define('PMA_MINIMUM_COMMON', true);
     define('PMA_PATH_TO_BASEDIR', '../');
-    define('PMA_NO_SESSION', true);
+    define('PMA_NO_SESSION' , true);
     require_once './libraries/common.inc.php';
 }
 
 // But this one is needed for Sanitize::escapeJsString()
 use PhpMyAdmin\Sanitize;
 
+
 $buffer = PhpMyAdmin\OutputBuffering::getInstance();
 $buffer->start();
-if (! defined('TESTSUITE')) {
+if (!defined('TESTSUITE')) {
     register_shutdown_function(
         function () {
             echo PhpMyAdmin\OutputBuffering::getInstance()->getContents();
@@ -73,7 +77,7 @@ $js_messages['strDeleteCentralColumnWarning']
 $js_messages['strDropRTEitems']
     = __('Do you really want to delete the selected items?');
 $js_messages['strDropPartitionWarning'] = __(
-    'Do you really want to DROP the selected partition(s)? This will also DELETE '.
+    'Do you really want to DROP the selected partition(s)? This will also DELETE ' .
     'the data related to the selected partition(s)!'
 );
 $js_messages['strTruncatePartitionWarning']
@@ -83,24 +87,24 @@ $js_messages['strRemovePartitioningWarning']
 $js_messages['strResetSlaveWarning'] = __('Do you really want to RESET SLAVE?');
 $js_messages['strChangeColumnCollation'] = __(
     'This operation will attempt to convert your data to the new collation. In '
-    .'rare cases, especially where a character doesn\'t exist in the new '
-    .'collation, this process could cause the data to appear incorrectly under '
-    .'the new collation; in this case we suggest you revert to the original '
-    .'collation and refer to the tips at '
+    . 'rare cases, especially where a character doesn\'t exist in the new '
+    . 'collation, this process could cause the data to appear incorrectly under '
+    . 'the new collation; in this case we suggest you revert to the original '
+    . 'collation and refer to the tips at '
 )
-    .'<a href="%s" target="garbled_data_wiki">'.__('Garbled Data').'</a>.'
-    .'<br/><br/>'
-    .__('Are you sure you wish to change the collation and convert the data?');
+    . '<a href="%s" target="garbled_data_wiki">' . __('Garbled Data') . '</a>.'
+    . '<br/><br/>'
+    . __('Are you sure you wish to change the collation and convert the data?');
 $js_messages['strChangeAllColumnCollationsWarning'] = __(
     'Through this operation, MySQL attempts to map the data values between '
-    .'collations. If the character sets are incompatible, there may be data loss '
-    .'and this lost data may <b>NOT</b> be recoverable simply by changing back the '
-    .'column collation(s). <b>To convert existing data, it is suggested to use the '
-    .'column(s) editing feature (the "Change" Link) on the table structure page. '
-    .'</b>'
+    . 'collations. If the character sets are incompatible, there may be data loss '
+    . 'and this lost data may <b>NOT</b> be recoverable simply by changing back the '
+    . 'column collation(s). <b>To convert existing data, it is suggested to use the '
+    . 'column(s) editing feature (the "Change" Link) on the table structure page. '
+    . '</b>'
 )
-.'<br/><br/>'
-.__(
+. '<br/><br/>'
+. __(
     'Are you sure you wish to change all the column collations and convert the data?'
 );
 
@@ -165,9 +169,9 @@ $js_messages['strIncompatibleMonitorConfig']
     = __('Local monitor configuration incompatible!');
 $js_messages['strIncompatibleMonitorConfigDescription'] = __(
     'The chart arrangement configuration in your browsers local storage is not '
-    .'compatible anymore to the newer version of the monitor dialog. It is very '
-    .'likely that your current configuration will not work anymore. Please reset '
-    .'your configuration to default in the <i>Settings</i> menu.'
+    . 'compatible anymore to the newer version of the monitor dialog. It is very '
+    . 'likely that your current configuration will not work anymore. Please reset '
+    . 'your configuration to default in the <i>Settings</i> menu.'
 );
 
 $js_messages['strQueryCacheEfficiency'] = __('Query cache efficiency');
@@ -227,13 +231,13 @@ $js_messages['strLogOutNotTable'] = __('log_output is not set to TABLE.');
 $js_messages['strLogOutIsTable'] = __('log_output is set to TABLE.');
 $js_messages['strSmallerLongQueryTimeAdvice'] = __(
     'slow_query_log is enabled, but the server logs only queries that take longer '
-    .'than %d seconds. It is advisable to set this long_query_time 0-2 seconds, '
-    .'depending on your system.'
+    . 'than %d seconds. It is advisable to set this long_query_time 0-2 seconds, '
+    . 'depending on your system.'
 );
 $js_messages['strLongQueryTimeSet'] = __('long_query_time is set to %d second(s).');
 $js_messages['strSettingsAppliedGlobal'] = __(
     'Following settings will be applied globally and reset to default on server '
-    .'restart:'
+    . 'restart:'
 );
 /* l10n: %s is FILE or TABLE */
 $js_messages['strSetLogOutput'] = __('Set log_output to %s');
@@ -245,7 +249,7 @@ $js_messages['strDisableVar'] = __('Disable %s');
 $js_messages['setSetLongQueryTime'] = __('Set long_query_time to %d seconds.');
 $js_messages['strNoSuperUser'] = __(
     'You can\'t change these variables. Please log in as root or contact'
-    .' your database administrator.'
+    . ' your database administrator.'
 );
 $js_messages['strChangeSettings'] = __('Change settings');
 $js_messages['strCurrentSettings'] = __('Current settings');
@@ -267,13 +271,13 @@ $js_messages['strAnalysingLogs']
 $js_messages['strCancelRequest'] = __('Cancel request');
 $js_messages['strCountColumnExplanation'] = __(
     'This column shows the amount of identical queries that are grouped together. '
-    .'However only the SQL query itself has been used as a grouping criteria, so '
-    .'the other attributes of queries, such as start time, may differ.'
+    . 'However only the SQL query itself has been used as a grouping criteria, so '
+    . 'the other attributes of queries, such as start time, may differ.'
 );
 $js_messages['strMoreCountColumnExplanation'] = __(
     'Since grouping of INSERTs queries has been selected, INSERT queries into the '
-    .'same table are also being grouped together, disregarding of the inserted '
-    .'data.'
+    . 'same table are also being grouped together, disregarding of the inserted '
+    . 'data.'
 );
 $js_messages['strLogDataLoaded']
     = __('Log data loaded. Queries executed in this time span:');
@@ -310,8 +314,8 @@ $js_messages['strLoadingLogs'] = __('Loading logs');
 $js_messages['strRefreshFailed'] = __('Monitor refresh failed');
 $js_messages['strInvalidResponseExplanation'] = __(
     'While requesting new chart data the server returned an invalid response. This '
-    .'is most likely because your session expired. Reloading the page and '
-    .'reentering your credentials should help.'
+    . 'is most likely because your session expired. Reloading the page and '
+    . 'reentering your credentials should help.'
 );
 $js_messages['strReloadPage'] = __('Reload page');
 
@@ -363,7 +367,7 @@ $js_messages['strErrorProcessingRequest'] = __('Error in processing request');
 $js_messages['strErrorCode'] = __('Error code: %s');
 $js_messages['strErrorText'] = __('Error text: %s');
 $js_messages['strErrorConnection'] = __(
-    'It seems that the connection to server has been lost. Please check your '.
+    'It seems that the connection to server has been lost. Please check your ' .
     'network connectivity and server status.'
 );
 $js_messages['strNoDatabasesSelected'] = __('No databases selected.');
@@ -402,10 +406,10 @@ $js_messages['NoExportable']
 
 /* For ENUM/SET editor*/
 $js_messages['enum_editor'] = __('ENUM/SET editor');
-$js_messages['enum_columnVals'] = __('Values for column %s');
+$js_messages['enum_columnVals'] =__('Values for column %s');
 $js_messages['enum_newColumnVals'] = __('Values for a new column');
-$js_messages['enum_hint'] = __('Enter each value in a separate field.');
-$js_messages['enum_addValue'] = __('Add %d value(s)');
+$js_messages['enum_hint'] =__('Enter each value in a separate field.');
+$js_messages['enum_addValue'] =__('Add %d value(s)');
 
 /* For import.js */
 $js_messages['strImportCSV'] = __(
@@ -428,30 +432,30 @@ $js_messages['pickColumnTitle'] = __('Column selector');
 $js_messages['searchList'] = __('Search this list');
 $js_messages['strEmptyCentralList'] = __(
     'No columns in the central list. Make sure the Central columns list for '
-    .'database %s has columns that are not present in the current table.'
+    . 'database %s has columns that are not present in the current table.'
 );
 $js_messages['seeMore'] = __('See more');
 $js_messages['confirmTitle'] = __('Are you sure?');
 $js_messages['makeConsistentMessage'] = __(
     'This action may change some of the columns definition.<br/>Are you sure you '
-    .'want to continue?'
+    . 'want to continue?'
 );
 $js_messages['strContinue'] = __('Continue');
 
-/* For normalization */
+/** For normalization */
 $js_messages['strAddPrimaryKey'] = __('Add primary key');
 $js_messages['strPrimaryKeyAdded'] = __('Primary key added.');
 $js_messages['strToNextStep'] = __('Taking you to next step…');
 $js_messages['strFinishMsg']
     = __("The first step of normalization is complete for table '%s'.");
-$js_messages['strEndStep'] = __('End of step');
+$js_messages['strEndStep'] = __("End of step");
 $js_messages['str2NFNormalization'] = __('Second step of normalization (2NF)');
 $js_messages['strDone'] = __('Done');
 $js_messages['strConfirmPd'] = __('Confirm partial dependencies');
 $js_messages['strSelectedPd'] = __('Selected partial dependencies are as follows:');
 $js_messages['strPdHintNote'] = __(
     'Note: a, b -> d,f implies values of columns a and b combined together can '
-    .'determine values of column d and column f.'
+    . 'determine values of column d and column f.'
 );
 $js_messages['strNoPdSelected'] = __('No partial dependencies selected!');
 $js_messages['strBack'] = __('Back');
@@ -460,13 +464,13 @@ $js_messages['strShowPossiblePd']
 $js_messages['strHidePd'] = __('Hide partial dependencies list');
 $js_messages['strWaitForPd'] = __(
     'Sit tight! It may take few seconds depending on data size and column count of '
-    .'the table.'
+    . 'the table.'
 );
 $js_messages['strStep'] = __('Step');
 $js_messages['strMoveRepeatingGroup']
-    = '<ol><b>'.__('The following actions will be performed:').'</b>'
-    .'<li>'.__('DROP columns %s from the table %s').'</li>'
-    .'<li>'.__('Create the following table').'</li>';
+    = '<ol><b>' . __('The following actions will be performed:') . '</b>'
+    . '<li>' . __('DROP columns %s from the table %s') . '</li>'
+    . '<li>' . __('Create the following table') . '</li>';
 $js_messages['strNewTablePlaceholder'] = 'Enter new table name';
 $js_messages['strNewColumnPlaceholder'] = 'Enter column name';
 $js_messages['str3NFNormalization'] = __('Third step of normalization (3NF)');
@@ -492,23 +496,23 @@ $js_messages['strShowFindNReplaceCriteria'] = __('Show find and replace criteria
 
 /* For tbl_zoom_plot_jqplot.js */
 $js_messages['strDisplayHelp'] = '<ul><li>'
-    .__('Each point represents a data row.')
-    .'</li><li>'
-    .__('Hovering over a point will show its label.')
-    .'</li><li>'
-    .__('To zoom in, select a section of the plot with the mouse.')
-    .'</li><li>'
-    .__('Click reset zoom button to come back to original state.')
-    .'</li><li>'
-    .__('Click a data point to view and possibly edit the data row.')
-    .'</li><li>'
-    .__('The plot can be resized by dragging it along the bottom right corner.')
-    .'</li></ul>';
+    . __('Each point represents a data row.')
+    . '</li><li>'
+    . __('Hovering over a point will show its label.')
+    . '</li><li>'
+    . __('To zoom in, select a section of the plot with the mouse.')
+    . '</li><li>'
+    . __('Click reset zoom button to come back to original state.')
+    . '</li><li>'
+    . __('Click a data point to view and possibly edit the data row.')
+    . '</li><li>'
+    . __('The plot can be resized by dragging it along the bottom right corner.')
+    . '</li></ul>';
 $js_messages['strHelpTitle'] = 'Zoom search instructions';
-$js_messages['strInputNull'] = '<strong>'.__('Select two columns').'</strong>';
+$js_messages['strInputNull'] = '<strong>' . __('Select two columns') . '</strong>';
 $js_messages['strSameInputs'] = '<strong>'
-    .__('Select two different columns')
-    .'</strong>';
+    . __('Select two different columns')
+    . '</strong>';
 $js_messages['strDataPointContent'] = __('Data point content');
 
 /* For tbl_change.js */
@@ -532,19 +536,19 @@ $js_messages['strEncryptionKey'] = __('Encryption key');
 /* For Tip to be shown on Time field */
 $js_messages['strMysqlAllowedValuesTipTime'] = __(
     'MySQL accepts additional values not selectable by the slider;'
-    .' key in those values directly if desired'
+    . ' key in those values directly if desired'
 );
 
 /* For Tip to be shown on Date field */
 $js_messages['strMysqlAllowedValuesTipDate'] = __(
     'MySQL accepts additional values not selectable by the datepicker;'
-    .' key in those values directly if desired'
+    . ' key in those values directly if desired'
 );
 
 /* For Lock symbol Tooltip */
 $js_messages['strLockToolTip'] = __(
     'Indicates that you have made changes to this page;'
-    .' you will be prompted for confirmation before abandoning changes'
+    . ' you will be prompted for confirmation before abandoning changes'
 );
 
 /* Designer (js/designer/move.js) */
@@ -555,7 +559,7 @@ $js_messages['strPleaseSelectPrimaryOrUniqueKey']
 $js_messages['strChangeDisplay'] = __('Choose column to display');
 $js_messages['strLeavingDesigner'] = __(
     'You haven\'t saved the changes in the layout. They will be lost if you'
-    .' don\'t save them. Do you want to continue?'
+    . ' don\'t save them. Do you want to continue?'
 );
 $js_messages['strQueryEmpty'] = __('value/subQuery is empty');
 $js_messages['strAddTables'] = __('Add tables from other databases');
@@ -582,14 +586,14 @@ $js_messages['strSubmit'] = __('Submit');
 $js_messages['strCellEditHint'] = __('Press escape to cancel editing.');
 $js_messages['strSaveCellWarning'] = __(
     'You have edited some data and they have not been saved. Are you sure you want '
-    .'to leave this page before saving the data?'
+    . 'to leave this page before saving the data?'
 );
 $js_messages['strColOrderHint'] = __('Drag to reorder.');
 $js_messages['strSortHint'] = __('Click to sort results by this column.');
 $js_messages['strMultiSortHint'] = __(
     'Shift+Click to add this column to ORDER BY clause or to toggle ASC/DESC.'
-    .'<br />- Ctrl+Click or Alt+Click (Mac: Shift+Option+Click) to remove column '
-    .'from ORDER BY clause'
+    . '<br />- Ctrl+Click or Alt+Click (Mac: Shift+Option+Click) to remove column '
+    . 'from ORDER BY clause'
 );
 $js_messages['strColMarkHint'] = __('Click to mark/unmark.');
 $js_messages['strColNameCopyHint'] = __('Double-click to copy column name.');
@@ -599,17 +603,17 @@ $js_messages['strColVisibHint'] = __(
 $js_messages['strShowAllCol'] = __('Show all');
 $js_messages['strAlertNonUnique'] = __(
     'This table does not contain a unique column. Features related to the grid '
-    .'edit, checkbox, Edit, Copy and Delete links may not work after saving.'
+    . 'edit, checkbox, Edit, Copy and Delete links may not work after saving.'
 );
 $js_messages['strEnterValidHex']
     = __('Please enter a valid hexadecimal string. Valid characters are 0-9, A-F.');
 $js_messages['strShowAllRowsWarning'] = __(
     'Do you really want to see all of the rows? For a big table this could crash '
-    .'the browser.'
+    . 'the browser.'
 );
 $js_messages['strOriginalLength'] = __('Original length');
 
-/* Drag & Drop sql import messages */
+/** Drag & Drop sql import messages */
 $js_messages['dropImportMessageCancel'] = __('cancel');
 $js_messages['dropImportMessageAborted'] = __('Aborted');
 $js_messages['dropImportMessageFailed'] = __('Failed');
@@ -628,13 +632,11 @@ case 'double-click':
     $js_messages['strGridEditFeatureHint'] = __(
         'You can also edit most values<br />by double-clicking directly on them.'
     );
-
     break;
 case 'click':
     $js_messages['strGridEditFeatureHint'] = __(
         'You can also edit most values<br />by clicking directly on them.'
     );
-
     break;
 default:
     break;
@@ -666,7 +668,7 @@ $js_messages['strInvalidPage']
 /* update */
 $js_messages['strNewerVersion'] = __(
     'A newer version of phpMyAdmin is available and you should consider upgrading. '
-    .'The newest version is %s, released on %s.'
+    . 'The newest version is %s, released on %s.'
 );
 /* l10n: Latest available phpMyAdmin version */
 $js_messages['strLatestAvailable'] = __(', latest stable version:');
@@ -675,49 +677,49 @@ $js_messages['strUpToDate'] = __('up to date');
 $js_messages['strCreateView'] = __('Create view');
 
 /* Error Reporting */
-$js_messages['strSendErrorReport'] = __('Send error report');
-$js_messages['strSubmitErrorReport'] = __('Submit error report');
+$js_messages['strSendErrorReport'] = __("Send error report");
+$js_messages['strSubmitErrorReport'] = __("Submit error report");
 $js_messages['strErrorOccurred'] = __(
-    'A fatal JavaScript error has occurred. Would you like to send an error report?'
+    "A fatal JavaScript error has occurred. Would you like to send an error report?"
 );
-$js_messages['strChangeReportSettings'] = __('Change report settings');
-$js_messages['strShowReportDetails'] = __('Show report details');
-$js_messages['strIgnore'] = __('Ignore');
+$js_messages['strChangeReportSettings'] = __("Change report settings");
+$js_messages['strShowReportDetails'] = __("Show report details");
+$js_messages['strIgnore'] = __("Ignore");
 $js_messages['strTimeOutError'] = __(
-    'Your export is incomplete, due to a low execution time limit at the PHP level!'
+    "Your export is incomplete, due to a low execution time limit at the PHP level!"
 );
 
 $js_messages['strTooManyInputs'] = __(
-    'Warning: a form on this page has more than %d fields. On submission, '
-    ."some of the fields might be ignored, due to PHP's "
-    .'max_input_vars configuration.'
+    "Warning: a form on this page has more than %d fields. On submission, "
+    . "some of the fields might be ignored, due to PHP's "
+    . "max_input_vars configuration."
 );
 
 $js_messages['phpErrorsFound'] = '<div class="error">'
-    .__('Some errors have been detected on the server!')
-    .'<br/>'
-    .__('Please look at the bottom of this window.')
-    .'<div>'
-    .'<input id="pma_ignore_errors_popup" type="submit" value="'
-    .__('Ignore')
-    .'" class="floatright message_errors_found">'
-    .'<input id="pma_ignore_all_errors_popup" type="submit" value="'
-    .__('Ignore All')
-    .'" class="floatright message_errors_found">'
-    .'</div></div>';
+    . __('Some errors have been detected on the server!')
+    . '<br/>'
+    . __('Please look at the bottom of this window.')
+    . '<div>'
+    . '<input id="pma_ignore_errors_popup" type="submit" value="'
+    . __('Ignore')
+    . '" class="floatright message_errors_found">'
+    . '<input id="pma_ignore_all_errors_popup" type="submit" value="'
+    . __('Ignore All')
+    . '" class="floatright message_errors_found">'
+    . '</div></div>';
 
 $js_messages['phpErrorsBeingSubmitted'] = '<div class="error">'
-    .__('Some errors have been detected on the server!')
-    .'<br/>'
-    .__(
+    . __('Some errors have been detected on the server!')
+    . '<br/>'
+    . __(
         'As per your settings, they are being submitted currently, please be '
-        .'patient.'
+        . 'patient.'
     )
-    .'<br/>'
-    .'<img src="'
-    .($GLOBALS['PMA_Theme']->getImgPath('ajax_clock_small.gif'))
-    .'" width="16" height="16" alt="ajax clock"/>'
-    .'</div>';
+    . '<br/>'
+    . '<img src="'
+    . ($GLOBALS['PMA_Theme']->getImgPath('ajax_clock_small.gif'))
+    . '" width="16" height="16" alt="ajax clock"/>'
+    . '</div>';
 
 // For console
 $js_messages['strConsoleRequeryConfirm'] = __('Execute this query again?');
@@ -749,9 +751,14 @@ $js_messages['strStrong'] = __('Strong');
 $js_messages['strU2FTimeout'] = __('Timed out waiting for security key activation.');
 $js_messages['strU2FError'] = __('Failed security key activation (%s).');
 
+/* Designer */
+$js_messages['strTableAlreadyExists'] = _pgettext('The table already exists in the designer and can not be added once more.', 'Table %s already exists!');
+$js_messages['strHide'] = __('Hide');
+$js_messages['strStructure'] = __('Structure');
+
 echo "var PMA_messages = new Array();\n";
 foreach ($js_messages as $name => $js_message) {
-    Sanitize::printJsValue("PMA_messages['".$name."']", $js_message);
+    Sanitize::printJsValue("PMA_messages['" . $name . "']", $js_message);
 }
 
 /* Calendar */
@@ -767,8 +774,8 @@ echo "var mysql_doc_template = '" , PhpMyAdmin\Util::getMySQLDocuURL('%s')
 //Max input vars allowed by PHP.
 $maxInputVars = ini_get('max_input_vars');
 echo 'var maxInputVars = '
-    , (false === $maxInputVars || '' == $maxInputVars ? 'false' : (int) $maxInputVars)
-    , ';'."\n";
+    , (false === $maxInputVars || '' == $maxInputVars ? 'false' : (int)$maxInputVars)
+    , ';' . "\n";
 
 echo "if ($.datepicker) {\n";
 /* l10n: Display text for calendar close link */
@@ -787,7 +794,7 @@ Sanitize::printJsValue(
 Sanitize::printJsValue("$.datepicker.regional['']['currentText']", __('Today'));
 Sanitize::printJsValue(
     "$.datepicker.regional['']['monthNames']",
-    [
+    array(
         __('January'),
         __('February'),
         __('March'),
@@ -799,12 +806,12 @@ Sanitize::printJsValue(
         __('September'),
         __('October'),
         __('November'),
-        __('December'),
-    ]
+        __('December')
+    )
 );
 Sanitize::printJsValue(
     "$.datepicker.regional['']['monthNamesShort']",
-    [
+    array(
         /* l10n: Short month name */
         __('Jan'),
         /* l10n: Short month name */
@@ -828,24 +835,24 @@ Sanitize::printJsValue(
         /* l10n: Short month name */
         __('Nov'),
         /* l10n: Short month name */
-        __('Dec'),
-    ]
+        __('Dec')
+    )
 );
 Sanitize::printJsValue(
     "$.datepicker.regional['']['dayNames']",
-    [
+    array(
         __('Sunday'),
         __('Monday'),
         __('Tuesday'),
         __('Wednesday'),
         __('Thursday'),
         __('Friday'),
-        __('Saturday'),
-    ]
+        __('Saturday')
+    )
 );
 Sanitize::printJsValue(
     "$.datepicker.regional['']['dayNamesShort']",
-    [
+    array(
         /* l10n: Short week day name */
         __('Sun'),
         /* l10n: Short week day name */
@@ -859,12 +866,12 @@ Sanitize::printJsValue(
         /* l10n: Short week day name */
         __('Fri'),
         /* l10n: Short week day name */
-        __('Sat'),
-    ]
+        __('Sat')
+    )
 );
 Sanitize::printJsValue(
     "$.datepicker.regional['']['dayNamesMin']",
-    [
+    array(
         /* l10n: Minimal week day name */
         __('Su'),
         /* l10n: Minimal week day name */
@@ -878,8 +885,8 @@ Sanitize::printJsValue(
         /* l10n: Minimal week day name */
         __('Fr'),
         /* l10n: Minimal week day name */
-        __('Sa'),
-    ]
+        __('Sa')
+    )
 );
 /* l10n: Column header for week of the year in calendar */
 Sanitize::printJsValue("$.datepicker.regional['']['weekHeader']", __('Wk'));

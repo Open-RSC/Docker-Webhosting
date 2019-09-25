@@ -1,19 +1,22 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 
 /**
- * Holds the PhpMyAdmin\Controllers\Server\ServerPluginsController.
- */
+ * Holds the PhpMyAdmin\Controllers\Server\ServerPluginsController
+*
+* @package PhpMyAdmin\Controllers
+*/
 
 namespace PhpMyAdmin\Controllers\Server;
 
-use PhpMyAdmin\Template;
-use PhpMyAdmin\Server\Common;
 use PhpMyAdmin\Controllers\Controller;
+use PhpMyAdmin\Server\Common;
+use PhpMyAdmin\Template;
 
 /**
- * Handles viewing server plugin details.
+ * Handles viewing server plugin details
+ *
+ * @package PhpMyAdmin\Controllers
  */
 class ServerPluginsController extends Controller
 {
@@ -23,7 +26,7 @@ class ServerPluginsController extends Controller
     protected $plugins;
 
     /**
-     * Constructs ServerPluginsController.
+     * Constructs ServerPluginsController
      */
     public function __construct($response, $dbi)
     {
@@ -32,7 +35,7 @@ class ServerPluginsController extends Controller
     }
 
     /**
-     * Index action.
+     * Index action
      *
      * @return void
      */
@@ -40,12 +43,12 @@ class ServerPluginsController extends Controller
     {
         include 'libraries/server_common.inc.php';
 
-        $header = $this->response->getHeader();
+        $header  = $this->response->getHeader();
         $scripts = $header->getScripts();
         $scripts->addFile('vendor/jquery/jquery.tablesorter.js');
         $scripts->addFile('server_plugins.js');
 
-        /*
+        /**
          * Displays the page
         */
         $this->response->addHTML(
@@ -57,7 +60,7 @@ class ServerPluginsController extends Controller
     }
 
     /**
-     * Sets details about server plugins.
+     * Sets details about server plugins
      *
      * @return void
      */
@@ -74,7 +77,7 @@ class ServerPluginsController extends Controller
                 ORDER BY plugin_type, plugin_name";
 
         $res = $this->dbi->query($sql);
-        $this->plugins = [];
+        $this->plugins = array();
         while ($row = $this->dbi->fetchAssoc($res)) {
             $this->plugins[$row['plugin_type']][] = $row;
         }
@@ -89,21 +92,20 @@ class ServerPluginsController extends Controller
      */
     private function _getPluginsHtml()
     {
-        $html = '<div id="plugins_plugins">';
+        $html  = '<div id="plugins_plugins">';
         $html .= Template::get('server/plugins/section_links')
-            ->render(['plugins' => $this->plugins]);
+            ->render(array('plugins' => $this->plugins));
 
         foreach ($this->plugins as $plugin_type => $plugin_list) {
             $html .= Template::get('server/plugins/section')
                 ->render(
-                    [
+                    array(
                         'plugin_type' => $plugin_type,
                         'plugin_list' => $plugin_list,
-                    ]
+                    )
                 );
         }
         $html .= '</div>';
-
         return $html;
     }
 }

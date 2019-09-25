@@ -1,120 +1,122 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * The InnoDB storage engine.
+ * The InnoDB storage engine
+ *
+ * @package PhpMyAdmin-Engines
  */
-
 namespace PhpMyAdmin\Engines;
 
-use PhpMyAdmin\Util;
 use PhpMyAdmin\StorageEngine;
+use PhpMyAdmin\Util;
 
 /**
- * The InnoDB storage engine.
+ * The InnoDB storage engine
+ *
+ * @package PhpMyAdmin-Engines
  */
 class Innodb extends StorageEngine
 {
     /**
-     * Returns array with variable names related to InnoDB storage engine.
+     * Returns array with variable names related to InnoDB storage engine
      *
      * @return array   variable names
      */
     public function getVariables()
     {
-        return [
-            'innodb_data_home_dir'            => [
+        return array(
+            'innodb_data_home_dir'            => array(
                 'title' => __('Data home directory'),
                 'desc'  => __(
                     'The common part of the directory path for all InnoDB data '
-                    .'files.'
+                    . 'files.'
                 ),
-            ],
-            'innodb_data_file_path'           => [
+            ),
+            'innodb_data_file_path'           => array(
                 'title' => __('Data files'),
-            ],
-            'innodb_autoextend_increment'     => [
+            ),
+            'innodb_autoextend_increment'     => array(
                 'title' => __('Autoextend increment'),
                 'desc'  => __(
                     'The increment size for extending the size of an autoextending '
-                    .'tablespace when it becomes full.'
+                    . 'tablespace when it becomes full.'
                 ),
                 'type'  => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_buffer_pool_size'         => [
+            ),
+            'innodb_buffer_pool_size'         => array(
                 'title' => __('Buffer pool size'),
                 'desc'  => __(
                     'The size of the memory buffer InnoDB uses to cache data and '
-                    .'indexes of its tables.'
+                    . 'indexes of its tables.'
                 ),
                 'type'  => PMA_ENGINE_DETAILS_TYPE_SIZE,
-            ],
-            'innodb_additional_mem_pool_size' => [
+            ),
+            'innodb_additional_mem_pool_size' => array(
                 'title' => 'innodb_additional_mem_pool_size',
                 'type'  => PMA_ENGINE_DETAILS_TYPE_SIZE,
-            ],
-            'innodb_buffer_pool_awe_mem_mb'   => [
+            ),
+            'innodb_buffer_pool_awe_mem_mb'   => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_SIZE,
-            ],
-            'innodb_checksums'                => [],
-            'innodb_commit_concurrency'       => [],
-            'innodb_concurrency_tickets'      => [
+            ),
+            'innodb_checksums'                => array(),
+            'innodb_commit_concurrency'       => array(),
+            'innodb_concurrency_tickets'      => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_doublewrite'              => [],
-            'innodb_fast_shutdown'            => [],
-            'innodb_file_io_threads'          => [
+            ),
+            'innodb_doublewrite'              => array(),
+            'innodb_fast_shutdown'            => array(),
+            'innodb_file_io_threads'          => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_file_per_table'           => [],
-            'innodb_flush_log_at_trx_commit'  => [],
-            'innodb_flush_method'             => [],
-            'innodb_force_recovery'           => [],
-            'innodb_lock_wait_timeout'        => [
+            ),
+            'innodb_file_per_table'           => array(),
+            'innodb_flush_log_at_trx_commit'  => array(),
+            'innodb_flush_method'             => array(),
+            'innodb_force_recovery'           => array(),
+            'innodb_lock_wait_timeout'        => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_locks_unsafe_for_binlog'  => [],
-            'innodb_log_arch_dir'             => [],
-            'innodb_log_archive'              => [],
-            'innodb_log_buffer_size'          => [
+            ),
+            'innodb_locks_unsafe_for_binlog'  => array(),
+            'innodb_log_arch_dir'             => array(),
+            'innodb_log_archive'              => array(),
+            'innodb_log_buffer_size'          => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_SIZE,
-            ],
-            'innodb_log_file_size'            => [
+            ),
+            'innodb_log_file_size'            => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_SIZE,
-            ],
-            'innodb_log_files_in_group'       => [
+            ),
+            'innodb_log_files_in_group'       => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_log_group_home_dir'       => [],
-            'innodb_max_dirty_pages_pct'      => [
+            ),
+            'innodb_log_group_home_dir'       => array(),
+            'innodb_max_dirty_pages_pct'      => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_max_purge_lag'            => [],
-            'innodb_mirrored_log_groups'      => [
+            ),
+            'innodb_max_purge_lag'            => array(),
+            'innodb_mirrored_log_groups'      => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_open_files'               => [
+            ),
+            'innodb_open_files'               => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_support_xa'               => [],
-            'innodb_sync_spin_loops'          => [
+            ),
+            'innodb_support_xa'               => array(),
+            'innodb_sync_spin_loops'          => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_table_locks'              => [
+            ),
+            'innodb_table_locks'              => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_BOOLEAN,
-            ],
-            'innodb_thread_concurrency'       => [
+            ),
+            'innodb_thread_concurrency'       => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-            'innodb_thread_sleep_delay'       => [
+            ),
+            'innodb_thread_sleep_delay'       => array(
                 'type' => PMA_ENGINE_DETAILS_TYPE_NUMERIC,
-            ],
-        ];
+            ),
+        );
     }
 
     /**
      * Returns the pattern to be used in the query for SQL variables
-     * related to InnoDb storage engine.
+     * related to InnoDb storage engine
      *
      * @return string  SQL query LIKE pattern
      */
@@ -124,16 +126,16 @@ class Innodb extends StorageEngine
     }
 
     /**
-     * Get information pages.
+     * Get information pages
      *
      * @return array detail pages
      */
     public function getInfoPages()
     {
         if ($this->support < PMA_ENGINE_SUPPORT_YES) {
-            return [];
+            return array();
         }
-        $pages = [];
+        $pages = array();
         $pages['Bufferpool'] = __('Buffer Pool');
         $pages['Status'] = __('InnoDB Status');
 
@@ -141,7 +143,7 @@ class Innodb extends StorageEngine
     }
 
     /**
-     * returns html tables with stats over inno db buffer pool.
+     * returns html tables with stats over inno db buffer pool
      *
      * @return string  html table with stats
      */
@@ -157,138 +159,138 @@ class Innodb extends StorageEngine
                OR Variable_name = \'Innodb_page_size\';';
         $status = $GLOBALS['dbi']->fetchResult($sql, 0, 1);
 
-        $output = '<table class="data" id="table_innodb_bufferpool_usage">'."\n"
-            .'    <caption class="tblHeaders">'."\n"
-            .'        '.__('Buffer Pool Usage')."\n"
-            .'    </caption>'."\n"
-            .'    <tfoot>'."\n"
-            .'        <tr>'."\n"
-            .'            <th colspan="2">'."\n"
-            .'                '.__('Total')."\n"
-            .'                : '
-            .Util::formatNumber(
+        $output = '<table class="data" id="table_innodb_bufferpool_usage">' . "\n"
+            . '    <caption class="tblHeaders">' . "\n"
+            . '        ' . __('Buffer Pool Usage') . "\n"
+            . '    </caption>' . "\n"
+            . '    <tfoot>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th colspan="2">' . "\n"
+            . '                ' . __('Total') . "\n"
+            . '                : '
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_pages_total'],
                 0
             )
-            .'&nbsp;'.__('pages')
-            .' / '
-            .implode(
+            . '&nbsp;' . __('pages')
+            . ' / '
+            . join(
                 '&nbsp;',
                 Util::formatByteDown(
                     $status['Innodb_buffer_pool_pages_total']
                     * $status['Innodb_page_size']
                 )
-            )."\n"
-            .'            </th>'."\n"
-            .'        </tr>'."\n"
-            .'    </tfoot>'."\n"
-            .'    <tbody>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Free pages').'</th>'."\n"
-            .'            <td class="value">'
-            .Util::formatNumber(
+            ) . "\n"
+            . '            </th>' . "\n"
+            . '        </tr>' . "\n"
+            . '    </tfoot>' . "\n"
+            . '    <tbody>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Free pages') . '</th>' . "\n"
+            . '            <td class="value">'
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_pages_free'],
                 0
             )
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Dirty pages').'</th>'."\n"
-            .'            <td class="value">'
-            .Util::formatNumber(
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Dirty pages') . '</th>' . "\n"
+            . '            <td class="value">'
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_pages_dirty'],
                 0
             )
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Pages containing data').'</th>'."\n"
-            .'            <td class="value">'
-            .Util::formatNumber(
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Pages containing data') . '</th>' . "\n"
+            . '            <td class="value">'
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_pages_data'],
                 0
-            )."\n"
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Pages to be flushed').'</th>'."\n"
-            .'            <td class="value">'
-            .Util::formatNumber(
+            ) . "\n"
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Pages to be flushed') . '</th>' . "\n"
+            . '            <td class="value">'
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_pages_flushed'],
                 0
-            )."\n"
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Busy pages').'</th>'."\n"
-            .'            <td class="value">'
-            .Util::formatNumber(
+            ) . "\n"
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Busy pages') . '</th>' . "\n"
+            . '            <td class="value">'
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_pages_misc'],
                 0
-            )."\n"
-            .'</td>'."\n"
-            .'        </tr>';
+            ) . "\n"
+            . '</td>' . "\n"
+            . '        </tr>';
 
         // not present at least since MySQL 5.1.40
         if (isset($status['Innodb_buffer_pool_pages_latched'])) {
             $output .= '        <tr>'
-                .'            <th>'.__('Latched pages').'</th>'
-                .'            <td class="value">'
-                .Util::formatNumber(
+                . '            <th>' . __('Latched pages') . '</th>'
+                . '            <td class="value">'
+                . Util::formatNumber(
                     $status['Innodb_buffer_pool_pages_latched'],
                     0
                 )
-                .'</td>'
-                .'        </tr>';
+                . '</td>'
+                . '        </tr>';
         }
 
-        $output .= '    </tbody>'."\n"
-            .'</table>'."\n\n"
-            .'<table class="data" id="table_innodb_bufferpool_activity">'."\n"
-            .'    <caption class="tblHeaders">'."\n"
-            .'        '.__('Buffer Pool Activity')."\n"
-            .'    </caption>'."\n"
-            .'    <tbody>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Read requests').'</th>'."\n"
-            .'            <td class="value">'
-            .Util::formatNumber(
+        $output .= '    </tbody>' . "\n"
+            . '</table>' . "\n\n"
+            . '<table class="data" id="table_innodb_bufferpool_activity">' . "\n"
+            . '    <caption class="tblHeaders">' . "\n"
+            . '        ' . __('Buffer Pool Activity') . "\n"
+            . '    </caption>' . "\n"
+            . '    <tbody>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Read requests') . '</th>' . "\n"
+            . '            <td class="value">'
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_read_requests'],
                 0
-            )."\n"
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Write requests').'</th>'."\n"
-            .'            <td class="value">'
-            .Util::formatNumber(
+            ) . "\n"
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Write requests') . '</th>' . "\n"
+            . '            <td class="value">'
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_write_requests'],
                 0
-            )."\n"
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Read misses').'</th>'."\n"
-            .'            <td class="value">'
-            .Util::formatNumber(
+            ) . "\n"
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Read misses') . '</th>' . "\n"
+            . '            <td class="value">'
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_reads'],
                 0
-            )."\n"
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Write waits').'</th>'."\n"
-            .'            <td class="value">'
-            .Util::formatNumber(
+            ) . "\n"
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Write waits') . '</th>' . "\n"
+            . '            <td class="value">'
+            . Util::formatNumber(
                 $status['Innodb_buffer_pool_wait_free'],
                 0
-            )."\n"
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Read misses in %').'</th>'."\n"
-            .'            <td class="value">'
-            .($status['Innodb_buffer_pool_read_requests'] == 0
+            ) . "\n"
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Read misses in %') . '</th>' . "\n"
+            . '            <td class="value">'
+            . ($status['Innodb_buffer_pool_read_requests'] == 0
                 ? '---'
                 : htmlspecialchars(
                     Util::formatNumber(
@@ -297,13 +299,13 @@ class Innodb extends StorageEngine
                         3,
                         2
                     )
-                ).' %')."\n"
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'        <tr>'."\n"
-            .'            <th>'.__('Write waits in %').'</th>'."\n"
-            .'            <td class="value">'
-            .($status['Innodb_buffer_pool_write_requests'] == 0
+                ) . ' %') . "\n"
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '        <tr>' . "\n"
+            . '            <th>' . __('Write waits in %') . '</th>' . "\n"
+            . '            <td class="value">'
+            . ($status['Innodb_buffer_pool_write_requests'] == 0
                 ? '---'
                 : htmlspecialchars(
                     Util::formatNumber(
@@ -312,32 +314,32 @@ class Innodb extends StorageEngine
                         3,
                         2
                     )
-                ).' %')."\n"
-            .'</td>'."\n"
-            .'        </tr>'."\n"
-            .'    </tbody>'."\n"
-            .'</table>'."\n";
+                ) . ' %') . "\n"
+            . '</td>' . "\n"
+            . '        </tr>' . "\n"
+            . '    </tbody>' . "\n"
+            . '</table>' . "\n";
 
         return $output;
     }
 
     /**
-     * returns InnoDB status.
+     * returns InnoDB status
      *
      * @return string  result of SHOW ENGINE INNODB STATUS inside pre tags
      */
     public function getPageStatus()
     {
-        return '<pre id="pre_innodb_status">'."\n"
-        .htmlspecialchars(
+        return '<pre id="pre_innodb_status">' . "\n"
+        . htmlspecialchars(
             $GLOBALS['dbi']->fetchValue('SHOW ENGINE INNODB STATUS;', 0, 'Status')
-        )."\n"
-        .'</pre>'."\n";
+        ) . "\n"
+        . '</pre>' . "\n";
     }
 
     /**
      * returns string with filename for the MySQL helppage
-     * about this storage engine.
+     * about this storage engine
      *
      * @return string  mysql helppage filename
      */
@@ -347,7 +349,7 @@ class Innodb extends StorageEngine
     }
 
     /**
-     * Gets the InnoDB plugin version number.
+     * Gets the InnoDB plugin version number
      *
      * @return string the version number, or empty if not running as a plugin
      */
@@ -357,7 +359,7 @@ class Innodb extends StorageEngine
     }
 
     /**
-     * Gets the InnoDB file format.
+     * Gets the InnoDB file format
      *
      * (do not confuse this with phpMyAdmin's storage engine plugins!)
      *
@@ -373,19 +375,21 @@ class Innodb extends StorageEngine
     }
 
     /**
-     * Verifies if this server supports the innodb_file_per_table feature.
+     * Verifies if this server supports the innodb_file_per_table feature
      *
      * (do not confuse this with phpMyAdmin's storage engine plugins!)
      *
-     * @return bool whether this feature is supported or not
+     * @return boolean whether this feature is supported or not
      */
     public function supportsFilePerTable()
     {
-        return
+        return (
             $GLOBALS['dbi']->fetchValue(
                 "SHOW GLOBAL VARIABLES LIKE 'innodb_file_per_table';",
                 0,
                 1
-            ) == 'ON';
+            ) == 'ON'
+        );
     }
 }
+

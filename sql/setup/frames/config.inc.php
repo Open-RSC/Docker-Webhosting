@@ -1,14 +1,16 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Config file view and save screen.
+ * Config file view and save screen
+ *
+ * @package PhpMyAdmin-Setup
  */
+
+use PhpMyAdmin\Config\FormDisplayTemplate;
 use PhpMyAdmin\Core;
 use PhpMyAdmin\Setup\ConfigGenerator;
-use PhpMyAdmin\Config\FormDisplayTemplate;
 
-if (! defined('PHPMYADMIN')) {
+if (!defined('PHPMYADMIN')) {
     exit;
 }
 
@@ -17,7 +19,7 @@ echo '<h2>' , __('Configuration file') , '</h2>';
 echo FormDisplayTemplate::displayFormTop('config.php');
 echo '<input type="hidden" name="eol" value="'
     , htmlspecialchars(Core::ifSetOr($_GET['eol'], 'unix')) , '" />';
-echo FormDisplayTemplate::displayFieldsetTop('config.inc.php', '', null, ['class' => 'simple']);
+echo FormDisplayTemplate::displayFieldsetTop('config.inc.php', '', null, array('class' => 'simple'));
 echo '<tr>';
 echo '<td>';
 echo '<textarea cols="50" rows="20" name="textconfig" '

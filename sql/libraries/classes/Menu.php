@@ -1,51 +1,54 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Generates and renders the top menu.
+ * Generates and renders the top menu
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
+use PhpMyAdmin\DatabaseInterface;
+use PhpMyAdmin\Relation;
+use PhpMyAdmin\Tracker;
 use PhpMyAdmin\Url;
 use PhpMyAdmin\Util;
-use PhpMyAdmin\Tracker;
-use PhpMyAdmin\Relation;
-use PhpMyAdmin\DatabaseInterface;
 
 /**
- * Class for generating the top menu.
+ * Class for generating the top menu
+ *
+ * @package PhpMyAdmin
  */
 class Menu
 {
     /**
-     * Server id.
+     * Server id
      *
+     * @access private
      * @var int
      */
     private $_server;
-
     /**
-     * Database name.
+     * Database name
      *
+     * @access private
      * @var string
      */
     private $_db;
-
     /**
-     * Table name.
+     * Table name
      *
+     * @access private
      * @var string
      */
     private $_table;
 
     /**
-     * @var Relation
+     * @var Relation $relation
      */
     private $relation;
 
     /**
-     * Creates a new instance of Menu.
+     * Creates a new instance of Menu
      *
      * @param int    $server Server id
      * @param string $db     Database name
@@ -60,7 +63,7 @@ class Menu
     }
 
     /**
-     * Prints the menu and the breadcrumbs.
+     * Prints the menu and the breadcrumbs
      *
      * @return void
      */
@@ -70,40 +73,39 @@ class Menu
     }
 
     /**
-     * Returns the menu and the breadcrumbs as a string.
+     * Returns the menu and the breadcrumbs as a string
      *
      * @return string
      */
     public function getDisplay()
     {
-        $retval = $this->_getBreadcrumbs();
+        $retval  = $this->_getBreadcrumbs();
         $retval .= $this->_getMenu();
-
         return $retval;
     }
 
     /**
-     * Returns hash for the menu and the breadcrumbs.
+     * Returns hash for the menu and the breadcrumbs
      *
      * @return string
      */
     public function getHash()
     {
         return substr(
-            md5($this->_getMenu().$this->_getBreadcrumbs()),
+            md5($this->_getMenu() . $this->_getBreadcrumbs()),
             0,
             8
         );
     }
 
     /**
-     * Returns the menu as HTML.
+     * Returns the menu as HTML
      *
      * @return string HTML formatted menubar
      */
     private function _getMenu()
     {
-        $url_params = [];
+        $url_params = array();
 
         if (strlen($this->_table) > 0) {
             $tabs = $this->_getTableTabs();
@@ -125,12 +127,11 @@ class Menu
                 unset($tabs[$key]);
             }
         }
-
         return Util::getHtmlTabs($tabs, $url_params, 'topmenu', true);
     }
 
     /**
-     * Returns a list of allowed tabs for the current user for the given level.
+     * Returns a list of allowed tabs for the current user for the given level
      *
      * @param string $level 'server', 'db' or 'table' level
      *
@@ -138,7 +139,7 @@ class Menu
      */
     private function _getAllowedTabs($level)
     {
-        $cache_key = 'menu-levels-'.$level;
+        $cache_key = 'menu-levels-' . $level;
         if (Util::cacheExists($cache_key)) {
             return Util::cacheGet($cache_key);
         }
@@ -146,17 +147,17 @@ class Menu
         $cfgRelation = $this->relation->getRelationsParam();
         if ($cfgRelation['menuswork']) {
             $groupTable = Util::backquote($cfgRelation['db'])
-                .'.'
-                .Util::backquote($cfgRelation['usergroups']);
+                . "."
+                . Util::backquote($cfgRelation['usergroups']);
             $userTable = Util::backquote($cfgRelation['db'])
-                .'.'.Util::backquote($cfgRelation['users']);
+                . "." . Util::backquote($cfgRelation['users']);
 
-            $sql_query = 'SELECT `tab` FROM '.$groupTable
-                ." WHERE `allowed` = 'N'"
-                ." AND `tab` LIKE '".$level."%'"
-                .' AND `usergroup` = (SELECT usergroup FROM '
-                .$userTable." WHERE `username` = '"
-                .$GLOBALS['dbi']->escapeString($GLOBALS['cfg']['Server']['user'])."')";
+            $sql_query = "SELECT `tab` FROM " . $groupTable
+                . " WHERE `allowed` = 'N'"
+                . " AND `tab` LIKE '" . $level . "%'"
+                . " AND `usergroup` = (SELECT usergroup FROM "
+                . $userTable . " WHERE `username` = '"
+                . $GLOBALS['dbi']->escapeString($GLOBALS['cfg']['Server']['user']) . "')";
 
             $result = $this->relation->queryAsControlUser($sql_query, false);
             if ($result) {
@@ -170,12 +171,11 @@ class Menu
             }
         }
         Util::cacheSet($cache_key, $allowedTabs);
-
         return $allowedTabs;
     }
 
     /**
-     * Returns the breadcrumbs as HTML.
+     * Returns the breadcrumbs as HTML
      *
      * @return string HTML formatted breadcrumbs
      */
@@ -192,7 +192,7 @@ class Menu
             : $GLOBALS['cfg']['Server']['host'];
         $server_info .= empty($GLOBALS['cfg']['Server']['port'])
             ? ''
-            : ':'.$GLOBALS['cfg']['Server']['port'];
+            : ':' . $GLOBALS['cfg']['Server']['port'];
 
         $separator = "<span class='separator item'>&nbsp;»</span>";
         $item = '<a href="%1$s%2$s" class="item">';
@@ -207,7 +207,7 @@ class Menu
             $retval .= Util::getImage(
                 's_host',
                 '',
-                ['class' => 'item']
+                array('class' => 'item')
             );
         }
         $retval .= sprintf(
@@ -226,7 +226,7 @@ class Menu
                 $retval .= Util::getImage(
                     's_db',
                     '',
-                    ['class' => 'item']
+                    array('class' => 'item')
                 );
             }
             $retval .= sprintf(
@@ -234,7 +234,7 @@ class Menu
                 Util::getScriptNameForOption(
                     $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
                 ),
-                Url::getCommon(['db' => $this->_db]),
+                Url::getCommon(array('db' => $this->_db)),
                 htmlspecialchars($this->_db),
                 __('Database')
             );
@@ -260,7 +260,7 @@ class Menu
                     $retval .= Util::getImage(
                         $icon,
                         '',
-                        ['class' => 'item']
+                        array('class' => 'item')
                     );
                 }
                 $retval .= sprintf(
@@ -269,15 +269,15 @@ class Menu
                         $GLOBALS['cfg']['DefaultTabTable'], 'table'
                     ),
                     Url::getCommon(
-                        [
-                            'db' => $this->_db, 'table' => $this->_table,
-                        ]
+                        array(
+                            'db' => $this->_db, 'table' => $this->_table
+                        )
                     ),
                     str_replace(' ', '&nbsp;', htmlspecialchars($this->_table)),
                     $tbl_is_view ? __('View') : __('Table')
                 );
 
-                /*
+                /**
                  * Displays table comment
                  */
                 if (! empty($show_comment)
@@ -305,29 +305,28 @@ class Menu
                 // in Util::getDbInfo() only once
                 if ($cfgRelation['commwork']) {
                     $comment = $this->relation->getDbComment($this->_db);
-                    /*
+                    /**
                      * Displays table comment
                      */
                     if (! empty($comment)) {
                         $retval .= '<span class="table_comment"'
-                            .' id="span_table_comment">'
-                            .sprintf(
+                            . ' id="span_table_comment">'
+                            . sprintf(
                                 __('“%s”'),
                                 htmlspecialchars($comment)
                             )
-                            .'</span>';
+                            . '</span>';
                     } // end if
                 }
             }
         }
         $retval .= '<div class="clearfloat"></div>';
         $retval .= '</div>';
-
         return $retval;
     }
 
     /**
-     * Returns the table tabs as an array.
+     * Returns the table tabs as an array
      *
      * @return array Data for generating table tabs
      */
@@ -345,7 +344,7 @@ class Menu
         $isCreateOrGrantUser = $GLOBALS['dbi']->isUserType('grant')
             || $GLOBALS['dbi']->isUserType('create');
 
-        $tabs = [];
+        $tabs = array();
 
         $tabs['browse']['icon'] = 'b_browse';
         $tabs['browse']['text'] = __('Browse');
@@ -357,7 +356,7 @@ class Menu
         $tabs['structure']['text'] = __('Structure');
         $tabs['structure']['active'] = in_array(
             basename($GLOBALS['PMA_PHP_SELF']),
-            ['tbl_structure.php', 'tbl_relation.php']
+            array('tbl_structure.php', 'tbl_relation.php')
         );
 
         $tabs['sql']['icon'] = 'b_sql';
@@ -369,7 +368,7 @@ class Menu
         $tabs['search']['link'] = 'tbl_select.php';
         $tabs['search']['active'] = in_array(
             basename($GLOBALS['PMA_PHP_SELF']),
-            ['tbl_select.php', 'tbl_zoom_select.php', 'tbl_find_replace.php']
+            array('tbl_select.php', 'tbl_zoom_select.php', 'tbl_find_replace.php')
         );
 
         if (! $db_is_system_schema && (! $tbl_is_view || $updatable_view)) {
@@ -383,7 +382,7 @@ class Menu
         $tabs['export']['args']['single_table'] = 'true';
         $tabs['export']['text'] = __('Export');
 
-        /*
+        /**
          * Don't display "Import" for views and information_schema
          */
         if (! $tbl_is_view && ! $db_is_system_schema) {
@@ -402,7 +401,7 @@ class Menu
             $tabs['privileges']['text'] = __('Privileges');
             $tabs['privileges']['icon'] = 's_rights';
         }
-        /*
+        /**
          * Don't display "Operations" for views and information_schema
          */
         if (! $tbl_is_view && ! $db_is_system_schema) {
@@ -410,7 +409,7 @@ class Menu
             $tabs['operation']['link'] = 'tbl_operations.php';
             $tabs['operation']['text'] = __('Operations');
         }
-        /*
+        /**
          * Views support a limited number of operations
          */
         if ($tbl_is_view && ! $db_is_system_schema) {
@@ -441,7 +440,7 @@ class Menu
     }
 
     /**
-     * Returns the db tabs as an array.
+     * Returns the db tabs as an array
      *
      * @return array Data for generating db tabs
      */
@@ -454,11 +453,11 @@ class Menu
             || $GLOBALS['dbi']->isUserType('create');
 
         /**
-         * Gets the relation settings.
+         * Gets the relation settings
          */
         $cfgRelation = $this->relation->getRelationsParam();
 
-        $tabs = [];
+        $tabs = array();
 
         $tabs['structure']['link'] = 'db_structure.php';
         $tabs['structure']['text'] = __('Structure');
@@ -480,10 +479,10 @@ class Menu
         $tabs['query']['link'] = 'db_multi_table_query.php';
         $tabs['query']['active'] = in_array(
             basename($GLOBALS['PMA_PHP_SELF']),
-            [
+            array(
                 'db_multi_table_query.php',
                 'db_qbe.php',
-            ]
+            )
         );
         if ($num_tables == 0) {
             $tabs['query']['warning'] = __('Database seems to be empty!');
@@ -551,12 +550,11 @@ class Menu
             $tabs['central_columns']['icon'] = 'centralColumns';
             $tabs['central_columns']['link'] = 'db_central_columns.php';
         }
-
         return $tabs;
     }
 
     /**
-     * Returns the server tabs as an array.
+     * Returns the server tabs as an array
      *
      * @return array Data for generating server tabs
      */
@@ -578,7 +576,7 @@ class Menu
             Util::cacheSet('binary_logs', $binary_logs);
         }
 
-        $tabs = [];
+        $tabs = array();
 
         $tabs['databases']['icon'] = 's_db';
         $tabs['databases']['link'] = 'server_databases.php';
@@ -593,14 +591,14 @@ class Menu
         $tabs['status']['text'] = __('Status');
         $tabs['status']['active'] = in_array(
             basename($GLOBALS['PMA_PHP_SELF']),
-            [
+            array(
                 'server_status.php',
                 'server_status_advisor.php',
                 'server_status_monitor.php',
                 'server_status_queries.php',
                 'server_status_variables.php',
-                'server_status_processes.php',
-            ]
+                'server_status_processes.php'
+            )
         );
 
         if ($is_superuser || $isCreateOrGrantUser) {
@@ -609,7 +607,7 @@ class Menu
             $tabs['rights']['text'] = __('User accounts');
             $tabs['rights']['active'] = in_array(
                 basename($GLOBALS['PMA_PHP_SELF']),
-                ['server_privileges.php', 'server_user_groups.php']
+                array('server_privileges.php', 'server_user_groups.php')
             );
             $tabs['rights']['args']['viewing_mode'] = 'server';
         }
@@ -622,12 +620,12 @@ class Menu
         $tabs['import']['link'] = 'server_import.php';
         $tabs['import']['text'] = __('Import');
 
-        $tabs['settings']['icon'] = 'b_tblops';
-        $tabs['settings']['link'] = 'prefs_manage.php';
-        $tabs['settings']['text'] = __('Settings');
+        $tabs['settings']['icon']   = 'b_tblops';
+        $tabs['settings']['link']   = 'prefs_manage.php';
+        $tabs['settings']['text']   = __('Settings');
         $tabs['settings']['active'] = in_array(
             basename($GLOBALS['PMA_PHP_SELF']),
-            ['prefs_forms.php', 'prefs_manage.php', 'prefs_twofactor.php']
+            array('prefs_forms.php', 'prefs_manage.php', 'prefs_twofactor.php')
         );
 
         if (! empty($binary_logs)) {
@@ -662,7 +660,7 @@ class Menu
     }
 
     /**
-     * Set current table.
+     * Set current table
      *
      * @param string $table Current table
      *
@@ -671,7 +669,6 @@ class Menu
     public function setTable($table)
     {
         $this->_table = $table;
-
         return $this;
     }
 }

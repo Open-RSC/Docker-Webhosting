@@ -1,111 +1,114 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Used to render the header of PMA's pages.
+ * Used to render the header of PMA's pages
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
-use PhpMyAdmin\Url;
-use PhpMyAdmin\Core;
-use PhpMyAdmin\Menu;
-use PhpMyAdmin\Util;
 use PhpMyAdmin\Config;
 use PhpMyAdmin\Console;
+use PhpMyAdmin\Core;
+use PhpMyAdmin\Menu;
 use PhpMyAdmin\Message;
-use PhpMyAdmin\Scripts;
-use PhpMyAdmin\Sanitize;
-use PhpMyAdmin\UserPreferences;
-use PhpMyAdmin\RecentFavoriteTable;
 use PhpMyAdmin\Navigation\Navigation;
+use PhpMyAdmin\RecentFavoriteTable;
+use PhpMyAdmin\Sanitize;
+use PhpMyAdmin\Scripts;
+use PhpMyAdmin\Url;
+use PhpMyAdmin\UserPreferences;
+use PhpMyAdmin\Util;
 
 /**
- * Class used to output the HTTP and HTML headers.
+ * Class used to output the HTTP and HTML headers
+ *
+ * @package PhpMyAdmin
  */
 class Header
 {
     /**
-     * Scripts instance.
+     * Scripts instance
      *
+     * @access private
      * @var Scripts
      */
     private $_scripts;
-
     /**
-     * PhpMyAdmin\Console instance.
+     * PhpMyAdmin\Console instance
      *
+     * @access private
      * @var Console
      */
     private $_console;
-
     /**
-     * Menu instance.
+     * Menu instance
      *
+     * @access private
      * @var Menu
      */
     private $_menu;
-
     /**
-     * Whether to offer the option of importing user settings.
+     * Whether to offer the option of importing user settings
      *
+     * @access private
      * @var bool
      */
     private $_userprefsOfferImport;
-
     /**
-     * The page title.
+     * The page title
      *
+     * @access private
      * @var string
      */
     private $_title;
-
     /**
-     * The value for the id attribute for the body tag.
+     * The value for the id attribute for the body tag
      *
+     * @access private
      * @var string
      */
     private $_bodyId;
-
     /**
-     * Whether to show the top menu.
+     * Whether to show the top menu
      *
+     * @access private
      * @var bool
      */
     private $_menuEnabled;
-
     /**
-     * Whether to show the warnings.
+     * Whether to show the warnings
      *
+     * @access private
      * @var bool
      */
     private $_warningsEnabled;
-
     /**
-     * Whether the page is in 'print view' mode.
+     * Whether the page is in 'print view' mode
      *
+     * @access private
      * @var bool
      */
     private $_isPrintView;
-
     /**
      * Whether we are servicing an ajax request.
      *
+     * @access private
      * @var bool
      */
     private $_isAjax;
-
     /**
-     * Whether to display anything.
+     * Whether to display anything
      *
+     * @access private
      * @var bool
      */
     private $_isEnabled;
-
     /**
      * Whether the HTTP headers (and possibly some HTML)
-     * have already been sent to the browser.
+     * have already been sent to the browser
      *
+     * @access private
      * @var bool
      */
     private $_headerIsSent;
@@ -116,18 +119,18 @@ class Header
     private $userPreferences;
 
     /**
-     * Creates a new class instance.
+     * Creates a new class instance
      */
     public function __construct()
     {
         $this->_isEnabled = true;
         $this->_isAjax = false;
         $this->_bodyId = '';
-        $this->_title = '';
+        $this->_title  = '';
         $this->_console = new Console();
         $db = strlen($GLOBALS['db']) ? $GLOBALS['db'] : '';
         $table = strlen($GLOBALS['table']) ? $GLOBALS['table'] : '';
-        $this->_menu = new Menu(
+        $this->_menu   = new Menu(
             $GLOBALS['server'],
             $db,
             $table
@@ -152,7 +155,7 @@ class Header
     }
 
     /**
-     * Loads common scripts.
+     * Loads common scripts
      *
      * @return void
      */
@@ -189,7 +192,7 @@ class Header
         // Here would not be a good place to add CodeMirror because
         // the user preferences have not been merged at this point
 
-        $this->_scripts->addFile('messages.php', ['l' => $GLOBALS['lang']]);
+        $this->_scripts->addFile('messages.php', array('l' => $GLOBALS['lang']));
         // Append the theme id to this url to invalidate
         // the cache on a theme change. Though this might be
         // unavailable for fatal errors.
@@ -213,7 +216,7 @@ class Header
 
     /**
      * Returns, as an array, a list of parameters
-     * used on the client side.
+     * used on the client side
      *
      * @return array
      */
@@ -224,7 +227,7 @@ class Header
         $pftext = isset($_SESSION['tmpval']['pftext'])
             ? $_SESSION['tmpval']['pftext'] : '';
 
-        $params = [
+        $params = array(
             'common_query' => Url::getCommonRaw(),
             'opendb_url' => Util::getScriptNameForOption(
                 $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
@@ -249,13 +252,13 @@ class Header
             'pftext' => $pftext,
             'confirm' => $GLOBALS['cfg']['Confirm'],
             'LoginCookieValidity' => $GLOBALS['cfg']['LoginCookieValidity'],
-            'session_gc_maxlifetime' => (int) ini_get('session.gc_maxlifetime'),
+            'session_gc_maxlifetime' => (int)ini_get('session.gc_maxlifetime'),
             'logged_in' => (isset($GLOBALS['dbi']) ? $GLOBALS['dbi']->isUserType('logged') : false),
             'is_https' => $GLOBALS['PMA_Config']->isHttps(),
             'rootPath' => $GLOBALS['PMA_Config']->getRootPath(),
             'arg_separator' => URL::getArgSeparator(),
-            'PMA_VERSION' => PMA_VERSION,
-        ];
+            'PMA_VERSION' => PMA_VERSION
+        );
         if (isset($GLOBALS['cfg']['Server'])
             && isset($GLOBALS['cfg']['Server']['auth_type'])
         ) {
@@ -270,7 +273,7 @@ class Header
 
     /**
      * Returns, as a string, a list of parameters
-     * used on the client side.
+     * used on the client side
      *
      * @return string
      */
@@ -279,17 +282,16 @@ class Header
         $params = $this->getJsParams();
         foreach ($params as $key => $value) {
             if (is_bool($value)) {
-                $params[$key] = $key.':'.($value ? 'true' : 'false').'';
+                $params[$key] = $key . ':' . ($value ? 'true' : 'false') . '';
             } else {
-                $params[$key] = $key.':"'.Sanitize::escapeJsString($value).'"';
+                $params[$key] = $key . ':"' . Sanitize::escapeJsString($value) . '"';
             }
         }
-
-        return 'PMA_commonParams.setAll({'.implode(',', $params).'});';
+        return 'PMA_commonParams.setAll({' . implode(',', $params) . '});';
     }
 
     /**
-     * Disables the rendering of the header.
+     * Disables the rendering of the header
      *
      * @return void
      */
@@ -300,7 +302,7 @@ class Header
 
     /**
      * Set the ajax flag to indicate whether
-     * we are servicing an ajax request.
+     * we are servicing an ajax request
      *
      * @param bool $isAjax Whether we are servicing an ajax request
      *
@@ -308,12 +310,12 @@ class Header
      */
     public function setAjax($isAjax)
     {
-        $this->_isAjax = (bool) $isAjax;
+        $this->_isAjax = (boolean) $isAjax;
         $this->_console->setAjax($isAjax);
     }
 
     /**
-     * Returns the Scripts object.
+     * Returns the Scripts object
      *
      * @return Scripts object
      */
@@ -323,7 +325,7 @@ class Header
     }
 
     /**
-     * Returns the Menu object.
+     * Returns the Menu object
      *
      * @return Menu object
      */
@@ -333,7 +335,7 @@ class Header
     }
 
     /**
-     * Setter for the ID attribute in the BODY tag.
+     * Setter for the ID attribute in the BODY tag
      *
      * @param string $id Value for the ID attribute
      *
@@ -345,7 +347,7 @@ class Header
     }
 
     /**
-     * Setter for the title of the page.
+     * Setter for the title of the page
      *
      * @param string $title New title
      *
@@ -357,7 +359,7 @@ class Header
     }
 
     /**
-     * Disables the display of the top menu.
+     * Disables the display of the top menu
      *
      * @return void
      */
@@ -368,7 +370,7 @@ class Header
     }
 
     /**
-     * Disables the display of the top menu.
+     * Disables the display of the top menu
      *
      * @return void
      */
@@ -378,19 +380,19 @@ class Header
     }
 
     /**
-     * Turns on 'print view' mode.
+     * Turns on 'print view' mode
      *
      * @return void
      */
     public function enablePrintView()
     {
         $this->disableMenuAndConsole();
-        $this->setTitle(__('Print view').' - phpMyAdmin '.PMA_VERSION);
+        $this->setTitle(__('Print view') . ' - phpMyAdmin ' . PMA_VERSION);
         $this->_isPrintView = true;
     }
 
     /**
-     * Generates the header.
+     * Generates the header
      *
      * @return string The header
      */
@@ -422,7 +424,7 @@ class Header
                 }
                 $this->_scripts->addCode(
                     'ConsoleEnterExecutes='
-                    .($GLOBALS['cfg']['ConsoleEnterExecutes'] ? 'true' : 'false')
+                    . ($GLOBALS['cfg']['ConsoleEnterExecutes'] ? 'true' : 'false')
                 );
                 $this->_scripts->addFiles($this->_console->getScripts());
                 if ($this->_userprefsOfferImport) {
@@ -454,11 +456,11 @@ class Header
                     $retval .= '<span id="page_nav_icons">';
                     $retval .= '<span id="lock_page_icon"></span>';
                     $retval .= '<span id="page_settings_icon">'
-                        .Util::getImage(
+                        . Util::getImage(
                             's_cog',
                             __('Page-related settings')
                         )
-                        .'</span>';
+                        . '</span>';
                     $retval .= sprintf(
                         '<a id="goto_pagetop" href="#">%s</a>',
                         Util::getImage(
@@ -479,7 +481,6 @@ class Header
                 );
             }
         }
-
         return $retval;
     }
 
@@ -508,12 +509,11 @@ class Header
                 $GLOBALS['buffer_message'] = $buffer_message;
             }
         }
-
         return $retval;
     }
 
     /**
-     * Sends out the HTTP headers.
+     * Sends out the HTTP headers
      *
      * @return void
      */
@@ -524,16 +524,16 @@ class Header
         }
         $map_tile_urls = ' *.tile.openstreetmap.org';
 
-        /*
+        /**
          * Sends http headers
          */
-        $GLOBALS['now'] = gmdate('D, d M Y H:i:s').' GMT';
-        if (! empty($GLOBALS['cfg']['CaptchaLoginPrivateKey'])
-            && ! empty($GLOBALS['cfg']['CaptchaLoginPublicKey'])
+        $GLOBALS['now'] = gmdate('D, d M Y H:i:s') . ' GMT';
+        if (!empty($GLOBALS['cfg']['CaptchaLoginPrivateKey'])
+            && !empty($GLOBALS['cfg']['CaptchaLoginPublicKey'])
         ) {
             $captcha_url
                 = ' https://apis.google.com https://www.google.com/recaptcha/'
-                .' https://www.gstatic.com/recaptcha/ https://ssl.gstatic.com/ ';
+                . ' https://www.gstatic.com/recaptcha/ https://ssl.gstatic.com/ ';
         } else {
             $captcha_url = '';
         }
@@ -546,53 +546,53 @@ class Header
         header('Referrer-Policy: no-referrer');
         header(
             "Content-Security-Policy: default-src 'self' "
-            .$captcha_url
-            .$GLOBALS['cfg']['CSPAllow'].';'
-            ."script-src 'self' 'unsafe-inline' 'unsafe-eval' "
-            .$captcha_url
-            .$GLOBALS['cfg']['CSPAllow'].';'
-            ."style-src 'self' 'unsafe-inline' "
-            .$captcha_url
-            .$GLOBALS['cfg']['CSPAllow']
-            .';'
-            ."img-src 'self' data: "
-            .$GLOBALS['cfg']['CSPAllow']
-            .$map_tile_urls
-            .$captcha_url
-            .';'
-            ."object-src 'none';"
+            . $captcha_url
+            . $GLOBALS['cfg']['CSPAllow'] . ';'
+            . "script-src 'self' 'unsafe-inline' 'unsafe-eval' "
+            . $captcha_url
+            . $GLOBALS['cfg']['CSPAllow'] . ';'
+            . "style-src 'self' 'unsafe-inline' "
+            . $captcha_url
+            . $GLOBALS['cfg']['CSPAllow']
+            . ";"
+            . "img-src 'self' data: "
+            . $GLOBALS['cfg']['CSPAllow']
+            . $map_tile_urls
+            . $captcha_url
+            . ";"
+            . "object-src 'none';"
         );
         header(
             "X-Content-Security-Policy: default-src 'self' "
-            .$captcha_url
-            .$GLOBALS['cfg']['CSPAllow'].';'
-            .'options inline-script eval-script;'
-            .'referrer no-referrer;'
-            ."img-src 'self' data: "
-            .$GLOBALS['cfg']['CSPAllow']
-            .$map_tile_urls
-            .$captcha_url
-            .';'
-            ."object-src 'none';"
+            . $captcha_url
+            . $GLOBALS['cfg']['CSPAllow'] . ';'
+            . "options inline-script eval-script;"
+            . "referrer no-referrer;"
+            . "img-src 'self' data: "
+            . $GLOBALS['cfg']['CSPAllow']
+            . $map_tile_urls
+            . $captcha_url
+            . ";"
+            . "object-src 'none';"
         );
         header(
             "X-WebKit-CSP: default-src 'self' "
-            .$captcha_url
-            .$GLOBALS['cfg']['CSPAllow'].';'
-            ."script-src 'self' "
-            .$captcha_url
-            .$GLOBALS['cfg']['CSPAllow']
-            ." 'unsafe-inline' 'unsafe-eval';"
-            .'referrer no-referrer;'
-            ."style-src 'self' 'unsafe-inline' "
-            .$captcha_url
-            .';'
-            ."img-src 'self' data: "
-            .$GLOBALS['cfg']['CSPAllow']
-            .$map_tile_urls
-            .$captcha_url
-            .';'
-            ."object-src 'none';"
+            . $captcha_url
+            . $GLOBALS['cfg']['CSPAllow'] . ';'
+            . "script-src 'self' "
+            . $captcha_url
+            . $GLOBALS['cfg']['CSPAllow']
+            . " 'unsafe-inline' 'unsafe-eval';"
+            . "referrer no-referrer;"
+            . "style-src 'self' 'unsafe-inline' "
+            . $captcha_url
+            . ';'
+            . "img-src 'self' data: "
+            . $GLOBALS['cfg']['CSPAllow']
+            . $map_tile_urls
+            . $captcha_url
+            . ";"
+            . "object-src 'none';"
         );
         // Re-enable possible disabled XSS filters
         // see https://www.owasp.org/index.php/List_of_useful_HTTP_headers
@@ -624,16 +624,16 @@ class Header
     }
 
     /**
-     * Returns the DOCTYPE and the start HTML tag.
+     * Returns the DOCTYPE and the start HTML tag
      *
      * @return string DOCTYPE and HTML tags
      */
     private function _getHtmlStart()
     {
         $lang = $GLOBALS['lang'];
-        $dir = $GLOBALS['text_dir'];
+        $dir  = $GLOBALS['text_dir'];
 
-        $retval = '<!DOCTYPE HTML>';
+        $retval  = "<!DOCTYPE HTML>";
         $retval .= "<html lang='$lang' dir='$dir'>";
         $retval .= '<head>';
 
@@ -641,13 +641,13 @@ class Header
     }
 
     /**
-     * Returns the META tags.
+     * Returns the META tags
      *
      * @return string the META tags
      */
     private function _getMetaTags()
     {
-        $retval = '<meta charset="utf-8" />';
+        $retval  = '<meta charset="utf-8" />';
         $retval .= '<meta name="referrer" content="no-referrer" />';
         $retval .= '<meta name="robots" content="noindex,nofollow" />';
         $retval .= '<meta http-equiv="X-UA-Compatible" content="IE=Edge" />';
@@ -655,72 +655,70 @@ class Header
         if (! $GLOBALS['cfg']['AllowThirdPartyFraming']) {
             $retval .= '<style id="cfs-style">html{display: none;}</style>';
         }
-
         return $retval;
     }
 
     /**
-     * Returns the LINK tags for the favicon and the stylesheets.
+     * Returns the LINK tags for the favicon and the stylesheets
      *
      * @return string the LINK tags
      */
     private function _getLinkTags()
     {
         $retval = '<link rel="icon" href="favicon.ico" '
-            .'type="image/x-icon" />'
-            .'<link rel="shortcut icon" href="favicon.ico" '
-            .'type="image/x-icon" />';
+            . 'type="image/x-icon" />'
+            . '<link rel="shortcut icon" href="favicon.ico" '
+            . 'type="image/x-icon" />';
         // stylesheets
-        $basedir = defined('PMA_PATH_TO_BASEDIR') ? PMA_PATH_TO_BASEDIR : '';
-        $theme_id = $GLOBALS['PMA_Config']->getThemeUniqueValue();
+        $basedir    = defined('PMA_PATH_TO_BASEDIR') ? PMA_PATH_TO_BASEDIR : '';
+        $theme_id   = $GLOBALS['PMA_Config']->getThemeUniqueValue();
         $theme_path = $GLOBALS['pmaThemePath'];
-        $v = self::getVersionParameter();
+        $v          = self::getVersionParameter();
 
         if ($this->_isPrintView) {
             $retval .= '<link rel="stylesheet" type="text/css" href="'
-                .$basedir.'print.css?'.$v.'" />';
+                . $basedir . 'print.css?' . $v . '" />';
         } else {
             // load jQuery's CSS prior to our theme's CSS, to let the theme
             // override jQuery's CSS
             $retval .= '<link rel="stylesheet" type="text/css" href="'
-                .$theme_path.'/jquery/jquery-ui.css" />';
+                . $theme_path . '/jquery/jquery-ui.css" />';
             $retval .= '<link rel="stylesheet" type="text/css" href="'
-                .$basedir.'js/vendor/codemirror/lib/codemirror.css?'.$v.'" />';
+                . $basedir . 'js/vendor/codemirror/lib/codemirror.css?' . $v . '" />';
             $retval .= '<link rel="stylesheet" type="text/css" href="'
-                .$basedir.'js/vendor/codemirror/addon/hint/show-hint.css?'.$v.'" />';
+                . $basedir . 'js/vendor/codemirror/addon/hint/show-hint.css?' . $v . '" />';
             $retval .= '<link rel="stylesheet" type="text/css" href="'
-                .$basedir.'js/vendor/codemirror/addon/lint/lint.css?'.$v.'" />';
+                . $basedir . 'js/vendor/codemirror/addon/lint/lint.css?' . $v . '" />';
             $retval .= '<link rel="stylesheet" type="text/css" href="'
-                .$basedir.'phpmyadmin.css.php?'
-                .'nocache='.$theme_id.$GLOBALS['text_dir']
-                .(isset($GLOBALS['server']) ? '&amp;server='.$GLOBALS['server'] : '')
-                .'" />';
+                . $basedir . 'phpmyadmin.css.php?'
+                . 'nocache=' . $theme_id . $GLOBALS['text_dir']
+                . (isset($GLOBALS['server']) ? '&amp;server=' . $GLOBALS['server'] : '')
+                . '" />';
             // load Print view's CSS last, so that it overrides all other CSS while
             // 'printing'
             $retval .= '<link rel="stylesheet" type="text/css" href="'
-                .$theme_path.'/css/printview.css?'.$v.'" media="print" id="printcss"/>';
+                . $theme_path . '/css/printview.css?' . $v . '" media="print" id="printcss"/>';
         }
 
         return $retval;
     }
 
     /**
-     * Returns the TITLE tag.
+     * Returns the TITLE tag
      *
      * @return string the TITLE tag
      */
     public function getTitleTag()
     {
-        $retval = '<title>';
+        $retval  = "<title>";
         $retval .= $this->_getPageTitle();
-        $retval .= '</title>';
-
+        $retval .= "</title>";
         return $retval;
     }
 
     /**
      * If the page is missing the title, this function
-     * will set it to something reasonable.
+     * will set it to something reasonable
      *
      * @return string
      */
@@ -744,29 +742,27 @@ class Header
                 $this->_title = 'phpMyAdmin';
             }
         }
-
         return $this->_title;
     }
 
     /**
      * Returns the close tag to the HEAD
-     * and the start tag for the BODY.
+     * and the start tag for the BODY
      *
      * @return string HEAD and BODY tags
      */
     private function _getBodyStart()
     {
-        $retval = '</head><body';
+        $retval = "</head><body";
         if (strlen($this->_bodyId)) {
-            $retval .= " id='".$this->_bodyId."'";
+            $retval .= " id='" . $this->_bodyId . "'";
         }
-        $retval .= '>';
-
+        $retval .= ">";
         return $retval;
     }
 
     /**
-     * Returns some warnings to be displayed at the top of the page.
+     * Returns some warnings to be displayed at the top of the page
      *
      * @return string The warnings
      */
@@ -774,13 +770,12 @@ class Header
     {
         $retval = '';
         if ($this->_warningsEnabled) {
-            $retval .= '<noscript>';
+            $retval .= "<noscript>";
             $retval .= Message::error(
-                __('Javascript must be enabled past this point!')
+                __("Javascript must be enabled past this point!")
             )->getDisplay();
-            $retval .= '</noscript>';
+            $retval .= "</noscript>";
         }
-
         return $retval;
     }
 
@@ -804,22 +799,21 @@ class Header
             if ($tmp_result === true) {
                 $retval = RecentFavoriteTable::getHtmlUpdateRecentTables();
             } else {
-                $error = $tmp_result;
+                $error  = $tmp_result;
                 $retval = $error->getDisplay();
             }
         }
-
         return $retval;
     }
 
     /**
      * Returns the phpMyAdmin version to be appended to the url to avoid caching
-     * between versions.
+     * between versions
      *
      * @return string urlenocded pma version as a parameter
      */
     public static function getVersionParameter()
     {
-        return 'v='.urlencode(PMA_VERSION);
+        return "v=" . urlencode(PMA_VERSION);
     }
 }

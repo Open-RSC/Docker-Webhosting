@@ -1,19 +1,21 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\I18n\NodeTrans class.
+ * hold PhpMyAdmin\Twig\I18n\NodeTrans class
+ *
+ * @package PhpMyAdmin\Twig\I18n
  */
-
 namespace PhpMyAdmin\Twig\I18n;
 
 use Twig\Compiler;
-use Twig\Node\Node;
 use Twig\Extensions\Node\TransNode;
+use Twig\Node\Node;
 use Twig\Node\Expression\AbstractExpression;
 
 /**
- * Class NodeTrans.
+ * Class NodeTrans
+ *
+ * @package PhpMyAdmin\Twig\I18n
  */
 class NodeTrans extends TransNode
 {
@@ -40,7 +42,7 @@ class NodeTrans extends TransNode
         $lineno,
         $tag = null
     ) {
-        $nodes = ['body' => $body];
+        $nodes = array('body' => $body);
         if (null !== $count) {
             $nodes['count'] = $count;
         }
@@ -54,7 +56,7 @@ class NodeTrans extends TransNode
             $nodes['notes'] = $notes;
         }
 
-        Node::__construct($nodes, [], $lineno, $tag);
+        Node::__construct($nodes, array(), $lineno, $tag);
     }
 
     /**
@@ -85,14 +87,15 @@ class NodeTrans extends TransNode
             $message = trim($this->getNode('notes')->getAttribute('data'));
 
             // line breaks are not allowed cause we want a single line comment
-            $message = str_replace(["\n", "\r"], ' ', $message);
+            $message = str_replace(array("\n", "\r"), ' ', $message);
             $compiler->write("// l10n: {$message}\n");
         }
 
         if ($vars) {
             $compiler
-                ->write('echo strtr('.$function.'(')
-                ->subcompile($msg);
+                ->write('echo strtr(' . $function . '(')
+                ->subcompile($msg)
+            ;
 
             if ($this->hasNode('plural')) {
                 $compiler
@@ -100,7 +103,8 @@ class NodeTrans extends TransNode
                     ->subcompile($msg1)
                     ->raw(', abs(')
                     ->subcompile($this->hasNode('count') ? $this->getNode('count') : null)
-                    ->raw(')');
+                    ->raw(')')
+                ;
             }
 
             $compiler->raw('), array(');
@@ -111,23 +115,25 @@ class NodeTrans extends TransNode
                         ->string('%count%')
                         ->raw(' => abs(')
                         ->subcompile($this->hasNode('count') ? $this->getNode('count') : null)
-                        ->raw('), ');
+                        ->raw('), ')
+                    ;
                 } else {
                     $compiler
-                        ->string('%'.$var->getAttribute('name').'%')
+                        ->string('%' . $var->getAttribute('name') . '%')
                         ->raw(' => ')
                         ->subcompile($var)
-                        ->raw(', ');
+                        ->raw(', ')
+                    ;
                 }
             }
 
             $compiler->raw("));\n");
         } else {
-            $compiler->write('echo '.$function.'(');
+            $compiler->write('echo ' . $function . '(');
 
             if ($this->hasNode('context')) {
                 $context = trim($this->getNode('context')->getAttribute('data'));
-                $compiler->write('"'.$context.'", ');
+                $compiler->write('"' . $context . '", ');
             }
 
             $compiler->subcompile($msg);
@@ -138,7 +144,8 @@ class NodeTrans extends TransNode
                     ->subcompile($msg1)
                     ->raw(', abs(')
                     ->subcompile($this->hasNode('count') ? $this->getNode('count') : null)
-                    ->raw(')');
+                    ->raw(')')
+                ;
             }
 
             $compiler->raw(");\n");

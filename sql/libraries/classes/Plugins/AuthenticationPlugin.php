@@ -1,62 +1,64 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the authentication plugins.
+ * Abstract class for the authentication plugins
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Plugins;
 
-use PhpMyAdmin\Url;
-use PhpMyAdmin\Core;
 use PhpMyAdmin\Config;
+use PhpMyAdmin\Core;
+use PhpMyAdmin\IpAllowDeny;
 use PhpMyAdmin\Logging;
 use PhpMyAdmin\Message;
-use PhpMyAdmin\Session;
 use PhpMyAdmin\Response;
 use PhpMyAdmin\Sanitize;
-use PhpMyAdmin\Template;
 use PhpMyAdmin\TwoFactor;
-use PhpMyAdmin\IpAllowDeny;
+use PhpMyAdmin\Session;
+use PhpMyAdmin\Template;
+use PhpMyAdmin\Url;
 
 /**
  * Provides a common interface that will have to be implemented by all of the
  * authentication plugins.
+ *
+ * @package PhpMyAdmin
  */
 abstract class AuthenticationPlugin
 {
     /**
-     * Username.
+     * Username
      *
      * @var string
      */
     public $user = '';
 
     /**
-     * Password.
+     * Password
      *
      * @var string
      */
     public $password = '';
 
     /**
-     * Displays authentication form.
+     * Displays authentication form
      *
-     * @return bool
+     * @return boolean
      */
     abstract public function showLoginForm();
 
     /**
-     * Gets authentication credentials.
+     * Gets authentication credentials
      *
-     * @return bool
+     * @return boolean
      */
     abstract public function readCredentials();
 
     /**
-     * Set the user and password after last checkings if required.
+     * Set the user and password after last checkings if required
      *
-     * @return bool
+     * @return boolean
      */
     public function storeCredentials()
     {
@@ -64,7 +66,7 @@ abstract class AuthenticationPlugin
 
         $this->setSessionAccessTime();
 
-        $cfg['Server']['user'] = $this->user;
+        $cfg['Server']['user']     = $this->user;
         $cfg['Server']['password'] = $this->password;
 
         return true;
@@ -80,7 +82,7 @@ abstract class AuthenticationPlugin
     }
 
     /**
-     * User is not allowed to login to MySQL -> authentication failed.
+     * User is not allowed to login to MySQL -> authentication failed
      *
      * @param string $failure String describing why authentication has failed
      *
@@ -92,7 +94,7 @@ abstract class AuthenticationPlugin
     }
 
     /**
-     * Perform logout.
+     * Perform logout
      *
      * @return void
      */
@@ -117,7 +119,7 @@ abstract class AuthenticationPlugin
             && $GLOBALS['cfg']['Server']['auth_type'] == 'cookie'
         ) {
             foreach ($GLOBALS['cfg']['Servers'] as $key => $val) {
-                if (isset($_COOKIE['pmaAuth-'.$key])) {
+                if (isset($_COOKIE['pmaAuth-' . $key])) {
                     $server = $key;
                 }
             }
@@ -136,7 +138,7 @@ abstract class AuthenticationPlugin
             /* Redirect to other autenticated server */
             $_SESSION['partial_logout'] = true;
             Core::sendHeaderLocation(
-                './index.php'.Url::getCommonRaw(['server' => $server])
+                './index.php' . Url::getCommonRaw(array('server' => $server))
             );
         }
     }
@@ -163,7 +165,7 @@ abstract class AuthenticationPlugin
         if ($failure == 'empty-denied') {
             return __(
                 'Login without a password is forbidden by configuration'
-                .' (see AllowNoPassword)'
+                . ' (see AllowNoPassword)'
             );
         } elseif ($failure == 'root-denied' || $failure == 'allow-denied') {
             return __('Access denied!');
@@ -175,11 +177,11 @@ abstract class AuthenticationPlugin
         }
 
         $dbi_error = $GLOBALS['dbi']->getError();
-        if (! empty($dbi_error)) {
+        if (!empty($dbi_error)) {
             return htmlspecialchars($dbi_error);
         } elseif (isset($GLOBALS['errno'])) {
-            return '#'.$GLOBALS['errno'].' '
-            .__('Cannot log in to the MySQL server');
+            return '#' . $GLOBALS['errno'] . ' '
+            . __('Cannot log in to the MySQL server');
         }
 
         return __('Cannot log in to the MySQL server');
@@ -207,7 +209,7 @@ abstract class AuthenticationPlugin
     public function setSessionAccessTime()
     {
         if (isset($_REQUEST['guid'])) {
-            $guid = (string) $_REQUEST['guid'];
+            $guid = (string)$_REQUEST['guid'];
         } else {
             $guid = 'default';
         }
@@ -225,14 +227,14 @@ abstract class AuthenticationPlugin
     }
 
     /**
-     * High level authentication interface.
+     * High level authentication interface
      *
      * Gets the credentials or shows login form if necessary
      *
      * @return void
      */
-    public function authenticate()
-    {
+     public function authenticate()
+     {
         $success = $this->readCredentials();
 
         /* Show login form (this exits) */
@@ -249,7 +251,7 @@ abstract class AuthenticationPlugin
     }
 
     /**
-     * Check configuration defined restrictions for authentication.
+     * Check configuration defined restrictions for authentication
      *
      * @return void
      */
@@ -262,9 +264,9 @@ abstract class AuthenticationPlugin
         if (isset($cfg['Server']['AllowDeny'])
             && isset($cfg['Server']['AllowDeny']['order'])
         ) {
-            $allowDeny_forbidden = false; // default
+            $allowDeny_forbidden         = false; // default
             if ($cfg['Server']['AllowDeny']['order'] == 'allow,deny') {
-                $allowDeny_forbidden = true;
+                $allowDeny_forbidden     = true;
                 if (IpAllowDeny::allowDeny('allow')) {
                     $allowDeny_forbidden = false;
                 }

@@ -1,11 +1,12 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Handles database multi-table querying.
+ * Handles database multi-table querying
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Response;
 use PhpMyAdmin\Database\MultiTableQuery;
+use PhpMyAdmin\Response;
 
 require_once 'libraries/common.inc.php';
 
@@ -21,7 +22,7 @@ if (isset($_POST['sql_query'])) {
         $_GET['tables']
     );
     $response = Response::getInstance();
-    $response->addJSON('foreignKeyConstrains', $constrains);
+    $response->addJSON('foreignKeyConstrains',$constrains);
 } else {
     $response = Response::getInstance();
 

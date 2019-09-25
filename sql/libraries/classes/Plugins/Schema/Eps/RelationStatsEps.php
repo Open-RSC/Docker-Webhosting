@@ -1,29 +1,30 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Contains PhpMyAdmin\Plugins\Schema\Eps\RelationStatsEps class.
+ * Contains PhpMyAdmin\Plugins\Schema\Eps\RelationStatsEps class
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Plugins\Schema\Eps;
 
 use PhpMyAdmin\Plugins\Schema\RelationStats;
 
 /**
- * Relation preferences/statistics.
+ * Relation preferences/statistics
  *
  * This class fetches the table master and foreign fields positions
  * and helps in generating the Table references and then connects
  * master table's master field to foreign table's foreign key
  * in EPS document.
  *
+ * @package PhpMyAdmin
  * @name    Relation_Stats_Eps
  * @see     PMA_EPS
  */
 class RelationStatsEps extends RelationStats
 {
     /**
-     * The "PhpMyAdmin\Plugins\Schema\Eps\RelationStatsEps" constructor.
+     * The "PhpMyAdmin\Plugins\Schema\Eps\RelationStatsEps" constructor
      *
      * @param object $diagram       The EPS diagram
      * @param string $master_table  The master table name
@@ -38,13 +39,13 @@ class RelationStatsEps extends RelationStats
         parent::__construct(
             $diagram, $master_table, $master_field, $foreign_table, $foreign_field
         );
-        $this->ySrc += 10;
+        $this->ySrc  += 10;
         $this->yDest += 10;
     }
 
     /**
      * draws relation links and arrows
-     * shows foreign key relations.
+     * shows foreign key relations
      *
      * @see PMA_EPS
      *

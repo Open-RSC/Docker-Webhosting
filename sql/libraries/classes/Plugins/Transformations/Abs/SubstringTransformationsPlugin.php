@@ -1,21 +1,24 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the substring transformations plugins.
+ * Abstract class for the substring transformations plugins
+ *
+ * @package    PhpMyAdmin-Transformations
+ * @subpackage Substring
  */
-
 namespace PhpMyAdmin\Plugins\Transformations\Abs;
 
 use PhpMyAdmin\Plugins\TransformationsPlugin;
 
 /**
  * Provides common methods for all of the substring transformations plugins.
+ *
+ * @package PhpMyAdmin
  */
 abstract class SubstringTransformationsPlugin extends TransformationsPlugin
 {
     /**
-     * Gets the transformation description of the specific plugin.
+     * Gets the transformation description of the specific plugin
      *
      * @return string
      */
@@ -23,10 +26,10 @@ abstract class SubstringTransformationsPlugin extends TransformationsPlugin
     {
         return __(
             'Displays a part of a string. The first option is the number of'
-            .' characters to skip from the beginning of the string (Default 0).'
-            .' The second option is the number of characters to return (Default:'
-            .' until end of string). The third option is the string to append'
-            .' and/or prepend when truncation occurs (Default: "…").'
+            . ' characters to skip from the beginning of the string (Default 0).'
+            . ' The second option is the number of characters to return (Default:'
+            . ' until end of string). The third option is the string to append'
+            . ' and/or prepend when truncation occurs (Default: "…").'
         );
     }
 
@@ -39,7 +42,7 @@ abstract class SubstringTransformationsPlugin extends TransformationsPlugin
      *
      * @return string
      */
-    public function applyTransformation($buffer, array $options = [], $meta = '')
+    public function applyTransformation($buffer, array $options = array(), $meta = '')
     {
         // possibly use a global transform and feed it with special options
 
@@ -61,7 +64,7 @@ abstract class SubstringTransformationsPlugin extends TransformationsPlugin
         $baselength = mb_strlen($buffer);
         if ($length != $baselength) {
             if ($options[0] != 0) {
-                $newtext = $options[2].$newtext;
+                $newtext = $options[2] . $newtext;
             }
 
             if (($length + $options[0]) != $baselength) {
@@ -72,15 +75,16 @@ abstract class SubstringTransformationsPlugin extends TransformationsPlugin
         return htmlspecialchars($newtext);
     }
 
+
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the specific plugin.
+     * Gets the transformation name of the specific plugin
      *
      * @return string
      */
     public static function getName()
     {
-        return 'Substring';
+        return "Substring";
     }
 }

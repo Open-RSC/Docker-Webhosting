@@ -1,50 +1,42 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * PhpMyAdmin\Server\Status\Data class
- * Used by server_status_*.php pages.
+ * Used by server_status_*.php pages
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Server\Status;
 
 use PhpMyAdmin\Url;
 
 /**
- * This class provides data about the server status.
+ * This class provides data about the server status
  *
  * All properties of the class are read-only
  *
  * TODO: Use lazy initialisation for some of the properties
  *       since not all of the server_status_*.php pages need
  *       all the data that this class provides.
+ *
+ * @package PhpMyAdmin
  */
 class Data
 {
     public $status;
-
     public $sections;
-
     public $variables;
-
     public $used_queries;
-
     public $allocationMap;
-
     public $links;
-
     public $db_isLocal;
-
     public $section;
-
     public $sectionUsed;
-
     public $selfUrl;
-
     public $dataLoaded;
 
     /**
-     * An empty setter makes the above properties read-only.
+     * An empty setter makes the above properties read-only
      *
      * @param string $a key
      * @param mixed  $b value
@@ -57,13 +49,13 @@ class Data
     }
 
     /**
-     * Gets the allocations for constructor.
+     * Gets the allocations for constructor
      *
      * @return array
      */
     private function _getAllocations()
     {
-        return [
+        return array(
             // variable name => section
             // variable names match when they begin with the given string
 
@@ -107,17 +99,17 @@ class Data
             'Open_files'        => 'files',
             'Open_streams'      => 'files',
             'Opened_files'      => 'files',
-        ];
+        );
     }
 
     /**
-     * Gets the sections for constructor.
+     * Gets the sections for constructor
      *
      * @return array
      */
     private function _getSections()
     {
-        return [
+        return array(
             // section => section name (description)
             'com'           => 'Com',
             'query'         => __('SQL query'),
@@ -137,18 +129,18 @@ class Data
             'tc'            => __('Transaction coordinator'),
             'files'         => __('Files'),
             'ssl'           => 'SSL',
-            'other'         => __('Other'),
-        ];
+            'other'         => __('Other')
+        );
     }
 
     /**
-     * Gets the links for constructor.
+     * Gets the links for constructor
      *
      * @return array
      */
     private function _getLinks()
     {
-        $links = [];
+        $links = array();
         // variable or section name => (name => url)
 
         $links['table'][__('Flush (close) all tables')] = [
@@ -212,11 +204,11 @@ class Data
         ];
         $links['innodb']['doc'] = 'innodb';
 
-        return $links;
+        return($links);
     }
 
     /**
-     * Calculate some values.
+     * Calculate some values
      *
      * @param array $server_status    contains results of SHOW GLOBAL STATUS
      * @param array $server_variables contains results of SHOW GLOBAL VARIABLES
@@ -273,16 +265,16 @@ class Data
             && isset($server_status['Connections'])
             && $server_status['Connections'] > 0
         ) {
+
             $server_status['Threads_cache_hitrate_%']
                 = 100 - $server_status['Threads_created']
                 / $server_status['Connections'] * 100;
         }
-
         return $server_status;
     }
 
     /**
-     * Sort variables into arrays.
+     * Sort variables into arrays
      *
      * @param array $server_status contains results of SHOW GLOBAL STATUS
      * @param array $allocations   allocations for sections
@@ -306,7 +298,6 @@ class Data
                     if ($section == 'com' && $value > 0) {
                         $used_queries[$name] = $value;
                     }
-
                     break; // Only exits inner loop
                 }
             }
@@ -315,12 +306,11 @@ class Data
                 $sectionUsed['other'] = true;
             }
         }
-
-        return [$allocationMap, $sectionUsed, $used_queries];
+        return array($allocationMap, $sectionUsed, $used_queries);
     }
 
     /**
-     * Constructor.
+     * Constructor
      */
     public function __construct()
     {
@@ -328,7 +318,7 @@ class Data
 
         // get status from server
         $server_status_result = $GLOBALS['dbi']->tryQuery('SHOW GLOBAL STATUS');
-        $server_status = [];
+        $server_status = array();
         if ($server_status_result === false) {
             $this->dataLoaded = false;
         } else {
@@ -361,14 +351,14 @@ class Data
         $links = $this->_getLinks();
 
         // Variable to contain all com_ variables (query statistics)
-        $used_queries = [];
+        $used_queries = array();
 
         // Variable to map variable names to their respective section name
         // (used for js category filtering)
-        $allocationMap = [];
+        $allocationMap = array();
 
         // Variable to mark used sections
-        $sectionUsed = [];
+        $sectionUsed = array();
 
         // sort vars into arrays
         list(
@@ -403,7 +393,7 @@ class Data
     }
 
     /**
-     * cleanup of some deprecated values.
+     * cleanup of some deprecated values
      *
      * @param array $server_status status array to process
      *
@@ -411,64 +401,63 @@ class Data
      */
     public static function cleanDeprecated(array $server_status)
     {
-        $deprecated = [
+        $deprecated = array(
             'Com_prepare_sql' => 'Com_stmt_prepare',
             'Com_execute_sql' => 'Com_stmt_execute',
             'Com_dealloc_sql' => 'Com_stmt_close',
-        ];
+        );
         foreach ($deprecated as $old => $new) {
             if (isset($server_status[$old]) && isset($server_status[$new])) {
                 unset($server_status[$old]);
             }
         }
-
         return $server_status;
     }
 
     /**
-     * Generates menu HTML.
+     * Generates menu HTML
      *
      * @return string
      */
     public function getMenuHtml()
     {
         $url_params = Url::getCommon();
-        $items = [
-            [
+        $items = array(
+            array(
                 'name' => __('Server'),
-                'url' => 'server_status.php',
-            ],
-            [
+                'url' => 'server_status.php'
+            ),
+            array(
                 'name' => __('Processes'),
-                'url' => 'server_status_processes.php',
-            ],
-            [
+                'url' => 'server_status_processes.php'
+            ),
+            array(
                 'name' => __('Query statistics'),
-                'url' => 'server_status_queries.php',
-            ],
-            [
+                'url' => 'server_status_queries.php'
+            ),
+            array(
                 'name' => __('All status variables'),
-                'url' => 'server_status_variables.php',
-            ],
-            [
+                'url' => 'server_status_variables.php'
+            ),
+            array(
                 'name' => __('Monitor'),
-                'url' => 'server_status_monitor.php',
-            ],
-            [
+                'url' => 'server_status_monitor.php'
+            ),
+            array(
                 'name' => __('Advisor'),
-                'url' => 'server_status_advisor.php',
-            ],
-        ];
+                'url' => 'server_status_advisor.php'
+            )
+        );
 
-        $retval = '<ul id="topmenu2">';
+        $retval  = '<ul id="topmenu2">';
         foreach ($items as $item) {
             $class = '';
             if ($item['url'] === $this->selfUrl) {
                 $class = ' class="tabactive"';
             }
             $retval .= '<li>';
-            $retval .= '<a'.$class;
-            $retval .= ' href="'.$item['url'].$url_params.'">';
+            $retval .= '<a' . $class;
+            $retval .= ' href="' . $item['url'] . $url_params . '">';
             $retval .= $item['name'];
             $retval .= '</a>';
             $retval .= '</li>';
@@ -480,7 +469,7 @@ class Data
     }
 
     /**
-     * Builds a <select> list for refresh rates.
+     * Builds a <select> list for refresh rates
      *
      * @param string $name         Name of select
      * @param int    $defaultRate  Currently chosen rate
@@ -490,13 +479,13 @@ class Data
      */
     public static function getHtmlForRefreshList($name,
         $defaultRate = 5,
-        array $refreshRates = [1, 2, 5, 10, 20, 40, 60, 120, 300, 600]
+        array $refreshRates = array(1, 2, 5, 10, 20, 40, 60, 120, 300, 600)
     ) {
-        $return = '<select name="'.$name.'" id="id_'.$name
-            .'" class="refreshRate">';
+        $return = '<select name="' . $name . '" id="id_' . $name
+            . '" class="refreshRate">';
         foreach ($refreshRates as $rate) {
-            $selected = ($rate == $defaultRate) ? ' selected="selected"' : '';
-            $return .= '<option value="'.$rate.'"'.$selected.'>';
+            $selected = ($rate == $defaultRate)?' selected="selected"':'';
+            $return .= '<option value="' . $rate . '"' . $selected . '>';
             if ($rate < 60) {
                 $return .= sprintf(
                     _ngettext('%d second', '%d seconds', $rate), $rate
@@ -507,10 +496,9 @@ class Data
                     _ngettext('%d minute', '%d minutes', $rate), $rate
                 );
             }
-            $return .= '</option>';
+            $return .=  '</option>';
         }
         $return .= '</select>';
-
         return $return;
     }
 }

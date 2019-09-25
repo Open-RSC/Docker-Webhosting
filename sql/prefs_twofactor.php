@@ -1,15 +1,16 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * User preferences management page.
+ * User preferences management page
+ *
+ * @package PhpMyAdmin
  */
 use PhpMyAdmin\Message;
-use PhpMyAdmin\Template;
 use PhpMyAdmin\TwoFactor;
+use PhpMyAdmin\Template;
 
 /**
- * Gets some core libraries and displays a top message if required.
+ * Gets some core libraries and displays a top message if required
  */
 require_once 'libraries/common.inc.php';
 

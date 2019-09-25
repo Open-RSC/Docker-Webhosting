@@ -1,31 +1,33 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Controllers\Table\TableIndexesController.
+ * Holds the PhpMyAdmin\Controllers\Table\TableIndexesController
+ *
+ * @package PhpMyAdmin\Controllers
  */
-
 namespace PhpMyAdmin\Controllers\Table;
 
-use PhpMyAdmin\Util;
+use PhpMyAdmin\Controllers\TableController;
 use PhpMyAdmin\Index;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
 use PhpMyAdmin\Template;
-use PhpMyAdmin\Controllers\TableController;
+use PhpMyAdmin\Util;
 
 /**
- * Class TableIndexesController.
+ * Class TableIndexesController
+ *
+ * @package PhpMyAdmin\Controllers
  */
 class TableIndexesController extends TableController
 {
     /**
-     * @var Index
+     * @var Index $index
      */
     protected $index;
 
     /**
-     * Constructor.
+     * Constructor
      *
      * @param Index $index Index
      */
@@ -42,7 +44,7 @@ class TableIndexesController extends TableController
     }
 
     /**
-     * Index.
+     * Index
      *
      * @return void
      */
@@ -50,7 +52,6 @@ class TableIndexesController extends TableController
     {
         if (isset($_POST['do_save_data'])) {
             $this->doSaveDataAction();
-
             return;
         } // end builds the new index
 
@@ -58,7 +59,7 @@ class TableIndexesController extends TableController
     }
 
     /**
-     * Display the form to edit/create an index.
+     * Display the form to edit/create an index
      *
      * @return void
      */
@@ -82,10 +83,10 @@ class TableIndexesController extends TableController
         // Get fields and stores their name/type
         if (isset($_POST['create_edit_table'])) {
             $fields = json_decode($_POST['columns'], true);
-            $index_params = [
+            $index_params = array(
                 'Non_unique' => ($_POST['index']['Index_choice'] == 'UNIQUE')
                     ? '0' : '1',
-            ];
+            );
             $this->index->set($index_params);
             $add_fields = count($fields);
         } else {
@@ -93,10 +94,10 @@ class TableIndexesController extends TableController
                 ->getNameAndTypeOfTheColumns();
         }
 
-        $form_params = [
+        $form_params = array(
             'db' => $this->db,
             'table' => $this->table,
-        ];
+        );
 
         if (isset($_POST['create_index'])) {
             $form_params['create_index'] = 1;
@@ -110,13 +111,13 @@ class TableIndexesController extends TableController
 
         $this->response->addHTML(
             Template::get('table/index_form')->render(
-                [
+                array(
                     'fields' => $fields,
                     'index' => $this->index,
                     'form_params' => $form_params,
                     'add_fields' => $add_fields,
-                    'create_edit_table' => isset($_POST['create_edit_table']),
-                ]
+                    'create_edit_table' => isset($_POST['create_edit_table'])
+                )
             )
         );
     }
@@ -124,7 +125,7 @@ class TableIndexesController extends TableController
     /**
      * Process the data from the edit/create index form,
      * run the query to build the new index
-     * and moves back to "tbl_sql.php".
+     * and moves back to "tbl_sql.php"
      *
      * @return void
      */
@@ -137,16 +138,18 @@ class TableIndexesController extends TableController
 
         // If there is a request for SQL previewing.
         if (isset($_POST['preview_sql'])) {
+
             $this->response->addJSON(
                 'sql_data',
                 Template::get('preview_sql')
                     ->render(
-                        [
-                            'query_data' => $sql_query,
-                        ]
+                        array(
+                            'query_data' => $sql_query
+                        )
                     )
             );
-        } elseif (! $error) {
+        } elseif (!$error) {
+
             $this->dbi->query($sql_query);
             $response = Response::getInstance();
             if ($response->isAjax()) {

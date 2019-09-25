@@ -1,25 +1,28 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Used to render the console of PMA's pages.
+ * Used to render the console of PMA's pages
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
-use PhpMyAdmin\Util;
 use PhpMyAdmin\Bookmark;
 use PhpMyAdmin\Relation;
 use PhpMyAdmin\Template;
+use PhpMyAdmin\Util;
 
 /**
- * Class used to output the console.
+ * Class used to output the console
+ *
+ * @package PhpMyAdmin
  */
 class Console
 {
     /**
-     * Whether to display anything.
+     * Whether to display anything
      *
+     * @access private
      * @var bool
      */
     private $_isEnabled;
@@ -27,6 +30,7 @@ class Console
     /**
      * Whether we are servicing an ajax request.
      *
+     * @access private
      * @var bool
      */
     private $_isAjax;
@@ -37,7 +41,7 @@ class Console
     private $relation;
 
     /**
-     * Creates a new class instance.
+     * Creates a new class instance
      */
     public function __construct()
     {
@@ -47,7 +51,7 @@ class Console
 
     /**
      * Set the ajax flag to indicate whether
-     * we are servicing an ajax request.
+     * we are servicing an ajax request
      *
      * @param bool $isAjax Whether we are servicing an ajax request
      *
@@ -55,11 +59,11 @@ class Console
      */
     public function setAjax($isAjax)
     {
-        $this->_isAjax = (bool) $isAjax;
+        $this->_isAjax = (boolean) $isAjax;
     }
 
     /**
-     * Disables the rendering of the footer.
+     * Disables the rendering of the footer
      *
      * @return void
      */
@@ -69,8 +73,9 @@ class Console
     }
 
     /**
-     * Renders the bookmark content.
+     * Renders the bookmark content
      *
+     * @access public
      * @return string
      */
     public static function getBookmarkContent()
@@ -95,32 +100,31 @@ class Console
                 $welcomeMessage = __('No bookmarks');
             }
             unset($count_bookmarks, $private_message, $shared_message);
-
             return Template::get('console/bookmark_content')
                 ->render(
-                    [
+                    array(
                         'welcome_message'    => $welcomeMessage,
                         'bookmarks'         => $bookmarks,
-                    ]
+                    )
                 );
         }
-
         return '';
     }
 
     /**
-     * Returns the list of JS scripts required by console.
+     * Returns the list of JS scripts required by console
      *
      * @return array list of scripts
      */
     public function getScripts()
     {
-        return ['console.js'];
+        return array('console.js');
     }
 
     /**
-     * Renders the console.
+     * Renders the console
      *
+     * @access public
      * @return string
      */
     public function getDisplay()
@@ -143,7 +147,6 @@ class Console
                 'bookmark_content' => $bookmarkContent,
             ]);
         }
-
         return '';
     }
 }

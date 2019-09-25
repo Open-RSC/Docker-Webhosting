@@ -1,27 +1,32 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Set of functions used to build YAML dumps of tables.
+ * Set of functions used to build YAML dumps of tables
+ *
+ * @package    PhpMyAdmin-Export
+ * @subpackage YAML
  */
 
 namespace PhpMyAdmin\Plugins\Export;
 
-use PhpMyAdmin\Export;
 use PhpMyAdmin\DatabaseInterface;
+use PhpMyAdmin\Export;
 use PhpMyAdmin\Plugins\ExportPlugin;
 use PhpMyAdmin\Properties\Plugins\ExportPluginProperties;
-use PhpMyAdmin\Properties\Options\Items\HiddenPropertyItem;
 use PhpMyAdmin\Properties\Options\Groups\OptionsPropertyMainGroup;
 use PhpMyAdmin\Properties\Options\Groups\OptionsPropertyRootGroup;
+use PhpMyAdmin\Properties\Options\Items\HiddenPropertyItem;
 
 /**
- * Handles the export for the YAML format.
+ * Handles the export for the YAML format
+ *
+ * @package    PhpMyAdmin-Export
+ * @subpackage YAML
  */
 class ExportYaml extends ExportPlugin
 {
     /**
-     * Constructor.
+     * Constructor
      */
     public function __construct()
     {
@@ -29,7 +34,7 @@ class ExportYaml extends ExportPlugin
     }
 
     /**
-     * Sets the export YAML properties.
+     * Sets the export YAML properties
      *
      * @return void
      */
@@ -46,13 +51,13 @@ class ExportYaml extends ExportPlugin
         // $exportPluginProperties
         // this will be shown as "Format specific options"
         $exportSpecificOptions = new OptionsPropertyRootGroup(
-            'Format Specific Options'
+            "Format Specific Options"
         );
 
         // general options main group
-        $generalOptions = new OptionsPropertyMainGroup('general_opts');
+        $generalOptions = new OptionsPropertyMainGroup("general_opts");
         // create primary items and add them to the group
-        $leaf = new HiddenPropertyItem('structure_or_data');
+        $leaf = new HiddenPropertyItem("structure_or_data");
         $generalOptions->addProperty($leaf);
         // add the main group to the root group
         $exportSpecificOptions->addProperty($generalOptions);
@@ -63,33 +68,33 @@ class ExportYaml extends ExportPlugin
     }
 
     /**
-     * Outputs export header.
+     * Outputs export header
      *
      * @return bool Whether it succeeded
      */
     public function exportHeader()
     {
         Export::outputHandler(
-            '%YAML 1.1'.$GLOBALS['crlf'].'---'.$GLOBALS['crlf']
+            '%YAML 1.1' . $GLOBALS['crlf'] . '---' . $GLOBALS['crlf']
         );
 
         return true;
     }
 
     /**
-     * Outputs export footer.
+     * Outputs export footer
      *
      * @return bool Whether it succeeded
      */
     public function exportFooter()
     {
-        Export::outputHandler('...'.$GLOBALS['crlf']);
+        Export::outputHandler('...' . $GLOBALS['crlf']);
 
         return true;
     }
 
     /**
-     * Outputs database header.
+     * Outputs database header
      *
      * @param string $db       Database name
      * @param string $db_alias Aliases of db
@@ -102,7 +107,7 @@ class ExportYaml extends ExportPlugin
     }
 
     /**
-     * Outputs database footer.
+     * Outputs database footer
      *
      * @param string $db Database name
      *
@@ -114,7 +119,7 @@ class ExportYaml extends ExportPlugin
     }
 
     /**
-     * Outputs CREATE DATABASE statement.
+     * Outputs CREATE DATABASE statement
      *
      * @param string $db          Database name
      * @param string $export_type 'server', 'database', 'table'
@@ -128,7 +133,7 @@ class ExportYaml extends ExportPlugin
     }
 
     /**
-     * Outputs the content of a table in JSON format.
+     * Outputs the content of a table in JSON format
      *
      * @param string $db        database name
      * @param string $table     table name
@@ -145,7 +150,7 @@ class ExportYaml extends ExportPlugin
         $crlf,
         $error_url,
         $sql_query,
-        array $aliases = []
+        array $aliases = array()
     ) {
         $db_alias = $db;
         $table_alias = $table;
@@ -157,10 +162,10 @@ class ExportYaml extends ExportPlugin
         );
 
         $columns_cnt = $GLOBALS['dbi']->numFields($result);
-        $columns = [];
+        $columns = array();
         for ($i = 0; $i < $columns_cnt; $i++) {
             $col_as = $GLOBALS['dbi']->fieldName($result, $i);
-            if (! empty($aliases[$db]['tables'][$table]['columns'][$col_as])) {
+            if (!empty($aliases[$db]['tables'][$table]['columns'][$col_as])) {
                 $col_as = $aliases[$db]['tables'][$table]['columns'][$col_as];
             }
             $columns[$i] = stripslashes($col_as);
@@ -173,45 +178,41 @@ class ExportYaml extends ExportPlugin
 
             // Output table name as comment if this is the first record of the table
             if ($record_cnt == 1) {
-                $buffer = '# '.$db_alias.'.'.$table_alias.$crlf;
-                $buffer .= '-'.$crlf;
+                $buffer = '# ' . $db_alias . '.' . $table_alias . $crlf;
+                $buffer .= '-' . $crlf;
             } else {
-                $buffer = '-'.$crlf;
+                $buffer = '-' . $crlf;
             }
 
             for ($i = 0; $i < $columns_cnt; $i++) {
-                if (! isset($record[$i])) {
+                if (!isset($record[$i])) {
                     continue;
                 }
 
                 if (is_null($record[$i])) {
-                    $buffer .= '  '.$columns[$i].': null'.$crlf;
-
+                    $buffer .= '  ' . $columns[$i] . ': null' . $crlf;
                     continue;
                 }
 
                 if (is_numeric($record[$i])) {
-                    $buffer .= '  '.$columns[$i].': '.$record[$i].$crlf;
-
+                    $buffer .= '  ' . $columns[$i] . ': ' . $record[$i] . $crlf;
                     continue;
                 }
 
                 $record[$i] = str_replace(
-                    ['\\', '"', "\n", "\r"],
-                    ['\\\\', '\"', '\n', '\r'],
+                    array('\\', '"', "\n", "\r"),
+                    array('\\\\', '\"', '\n', '\r'),
                     $record[$i]
                 );
-                $buffer .= '  '.$columns[$i].': "'.$record[$i].'"'.$crlf;
+                $buffer .= '  ' . $columns[$i] . ': "' . $record[$i] . '"' . $crlf;
             }
 
-            if (! Export::outputHandler($buffer)) {
+            if (!Export::outputHandler($buffer)) {
                 return false;
             }
         }
         $GLOBALS['dbi']->freeResult($result);
 
         return true;
-    }
-
-    // end getTableYAML
+    } // end getTableYAML
 }

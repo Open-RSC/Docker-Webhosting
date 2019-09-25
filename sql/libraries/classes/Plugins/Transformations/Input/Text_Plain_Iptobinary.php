@@ -1,22 +1,26 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Handles the IPv4/IPv6 to binary transformation for text plain.
+ * Handles the IPv4/IPv6 to binary transformation for text plain
+ *
+ * @package    PhpMyAdmin-Transformations
+ * @subpackage IPToBinary
  */
-
 namespace PhpMyAdmin\Plugins\Transformations\Input;
 
 use PhpMyAdmin\Plugins\IOTransformationsPlugin;
 
 /**
- * Handles the IPv4/IPv6 to binary transformation for text plain.
+ * Handles the IPv4/IPv6 to binary transformation for text plain
+ *
+ * @package    PhpMyAdmin-Transformations
+ * @subpackage IPToBinary
  */
 // @codingStandardsIgnoreLine
 class Text_Plain_Iptobinary extends IOTransformationsPlugin
 {
     /**
-     * Gets the transformation description of the plugin.
+     * Gets the transformation description of the plugin
      *
      * @return string
      */
@@ -38,11 +42,11 @@ class Text_Plain_Iptobinary extends IOTransformationsPlugin
      *
      * @return string IP address
      */
-    public function applyTransformation($buffer, array $options = [], $meta = '')
+    public function applyTransformation($buffer, array $options = array(), $meta = '')
     {
         $val = @inet_pton($buffer);
         if ($val !== false) {
-            return '0x'.bin2hex($val);
+            return '0x' . bin2hex($val);
         }
 
         return $buffer;
@@ -77,25 +81,25 @@ class Text_Plain_Iptobinary extends IOTransformationsPlugin
     ) {
         $html = '';
         $val = '';
-        if (! empty($value)) {
+        if (!empty($value)) {
             $length = strlen($value);
             if ($length == 4 || $length == 16) {
-                $ip = @inet_ntop(pack('A'.$length, $value));
+                $ip = @inet_ntop(pack('A' . $length, $value));
                 if ($ip !== false) {
                     $val = $ip;
                 }
             }
-            $html = '<input type="hidden" name="fields_prev'.$column_name_appendix
-                .'" value="'.htmlspecialchars($val).'"/>';
+            $html = '<input type="hidden" name="fields_prev' . $column_name_appendix
+                . '" value="' . htmlspecialchars($val) . '"/>';
         }
         $class = 'transform_IPToBin';
-        $html .= '<input type="text" name="fields'.$column_name_appendix.'"'
-            .' value="'.htmlspecialchars($val).'"'
-            .' size="40"'
-            .' dir="'.$text_dir.'"'
-            .' class="'.$class.'"'
-            .' id="field_'.($idindex).'_3"'
-            .' tabindex="'.($tabindex + $tabindex_for_value).'" />';
+        $html .= '<input type="text" name="fields' . $column_name_appendix . '"'
+            . ' value="' . htmlspecialchars($val) . '"'
+            . ' size="40"'
+            . ' dir="' . $text_dir . '"'
+            . ' class="' . $class . '"'
+            . ' id="field_' . ($idindex) . '_3"'
+            . ' tabindex="' . ($tabindex + $tabindex_for_value) . '" />';
 
         return $html;
     }
@@ -103,32 +107,32 @@ class Text_Plain_Iptobinary extends IOTransformationsPlugin
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the plugin.
+     * Gets the transformation name of the plugin
      *
      * @return string
      */
     public static function getName()
     {
-        return 'IPv4/IPv6 To Binary';
+        return "IPv4/IPv6 To Binary";
     }
 
     /**
-     * Gets the plugin`s MIME type.
+     * Gets the plugin`s MIME type
      *
      * @return string
      */
     public static function getMIMEType()
     {
-        return 'Text';
+        return "Text";
     }
 
     /**
-     * Gets the plugin`s MIME subtype.
+     * Gets the plugin`s MIME subtype
      *
      * @return string
      */
     public static function getMIMESubtype()
     {
-        return 'Plain';
+        return "Plain";
     }
 }

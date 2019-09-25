@@ -1,10 +1,10 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Analyzes a query and gives user feedback.
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
 use PhpMyAdmin\SqlParser\Lexer;
@@ -14,6 +14,8 @@ use PhpMyAdmin\SqlParser\Utils\Error as ParserError;
 
 /**
  * The linter itself.
+ *
+ * @package PhpMyAdmin
  */
 class Linter
 {
@@ -26,7 +28,7 @@ class Linter
      */
     public static function getLines($str)
     {
-        if ((! ($str instanceof UtfString))
+        if ((!($str instanceof UtfString))
             && (defined('USE_UTF_STRINGS')) && (USE_UTF_STRINGS)
         ) {
             // If the lexer uses UtfString for processing then the position will
@@ -50,13 +52,12 @@ class Linter
         $len = ($str instanceof UtfString) ?
             $str->length() : strlen($str);
 
-        $lines = [0];
-        for ($i = 0; $i < $len; $i++) {
+        $lines = array(0);
+        for ($i = 0; $i < $len; ++$i) {
             if ($str[$i] === "\n") {
                 $lines[] = $i + 1;
             }
         }
-
         return $lines;
     }
 
@@ -77,8 +78,7 @@ class Linter
             }
             $line = $lineNo;
         }
-
-        return [$line, $pos - $lines[$line]];
+        return array($line, $pos - $lines[$line]);
     }
 
     /**
@@ -92,19 +92,19 @@ class Linter
     {
         // Disabling lint for huge queries to save some resources.
         if (mb_strlen($query) > 10000) {
-            return [
-                [
+            return array(
+                array(
                     'message' => __(
                         'Linting is disabled for this query because it exceeds the '
-                        .'maximum length.'
+                        . 'maximum length.'
                     ),
                     'fromLine' => 0,
                     'fromColumn' => 0,
                     'toLine' => 0,
                     'toColumn' => 0,
                     'severity' => 'warning',
-                ],
-            ];
+                )
+            );
         }
 
         /**
@@ -126,14 +126,14 @@ class Linter
          *
          * @var array
          */
-        $errors = ParserError::get([$lexer, $parser]);
+        $errors = ParserError::get(array($lexer, $parser));
 
         /**
          * The response containing of all errors.
          *
          * @var array
          */
-        $response = [];
+        $response = array();
 
         /**
          * The starting position for each line.
@@ -159,7 +159,7 @@ class Linter
             );
 
             // Building the response.
-            $response[] = [
+            $response[] = array(
                 'message' => sprintf(
                     __('%1$s (near <code>%2$s</code>)'),
                     htmlspecialchars($error[0]), htmlspecialchars($error[2])
@@ -169,10 +169,11 @@ class Linter
                 'toLine' => $toLine,
                 'toColumn' => $toColumn,
                 'severity' => 'error',
-            ];
+            );
         }
 
         // Sending back the answer.
         return $response;
     }
+
 }

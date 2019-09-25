@@ -1,14 +1,15 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Front controller for config view / download and clear.
+ * Front controller for config view / download and clear
+ *
+ * @package PhpMyAdmin-Setup
  */
-use PhpMyAdmin\Url;
-use PhpMyAdmin\Core;
-use PhpMyAdmin\Response;
 use PhpMyAdmin\Setup\ConfigGenerator;
 use PhpMyAdmin\Config\Forms\Setup\ConfigForm;
+use PhpMyAdmin\Core;
+use PhpMyAdmin\Url;
+use PhpMyAdmin\Response;
 
 /**
  * Core libraries.
@@ -30,7 +31,7 @@ if (Core::ifSetOr($_POST['submit_clear'], '')) {
     //
     $GLOBALS['ConfigFile']->resetConfigData();
     // drop post data
-    $response->generateHeader303('index.php'.Url::getCommonRaw());
+    $response->generateHeader303('index.php' . Url::getCommonRaw());
     exit;
 } elseif (Core::ifSetOr($_POST['submit_download'], '')) {
     //
@@ -44,6 +45,6 @@ if (Core::ifSetOr($_POST['submit_clear'], '')) {
     //
     // Show generated config file in a <textarea>
     //
-    $response->generateHeader303('index.php'.Url::getCommonRaw(['page' => 'config']));
+    $response->generateHeader303('index.php' . Url::getCommonRaw(array('page' => 'config')));
     exit;
 }

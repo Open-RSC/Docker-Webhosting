@@ -1,7 +1,10 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Designer styles for the pmahomme theme.
+ * Designer styles for the pmahomme theme
+ *
+ * @package    PhpMyAdmin-theme
+ * @subpackage PMAHomme
  */
 use PhpMyAdmin\Theme;
 

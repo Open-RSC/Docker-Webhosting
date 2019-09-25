@@ -1,16 +1,17 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Renders data dictionary.
+ * Renders data dictionary
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Url;
 use PhpMyAdmin\Relation;
 use PhpMyAdmin\Response;
 use PhpMyAdmin\Transformations;
+use PhpMyAdmin\Url;
 
 /**
- * Gets the variables sent or posted to this script, then displays headers.
+ * Gets the variables sent or posted to this script, then displays headers
  */
 require_once 'libraries/common.inc.php';
 
@@ -30,30 +31,30 @@ if (! isset($selected_tbl)) {
 }
 
 $response = Response::getInstance();
-$header = $response->getHeader();
+$header   = $response->getHeader();
 $header->enablePrintView();
 
 $relation = new Relation();
 
 /**
- * Gets the relations settings.
+ * Gets the relations settings
  */
-$cfgRelation = $relation->getRelationsParam();
-
-/*
- * Check parameters
- */
-PhpMyAdmin\Util::checkParameters(['db']);
+$cfgRelation  = $relation->getRelationsParam();
 
 /**
- * Defines the url to return to in case of error in a sql statement.
+ * Check parameters
  */
-$err_url = 'db_sql.php'.Url::getCommon(['db' => $db]);
+PhpMyAdmin\Util::checkParameters(array('db'));
+
+/**
+ * Defines the url to return to in case of error in a sql statement
+ */
+$err_url = 'db_sql.php' . Url::getCommon(array('db' => $db));
 
 if ($cfgRelation['commwork']) {
     $comment = $relation->getDbComment($db);
 
-    /*
+    /**
      * Displays DB comment
      */
     if ($comment) {
@@ -62,13 +63,13 @@ if ($cfgRelation['commwork']) {
     } // end if
 }
 
-/*
+/**
  * Selects the database and gets tables names
  */
 $GLOBALS['dbi']->selectDb($db);
 $tables = $GLOBALS['dbi']->getTables($db);
 
-$count = 0;
+$count  = 0;
 foreach ($tables as $table) {
     $comments = $relation->getComments($db, $table);
 
@@ -77,12 +78,12 @@ foreach ($tables as $table) {
     echo '<h2>' , htmlspecialchars($table) , '</h2>' , "\n";
 
     /**
-     * Gets table information.
+     * Gets table information
      */
     $show_comment = $GLOBALS['dbi']->getTable($db, $table)
         ->getStatusInfo('TABLE_COMMENT');
 
-    /*
+    /**
      * Gets table keys and retains them
      */
     $GLOBALS['dbi']->selectDb($db);
@@ -91,7 +92,7 @@ foreach ($tables as $table) {
         = PhpMyAdmin\Util::processIndexData($indexes);
 
     /**
-     * Gets columns properties.
+     * Gets columns properties
      */
     $columns = $GLOBALS['dbi']->getColumns($db, $table);
 
@@ -100,15 +101,15 @@ foreach ($tables as $table) {
         ! empty($cfgRelation['relation']), $db, $table
     );
 
-    /*
+    /**
      * Displays the comments of the table if MySQL >= 3.23
      */
-    if (! empty($show_comment)) {
+    if (!empty($show_comment)) {
         echo __('Table comments:') , ' ';
         echo htmlspecialchars($show_comment) , '<br /><br />';
     }
 
-    /*
+    /**
      * Displays the table structure
      */
 
@@ -126,6 +127,7 @@ foreach ($tables as $table) {
     }
     echo '</tr>';
     foreach ($columns as $row) {
+
         if ($row['Null'] == '') {
             $row['Null'] = 'NO';
         }
@@ -136,7 +138,7 @@ foreach ($tables as $table) {
         // set or enum types: slashes single quotes inside options
 
         $type = htmlspecialchars($extracted_columnspec['print_type']);
-        $attribute = $extracted_columnspec['attribute'];
+        $attribute     = $extracted_columnspec['attribute'];
         if (! isset($row['Default'])) {
             if ($row['Null'] != 'NO') {
                 $row['Default'] = '<i>NULL</i>';
@@ -161,7 +163,7 @@ foreach ($tables as $table) {
             , ' lang="en" dir="ltr">' , $type , '</td>';
 
         echo '<td>';
-        echo ($row['Null'] == 'NO') ? __('No') : __('Yes');
+        echo (($row['Null'] == 'NO') ? __('No') : __('Yes'));
         echo '</td>';
         echo '<td class="nowrap">';
         if (isset($row['Default'])) {
@@ -174,8 +176,8 @@ foreach ($tables as $table) {
             if ($foreigner = $relation->searchColumnInForeigners($res_rel, $column_name)) {
                 echo htmlspecialchars(
                     $foreigner['foreign_table']
-                    .' -> '
-                    .$foreigner['foreign_field']
+                    . ' -> '
+                    . $foreigner['foreign_field']
                 );
             }
             echo '</td>' , "\n";
@@ -207,7 +209,7 @@ foreach ($tables as $table) {
     echo '</div>';
 } //ends main while
 
-/*
+/**
  * Displays the footer
  */
 echo PhpMyAdmin\Util::getButton();

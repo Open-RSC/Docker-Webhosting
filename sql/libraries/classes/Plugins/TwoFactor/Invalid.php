@@ -1,14 +1,14 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Second authentication factor handling.
+ * Second authentication factor handling
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Plugins\TwoFactor;
 
-use PhpMyAdmin\Template;
 use PhpMyAdmin\Plugins\TwoFactorPlugin;
+use PhpMyAdmin\Template;
 
 /**
  * Invalid two-factor authentication showing that configured choice is not available.
@@ -23,9 +23,9 @@ class Invalid extends TwoFactorPlugin
     public static $showSubmit = false;
 
     /**
-     * Checks authentication, returns true on success.
+     * Checks authentication, returns true on success
      *
-     * @return bool
+     * @return boolean
      */
     public function check()
     {
@@ -33,7 +33,7 @@ class Invalid extends TwoFactorPlugin
     }
 
     /**
-     * Renders user interface to enter two-factor authentication.
+     * Renders user interface to enter two-factor authentication
      *
      * @return string HTML code
      */
@@ -43,7 +43,7 @@ class Invalid extends TwoFactorPlugin
     }
 
     /**
-     * Get user visible name.
+     * Get user visible name
      *
      * @return string
      */
@@ -53,7 +53,7 @@ class Invalid extends TwoFactorPlugin
     }
 
     /**
-     * Get user visible description.
+     * Get user visible description
      *
      * @return string
      */
@@ -62,3 +62,4 @@ class Invalid extends TwoFactorPlugin
         return 'Error fallback only!';
     }
 }
+

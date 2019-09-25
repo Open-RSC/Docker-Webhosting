@@ -1,25 +1,28 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 
 /**
- * Holds the PhpMyAdmin\Controllers\Server\ServerDatabasesController.
+ * Holds the PhpMyAdmin\Controllers\Server\ServerDatabasesController
+ *
+ * @package PhpMyAdmin\Controllers
  */
 
 namespace PhpMyAdmin\Controllers\Server;
 
+use PhpMyAdmin\Controllers\Controller;
+use PhpMyAdmin\Charsets;
+use PhpMyAdmin\DatabaseInterface;
+use PhpMyAdmin\Message;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Server\Common;
+use PhpMyAdmin\Template;
 use PhpMyAdmin\Url;
 use PhpMyAdmin\Util;
-use PhpMyAdmin\Message;
-use PhpMyAdmin\Charsets;
-use PhpMyAdmin\Response;
-use PhpMyAdmin\Template;
-use PhpMyAdmin\Server\Common;
-use PhpMyAdmin\DatabaseInterface;
-use PhpMyAdmin\Controllers\Controller;
 
 /**
- * Handles viewing and creating and deleting databases.
+ * Handles viewing and creating and deleting databases
+ *
+ * @package PhpMyAdmin\Controllers
  */
 class ServerDatabasesController extends Controller
 {
@@ -27,34 +30,29 @@ class ServerDatabasesController extends Controller
      * @var array array of database details
      */
     private $_databases;
-
     /**
      * @var int number of databases
      */
     private $_database_count;
-
     /**
      * @var string sort by column
      */
     private $_sort_by;
-
     /**
      * @var string sort order of databases
      */
     private $_sort_order;
-
     /**
-     * @var bool whether to show database statistics
+     * @var boolean whether to show database statistics
      */
     private $_dbstats;
-
     /**
      * @var int position in list navigation
      */
     private $_pos;
 
     /**
-     * Index action.
+     * Index action
      *
      * @return void
      */
@@ -69,7 +67,6 @@ class ServerDatabasesController extends Controller
             && ($GLOBALS['dbi']->isSuperuser() || $GLOBALS['cfg']['AllowUserDropDatabase'])
         ) {
             $this->dropDatabasesAction();
-
             return;
         }
 
@@ -79,21 +76,20 @@ class ServerDatabasesController extends Controller
             && $response->isAjax()
         ) {
             $this->createDatabaseAction();
-
             return;
         }
 
         include_once 'libraries/server_common.inc.php';
 
-        $header = $this->response->getHeader();
+        $header  = $this->response->getHeader();
         $scripts = $header->getScripts();
         $scripts->addFile('server_databases.js');
 
         $this->_setSortDetails();
-        $this->_dbstats = empty($_REQUEST['dbstats']) ? false : true;
-        $this->_pos = empty($_REQUEST['pos']) ? 0 : (int) $_REQUEST['pos'];
+        $this->_dbstats = ! empty($_POST['dbstats']);
+        $this->_pos     = empty($_REQUEST['pos']) ? 0 : (int) $_REQUEST['pos'];
 
-        /*
+        /**
          * Gets the databases list
          */
         if ($GLOBALS['server'] > 0) {
@@ -123,7 +119,7 @@ class ServerDatabasesController extends Controller
     }
 
     /**
-     * Handles creating a new database.
+     * Handles creating a new database
      *
      * @return void
      */
@@ -136,9 +132,9 @@ class ServerDatabasesController extends Controller
             );
         }
         /**
-         * Builds and executes the db creation sql query.
+         * Builds and executes the db creation sql query
          */
-        $sql_query = 'CREATE DATABASE '.Util::backquote($_POST['new_db']);
+        $sql_query = 'CREATE DATABASE ' . Util::backquote($_POST['new_db']);
         if (! empty($_POST['db_collation'])) {
             list($db_charset) = explode('_', $_POST['db_collation']);
             $charsets = Charsets::getMySQLCharsets(
@@ -153,7 +149,7 @@ class ServerDatabasesController extends Controller
                 && in_array($_POST['db_collation'], $collations[$db_charset])
             ) {
                 $sql_query .= ' DEFAULT'
-                    .Util::getCharsetQueryPart($_POST['db_collation']);
+                    . Util::getCharsetQueryPart($_POST['db_collation']);
             }
         }
         $sql_query .= ';';
@@ -182,13 +178,13 @@ class ServerDatabasesController extends Controller
                 Util::getScriptNameForOption(
                     $GLOBALS['cfg']['DefaultTabDatabase'], 'database'
                 )
-                .Url::getCommon(['db' => $_POST['new_db']])
+                . Url::getCommon(array('db' => $_POST['new_db']))
             );
         }
     }
 
     /**
-     * Handles dropping multiple databases.
+     * Handles dropping multiple databases
      *
      * @return void
      */
@@ -198,7 +194,7 @@ class ServerDatabasesController extends Controller
             $message = Message::error(__('No databases selected.'));
         } else {
             $action = 'server_databases.php';
-            $err_url = $action.Url::getCommon();
+            $err_url = $action . Url::getCommon();
 
             $GLOBALS['submit_mult'] = 'drop_db';
             $GLOBALS['mult_btn'] = __('Yes');
@@ -225,7 +221,7 @@ class ServerDatabasesController extends Controller
     }
 
     /**
-     * Extracts parameters $sort_order and $sort_by.
+     * Extracts parameters $sort_order and $sort_by
      *
      * @return void
      */
@@ -234,7 +230,7 @@ class ServerDatabasesController extends Controller
         if (empty($_REQUEST['sort_by'])) {
             $this->_sort_by = 'SCHEMA_NAME';
         } else {
-            $sort_by_whitelist = [
+            $sort_by_whitelist = array(
                 'SCHEMA_NAME',
                 'DEFAULT_COLLATION_NAME',
                 'SCHEMA_TABLES',
@@ -242,8 +238,8 @@ class ServerDatabasesController extends Controller
                 'SCHEMA_DATA_LENGTH',
                 'SCHEMA_INDEX_LENGTH',
                 'SCHEMA_LENGTH',
-                'SCHEMA_DATA_FREE',
-            ];
+                'SCHEMA_DATA_FREE'
+            );
             if (in_array($_REQUEST['sort_by'], $sort_by_whitelist)) {
                 $this->_sort_by = $_REQUEST['sort_by'];
             } else {
@@ -261,7 +257,7 @@ class ServerDatabasesController extends Controller
     }
 
     /**
-     * Returns the html for Database List.
+     * Returns the html for Database List
      *
      * @param array $replication_types replication types
      *
@@ -284,12 +280,12 @@ class ServerDatabasesController extends Controller
             }
         }
 
-        $_url_params = [
+        $_url_params = array(
             'pos' => $this->_pos,
             'dbstats' => $this->_dbstats,
             'sort_by' => $this->_sort_by,
             'sort_order' => $this->_sort_order,
-        ];
+        );
 
         $html = Template::get('server/databases/databases_header')->render([
             'database_count' => $this->_database_count,
@@ -325,55 +321,55 @@ class ServerDatabasesController extends Controller
     }
 
     /**
-     * Prepares the $column_order array.
+     * Prepares the $column_order array
      *
      * @return array
      */
     private function _getColumnOrder()
     {
-        $column_order = [];
-        $column_order['DEFAULT_COLLATION_NAME'] = [
+        $column_order = array();
+        $column_order['DEFAULT_COLLATION_NAME'] = array(
             'disp_name' => __('Collation'),
-            'description_function' => [Charsets::class, 'getCollationDescr'],
+            'description_function' => array(Charsets::class, 'getCollationDescr'),
             'format'    => 'string',
             'footer'    => $this->dbi->getServerCollation(),
-        ];
-        $column_order['SCHEMA_TABLES'] = [
+        );
+        $column_order['SCHEMA_TABLES'] = array(
             'disp_name' => __('Tables'),
             'format'    => 'number',
             'footer'    => 0,
-        ];
-        $column_order['SCHEMA_TABLE_ROWS'] = [
+        );
+        $column_order['SCHEMA_TABLE_ROWS'] = array(
             'disp_name' => __('Rows'),
             'format'    => 'number',
             'footer'    => 0,
-        ];
-        $column_order['SCHEMA_DATA_LENGTH'] = [
+        );
+        $column_order['SCHEMA_DATA_LENGTH'] = array(
             'disp_name' => __('Data'),
             'format'    => 'byte',
             'footer'    => 0,
-        ];
-        $column_order['SCHEMA_INDEX_LENGTH'] = [
+        );
+        $column_order['SCHEMA_INDEX_LENGTH'] = array(
             'disp_name' => __('Indexes'),
             'format'    => 'byte',
             'footer'    => 0,
-        ];
-        $column_order['SCHEMA_LENGTH'] = [
+        );
+        $column_order['SCHEMA_LENGTH'] = array(
             'disp_name' => __('Total'),
             'format'    => 'byte',
             'footer'    => 0,
-        ];
-        $column_order['SCHEMA_DATA_FREE'] = [
+        );
+        $column_order['SCHEMA_DATA_FREE'] = array(
             'disp_name' => __('Overhead'),
             'format'    => 'byte',
             'footer'    => 0,
-        ];
+        );
 
         return $column_order;
     }
 
     /**
-     * Returns the html for Database List.
+     * Returns the html for Database List
      *
      * @param array $column_order      column order
      * @param array $replication_types replication types
@@ -382,7 +378,7 @@ class ServerDatabasesController extends Controller
      */
     private function _getHtmlForTableBody(array $column_order, array $replication_types)
     {
-        $html = '<tbody>'."\n";
+        $html = '<tbody>' . "\n";
 
         foreach ($this->_databases as $current) {
             $tr_class = ' db-row';
@@ -406,7 +402,7 @@ class ServerDatabasesController extends Controller
 
     /**
      * Builds the HTML for one database to display in the list
-     * of databases from server_databases.php.
+     * of databases from server_databases.php
      *
      * @param array  $current           current database
      * @param array  $column_order      column order
@@ -416,7 +412,7 @@ class ServerDatabasesController extends Controller
      *
      * @return array $column_order, $out
      */
-    public function _buildHtmlForDb(
+    function _buildHtmlForDb(
         array $current, array $column_order,
         array $replication_types, array $replication_info, $tr_class = ''
     ) {
@@ -425,7 +421,7 @@ class ServerDatabasesController extends Controller
             if ($replication_info[$type]['status']) {
                 $out = '';
                 $key = array_search(
-                    $current['SCHEMA_NAME'],
+                    $current["SCHEMA_NAME"],
                     $replication_info[$type]['Ignore_DB']
                 );
                 if (strlen($key) > 0) {
@@ -435,7 +431,7 @@ class ServerDatabasesController extends Controller
                     );
                 } else {
                     $key = array_search(
-                        $current['SCHEMA_NAME'], $replication_info[$type]['Do_DB']
+                        $current["SCHEMA_NAME"], $replication_info[$type]['Do_DB']
                     );
 
                     if (strlen($key) > 0

@@ -1,17 +1,20 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Holds the PhpMyAdmin\Di\AliasItem class.
+ * Holds the PhpMyAdmin\Di\AliasItem class
+ *
+ * @package PhpMyAdmin\Di
  */
-
 namespace PhpMyAdmin\Di;
 
 /**
- * Class AliasItem.
+ * Class AliasItem
+ *
+ * @package PhpMyAdmin\Di
  */
 class AliasItem implements Item
 {
+
     /** @var Container */
     protected $container;
 
@@ -19,7 +22,7 @@ class AliasItem implements Item
     protected $target;
 
     /**
-     * Constructor.
+     * Constructor
      *
      * @param Container $container Container
      * @param string    $target    Target
@@ -31,12 +34,12 @@ class AliasItem implements Item
     }
 
     /**
-     * Get the target item.
+     * Get the target item
      *
      * @param array $params Parameters
      * @return mixed
      */
-    public function get(array $params = [])
+    public function get(array $params = array())
     {
         return $this->container->get($this->target, $params);
     }

@@ -1,17 +1,20 @@
 <?php
 /**
- * Contract for every database extension supported by phpMyAdmin.
+ * Contract for every database extension supported by phpMyAdmin
+ *
+ * @package PhpMyAdmin-DBI
  */
-
 namespace PhpMyAdmin\Dbi;
 
 /**
- * Contract for every database extension supported by phpMyAdmin.
+ * Contract for every database extension supported by phpMyAdmin
+ *
+ * @package PhpMyAdmin-DBI
  */
 interface DbiExtension
 {
     /**
-     * connects to the database server.
+     * connects to the database server
      *
      * @param string $user     user name
      * @param string $password user password
@@ -24,17 +27,17 @@ interface DbiExtension
     );
 
     /**
-     * selects given database.
+     * selects given database
      *
      * @param string   $dbname database name to select
      * @param resource $link   connection object
      *
-     * @return bool
+     * @return boolean
      */
     public function selectDb($dbname, $link);
 
     /**
-     * runs a query and returns the result.
+     * runs a query and returns the result
      *
      * @param string   $query   query to execute
      * @param resource $link    connection object
@@ -45,7 +48,7 @@ interface DbiExtension
     public function realQuery($query, $link, $options);
 
     /**
-     * Run the multi query and output the results.
+     * Run the multi query and output the results
      *
      * @param resource $link  connection object
      * @param string   $query multi query statement to execute
@@ -55,7 +58,7 @@ interface DbiExtension
     public function realMultiQuery($link, $query);
 
     /**
-     * returns array of rows with associative and numeric keys from $result.
+     * returns array of rows with associative and numeric keys from $result
      *
      * @param object $result result set identifier
      *
@@ -64,7 +67,7 @@ interface DbiExtension
     public function fetchArray($result);
 
     /**
-     * returns array of rows with associative keys from $result.
+     * returns array of rows with associative keys from $result
      *
      * @param object $result result set identifier
      *
@@ -73,7 +76,7 @@ interface DbiExtension
     public function fetchAssoc($result);
 
     /**
-     * returns array of rows with numeric keys from $result.
+     * returns array of rows with numeric keys from $result
      *
      * @param object $result result set identifier
      *
@@ -82,17 +85,17 @@ interface DbiExtension
     public function fetchRow($result);
 
     /**
-     * Adjusts the result pointer to an arbitrary row in the result.
+     * Adjusts the result pointer to an arbitrary row in the result
      *
      * @param object  $result database result
-     * @param int $offset offset to seek
+     * @param integer $offset offset to seek
      *
      * @return bool true on success, false on failure
      */
     public function dataSeek($result, $offset);
 
     /**
-     * Frees memory associated with the result.
+     * Frees memory associated with the result
      *
      * @param object $result database result
      *
@@ -101,7 +104,7 @@ interface DbiExtension
     public function freeResult($result);
 
     /**
-     * Check if there are any more query results from a multi query.
+     * Check if there are any more query results from a multi query
      *
      * @param resource $link the connection object
      *
@@ -110,7 +113,7 @@ interface DbiExtension
     public function moreResults($link);
 
     /**
-     * Prepare next result from multi_query.
+     * Prepare next result from multi_query
      *
      * @param resource $link the connection object
      *
@@ -119,7 +122,7 @@ interface DbiExtension
     public function nextResult($link);
 
     /**
-     * Store the result returned from multi query.
+     * Store the result returned from multi query
      *
      * @param resource $link mysql link
      *
@@ -128,7 +131,7 @@ interface DbiExtension
     public function storeResult($link);
 
     /**
-     * Returns a string representing the type of connection used.
+     * Returns a string representing the type of connection used
      *
      * @param resource $link mysql link
      *
@@ -137,23 +140,23 @@ interface DbiExtension
     public function getHostInfo($link);
 
     /**
-     * Returns the version of the MySQL protocol used.
+     * Returns the version of the MySQL protocol used
      *
      * @param resource $link mysql link
      *
-     * @return int version of the MySQL protocol used
+     * @return integer version of the MySQL protocol used
      */
     public function getProtoInfo($link);
 
     /**
-     * returns a string that represents the client library version.
+     * returns a string that represents the client library version
      *
      * @return string MySQL client library version
      */
     public function getClientInfo();
 
     /**
-     * returns last error message or false if no errors occurred.
+     * returns last error message or false if no errors occurred
      *
      * @param resource $link connection link
      *
@@ -162,7 +165,7 @@ interface DbiExtension
     public function getError($link);
 
     /**
-     * returns the number of rows returned by last query.
+     * returns the number of rows returned by last query
      *
      * @param object $result result set identifier
      *
@@ -171,7 +174,7 @@ interface DbiExtension
     public function numRows($result);
 
     /**
-     * returns the number of rows affected by last query.
+     * returns the number of rows affected by last query
      *
      * @param resource $link the connection object
      *
@@ -180,7 +183,7 @@ interface DbiExtension
     public function affectedRows($link);
 
     /**
-     * returns metainfo for fields in $result.
+     * returns metainfo for fields in $result
      *
      * @param object $result result set identifier
      *
@@ -189,7 +192,7 @@ interface DbiExtension
     public function getFieldsMeta($result);
 
     /**
-     * return number of fields in given $result.
+     * return number of fields in given $result
      *
      * @param object $result result set identifier
      *
@@ -198,7 +201,7 @@ interface DbiExtension
     public function numFields($result);
 
     /**
-     * returns the length of the given field $i in $result.
+     * returns the length of the given field $i in $result
      *
      * @param object $result result set identifier
      * @param int    $i      field
@@ -208,7 +211,7 @@ interface DbiExtension
     public function fieldLen($result, $i);
 
     /**
-     * returns name of $i. field in $result.
+     * returns name of $i. field in $result
      *
      * @param object $result result set identifier
      * @param int    $i      field
@@ -218,7 +221,7 @@ interface DbiExtension
     public function fieldName($result, $i);
 
     /**
-     * returns concatenated string of human readable field flags.
+     * returns concatenated string of human readable field flags
      *
      * @param object $result result set identifier
      * @param int    $i      field
@@ -228,7 +231,7 @@ interface DbiExtension
     public function fieldFlags($result, $i);
 
     /**
-     * returns properly escaped string for use in MySQL queries.
+     * returns properly escaped string for use in MySQL queries
      *
      * @param mixed  $link database link
      * @param string $str  string to be escaped

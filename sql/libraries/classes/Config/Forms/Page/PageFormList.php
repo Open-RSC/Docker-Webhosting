@@ -1,17 +1,17 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Page preferences form.
+ * Page preferences form
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Config\Forms\Page;
 
 use PhpMyAdmin\Config\Forms\BaseFormList;
 
 class PageFormList extends BaseFormList
 {
-    protected static $all = [
+    protected static $all = array(
         'Browse',
         'DbStructure',
         'Edit',
@@ -20,7 +20,6 @@ class PageFormList extends BaseFormList
         'Navi',
         'Sql',
         'TableStructure',
-    ];
-
+    );
     protected static $ns = '\\PhpMyAdmin\\Config\\Forms\\Page\\';
 }

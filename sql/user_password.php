@@ -1,29 +1,31 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * displays and handles the form where the user can change his password
- * linked from index.php.
+ * linked from index.php
+ *
+ * @package PhpMyAdmin
  */
+
+use PhpMyAdmin\Display\ChangePassword;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
 use PhpMyAdmin\UserPassword;
-use PhpMyAdmin\Display\ChangePassword;
 
 /**
- * Gets some core libraries.
+ * Gets some core libraries
  */
 require_once './libraries/common.inc.php';
 
 $response = Response::getInstance();
-$header = $response->getHeader();
-$scripts = $header->getScripts();
+$header   = $response->getHeader();
+$scripts  = $header->getScripts();
 $scripts->addFile('server_privileges.js');
 $scripts->addFile('vendor/zxcvbn.js');
 
 $userPassword = new UserPassword();
 
-/*
+/**
  * Displays an error message and exits if the user isn't allowed to use this
  * script
  */
@@ -37,7 +39,7 @@ if ($cfg['Server']['auth_type'] == 'config' || ! $cfg['ShowChgPassword']) {
     exit;
 } // end if
 
-/*
+/**
  * If the "change password" form has been submitted, checks for valid values
  * and submit the query or logout
  */
@@ -56,7 +58,7 @@ if (isset($_POST['nopass'])) {
     }
 }
 
-/*
+/**
  * If the "change password" form hasn't been submitted or the values submitted
  * aren't valid -> displays the form
  */

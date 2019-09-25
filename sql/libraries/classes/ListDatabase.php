@@ -1,19 +1,19 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * holds the ListDatabase class.
+ * holds the ListDatabase class
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
-use PhpMyAdmin\Util;
 use PhpMyAdmin\ListAbstract;
+use PhpMyAdmin\Util;
 
 require_once './libraries/check_user_privileges.inc.php';
 
 /**
- * handles database lists.
+ * handles database lists
  *
  * <code>
  * $ListDatabase = new ListDatabase();
@@ -21,12 +21,13 @@ require_once './libraries/check_user_privileges.inc.php';
  *
  * @todo this object should be attached to the PMA_Server object
  *
+ * @package PhpMyAdmin
  * @since   phpMyAdmin 2.9.10
  */
 class ListDatabase extends ListAbstract
 {
     /**
-     * Constructor.
+     * Constructor
      */
     public function __construct()
     {
@@ -35,7 +36,7 @@ class ListDatabase extends ListAbstract
     }
 
     /**
-     * checks if the configuration wants to hide some databases.
+     * checks if the configuration wants to hide some databases
      *
      * @return void
      */
@@ -46,14 +47,14 @@ class ListDatabase extends ListAbstract
         }
 
         foreach ($this->getArrayCopy() as $key => $db) {
-            if (preg_match('/'.$GLOBALS['cfg']['Server']['hide_db'].'/', $db)) {
+            if (preg_match('/' . $GLOBALS['cfg']['Server']['hide_db'] . '/', $db)) {
                 $this->offsetUnset($key);
             }
         }
     }
 
     /**
-     * retrieves database list from server.
+     * retrieves database list from server
      *
      * @param string $like_db_name usually a db_name containing wildcards
      *
@@ -61,18 +62,18 @@ class ListDatabase extends ListAbstract
      */
     protected function retrieve($like_db_name = null)
     {
-        $database_list = [];
-        $command = '';
+        $database_list = array();
+        $command = "";
         if (! $GLOBALS['cfg']['Server']['DisableIS']) {
-            $command .= 'SELECT `SCHEMA_NAME` FROM `INFORMATION_SCHEMA`.`SCHEMATA`';
+            $command .= "SELECT `SCHEMA_NAME` FROM `INFORMATION_SCHEMA`.`SCHEMATA`";
             if (null !== $like_db_name) {
-                $command .= " WHERE `SCHEMA_NAME` LIKE '".$like_db_name."'";
+                $command .= " WHERE `SCHEMA_NAME` LIKE '" . $like_db_name . "'";
             }
         } else {
             if ($GLOBALS['dbs_to_test'] === false || null !== $like_db_name) {
-                $command .= 'SHOW DATABASES';
+                $command .= "SHOW DATABASES";
                 if (null !== $like_db_name) {
-                    $command .= " LIKE '".$like_db_name."'";
+                    $command .= " LIKE '" . $like_db_name . "'";
                 }
             } else {
                 foreach ($GLOBALS['dbs_to_test'] as $db) {
@@ -101,7 +102,7 @@ class ListDatabase extends ListAbstract
     }
 
     /**
-     * builds up the list.
+     * builds up the list
      *
      * @return void
      */
@@ -116,25 +117,25 @@ class ListDatabase extends ListAbstract
     }
 
     /**
-     * checks the only_db configuration.
+     * checks the only_db configuration
      *
-     * @return bool false if there is no only_db, otherwise true
+     * @return boolean false if there is no only_db, otherwise true
      */
     protected function checkOnlyDatabase()
     {
         if (is_string($GLOBALS['cfg']['Server']['only_db'])
             && strlen($GLOBALS['cfg']['Server']['only_db']) > 0
         ) {
-            $GLOBALS['cfg']['Server']['only_db'] = [
-                $GLOBALS['cfg']['Server']['only_db'],
-            ];
+            $GLOBALS['cfg']['Server']['only_db'] = array(
+                $GLOBALS['cfg']['Server']['only_db']
+            );
         }
 
         if (! is_array($GLOBALS['cfg']['Server']['only_db'])) {
             return false;
         }
 
-        $items = [];
+        $items = array();
 
         foreach ($GLOBALS['cfg']['Server']['only_db'] as $each_only_db) {
 
@@ -143,7 +144,6 @@ class ListDatabase extends ListAbstract
             if (! preg_match('/(^|[^\\\\])(_|%)/', $each_only_db)) {
                 // ... not contains wildcard
                 $items[] = Util::unescapeMysqlWildcards($each_only_db);
-
                 continue;
             }
 
@@ -156,7 +156,7 @@ class ListDatabase extends ListAbstract
     }
 
     /**
-     * returns default item.
+     * returns default item
      *
      * @return string default item
      */

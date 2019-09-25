@@ -1,58 +1,60 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Hold the PhpMyAdmin\Encoding class.
+ * Hold the PhpMyAdmin\Encoding class
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
+use PhpMyAdmin\Config\ConfigFile;
 use PhpMyAdmin\Core;
 use PhpMyAdmin\Template;
-use PhpMyAdmin\Config\ConfigFile;
 
 /**
- * Encoding conversion helper class.
+ * Encoding conversion helper class
+ *
+ * @package PhpMyAdmin
  */
 class Encoding
 {
     /**
-     * None encoding conversion engine.
+     * None encoding conversion engine
      *
      * @var int
      */
-    const ENGINE_NONE = 0;
 
+    const ENGINE_NONE = 0;
     /**
-     * iconv encoding conversion engine.
+     * iconv encoding conversion engine
      *
      * @var int
      */
     const ENGINE_ICONV = 1;
 
     /**
-     * recode encoding conversion engine.
+     * recode encoding conversion engine
      *
      * @var int
      */
     const ENGINE_RECODE = 2;
 
     /**
-     * mbstring encoding conversion engine.
+     * mbstring encoding conversion engine
      *
      * @var int
      */
     const ENGINE_MB = 3;
 
     /**
-     * Chosen encoding engine.
+     * Chosen encoding engine
      *
      * @var int
      */
     private static $_engine = null;
 
     /**
-     * Map of conversion engine configurations.
+     * Map of conversion engine configurations
      *
      * Each entry contains:
      *
@@ -62,24 +64,24 @@ class Encoding
      *
      * @var array
      */
-    private static $_enginemap = [
-        'iconv' => ['iconv', self::ENGINE_ICONV, 'iconv'],
-        'recode' => ['recode_string', self::ENGINE_RECODE, 'recode'],
-        'mb' => ['mb_convert_encoding', self::ENGINE_MB, 'mbstring'],
-        'none' => ['isset', self::ENGINE_NONE, ''],
-    ];
+    private static $_enginemap = array(
+        'iconv' => array('iconv', self::ENGINE_ICONV, 'iconv'),
+        'recode' => array('recode_string', self::ENGINE_RECODE, 'recode'),
+        'mb' => array('mb_convert_encoding', self::ENGINE_MB, 'mbstring'),
+        'none' => array('isset', self::ENGINE_NONE, ''),
+    );
 
     /**
-     * Order of automatic detection of engines.
+     * Order of automatic detection of engines
      *
      * @var array
      */
-    private static $_engineorder = [
+    private static $_engineorder = array(
         'iconv', 'mb', 'recode',
-    ];
+    );
 
     /**
-     * Kanji encodings list.
+     * Kanji encodings list
      *
      * @var string
      */
@@ -101,7 +103,6 @@ class Encoding
         if (isset(self::$_enginemap[$engine])) {
             if (function_exists(self::$_enginemap[$engine][0])) {
                 self::$_engine = self::$_enginemap[$engine][1];
-
                 return;
             } else {
                 Core::warnMissingExtension(self::$_enginemap[$engine][2]);
@@ -112,7 +113,6 @@ class Encoding
         foreach (self::$_engineorder as $engine) {
             if (function_exists(self::$_enginemap[$engine][0])) {
                 self::$_engine = self::$_enginemap[$engine][1];
-
                 return;
             }
         }
@@ -134,7 +134,7 @@ class Encoding
     }
 
     /**
-     * Checks whether there is any charset conversion supported.
+     * Checks whether there is any charset conversion supported
      *
      * @return bool
      */
@@ -143,7 +143,6 @@ class Encoding
         if (is_null(self::$_engine)) {
             self::initEngine();
         }
-
         return self::$_engine != self::ENGINE_NONE;
     }
 
@@ -156,6 +155,8 @@ class Encoding
      * @param string $what         what to convert
      *
      * @return string   converted text
+     *
+     * @access  public
      */
     public static function convertString($src_charset, $dest_charset, $what)
     {
@@ -168,13 +169,13 @@ class Encoding
         switch (self::$_engine) {
             case self::ENGINE_RECODE:
                 return recode_string(
-                    $src_charset.'..'.$dest_charset,
+                    $src_charset . '..'  . $dest_charset,
                     $what
                 );
             case self::ENGINE_ICONV:
                 return iconv(
                     $src_charset,
-                    $dest_charset.
+                    $dest_charset .
                     (isset($GLOBALS['cfg']['IconvExtraParams']) ? $GLOBALS['cfg']['IconvExtraParams'] : ''),
                     $what
                 );
@@ -190,7 +191,7 @@ class Encoding
     }
 
     /**
-     * Detects whether Kanji encoding is available.
+     * Detects whether Kanji encoding is available
      *
      * @return bool
      */
@@ -222,7 +223,7 @@ class Encoding
     }
 
     /**
-     * Reverses SJIS & EUC-JP position in the encoding codes list.
+     * Reverses SJIS & EUC-JP position in the encoding codes list
      *
      * @return void
      */
@@ -237,7 +238,7 @@ class Encoding
     }
 
     /**
-     * Kanji string encoding convert.
+     * Kanji string encoding convert
      *
      * @param string $str  the string to convert
      * @param string $enc  the destination encoding code
@@ -258,19 +259,19 @@ class Encoding
 
         if ($kana == 'kana') {
             $dist = mb_convert_kana($str, 'KV', $string_encoding);
-            $str = $dist;
+            $str  = $dist;
         }
         if ($string_encoding != $enc && $enc != '') {
             $dist = mb_convert_encoding($str, $enc, $string_encoding);
         } else {
             $dist = $str;
         }
-
         return $dist;
     }
 
+
     /**
-     * Kanji file encoding convert.
+     * Kanji file encoding convert
      *
      * @param string $file the name of the file to convert
      * @param string $enc  the destination encoding code
@@ -284,13 +285,13 @@ class Encoding
             return $file;
         }
         $tmpfname = tempnam($GLOBALS['PMA_Config']->getUploadTempDir(), $enc);
-        $fpd = fopen($tmpfname, 'wb');
-        $fps = fopen($file, 'r');
+        $fpd      = fopen($tmpfname, 'wb');
+        $fps      = fopen($file, 'r');
         self::kanjiChangeOrder();
-        while (! feof($fps)) {
+        while (!feof($fps)) {
             $line = fgets($fps, 4096);
             $dist = self::kanjiStrConv($line, $enc, $kana);
-            fwrite($fpd, $dist);
+            fputs($fpd, $dist);
         } // end while
         self::kanjiChangeOrder();
         fclose($fps);
@@ -301,7 +302,7 @@ class Encoding
     }
 
     /**
-     * Defines radio form fields to switch between encoding modes.
+     * Defines radio form fields to switch between encoding modes
      *
      * @return string   xhtml code for the radio controls
      */

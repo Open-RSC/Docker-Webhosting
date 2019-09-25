@@ -1,29 +1,34 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * View manipulations.
+ * View manipulations
+ *
+ * @package PhpMyAdmin
  */
+use PhpMyAdmin\Message;
+use PhpMyAdmin\Operations;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Table;
 use PhpMyAdmin\Url;
 use PhpMyAdmin\Util;
-use PhpMyAdmin\Table;
-use PhpMyAdmin\Message;
-use PhpMyAdmin\Response;
-use PhpMyAdmin\Operations;
 
+/**
+ *
+ */
 require_once './libraries/common.inc.php';
 
 $pma_table = new Table($GLOBALS['table'], $GLOBALS['db']);
 
 /**
- * Load JavaScript files.
+ * Load JavaScript files
  */
 $response = Response::getInstance();
-$header = $response->getHeader();
-$scripts = $header->getScripts();
+$header   = $response->getHeader();
+$scripts  = $header->getScripts();
 $scripts->addFile('tbl_operations.js');
 
 /**
- * Runs common work.
+ * Runs common work
  */
 require './libraries/tbl_common.inc.php';
 $url_query .= '&amp;goto=view_operations.php&amp;back=view_operations.php';
@@ -32,11 +37,12 @@ $url_params['goto'] = $url_params['back'] = 'view_operations.php';
 $operations = new Operations();
 
 /**
- * Updates if required.
+ * Updates if required
  */
 $_message = new Message;
 $_type = 'success';
 if (isset($_POST['submitoptions'])) {
+
     if (isset($_POST['new_name'])) {
         if ($pma_table->rename($_POST['new_name'])) {
             $_message->addText($pma_table->getLastMessage());
@@ -82,7 +88,7 @@ unset($_message, $_type);
 $url_params['goto'] = 'view_operations.php';
 $url_params['back'] = 'view_operations.php';
 
-/*
+/**
  * Displays the page
  */
 ?>
@@ -113,8 +119,8 @@ $url_params['back'] = 'view_operations.php';
 <?php
 $drop_view_url_params = array_merge(
     $url_params,
-    [
-        'sql_query' => 'DROP VIEW '.Util::backquote(
+    array(
+        'sql_query' => 'DROP VIEW ' . Util::backquote(
             $GLOBALS['table']
         ),
         'goto' => 'tbl_structure.php',
@@ -124,8 +130,8 @@ $drop_view_url_params = array_merge(
             __('View %s has been dropped.'),
             htmlspecialchars($GLOBALS['table'])
         ),
-        'table' => $GLOBALS['table'],
-    ]
+        'table' => $GLOBALS['table']
+    )
 );
 echo '<div>';
 echo '<fieldset class="caution">';

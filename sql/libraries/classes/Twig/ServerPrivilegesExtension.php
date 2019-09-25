@@ -1,17 +1,19 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * hold PhpMyAdmin\Twig\ServerPrivilegesExtension class.
+ * hold PhpMyAdmin\Twig\ServerPrivilegesExtension class
+ *
+ * @package PhpMyAdmin\Twig
  */
-
 namespace PhpMyAdmin\Twig;
 
-use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
- * Class ServerPrivilegesExtension.
+ * Class ServerPrivilegesExtension
+ *
+ * @package PhpMyAdmin\Twig
  */
 class ServerPrivilegesExtension extends AbstractExtension
 {
@@ -22,12 +24,12 @@ class ServerPrivilegesExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return [
+        return array(
             new TwigFunction(
                 'ServerPrivileges_formatPrivilege',
                 'PhpMyAdmin\Server\Privileges::formatPrivilege',
-                ['is_safe' => ['html']]
+                array('is_safe' => array('html'))
             ),
-        ];
+        );
     }
 }

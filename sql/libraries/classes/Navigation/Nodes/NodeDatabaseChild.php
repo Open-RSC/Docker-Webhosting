@@ -1,20 +1,22 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Functionality for the navigation tree.
+ * Functionality for the navigation tree
+ *
+ * @package PhpMyAdmin-Navigation
  */
-
 namespace PhpMyAdmin\Navigation\Nodes;
 
+use PhpMyAdmin\Relation;
 use PhpMyAdmin\Url;
 use PhpMyAdmin\Util;
-use PhpMyAdmin\Relation;
 
 /**
  * Represents a node that is a child of a database node
  * This may either be a concrete child such as table or a container
- * such as table container.
+ * such as table container
+ *
+ * @package PhpMyAdmin-Navigation
  */
 abstract class NodeDatabaseChild extends Node
 {
@@ -23,12 +25,12 @@ abstract class NodeDatabaseChild extends Node
      *
      * @return string type of the item
      */
-    abstract protected function getItemType();
+    protected abstract function getItemType();
 
     /**
-     * Returns HTML for control buttons displayed infront of a node.
+     * Returns HTML for control buttons displayed infront of a node
      *
-     * @return string HTML for control buttons
+     * @return String HTML for control buttons
      */
     public function getHtmlForControlButtons()
     {
@@ -38,19 +40,19 @@ abstract class NodeDatabaseChild extends Node
             $db = $this->realParent()->real_name;
             $item = $this->real_name;
 
-            $params = [
+            $params = array(
                 'hideNavItem' => true,
                 'itemType' => $this->getItemType(),
                 'itemName' => $item,
-                'dbName' => $db,
-            ];
+                'dbName' => $db
+            );
 
             $ret = '<span class="navItemControls">'
-                .'<a href="navigation.php" data-post="'
-                .Url::getCommon($params, '').'"'
-                .' class="hideNavItem ajax">'
-                .Util::getImage('hide', __('Hide'))
-                .'</a></span>';
+                . '<a href="navigation.php" data-post="'
+                . Url::getCommon($params, '') . '"'
+                . ' class="hideNavItem ajax">'
+                . Util::getImage('hide', __('Hide'))
+                . '</a></span>';
         }
 
         return $ret;

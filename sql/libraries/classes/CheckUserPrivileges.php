@@ -1,17 +1,19 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Get user's global privileges and some db-specific privileges.
+ * Get user's global privileges and some db-specific privileges
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
-use PhpMyAdmin\Util;
 use PhpMyAdmin\DatabaseInterface;
+use PhpMyAdmin\Util;
 
 /**
- * PhpMyAdmin\CheckUserPrivileges class.
+ * PhpMyAdmin\CheckUserPrivileges class
+ *
+ * @package PhpMyAdmin
  */
 class CheckUserPrivileges
 {
@@ -21,7 +23,7 @@ class CheckUserPrivileges
     private $dbi;
 
     /**
-     * Constructor.
+     * Constructor
      *
      * @param DatabaseInterface $dbi DatabaseInterface object
      */
@@ -31,7 +33,7 @@ class CheckUserPrivileges
     }
 
     /**
-     * Extracts details from a result row of a SHOW GRANT query.
+     * Extracts details from a result row of a SHOW GRANT query
      *
      * @param string $row grant row
      *
@@ -50,7 +52,7 @@ class CheckUserPrivileges
             }
         }
 
-        if (! $tblname_start_offset) {
+        if (!$tblname_start_offset) {
             $tblname_start_offset = mb_strpos($row, '.', $db_name_offset);
         }
 
@@ -75,16 +77,16 @@ class CheckUserPrivileges
         );
         $show_grants_tblname = Util::unQuote($show_grants_tblname, '`');
 
-        return [
+        return array(
             $show_grants_str,
             $show_grants_dbname,
-            $show_grants_tblname,
-        ];
+            $show_grants_tblname
+        );
     }
 
     /**
      * Check if user has required privileges for
-     * performing 'Adjust privileges' operations.
+     * performing 'Adjust privileges' operations
      *
      * @param string $show_grants_str     string containing grants for user
      * @param string $show_grants_dbname  name of db extracted from grant string
@@ -125,28 +127,23 @@ class CheckUserPrivileges
             // Ex. '... ALL PRIVILEGES on `mysql`.`columns_priv` .. '
             if ($show_grants_dbname == 'mysql') {
                 switch ($show_grants_tblname) {
-                    case 'columns_priv':
+                    case "columns_priv":
                         $GLOBALS['col_priv'] = true;
-
                         break;
-                    case 'db':
+                    case "db":
                         $GLOBALS['db_priv'] = true;
-
                         break;
-                    case 'procs_priv':
+                    case "procs_priv":
                         $GLOBALS['proc_priv'] = true;
-
                         break;
-                    case 'tables_priv':
+                    case "tables_priv":
                         $GLOBALS['table_priv'] = true;
-
                         break;
-                    case '*':
+                    case "*":
                         $GLOBALS['col_priv'] = true;
                         $GLOBALS['db_priv'] = true;
                         $GLOBALS['proc_priv'] = true;
                         $GLOBALS['table_priv'] = true;
-
                         break;
                     default:
                 }
@@ -155,7 +152,7 @@ class CheckUserPrivileges
     }
 
     /**
-     * sets privilege information extracted from SHOW GRANTS result.
+     * sets privilege information extracted from SHOW GRANTS result
      *
      * Detection for some CREATE privilege.
      *
@@ -208,10 +205,10 @@ class CheckUserPrivileges
         }
 
         // defaults
-        $GLOBALS['is_create_db_priv'] = false;
+        $GLOBALS['is_create_db_priv']  = false;
         $GLOBALS['is_reload_priv'] = false;
         $GLOBALS['db_to_create'] = '';
-        $GLOBALS['dbs_where_create_table_allowed'] = [];
+        $GLOBALS['dbs_where_create_table_allowed'] = array();
         $GLOBALS['dbs_to_test'] = $this->dbi->getSystemSchemas();
         $GLOBALS['proc_priv'] = false;
         $GLOBALS['db_priv'] = false;
@@ -243,7 +240,7 @@ class CheckUserPrivileges
             }
 
             if (
-                mb_strpos($show_grants_str, 'RELOAD') !== false
+                mb_strpos($show_grants_str,'RELOAD') !== false
             ) {
                 $GLOBALS['is_reload_priv'] = true;
             }
@@ -255,7 +252,7 @@ class CheckUserPrivileges
                 $show_grants_tblname
             );
 
-            /*
+            /**
              * @todo if we find CREATE VIEW but not CREATE, do not offer
              * the create database dialog box
              */
@@ -268,7 +265,7 @@ class CheckUserPrivileges
                     // a global CREATE privilege
                     $GLOBALS['is_create_db_priv'] = true;
                     $GLOBALS['is_reload_priv'] = true;
-                    $GLOBALS['db_to_create'] = '';
+                    $GLOBALS['db_to_create']   = '';
                     $GLOBALS['dbs_where_create_table_allowed'][] = '*';
                     // @todo we should not break here, cause GRANT ALL *.*
                     // could be revoked by a later rule like GRANT SELECT ON db.*
@@ -285,30 +282,30 @@ class CheckUserPrivileges
                     }
 
                     // does this db exist?
-                    if ((preg_match('/'.$re0.'%|_/', $show_grants_dbname)
+                    if ((preg_match('/' . $re0 . '%|_/', $show_grants_dbname)
                         && ! preg_match('/\\\\%|\\\\_/', $show_grants_dbname))
                         || (! $this->dbi->tryQuery(
-                            'USE '.preg_replace(
-                                '/'.$re1.'(%|_)/', '\\1\\3', $dbname_to_test
+                            'USE ' .  preg_replace(
+                                '/' . $re1 . '(%|_)/', '\\1\\3', $dbname_to_test
                             )
                         )
                         && mb_substr($this->dbi->getError(), 1, 4) != 1044)
                     ) {
-                        /*
+                        /**
                          * Do not handle the underscore wildcard
                          * (this case must be rare anyway)
                          */
                         $GLOBALS['db_to_create'] = preg_replace(
-                            '/'.$re0.'%/', '\\1',
+                            '/' . $re0 . '%/',     '\\1',
                             $show_grants_dbname
                         );
                         $GLOBALS['db_to_create'] = preg_replace(
-                            '/'.$re1.'(%|_)/', '\\1\\3',
+                            '/' . $re1 . '(%|_)/', '\\1\\3',
                             $GLOBALS['db_to_create']
                         );
                         $GLOBALS['is_create_db_priv'] = true;
 
-                        /*
+                        /**
                          * @todo collect $GLOBALS['db_to_create'] into an array,
                          * to display a drop-down in the "Create database" dialog
                          */
@@ -317,6 +314,7 @@ class CheckUserPrivileges
                     } // end if
                 } // end elseif
             } // end if
+
         } // end while
 
         $this->dbi->freeResult($rs_usr);
@@ -336,7 +334,5 @@ class CheckUserPrivileges
         Util::cacheSet('table_priv', $GLOBALS['table_priv']);
         Util::cacheSet('col_priv', $GLOBALS['col_priv']);
         Util::cacheSet('db_priv', $GLOBALS['db_priv']);
-    }
-
-    // end function
+    } // end function
 }

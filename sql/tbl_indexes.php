@@ -1,13 +1,15 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Displays index edit/creation form and handles it.
+ * Displays index edit/creation form and handles it
+ *
+ * @package PhpMyAdmin
  */
+
+use PhpMyAdmin\Controllers\Table\TableIndexesController;
+use PhpMyAdmin\Di\Container;
 use PhpMyAdmin\Index;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\Di\Container;
-use PhpMyAdmin\Controllers\Table\TableIndexesController;
 
 require_once 'libraries/common.inc.php';
 
@@ -25,7 +27,7 @@ $db = $container->get('db');
 $table = $container->get('table');
 $dbi = $container->get('dbi');
 
-if (! isset($_POST['create_edit_table'])) {
+if (!isset($_POST['create_edit_table'])) {
     include_once 'libraries/tbl_common.inc.php';
 }
 if (isset($_POST['index'])) {
@@ -39,9 +41,9 @@ if (isset($_POST['index'])) {
     $index = new Index;
 }
 
-$dependency_definitions = [
-    'index' => $index,
-];
+$dependency_definitions = array(
+    "index" => $index
+);
 
 /** @var TableIndexesController $controller */
 $controller = $container->get('TableIndexesController', $dependency_definitions);

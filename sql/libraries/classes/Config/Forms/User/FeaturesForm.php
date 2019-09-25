@@ -1,10 +1,10 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * User preferences form.
+ * User preferences form
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Config\Forms\User;
 
 use PhpMyAdmin\Config\Forms\BaseForm;
@@ -13,8 +13,8 @@ class FeaturesForm extends BaseForm
 {
     public static function getForms()
     {
-        $result = [
-            'General' => [
+        $result = array(
+            'General' => array(
                 'VersionCheck',
                 'NaturalOrder',
                 'InitialSlidersState',
@@ -25,15 +25,15 @@ class FeaturesForm extends BaseForm
                 'ConsoleEnterExecutes',
                 'DisableShortcutKeys',
                 'FontSize',
-            ],
-            'Databases' => [
+            ),
+            'Databases' => array(
                 'Servers/1/only_db', // saves to Server/only_db
                 'Servers/1/hide_db', // saves to Server/hide_db
                 'MaxDbList',
                 'MaxTableList',
                 'DefaultConnectionCollation',
-            ],
-            'Text_fields' => [
+            ),
+            'Text_fields' => array(
                 'CharEditing',
                 'MinSizeForInputField',
                 'MaxSizeForInputField',
@@ -41,21 +41,21 @@ class FeaturesForm extends BaseForm
                 'CharTextareaRows',
                 'TextareaCols',
                 'TextareaRows',
-                'LongtextDoubleTextarea',
-            ],
-            'Page_titles' => [
+                'LongtextDoubleTextarea'
+            ),
+            'Page_titles' => array(
                 'TitleDefault',
                 'TitleTable',
                 'TitleDatabase',
-                'TitleServer',
-            ],
-            'Warnings' => [
+                'TitleServer'
+            ),
+            'Warnings' => array(
                 'PmaNoRelation_DisableWarning',
                 'SuhosinDisableWarning',
                 'LoginCookieValidityDisableWarning',
-                'ReservedWordDisableWarning',
-            ],
-            'Console' => [
+                'ReservedWordDisableWarning'
+            ),
+            'Console' => array(
                 'Console/Mode',
                 'Console/StartHistory',
                 'Console/AlwaysExpand',
@@ -66,15 +66,14 @@ class FeaturesForm extends BaseForm
                 'Console/GroupQueries',
                 'Console/OrderBy',
                 'Console/Order',
-            ],
-        ];
+            ),
+        );
         // skip Developer form if no setting is available
         if ($GLOBALS['cfg']['UserprefsDeveloperTab']) {
-            $result['Developer'] = [
-                'DBG/sql',
-            ];
+            $result['Developer'] = array(
+                'DBG/sql'
+            );
         }
-
         return $result;
     }
 

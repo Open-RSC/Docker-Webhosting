@@ -1,24 +1,25 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * searches the entire database.
+ * searches the entire database
  *
  * @todo    make use of UNION when searching multiple tables
  * @todo    display executed query, optional?
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Util;
-use PhpMyAdmin\Response;
+
 use PhpMyAdmin\Database\Search;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Util;
 
 /**
- * Gets some core libraries.
- */
+* Gets some core libraries
+*/
 require_once 'libraries/common.inc.php';
 
 $response = Response::getInstance();
-$header = $response->getHeader();
-$scripts = $header->getScripts();
+$header   = $response->getHeader();
+$scripts  = $header->getScripts();
 $scripts->addFile('db_search.js');
 $scripts->addFile('sql.js');
 $scripts->addFile('makegrid.js');

@@ -1,16 +1,17 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * The navigation panel - displays server, db and table selection tree.
+ * The navigation panel - displays server, db and table selection tree
+ *
+ * @package PhpMyAdmin-Navigation
  */
 
 // Include common functionalities
-use PhpMyAdmin\Util;
-use PhpMyAdmin\Relation;
-use PhpMyAdmin\Response;
 use PhpMyAdmin\Config\PageSettings;
 use PhpMyAdmin\Navigation\Navigation;
+use PhpMyAdmin\Relation;
+use PhpMyAdmin\Response;
+use PhpMyAdmin\Util;
 
 require_once './libraries/common.inc.php';
 
@@ -32,7 +33,7 @@ if (isset($_POST['getNaviSettings']) && $_POST['getNaviSettings']) {
 }
 
 if (isset($_POST['reload'])) {
-    Util::cacheSet('dbs_to_test', false); // Empty database list cache, see #14252
+    Util::cacheSet('dbs_to_test', false);// Empty database list cache, see #14252
 }
 
 $relation = new Relation();

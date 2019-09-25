@@ -1,12 +1,14 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Handles server plugins page.
+ *
+ * @package PhpMyAdmin
  */
-use PhpMyAdmin\Response;
-use PhpMyAdmin\Di\Container;
+
 use PhpMyAdmin\Controllers\Server\ServerPluginsController;
+use PhpMyAdmin\Di\Container;
+use PhpMyAdmin\Response;
 
 require_once 'libraries/common.inc.php';
 
@@ -23,6 +25,6 @@ $container->alias('response', 'PhpMyAdmin\Response');
 
 /** @var ServerPluginsController $controller */
 $controller = $container->get(
-    'ServerPluginsController', []
+    'ServerPluginsController', array()
 );
 $controller->indexAction();

@@ -1,25 +1,27 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Server privileges and users manipulations.
+ * Server privileges and users manipulations
+ *
+ * @package PhpMyAdmin
  */
+
 use PhpMyAdmin\Core;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Relation;
 use PhpMyAdmin\Response;
-use PhpMyAdmin\Template;
-use PhpMyAdmin\Server\Users;
 use PhpMyAdmin\Server\Common;
 use PhpMyAdmin\Server\Privileges;
+use PhpMyAdmin\Server\Users;
+use PhpMyAdmin\Template;
 
 /**
- * include common file.
+ * include common file
  */
 require_once 'libraries/common.inc.php';
 
 /**
- * functions implementation for this script.
+ * functions implementation for this script
  */
 require_once 'libraries/check_user_privileges.inc.php';
 
@@ -27,11 +29,11 @@ $relation = new Relation();
 $cfgRelation = $relation->getRelationsParam();
 
 /**
- * Does the common work.
+ * Does the common work
  */
 $response = Response::getInstance();
-$header = $response->getHeader();
-$scripts = $header->getScripts();
+$header   = $response->getHeader();
+$scripts  = $header->getScripts();
 $scripts->addFile('server_privileges.js');
 $scripts->addFile('vendor/zxcvbn.js');
 
@@ -44,19 +46,20 @@ if ((isset($_GET['viewing_mode'])
 }
 
 /**
- * Sets globals from $_POST patterns, for privileges and max_* vars.
+ * Sets globals from $_POST patterns, for privileges and max_* vars
  */
-$post_patterns = [
+
+$post_patterns = array(
     '/_priv$/i',
-    '/^max_/i',
-];
+    '/^max_/i'
+);
 
 Core::setPostAsGlobal($post_patterns);
 
 require 'libraries/server_common.inc.php';
 
 /**
- * Messages are built using the message name.
+ * Messages are built using the message name
  */
 $strPrivDescAllPrivileges = __('Includes all privileges except GRANT.');
 $strPrivDescAlter = __('Allows altering the structure of existing tables.');
@@ -76,7 +79,7 @@ $strPrivDescExecute = __('Allows executing stored routines.');
 $strPrivDescFile = __('Allows importing data from and exporting data into files.');
 $strPrivDescGrantTbl = __(
     'Allows user to give to other users or remove from other users the privileges '
-    .'that user possess yourself.'
+    . 'that user possess yourself.'
 );
 $strPrivDescIndex = __('Allows creating and dropping indexes.');
 $strPrivDescInsert = __('Allows inserting and replacing data.');
@@ -89,7 +92,7 @@ $strPrivDescMaxQuestions = __(
 );
 $strPrivDescMaxUpdates = __(
     'Limits the number of commands that change any table or database '
-    .'the user may execute per hour.'
+    . 'the user may execute per hour.'
 );
 $strPrivDescMaxUserConnections = __(
     'Limits the number of simultaneous connections the user may have.'
@@ -109,15 +112,15 @@ $strPrivDescShowView = __('Allows performing SHOW CREATE VIEW queries.');
 $strPrivDescShutdown = __('Allows shutting down the server.');
 $strPrivDescSuper = __(
     'Allows connecting, even if maximum number of connections is reached; '
-    .'required for most administrative operations like setting global variables '
-    .'or killing threads of other users.'
+    . 'required for most administrative operations like setting global variables '
+    . 'or killing threads of other users.'
 );
 $strPrivDescTrigger = __('Allows creating and dropping triggers.');
 $strPrivDescUpdate = __('Allows changing data.');
 $strPrivDescUsage = __('No privileges.');
 
 $_add_user_error = false;
-/*
+/**
  * Get DB information: username, hostname, dbname,
  * tablename, db_and_table, dbname_is_wildcard
  */
@@ -126,11 +129,11 @@ list(
     $db_and_table, $dbname_is_wildcard
 ) = Privileges::getDataForDBInfo();
 
-/*
+/**
  * Checks if the user is allowed to do what he tries to...
  */
-if (! $GLOBALS['dbi']->isSuperuser() && ! $GLOBALS['is_grantuser']
-    && ! $GLOBALS['is_createuser']
+if (!$GLOBALS['dbi']->isSuperuser() && !$GLOBALS['is_grantuser']
+    && !$GLOBALS['is_createuser']
 ) {
     $response->addHTML(
         Template::get('server/sub_page_header')->render([
@@ -144,13 +147,13 @@ if (! $GLOBALS['dbi']->isSuperuser() && ! $GLOBALS['is_grantuser']
     );
     exit;
 }
-if (! $GLOBALS['is_grantuser'] && ! $GLOBALS['is_createuser']) {
+if (! $GLOBALS['is_grantuser'] && !$GLOBALS['is_createuser']) {
     $response->addHTML(Message::notice(
         __('You do not have privileges to manipulate with the users!')
     )->getDisplay());
 }
 
-/*
+/**
  * Checks if the user is using "Change Login Information / Copy User" dialog
  * only to update the password
  */
@@ -161,8 +164,8 @@ if (isset($_POST['change_copy']) && $username == $_POST['old_username']
         Message::error(
             __(
                 "Username and hostname didn't change. "
-                .'If you only want to change the password, '
-                ."'Change password' tab should be used."
+                . "If you only want to change the password, "
+                . "'Change password' tab should be used."
             )
         )->getDisplay()
     );
@@ -170,21 +173,21 @@ if (isset($_POST['change_copy']) && $username == $_POST['old_username']
     exit;
 }
 
-/*
+/**
  * Changes / copies a user, part I
  */
 list($queries, $password) = Privileges::getDataForChangeOrCopyUser();
 
-/*
+/**
  * Adds a user
  *   (Changes / copies a user, part II)
  */
 list($ret_message, $ret_queries, $queries_for_display, $sql_query, $_add_user_error)
     = Privileges::addUser(
-        isset($dbname) ? $dbname : null,
-        isset($username) ? $username : null,
-        isset($hostname) ? $hostname : null,
-        isset($password) ? $password : null,
+        isset($dbname)? $dbname : null,
+        isset($username)? $username : null,
+        isset($hostname)? $hostname : null,
+        isset($password)? $password : null,
         $cfgRelation['menuswork']
     );
 //update the old variables
@@ -197,7 +200,7 @@ if (isset($ret_message)) {
     unset($ret_message);
 }
 
-/*
+/**
  * Changes / copies a user, part III
  */
 if (isset($_POST['change_copy'])) {
@@ -211,7 +214,7 @@ if (! empty($routinename)) {
     $itemType = Privileges::getRoutineType($dbname, $routinename);
 }
 
-/*
+/**
  * Updates privileges
  */
 if (! empty($_POST['update_privs'])) {
@@ -242,7 +245,7 @@ if (! empty($_POST['update_privs'])) {
     }
 }
 
-/*
+/**
  * Assign users to user groups
  */
 if (! empty($_POST['changeUserGroup']) && $cfgRelation['menuswork']
@@ -252,11 +255,11 @@ if (! empty($_POST['changeUserGroup']) && $cfgRelation['menuswork']
     $message = Message::success();
 }
 
-/*
+/**
  * Revokes Privileges
  */
 if (isset($_POST['revokeall'])) {
-    list($message, $sql_query) = Privileges::getMessageAndSqlQueryForPrivilegesRevoke(
+    list ($message, $sql_query) = Privileges::getMessageAndSqlQueryForPrivilegesRevoke(
         (isset($dbname) ? $dbname : ''),
         (isset($tablename)
             ? $tablename
@@ -267,7 +270,7 @@ if (isset($_POST['revokeall'])) {
     );
 }
 
-/*
+/**
  * Updates the password
  */
 if (isset($_POST['change_pw'])) {
@@ -276,7 +279,7 @@ if (isset($_POST['change_pw'])) {
     );
 }
 
-/*
+/**
  * Deletes users
  *   (Changes / copies a user, part IV)
  */
@@ -289,17 +292,17 @@ if (isset($_POST['delete'])
     }
 }
 
-/*
+/**
  * Changes / copies a user, part V
  */
 if (isset($_POST['change_copy'])) {
     $queries = Privileges::getDataForQueries($queries, $queries_for_display);
     $message = Message::success();
-    $sql_query = implode("\n", $queries);
+    $sql_query = join("\n", $queries);
 }
 
 /**
- * Reloads the privilege tables into memory.
+ * Reloads the privilege tables into memory
  */
 $message_ret = Privileges::updateMessageForReload();
 if (isset($message_ret)) {
@@ -307,7 +310,7 @@ if (isset($message_ret)) {
     unset($message_ret);
 }
 
-/*
+/**
  * If we are in an Ajax request for Create User/Edit User/Revoke User/
  * Flush Privileges, show $message and exit.
  */
@@ -336,7 +339,7 @@ if ($response->isAjax()
     }
 }
 
-/*
+/**
  * Displays the links
  */
 if (isset($_GET['viewing_mode']) && $_GET['viewing_mode'] == 'db') {
@@ -362,7 +365,7 @@ if (isset($_GET['viewing_mode']) && $_GET['viewing_mode'] == 'db') {
 
     $content = ob_get_contents();
     ob_end_clean();
-    $response->addHTML($content."\n");
+    $response->addHTML($content . "\n");
 } else {
     if (! empty($GLOBALS['message'])) {
         $response->addHTML(PhpMyAdmin\Util::getMessage($GLOBALS['message']));
@@ -370,12 +373,12 @@ if (isset($_GET['viewing_mode']) && $_GET['viewing_mode'] == 'db') {
     }
 }
 
-/*
+/**
  * Displays the page
  */
 $response->addHTML(
     Privileges::getHtmlForUserGroupDialog(
-        isset($username) ? $username : null,
+        isset($username)? $username : null,
         $cfgRelation['menuswork']
     )
 );
@@ -423,8 +426,8 @@ if (isset($_GET['adduser'])) {
     if (isset($dbname) && ! is_array($dbname)) {
         $url_dbname = urlencode(
             str_replace(
-                ['\_', '\%'],
-                ['_', '%'],
+                array('\_', '\%'),
+                array('_', '%'),
                 $dbname
             )
         );
@@ -435,7 +438,7 @@ if (isset($_GET['adduser'])) {
         $response->addHTML(
             Privileges::getHtmlForUserOverview($pmaThemeImage, $text_dir)
         );
-    } elseif (! empty($routinename)) {
+    } elseif (!empty($routinename)) {
         $response->addHTML(
             Privileges::getHtmlForRoutineSpecificPrivileges(
                 $username, $hostname, $dbname, $routinename,

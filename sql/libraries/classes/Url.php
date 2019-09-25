@@ -1,14 +1,16 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Static methods for URL/hidden inputs generating.
+ * Static methods for URL/hidden inputs generating
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin;
 
 /**
- * Static methods for URL/hidden inputs generating.
+ * Static methods for URL/hidden inputs generating
+ *
+ * @package PhpMyAdmin
  */
 class Url
 {
@@ -25,18 +27,20 @@ class Url
      * @see Url::getCommon()
      *
      * @return string   string with input fields
+     *
+     * @access  public
      */
     public static function getHiddenInputs($db = '', $table = '',
-        $indent = 0, $skip = []
+        $indent = 0, $skip = array()
     ) {
         if (is_array($db)) {
-            $params = &$db;
+            $params  =& $db;
             $_indent = empty($table) ? $indent : $table;
-            $_skip = empty($indent) ? $skip : $indent;
-            $indent = &$_indent;
-            $skip = &$_skip;
+            $_skip   = empty($indent) ? $skip : $indent;
+            $indent  =& $_indent;
+            $skip    =& $_skip;
         } else {
-            $params = [];
+            $params = array();
             if (strlen($db) > 0) {
                 $params['db'] = $db;
             }
@@ -66,11 +70,11 @@ class Url
             }
         }
 
-        return self::getHiddenFields($params);
+        return Url::getHiddenFields($params);
     }
 
     /**
-     * create hidden form fields from array with name => value.
+     * create hidden form fields from array with name => value
      *
      * <code>
      * $values = array(
@@ -110,17 +114,17 @@ class Url
 
         foreach ($values as $name => $value) {
             if (! empty($pre)) {
-                $name = $pre.'['.$name.']';
+                $name = $pre . '[' . $name . ']';
             }
 
             if (is_array($value)) {
-                $fields .= self::getHiddenFields($value, $name);
+                $fields .= Url::getHiddenFields($value, $name);
             } else {
                 // do not generate an ending "\n" because
                 // Url::getHiddenInputs() is sometimes called
                 // from a JS document.write()
-                $fields .= '<input type="hidden" name="'.htmlspecialchars($name)
-                    .'" value="'.htmlspecialchars($value).'" />';
+                $fields .= '<input type="hidden" name="' . htmlspecialchars($name)
+                    . '" value="' . htmlspecialchars($value) . '" />';
             }
         }
 
@@ -154,11 +158,12 @@ class Url
      * @param string $divider optional character to use instead of '?'
      *
      * @return string   string with URL parameters
+     * @access  public
      */
-    public static function getCommon($params = [], $divider = '?')
+    public static function getCommon($params = array(), $divider = '?')
     {
         return htmlspecialchars(
-            self::getCommonRaw($params, $divider)
+            Url::getCommonRaw($params, $divider)
         );
     }
 
@@ -189,10 +194,11 @@ class Url
      * @param string $divider optional character to use instead of '?'
      *
      * @return string   string with URL parameters
+     * @access  public
      */
-    public static function getCommonRaw($params = [], $divider = '?')
+    public static function getCommonRaw($params = array(), $divider = '?')
     {
-        $separator = self::getArgSeparator();
+        $separator = Url::getArgSeparator();
 
         // avoid overwriting when creating navi panel links to servers
         if (isset($GLOBALS['server'])
@@ -210,14 +216,14 @@ class Url
         $query = http_build_query($params, null, $separator);
 
         if ($divider != '?' || strlen($query) > 0) {
-            return $divider.$query;
+            return $divider . $query;
         }
 
         return '';
     }
 
     /**
-     * Returns url separator.
+     * Returns url separator
      *
      * extracted from arg_separator.input as set in php.ini
      * we do not use arg_separator.output to avoid problems with &amp; and &
@@ -226,6 +232,7 @@ class Url
      * currently 'none' or 'html'
      *
      * @return string  character used for separating url parts usually ; or &
+     * @access  public
      */
     public static function getArgSeparator($encode = 'none')
     {
@@ -251,9 +258,9 @@ class Url
         switch ($encode) {
         case 'html':
             return $html_separator;
-        case 'text':
-        case 'none':
-        default:
+        case 'text' :
+        case 'none' :
+        default :
             return $separator;
         }
     }

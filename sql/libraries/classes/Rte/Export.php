@@ -1,19 +1,21 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Common functions for the export functionality for Routines, Triggers and Events.
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Rte;
 
-use PhpMyAdmin\Util;
 use PhpMyAdmin\Message;
 use PhpMyAdmin\Response;
 use PhpMyAdmin\Rte\Words;
+use PhpMyAdmin\Util;
 
 /**
- * PhpMyAdmin\Rte\Export class.
+ * PhpMyAdmin\Rte\Export class
+ *
+ * @package PhpMyAdmin
  */
 class Export
 {
@@ -41,7 +43,7 @@ class Export
                 exit;
             } else {
                 $export_data = '<textarea cols="40" rows="15" style="width: 100%;">'
-                   .$export_data.'</textarea>';
+                   . $export_data . '</textarea>';
                 echo "<fieldset>\n"
                    , "<legend>$title</legend>\n"
                    , $export_data
@@ -49,8 +51,8 @@ class Export
             }
         } else {
             $_db = htmlspecialchars(Util::backquote($db));
-            $message = __('Error in processing request:').' '
-                      .sprintf(Words::get('no_view'), $item_name, $_db);
+            $message  = __('Error in processing request:') . ' '
+                      . sprintf(Words::get('no_view'), $item_name, $_db);
             $message = Message::error($message);
 
             if ($response->isAjax()) {
@@ -61,9 +63,7 @@ class Export
                 $message->display();
             }
         }
-    }
-
-    // end self::handle()
+    } // end self::handle()
 
     /**
      * If necessary, prepares event information and passes
@@ -83,9 +83,7 @@ class Export
             }
             self::handle($export_data);
         }
-    }
-
-    // end self::events()
+    } // end self::events()
 
     /**
      * If necessary, prepares routine information and passes
@@ -112,16 +110,14 @@ class Export
                     $export_data = false;
                 } else {
                     $export_data = "DELIMITER $$\n"
-                        .$rtn_definition
-                        ."$$\nDELIMITER ;\n";
+                        . $rtn_definition
+                        . "$$\nDELIMITER ;\n";
                 }
 
                 self::handle($export_data);
             }
         }
-    }
-
-    // end self::routines()
+    } // end self::routines()
 
     /**
      * If necessary, prepares trigger information and passes
@@ -140,13 +136,10 @@ class Export
             foreach ($triggers as $trigger) {
                 if ($trigger['name'] === $item_name) {
                     $export_data = $trigger['create'];
-
                     break;
                 }
             }
             self::handle($export_data);
         }
-    }
-
-    // end self::triggers()
+    } // end self::triggers()
 }

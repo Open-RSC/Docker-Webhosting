@@ -1,25 +1,28 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 
 /**
- * Holds the PhpMyAdmin\Controllers\Server\ServerCollationsController.
+ * Holds the PhpMyAdmin\Controllers\Server\ServerCollationsController
+ *
+ * @package PhpMyAdmin\Controllers
  */
 
 namespace PhpMyAdmin\Controllers\Server;
 
-use PhpMyAdmin\Charsets;
-use PhpMyAdmin\Template;
-use PhpMyAdmin\Server\Common;
 use PhpMyAdmin\Controllers\Controller;
+use PhpMyAdmin\Charsets;
+use PhpMyAdmin\Server\Common;
+use PhpMyAdmin\Template;
 
 /**
- * Handles viewing character sets and collations.
+ * Handles viewing character sets and collations
+ *
+ * @package PhpMyAdmin\Controllers
  */
 class ServerCollationsController extends Controller
 {
     /**
-     * Index action.
+     * Index action
      *
      * @return void
      */
@@ -29,7 +32,7 @@ class ServerCollationsController extends Controller
         $disableIs = $GLOBALS['cfg']['Server']['DisableIS'];
 
         /**
-         * Does the common work.
+         * Does the common work
          */
         include_once 'libraries/server_common.inc.php';
 
@@ -58,16 +61,16 @@ class ServerCollationsController extends Controller
      *
      * @return string
      */
-    public function _getHtmlForCharsets(array $mysqlCharsets, array $mysqlCollations,
+    function _getHtmlForCharsets(array $mysqlCharsets, array $mysqlCollations,
         array $mysqlCharsetsDesc, array $mysqlDftCollations
     ) {
         return Template::get('server/collations/charsets')->render(
-            [
+            array(
                 'mysql_charsets' => $mysqlCharsets,
                 'mysql_collations' => $mysqlCollations,
                 'mysql_charsets_desc' => $mysqlCharsetsDesc,
                 'mysql_dft_collations' => $mysqlDftCollations,
-            ]
+            )
         );
     }
 }

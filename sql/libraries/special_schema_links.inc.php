@@ -1,14 +1,15 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Links configuration for MySQL system tables.
+ * Links configuration for MySQL system tables
+ *
+ * @package PhpMyAdmin
  */
 if (! defined('PHPMYADMIN')) {
     exit;
 }
 
-/*
+/**
  * This global variable represent the details for generating links inside
  * special schemas like mysql, information_schema etc.
  * Major element represent a schema.
@@ -43,446 +44,447 @@ if (! defined('PHPMYADMIN')) {
  * );
  *
  */
-$GLOBALS['special_schema_links'] = [
-    'mysql' => [
-        'columns_priv' => [
-            'user' => [
+$GLOBALS['special_schema_links'] = array(
+    'mysql' => array(
+        'columns_priv' => array(
+            'user' => array(
                 'link_param' => 'username',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'hostname',
-                        'column_name' => 'host',
-                    ],
-                ],
-                'default_page' => './server_privileges.php',
-            ],
-            'table_name' => [
-                'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'Db',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'host'
+                    )
                 ),
-            ],
-            'column_name' => [
+                'default_page' => './server_privileges.php'
+            ),
+            'table_name' => array(
+                'link_param' => 'table',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'Db'
+                    ),
+                ),
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+            'column_name' => array(
                 'link_param' => 'field',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'Db',
-                    ],
-                    1 => [
+                        'column_name' => 'Db'
+                    ),
+                    1 => array(
                         'param_info' => 'table',
-                        'column_name' => 'Table_name',
-                    ],
-                ],
-                'default_page' => './tbl_structure.php?change_column=1',
-            ],
-        ],
-        'db' => [
-            'user' => [
+                        'column_name' => 'Table_name'
+                    )
+                ),
+                'default_page' => './tbl_structure.php?change_column=1'
+            ),
+        ),
+        'db' => array(
+            'user' => array(
                 'link_param' => 'username',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'hostname',
-                        'column_name' => 'host',
-                    ],
-                ],
-                'default_page' => './server_privileges.php',
-            ],
-        ],
-        'event' => [
-            'name' => [
+                        'column_name' => 'host'
+                    )
+                ),
+                'default_page' => './server_privileges.php'
+            )
+        ),
+        'event' => array(
+            'name' => array(
                 'link_param' => 'item_name',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'db',
-                    ],
-                ],
-                'default_page' => './db_events.php?edit_item=1',
-            ],
+                        'column_name' => 'db'
+                    )
+                ),
+                'default_page' => './db_events.php?edit_item=1'
+            ),
 
-        ],
-        'innodb_index_stats' => [
-            'table_name' => [
+        ),
+        'innodb_index_stats' => array(
+            'table_name' => array(
                 'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'database_name',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'database_name'
+                    ),
                 ),
-            ],
-            'index_name' => [
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+            'index_name' => array(
                 'link_param' => 'index',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'database_name',
-                    ],
-                    1 => [
+                        'column_name' => 'database_name'
+                    ),
+                    1 => array(
                         'param_info' => 'table',
-                        'column_name' => 'table_name',
-                    ],
-                ],
-                'default_page' => './tbl_structure.php',
-            ],
-        ],
-        'innodb_table_stats' => [
-            'table_name' => [
-                'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'database_name',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'table_name'
+                    )
                 ),
-            ],
-        ],
-        'proc' => [
-            'name' => [
-                'link_param' => 'item_name',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'db',
-                    ],
-                    1 => [
-                        'param_info' => 'item_type',
-                        'column_name' => 'type',
-                    ],
-                ],
-                'default_page' => './db_routines.php?edit_item=1',
-            ],
-            'specific_name' => [
-                'link_param' => 'item_name',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'db',
-                    ],
-                    1 => [
-                        'param_info' => 'item_type',
-                        'column_name' => 'type',
-                    ],
-                ],
-                'default_page' => './db_routines.php?edit_item=1',
-            ],
-        ],
-        'proc_priv' => [
-            'user' => [
-                'link_param' => 'username',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'hostname',
-                        'column_name' => 'Host',
-                    ],
-                ],
-                'default_page' => './server_privileges.php',
-            ],
-            'routine_name' => [
-                'link_param' => 'item_name',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'Db',
-                    ],
-                    1 => [
-                        'param_info' => 'item_type',
-                        'column_name' => 'Routine_type',
-                    ],
-                ],
-                'default_page' => './db_routines.php?edit_item=1',
-            ],
-        ],
-        'proxies_priv' => [
-            'user' => [
-                'link_param' => 'username',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'hostname',
-                        'column_name' => 'Host',
-                    ],
-                ],
-                'default_page' => './server_privileges.php',
-            ],
-        ],
-        'tables_priv' => [
-            'user' => [
-                'link_param' => 'username',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'hostname',
-                        'column_name' => 'Host',
-                    ],
-                ],
-                'default_page' => './server_privileges.php',
-            ],
-            'table_name' => [
+                'default_page' => './tbl_structure.php'
+            ),
+        ),
+        'innodb_table_stats' => array(
+            'table_name' => array(
                 'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'Db',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'database_name'
+                    ),
                 ),
-            ],
-        ],
-        'user' => [
-            'user' => [
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+        ),
+        'proc' => array(
+            'name' => array(
+                'link_param' => 'item_name',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'db'
+                    ),
+                    1 => array(
+                        'param_info' => 'item_type',
+                        'column_name' => 'type'
+                    )
+                ),
+                'default_page' => './db_routines.php?edit_item=1'
+            ),
+            'specific_name' => array(
+                'link_param' => 'item_name',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'db'
+                    ),
+                    1 => array(
+                        'param_info' => 'item_type',
+                        'column_name' => 'type'
+                    )
+                ),
+                'default_page' => './db_routines.php?edit_item=1'
+            ),
+        ),
+        'proc_priv' => array(
+            'user' => array(
                 'link_param' => 'username',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'hostname',
-                        'column_name' => 'host',
-                    ],
-                ],
-                'default_page' => './server_privileges.php',
-            ],
-        ],
-    ],
-    'information_schema' => [
-        'columns' => [
-            'table_name' => [
-                'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'table_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'Host'
+                    )
                 ),
-            ],
-            'column_name' => [
+                'default_page' => './server_privileges.php'
+            ),
+            'routine_name' => array(
+                'link_param' => 'item_name',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'Db'
+                    ),
+                    1 => array(
+                        'param_info' => 'item_type',
+                        'column_name' => 'Routine_type'
+                    )
+                ),
+                'default_page' => './db_routines.php?edit_item=1'
+            ),
+        ),
+        'proxies_priv' => array(
+            'user' => array(
+                'link_param' => 'username',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'hostname',
+                        'column_name' => 'Host'
+                    )
+                ),
+                'default_page' => './server_privileges.php'
+            ),
+        ),
+        'tables_priv' => array(
+            'user' => array(
+                'link_param' => 'username',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'hostname',
+                        'column_name' => 'Host'
+                    )
+                ),
+                'default_page' => './server_privileges.php'
+            ),
+            'table_name' => array(
+                'link_param' => 'table',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'Db'
+                    ),
+                ),
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+        ),
+        'user' => array(
+            'user' => array(
+                'link_param' => 'username',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'hostname',
+                        'column_name' => 'host'
+                    )
+                ),
+                'default_page' => './server_privileges.php'
+            )
+        )
+    ),
+    'information_schema' => array(
+        'columns' => array(
+            'table_name' => array(
+                'link_param' => 'table',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'table_schema'
+                    )
+                ),
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+            'column_name' => array(
                 'link_param' => 'field',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'table_schema',
-                    ],
-                    1 => [
+                        'column_name' => 'table_schema'
+                    ),
+                    1 => array(
                         'param_info' => 'table',
-                        'column_name' => 'table_name',
-                    ],
-                ],
-                'default_page' => './tbl_structure.php?change_column=1',
-            ],
-        ],
-        'key_column_usage' => [
-            'table_name' => [
-                'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'constraint_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'table_name'
+                    )
                 ),
-            ],
-            'column_name' => [
+                'default_page' => './tbl_structure.php?change_column=1'
+            )
+        ),
+        'key_column_usage' => array(
+            'table_name' => array(
+                'link_param' => 'table',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'constraint_schema'
+                    )
+                ),
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+            'column_name' => array(
                 'link_param' => 'field',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'table_schema',
-                    ],
-                    1 => [
+                        'column_name' => 'table_schema'
+                    ),
+                    1 => array(
                         'param_info' => 'table',
-                        'column_name' => 'table_name',
-                    ],
-                ],
-                'default_page' => './tbl_structure.php?change_column=1',
-            ],
-            'referenced_table_name' => [
-                'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'referenced_table_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'table_name'
+                    )
                 ),
-            ],
-            'referenced_column_name' => [
+                'default_page' => './tbl_structure.php?change_column=1'
+            ),
+            'referenced_table_name' => array(
+                'link_param' => 'table',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'referenced_table_schema'
+                    )
+                ),
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+            'referenced_column_name' => array(
                 'link_param' => 'field',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'referenced_table_schema',
-                    ],
-                    1 => [
+                        'column_name' => 'referenced_table_schema'
+                    ),
+                    1 => array(
                         'param_info' => 'table',
-                        'column_name' => 'referenced_table_name',
-                    ],
-                ],
-                'default_page' => './tbl_structure.php?change_column=1',
-            ],
-        ],
-        'partitions' => [
-            'table_name' => [
-                'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'table_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'referenced_table_name'
+                    )
                 ),
-            ],
-        ],
-        'processlist' => [
-            'user' => [
+                'default_page' => './tbl_structure.php?change_column=1'
+            )
+        ),
+        'partitions' => array(
+            'table_name' => array(
+                'link_param' => 'table',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'table_schema'
+                    )
+                ),
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            )
+        ),
+        'processlist' => array(
+            'user' => array(
                 'link_param' => 'username',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'hostname',
-                        'column_name' => 'host',
-                    ],
-                ],
-                'default_page' => './server_privileges.php',
-            ],
-        ],
-        'referential_constraints' => [
-            'table_name' => [
-                'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'constraint_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'host'
+                    )
                 ),
-            ],
-            'referenced_table_name' => [
+                'default_page' => './server_privileges.php'
+            )
+        ),
+        'referential_constraints' => array(
+            'table_name' => array(
                 'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'constraint_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'constraint_schema'
+                    )
                 ),
-            ],
-        ],
-        'routines' => [
-            'routine_name' => [
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+            'referenced_table_name' => array(
+                'link_param' => 'table',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'constraint_schema'
+                    )
+                ),
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            )
+        ),
+        'routines' => array(
+            'routine_name' => array(
                 'link_param' => 'item_name',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'routine_schema',
-                    ],
-                    1 => [
+                        'column_name' => 'routine_schema'
+                    ),
+                    1 => array(
                         'param_info' => 'item_type',
-                        'column_name' => 'routine_type',
-                    ],
-                ],
-                'default_page' => './db_routines.php',
-            ],
-        ],
-        'schemata' => [
-            'schema_name' => [
+                        'column_name' => 'routine_type'
+                    )
+                ),
+                'default_page' => './db_routines.php'
+            ),
+        ),
+        'schemata' => array(
+            'schema_name' => array(
                 'link_param' => 'db',
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
                     $GLOBALS['cfg']['DefaultTabTable'], 'table'
-                ),
-            ],
-        ],
-        'statistics' => [
-            'table_name' => [
+                )
+            )
+        ),
+        'statistics' => array(
+            'table_name' => array(
                 'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'table_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'table_schema'
+                    )
                 ),
-            ],
-            'column_name' => [
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+            'column_name' => array(
                 'link_param' => 'field',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'table_schema',
-                    ],
-                    1 => [
+                        'column_name' => 'table_schema'
+                    ),
+                    1 => array(
                         'param_info' => 'table',
-                        'column_name' => 'table_name',
-                    ],
-                ],
-                'default_page' => './tbl_structure.php?change_column=1',
-            ],
-        ],
-        'tables' => [
-            'table_name' => [
-                'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
-                        'param_info' => 'db',
-                        'column_name' => 'table_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'table_name'
+                    )
                 ),
-            ],
-        ],
-        'table_constraints' => [
-            'table_name' => [
+                'default_page' => './tbl_structure.php?change_column=1'
+            )
+        ),
+        'tables' => array(
+            'table_name' => array(
                 'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'table_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'table_schema'
+                    )
                 ),
-            ],
-        ],
-        'views' => [
-            'table_name' => [
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+        ),
+        'table_constraints' => array(
+            'table_name' => array(
                 'link_param' => 'table',
-                'link_dependancy_params' => [
-                    0 => [
+                'link_dependancy_params' => array(
+                    0 => array(
                         'param_info' => 'db',
-                        'column_name' => 'table_schema',
-                    ],
-                ],
-                'default_page' => './'.PhpMyAdmin\Util::getScriptNameForOption(
-                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                        'column_name' => 'table_schema'
+                    )
                 ),
-            ],
-        ],
-    ],
-];
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+        ),
+        'views' => array(
+            'table_name' => array(
+                'link_param' => 'table',
+                'link_dependancy_params' => array(
+                    0 => array(
+                        'param_info' => 'db',
+                        'column_name' => 'table_schema'
+                    )
+                ),
+                'default_page' => './' . PhpMyAdmin\Util::getScriptNameForOption(
+                    $GLOBALS['cfg']['DefaultTabTable'], 'table'
+                )
+            ),
+        ),
+    )
+);
+

@@ -1,19 +1,19 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Second authentication factor handling.
+ * Second authentication factor handling
+ *
+ * @package PhpMyAdmin
  */
-
 namespace PhpMyAdmin\Plugins\TwoFactor;
 
-use PhpMyAdmin\Template;
 use PhpMyAdmin\TwoFactor;
-use PragmaRX\Google2FA\Google2FA;
+use PhpMyAdmin\Template;
 use PhpMyAdmin\Plugins\TwoFactorPlugin;
+use PragmaRX\Google2FA\Google2FA;
 
 /**
- * HOTP and TOTP based two-factor authentication.
+ * HOTP and TOTP based two-factor authentication
  *
  * Also known as Google, Authy, or OTP
  */
@@ -27,7 +27,7 @@ class Application extends TwoFactorPlugin
     protected $_google2fa;
 
     /**
-     * Creates object.
+     * Creates object
      *
      * @param TwoFactor $twofactor TwoFactor instance
      */
@@ -36,13 +36,13 @@ class Application extends TwoFactorPlugin
         parent::__construct($twofactor);
         $this->_google2fa = new Google2FA();
         $this->_google2fa->setWindow(8);
-        if (! isset($this->_twofactor->config['settings']['secret'])) {
+        if (!isset($this->_twofactor->config['settings']['secret'])) {
             $this->_twofactor->config['settings']['secret'] = '';
         }
     }
 
     /**
-     * Get any property of this class.
+     * Get any property of this class
      *
      * @param string $property name of the property
      *
@@ -57,25 +57,24 @@ class Application extends TwoFactorPlugin
     }
 
     /**
-     * Checks authentication, returns true on success.
+     * Checks authentication, returns true on success
      *
-     * @return bool
+     * @return boolean
      */
     public function check()
     {
         $this->_provided = false;
-        if (! isset($_POST['2fa_code'])) {
+        if (!isset($_POST['2fa_code'])) {
             return false;
         }
         $this->_provided = true;
-
         return $this->_google2fa->verifyKey(
             $this->_twofactor->config['settings']['secret'], $_POST['2fa_code']
         );
     }
 
     /**
-     * Renders user interface to enter two-factor authentication.
+     * Renders user interface to enter two-factor authentication
      *
      * @return string HTML code
      */
@@ -85,7 +84,7 @@ class Application extends TwoFactorPlugin
     }
 
     /**
-     * Renders user interface to configure two-factor authentication.
+     * Renders user interface to configure two-factor authentication
      *
      * @return string HTML code
      */
@@ -95,34 +94,33 @@ class Application extends TwoFactorPlugin
         $renderArray = ['secret' => $secret];
         if (extension_loaded('gd')) {
             $inlineUrl = $this->_google2fa->getQRCodeInline(
-                'phpMyAdmin ('.$this->getAppId(false).')',
+                'phpMyAdmin (' . $this->getAppId(false) . ')',
                 $this->_twofactor->user,
                 $secret
             );
             $renderArray['image'] = $inlineUrl;
         } else {
             $inlineUrl = $this->_google2fa->getQRCodeUrl(
-                'phpMyAdmin ('.$this->getAppId(false).')',
+                'phpMyAdmin (' . $this->getAppId(false) . ')',
                 $this->_twofactor->user,
                 $secret
             );
             trigger_error(
                 __(
                     'The gd PHP extension was not found.'
-                    .' The QRcode can not be displayed without the gd PHP extension.'
+                    . ' The QRcode can not be displayed without the gd PHP extension.'
                 ),
                 E_USER_WARNING
             );
             $renderArray['url'] = $inlineUrl;
         }
-
         return Template::get('login/twofactor/application_configure')->render($renderArray);
     }
 
     /**
-     * Performs backend configuration.
+     * Performs backend configuration
      *
-     * @return bool
+     * @return boolean
      */
     public function configure()
     {
@@ -135,12 +133,11 @@ class Application extends TwoFactorPlugin
         if ($result) {
             unset($_SESSION['2fa_application_key']);
         }
-
         return $result;
     }
 
     /**
-     * Get user visible name.
+     * Get user visible name
      *
      * @return string
      */
@@ -150,7 +147,7 @@ class Application extends TwoFactorPlugin
     }
 
     /**
-     * Get user visible description.
+     * Get user visible description
      *
      * @return string
      */

@@ -1,21 +1,24 @@
 <?php
-
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Abstract class for the image upload input transformations plugins.
+ * Abstract class for the image upload input transformations plugins
+ *
+ * @package    PhpMyAdmin-Transformations
+ * @subpackage ImageUpload
  */
-
 namespace PhpMyAdmin\Plugins\Transformations\Abs;
 
 use PhpMyAdmin\Plugins\IOTransformationsPlugin;
 
 /**
  * Provides common methods for all of the image upload transformations plugins.
+ *
+ * @package PhpMyAdmin
  */
 abstract class ImageUploadTransformationsPlugin extends IOTransformationsPlugin
 {
     /**
-     * Gets the transformation description of the specific plugin.
+     * Gets the transformation description of the specific plugin
      *
      * @return string
      */
@@ -23,8 +26,8 @@ abstract class ImageUploadTransformationsPlugin extends IOTransformationsPlugin
     {
         return __(
             'Image upload functionality which also displays a thumbnail.'
-            .' The options are the width and height of the thumbnail'
-            .' in pixels. Defaults to 100 X 100.'
+            . ' The options are the width and height of the thumbnail'
+            . ' in pixels. Defaults to 100 X 100.'
         );
     }
 
@@ -37,7 +40,7 @@ abstract class ImageUploadTransformationsPlugin extends IOTransformationsPlugin
      *
      * @return string
      */
-    public function applyTransformation($buffer, array $options = [], $meta = '')
+    public function applyTransformation($buffer, array $options = array(), $meta = '')
     {
         return $buffer;
     }
@@ -71,45 +74,45 @@ abstract class ImageUploadTransformationsPlugin extends IOTransformationsPlugin
     ) {
         $html = '';
         $src = '';
-        if (! empty($value)) {
-            $html = '<input type="hidden" name="fields_prev'.$column_name_appendix
-                .'" value="'.bin2hex($value).'"/>';
-            $html .= '<input type="hidden" name="fields'.$column_name_appendix
-                .'" value="'.bin2hex($value).'"/>';
-            $src = 'transformation_wrapper.php'.$options['wrapper_link'];
+        if (!empty($value)) {
+            $html = '<input type="hidden" name="fields_prev' . $column_name_appendix
+                . '" value="' . bin2hex($value) . '"/>';
+            $html .= '<input type="hidden" name="fields' . $column_name_appendix
+                . '" value="' . bin2hex($value) . '"/>';
+            $src = 'transformation_wrapper.php' . $options['wrapper_link'];
         }
-        $html .= '<img src="'.$src.'" width="'
-            .(isset($options[0]) ? intval($options[0]) : '100').'" height="'
-            .(isset($options[1]) ? intval($options[1]) : '100').'" alt="'
-            .__('Image preview here').'"/>';
+        $html .= '<img src="' . $src . '" width="'
+            . (isset($options[0]) ? intval($options[0]) : '100') . '" height="'
+            . (isset($options[1]) ? intval($options[1]) : '100') . '" alt="'
+            . __('Image preview here') . '"/>';
         $html .= '<br/><input type="file" name="fields_upload'
-            .$column_name_appendix.'" accept="image/*" class="image-upload"/>';
+            . $column_name_appendix . '" accept="image/*" class="image-upload"/>';
 
         return $html;
     }
 
     /**
      * Returns the array of scripts (filename) required for plugin
-     * initialization and handling.
+     * initialization and handling
      *
      * @return array javascripts to be included
      */
     public function getScripts()
     {
-        return [
+        return array(
             'transformations/image_upload.js',
-        ];
+        );
     }
 
     /* ~~~~~~~~~~~~~~~~~~~~ Getters and Setters ~~~~~~~~~~~~~~~~~~~~ */
 
     /**
-     * Gets the transformation name of the specific plugin.
+     * Gets the transformation name of the specific plugin
      *
      * @return string
      */
     public static function getName()
     {
-        return 'Image upload';
+        return "Image upload";
     }
 }
