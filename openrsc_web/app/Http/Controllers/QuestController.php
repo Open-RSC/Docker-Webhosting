@@ -58,6 +58,8 @@ class QuestController extends Controller
 				'tourist_trap', 'tree_gnome_village', 'tribal_totem', 'underground_pass', 'watchtower', 'waterfall_quest',
 				'witchs_house');
 
+		$minigame_array = array('bar_crawl', 'barbarian_agility_course', 'kitten_to_cat', 'fishing_trawler', 'gnome_ball', 'mage_arena');
+
 		/**
 		 * @var $subpage
 		 * Replaces spaces with underlines
@@ -82,6 +84,7 @@ class QuestController extends Controller
 
 		return view('quest', [
 			'quest_array' => $quest_array,
+			'minigame_array' => $minigame_array,
 			'subpage' => $subpage,
 		])
 			->with(compact('quest'));
