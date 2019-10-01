@@ -36,13 +36,27 @@ class QuestController extends Controller
 		 * @var $quest_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
 		 */
-		$quest_array = Config::get('app.authentic') == true ? array('black_knights_fortress', 'cooks_assistant', 'demon_slayer', 'dorics_quest',
-			'the_restless_ghost', 'goblin_diplomacy', 'earnest_the_chicken', 'imp_catcher', 'pirates_treasure', 'price_ali_rescue', 'romeo_and_juliet',
-			'sheep_sheerer', 'shield_of_arrav', 'the_knights_sword', 'vampire_slayer', 'witchs_potion', 'dragon_slayer', 'witchs_house', 'lost_city',
-			'druidic_ritual', 'heros_quest', 'merlins_crystal', 'scorpion_catcher') : array('black_knights_fortress', 'cooks_assistant', 'demon_slayer',
-			'dorics_quest', 'the_restless_ghost', 'goblin_diplomacy', 'earnest_the_chicken', 'imp_catcher', 'pirates_treasure', 'price_ali_rescue',
-			'romeo_and_juliet', 'sheep_sheerer', 'shield_of_arrav', 'the_knights_sword', 'vampire_slayer', 'witchs_potion', 'dragon_slayer',
-			'witchs_house', 'lost_city', 'druidic_ritual', 'heros_quest', 'merlins_crystal', 'scorpion_catcher');
+		$quest_array = Config::get('app.authentic') == true ?
+			array('black_knights_fortress', 'cooks_assistant',
+				'demon_slayer', 'dorics_quest', 'dragon_slayer', 'earnest_the_chicken', 'goblin_diplomacy', 'imp_catcher',
+				'the_knights_sword', 'pirates_treasure', 'price_ali_rescue', 'the_restless_ghost', 'romeo_and_juliet',
+				'sheep_sheerer', 'shield_of_arrav', '', 'vampire_slayer', 'witchs_potion', 'biohazard', 'clock_tower',
+				'digsite', 'druidic_ritual', 'dwarf_cannon', 'family_crest', 'fight_arena', 'fishing_contest',
+				'the_grand_tree', 'gertrudes_cat', 'the_hazeel_cult', 'heros_quest', 'the_holy_grail', 'jungle_potion',
+				'legends_quest', 'lost_city', 'merlins_crystal', 'monks_friend', 'murder_mystery', 'observatory_quest',
+				'plague_city', 'scorpion_catcher', 'sea_slug', 'sheep_herder', 'shilo_village', 'temple_of_ikov',
+				'tourist_trap', 'tree_gnome_village', 'tribal_totem', 'underground_pass', 'watchtower', 'waterfall_quest',
+				'witchs_house') :
+			array('black_knights_fortress', 'cooks_assistant',
+				'demon_slayer', 'dorics_quest', 'dragon_slayer', 'earnest_the_chicken', 'goblin_diplomacy', 'imp_catcher',
+				'the_knights_sword', 'pirates_treasure', 'price_ali_rescue', 'the_restless_ghost', 'romeo_and_juliet',
+				'sheep_sheerer', 'shield_of_arrav', '', 'vampire_slayer', 'witchs_potion', 'biohazard', 'clock_tower',
+				'digsite', 'druidic_ritual', 'dwarf_cannon', 'family_crest', 'fight_arena', 'fishing_contest',
+				'the_grand_tree', 'gertrudes_cat', 'the_hazeel_cult', 'heros_quest', 'the_holy_grail', 'jungle_potion',
+				'legends_quest', 'lost_city', 'merlins_crystal', 'monks_friend', 'murder_mystery', 'observatory_quest',
+				'plague_city', 'scorpion_catcher', 'sea_slug', 'sheep_herder', 'shilo_village', 'temple_of_ikov',
+				'tourist_trap', 'tree_gnome_village', 'tribal_totem', 'underground_pass', 'watchtower', 'waterfall_quest',
+				'witchs_house');
 
 		/**
 		 * @var $subpage
