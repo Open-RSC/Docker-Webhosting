@@ -52,7 +52,7 @@
 						</thead>
 						<tbody>
 						@foreach ($highscores as $key=>$player)
-							<tr class="row clickable-row" data-href="player/{{ $player->id }}">
+							<tr class="row clickable-row" data-href="{{ route('player', $player->id) }}">
 								<td class="col text-right pt-1 pb-1">
 									<span>
 										{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
