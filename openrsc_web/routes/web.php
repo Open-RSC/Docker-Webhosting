@@ -15,7 +15,10 @@ Route::get('/online', 'HomeController@online')->name('online');
 Route::get('/createdtoday', 'HomeController@createdtoday')->name('createdtoday');
 Route::get('/logins48', 'HomeController@logins48')->name('logins48');
 Route::get('/stats', 'HomeController@stats')->name('stats');
-Route::get('/quest', 'QuestController@index')->name('quest');
+
+// Quest pages
+Route::get('/quest_list', 'QuestController@index')->name('quest_list');
+Route::get('/quest/{subpage}', 'QuestController@show')->name('quest');
 
 // Player pages
 Route::get('/player/{subpage}', 'PlayerController@index')->name('player');
