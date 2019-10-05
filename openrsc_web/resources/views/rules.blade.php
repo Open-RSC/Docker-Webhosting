@@ -6,7 +6,7 @@
 			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">Rules</h2>
 
 			<div class="row justify-content-center">
-				<div class="col-lg-5 text-primary table-black pl-5">
+				<div class="col-lg-6 text-primary table-black pr-5 pl-5 pt-3 pb-3">
 					<span class="text-info font-weight-bold d-block">Do not Advertise</span>
 					<span class="d-block">- on other Discord servers (without staff permission)</span>
 					<span class="d-block">- on other RSC-based private game servers or websites</span>

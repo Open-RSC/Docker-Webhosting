@@ -1,17 +1,15 @@
 @extends('template')
 
 @section('content')
-	<h2 class="h2 text-center text-capitalize display-3 pb-4">Quest List</h2>
-	<div class="row sm-stats" style="text-transform: unset;">
-		<div class="text-primary">
-			<div class="flex-row">
-				<div class="pl-3 pr-3 container">
+	<h2 class="h2 text-center text-capitalize display-3 pb-2">Quest List</h2>
+	<div class="text-primary">
+		<div class="pl-3 pr-3 container">
 
-					<!-- Begin F2P Quests -->
-					<div id="f2p" class="stats pl-5 pr-5 mb-5">
-						<h3 class="text-info pt-3">F2P Quests</h3>
-						<div id="row1" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest/black_knights_fortress">
+			<!-- Begin F2P Quests -->
+			<div id="f2p" class="table-transparent pl-5 pr-5 mb-5">
+				<h3 class="text-info pt-3">F2P Quests</h3>
+				<div id="row1" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest/black_knights_fortress">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
@@ -20,7 +18,7 @@
 											Black Knights' Fortress
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -32,9 +30,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-cooks-assistant">
+					<div class="clickable-row" data-href="/quest-cooks-assistant">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Cooks_Assistant_Completed.png') }}"
@@ -43,7 +41,7 @@
 											Cook's Assistant
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -55,17 +53,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-demon-slayer">
+					<div class="clickable-row" data-href="/quest-demon-slayer">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Demon_Slayer_completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Demon_Slayer_completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Demon Slayer
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -77,17 +76,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-doric-quest">
+					<div class="clickable-row" data-href="/quest-doric-quest">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Dorics_Quest_Completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Dorics_Quest_Completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Doric's Quest
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -99,19 +99,20 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row2" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-dragon-slayer">
+				<div id="row2" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-dragon-slayer">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Dragon_Slayer_completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Dragon_Slayer_completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Dragon slayer
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -123,9 +124,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-ernest-the-chicken">
+					<div class="clickable-row" data-href="/quest-ernest-the-chicken">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Ernest_Chicken_completed.png') }}"
@@ -134,7 +135,7 @@
 											Ernest the Chicken
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -146,17 +147,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-goblin-diplomacy">
+					<div class="clickable-row" data-href="/quest-goblin-diplomacy">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Goblin_completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Goblin_completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Goblin Diplomacy
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -168,17 +170,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-imp-catcher">
+					<div class="clickable-row" data-href="/quest-imp-catcher">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Imp_Catcher_Completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Imp_Catcher_Completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Imp Catcher
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -190,11 +193,11 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row3" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-the-knights-sword">
+				<div id="row3" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-the-knights-sword">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Knight\'s_Sword_completed.png') }}"
@@ -203,7 +206,7 @@
 											The Knight's Sword
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -215,9 +218,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-pirates-treasure">
+					<div class="clickable-row" data-href="/quest-pirates-treasure">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Pirates_Treasure_completed.png') }}"
@@ -226,7 +229,7 @@
 											Pirate's Treasure
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -238,9 +241,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-prince-ali-rescue">
+					<div class="clickable-row" data-href="/quest-prince-ali-rescue">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Prince_Ali_Rescue_completed.png') }}"
@@ -249,7 +252,7 @@
 											Prince Ali Rescue
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -261,9 +264,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-the-restless-ghost">
+					<div class="clickable-row" data-href="/quest-the-restless-ghost">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/The_Restless_Ghost_Completed.png') }}"
@@ -272,7 +275,7 @@
 											The Restless Ghost
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -284,19 +287,20 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row4" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-romeo-and-juliet">
+				<div id="row4" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-romeo-and-juliet">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Romeo_Juliet_Completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Romeo_Juliet_Completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Romeo & Juliet
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -308,17 +312,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-sheep-shearer">
+					<div class="clickable-row" data-href="/quest-sheep-shearer">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Sheep_Shearer_Completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Sheep_Shearer_Completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Sheep Shearer
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -330,9 +335,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-shield-of-arrav">
+					<div class="clickable-row" data-href="/quest-shield-of-arrav">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Shield_of_Arrav_completed.png') }}"
@@ -341,7 +346,7 @@
 											Shield of Arrav
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -353,9 +358,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-vampire-slayer">
+					<div class="clickable-row" data-href="/quest-vampire-slayer">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Vampire_Slayer_Completed.png') }}"
@@ -364,7 +369,7 @@
 											Vampire Slayer
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -376,11 +381,11 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row5" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-witchs-potion">
+				<div id="row5" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-witchs-potion">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Witch\'s_potion_completed.png') }}"
@@ -389,7 +394,7 @@
 											Witch's potion
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -401,25 +406,26 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
-
 					</div>
-					<!-- End F2P Quests -->
+				</div>
 
-					<!-- Begin Members Quests -->
-					<div id="members" class="stats pl-5 pr-5">
-						<h3 class="text-info pt-3">Members Quests</h3>
-						<div id="row1" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-biohazard">
+			</div>
+			<!-- End F2P Quests -->
+
+			<!-- Begin Members Quests -->
+			<div id="members" class="table-transparent pl-5 pr-5">
+				<h3 class="text-info pt-3">Members Quests</h3>
+				<div id="row1" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-biohazard">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Biohazard_finish_8.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Biohazard_finish_8.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Biohazard
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -431,17 +437,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-clock-tower">
+					<div class="clickable-row" data-href="/quest-clock-tower">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Clock_tower_2.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Clock_tower_2.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Clock Tower
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -453,17 +460,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-digsite">
+					<div class="clickable-row" data-href="/quest-digsite">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Digsite_Completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Digsite_Completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Digsite
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -475,9 +483,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-druidic-ritual">
+					<div class="clickable-row" data-href="/quest-druidic-ritual">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Druidic_Ritual_completed.png') }}"
@@ -486,7 +494,7 @@
 											Druidic Ritual
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -498,19 +506,20 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row2" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-dwarf-cannon">
+				<div id="row2" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-dwarf-cannon">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Dwarf_cannon_finish.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Dwarf_cannon_finish.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Dwarf Cannon
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -522,17 +531,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-family-crest">
+					<div class="clickable-row" data-href="/quest-family-crest">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Family_Crest_completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Family_Crest_completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Family Crest
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -544,17 +554,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-fight-arena">
+					<div class="clickable-row" data-href="/quest-fight-arena">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/FightArenaComplete.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/FightArenaComplete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Fight Arena
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -566,17 +577,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-fishing-contest">
+					<div class="clickable-row" data-href="/quest-fishing-contest">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/FishConReward.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/FishConReward.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Fishing Contest
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -588,19 +600,20 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row3" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-the-grand-tree">
+				<div id="row3" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-the-grand-tree">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Grand_tree_completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Grand_tree_completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											The Grand Tree
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -612,17 +625,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-gertrudes-cat">
+					<div class="clickable-row" data-href="/quest-gertrudes-cat">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Gertude_Cat_Complete.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Gertude_Cat_Complete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Gertrude's Cat
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -634,17 +648,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-the-hazeel-cult">
+					<div class="clickable-row" data-href="/quest-the-hazeel-cult">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Good_Hazeel_Complete.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Good_Hazeel_Complete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											The Hazeel Cult
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -656,17 +671,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-heros-quest">
+					<div class="clickable-row" data-href="/quest-heros-quest">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Heroes_finish.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Heroes_finish.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Hero's Quest
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -678,19 +694,20 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row4" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-the-holy-grail">
+				<div id="row4" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-the-holy-grail">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/HolyGrailComplete.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/HolyGrailComplete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											The Holy Grail
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -702,17 +719,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-jungle-potion">
+					<div class="clickable-row" data-href="/quest-jungle-potion">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/JunglePotionComplete.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/JunglePotionComplete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Jungle Potion
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -724,17 +742,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-legends-quest">
+					<div class="clickable-row" data-href="/quest-legends-quest">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/LegendsQuestComplete.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/LegendsQuestComplete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Legend's Quest
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -744,17 +763,18 @@
 											<i class="fas fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-lost-city">
+					<div class="clickable-row" data-href="/quest-lost-city">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Lost_City_completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Lost_City_completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Lost City
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -766,11 +786,11 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row5" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-merlins-crystal">
+				<div id="row5" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-merlins-crystal">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Merlins_Crystal_completed.png') }}"
@@ -779,7 +799,7 @@
 											Merlin's Crystal
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -791,17 +811,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-monks-friend">
+					<div class="clickable-row" data-href="/quest-monks-friend">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Monk\'s_friend_end.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Monk\'s_friend_end.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Monk's Friend
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -813,17 +834,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-murder-mystery">
+					<div class="clickable-row" data-href="/quest-murder-mystery">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Murder_reward.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Murder_reward.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Murder Mystery
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -835,17 +857,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-observatory-quest">
+					<div class="clickable-row" data-href="/quest-observatory-quest">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Observatory_completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Observatory_completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Observatory Quest
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -857,19 +880,20 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row6" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-plague-city">
+				<div id="row6" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-plague-city">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Plague_completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Plague_completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Plague City
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -881,17 +905,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-scorpion-catcher">
+					<div class="clickable-row" data-href="/quest-scorpion-catcher">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Scorp_catcher_end.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Scorp_catcher_end.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Scorpion Catcher
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -903,17 +928,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-sea-slug">
+					<div class="clickable-row" data-href="/quest-sea-slug">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/SeaSlugComplete.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/SeaSlugComplete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Sea Slug
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -925,17 +951,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-sheep-herder">
+					<div class="clickable-row" data-href="/quest-sheep-herder">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Sheep_Herder_Completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Sheep_Herder_Completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Sheep Herder
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -947,19 +974,20 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row7" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-shilo-village">
+				<div id="row7" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-shilo-village">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/ShiloVillageComplete.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/ShiloVillageComplete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Shilo Village
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -971,9 +999,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-temple-of-ikov">
+					<div class="clickable-row" data-href="/quest-temple-of-ikov">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Temple_of_Ikov_Evil_-_Complete.png') }}"
@@ -982,7 +1010,7 @@
 											Temple of Ikov
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -994,17 +1022,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-tourist-trap">
+					<div class="clickable-row" data-href="/quest-tourist-trap">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/TouristTrapComplete.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/TouristTrapComplete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Tourist Trap
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -1016,9 +1045,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-tree-gnome-village">
+					<div class="clickable-row" data-href="/quest-tree-gnome-village">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Tree_Gnome_Village_completed.png') }}"
@@ -1027,7 +1056,7 @@
 											Tree Gnome Village
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -1039,19 +1068,20 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row8" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-tribal-totem">
+				<div id="row8" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-tribal-totem">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Tribal_totem_5.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Tribal_totem_5.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Tribal Totem
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -1063,17 +1093,18 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-underground-pass">
+					<div class="clickable-row" data-href="/quest-underground-pass">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Underground_completed.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Underground_completed.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Underground Pass
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -1085,9 +1116,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-watchtower">
+					<div class="clickable-row" data-href="/quest-watchtower">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Watchtower_other_rewards.png') }}"
@@ -1096,7 +1127,7 @@
 											Watchtower
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -1108,9 +1139,9 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
+					</div>
 
-							<div class="clickable-row" data-href="/quest-waterfall-quest">
+					<div class="clickable-row" data-href="/quest-waterfall-quest">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Waterfall_Quest_Completed.png') }}"
@@ -1119,7 +1150,7 @@
 											Waterfall Quest
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -1131,19 +1162,20 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
+					</div>
+				</div>
 
-						<div id="row9" class="d-flex flex-wrap justify-content-between pt-3">
-							<div class="clickable-row" data-href="/quest-witches-house">
+				<div id="row9" class="d-flex flex-wrap justify-content-between pt-3">
+					<div class="clickable-row" data-href="/quest-witches-house">
 									<span class="d-block">
-										<img class="d-block" alt="quest image" src="{{ asset('img/quests/Witches_Quest_end.png') }}"
+										<img class="d-block" alt="quest image"
+											 src="{{ asset('img/quests/Witches_Quest_end.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Witch's House
 										</span>
 									</span>
-								<span class="d-block pb-3">
+						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
@@ -1155,12 +1187,12 @@
 											<i class="far fa-star"></i>
 										</span>
 									</span>
-							</div>
-						</div>
-
 					</div>
-					<!-- End Members Quests -->
-
 				</div>
+
 			</div>
+			<!-- End Members Quests -->
+
+		</div>
+	</div>
 @endsection
