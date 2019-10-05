@@ -16,25 +16,19 @@ class QuestController extends Controller
 	 */
 	public function index()
 	{
-		/**
-		 * @return Factory|View
-		 * @var $highscores
-		 * Fetches the table row of the player experience in view and paginates the results
-		 */
-
 		return view('quest_list');
 	}
 
 	/**
 	 * @param $subpage
 	 * @return Factory|View
-	 * Used to show all skill-specific sub pages
+	 * Used to show all quest-specific sub pages
 	 */
 	public function show($subpage)
 	{
 		/**
 		 * @var $quest_array
-		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
+		 * prevents non-authentic quests from showing if .env DB_DATABASE is named 'openrsc'
 		 */
 		$quest_array = Config::get('app.authentic') == true ?
 			array('black_knights_fortress', 'cooks_assistant',
@@ -67,10 +61,10 @@ class QuestController extends Controller
 		$subpage = preg_replace("/[^A-Za-z0-9 ]/", "_", $subpage);
 
 		/**
-		 * @var $highscores
+		 * @var $quest
 		 */
-		$highscores = DB::connection()
-			->table('openrsc_experience as a')
+		/*$quest = DB::connection()
+			->table('openrsc_quests as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
 			->select('*', DB::raw($subpage))
 			->where([
@@ -78,11 +72,10 @@ class QuestController extends Controller
 				['b.group_id', '=', '10'],
 				['b.highscoreopt', '=', '0'],
 			])
-			->groupBy('b.username')
-			->orderBy($subpage, 'desc')
-			->paginate(300);
+			->get();*/
 
-		return view('quest', [
+		return view('quests/'.$subpage, [
+			//'quest' => $quest,
 			'quest_array' => $quest_array,
 			'minigame_array' => $minigame_array,
 			'subpage' => $subpage,
