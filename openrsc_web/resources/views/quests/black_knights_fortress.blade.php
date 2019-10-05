@@ -12,41 +12,62 @@
 			<div class="table-transparent mt-2 pl-5 pt-3 pb-3 pr-5">
 				<div class="row">
 					<div class="col-5 float-left">
-						<span class="d-block"><span class="text-info">Release date:</span> 6 April 2001</span>
-						<span class="d-block"><span class="text-info">Difficulty:</span> <span
-								class="small text-info font-weight-bold">
+						<span class="d-block"><span class="text-info">Release date:</span>
+							<span class="small"> 6 April 2001</span>
+						</span>
+						<span class="d-block"><span class="text-info">Difficulty:</span>
+							<span class="small text-info font-weight-bold">
 									<i class="fas fa-star"></i>
 									<i class="fas fa-star"></i>
-								</span><span
-								class="small">
+							</span>
+							<span class="small">
 									<i class="far fa-star"></i>
 									<i class="far fa-star"></i>
 									<i class="far fa-star"></i>
-									</span></span>
-						<span class="d-block"><span class="text-info">Length:</span> Medium</span>
-						<span class="d-block"><span class="text-info">Requirements:</span> 12 Quest Points</span>
-						<span class="d-block"><span class="text-info">Start:</span> Talk to Sir Amik Varze in the White Knights Castle</span>
+							</span>
+						</span>
+						<span class="d-block"><span class="text-info">Length:</span>
+							<span class="small"> Medium</span>
+						</span>
+						<span class="d-block"><span class="text-info">Requirements:</span>
+							<span class="small"> 12 Quest Points</span>
+						</span>
+						<span class="d-block"><span class="text-info">Start:</span>
+							<span class="small"> Talk to Sir Amik Varze in the White Knights Castle</span>
+						</span>
 					</div>
 
 					<div class="col-7">
-				<span class="d-block"><span class="text-info">Items needed:</span>
-					<span class="d-block">- Medium Bronze Helmet (Can be bought from Peksa's Helmet Shop in Barbarian Village)</span>
-					<span class="d-block">- Iron Chain Mail Body (Can be bought from Horvik's Armour Shop in Varrock, or from Wayne's Chains in Falador)</span>
-					<span class="d-block">- Cabbage (One that is not from the patch near Draynor Manor)</span>
+				<span class="d-block"><span class="text-info">Items required:</span>
+					<span class="d-block small">- Medium Bronze Helmet (Can be bought from Peksa's Helmet Shop in Barbarian Village)</span>
+					<span class="d-block small">- Iron Chain Mail Body (Can be bought from Horvik's shop in Varrock, or from Wayne's Chains in Falador)</span>
+					<span class="d-block small">- Cabbage (One that is not from the patch near Draynor Manor)</span>
 				</span>
-						<span class="d-block"><span class="text-info">Monsters to kill:</span> 3 Black Knights (level 46) unless you can rapidly click your way through the door before they kill/swarm you</span>
+						<span class="d-block">
+							<span class="text-info">Monsters to kill:</span>
+							<span class="d-block small">- 3 Black Knights (level 46) unless you can rapidly click your way through the door before they swarm you</span>
+						</span>
 					</div>
 				</div>
 			</div>
 
 			<div class="table-transparent mt-2 pl-5 pt-3 pb-3 pr-5">
 				<div class="h4 text-info">
-					Walkthrough
+					Starting the quest
 				</div>
-				<img class="pb-2 img-fluid" src="{{ asset('img/quests/Sir_Amik_Varze.png') }}" alt="Sir Amik Varze">
-				<span class="d-block">
-						To start this quest, talk to Sir Amik Varze who is found wandering on the second floor of the White Knights Castle in Falador. Tell him you are seeking a quest and he'll say he needs some spy work done. The Black Knights at the Black Knights' Fortress are threatening to invade Falador with a secret weapon, and Sir Amik Varze wants you to find out what it is and sabotage it.
-					</span>
+				<div class="row">
+					<div class="col-2 text-center">
+						<img src="{{ asset('img/quests/Sir_Amik_Varze.png') }}"
+							 alt="Sir Amik Varze">
+					</div>
+					<div class="col pt-3">
+						To start this quest, talk to Sir Amik Varze who is found wandering on the second floor of the
+						White Knights Castle in Falador. Tell him you are seeking a quest and he'll say he needs some
+						spy work done. The Black Knights at the Black Knights' Fortress are threatening to invade
+						Falador with a secret weapon, and Sir Amik Varze wants you to find out what it is and sabotage
+						it.
+					</div>
+				</div>
 			</div>
 
 			<div class="table-transparent mt-2 pl-5 pt-3 pb-3 pr-5">
