@@ -44,10 +44,10 @@
 						<thead class="border-bottom border-info thead-dark">
 						<tr class="row text-info">
 							<th class="col text-right pt-1 pb-1">Rank</th>
-							<th class="col text-left pt-1 pb-1">Player</th>
+							<th class="col-sm-3 text-left pt-1 pb-1">Player</th>
 							<th class="col text-right pt-1 pb-1">Level</th>
 							<th class="col text-left pt-1 pb-1">XP</th>
-							<th class="col text-right pt-1 pb-1">Last Login</th>
+							<th class="col-sm-3 text-right pt-1 pb-1">Last Login</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -58,7 +58,7 @@
 										{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
 									</span>
 								</td>
-								<td class="col text-left pt-1 pb-1">
+								<td class="col-sm-3 text-left pt-1 pb-1">
 									<span>
 										{{ ucfirst($player->username) }}
 									</span>
@@ -73,7 +73,7 @@
 										{{ number_format($player->${'exp_'.$subpage}/4.0) }}
 									</span>
 								</td>
-								<td class="col text-right pt-1 pb-1">
+								<td class="col-sm-3 text-right pt-1 pb-1">
 									@if($player->login_date != 0)
 										<span>
 											{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
