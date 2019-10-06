@@ -43,37 +43,37 @@
 						   class="container-fluid table-striped table-hover text-primary table-transparent">
 						<thead class="border-bottom border-info thead-dark">
 						<tr class="row text-info">
-							<th class="col text-right pt-1 pb-1">Rank</th>
-							<th class="col-sm-3 text-left pt-1 pb-1">Player</th>
-							<th class="col text-right pt-1 pb-1">Level</th>
-							<th class="col text-left pt-1 pb-1">XP</th>
-							<th class="col-sm-3 text-right pt-1 pb-1">Last Login</th>
+							<th class="col text-right">Rank</th>
+							<th class="col-sm-3 text-left">Player</th>
+							<th class="col text-right">Level</th>
+							<th class="col text-left">XP</th>
+							<th class="col-sm-3 text-right">Last Login</th>
 						</tr>
 						</thead>
 						<tbody>
 						@foreach ($highscores as $key=>$player)
 							<tr class="row clickable-row" data-href="{{ route('player', $player->id) }}">
-								<td class="col text-right pt-1 pb-1">
+								<td class="col-2 text-right">
 									<span>
 										{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
 									</span>
 								</td>
-								<td class="col-sm-3 text-left pt-1 pb-1">
+								<td class="col-sm-3 text-left">
 									<span>
 										{{ ucfirst($player->username) }}
 									</span>
 								</td>
-								<td class="col text-right pt-1 pb-1">
+								<td class="col text-right">
 									<span>
 										{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage}/4.0)) }}
 									</span>
 								</td>
-								<td class="col text-left pt-1 pb-1">
+								<td class="col text-left">
 									<span>
 										{{ number_format($player->${'exp_'.$subpage}/4.0) }}
 									</span>
 								</td>
-								<td class="col-sm-3 text-right pt-1 pb-1">
+								<td class="col-sm-3 text-right">
 									@if($player->login_date != 0)
 										<span>
 											{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
