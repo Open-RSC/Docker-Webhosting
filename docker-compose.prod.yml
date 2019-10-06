@@ -15,7 +15,10 @@ services:
       - "./inc/default.conf:/etc/nginx/conf.d/default.conf"
       - "./openrsc_web:/var/www/html/openrsc_web"
       - "/var/log/nginx:/var/log/nginx"
-      - "/opt/Game/server/avatars:/var/www/html/avatars"
+      - "./avatars:/var/www/html/openrsc_web/public/img/avatars"
+      - "./board:/var/www/html/openrsc_web/public/board"
+      - "./sql:/var/www/html/openrsc_web/public/sql"
+      - "./downloads:/var/www/html/openrsc_web/public/downloads"
 
   php:
     environment:
