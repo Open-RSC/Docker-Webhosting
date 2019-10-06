@@ -18,6 +18,7 @@ services:
       - "./avatars:/var/www/html/openrsc_web/public/img/avatars"
       - "./board:/var/www/html/openrsc_web/public/board"
       - "./sql:/var/www/html/openrsc_web/public/sql"
+      - "./downloads:/var/www/html/openrsc_web/public/downloads"
 
   php:
     environment:
