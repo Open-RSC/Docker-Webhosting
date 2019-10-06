@@ -14,7 +14,6 @@ services:
       - "./board:/var/www/html/openrsc_web/public/board"
       - "./sql:/var/www/html/openrsc_web/public/sql"
       - "./downloads:/var/www/html/openrsc_web/public/downloads"
-      - "./downloads/cache:/var/www/html/openrsc_web/public/downloads/cache"
 
   php:
     image: openrsc/php-laravel:latest
@@ -27,7 +26,6 @@ services:
       - "./board:/var/www/html/openrsc_web/public/board"
       - "./sql:/var/www/html/openrsc_web/public/sql"
       - "./downloads:/var/www/html/openrsc_web/public/downloads"
-      - "./downloads/cache:/var/www/html/openrsc_web/public/downloads/cache"
 
   mysqldb:
     image: mariadb:latest
