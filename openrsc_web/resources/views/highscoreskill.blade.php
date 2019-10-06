@@ -45,9 +45,9 @@
 						<tr class="row text-info">
 							<th class="col text-right pt-1 pb-1">Rank</th>
 							<th class="col text-left pt-1 pb-1">Player</th>
-							<th class="col text-right pt-1 pb-1">Last Login</th>
 							<th class="col text-right pt-1 pb-1">Level</th>
 							<th class="col text-left pt-1 pb-1">XP</th>
+							<th class="col text-right pt-1 pb-1">Last Login</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -64,15 +64,6 @@
 									</span>
 								</td>
 								<td class="col text-right pt-1 pb-1">
-									@if($player->login_date != 0)
-										<span>
-											{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
-										</span>
-									@else
-										<span>Never</span>
-									@endif
-								</td>
-								<td class="col text-right pt-1 pb-1">
 									<span>
 										{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage}/4.0)) }}
 									</span>
@@ -81,6 +72,15 @@
 									<span>
 										{{ number_format($player->${'exp_'.$subpage}/4.0) }}
 									</span>
+								</td>
+								<td class="col text-right pt-1 pb-1">
+									@if($player->login_date != 0)
+										<span>
+											{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
+										</span>
+									@else
+										<span>Never</span>
+									@endif
 								</td>
 							</tr>
 						@endforeach
