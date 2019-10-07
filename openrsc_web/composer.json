@@ -15,7 +15,8 @@
         "laravel/scout": "^7.1",
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.0",
-        "wildbit/swiftmailer-postmark": "^3.0"
+        "wildbit/swiftmailer-postmark": "^3.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
