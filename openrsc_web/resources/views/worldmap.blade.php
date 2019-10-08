@@ -6,6 +6,13 @@
 
 	<div class="text-center" style="overflow: auto;">
 		<script>
+			// automatically reload the page every 20 seconds
+            function autoRefreshPage() {
+                window.location = window.location.href;
+            }
+
+            setInterval('autoRefreshPage()', 20000);
+
             function drawPosition() {
                 let canvas = document.getElementById('canvas');
                 let context = canvas.getContext('2d');
