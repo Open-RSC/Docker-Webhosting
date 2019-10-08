@@ -11,7 +11,7 @@
 
 				<!-- center column -->
 				<div class="col-auto" style="width: 600px;">
-					<div class="float-left h3">{{ ucfirst($subpage) }}</div>
+					<div class="float-left h3 text-white">{{ ucfirst($subpage) }}</div>
 
 					<div class="float-right">
 						<nav>
