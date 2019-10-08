@@ -464,7 +464,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-digsite">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-digsite" title="Reward: 2 quest points, 2 gold bars, mining experience, and herblaw experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Digsite_Completed.png') }}"
@@ -487,7 +487,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-druidic-ritual">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-druidic-ritual" title="Reward: 4 quest points, herblaw experience, and the ability to use the herblaw skill">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Druidic_Ritual_completed.png') }}"
@@ -512,7 +512,7 @@
 				</div>
 
 				<div id="row2" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-dwarf-cannon">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-dwarf-cannon" title="Reward: 1 quest point, crafting experience, the ability to buy a dwarf cannon, and the ability to make cannonballs with steel bars">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Dwarf_cannon_finish.png') }}"
@@ -535,7 +535,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-family-crest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-family-crest" title="Reward: 1 quest point, access to the hellhound dungeon east of Ardougne, and steel gauntlets that can be enhanced">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Family_Crest_completed.png') }}"
@@ -558,7 +558,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-fight-arena">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-fight-arena" title="Reward: 2 quest points, attack experience, thieving experience, and 1000 coins">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/FightArenaComplete.png') }}"
@@ -581,7 +581,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-fishing-contest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-fishing-contest" title="Reward: 1 quest point, fishing experience, and access to the Dwarf's underground tunnel beneath White Wolf Mountain">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/FishConReward.png') }}"
@@ -606,7 +606,7 @@
 				</div>
 
 				<div id="row3" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-grand-tree">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-grand-tree" title="Reward: 5 quest points, agility experience, magic experience, attack experience, access to the mines in Grand Tree, access to the Spirit Tree located at the Grand Tree, and access to the gnome gliders">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Grand_tree_completed.png') }}"
@@ -629,7 +629,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-gertrudes-cat">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-gertrudes-cat" title="Reward: 1 quest point and 2500 coins">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Gertude_Cat_Complete.png') }}"
