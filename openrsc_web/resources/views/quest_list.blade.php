@@ -11,7 +11,7 @@
 			<div id="f2p" class="table-transparent pl-5 pr-5 mb-5">
 				<h3 class="text-info pt-3">F2P Quests</h3>
 				<div id="row1" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest/black_knights_fortress">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest/black_knights_fortress" title="Reward: 3 quest points and 2500 coins">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
@@ -34,7 +34,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-cooks-assistant">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-cooks-assistant" title="Reward: 1 quest point, cooking experience, and access to the cook's range in Lumbridge castle">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Cooks_Assistant_Completed.png') }}"
@@ -57,7 +57,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-demon-slayer">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-demon-slayer" title="Reward: 3 quest points and to obtain Silverlight">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Demon_Slayer_completed.png') }}"
@@ -80,7 +80,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-doric-quest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-doric-quest" title="Reward: 1 quest point, mining experience, 180 coins, and the ability to use Doric's anvils">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Dorics_Quest_Completed.png') }}"
@@ -105,7 +105,7 @@
 				</div>
 
 				<div id="row2" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-dragon-slayer">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-dragon-slayer" title="Reward: 2 quest points, defense experience, strength experience, and the ability to wear the rune plate mail body">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Dragon_Slayer_completed.png') }}"
@@ -128,7 +128,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-ernest-the-chicken">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-ernest-the-chicken" title="Reward: 4 quest points and 300 coins">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Ernest_Chicken_completed.png') }}"
@@ -151,7 +151,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-goblin-diplomacy">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-goblin-diplomacy" title="Reward: 5 quests, 1 gold bar, and crafting experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Goblin_completed.png') }}"
@@ -174,7 +174,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-imp-catcher">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-imp-catcher" title="Reward: 1 quest point, magic experience, and an amulet of accuracy">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Imp_Catcher_Completed.png') }}"
@@ -199,7 +199,7 @@
 				</div>
 
 				<div id="row3" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-the-knights-sword">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-knights-sword" title="Reward: 1 quest point, smithing experience, and optionally the Faladian Sword">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Knight\'s_Sword_completed.png') }}"
@@ -222,7 +222,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-pirates-treasure">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-pirates-treasure" title="Reward: 2 quest points, 450 coins, a gold ring, and an emerald">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Pirates_Treasure_completed.png') }}"
@@ -245,7 +245,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-prince-ali-rescue">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-prince-ali-rescue" title="Reward: 3 quest points, 700 coins, and free passage through the Al-Kharid toll gate">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Prince_Ali_Rescue_completed.png') }}"
@@ -268,7 +268,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-the-restless-ghost">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-restless-ghost" title="Reward: 1 quest point, prayer experience, and an Amulet of Ghostspeak">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/The_Restless_Ghost_Completed.png') }}"
@@ -293,7 +293,7 @@
 				</div>
 
 				<div id="row4" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-romeo-and-juliet">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-romeo-and-juliet" title="Reward: 5 quest points">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Romeo_Juliet_Completed.png') }}"
@@ -316,7 +316,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-sheep-shearer">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-sheep-shearer" title="Reward: 1 quest point, 60 coins, and crafting experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Sheep_Shearer_Completed.png') }}"
@@ -339,7 +339,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-shield-of-arrav">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-shield-of-arrav" title="Reward: 1 quest point and 600 coins">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Shield_of_Arrav_completed.png') }}"
@@ -362,7 +362,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-vampire-slayer">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-vampire-slayer" title="Reward: 3 quest points and attack experience">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Vampire_Slayer_Completed.png') }}"
@@ -387,7 +387,7 @@
 				</div>
 
 				<div id="row5" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-witchs-potion">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-witchs-potion" title="Reward: 1 quest point and magic experience">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Witch\'s_potion_completed.png') }}"
@@ -418,7 +418,7 @@
 			<div id="members" class="table-transparent pl-5 pr-5">
 				<h3 class="text-info pt-3">Members Quests</h3>
 				<div id="row1" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-biohazard">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-biohazard" title="Reward: 3 quest points, a King Lathas Amulet, use of the Combat Training Camp, ability to travel through the Ardougne wall gateway, and thieving experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Biohazard_finish_8.png') }}"
@@ -441,7 +441,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-clock-tower">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-clock-tower" title="Reward: 1 quest point and 500 coins">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Clock_tower_2.png') }}"
@@ -464,7 +464,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-digsite">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-digsite">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Digsite_Completed.png') }}"
@@ -487,7 +487,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-druidic-ritual">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-druidic-ritual">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Druidic_Ritual_completed.png') }}"
@@ -512,7 +512,7 @@
 				</div>
 
 				<div id="row2" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-dwarf-cannon">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-dwarf-cannon">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Dwarf_cannon_finish.png') }}"
@@ -535,7 +535,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-family-crest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-family-crest">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Family_Crest_completed.png') }}"
@@ -558,7 +558,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-fight-arena">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-fight-arena">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/FightArenaComplete.png') }}"
@@ -581,7 +581,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-fishing-contest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-fishing-contest">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/FishConReward.png') }}"
@@ -606,7 +606,7 @@
 				</div>
 
 				<div id="row3" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-the-grand-tree">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-grand-tree">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Grand_tree_completed.png') }}"
@@ -629,7 +629,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-gertrudes-cat">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-gertrudes-cat">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Gertude_Cat_Complete.png') }}"
@@ -652,7 +652,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-the-hazeel-cult">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-hazeel-cult">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Good_Hazeel_Complete.png') }}"
@@ -675,7 +675,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-heros-quest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-heros-quest">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Heroes_finish.png') }}"
@@ -700,7 +700,7 @@
 				</div>
 
 				<div id="row4" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-the-holy-grail">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-holy-grail">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/HolyGrailComplete.png') }}"
@@ -723,7 +723,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-jungle-potion">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-jungle-potion">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/JunglePotionComplete.png') }}"
@@ -746,7 +746,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-legends-quest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-legends-quest">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/LegendsQuestComplete.png') }}"
@@ -767,7 +767,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-lost-city">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-lost-city">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Lost_City_completed.png') }}"
@@ -792,7 +792,7 @@
 				</div>
 
 				<div id="row5" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-merlins-crystal">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-merlins-crystal">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Merlins_Crystal_completed.png') }}"
@@ -815,7 +815,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-monks-friend">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-monks-friend">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Monk\'s_friend_end.png') }}"
@@ -838,7 +838,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-murder-mystery">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-murder-mystery">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Murder_reward.png') }}"
@@ -861,7 +861,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-observatory-quest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-observatory-quest">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Observatory_completed.png') }}"
@@ -886,7 +886,7 @@
 				</div>
 
 				<div id="row6" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-plague-city">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-plague-city">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Plague_completed.png') }}"
@@ -909,7 +909,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-scorpion-catcher">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-scorpion-catcher">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Scorp_catcher_end.png') }}"
@@ -932,7 +932,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-sea-slug">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-sea-slug">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/SeaSlugComplete.png') }}"
@@ -955,7 +955,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-sheep-herder">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-sheep-herder">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Sheep_Herder_Completed.png') }}"
@@ -980,7 +980,7 @@
 				</div>
 
 				<div id="row7" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-shilo-village">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-shilo-village">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/ShiloVillageComplete.png') }}"
@@ -1003,7 +1003,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-temple-of-ikov">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-temple-of-ikov">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Temple_of_Ikov_Evil_-_Complete.png') }}"
@@ -1026,7 +1026,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-tourist-trap">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-tourist-trap">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/TouristTrapComplete.png') }}"
@@ -1049,7 +1049,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-tree-gnome-village">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-tree-gnome-village">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Tree_Gnome_Village_completed.png') }}"
@@ -1074,7 +1074,7 @@
 				</div>
 
 				<div id="row8" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-tribal-totem">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-tribal-totem">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Tribal_totem_5.png') }}"
@@ -1097,7 +1097,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-underground-pass">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-underground-pass">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Underground_completed.png') }}"
@@ -1120,7 +1120,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-watchtower">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-watchtower">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Watchtower_other_rewards.png') }}"
@@ -1143,7 +1143,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-href="/quest-waterfall-quest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-waterfall-quest">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Waterfall_Quest_Completed.png') }}"
@@ -1168,7 +1168,7 @@
 				</div>
 
 				<div id="row9" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-href="/quest-witches-house">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-witches-house">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Witches_Quest_end.png') }}"
