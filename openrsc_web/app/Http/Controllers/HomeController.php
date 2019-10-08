@@ -400,7 +400,7 @@ class HomeController extends Controller
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
-				['B.amount', '>=', '1200000'],
+				['B.amount', '>=', '120000'],
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
@@ -410,7 +410,7 @@ class HomeController extends Controller
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['B.id', '=', '10'],
-				['B.amount', '>=', '1200000'],
+				['B.amount', '>=', '120000'],
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
