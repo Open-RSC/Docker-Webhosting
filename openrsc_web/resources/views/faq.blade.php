@@ -3,10 +3,12 @@
 @section('content')
 	<div class="text-info">
 		<div class="container">
-			<h2 class="h2 text-center pt-5 pb-5 text-capitalize display-3">FAQ</h2>
+			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">
+				FAQ
+			</h2>
 
 			<div class="row justify-content-center">
-				<div class="col-lg-6 text-primary table-black pr-5 pl-5 pt-3 pb-3">
+				<div class="col-lg-6 text-primary table-transparent pr-5 pl-5 pt-3 pb-3">
 					<span class="text-info font-weight-bold d-block">What is Open RSC?</span>
 					The project was officially begun in June 2018, though has roots spanning as far back as 2009 with
 					Open RSCD v25. The Open RSC project has been a non-profit, community driven, open source initiative

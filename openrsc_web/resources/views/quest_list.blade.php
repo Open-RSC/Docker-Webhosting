@@ -1,7 +1,9 @@
 @extends('template')
 
 @section('content')
-	<h2 class="h2 text-center text-capitalize display-3 pb-2">Quest List</h2>
+	<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">
+		Quest List
+	</h2>
 	<div class="text-primary">
 		<div class="pl-3 pr-3 container">
 

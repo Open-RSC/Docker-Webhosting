@@ -7,8 +7,8 @@
 				{{ ucfirst($banks->first()->username) }}'s Bank
 			</h2>
 
-			<div class="row align-items-center pb-3">
-				<div class="pb-0 stats row justify-content-center text-primary">
+			<div class="align-items-center pb-3">
+				<div class="pb-0 table-transparent row justify-content-center text-primary">
 					<img class="pl-5" src="{{ asset('img/avatars').'/'.$banks->first()->playerID }}.png"
 						 style="height: 125px;" alt="{{ $banks->first()->username }}">
 					<div class="pl-5 col-6">

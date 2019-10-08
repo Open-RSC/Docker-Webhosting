@@ -3,13 +3,13 @@
 @section('content')
 	<div class="text-info">
 		<div class="container">
-			<h2 class="h2 text-center pt-5 pb-3 text-capitalize display-3">
+			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">
 				Statistics
 			</h2>
 
-			<div class="row justify-content-center">
+			<div class="row justify-content-center table-transparent">
 				<div class="text-primary">
-					<h4 class="pt-4 h4 text-warning">Accounts</h4>
+					<h4 class="pt-4 h3 text-white">Accounts</h4>
 					<span class="d-block">
 						<a class="text-info font-weight-bold" href="{{ route('online') }}">{{ $online }}</a> players currently logged in.
 					</span>
@@ -27,7 +27,7 @@
 						<span class="text-info font-weight-bold">{{ $totalTime }}</span> played.
 					</span>
 
-					<h4 class="pt-4 h4 text-warning">Combat</h4>
+					<h4 class="pt-4 h3 text-white">Combat</h4>
 					<span class="d-block">
 						<span class="text-info font-weight-bold">{{ $combat30 }}</span> players over combat level 30.
 					</span>
@@ -47,12 +47,12 @@
 						<span class="text-info font-weight-bold">{{ $combat123 }}</span> players are combat level 123.
 					</span>
 
-					<h4 class="pt-4 h4 text-warning">Quests</h4>
+					<h4 class="pt-4 h3 text-white">Quests</h4>
 					<span class="d-block">
 						<span class="text-info font-weight-bold">{{ $startedQuest }}</span> players have begun a quest.
 					</span>
 
-					<h4 class="pt-4 h4 text-warning">Wealth</h4>
+					<h4 class="pt-4 h3 text-white">Wealth</h4>
 					<span class="d-block">
 						<span class="text-info font-weight-bold">{{ number_format($sumgold) }}</span> gp total in-game.
 					</span>
@@ -90,8 +90,7 @@
 						<span class="text-info font-weight-bold">{{ number_format($gold10m) }}</span> players have over 10M gp.
 					</span>
 
-					<h4 class="pt-4 h4 text-warning">Important Items Summary</h4>
-
+					<h4 class="pt-4 h3 text-white">Important Items Summary</h4>
 					<table>
 						<tr>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
