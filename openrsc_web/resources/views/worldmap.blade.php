@@ -12,7 +12,7 @@
                 let img = document.getElementById("crosshairs");
 
                 // text overlay settings
-                context.font = '12px Arial';
+                context.font = '16px Arial';
                 context.textBaseline = 'middle';
                 context.fillStyle = "gold";
 
@@ -34,7 +34,7 @@
 
                     // show player positions after each redraw
 					@foreach ($playerPositions as $char)
-                    context.drawImage(img, 2152 - (({{$char->x}} -45) * 3), ({{$char->y}} -437) * 3, 30, 30);
+                    context.drawImage(img, 2152 - (({{$char->x}} -45) * 3), ({{$char->y}} -437) * 3, 38, 38);
                     context.fillText('{{ucfirst($char->username)}}', 2152 - (({{$char->x}} -45) * 3), ({{$char->y}} -437) * 3);
 					@endforeach
                 });
