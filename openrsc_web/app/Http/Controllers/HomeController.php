@@ -1070,7 +1070,12 @@ class HomeController extends Controller
 	{
 		$playerPositions = DB::connection()
 			->table('openrsc_players')
-			//->where('online', '=', '1')
+			->where([
+				['banned', '=', '0'],
+				['group_id', '=', '10'],
+				['highscoreopt', '=', '0'],
+				['online', '=', '1'],
+			])
 			->get();
 
 		$playerPositions = $playerPositions->toArray();
