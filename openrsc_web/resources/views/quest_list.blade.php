@@ -629,7 +629,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-gertrudes-cat" title="Reward: 1 quest point and 2500 coins">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-gertrudes-cat" title="Reward: 1 quest point, a kitten, a chocolate cake, a stew, and cooking experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Gertude_Cat_Complete.png') }}"
@@ -652,7 +652,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-hazeel-cult">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-hazeel-cult" title="Reward: 1 quest point, 2000 coins, thieving experience, and Carnillean armour">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Good_Hazeel_Complete.png') }}"
@@ -675,7 +675,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-heros-quest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-heros-quest" title="Reward: 1 quest point, experience in multiple skills, access to the Heroes' Guild, and the ability to wield the Dragon axe">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Heroes_finish.png') }}"
@@ -700,7 +700,7 @@
 				</div>
 
 				<div id="row4" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-holy-grail">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-the-holy-grail" title="Reward: 2 quest points, prayer experience, and defense experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/HolyGrailComplete.png') }}"
@@ -723,7 +723,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-jungle-potion">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-jungle-potion" title="Reward: 1 quest point and herblaw experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/JunglePotionComplete.png') }}"
@@ -746,7 +746,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-legends-quest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-legends-quest" title="Reward: 4 quest points, experience in several skills, access to the Legends' Guild, the ability to wield the Dragon Square Shield and Cape of Legends, and the ability to make cooked oomlie meat parcels and blessed golden bowls">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/LegendsQuestComplete.png') }}"
@@ -767,7 +767,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-lost-city">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-lost-city" title="Reward: 3 quest points, access to Zanaris, and the ability to buy Dragon Swords">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Lost_City_completed.png') }}"
@@ -792,7 +792,7 @@
 				</div>
 
 				<div id="row5" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-merlins-crystal">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-merlins-crystal" title="Reward: 6 quest points, Excalibur, and the ability to begin the Heroes' Quest">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Merlins_Crystal_completed.png') }}"
@@ -815,7 +815,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-monks-friend">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-monks-friend" title="Reward: 1 quest point, 8 law runes, and woodcutting experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Monk\'s_friend_end.png') }}"
@@ -838,7 +838,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-murder-mystery">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-murder-mystery" title="Reward: 3 quest points, crafting experience, and 2000 coins">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Murder_reward.png') }}"
@@ -861,7 +861,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-observatory-quest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-observatory-quest" title="Reward: 2 quest points, crafting experience, various items, and an uncut sapphire">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Observatory_completed.png') }}"
@@ -886,7 +886,7 @@
 				</div>
 
 				<div id="row6" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-plague-city">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-plague-city" title="Reward: 1 quest point, a magic scroll granting the ability to cast Ardougne teleport, and mining experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Plague_completed.png') }}"
@@ -909,7 +909,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-scorpion-catcher">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-scorpion-catcher" title="Reward: 1 quest point, strength experience, and Thormac the Sorcerer will enchant battlestaffs for 40K coins">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Scorp_catcher_end.png') }}"
@@ -932,7 +932,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-sea-slug">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-sea-slug" title="Reward: 1 quest point, a oyster pearl, and fishing experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/SeaSlugComplete.png') }}"
@@ -955,7 +955,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-sheep-herder">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-sheep-herder" title="Reward: 4 quest points, a protective jacket, protective trousers, and 3100 coins">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Sheep_Herder_Completed.png') }}"
@@ -980,7 +980,7 @@
 				</div>
 
 				<div id="row7" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-shilo-village">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-shilo-village" title="Reward: 2 quest points, access to Shilo Village, and crafting experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/ShiloVillageComplete.png') }}"
@@ -1003,7 +1003,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-temple-of-ikov">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-temple-of-ikov" title="Reward: 1 quest point, ranged experience, fletching experience, a Pendant of Lucien, a Pendant of Armadyl, and a Staff of Armadyl">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Temple_of_Ikov_Evil_-_Complete.png') }}"
@@ -1026,7 +1026,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-tourist-trap">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-tourist-trap" title="Reward: 2 quest points, the ability to make throwing darts, slave robe top and bottom, a wrought iron key, access to the Desert Mining Camp mine, and experience in various skills">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/TouristTrapComplete.png') }}"
@@ -1049,7 +1049,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-tree-gnome-village">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-tree-gnome-village" title="Reward: 2 quest points, attack experience, a Gnome Amulet of Protection, and access to Spirit Trees">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Tree_Gnome_Village_completed.png') }}"
@@ -1074,7 +1074,7 @@
 				</div>
 
 				<div id="row8" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-tribal-totem">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-tribal-totem" title="Reward: 1 quest point, thieving experience, and 5 swordfish">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Tribal_totem_5.png') }}"
@@ -1097,7 +1097,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-underground-pass">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-underground-pass" title="Reward: 5 quest points, a Staff of Iban, 30 fire runes, 15 death runes, attack experience, and agility experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Underground_completed.png') }}"
@@ -1120,7 +1120,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-watchtower">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-watchtower" title="Reward: 4 quest points, 5000 coins, magic experience, and the ability to use the Watchtower teleport spell">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Watchtower_other_rewards.png') }}"
@@ -1143,7 +1143,7 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-waterfall-quest">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-waterfall-quest" title="Reward: 1 quest point, 40 mithril seeds, 2 diamonds, 2 gold bars, strength experience, and attack experience">
 									<span class="d-block">
 										<img class="d-block"
 											 src="{{ asset('img/quests/Waterfall_Quest_Completed.png') }}"
@@ -1168,7 +1168,7 @@
 				</div>
 
 				<div id="row9" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-witches-house">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-witches-house" title="Reward: 4 quest points and hits experience">
 									<span class="d-block">
 										<img class="d-block" alt="quest image"
 											 src="{{ asset('img/quests/Witches_Quest_end.png') }}"
