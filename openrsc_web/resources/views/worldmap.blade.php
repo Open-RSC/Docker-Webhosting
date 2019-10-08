@@ -2,20 +2,6 @@
 
 @section('content')
 	<img src="{{ asset('img/crosshairs.svg') }}" id="crosshairs" style="display: none;" alt="crosshairs"/>
-	<!--foreach ($playerPositions as $char)
-
-	{ $xs = $ys = array() }}
-
-	{ 'ctx.drawImage(player,' . $char->x . ', ' . $char->y . ', 38, 38);'
-	. ' player.src ="/img/crosshairs.svg"; '
-	. ' ctx.fillStyle="gold"; '
-	. ' ctx.font="18pt sans-serif"; '
-	. ' ctx.fillText(' . ucfirst($char->username) . ', ' . $char->x . ', ' . $char->y . '); ' }}
-
-	{ $coords = (new App\Http\Controllers\HomeController)->coords_to_image($char->x, $char->y) }}
-		{ $xs[] = $char->x }}
-		{ $ys[] = $char->y }}
-	endforeach-->
 
 	<div class="text-center" style="overflow: auto;">
 		<script>
@@ -29,7 +15,7 @@
                 let img = document.getElementById("crosshairs");
                 //img.src = "{ asset('img/crosshairs.svg') }}";
 
-                context.font = '16px Arial';
+                context.font = '12px Arial';
                 context.textBaseline = 'middle';
                 context.fillStyle = "gold";
 
@@ -47,8 +33,14 @@
                     context.fillText(text, e.layerX + 5, e.layerY);
 
 					@foreach ($playerPositions as $char)
-                    	context.drawImage(img, 2152 - (({{$char->x}} - 45) * 3), ({{$char->y}} - 437) * 3, 38, 38);
-                    <!--context.fillText({ ucfirst($char->username) }}, { $char->x }}, { $char->y }});-->
+                    context.drawImage(img, 2152 - (({{$char->x}} -45) * 3), ({{$char->y}} -437) * 3, 38, 38);
+                    context.fillText('{{ucfirst($char->username)}}', 2152 - (({{$char->x}} -45) * 3), ({{$char->y}} -437) * 3);
+					@endforeach
+                });
+
+                canvas.onloadstart(function () {
+					@foreach ($playerPositions as $char)
+                    context.drawImage(img, 2152 - (({{$char->x}} -45) * 3), ({{$char->y}} -437) * 3, 38, 38);
 					@endforeach
                 });
             }
