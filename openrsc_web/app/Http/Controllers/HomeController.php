@@ -231,8 +231,9 @@ class HomeController extends Controller
 				->count() ?? '0';
 
 		$logins48 = DB::table('openrsc_players')
-				->whereRaw('login_date >= unix_timestamp(login_date - interval 48 hour)')
-				->count() ?? '0';
+			->whereRaw('login_date >= unix_timestamp(login_date - interval 48 hour)')
+			->orderBy('login_date', 'desc')
+			->count();
 
 		$totalPlayers = DB::table('openrsc_players')
 				->count() ?? '0';
