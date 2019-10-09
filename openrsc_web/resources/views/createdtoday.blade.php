@@ -11,7 +11,8 @@
 					<th class="pl-3 float-left">Player</th>
 					<th class="text-center">Picture</th>
 					<th class="text-center">Created</th>
-					<th class="pr-3 float-right">Last Login</th>
+					<th class="text-center">Last Login</th>
+					<th class="pr-3 float-right">Cumulative Play</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -48,10 +49,19 @@
 								@endif
 							</span>
 						</td>
-						<td>
-							<span class="pr-3 float-right pt-1 pb-1 h5">
+						<td class="text-center">
+							<span class="pt-1 pb-1 h5">
 								@if ($player->login_date)
 									{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
+								@else
+									Never
+								@endif
+							</span>
+						</td>
+						<td>
+							<span class="pr-3 float-right pt-1 pb-1 h5">
+								@if ($player->value)
+									{{ (new App\Http\Controllers\HomeController)->secondsToTime($player->value/1000) }}
 								@else
 									Never
 								@endif

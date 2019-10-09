@@ -190,10 +190,14 @@ class HomeController extends Controller
 
 	public function createdtoday()
 	{
-		$players = DB::table('openrsc_players')
-			->whereRaw('creation_date >= unix_timestamp(current_date - interval 1 day)')
-			->orderBy('login_date', 'desc')
-			->orderBy('creation_date', 'desc')
+		$players = DB::table('openrsc_players AS B')
+			->whereRaw('B.creation_date >= unix_timestamp(current_date - interval 1 day)')
+			->join('openrsc_player_cache AS A', 'A.playerID', '=', 'B.id')
+			->where([
+				['A.key', '=', 'total_played']
+			])
+			->orderBy('B.login_date', 'desc')
+			->orderBy('B.creation_date', 'desc')
 			->get();
 
 		return view(
