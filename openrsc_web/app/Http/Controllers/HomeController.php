@@ -206,10 +206,13 @@ class HomeController extends Controller
 
 	public function logins48()
 	{
-		$players = DB::table('openrsc_players')
-			->whereRaw('login_date >= unix_timestamp(current_date - interval 48 hour)')
-			->orderBy('login_date', 'desc')
-			->orderBy('creation_date', 'desc')
+		$players = DB::table('openrsc_players AS B')
+			->whereRaw('B.login_date >= unix_timestamp(current_date - interval 48 hour)')
+			->join('openrsc_player_cache AS A', 'A.playerID', '=', 'B.id')
+			->where([
+				['A.key', '=', 'total_played']
+			])
+			->orderBy('B.login_date', 'desc')
 			->get();
 
 		return view(
@@ -231,8 +234,9 @@ class HomeController extends Controller
 				->count() ?? '0';
 
 		$logins48 = DB::table('openrsc_players')
-				->whereRaw('login_date >= unix_timestamp(current_date - interval 48 hour)')
-				->count() ?? '0';
+			->whereRaw('login_date >= unix_timestamp(current_date - interval 48 hour)')
+			->orderBy('login_date', 'desc')
+			->count();
 
 		$totalPlayers = DB::table('openrsc_players')
 				->count() ?? '0';
