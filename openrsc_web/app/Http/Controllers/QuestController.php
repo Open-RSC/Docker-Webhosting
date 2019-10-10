@@ -20,6 +20,16 @@ class QuestController extends Controller
 	}
 
 	/**
+	 * @function minigame_list()
+	 * @return Factory|View
+	 * Used to show the minigames page
+	 */
+	public function minigame_list()
+	{
+		return view('minigame_list');
+	}
+
+	/**
 	 * @param $subpage
 	 * @return Factory|View
 	 * Used to show all quest-specific sub pages
@@ -74,7 +84,7 @@ class QuestController extends Controller
 			])
 			->get();*/
 
-		return view('quests/'.$subpage, [
+		return view('quests/' . $subpage, [
 			//'quest' => $quest,
 			'quest_array' => $quest_array,
 			'minigame_array' => $minigame_array,

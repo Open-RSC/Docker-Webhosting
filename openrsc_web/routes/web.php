@@ -19,6 +19,7 @@ Route::get('/stats', 'HomeController@stats')->name('stats');
 // Quest pages
 Route::get('/quest_list', 'QuestController@index')->name('quest_list');
 Route::get('/quest/{subpage}', 'QuestController@show')->name('quest');
+Route::get('/minigame_list', 'QuestController@minigame_list')->name('minigame_list');
 
 // Player pages
 Route::get('/player/{subpage}', 'PlayerController@index')->name('player');

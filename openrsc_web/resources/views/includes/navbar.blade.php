@@ -76,7 +76,7 @@
 			<input type="checkbox" id="drop-4"/>
 			<ul>
 				<li><a href="{{ asset('quest_list') }}">Quest List</a></li>
-				<li><a href="{{ asset('minigames') }}">Minigames</a></li>
+				<li><a href="{{ asset('minigame_list') }}">Minigames</a></li>
 				<li><a href="{{ asset('wilderness') }}">Wilderness Map</a></li>
 				<li><a href="{{ route('items') }}">Item Database</a></li>
 				<li><a href="{{ asset('npcs') }}">NPC Database</a></li>
