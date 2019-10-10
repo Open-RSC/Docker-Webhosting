@@ -9,14 +9,14 @@
 
 			<div class="table-transparent pl-5 pr-5 mb-5">
 				<div id="row1" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest/black_knights_fortress"
-						 title="Reward: 3 quest points and 2500 coins">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest/bar_crawl"
+						 title="It is considered a 'rite of passage'. To complete it, you must tour all the finest bars and taste the strongest drinks in RuneScape Classic.">
 									<span class="d-block">
-										<img class="d-block"
-											 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
-											 style="max-height:150px; max-width: 225px;" alt="quest image">
+										<img class="d-block" alt="minigame image"
+											 src="{{ asset('img/minigames/Bar_Crawl_Complete.png') }}"
+											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
-											Black Knights' Fortress
+											Bar Crawl
 										</span>
 									</span>
 						<span class="d-block pb-3">
@@ -33,14 +33,14 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-cooks-assistant"
-						 title="Reward: 1 quest point, cooking experience, and access to the cook's range in Lumbridge castle">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest/barbarian_agility_course"
+						 title="Theoretical maximum experience rate for running the full lap is 16k agility experience per hour. However, this is rarely possible at lower levels so many choose to only repeat Low wall jump for a constant 13.5k agility experience per hour. ">
 									<span class="d-block">
-										<img class="d-block"
-											 src="{{ asset('img/quests/Cooks_Assistant_Completed.png') }}"
+										<img class="d-block" alt="minigame image"
+											 src="{{ asset('img/minigames/Barb_handholds.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
-											Cook's Assistant
+											Barbarian Agility Course
 										</span>
 									</span>
 						<span class="d-block pb-3">
@@ -57,23 +57,23 @@
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-doric-quest"
-						 title="Reward: 1 quest point, mining experience, 180 coins, and the ability to use Doric's anvils">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest/kitten_to_cat"
+						 title="It takes roughly 2 hours for a kitten to mature into a cat. During that time your kitten will demand attention and food.">
 									<span class="d-block">
-										<img class="d-block" alt="quest image"
-											 src="{{ asset('img/quests/Dorics_Quest_Completed.png') }}"
+										<img class="d-block" alt="minigame image"
+											 src="{{ asset('img/minigames/Kitten_growth.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
-											Doric's Quest
+											Kitten to Cat
 										</span>
 									</span>
 						<span class="d-block pb-3">
 										Difficulty:
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
 										</span>
 										<span class="small">
-											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
@@ -83,14 +83,14 @@
 				</div>
 
 				<div id="row2" class="d-flex flex-wrap justify-content-between pt-3">
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-dragon-slayer"
-						 title="Reward: 2 quest points, defense experience, strength experience, and the ability to wear the rune plate mail body">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest/fishing_trawler"
+						 title="You can only get fish that correspond to your fishing level. You will get full XP for any fish you catch on the trawler.">
 									<span class="d-block">
-										<img class="d-block" alt="quest image"
-											 src="{{ asset('img/quests/Dragon_Slayer_completed.png') }}"
+										<img class="d-block" alt="minigame image"
+											 src="{{ asset('img/minigames/Fishing_trawler_full_net.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
-											Dragon slayer
+											Fishing Trawler
 										</span>
 									</span>
 						<span class="d-block pb-3">
@@ -100,45 +100,43 @@
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+										</span>
+									</span>
+					</div>
+
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest/gnome_ball"
+						 title="There are various methods a player may utilize to smuggle a gnomeball for use outside of the minigame.">
+									<span class="d-block">
+										<img class="d-block" alt="minigame image"
+											 src="{{ asset('img/minigames/Gnome_Ball_Agility_Bonus.png') }}"
+											 style="max-height:150px; max-width: 225px;">
+										<span class="text-info">
+											Gnome Ball
+										</span>
+									</span>
+						<span class="d-block pb-3">
+										Difficulty:
+										<span class="small text-info font-weight-bold">
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
 										</span>
 										<span class="small">
+											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 										</span>
 									</span>
 					</div>
 
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-ernest-the-chicken"
-						 title="Reward: 4 quest points and 300 coins">
+					<div class="clickable-row" data-toggle="tooltip" data-href="/quest/mage_arena"
+						 title="This is a dangerous Minigame, Death is very possible.">
 									<span class="d-block">
-										<img class="d-block"
-											 src="{{ asset('img/quests/Ernest_Chicken_completed.png') }}"
+										<img class="d-block" alt="minigames image"
+											 src="{{ asset('img/minigames/Completeing_MageArena.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
-											Ernest the Chicken
-										</span>
-									</span>
-						<span class="d-block pb-3">
-										Difficulty:
-										<span class="small text-info font-weight-bold">
-											<i class="fas fa-star"></i>
-										</span>
-										<span class="small">
-											<i class="far fa-star"></i>
-											<i class="far fa-star"></i>
-											<i class="far fa-star"></i>
-											<i class="far fa-star"></i>
-										</span>
-									</span>
-					</div>
-
-					<div class="clickable-row" data-toggle="tooltip" data-href="/quest-demon-slayer"
-						 title="Reward: 3 quest points and to obtain Silverlight">
-									<span class="d-block">
-										<img class="d-block" alt="quest image"
-											 src="{{ asset('img/quests/Demon_Slayer_completed.png') }}"
-											 style="max-height:150px; max-width: 225px;">
-										<span class="text-info">
-											Demon Slayer
+											Mage Arena
 										</span>
 									</span>
 						<span class="d-block pb-3">
@@ -146,10 +144,10 @@
 										<span class="small text-info font-weight-bold">
 											<i class="fas fa-star"></i>
 											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
+											<i class="fas fa-star"></i>
 										</span>
 										<span class="small">
-											<i class="far fa-star"></i>
-											<i class="far fa-star"></i>
 											<i class="far fa-star"></i>
 										</span>
 									</span>
