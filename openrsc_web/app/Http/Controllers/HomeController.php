@@ -57,16 +57,6 @@ class HomeController extends Controller
 		return implode(', ', $timeParts);
 	}
 
-	public function coords_to_image($x, $y)
-	{
-		$x = 2152 - (($x - 45) * 3);
-		$y = ($y - 437) * 3;
-		if ($x < 0 || $x > 2152 || $y < 0 || $y > 1007) {
-			return false;
-		}
-		return array('x' => $x, 'y' => $y);
-	}
-
 	/**
 	 * @function index()
 	 * @return Renderable
