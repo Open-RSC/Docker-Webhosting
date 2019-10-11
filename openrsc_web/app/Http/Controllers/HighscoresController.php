@@ -137,22 +137,22 @@ class HighscoresController extends Controller
 		$highscores = DB::connection()
 			->table('openrsc_experience as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('a.exp_'.$subpage))
+			->select('*', DB::raw('a.exp_' . $subpage))
 			->where([
 				['b.banned', '=', '0'],
 				['b.group_id', '=', '10'],
 				['b.highscoreopt', '=', '0'],
 			])
 			->groupBy('b.username')
-			->orderBy('a.exp_'.$subpage, 'desc')
+			->orderBy('a.exp_' . $subpage, 'desc')
 			->paginate(300);
 
-		$skill = 'exp_'.$subpage;
+		$skill = 'exp_' . $subpage;
 
 		return view('highscoreskill', [
 			'skill_array' => $skill_array,
 			'subpage' => $subpage,
-			'exp_'.$subpage => $skill,
+			'exp_' . $subpage => $skill,
 		])
 			->with(compact('highscores'));
 	}

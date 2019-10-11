@@ -52,14 +52,16 @@
 									   class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
 								<div class="col-md-6">
-									<input id="password-confirm" type="password" class="small bg-dark border-info text-white-50 form-control"
+									<input id="password-confirm" type="password"
+										   class="small bg-dark border-info text-white-50 form-control"
 										   name="password_confirmation" required>
 								</div>
 							</div>
 
 							<div class="form-group row mb-0">
 								<div class="col-md-6 offset-md-4">
-									<button type="submit" class="btn-sm w-75 text-center btn-dark btn-outline-info outline-dark">
+									<button type="submit"
+											class="btn-sm w-75 text-center btn-dark btn-outline-info outline-dark">
 										{{ __('Reset Password') }}
 									</button>
 								</div>

@@ -169,7 +169,7 @@
 						</td>
 						<td>
 							<div class="pr-3 float-right pl-5 pt-1">
-							{{ $item_drop->dropAmount }}
+								{{ $item_drop->dropAmount }}
 							</div>
 						</td>
 					</tr>

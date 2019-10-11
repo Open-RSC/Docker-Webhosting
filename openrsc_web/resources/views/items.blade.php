@@ -103,13 +103,13 @@
 						</td>
 						<td>
 							<div class="pr-3 float-right pt-1">
-							{{ number_format($itemdef->basePrice * 0.4) }}
-							<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
-								 alt="coins" height="24px" width="32px"/>
-							<span class="text-secondary">/</span>
-							{{ number_format($itemdef->basePrice * 0.6) }}
-							<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
-								 alt="coins" height="24px" width="32px"/>
+								{{ number_format($itemdef->basePrice * 0.4) }}
+								<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
+									 alt="coins" height="24px" width="32px"/>
+								<span class="text-secondary">/</span>
+								{{ number_format($itemdef->basePrice * 0.6) }}
+								<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
+									 alt="coins" height="24px" width="32px"/>
 							</div>
 						</td>
 					</tr>

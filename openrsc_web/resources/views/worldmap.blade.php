@@ -6,7 +6,7 @@
 
 	<div class="text-center" style="overflow: auto;">
 		<script>
-			// automatically reload the page every 20 seconds
+            // automatically reload the page every 20 seconds
             function autoRefreshPage() {
                 window.location = window.location.href;
             }
