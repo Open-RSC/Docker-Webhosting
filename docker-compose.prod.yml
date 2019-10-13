@@ -19,6 +19,7 @@ services:
       - "./board:/var/www/html/openrsc_web/public/board"
       - "./sql:/var/www/html/openrsc_web/public/sql"
       - "./downloads:/var/www/html/openrsc_web/public/downloads"
+      - "./cache:/var/www/html/openrsc_web/public/cache"
 
   php:
     environment:
