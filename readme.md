@@ -1,4 +1,5 @@
 # Open RSC Website
+Purpose: to allow an instance for each domain and game and be accessible via a central website portal for visitors, effectively allowing unique websites per game 
 
 This repository contains the Docker related files needed to run a container MariaDB database instance, Nginx web server container that may optionally tie into a Nginx proxy that automatically generates LetsEncrypt HTTPS certificates (https://gitlab.openrsc.com/open-rsc/docker-nginx-proxy), and a container that supports PHP-FPM with Laravel, Composer, PHPUnit, Node.js, Yarn, xdebug, and memcached built in.
 
