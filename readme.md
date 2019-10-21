@@ -10,7 +10,8 @@ Initial setup:
 2. Run the following commands
 
 ```
-sudo make restart && sudo make update-laravel
+sudo make restart 
+sudo make update-laravel
 ```
 
 3. If running on production, utilize this instead of the start/restart make command as it will use docker-compose.prod.yml:
