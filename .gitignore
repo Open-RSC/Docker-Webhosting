@@ -28,3 +28,5 @@ board/cache/production
 openrsc_web/public/css/app.css
 
 openrsc_web/public/mix-manifest.json
+
+openrsc_web/public/js/app.js
