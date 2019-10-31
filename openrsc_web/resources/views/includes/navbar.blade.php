@@ -17,7 +17,7 @@
 			<a href="#">Download</a>
 			<input type="checkbox" id="drop-1"/>
 			<ul>
-				<li><a href="{{ asset('downloads/OpenRSC%20Launcher.exe') }}">Windows</a></li>
+				<li><a href="{{ asset('OpenRSC-Windows.zip') }}">Windows</a></li>
 				<li><a href="{{ asset('downloads/OpenRSC.jar') }}">Mac / Linux</a></li>
 				<li><a href="{{ asset('downloads/openrsc.apk') }}">Android App</a></li>
 				<li>

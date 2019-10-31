@@ -45,7 +45,7 @@
 				</div>
 				<div class="dropdown-menu bg-dark" style="padding: 0;">
 					<a class="dropdown-item text-white-50 bg-dark"
-					   href="{{ asset('downloads/OpenRSC%20Launcher.exe') }}">Windows</a>
+					   href="{{ asset('OpenRSC-Windows.zip') }}">Windows</a>
 					<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/OpenRSC.jar') }}">Mac /
 						Linux</a>
 					<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/openrsc.apk') }}">Android
