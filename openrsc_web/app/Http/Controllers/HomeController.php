@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Agent\Agent;
 
 class HomeController extends Controller
 {
@@ -77,7 +78,8 @@ class HomeController extends Controller
 			->sum('B.amount');
 
 		$sumgold = $sumgoldbank + $sumgoldinvitems;
-
+		
+		$agent = new Agent();
 		return view(
 			'home',
 			[
@@ -90,6 +92,7 @@ class HomeController extends Controller
 				'totalTime' => $totalTime,
 				'activityfeed' => $activityfeed,
 				'sumgold' => $sumgold,
+				'agent' => $agent
 			]
 		)->with(compact('home'));
 	}

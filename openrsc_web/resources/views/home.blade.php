@@ -30,7 +30,7 @@
 		<!-- Center column with title text -->
 		<div class="col container text-center">
 			<div class="d-block pt-4">
-				<img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="logo">
+				<img src="{{ asset('img/logo.png', Request::secure()) }}" class="img-fluid" alt="logo">
 			</div>
 
 			<div class="d-block pb-3">
@@ -41,20 +41,23 @@
 				<div class="btn btn-md btn-secondary dropdown-toggle" data-toggle="dropdown"
 					 aria-haspopup="true"
 					 aria-expanded="false">
-					Downloads
+					Play Now
 				</div>
 				<div class="dropdown-menu bg-dark" style="padding: 0;">
-					<a class="dropdown-item text-white-50 bg-dark"
-					   href="{{ asset('OpenRSC-Windows.zip') }}">Windows</a>
-					<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/OpenRSC.jar') }}">Mac /
-						Linux</a>
-					<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/openrsc.apk') }}">Android
-						App</a>
-					<a class="dropdown-item text-white-50 bg-dark"
-					   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
-						Player</a>
-					<a class="dropdown-item text-white-50 bg-dark" href="https://gitlab.openrsc.com/open-rsc/Game"
-					   target="_blank">Source Code</a>
+					@if ($agent->isAndroid())
+						<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/openrsc.apk', Request::secure()) }}">Android</a>
+					@elseif ($agent->isWindows())
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="{{ asset('OpenRSC-Windows.zip', Request::secure()) }}">Desktop</a>
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
+							Player</a>
+					@else
+						<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/OpenRSC.jar', Request::secure()) }}">Desktop</a>
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
+							Player</a>
+					@endif
 				</div>
 			</div>
 
@@ -113,7 +116,7 @@
 						<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
 							{{ number_format($sumgold) }}
-							<img class="mt-n2 ml-n2" src="{{ asset('img/items/10.png') }}"
+							<img class="mt-n2 ml-n2" src="{{ asset('img/items/10.png', Request::secure()) }}"
 								 alt="coins" height="24px" width="32px"/>
                         </span>
 						</a>
