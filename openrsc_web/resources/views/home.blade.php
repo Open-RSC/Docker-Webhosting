@@ -45,15 +45,19 @@
 				</div>
 				<div class="dropdown-menu bg-dark" style="padding: 0;">
 					@if ($agent->isAndroid())
-						<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/openrsc.apk') }}">Android</a>
+						<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/openrsc.apk') }}">Android
+							Version</a>
 					@elseif ($agent->isWindows())
 						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{{ asset('OpenRSC-Windows.zip') }}">Desktop</a>
+						   href="{{ asset('OpenRSC-Windows.zip') }}">Desktop Version</a>
 						<a class="dropdown-item text-white-50 bg-dark"
 						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
 							Player</a>
 					@else
-						<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/OpenRSC.jar') }}">Desktop</a>
+						<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/OpenRSC.jar') }}">Desktop
+							Version</a>
+						<a class="dropdown-item text-white-50 bg-dark" href="{{ asset('downloads/openrsc.apk') }}">Android
+							Version</a>
 						<a class="dropdown-item text-white-50 bg-dark"
 						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
 							Player</a>
