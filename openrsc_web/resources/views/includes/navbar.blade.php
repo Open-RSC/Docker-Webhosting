@@ -17,13 +17,20 @@
 			<a href="#">Download</a>
 			<input type="checkbox" id="drop-1"/>
 			<ul>
-				<li><a href="{{ asset('OpenRSC-Windows.zip') }}">Windows</a></li>
-				<li><a href="{{ asset('downloads/OpenRSC.jar') }}">Mac / Linux</a></li>
-				<li><a href="{{ asset('downloads/openrsc.apk') }}">Android App</a></li>
-				<li>
-					<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
-						Player</a></li>
-				<li><a href="https://gitlab.openrsc.com/open-rsc/Game" target="_blank">Source Code</a></li>
+				@if ($agent->isAndroid())
+					<li><a href="{{ asset('downloads/openrsc.apk') }}">Android Version</a></li>
+				@elseif ($agent->isWindows())
+					<li><a href="{{ asset('OpenRSC.exe') }}">Windows</a></li>
+					<li><a href="{{ asset('downloads/OpenRSC.jar') }}">Alternative</a></li>
+					<li><a href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
+							Player</a></li>
+				@else
+					<li><a href="{{ asset('downloads/OpenRSC.jar') }}">Game Launcher</a></li>
+					<li><a href="{{ asset('downloads/openrsc.apk') }}">Android Version</a></li>
+					<li><a href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
+							Player</a></li>
+					<li><a href="https://gitlab.openrsc.com/open-rsc/Game" target="_blank">Source Code</a></li>
+				@endif
 			</ul>
 
 		</li>
