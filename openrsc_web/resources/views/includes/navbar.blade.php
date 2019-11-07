@@ -17,9 +17,9 @@
 			<a href="#">Download</a>
 			<input type="checkbox" id="drop-1"/>
 			<ul>
-				<li><a href="{{ asset('OpenRSC.exe') }}">Windows Launcher</a></li>
-				<li><a href="{{ asset('downloads/OpenRSC.jar') }}">Alternative Launcher</a></li>
-				<li><a href="{{ asset('downloads/openrsc.apk') }}">Android Version</a></li>
+				<li><a href="{{ asset('OpenRSC.exe') }}">Windows Client</a></li>
+				<li><a href="{{ asset('downloads/OpenRSC.jar') }}">Alternative Client</a></li>
+				<li><a href="{{ asset('downloads/openrsc.apk') }}">Android Client</a></li>
 				<li><a href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
 						Player</a></li>
 				<li><a href="https://gitlab.openrsc.com/open-rsc/Game" target="_blank">Source Code</a></li>
