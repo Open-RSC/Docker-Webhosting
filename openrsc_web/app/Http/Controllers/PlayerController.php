@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -35,23 +36,31 @@ class PlayerController extends Controller
 		 * Fetches the table row of the player experience in view and paginates the results
 		 */
 		$players = DB::connection()
-			->table('openrsc_players')
+			->table('openrsc_experience as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
 			->where([
-				['banned', '=', '0'],
-				['id', '=', $subpage],
+				['b.banned', '=', '0'],
+				['a.id', '=', $subpage],
 			])
 			->orWhere([
-				['banned', '=', '0'],
-				['username', '=', $subpage],
+				['b.banned', '=', '0'],
+				['b.username', '=', $subpage],
 			])
 			->get();
 		if (!$players) {
 			abort(404);
 		}
 
+		/**
+		 * @var $skill_array
+		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
+		 */
+		$skill_array = Config::get('app.authentic') == true ? array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft');
+
 		return view('player', [
 			'subpage' => $subpage,
 			'players' => $players,
+			'skill_array' => $skill_array,
 		])
 			->with(compact('$banks'));
 	}
