@@ -46,6 +46,7 @@ class PlayerController extends Controller
 				['b.banned', '=', '0'],
 				['b.username', '=', $subpage],
 			])
+			->limit(1)
 			->get();
 		if (!$players) {
 			abort(404);

@@ -15,13 +15,13 @@
 				<div class="stats row justify-content-center">
 
 					<!-- Avatar -->
-					<div class="mr-4 pt-3 d-inline-block float-left">
+					<div class="mr-4 pb-0 d-inline-block float-left">
 						<img src="{{ asset('img/avatars').'/'.$players->first()->id }}.png"
 							 style="height: 125px;" alt="{{ $players->first()->username }}">
 					</div>
 
 					<!-- Skill levels -->
-					<div id="sm-skill" class="pt-3 col-7">
+					<div id="sm-skill" class="pt-4 col-7">
 						@foreach ($skill_array as $skill)
 							<a class="text-secondary d-block"
 							   href="/highscores/{{ $skill }}">
@@ -76,7 +76,7 @@
 					</div>
 
 					<!-- Status and timestamps -->
-					<div class="ml-4 float-right">
+					<div class="ml-4 pt-3 float-right">
 						<span class="sm-stats pt-3">
 							Status:
 							@if ($players->first()->online == 1)
