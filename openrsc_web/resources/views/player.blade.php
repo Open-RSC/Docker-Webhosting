@@ -15,7 +15,7 @@
 				<div class="stats row justify-content-center">
 
 					<!-- Avatar -->
-					<div class="mr-4 pb-0 d-inline-block float-left">
+					<div class="mr-4 pt-3 d-inline-block float-left">
 						<img src="{{ asset('img/avatars').'/'.$players->first()->id }}.png"
 							 style="height: 125px;" alt="{{ $players->first()->username }}">
 					</div>
@@ -77,6 +77,23 @@
 
 					<!-- Status and timestamps -->
 					<div class="ml-4 pt-3 float-right">
+						<span class="sm-stats">Combat Level: { $players['combat'] }}</span>
+						<span class="sm-stats">Skill Total: { $players['skill_total'] }}</span>
+						<span class="sm-stats">Gang:
+                            @if ($player_gang->count())
+								@foreach ($player_gang as $gang)
+									@if ($gang->value == 0)
+										{{ $pick = 'Black Arm' }}
+									@else
+										{{ $pick = 'Phoenix' }}
+									@endif
+								@endforeach
+                            @else
+								None
+                            @endif
+						</span>
+
+
 						<span class="sm-stats pt-3">
 							Status:
 							@if ($players->first()->online == 1)

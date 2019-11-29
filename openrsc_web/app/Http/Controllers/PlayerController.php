@@ -40,7 +40,7 @@ class PlayerController extends Controller
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
 			->where([
 				['b.banned', '=', '0'],
-				['a.id', '=', $subpage],
+				['b.id', '=', $subpage],
 			])
 			->orWhere([
 				['b.banned', '=', '0'],
@@ -52,6 +52,23 @@ class PlayerController extends Controller
 			abort(404);
 		}
 
+		$player_gang = DB::connection()
+			->table('openrsc_player_cache as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->select('value')
+			->where([
+				['a.key', '=', 'arrav_gang'],
+				['b.banned', '=', '0'],
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['a.key', '=', 'arrav_gang'],
+				['b.banned', '=', '0'],
+				['b.username', '=', $subpage],
+			])
+			->limit(1)
+			->get();
+
 		/**
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
@@ -62,6 +79,7 @@ class PlayerController extends Controller
 			'subpage' => $subpage,
 			'players' => $players,
 			'skill_array' => $skill_array,
+			'player_gang' => $player_gang,
 		])
 			->with(compact('$banks'));
 	}
