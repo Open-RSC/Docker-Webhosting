@@ -39,11 +39,9 @@ class PlayerController extends Controller
 			->table('openrsc_experience as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
 			->where([
-				['b.banned', '=', '0'],
 				['b.id', '=', $subpage],
 			])
 			->orWhere([
-				['b.banned', '=', '0'],
 				['b.username', '=', $subpage],
 			])
 			->limit(1)
@@ -58,32 +56,42 @@ class PlayerController extends Controller
 			->select('value')
 			->where([
 				['a.key', '=', 'arrav_gang'],
-				['b.banned', '=', '0'],
 				['b.id', '=', $subpage],
 			])
 			->orWhere([
 				['a.key', '=', 'arrav_gang'],
-				['b.banned', '=', '0'],
 				['b.username', '=', $subpage],
 			])
 			->limit(1)
 			->get();
 
-		$milliseconds = DB::table('openrsc_player_cache as a')
+		$milliseconds = DB::connection()
+			->table('openrsc_player_cache as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
 			->where([
 				['a.key', '=', 'total_played'],
-				['b.banned', '=', '0'],
 				['b.id', '=', $subpage],
 			])
 			->orWhere([
 				['a.key', '=', 'total_played'],
-				['b.banned', '=', '0'],
 				['b.username', '=', $subpage],
 			])
 			->sum('value');
 
 		$totalTime = (new HomeController)->secondsToTime(round($milliseconds / 1000));
+
+		$player_feed = DB::connection()
+			->table('openrsc_live_feeds as a')
+			->join('openrsc_players AS b', 'a.username', '=', 'b.username')
+			->where([
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['b.username', '=', $subpage],
+			])
+			->orderBy('a.time', 'desc')
+			->limit(30)
+			->get();
 
 		/**
 		 * @var $skill_array
@@ -97,6 +105,7 @@ class PlayerController extends Controller
 			'skill_array' => $skill_array,
 			'player_gang' => $player_gang,
 			'totalTime' => $totalTime,
+			'player_feed' => $player_feed,
 		])
 			->with(compact('$banks'));
 	}
@@ -116,7 +125,6 @@ class PlayerController extends Controller
 			->join('openrsc_itemdef as c', 'a.id', '=', 'c.id')
 			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot, c.name'))
 			->Where([
-				['b.banned', '=', '0'],
 				['b.username', '=', 'shar'],
 			])
 			->orderBy('a.slot', 'asc')
@@ -154,11 +162,9 @@ class PlayerController extends Controller
 			->join('openrsc_itemdef as c', 'a.id', '=', 'c.id')
 			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot, c.name'))
 			->where([
-				['b.banned', '=', '0'],
 				['b.id', '=', $subpage],
 			])
 			->orWhere([
-				['b.banned', '=', '0'],
 				['b.username', '=', $subpage],
 			])
 			->orderBy('a.slot', 'asc')
@@ -201,11 +207,9 @@ class PlayerController extends Controller
 			->join('openrsc_itemdef as c', 'a.id', '=', 'c.id')
 			->select('*', DB::raw('b.username, a.id, format(a.amount, 0) number, a.slot, c.name'))
 			->where([
-				['b.banned', '=', '0'],
 				['b.id', '=', $subpage],
 			])
 			->orWhere([
-				['b.banned', '=', '0'],
 				['b.username', '=', $subpage],
 			])
 			->orderBy('a.slot', 'asc')

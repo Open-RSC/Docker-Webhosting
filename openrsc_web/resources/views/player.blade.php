@@ -11,8 +11,9 @@
 				<span class="ml-n3">{{ ucfirst($players->first()->username) }}</span>
 			</h2>
 
-			<div class="sm-stats">
-				@foreach ($players as $player)
+			@foreach ($players as $player)
+
+				<div class="sm-stats">
 					<div class="stats row justify-content-center">
 
 						<!-- Avatar -->
@@ -124,9 +125,47 @@
 							</span>
 						</div>
 					</div>
-				@endforeach
-			</div>
+				</div>
+
+				<!-- Accomplishments -->
+				<div class="stats pl-5 pr-5">
+					<div class="h4 text-info">
+						Recent Accomplishments
+					</div>
+					<div class="pl-3 row">
+						<table id="npcList" class="container table-striped table-hover text-primary table-transparent">
+							<thead class="border-bottom border-info">
+							<tr class="text-info">
+								<th class="pl-3 w-25">Time</th>
+								<th class="pr-3">Achievement</th>
+							</tr>
+							</thead>
+							<tbody>
+							@foreach ($player_feed as $achievements)
+								<tr class="clickable-row" data-href="player/{{ $achievements->id }}">
+									<td class="pl-3">
+										{{ Carbon\Carbon::parse($achievements->time)->diffForHumans() }}
+									</td>
+									<td>
+										<a href="player/{{ $achievements->id }}">
+											@if ($achievements->group_id < '10')
+												<img class="mb-1"
+													 src="{{ asset('img') }}/{{ $achievements->group_id }}.svg"
+													 height="14px"
+													 width="auto" alt="group {{ $achievements->group_id }}"/>
+											@endif
+											<span class="text-capitalize">
+													{{ $achievements->username }}
+												</span>
+										</a>
+										{!! $achievements->message !!}
+									</td>
+								</tr>
+							@endforeach
+							</tbody>
+						</table>
+					</div>
+					@endforeach
+				</div>
 		</div>
-	</div>
-	</div>
 @endsection
