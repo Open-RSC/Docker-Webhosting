@@ -79,7 +79,7 @@
 							<span class="sm-stats">Combat Level: {{ $players->first()->combat }}</span>
 							<span class="sm-stats">Skill Total: {{ $players->first()->skill_total }}</span>
 							<span class="sm-stats">Gang:
-                            @if ($player_gang->count())
+                            	@if ($player_gang->count())
 									@foreach ($player_gang as $gang)
 										@if ($gang->value == 0)
 											{{ $pick = 'Black Arm' }}
@@ -90,32 +90,31 @@
 								@else
 									None
 								@endif
-						</span>
-
+							</span>
 
 							<span class="sm-stats pt-3">
 							Status:
-							@if ($players->first()->online == 1)
+								@if ($players->first()->online == 1)
 									<span style="color: lime">
-									<strong>Online</strong>
-								</span>
+										<strong>Online</strong>
+									</span>
 								@else
 									<span style="color: red">
-									<strong>Offline</strong>
-								</span>
+										<strong>Offline</strong>
+									</span>
 								@endif
-						</span>
+							</span>
 							<span class="sm-stats text-info">
-							Created: {{ Carbon\Carbon::parse($players->first()->creation_date)->diffForHumans() }}
-						</span>
+								Created: {{ Carbon\Carbon::parse($players->first()->creation_date)->diffForHumans() }}
+							</span>
 							<span class="sm-stats text-info">
 							Last Online:
-							@if ($players->first()->login_date)
+								@if ($players->first()->login_date)
 									{{ Carbon\Carbon::parse($players->first()->login_date)->diffForHumans() }}
 								@else
 									Never
 								@endif
-						</span>
+							</span>
 						</div>
 					</div>
 				@endforeach
