@@ -136,14 +136,14 @@
 						<table id="npcList" class="container table-striped table-hover text-primary table-transparent">
 							<thead class="border-bottom border-info">
 							<tr class="text-info">
-								<th class="pl-3 w-25">Time</th>
-								<th class="pr-3">Achievement</th>
+								<th class="float-right mr-3 w-25">Time</th>
+								<th class="">Achievement</th>
 							</tr>
 							</thead>
 							<tbody>
 							@foreach ($player_feed as $achievements)
 								<tr class="clickable-row" data-href="player/{{ $achievements->id }}">
-									<td class="pl-3">
+									<td class="float-right mr-3">
 										{{ Carbon\Carbon::parse($achievements->time)->diffForHumans() }}
 									</td>
 									<td>
