@@ -69,6 +69,22 @@ class PlayerController extends Controller
 			->limit(1)
 			->get();
 
+		$milliseconds = DB::table('openrsc_player_cache as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->where([
+				['a.key', '=', 'total_played'],
+				['b.banned', '=', '0'],
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['a.key', '=', 'total_played'],
+				['b.banned', '=', '0'],
+				['b.username', '=', $subpage],
+			])
+			->sum('value');
+
+		$totalTime = (new HomeController)->secondsToTime(round($milliseconds / 1000));
+
 		/**
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
@@ -80,6 +96,7 @@ class PlayerController extends Controller
 			'players' => $players,
 			'skill_array' => $skill_array,
 			'player_gang' => $player_gang,
+			'totalTime' => $totalTime,
 		])
 			->with(compact('$banks'));
 	}

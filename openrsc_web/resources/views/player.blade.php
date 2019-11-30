@@ -93,7 +93,7 @@
 							</span>
 
 							<span class="sm-stats pt-3">
-							Status:
+								Status:
 								@if ($players->first()->online == 1)
 									<span style="color: lime">
 										<strong>Online</strong>
@@ -108,11 +108,19 @@
 								Created: {{ Carbon\Carbon::parse($players->first()->creation_date)->diffForHumans() }}
 							</span>
 							<span class="sm-stats text-info">
-							Last Online:
+								Last Online:
 								@if ($players->first()->login_date)
 									{{ Carbon\Carbon::parse($players->first()->login_date)->diffForHumans() }}
 								@else
 									Never
+								@endif
+							</span>
+							<span class="sm-stats">
+								Time Played:
+								@if ($totalTime)
+									{{ $totalTime }}
+								@else
+									None
 								@endif
 							</span>
 						</div>
