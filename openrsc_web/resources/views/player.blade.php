@@ -75,7 +75,19 @@
 						</div>
 
 						<!-- Status and timestamps -->
-						<div class="ml-4 pt-3 float-right">
+						<div class="ml-4 pb-3 float-right">
+							<span class="sm-stats pt-3">
+								Status:
+								@if ($players->first()->online == 1)
+									<span style="color: lime">
+										<strong>Online</strong>
+									</span>
+								@else
+									<span style="color: red">
+										<strong>Offline</strong>
+									</span>
+								@endif
+							</span>
 							<span class="sm-stats">Combat Level: {{ $players->first()->combat }}</span>
 							<span class="sm-stats">Skill Total: {{ $players->first()->skill_total }}</span>
 							<span class="sm-stats">Gang:
@@ -89,19 +101,6 @@
 									@endforeach
 								@else
 									None
-								@endif
-							</span>
-
-							<span class="sm-stats pt-3">
-								Status:
-								@if ($players->first()->online == 1)
-									<span style="color: lime">
-										<strong>Online</strong>
-									</span>
-								@else
-									<span style="color: red">
-										<strong>Offline</strong>
-									</span>
 								@endif
 							</span>
 							<span class="sm-stats text-info">
