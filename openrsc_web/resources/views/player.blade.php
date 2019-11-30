@@ -12,23 +12,23 @@
 			</h2>
 
 			<div class="sm-stats">
-				<div class="stats row justify-content-center">
+				@foreach ($players as $player)
+					<div class="stats row justify-content-center">
 
-					<!-- Avatar -->
-					<div class="mr-4 pt-3 d-inline-block float-left">
-						<img src="{{ asset('img/avatars').'/'.$players->first()->id }}.png"
-							 style="height: 125px;" alt="{{ $players->first()->username }}">
-					</div>
+						<!-- Avatar -->
+						<div class="mr-4 pt-3 d-inline-block float-left">
+							<img src="{{ asset('img/avatars').'/'.$players->first()->id }}.png"
+								 style="height: 125px;" alt="{{ $players->first()->username }}">
+						</div>
 
-					<!-- Skill levels -->
-					<div id="sm-skill" class="pt-4 col-7">
-						@foreach ($skill_array as $skill)
-							<a class="text-secondary d-block"
-							   href="/highscores/{{ $skill }}">
-								<img src="{{ asset('img/skill_icons').'/'.$skill }}.svg"
-									 alt="{{ $skill }}" height="20px"/>
-								{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
-								@foreach ($players as $player)
+						<!-- Skill levels -->
+						<div id="sm-skill" class="pt-4 col-7">
+							@foreach ($skill_array as $skill)
+								<a class="text-secondary d-block"
+								   href="/highscores/{{ $skill }}">
+									<img src="{{ asset('img/skill_icons').'/'.$skill }}.svg"
+										 alt="{{ $skill }}" height="20px"/>
+									{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
 									@if ($skill == 'attack')
 										{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->exp_attack)) }}
 									@elseif ($skill == 'strength')
@@ -70,55 +70,55 @@
 									@else
 										N/A
 									@endif
-								@endforeach
-							</a>
-						@endforeach
-					</div>
+								</a>
+							@endforeach
+						</div>
 
-					<!-- Status and timestamps -->
-					<div class="ml-4 pt-3 float-right">
-						<span class="sm-stats">Combat Level: { $players['combat'] }}</span>
-						<span class="sm-stats">Skill Total: { $players['skill_total'] }}</span>
-						<span class="sm-stats">Gang:
+						<!-- Status and timestamps -->
+						<div class="ml-4 pt-3 float-right">
+							<span class="sm-stats">Combat Level: {{ $players->first()->combat }}</span>
+							<span class="sm-stats">Skill Total: {{ $players->first()->skill_total }}</span>
+							<span class="sm-stats">Gang:
                             @if ($player_gang->count())
-								@foreach ($player_gang as $gang)
-									@if ($gang->value == 0)
-										{{ $pick = 'Black Arm' }}
-									@else
-										{{ $pick = 'Phoenix' }}
-									@endif
-								@endforeach
-                            @else
-								None
-                            @endif
+									@foreach ($player_gang as $gang)
+										@if ($gang->value == 0)
+											{{ $pick = 'Black Arm' }}
+										@else
+											{{ $pick = 'Phoenix' }}
+										@endif
+									@endforeach
+								@else
+									None
+								@endif
 						</span>
 
 
-						<span class="sm-stats pt-3">
+							<span class="sm-stats pt-3">
 							Status:
 							@if ($players->first()->online == 1)
-								<span style="color: lime">
+									<span style="color: lime">
 									<strong>Online</strong>
 								</span>
-							@else
-								<span style="color: red">
+								@else
+									<span style="color: red">
 									<strong>Offline</strong>
 								</span>
-							@endif
+								@endif
 						</span>
-						<span class="sm-stats text-info">
+							<span class="sm-stats text-info">
 							Created: {{ Carbon\Carbon::parse($players->first()->creation_date)->diffForHumans() }}
 						</span>
-						<span class="sm-stats text-info">
+							<span class="sm-stats text-info">
 							Last Online:
 							@if ($players->first()->login_date)
-								{{ Carbon\Carbon::parse($players->first()->login_date)->diffForHumans() }}
-							@else
-								Never
-							@endif
+									{{ Carbon\Carbon::parse($players->first()->login_date)->diffForHumans() }}
+								@else
+									Never
+								@endif
 						</span>
+						</div>
 					</div>
-				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
