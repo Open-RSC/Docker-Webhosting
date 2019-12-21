@@ -78,7 +78,7 @@ class HomeController extends Controller
 			->sum('B.amount');
 
 		$sumgold = $sumgoldbank + $sumgoldinvitems;
-		
+
 		$agent = new Agent();
 		return view(
 			'home',
@@ -291,7 +291,7 @@ class HomeController extends Controller
 
 		$combat80 = DB::table('openrsc_players')
 			->where([
-				['combat', '>=', '50'],
+				['combat', '>=', '80'],
 				['group_id', '=', '10'],
 				['banned', '=', 0],
 			])
