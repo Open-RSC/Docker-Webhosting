@@ -1,8 +1,8 @@
 <?php
-
 /**
  * `RENAME TABLE` keyword parser.
  */
+declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser\Components;
 
@@ -53,11 +53,11 @@ class RenameOperation extends Component
      *
      * @return RenameOperation[]
      */
-    public static function parse(Parser $parser, TokensList $list, array $options = array())
+    public static function parse(Parser $parser, TokensList $list, array $options = [])
     {
-        $ret = array();
+        $ret = [];
 
-        $expr = new self();
+        $expr = new static();
 
         /**
          * The state of the parser.
@@ -99,10 +99,10 @@ class RenameOperation extends Component
                 $expr->old = Expression::parse(
                     $parser,
                     $list,
-                    array(
+                    [
                         'breakOnAlias' => true,
-                        'parseField' => 'table'
-                    )
+                        'parseField' => 'table',
+                    ]
                 );
                 if (empty($expr->old)) {
                     $parser->error(
@@ -125,10 +125,10 @@ class RenameOperation extends Component
                 $expr->new = Expression::parse(
                     $parser,
                     $list,
-                    array(
+                    [
                         'breakOnAlias' => true,
-                        'parseField' => 'table'
-                    )
+                        'parseField' => 'table',
+                    ]
                 );
                 if (empty($expr->new)) {
                     $parser->error(
@@ -140,7 +140,7 @@ class RenameOperation extends Component
             } elseif ($state === 3) {
                 if (($token->type === Token::TYPE_OPERATOR) && ($token->value === ',')) {
                     $ret[] = $expr;
-                    $expr = new self();
+                    $expr = new static();
                     $state = 0;
                 } else {
                     break;
@@ -171,7 +171,7 @@ class RenameOperation extends Component
      *
      * @return string
      */
-    public static function build($component, array $options = array())
+    public static function build($component, array $options = [])
     {
         if (is_array($component)) {
             return implode(', ', $component);

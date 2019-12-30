@@ -1,8 +1,8 @@
 <?php
-
 /**
  * `JOIN` keyword parser.
  */
+declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser\Components;
 
@@ -25,7 +25,7 @@ class JoinKeyword extends Component
      *
      * @var array
      */
-    public static $JOINS = array(
+    public static $JOINS = [
         'CROSS JOIN' => 'CROSS',
         'FULL JOIN' => 'FULL',
         'FULL OUTER JOIN' => 'FULL',
@@ -40,8 +40,8 @@ class JoinKeyword extends Component
         'NATURAL RIGHT JOIN' => 'NATURAL RIGHT',
         'NATURAL LEFT OUTER JOIN' => 'NATURAL LEFT OUTER',
         'NATURAL RIGHT OUTER JOIN' => 'NATURAL RIGHT OUTER',
-        'STRAIGHT_JOIN' => 'STRAIGHT'
-    );
+        'STRAIGHT_JOIN' => 'STRAIGHT',
+    ];
 
     /**
      * Type of this join.
@@ -98,11 +98,11 @@ class JoinKeyword extends Component
      *
      * @return JoinKeyword[]
      */
-    public static function parse(Parser $parser, TokensList $list, array $options = array())
+    public static function parse(Parser $parser, TokensList $list, array $options = [])
     {
-        $ret = array();
+        $ret = [];
 
-        $expr = new self();
+        $expr = new static();
 
         /**
          * The state of the parser.
@@ -159,7 +159,7 @@ class JoinKeyword extends Component
                     break;
                 }
             } elseif ($state === 1) {
-                $expr->expr = Expression::parse($parser, $list, array('field' => 'table'));
+                $expr->expr = Expression::parse($parser, $list, ['field' => 'table']);
                 $state = 2;
             } elseif ($state === 2) {
                 if ($token->type === Token::TYPE_KEYWORD) {
@@ -174,7 +174,7 @@ class JoinKeyword extends Component
                             if (! empty(static::$JOINS[$token->keyword])
                             ) {
                                 $ret[] = $expr;
-                                $expr = new self();
+                                $expr = new static();
                                 $expr->type = static::$JOINS[$token->keyword];
                                 $state = 1;
                             } else {
@@ -187,12 +187,12 @@ class JoinKeyword extends Component
             } elseif ($state === 3) {
                 $expr->on = Condition::parse($parser, $list);
                 $ret[] = $expr;
-                $expr = new self();
+                $expr = new static();
                 $state = 0;
             } elseif ($state === 4) {
                 $expr->using = ArrayObj::parse($parser, $list);
                 $ret[] = $expr;
-                $expr = new self();
+                $expr = new static();
                 $state = 0;
             }
         }
@@ -212,9 +212,9 @@ class JoinKeyword extends Component
      *
      * @return string
      */
-    public static function build($component, array $options = array())
+    public static function build($component, array $options = [])
     {
-        $ret = array();
+        $ret = [];
         foreach ($component as $c) {
             $ret[] = array_search($c->type, static::$JOINS) . ' ' . $c->expr
                 . (! empty($c->on)

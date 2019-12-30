@@ -1,8 +1,8 @@
 <?php
-
 /**
  * `SET` keyword parser.
  */
+declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser\Components;
 
@@ -53,11 +53,11 @@ class SetOperation extends Component
      *
      * @return SetOperation[]
      */
-    public static function parse(Parser $parser, TokensList $list, array $options = array())
+    public static function parse(Parser $parser, TokensList $list, array $options = [])
     {
-        $ret = array();
+        $ret = [];
 
-        $expr = new self();
+        $expr = new static();
 
         /**
          * The state of the parser.
@@ -118,9 +118,9 @@ class SetOperation extends Component
                 $tmp = Expression::parse(
                     $parser,
                     $list,
-                    array(
-                        'breakOnAlias' => true
-                    )
+                    [
+                        'breakOnAlias' => true,
+                    ]
                 );
                 if (is_null($tmp)) {
                     $parser->error('Missing expression.', $token);
@@ -129,7 +129,7 @@ class SetOperation extends Component
                 $expr->column = trim($expr->column);
                 $expr->value = $tmp->expr;
                 $ret[] = $expr;
-                $expr = new self();
+                $expr = new static();
                 $state = 0;
                 $commaLastSeenAt = null;
             }
@@ -150,7 +150,7 @@ class SetOperation extends Component
      *
      * @return string
      */
-    public static function build($component, array $options = array())
+    public static function build($component, array $options = [])
     {
         if (is_array($component)) {
             return implode(', ', $component);

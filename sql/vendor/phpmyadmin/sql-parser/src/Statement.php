@@ -1,11 +1,11 @@
 <?php
-
 /**
  * The result of the parser is an array of statements are extensions of the
  * class defined here.
  *
  * A statement represents the result of parsing the lexemes.
  */
+declare(strict_types=1);
 
 namespace PhpMyAdmin\SqlParser;
 
@@ -40,7 +40,7 @@ abstract class Statement
      *
      * @var array
      */
-    public static $OPTIONS = array();
+    public static $OPTIONS = [];
 
     /**
      * The clauses of this statement, in order.
@@ -54,9 +54,9 @@ abstract class Statement
      *
      * @var array
      */
-    public static $CLAUSES = array();
+    public static $CLAUSES = [];
 
-    public static $END_OPTIONS = array();
+    public static $END_OPTIONS = [];
 
     /**
      * The options of this query.
@@ -120,7 +120,7 @@ abstract class Statement
          *
          * @var array
          */
-        $built = array();
+        $built = [];
 
         /**
          * Statement's clauses.
@@ -202,7 +202,7 @@ abstract class Statement
          *
          * @var array
          */
-        $parsedClauses = array();
+        $parsedClauses = [];
 
         // This may be corrected by the parser.
         $this->first = $list->idx;
@@ -303,7 +303,7 @@ abstract class Statement
              *
              * @var array
              */
-            $options = array();
+            $options = [];
 
             // Looking for duplicated clauses.
             if (! empty(Parser::$KEYWORD_PARSERS[$token->value])
@@ -320,11 +320,15 @@ abstract class Statement
             }
 
             // Checking if this is the beginning of a clause.
-            if (! empty(Parser::$KEYWORD_PARSERS[$token->value]) && $list->idx < $list->count) {
-                $class = Parser::$KEYWORD_PARSERS[$token->value]['class'];
-                $field = Parser::$KEYWORD_PARSERS[$token->value]['field'];
-                if (! empty(Parser::$KEYWORD_PARSERS[$token->value]['options'])) {
-                    $options = Parser::$KEYWORD_PARSERS[$token->value]['options'];
+            // Fix Issue #221: As `truncate` is not a keyword
+            // but it might be the beginning of a statement of truncate,
+            // so let the value use the keyword field for truncate type.
+            $token_value = in_array($token->keyword, ['TRUNCATE']) ? $token->keyword : $token->value;
+            if (! empty(Parser::$KEYWORD_PARSERS[$token_value]) && $list->idx < $list->count) {
+                $class = Parser::$KEYWORD_PARSERS[$token_value]['class'];
+                $field = Parser::$KEYWORD_PARSERS[$token_value]['field'];
+                if (! empty(Parser::$KEYWORD_PARSERS[$token_value]['options'])) {
+                    $options = Parser::$KEYWORD_PARSERS[$token_value]['options'];
                 }
             }
 
