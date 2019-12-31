@@ -11,10 +11,7 @@ services:
       - "./openrsc_web:/var/www/html/openrsc_web"
       - "./log:/var/log/nginx"
       - "./avatars:/var/www/html/openrsc_web/public/img/avatars"
-      - "./board:/var/www/html/openrsc_web/public/board"
-      - "./sql:/var/www/html/openrsc_web/public/sql"
       - "./downloads:/var/www/html/openrsc_web/public/downloads"
-      - "./cache:/var/www/html/openrsc_web/public/cache"
 
   php:
     image: openrsc/php-laravel:latest
@@ -24,8 +21,6 @@ services:
     volumes:
       - "./inc/php.ini:/usr/local/etc/php/conf.d/php.ini"
       - "./openrsc_web:/var/www/html/openrsc_web"
-      - "./board:/var/www/html/openrsc_web/public/board"
-      - "./sql:/var/www/html/openrsc_web/public/sql"
       - "./downloads:/var/www/html/openrsc_web/public/downloads"
 
   mysqldb:
@@ -58,3 +53,17 @@ services:
       - "./inc/databases:/var/lib/mysql"
       - "./inc/innodb.cnf:/etc/mysql/conf.d/innodb.cnf:ro"
       - "./log:/var/log/mysql"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    env_file:
+      - ".env"
+    environment:
+      - PMA_HOST=mysql
+      - UPLOAD_LIMIT=900MB
+    volumes:
+      - "./inc/config.inc.php:/etc/phpmyadmin/config.user.inc.php"
+    ports:
+      - "8080:80"
