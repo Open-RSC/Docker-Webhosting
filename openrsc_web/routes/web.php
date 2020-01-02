@@ -21,6 +21,10 @@ Route::get('/quest_list', 'QuestController@index')->name('quest_list');
 Route::get('/quest/{subpage}', 'QuestController@show')->name('quest');
 Route::get('/minigame_list', 'QuestController@minigame_list')->name('minigame_list');
 
+// Calculator pages
+Route::get('/calculator_list', 'CalculatorController@index')->name('calculator_list');
+Route::get('/calc/{subpage}', 'CalculatorController@show')->name('calc');
+
 // Player pages
 Route::get('/player/{subpage}', 'PlayerController@index')->name('player');
 Route::get('/player/shar/bank', 'PlayerController@shar')->name('bank');
