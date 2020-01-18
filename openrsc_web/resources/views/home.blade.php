@@ -35,7 +35,7 @@
 
 	<TABLE
 		style="PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 0px; WIDTH: 100%; PADDING-TOP: 0px; min-width: 500px"
-		cellSpacing=0 cellPadding=0 background=img/background.jpg>
+		cellSpacing=0 cellPadding=0 background="{{ asset('img/background.jpg') }}">
 		<TBODY>
 		<TR>
 			<TD>
@@ -44,23 +44,23 @@
 						<TBODY>
 						<TR>
 							<TD>
-								<CENTER><BR><SPAN
-											style="DISPLAY: inline-block; MARGIN: 0px; WIDTH: 312px">
-                  <TABLE style="DISPLAY: inline; WIDTH: 312px" cellSpacing=0
-						 cellPadding=0>
+								<CENTER><BR><SPAN style="DISPLAY: inline-block; MARGIN: 0px; WIDTH: 312px">
+                  <TABLE style="DISPLAY: inline; WIDTH: 312px" cellSpacing=0 cellPadding=0>
                     <TBODY>
                     <TR>
-                      <TD vAlign=top height=180><IMG style="DISPLAY: block"
-													 height=100 src="img/title/rslogo.gif" width=312> <BR>
-                        <CENTER><SPAN style="" font-size: 14px"
-                        color:white;\?>There are currently 77150 people
-                        playing!</SPAN></CENTER>
+                      <TD vAlign=top height=180>
+						  <IMG style="DISPLAY: block" height=100 src="{{ asset('img/title/rslogo.gif') }}"
+							   width=312> <BR>
+                        <CENTER><SPAN style="font-size: 14px">
+								There are currently 77150 people playing!
+							</SPAN></CENTER>
 							</TD>
 						</TR>
 						</TBODY>
 					</TABLE>
-					</SPAN><SPAN
-						style="DISPLAY: inline-block; MARGIN: 0px 0px 0px 20px; WIDTH: 430px">
+					</SPAN>
+										<SPAN
+											style="DISPLAY: inline-block; MARGIN: 0px 0px 0px 20px; WIDTH: 430px">
                   <TABLE style="DISPLAY: inline; WIDTH: 430px" cellSpacing=0
 						 cellPadding=0>
                     <TBODY>
@@ -70,25 +70,34 @@
 							   border=0>
                           <TBODY>
                           <TR>
-                            <TD><IMG height=6 src="img/title/fm_topleft.gif"
-									 width=6></TD>
-                            <TD background=img/title/fm_top2.gif><IMG
-									height=6 src="img/title/blank.gif" width=1></TD>
-                            <TD><IMG height=6
-									 src="img/title/fm_topright.gif" width=6></TD></TR>
-                          <TR>
-                            <TD background=img/title/fm_left.gif><IMG
-									height=1 src="img/title/blank.gif" width=6></TD>
                             <TD>
-                              <CENTER><IMG height=7 src="img/title/blank.gif"
-										   width=1><BR><B>Latest News and Updates</B><BR>
-                              <TABLE cellSpacing=0 cellPadding=0
-									 bgColor=black><TBODY>
+								<IMG height=6 src="{{ asset('img/title/fm_topleft.gif') }}"
+									 width=6>
+							</TD>
+                            <TD background="{{ asset('img/title/fm_top2.gif') }}">
+								<IMG height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
+							</TD>
+                            <TD><IMG height=6
+									 src="{{ asset('img/title/fm_topright.gif') }}" width=6>
+							</TD>
+						  </TR>
+                          <TR>
+                            <TD background="{{ asset('img/title/fm_left.gif') }}">
+								<IMG height=1 src="img/title/blank.gif" width=6>
+							</TD>
+                            <TD>
+                              <CENTER><IMG height=7 src="{{ asset('img/title/blank.gif') }}" width=1><BR>
+										  <B>
+											  Latest News and Updates
+										  </B><BR>
+                              <TABLE cellSpacing=0 cellPadding=0 bgColor=black>
+								  <TBODY>
                                 <TR vAlign=top>
-                                <TD align=middle width=100><A
-										href="news.html"><IMG
-											src="img/title/mm_scroll.jpg"
-											border=0></A></TD>
+                                <TD align=middle width=100>
+									<A href="news.html">
+										<IMG src="{{ asset('img/title/mm_scroll.jpg') }}" border=0>
+									</A>
+								</TD>
                                 <TD width=320>
                                 <CENTER>
                                 <TABLE height=130>
@@ -98,135 +107,211 @@
                                 <TABLE width=320>
                                 <TBODY>
                                 <TR>
-                                <TD><A class=c
-									   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=468">Rogue
-                                Trader</A></TD>
-                                <TD align=right>15-Aug-2005</TD></TR>
+                                <TD>
+									<A class=c href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=468">
+										Rogue Trader
+									</A>
+								</TD>
+                                <TD align=right>
+									15-Aug-2005
+								</TD>
+								</TR>
                                 <TR>
-                                <TD><A class=c
-									   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=466">Tai
-                                Bwo Wannai Clean-Up</A></TD>
-                                <TD align=right>9-Aug-2005</TD></TR>
+                                <TD>
+									<A class=c href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=466">
+										Tai Bwo Wannai Clean-Up
+									</A>
+								</TD>
+                                <TD align=right>
+									9-Aug-2005
+								</TD>
+								</TR>
                                 <TR>
-                                <TD><A class=c
-									   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=465">Behind
-                                The Scenes - August</A></TD>
-                                <TD align=right>8-Aug-2005</TD></TR>
+                                <TD>
+									<A class=c href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=465">
+										Behind The Scenes - August
+									</A>
+								</TD>
+                                <TD align=right>
+									8-Aug-2005
+								</TD>
+								</TR>
                                 <TR>
-                                <TD><A class=c
-									   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=464">New
-                                York Servers Online</A></TD>
-                                <TD align=right>5-Aug-2005</TD></TR>
+                                <TD>
+									<A class=c href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=464">
+										New York Servers Online
+									</A>
+								</TD>
+                                <TD align=right>
+									5-Aug-2005
+								</TD>
+								</TR>
                                 <TR>
-                                <TD><A class=c
-									   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=462">48
-                                more bank slots for members</A></TD>
-                                <TD
-									align=right>1-Aug-2005</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></CENTER></TD>
-                                <TR></TR></TBODY></TABLE>To view a full list of
-                              news and updates, <A class=c
-												   href="news.html">Click
-                              Here</A>. <BR><BR></CENTER></TD>
-                            <TD background=img/title/fm_right.gif><IMG
-									height=1 src="img/title/blank.gif"
-									width=6></TD></TR>
+                                <TD>
+									<A class=c href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=462">
+										48 more bank slots for members
+									</A>
+								</TD>
+                                <TD align=right>
+									1-Aug-2005
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE></CENTER>
+								</TD>
+								  </TBODY>
+							  </TABLE>To view a full list of
+                              news and updates, <A class=c href="news.html">Click
+                              Here</A>. <BR><BR></CENTER>
+							</TD>
+                            <TD background="{{ asset('img/title/fm_right.gif') }}">
+								<IMG
+									height=1 src="{{ asset('img/title/blank.gif') }}"
+									width=6>
+							</TD>
+						  </TR>
                           <TR>
-                            <TD><IMG height=6
-									 src="img/title/fm_bottomleft.gif" width=6></TD>
-                            <TD background=img/title/fm_bottom2.gif><IMG
-									height=6 src="img/title/blank.gif" width=1></TD>
-                            <TD><IMG height=6
-									 src="img/title/fm_bottomright.gif"
-									 width=6></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></SPAN>
-					<DIV
-						style="; WIDTH: expression(document.body.clientWidth > 770 ? '770px': 'auto' ); max-width: 770px">
-						<TABLE style="MARGIN-TOP: 10px; max-width: 770px"
-							   cellSpacing=0 cellPadding=0 bgColor=black border=0>
-							<TBODY>
-							<TR>
-								<TD><IMG height=6 src="img/title/fm_topleft.gif"
-										 width=6></TD>
-								<TD background=img/title/fm_top2.gif><IMG height=6
-																		  src="img/title/blank.gif" width=1></TD>
-								<TD><IMG height=6 src="img/title/fm_topright.gif"
-										 width=6></TD>
-							</TR>
-							<TR>
-								<TD background=img/title/fm_left.gif><IMG height=1
-																		  src="img/title/blank.gif" width=6></TD>
-								<TD>
-									<CENTER><IMG height=7 src="img/title/blank.gif"
-												 width=505><BR><B>Main Features</B> <BR><BR><SPAN
-															class=item>
+                            <TD>
+								<IMG height=6 src="img/title/fm_bottomleft.gif" width=6>
+							</TD>
+                            <TD background=img/title/fm_bottom2.gif>
+								<IMG height=6 src="img/title/blank.gif" width=1>
+							</TD>
+                            <TD>
+								<IMG height=6 src="img/title/fm_bottomright.gif" width=6>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+					  </TD>
+					</TR>
+					</TBODY>
+				  </TABLE>
+										</SPAN>
+										<DIV style="max-width: 770px">
+											<TABLE style="MARGIN-TOP: 10px; max-width: 770px" cellSpacing=0
+												   cellPadding=0 bgColor=black border=0>
+												<TBODY>
+												<TR>
+													<TD>
+														<IMG height=6 src="img/title/fm_topleft.gif" width=6>
+													</TD>
+													<TD background=img/title/fm_top2.gif>
+														<IMG height=6 src="img/title/blank.gif" width=1>
+													</TD>
+													<TD>
+														<IMG height=6 src="img/title/fm_topright.gif" width=6>
+													</TD>
+												</TR>
+												<TR>
+													<TD background=img/title/fm_left.gif>
+														<IMG height=1 src="img/title/blank.gif" width=6>
+													</TD>
+													<TD>
+														<CENTER><IMG height=7 src="img/title/blank.gif" width=505>
+																<BR><B>Main Features</B> <BR><BR>
+																			<SPAN class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
-                            <TD align=middle width=100><A
-									href="detail.html"><IMG
-										src="img/title/mm_sword.jpg" border=0></A></TD>
+                            <TD align=middle width=100>
+								<A href="detail.html">
+									<IMG src="img/title/mm_sword.jpg" border=0>
+								</A>
+							</TD>
                             <TD vAlign=top width=120>
                               <TABLE height=45 cellPadding=2 width=110>
                                 <TBODY>
                                 <TR>
-                                <TD class=b2 id=playgamebut
-									background=img/title/shinystonered.jpg
-									bgColor=#570700>
-                                <CENTER><A class=whitelink
-										   onmouseover="redglow('playgamebut')"
-										   onmouseout="unredglow('playgamebut')"
-										   href="detail.html"><B>Play
-                                Game</B><BR>(Existing&nbsp;User)</A></CENTER></TD></TR></TBODY></TABLE>Play
-                              RuneScape right now!<BR><A class=c
-														 href="detail.html">Click
-                              Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-															class=item>
+                                <TD class=b2 id=playgamebut background=img/title/shinystonered.jpg bgColor=#570700>
+                                <CENTER><A class=whitelink onmouseover="redglow('playgamebut')"
+										   onmouseout="unredglow('playgamebut')" href="detail.html">
+										<B>Play Game</B>
+										<BR>(Existing&nbsp;User)
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE>
+								Play RuneScape right now!<BR>
+									<A class=c href="detail.html">
+										Click Here</A>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+																			</SPAN>
+																			<SPAN class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
-                            <TD align=middle width=100><A
-									href="create/index.html"><IMG
-										src="img/title/mm_player.jpg" border=0></A></TD>
+                            <TD align=middle width=100>
+								<A href="create/index.html">
+									<IMG src="img/title/mm_player.jpg" border=0>
+								</A>
+							</TD>
                             <TD vAlign=top width=120>
-                              <TABLE height=45 cellPadding=2 width=110
-									 bgColor=black>
+                              <TABLE height=45 cellPadding=2 width=110 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b2 id=createaccountbut
-									background=img/title/shinystonered.jpg
+                                <TD class=b2 id=createaccountbut background="{{ asset('img/title/shinystonered.jpg') }}"
 									bgColor=#570700>
-                                <CENTER><A class=whitelink
-										   onmouseover="redglow('createaccountbut')"
-										   onmouseout="unredglow('createaccountbut')"
-										   href="create/index.html"><B>Create&nbsp;Account</B><BR>(New
-                                User)</A></CENTER></TD></TR></TBODY></TABLE>Create
-                              a free account for both the game &amp;
-                              website.<BR><A class=c
-											 href="create/index.html">Click
-                              Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-															class=item>
+                                <CENTER><A class=whitelink onmouseover="redglow('createaccountbut')"
+										   onmouseout="unredglow('createaccountbut')" href="create/index.html">
+										<B>Create&nbsp;Account</B><BR>
+											(New User)
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE>
+								Create a free account for both the game &amp; website.
+								<BR><A class=c href="create/index.html">
+										Click Here
+									</A>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+																			</SPAN>
+																			<SPAN class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
-                            <TD align=middle width=100><A
-									href="screenshots/screenshots.html"><IMG
-										src="img/title/mm2_screenshots.jpg"
-										border=0></A></TD>
+                            <TD align=middle width=100>
+								<A href="screenshots/screenshots.html">
+									<IMG src="img/title/mm2_screenshots.jpg" border=0>
+								</A>
+							</TD>
                             <TD vAlign=top width=120>
-                              <TABLE height=45 cellPadding=2 width=110
-									 bgColor=black>
+                              <TABLE height=45 cellPadding=2 width=110 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b id=screenshotsbut
-									background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   onmouseover="greyglow('screenshotsbut')"
+                                <TD class=b id=screenshotsbut background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink onmouseover="greyglow('screenshotsbut')"
 										   onmouseout="ungreyglow('screenshotsbut')"
-										   href="screenshots/screenshots.html"><B>Screenshots</B></A></CENTER></TD></TR></TBODY></TABLE>Lots
-                              of images of the game in action.<BR><A class=c
-																	 href="screenshots/screenshots.html">Click
-                              Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-															class=item>
+										   href="screenshots/screenshots.html">
+										<B>Screenshots</B>
+									</A>
+								</CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE>
+								Lots of images of the game in action.
+								<BR><A class=c href="screenshots/screenshots.html">
+										Click Here
+									</A>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+																			</SPAN>
+																			<SPAN class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
@@ -251,7 +336,7 @@
 										class=c
 										href="members/members.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-															class=item>
+																				class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
@@ -274,7 +359,7 @@
                               info on all aspects of the game.<BR><A class=c
 																	 href="howtoplay.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-															class=item>
+																				class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
@@ -296,7 +381,7 @@
                               your character in the top 500,000?<BR><A class=c
 																	   href="hiscores/hiscores.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-															class=item>
+																				class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
@@ -321,7 +406,7 @@
                               and letters about RuneScape.<BR><A class=c
 																 href="varrock/varrockindex.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-															class=item>
+																				class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
@@ -345,7 +430,7 @@
                               for finding your way around.<BR><A class=c
 																 href="worldmap/worldmap.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-															class=item>
+																				class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
@@ -354,24 +439,26 @@
                             <TD width=120><IMG height=1
 											   src="img/title/blank.gif"
 											   width=110></TD></TR></TBODY></TABLE></SPAN></CENTER>
-									<BR></TD>
-								<TD background=img/title/fm_right.gif><IMG height=1
-																		   src="img/title/blank.gif" width=6></TD>
-							</TR>
-							<TR>
-								<TD><IMG height=6 src="img/title/fm_bottomleft.gif"
-										 width=6></TD>
-								<TD background=img/title/fm_bottom2.gif><IMG height=6
-																			 src="img/title/blank.gif" width=1>
-								</TD>
-								<TD><IMG height=6 src="img/title/fm_bottomright.gif"
-										 width=6></TD>
-							</TR>
-							</TBODY>
-						</TABLE>
-					</DIV>
-					<SPAN
-						style="DISPLAY: inline-block; MARGIN: 0px 7px 10px 0px; WIDTH: 380px">
+														<BR></TD>
+													<TD background=img/title/fm_right.gif><IMG height=1
+																							   src="img/title/blank.gif"
+																							   width=6></TD>
+												</TR>
+												<TR>
+													<TD><IMG height=6 src="img/title/fm_bottomleft.gif"
+															 width=6></TD>
+													<TD background=img/title/fm_bottom2.gif><IMG height=6
+																								 src="img/title/blank.gif"
+																								 width=1>
+													</TD>
+													<TD><IMG height=6 src="img/title/fm_bottomright.gif"
+															 width=6></TD>
+												</TR>
+												</TBODY>
+											</TABLE>
+										</DIV>
+										<SPAN
+											style="DISPLAY: inline-block; MARGIN: 0px 7px 10px 0px; WIDTH: 380px">
                   <TABLE style="DISPLAY: inline; WIDTH: 380px" cellSpacing=0
 						 cellPadding=0>
                     <TBODY>
@@ -545,7 +632,7 @@
                             <TD><IMG height=6
 									 src="img/title/fm_bottomright.gif"
 									 width=6></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></SPAN><SPAN
-						style="DISPLAY: inline-block; MARGIN: 0px 0px 10px; WIDTH: 380px">
+											style="DISPLAY: inline-block; MARGIN: 0px 0px 10px; WIDTH: 380px">
                   <TABLE style="DISPLAY: inline; WIDTH: 380px" cellSpacing=0
 						 cellPadding=0>
                     <TBODY>
@@ -734,171 +821,171 @@
                             <TD><IMG height=6
 									 src="img/title/fm_bottomright.gif"
 									 width=6></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></SPAN><BR>
-						<TABLE>
-							<TBODY>
-							<TR>
-								<TD>
-									<DIV
-										style="FONT-SIZE: 11px; FONT-FAMILY: Arial,Helvetica,sans-serif"
-										align=center>This webpage and its contents is copyright
-										2005 Jagex Ltd<BR>To use our service you must agree to
-											our <A class=c
-												   href="terms/terms.html">Terms+Conditions</A>
-											+ <A class=c
-												 href="privacy/privacy.html">Privacy
-												policy</A>
-									</DIV>
-								</TD>
-							</TR>
-							</TBODY>
-						</TABLE></CENTER>
-			</TD>
-		</TR>
-		</TBODY>
-	</TABLE>
+											<TABLE>
+												<TBODY>
+												<TR>
+													<TD>
+														<DIV
+															style="FONT-SIZE: 11px; FONT-FAMILY: Arial,Helvetica,sans-serif"
+															align=center>This webpage and its contents is copyright
+															2005 Jagex Ltd<BR>To use our service you must agree to
+																our <A class=c
+																	   href="terms/terms.html">Terms+Conditions</A>
+																+ <A class=c
+																	 href="privacy/privacy.html">Privacy
+																	policy</A>
+														</DIV>
+													</TD>
+												</TR>
+												</TBODY>
+											</TABLE></CENTER>
+							</TD>
+						</TR>
+						</TBODY>
+					</TABLE>
 
-	<!-- Left column -->
-	<div class="col side-left text-info border-secondary border-right">
-		<h4 class="pl-3 pr-3">Latest Achievements</h4>
-		<div class="text-primary ml-3 mr-3" style="font-size: 13px;">
-			@foreach ($activityfeed as $activity)
-				<div class="row clickable-row" data-href="../player/{{ $activity->id }}">
-					<div class="col-sm text-info font-weight-bold">
+					<!-- Left column -->
+					<div class="col side-left text-info border-secondary border-right">
+						<h4 class="pl-3 pr-3">Latest Achievements</h4>
+						<div class="text-primary ml-3 mr-3" style="font-size: 13px;">
+							@foreach ($activityfeed as $activity)
+								<div class="row clickable-row" data-href="../player/{{ $activity->id }}">
+									<div class="col-sm text-info font-weight-bold">
 									<span
 										class="small">{{ Carbon\Carbon::parse($activity->time)->diffForHumans() }}</span>
-					</div>
-					<div class="col-9 pr-1 pl-1">
-						@if($activity->group_id != 10)
-							<img class="mb-1" src="./img/{{ $activity->group_id }}.svg" width="15"
-								 height="15">
-						@endif
-						<img class="pr-2 float-left" src="./img/avatars/{{ $activity->id }}.png"
-							 width="36" height="48">
-						<span class="font-weight-bold">{{ ucfirst($activity->username) }}</span>
-						{!! $activity->message !!}
-					</div>
-					<div class="border-top border-info mt-3"></div>
-				</div>
-			@endforeach
-		</div>
+									</div>
+									<div class="col-9 pr-1 pl-1">
+										@if($activity->group_id != 10)
+											<img class="mb-1" src="./img/{{ $activity->group_id }}.svg" width="15"
+												 height="15">
+										@endif
+										<img class="pr-2 float-left" src="./img/avatars/{{ $activity->id }}.png"
+											 width="36" height="48">
+										<span class="font-weight-bold">{{ ucfirst($activity->username) }}</span>
+										{!! $activity->message !!}
+									</div>
+									<div class="border-top border-info mt-3"></div>
+								</div>
+							@endforeach
+						</div>
 
 
-		<!-- Center column with title text -->
-		<div class="col container text-center">
-			<div class="d-block pt-4">
-				<img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="logo">
-			</div>
+						<!-- Center column with title text -->
+						<div class="col container text-center">
+							<div class="d-block pt-4">
+								<img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="logo">
+							</div>
 
-			<div class="d-block pb-3">
-				<div class="text-white-50">Striving for a replica RSC game and more</div>
-			</div>
+							<div class="d-block pb-3">
+								<div class="text-white-50">Striving for a replica RSC game and more</div>
+							</div>
 
-			<div class="d-block pt-1 pb-4">
-				<div class="btn btn-md btn-secondary dropdown-toggle" data-toggle="dropdown"
-					 aria-haspopup="true"
-					 aria-expanded="false">
-					Play Now
-				</div>
-				<div class="dropdown-menu bg-dark" style="padding: 0;">
-					@if ($agent->isAndroid())
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{{ asset('downloads/openrsc.apk') }}">Android
-							Version</a>
-					@elseif ($agent->isWindows())
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{{ asset('OpenRSC.exe') }}">Windows Launcher</a>
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{{ asset('downloads/OpenRSC.jar') }}">Alternative
-							Launcher</a>
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
-							Player Edition</a>
-					@else
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{{ asset('downloads/OpenRSC.jar') }}">Game
-							Launcher</a>
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{{ asset('downloads/openrsc.apk') }}">Android
-							Version</a>
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
-							Player</a>
-					@endif
-				</div>
-			</div>
+							<div class="d-block pt-1 pb-4">
+								<div class="btn btn-md btn-secondary dropdown-toggle" data-toggle="dropdown"
+									 aria-haspopup="true"
+									 aria-expanded="false">
+									Play Now
+								</div>
+								<div class="dropdown-menu bg-dark" style="padding: 0;">
+									@if ($agent->isAndroid())
+										<a class="dropdown-item text-white-50 bg-dark"
+										   href="{{ asset('downloads/openrsc.apk') }}">Android
+											Version</a>
+									@elseif ($agent->isWindows())
+										<a class="dropdown-item text-white-50 bg-dark"
+										   href="{{ asset('OpenRSC.exe') }}">Windows Launcher</a>
+										<a class="dropdown-item text-white-50 bg-dark"
+										   href="{{ asset('downloads/OpenRSC.jar') }}">Alternative
+											Launcher</a>
+										<a class="dropdown-item text-white-50 bg-dark"
+										   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
+											Player Edition</a>
+									@else
+										<a class="dropdown-item text-white-50 bg-dark"
+										   href="{{ asset('downloads/OpenRSC.jar') }}">Game
+											Launcher</a>
+										<a class="dropdown-item text-white-50 bg-dark"
+										   href="{{ asset('downloads/openrsc.apk') }}">Android
+											Version</a>
+										<a class="dropdown-item text-white-50 bg-dark"
+										   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
+											Player</a>
+									@endif
+								</div>
+							</div>
 
-			<div class="middle container-fluid border-top border-info">
-				<div class="text-left text-primary">
-					<br>
-					<h4 class="text-info">Statistics</h4>
-					<div>
-						Players Online:
-						<a href="{{ route('online') }}">
+							<div class="middle container-fluid border-top border-info">
+								<div class="text-left text-primary">
+									<br>
+									<h4 class="text-info">Statistics</h4>
+									<div>
+										Players Online:
+										<a href="{{ route('online') }}">
                     <span class="text-info float-right">
                         {{ $online }}
                     </span>
-						</a>
-					</div>
-					<div>
-						Server Status:
-						<span class="float-right">
+										</a>
+									</div>
+									<div>
+										Server Status:
+										<span class="float-right">
                     {!! $status !!}
                 </span>
-					</div>
-					<div>
-						Players Created Today:
-						<a href="{{ route('createdtoday') }}">
+									</div>
+									<div>
+										Players Created Today:
+										<a href="{{ route('createdtoday') }}">
                         <span class="text-info float-right">
                             {{ $registrations }}
                         </span>
-						</a>
-					</div>
-					<div>
-						Online Last 48 Hours:
-						<a href="{{ route('logins48') }}">
+										</a>
+									</div>
+									<div>
+										Online Last 48 Hours:
+										<a href="{{ route('logins48') }}">
                         <span class="text-info float-right">
                             {{ $logins }}
                         </span>
-						</a>
-					</div>
-					<div>
-						Unique Players:
-						<a href="{{ route('stats') }}">
+										</a>
+									</div>
+									<div>
+										Unique Players:
+										<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
                             {{ $uniquePlayers }}
                         </span>
-						</a>
-					</div>
-					<div>
-						Total Players:
-						<a href="{{ route('stats') }}">
+										</a>
+									</div>
+									<div>
+										Total Players:
+										<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
                             {{ $totalPlayers }}
                         </span>
-						</a>
-					</div>
-					<div>
-						Sum Gold:
-						<a href="{{ route('stats') }}">
+										</a>
+									</div>
+									<div>
+										Sum Gold:
+										<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
 							{{ number_format($sumgold) }}
 							<img class="mt-n2 ml-n2" src="{{ asset('img/items/10.png') }}"
 								 alt="coins" height="24px" width="32px"/>
                         </span>
-						</a>
-					</div>
-					<div>
-						Cumulative Play:
-						<a href="{{ route('stats') }}">
+										</a>
+									</div>
+									<div>
+										Cumulative Play:
+										<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
                             {{ $totalTime }}
                         </span>
-						</a>
+										</a>
+									</div>
+									<br>
+								</div>
+							</div>
+						</div>
 					</div>
-					<br>
-				</div>
-			</div>
-		</div>
-	</div>
 
 @endsection
