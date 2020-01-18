@@ -315,170 +315,221 @@
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
-                            <TD align=middle width=100><A
-									href="members/members.html"><IMG
-										src="img/title/mm_members.jpg" border=0></A></TD>
+                            <TD align=middle width=100>
+								<A href="members/members.html">
+									<IMG src="img/title/mm_members.jpg" border=0>
+								</A>
+							</TD>
                             <TD vAlign=top width=120>
-                              <TABLE height=45 cellPadding=2 width=110
-									 bgColor=black>
+                              <TABLE height=45 cellPadding=2 width=110 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b id=membersbut
-									background=img/stoneback.gif
-									bgColor=#474747>
+                                <TD class=b id=membersbut background=img/stoneback.gif bgColor=#474747>
                                 <CENTER><A class=whitelink
 										   onmouseover="greyglow('membersbut')"
 										   onmouseout="ungreyglow('membersbut')"
-										   href="members/members.html"><B>Benefits
-                                for
-                              Members</B></A></CENTER></TD></TR></TBODY></TABLE>Find
-                              out what extras are available to members.<BR><A
-										class=c
-										href="members/members.html">Click
-                              Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																				class=item>
+										   href="members/members.html">
+										<B>Benefits for Members</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE>
+								Find out what extras are available to members.<BR>
+									<A class=c href="members/members.html">
+										Click Here
+									</A>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+																			</SPAN>
+																			<SPAN class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
-                            <TD align=middle width=100><A
-									href="howtoplay.html"><IMG
-										height=120 src="img/title/mm_howtoplay.jpg"
-										width=77 border=0></A></TD>
+                            <TD align=middle width=100>
+								<A href="howtoplay.html">
+									<IMG height=120 src="img/title/mm_howtoplay.jpg" width=77 border=0>
+								</A>
+							</TD>
                             <TD vAlign=top width=120>
-                              <TABLE height=45 cellPadding=2 width=110
-									 bgColor=black>
+                              <TABLE height=45 cellPadding=2 width=110 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b id=manualbut
-									background=img/stoneback.gif
-									bgColor=#474747>
+                                <TD class=b id=manualbut background=img/stoneback.gif bgColor=#474747>
                                 <CENTER><A class=whitelink
 										   onmouseover="greyglow('manualbut')"
 										   onmouseout="ungreyglow('manualbut')"
-										   href="howtoplay.html"><B>Manual</B></A></CENTER></TD></TR></TBODY></TABLE>Detailed
-                              info on all aspects of the game.<BR><A class=c
-																	 href="howtoplay.html">Click
-                              Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																				class=item>
+										   href="howtoplay.html">
+										<B>Manual</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE>
+								Detailed info on all aspects of the game.
+								<BR><A class=c href="howtoplay.html">
+										Click Here
+									</A>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+																			</SPAN>
+																			<SPAN class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
-                            <TD align=middle width=100><A
-									href="hiscores/hiscores.html"><IMG
-										src="img/title/mm_chalice.jpg" border=0></A></TD>
+                            <TD align=middle width=100>
+								<A href="hiscores/hiscores.html">
+									<IMG src="img/title/mm_chalice.jpg" border=0>
+								</A>
+							</TD>
                             <TD vAlign=top width=120>
-                              <TABLE height=45 cellPadding=2 width=110
-									 bgColor=black>
+                              <TABLE height=45 cellPadding=2 width=110 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b id=hiscoresbut
-									background=img/stoneback.gif
-									bgColor=#474747>
+                                <TD class=b id=hiscoresbut background=img/stoneback.gif bgColor=#474747>
                                 <CENTER><A class=whitelink
 										   onmouseover="greyglow('hiscoresbut')"
 										   onmouseout="ungreyglow('hiscoresbut')"
-										   href="hiscores/hiscores.html"><B>Full<BR>Hiscores</B></A></CENTER></TD></TR></TBODY></TABLE>Is
-                              your character in the top 500,000?<BR><A class=c
-																	   href="hiscores/hiscores.html">Click
-                              Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																				class=item>
+										   href="hiscores/hiscores.html">
+										<B>Full
+											<BR>Hiscores</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE>
+								Is your character in the top 500,000?
+								<BR><A class=c href="hiscores/hiscores.html">
+										Click Here
+									</A>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+																			</SPAN>
+																			<SPAN class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
-                            <TD align=middle width=100><A
-									href="varrock/varrockindex.html"><IMG
-										height=120 src="img/title/mm_lov.jpg" width=77
-										border=0></A></TD>
+                            <TD align=middle width=100>
+								<A href="varrock/varrockindex.html">
+									<IMG height=120 src="img/title/mm_lov.jpg" width=77 border=0>
+								</A>
+							</TD>
                             <TD vAlign=top width=120>
-                              <TABLE height=45 cellPadding=2 width=110
-									 bgColor=black>
+                              <TABLE height=45 cellPadding=2 width=110 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b id=varrockbut
-									background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   onmouseover="greyglow('varrockbut')"
-										   onmouseout="ungreyglow('varrockbut')"
-										   href="varrock/varrockindex.html"><B>Library
-                                of
-                              Varrock</B></A></CENTER></TD></TR></TBODY></TABLE>Stories
-                              and letters about RuneScape.<BR><A class=c
-																 href="varrock/varrockindex.html">Click
-                              Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																				class=item>
+                                <TD class=b id=varrockbut background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink onmouseover="greyglow('varrockbut')"
+										   onmouseout="ungreyglow('varrockbut')" href="varrock/varrockindex.html">
+										<B>Library of Varrock</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE>
+								Stories and letters about RuneScape.
+								<BR><A class=c href="varrock/varrockindex.html">
+										Click Here
+									</A>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+																			</SPAN>
+																			<SPAN class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
-                            <TD align=middle width=100><A
-									href="worldmap/worldmap.html"><IMG
-										height=120 src="img/title/mm_worldmap.jpg"
-										width=77 border=0></A></TD>
+                            <TD align=middle width=100>
+								<A href="worldmap/worldmap.html">
+									<IMG height=120 src="img/title/mm_worldmap.jpg" width=77 border=0>
+								</A>
+							</TD>
                             <TD vAlign=top width=120>
-                              <TABLE height=45 cellPadding=2 width=110
-									 bgColor=black>
+                              <TABLE height=45 cellPadding=2 width=110 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b id=worldmapbut
-									background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   onmouseover="greyglow('worldmapbut')"
-										   onmouseout="ungreyglow('worldmapbut')"
-										   href="worldmap.html"><B>World
-                                Map</B></A></CENTER></TD></TR></TBODY></TABLE>Great
-                              for finding your way around.<BR><A class=c
-																 href="worldmap/worldmap.html">Click
-                              Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																				class=item>
+                                <TD class=b id=worldmapbut background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink onmouseover="greyglow('worldmapbut')"
+										   onmouseout="ungreyglow('worldmapbut')" href="worldmap.html">
+										<B>World Map</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE>
+								Great for finding your way around.
+								<BR><A class=c href="worldmap/worldmap.html">
+										Click Here
+									</A>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+																			</SPAN>
+																			<SPAN class=item>
                         <TABLE class=itemtable cellSpacing=0 cellPadding=0>
                           <TBODY>
                           <TR>
-                            <TD width=100><IMG height=1
-											   src="img/title/blank.gif" width=77></TD>
-                            <TD width=120><IMG height=1
-											   src="img/title/blank.gif"
-											   width=110></TD></TR></TBODY></TABLE></SPAN></CENTER>
+                            <TD width=100>
+								<IMG height=1 src="img/title/blank.gif" width=77>
+							</TD>
+                            <TD width=120>
+								<IMG height=1 src="img/title/blank.gif" width=110>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+																			</SPAN></CENTER>
 														<BR></TD>
-													<TD background=img/title/fm_right.gif><IMG height=1
-																							   src="img/title/blank.gif"
-																							   width=6></TD>
+													<TD background=img/title/fm_right.gif>
+														<IMG height=1 src="img/title/blank.gif" width=6>
+													</TD>
 												</TR>
 												<TR>
-													<TD><IMG height=6 src="img/title/fm_bottomleft.gif"
-															 width=6></TD>
-													<TD background=img/title/fm_bottom2.gif><IMG height=6
-																								 src="img/title/blank.gif"
-																								 width=1>
+													<TD>
+														<IMG height=6 src="img/title/fm_bottomleft.gif" width=6>
 													</TD>
-													<TD><IMG height=6 src="img/title/fm_bottomright.gif"
-															 width=6></TD>
+													<TD background=img/title/fm_bottom2.gif>
+														<IMG height=6 src="img/title/blank.gif" width=1>
+													</TD>
+													<TD>
+														<IMG height=6 src="img/title/fm_bottomright.gif" width=6>
+													</TD>
 												</TR>
 												</TBODY>
 											</TABLE>
 										</DIV>
-										<SPAN
-											style="DISPLAY: inline-block; MARGIN: 0px 7px 10px 0px; WIDTH: 380px">
-                  <TABLE style="DISPLAY: inline; WIDTH: 380px" cellSpacing=0
-						 cellPadding=0>
+										<SPAN style="DISPLAY: inline-block; MARGIN: 0px 7px 10px 0px; WIDTH: 380px">
+                  <TABLE style="DISPLAY: inline; WIDTH: 380px" cellSpacing=0 cellPadding=0>
                     <TBODY>
                     <TR>
                       <TD vAlign=top><BR>
-                        <TABLE cellSpacing=0 cellPadding=0 width=380
-							   bgColor=black>
+                        <TABLE cellSpacing=0 cellPadding=0 width=380 bgColor=black>
                           <TBODY>
                           <TR>
-                            <TD><IMG height=6 src="img/title/fm_topleft.gif"
-									 width=6></TD>
-                            <TD background=img/title/fm_top2.gif><IMG
-									height=6 src="img/title/blank.gif" width=1></TD>
-                            <TD><IMG height=6
-									 src="img/title/fm_topright.gif" width=6></TD></TR>
+                            <TD>
+								<IMG height=6 src="img/title/fm_topleft.gif" width=6>
+							</TD>
+                            <TD background=img/title/fm_top2.gif>
+								<IMG height=6 src="img/title/blank.gif" width=1>
+							</TD>
+                            <TD>
+								<IMG height=6 src="img/title/fm_topright.gif" width=6>
+							</TD>
+						  </TR>
                           <TR>
-                            <TD background=img/title/fm_left.gif><IMG
-									height=1 src="img/title/blank.gif" width=6></TD>
-                            <TD width=368><IMG height=7
-											   src="img/title/blank.gif" width=1><BR>
+                            <TD background=img/title/fm_left.gif>
+								<IMG height=1 src="img/title/blank.gif" width=6>
+							</TD>
+                            <TD width=368>
+								<IMG height=7 src="img/title/blank.gif" width=1><BR>
                               <CENTER><B>Secure Services</B> <BR><BR>
                               <TABLE cellSpacing=5 cellPadding=0>
                                 <TBODY>
@@ -487,174 +538,284 @@
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="login.html"><B>Subscribe</B></A></CENTER></TD></TR></TBODY></TABLE>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="login.html">
+										<B>Subscribe</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><A
-										href="login.html"><IMG
-											height=75 src="img/title/mms_subscribe.jpg"
-											width=48 border=0></A></TD>
-                                <TD vAlign=top>Start a members subscription
-                                here.<BR><A class=c
-											href="login.html">Login</A></TD></TR></TBODY></TABLE></TD>
+                                <TD>
+									<A href="login.html">
+										<IMG height=75 src="img/title/mms_subscribe.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD vAlign=top>
+									Start a members subscription here.
+									<BR><A class=c href="login.html">
+											Login
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
                                 <TD>&nbsp;</TD>
                                 <TD vAlign=top align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="login.html"><B>Account
-                                Management</B></A></CENTER></TD></TR></TBODY></TABLE>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="login.html">
+										<B>Account Management</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><A
-										href="login.html"><IMG
-											height=75 src="img/title/mms_accman.jpg"
-											width=48 border=0></A></TD>
-                                <TD>Manage your Password and Recovery
-                                Details.<BR><A class=c
-											   href="login.html">Login</A></TD></TR></TBODY></TABLE></TD></TR>
+                                <TD>
+									<A href="login.html">
+										<IMG height=75 src="img/title/mms_accman.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									Manage your Password and Recovery Details.
+									<BR><A class=c href="login.html">
+											Login
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+								</TR>
                                 <TR>
                                 <TD vAlign=top align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="login.html"><B>Customer
-                                Support</B></A></CENTER></TD></TR></TBODY></TABLE>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="login.html">
+										<B>Customer Support</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><A
-										href="login.html"><IMG
-											height=75 src="img/title/mms_support.jpg"
-											width=48 border=0></A></TD>
-                                <TD>Questions?<BR>Contact our staff.<BR><A
-												class=c
-												href="login.html">Login</A></TD></TR></TBODY></TABLE></TD>
-                                <TD>&nbsp;</TD>
+                                <TD>
+									<A href="login.html">
+										<IMG height=75 src="img/title/mms_support.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>Questions?
+									<BR>Contact our staff.
+										<BR><A class=c href="login.html">
+												Login
+											</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+                                <TD>
+									&nbsp;
+								</TD>
                                 <TD vAlign=top align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="login.html"><B>Message
-                                Centre</B></A></CENTER></TD></TR></TBODY></TABLE>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="login.html">
+										<B>Message Centre</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><A
-										href="login.html"><IMG
-											height=75 src="img/title/mms_inbox.jpg"
-											width=48 border=0></A></TD>
-                                <TD>Your messages from our staff.<BR><A class=c
-																		href="login.html">Login</A></TD></TR></TBODY></TABLE></TD></TR>
-                                <TR>
-                                <TD vAlign=top align=middle width=160>
-                                <TABLE cellPadding=2 width=160 bgColor=black>
-                                <TBODY>
-                                <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="login.html"><B>Forums</B></A></CENTER></TD></TR></TBODY></TABLE>
-                                <TABLE>
-                                <TBODY>
-                                <TR>
-                                <TD><A
-										href="login.html"><IMG
-											height=75 src="img/title/mms_forums.jpg"
-											width=48 border=0></A></TD>
-                                <TD>Discuss the game with fellow players!<BR><A
-											class=c
-											href="login.html">Login</A></TD></TR></TBODY></TABLE></TD>
-                                <TD>&nbsp;</TD>
-                                <TD vAlign=top align=middle width=160>
-                                <TABLE cellPadding=2 width=160 bgColor=black>
-                                <TBODY>
-                                <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="login.html"><B>Personal
-                                Hiscores</B></A></CENTER></TD></TR></TBODY></TABLE>
-                                <TABLE>
-                                <TBODY>
-                                <TR>
-                                <TD><A
-										href="login.html"><IMG
-											height=75 src="img/title/mms_chalice.jpg"
-											width=48 border=0></A></TD>
-                                <TD>How do you rank compared to your
-                                friends?<BR><A class=c
-											   href="login.html">Login</A></TD></TR></TBODY></TABLE></TD></TR>
+                                <TD>
+									<A href="login.html">
+										<IMG height=75 src="img/title/mms_inbox.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									Your messages from our staff.
+									<BR><A class=c href="login.html">
+											Login
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+								</TR>
                                 <TR>
                                 <TD vAlign=top align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="login.html"><B>Latest
-                                Poll</B></A></CENTER></TD></TR></TBODY></TABLE>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="login.html">
+										<B>Forums</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><A
-										href="login.html"><IMG
-											height=75 src="img/title/mms_vote.jpg"
-											width=48 border=0></A></TD>
-                                <TD>What do you enjoy most about Quests? <BR><A
-											class=c
-											href="login.html">Login</A></TD></TR></TBODY></TABLE></TD>
-                                <TD>&nbsp;</TD>
-                                <TD>&nbsp;</TD></TR></TBODY></TABLE></CENTER></TD>
-                            <TD background=img/title/fm_right.gif><IMG
-									height=1 src="img/title/blank.gif"
-									width=6></TD></TR>
+                                <TD>
+									<A href="login.html">
+										<IMG height=75 src="img/title/mms_forums.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>Discuss the game with fellow players!
+									<BR><A class=c href="login.html">
+											Login
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+                                <TD>
+									&nbsp;
+								</TD>
+                                <TD vAlign=top align=middle width=160>
+                                <TABLE cellPadding=2 width=160 bgColor=black>
+                                <TBODY>
+                                <TR>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="login.html">
+										<B>Personal Hiscores</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+                                <TABLE>
+                                <TBODY>
+                                <TR>
+                                <TD>
+									<A href="login.html">
+										<IMG height=75 src="img/title/mms_chalice.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									How do you rank compared to your friends?
+									<BR><A class=c href="login.html">
+											Login
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+								</TR>
+                                <TR>
+                                <TD vAlign=top align=middle width=160>
+                                <TABLE cellPadding=2 width=160 bgColor=black>
+                                <TBODY>
+                                <TR>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="login.html">
+										<B>Latest Poll</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+                                <TABLE>
+                                <TBODY>
+                                <TR>
+                                <TD>
+									<A href="login.html">
+										<IMG height=75 src="img/title/mms_vote.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									What do you enjoy most about Quests?
+									<BR><A class=c href="login.html">
+											Login
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+                                <TD>
+									&nbsp;
+								</TD>
+                                <TD>
+									&nbsp;
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE>
+							  </CENTER>
+							</TD>
+                            <TD background=img/title/fm_right.gif>
+								<IMG height=1 src="img/title/blank.gif" width=6>
+							</TD>
+						  </TR>
                           <TR>
-                            <TD><IMG height=6
-									 src="img/title/fm_bottomleft.gif" width=6></TD>
-                            <TD background=img/title/fm_bottom2.gif><IMG
-									height=6 src="img/title/blank.gif" width=1></TD>
-                            <TD><IMG height=6
-									 src="img/title/fm_bottomright.gif"
-									 width=6></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></SPAN><SPAN
-											style="DISPLAY: inline-block; MARGIN: 0px 0px 10px; WIDTH: 380px">
-                  <TABLE style="DISPLAY: inline; WIDTH: 380px" cellSpacing=0
-						 cellPadding=0>
+                            <TD>
+								<IMG height=6 src="img/title/fm_bottomleft.gif" width=6>
+							</TD>
+                            <TD background=img/title/fm_bottom2.gif>
+								<IMG height=6 src="img/title/blank.gif" width=1>
+							</TD>
+                            <TD>
+								<IMG height=6 src="img/title/fm_bottomright.gif" width=6>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+					  </TD>
+					</TR>
+					</TBODY>
+				  </TABLE>
+										</SPAN>
+										<SPAN style="DISPLAY: inline-block; MARGIN: 0px 0px 10px; WIDTH: 380px">
+                  <TABLE style="DISPLAY: inline; WIDTH: 380px" cellSpacing=0 cellPadding=0>
                     <TBODY>
                     <TR>
                       <TD vAlign=top><BR>
-                        <TABLE cellSpacing=0 cellPadding=0 width=380
-							   bgColor=black>
+                        <TABLE cellSpacing=0 cellPadding=0 width=380 bgColor=black>
                           <TBODY>
                           <TR>
-                            <TD><IMG height=6 src="img/title/fm_topleft.gif"
-									 width=6></TD>
-                            <TD width="100%"
-								background=img/title/fm_top2.gif><IMG height=6
-																	  src="img/title/blank.gif" width=1></TD>
-                            <TD><IMG height=6
-									 src="img/title/fm_topright.gif" width=6></TD></TR>
+                            <TD>
+								<IMG height=6 src="img/title/fm_topleft.gif" width=6>
+							</TD>
+                            <TD width="100%" background=img/title/fm_top2.gif>
+								<IMG height=6 src="img/title/blank.gif" width=1>
+							</TD>
+                            <TD>
+								<IMG height=6 src="img/title/fm_topright.gif" width=6>
+							</TD>
+						  </TR>
                           <TR>
-                            <TD background=img/title/fm_left.gif><IMG
-									height=1 src="img/title/blank.gif" width=6></TD>
+                            <TD background=img/title/fm_left.gif>
+								<IMG height=1 src="img/title/blank.gif" width=6>
+							</TD>
                             <TD width=368>
-                              <CENTER><IMG height=7 src="img/title/lank.gif"
-										   width=1><BR><B>Other Features</B> <BR><BR><!--table to contain options-->
+                              <CENTER><IMG height=7 src="img/title/lank.gif" width=1><BR>
+										  <B>Other Features</B>
+										  <BR><BR>
+												  <!--table to contain options-->
                               <TABLE cellSpacing=5 cellPadding=0>
                                 <TBODY>
                                 <TR>
@@ -662,124 +823,199 @@
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
                                 <CENTER><A class=whitelink
-										   href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html"><B>Unsubscribe</B></A></CENTER></TD></TR></TBODY></TABLE>
+										   href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">
+										<B>Unsubscribe</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><A
-										href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html"><IMG
-											height=75 src="img/title/mms_unsubscribe.jpg"
-											width=48 border=0></A></TD>
-                                <TD>Cancel your subscription.<BR><A class=c
-																	href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">Click
-                                Here</A></TD></TR></TBODY></TABLE></TD>
-                                <TD>&nbsp;</TD>
+                                <TD>
+									<A href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">
+										<IMG height=75 src="img/title/mms_unsubscribe.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									Cancel your subscription.
+									<BR><A class=c
+										   href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">
+											Click Here
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+                                <TD>
+									&nbsp;
+								</TD>
                                 <TD vAlign=top align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
                                 <CENTER><A class=whitelink
-										   href="https://password-web.runescape.com/aff/runescape/index.html"><B>Password
-                                Support</B></A></CENTER></TD></TR></TBODY></TABLE>
+										   href="https://password-web.runescape.com/aff/runescape/index.html">
+										<B>Password Support</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><A
-										href="https://password-web.runescape.com/aff/runescape/index.html"><IMG
-											height=75
-											src="img/title/mms_passwordsupport.jpg"
-											width=48 border=0></A></TD>
-                                <TD>If you lose/forget your password help is at
-                                hand.<BR><A class=c
-											href="https://password-web.runescape.com/aff/runescape/index.html">Click
-                                Here</A></TD></TR></TBODY></TABLE></TD></TR>
-                                <TR>
-                                <TD vAlign=top align=middle width=160>
-                                <TABLE cellPadding=2 width=160 bgColor=black>
-                                <TBODY>
-                                <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="faq/faqindex.html"><B>F.A.Q.</B></A></CENTER></TD></TR></TBODY></TABLE>
-                                <TABLE>
-                                <TBODY>
-                                <TR>
-                                <TD><A
-										href="faq/faqindex.html"><IMG
-											height=75 src="img/title/mms_faq.jpg" width=48
-											border=0></A></TD>
-                                <TD>Answers to Frequently Asked Questions.<BR><A
-											class=c
-											href="faq/faqindex.html">Click
-                                Here</A></TD></TR></TBODY></TABLE></TD>
-                                <TD>&nbsp;</TD>
-                                <TD vAlign=top align=middle width=160>
-                                <TABLE cellPadding=2 width=160 bgColor=black>
-                                <TBODY>
-                                <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="guides/guides.html"><B>Rules
-                                &amp;
-                                Security</B></A></CENTER></TD></TR></TBODY></TABLE>
-                                <TABLE>
-                                <TBODY>
-                                <TR>
-                                <TD><A
-										href="guides/guides.html"><IMG
-											height=75 src="img/title/mms_rules.jpg"
-											width=48 border=0></A></TD>
-                                <TD>Learn our rules and stay safe online.<BR><A
-											class=c
-											href="guides/guides.html">Click
-                                Here</A></TD></TR></TBODY></TABLE></TD></TR>
+                                <TD>
+									<A href="https://password-web.runescape.com/aff/runescape/index.html">
+										<IMG height=75 src="img/title/mms_passwordsupport.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									If you lose/forget your password help is at hand.
+									<BR><A class=c href="https://password-web.runescape.com/aff/runescape/index.html">
+											Click Here
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+								</TR>
                                 <TR>
                                 <TD vAlign=top align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="files/files.html"><B>Extra
-                                Files</B></A></CENTER></TD></TR></TBODY></TABLE>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="faq/faqindex.html">
+										<B>F.A.Q.</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><A
-										href="files/files.html"><IMG
-											height=75 src="img/title/mms_extrafiles.jpg"
-											width=48 border=0></A></TD>
-                                <TD>Download optional extras for
-                                RuneScape.<BR><A class=c
-												 href="files/files.html">Click
-                                Here</A></TD></TR></TBODY></TABLE></TD>
-                                <TD>&nbsp;</TD>
+                                <TD>
+									<A href="faq/faqindex.html">
+										<IMG height=75 src="img/title/mms_faq.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									Answers to Frequently Asked Questions.
+									<BR><A class=c href="faq/faqindex.html">
+											Click Here
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+                                <TD>
+									&nbsp;
+								</TD>
                                 <TD vAlign=top align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD class=b background=img/stoneback.gif
-									bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="#"><B>RS-Classic</B></A></CENTER></TD></TR></TBODY></TABLE>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="guides/guides.html">
+										<B>Rules &amp; Security</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><A
-										href="#"><IMG
-											height=75 src="img/title/mms_rsclassic.jpg"
-											width=48 border=0></A></TD>
-                                <TD>RuneScape Classic.<BR><A class=c
-															 href="#">Click
-                                Here</A></TD></TR></TBODY></TABLE></TD></TR>
+                                <TD>
+									<A href="guides/guides.html">
+										<IMG height=75 src="img/title/mms_rules.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									Learn our rules and stay safe online.
+									<BR><A class=c href="guides/guides.html">
+											Click Here
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+								</TR>
+                                <TR>
+                                <TD vAlign=top align=middle width=160>
+                                <TABLE cellPadding=2 width=160 bgColor=black>
+                                <TBODY>
+                                <TR>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="files/files.html">
+										<B>Extra Files</B>
+									</A>
+								</CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+                                <TABLE>
+                                <TBODY>
+                                <TR>
+                                <TD>
+									<A href="files/files.html">
+										<IMG height=75 src="img/title/mms_extrafiles.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									Download optional extras for RuneScape.
+									<BR><A class=c href="files/files.html">
+											Click Here
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+                                <TD>
+									&nbsp;
+								</TD>
+                                <TD vAlign=top align=middle width=160>
+                                <TABLE cellPadding=2 width=160 bgColor=black>
+                                <TBODY>
+                                <TR>
+                                <TD class=b background=img/stoneback.gif bgColor=#474747>
+                                <CENTER><A class=whitelink href="#">
+										<B>RS-Classic</B>
+									</A></CENTER>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+                                <TABLE>
+                                <TBODY>
+                                <TR>
+                                <TD><A href="#">
+										<IMG height=75 src="img/title/mms_rsclassic.jpg" width=48 border=0>
+									</A>
+								</TD>
+                                <TD>
+									RuneScape Classic.
+									<BR><A class=c href="#">
+											Click Here
+										</A>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+								</TR>
                                 <TR>
                                 <TD vAlign=top align=middle width=160>
                                 <TABLE
@@ -787,53 +1023,92 @@
 									cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD><B>&nbsp;</B></TD></TR></TBODY></TABLE>
+                                <TD>
+									<B>&nbsp;</B>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><IMG height=75 src="img/title/blank.gif"
-										 width=48 border=0></TD>
-                                <TD style="COLOR: black">What do you enjoy most
-                                about Quests?
-                                <BR>&nbsp;</TD></TR></TBODY></TABLE></TD>
-                                <TD>&nbsp;</TD>
+                                <TD>
+									<IMG height=75 src="img/title/blank.gif" width=48 border=0>
+								</TD>
+                                <TD style="COLOR: black"
+								>What do you enjoy most about Quests?
+                                <BR>&nbsp;
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+                                <TD>
+									&nbsp;
+								</TD>
                                 <TD vAlign=top align=middle width=160>
                                 <TABLE
 									style="BORDER-RIGHT: black 4px solid; BORDER-TOP: black 4px solid; BORDER-LEFT: black 4px solid; BORDER-BOTTOM: black 4px solid"
 									cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
-                                <TD><B>&nbsp;</B></TD></TR></TBODY></TABLE>
+                                <TD>
+									<B>&nbsp;</B>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
                                 <TABLE>
                                 <TBODY>
                                 <TR>
-                                <TD><IMG height=75 src="img/title/blank.gif"
-										 width=48
-										 border=0></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></CENTER></TD>
-                            <TD background=img/title/fm_right.gif><IMG
-									height=1 src="img/title/blank.gif"
-									width=6></TD></TR>
+                                <TD>
+									<IMG height=75 src="img/title/blank.gif" width=48 border=0>
+								</TD>
+								</TR>
+								</TBODY>
+								</TABLE>
+								</TD>
+								</TR>
+								</TBODY>
+							  </TABLE></CENTER>
+							</TD>
+                            <TD background=img/title/fm_right.gif>
+								<IMG height=1 src="img/title/blank.gif" width=6>
+							</TD>
+						  </TR>
                           <TR>
-                            <TD><IMG height=6
-									 src="img/title/fm_bottomleft.gif" width=6></TD>
-                            <TD background=img/title/fm_bottom2.gif><IMG
-									height=6 src="img/title/blank.gif" width=1></TD>
-                            <TD><IMG height=6
-									 src="img/title/fm_bottomright.gif"
-									 width=6></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></SPAN><BR>
+                            <TD>
+								<IMG height=6 src="img/title/fm_bottomleft.gif" width=6>
+							</TD>
+                            <TD background=img/title/fm_bottom2.gif>
+								<IMG height=6 src="img/title/blank.gif" width=1>
+							</TD>
+                            <TD>
+								<IMG height=6 src="img/title/fm_bottomright.gif" width=6>
+							</TD>
+						  </TR>
+						  </TBODY>
+						</TABLE>
+					  </TD>
+					</TR>
+					</TBODY>
+				  </TABLE>
+										</SPAN><BR>
 											<TABLE>
 												<TBODY>
 												<TR>
 													<TD>
 														<DIV
 															style="FONT-SIZE: 11px; FONT-FAMILY: Arial,Helvetica,sans-serif"
-															align=center>This webpage and its contents is copyright
-															2005 Jagex Ltd<BR>To use our service you must agree to
-																our <A class=c
-																	   href="terms/terms.html">Terms+Conditions</A>
-																+ <A class=c
-																	 href="privacy/privacy.html">Privacy
-																	policy</A>
+															align=center>
+															This webpage and its contents is copyright 2005 Jagex Ltd
+															<BR>To use our service you must agree to our
+															<A class=c href="terms/terms.html">
+																Terms+Conditions
+															</A>
+															+ <A class=c href="privacy/privacy.html">
+																Privacy policy
+															</A>
 														</DIV>
 													</TD>
 												</TR>
