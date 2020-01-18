@@ -2,7 +2,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Open Source RuneScape Classic - the massive online adventure game</title>
-	<meta name="description" content="Striving for a replica RSC game and more.">
+	<meta name="description" content="RuneScape is a massive 3d multiplayer adventure, with monsters to kill, quests to complete, and treasure to win. You control your own character who will improve and become more powerful the more you play.">
 	<meta name="keywords"
 		  content="RSC,RuneScape,Old RuneScape,RuneScape Classic,Adventure,2D sprite-based graphics,site,community site,MMORPG,MMO,2001,classicapplet,playclassic,fantasy,android,mobile,OldSchool,Old School,openrsc,orsc,rsccabbage,rsc cabbage,open rsc,single player runescape">
 	<meta name="author" content="Marwolf">
