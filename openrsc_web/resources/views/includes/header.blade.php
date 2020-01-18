@@ -22,29 +22,3 @@
 	<!-- CSS -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
 </head>
-
-<!-- Fullscreen video background -->
-<!--<div class="fullscreen-bg">
-	<video id="video" class="fullscreen-bg__video" playsinline="playsinline" autoplay="autoplay"
-		   muted="muted"
-		   loop="loop">
-		<script>
-            let videoPlayer = document.getElementById('video');
-
-            function playIt() {
-                videoPlayer.play();
-                var videos = [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                ];
-                videos = videos[Math.floor(Math.random() * videos.length)];
-                videoPlayer.src = "/img/" + videos + ".mp4";
-            }
-
-            videoPlayer.addEventListener('ended', playIt, false);
-            playIt();
-		</script>
-	</video>
-</div>-->

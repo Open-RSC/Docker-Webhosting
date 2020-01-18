@@ -5,11 +5,6 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
 TD {
     FONT-SIZE: 13px;
     FONT-FAMILY: Arial, Helvetica, sans-serif
@@ -113,7 +108,7 @@ A.c:hover {
 }
 
 A.whitelink:hover {
-    TEXT-DECORATION: underline;
+    TEXT-DECORATION: none;
     color: white;
 }
 
@@ -158,6 +153,11 @@ body {
     background-color: black;
 }
 
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
 .h2 {
     font-size: 4rem;
 }
@@ -197,9 +197,9 @@ section {
     display: unset;
 }
 
-a:hover {
-    text-decoration: none;
-    color: white;
+.navbar-laravel {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 #inputBox {
@@ -282,7 +282,7 @@ a {
 /* CSS Document */
 nav {
     font-size: 22px;
-    line-height: 32px;
+    //line-height: 32px;
     margin: 0;
     padding: 0;
     word-wrap: break-word;
@@ -299,7 +299,7 @@ nav h1 {
     margin-top: 100px;
     text-align: center;
     font-size: 60px;
-    line-height: 70px;
+    //line-height: 70px;
 }
 
 #container {
@@ -680,7 +680,7 @@ li > a:only-child:after {
 .close-button {
     float: right;
     width: 1.5rem;
-    line-height: 1.5rem;
+    //line-height: 1.5rem;
     text-align: center;
     cursor: pointer;
     border-radius: 0.25rem;

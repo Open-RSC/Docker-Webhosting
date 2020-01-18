@@ -2,83 +2,85 @@
 
 @section('content')
 
-	<table>
-		<tr>
-			<td>
-				<div style="text-align: center;">
+	<SCRIPT>
+		function redglow(id) {
+			const elem = document.getElementById(id);
+			elem.style.borderColor = '#A70700';
+			elem.style.backgroundColor = '#A70700';
+			elem.style.backgroundImage = '{{ asset('img/title/ssredbright.jpg') }}';
+		}
 
-					<SCRIPT>
-						function redglow(id) {
-							const elem = document.getElementById(id);
-							elem.style.borderColor = '#A70700';
-							elem.style.backgroundColor = '#A70700';
-							elem.style.backgroundImage = '{{ asset('img/title/ssredbright.jpg') }}';
-						}
+		function unredglow(id) {
+			const elem = document.getElementById(id);
+			elem.style.borderColor = '#570700';
+			elem.style.backgroundColor = '#570700';
+			elem.style.backgroundImage = '{{ asset('img/title/shinystonered.jpg') }}';
+		}
 
-						function unredglow(id) {
-							const elem = document.getElementById(id);
-							elem.style.borderColor = '#570700';
-							elem.style.backgroundColor = '#570700';
-							elem.style.backgroundImage = '{{ asset('img/title/shinystonered.jpg') }}';
-						}
+		function greyglow(id) {
+			const elem = document.getElementById(id);
+			elem.style.borderColor = '#878787';
+			elem.style.backgroundColor = '#777777';
+			elem.style.backgroundImage = '{{ asset('img/title/ssgreybright.png') }}';
+		}
 
-						function greyglow(id) {
-							const elem = document.getElementById(id);
-							elem.style.borderColor = '#878787';
-							elem.style.backgroundColor = '#777777';
-							elem.style.backgroundImage = '{{ asset('img/title/ssgreybright.png') }}';
-						}
+		function ungreyglow(id) {
+			const elem = document.getElementById(id);
+			elem.style.borderColor = '#373737';
+			elem.style.backgroundColor = '#474747';
+			elem.style.backgroundImage = '{{ asset('img/stoneback.gif') }}';
+		}
+	</SCRIPT>
 
-						function ungreyglow(id) {
-							const elem = document.getElementById(id);
-							elem.style.borderColor = '#373737';
-							elem.style.backgroundColor = '#474747';
-							elem.style.backgroundImage = '{{ asset('img/stoneback.gif') }}';
-						}
-					</SCRIPT>
 
-					<TABLE
-						background=
-						cellPadding=0 cellSpacing=0
-						style="WIDTH: 100%; padding: 0 15px;min-width: 500px"{{ asset('img/background.jpg') }}>
-						<TBODY>
-						<TR>
-							<TD>
-								<div style="text-align: center;">
-									<TABLE cellSpacing=0 cellPadding=0 border=0>
-										<TBODY>
-										<TR>
-											<TD>
-												<div style="text-align: center;"><BR><SPAN
-															style="DISPLAY: inline-block; MARGIN: 0px; WIDTH: 312px">
-                  <TABLE style="DISPLAY: inline; WIDTH: 312px" cellSpacing=0
-						 cellPadding=0>
+	<TBODY>
+	<TR>
+		<TD vAlign=center>
+			<div style="text-align: center;">
+				<TABLE
+					style="WIDTH: 100%; padding: 0 15px;min-width: 500px"
+					cellSpacing=0 cellPadding=0 background={{ asset('img/background.jpg') }}>
+					<TBODY>
+					<TR>
+						<TD>
+							<div style="text-align: center;">
+								<table>
+									<TBODY>
+									<TR>
+										<TD>
+											<div style="text-align: center;">
+									<SPAN style="DISPLAY: inline-block; MARGIN: 0; WIDTH: 312px">
+                  <TABLE style="DISPLAY: inline; WIDTH: 312px">
                     <TBODY>
                     <TR>
-                      <TD vAlign=top height=180><IMG style="DISPLAY: block"
+                      <TD vAlign=top style="vertical-align: top;" height=180><IMG style="DISPLAY: block"
 													 height=100 src="{{ asset('img/title/rslogo.gif') }}"
-													 width=312> <BR>
-                        <div style="text-align: center;"><SPAN style="" font-size: 14px">
-                        There are currently 77150 people playing!</SPAN></div>
-											</TD>
-										</TR>
-										</TBODY>
-									</TABLE>
-									</SPAN><SPAN
-										style="DISPLAY: inline-block; MARGIN: 0px 0px 0px 20px; WIDTH: 430px">
-                  <TABLE style="DISPLAY: inline; WIDTH: 430px" cellSpacing=0
-						 cellPadding=0>
+													 width=312>
+                        <div style="text-align: center;">
+							<SPAN>
+                        		There are currently 77150 people playing!
+							</SPAN>
+						</div>
+					  </TD>
+					</TR>
+					</TBODY>
+					</TABLE>
+					</SPAN>
+												<SPAN
+													style="DISPLAY: inline-block; MARGIN: 0px 0px 0px 20px; WIDTH: 430px">
+                  <TABLE style="DISPLAY: inline; WIDTH: 430px">
                     <TBODY>
                     <TR>
-                      <TD vAlign=top>
-                        <TABLE cellSpacing=0 cellPadding=0 bgColor=black
-							   border=0>
+                      <TD>
+                        <TABLE bgColor=black>
                           <TBODY>
                           <TR>
-                            <TD><IMG height=6 src="{{ asset('img/title/fm_topleft.gif') }}"
-									 width=6></TD>
-                            <TD background={{ asset('img/title/fm_top2.gif') }}><IMG
-									height=6 src="{{ asset('img/title/blank.gif') }}" width=1></TD>
+                            <TD>
+								<IMG height=6 src="{{ asset('img/title/fm_topleft.gif') }}">
+							</TD>
+                            <TD background={{ asset('img/title/fm_top2.gif') }}>
+								<IMG height=6 src="{{ asset('img/title/blank.gif') }}">
+							</TD>
                             <TD><IMG height=6
 									 src="{{ asset('img/title/fm_topright.gif') }}" width=6></TD></TR>
                           <TR>
@@ -87,13 +89,13 @@
                             <TD>
                               <div style="text-align: center;"><IMG height=7 src="{{ asset('img/title/blank.gif') }}"
 																	width=1><BR><B>Latest News and Updates</B><BR>
-                              <TABLE cellSpacing=0 cellPadding=0
-									 bgColor=black><TBODY>
-                                <TR vAlign=top>
+                              <TABLE
+								  bgColor=black><TBODY>
+                                <TR style="vertical-align: top;">
                                 <TD align=middle width=100><A
 										href="news.html"><IMG
 											src="{{ asset('img/title/mm_scroll.jpg') }}"
-											border=0></A></TD>
+										></A></TD>
                                 <TD width=320>
                                 <div style="text-align: center;">
                                 <TABLE height=130>
@@ -143,42 +145,44 @@
 									 src="{{ asset('img/title/fm_bottomright.gif') }}"
 									 width=6></TD></TR>
                           </TBODY></TABLE></TD></TR></TBODY></TABLE></SPAN>
-									<DIV
-										style="; WIDTH: expression(document.body.clientWidth > 770 ? '770px': 'auto' ); max-width: 770px">
-										<TABLE style="MARGIN-TOP: 10px; max-width: 770px"
-											   cellSpacing=0 cellPadding=0 bgColor=black border=0>
-											<TBODY>
-											<TR>
-												<TD><IMG height=6 src="{{ asset('img/title/fm_topleft.gif') }}"
-														 width=6></TD>
-												<TD background={{ asset('img/title/fm_top2.gif') }}><IMG
-														height=6
-														src="{{ asset('img/title/blank.gif') }}
-															"
-														width=1>
-												</TD>
-												<TD><IMG height=6 src="{{ asset('img/title/fm_topright.gif') }}"
-														 width=6></TD>
-											</TR>
-											<TR>
-												<TD background={{ asset('img/title/fm_left.gif') }}><IMG
-														height=1
-														src="{{ asset('img/title/blank.gif') }}"
-														width=6>
-												</TD>
-												<TD>
-													<div style="text-align: center;"><IMG height=7
-																						  src="{{ asset('img/title/blank.gif') }}"
-																						  width=505><BR><B>Main
-																	Features</B> <BR><BR><SPAN
-																			class=item>
-                        <TABLE class=itemtable cellSpacing=0 cellPadding=0>
+												<DIV
+													style="; WIDTH: expression(document.body.clientWidth > 770 ? '770px': 'auto' ); max-width: 770px">
+													<TABLE style="MARGIN-TOP: 10px; max-width: 770px"
+														   bgColor=black>
+														<TBODY>
+														<TR>
+															<TD><IMG height=6
+																	 src="{{ asset('img/title/fm_topleft.gif') }}"
+																	 width=6></TD>
+															<TD background={{ asset('img/title/fm_top2.gif') }}><IMG
+																	height=6
+																	src="{{ asset('img/title/blank.gif') }}
+																		"
+																	width=1>
+															</TD>
+															<TD><IMG height=6
+																	 src="{{ asset('img/title/fm_topright.gif') }}"
+																	 width=6></TD>
+														</TR>
+														<TR>
+															<TD background={{ asset('img/title/fm_left.gif') }}><IMG
+																	height=1
+																	src="{{ asset('img/title/blank.gif') }}"
+																	width=6>
+															</TD>
+															<TD>
+																<div style="text-align: center;"><IMG height=7
+																									  src="{{ asset('img/title/blank.gif') }}"
+																									  width=505><BR><B>Main
+																				Features</B> <BR><BR><SPAN
+																						class=item>
+                        <TABLE class=itemtable>
                           <TBODY>
                           <TR>
                             <TD align=middle width=100><A
 									href="detail.html"><IMG
-										src="{{ asset('img/title/mm_sword.jpg') }}" border=0></A></TD>
-                            <TD vAlign=top width=120>
+										src="{{ asset('img/title/mm_sword.jpg') }}"></A></TD>
+                            <TD style="vertical-align: top;" width=120>
                               <TABLE height=45 cellPadding=2 width=110>
                                 <TBODY>
                                 <TR>
@@ -193,16 +197,15 @@
                               RuneScape right now!<BR><A class=c
 														 href="detail.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																			class=item>
-                        <TABLE class=itemtable cellSpacing=0 cellPadding=0>
+																						class=item>
+                        <TABLE class=itemtable>
                           <TBODY>
                           <TR>
                             <TD align=middle width=100><A
 									href="create/index.html"><IMG
-										src="{{ asset('img/title/mm_player.jpg') }}" border=0></A></TD>
-                            <TD vAlign=top width=120>
-                              <TABLE height=45 cellPadding=2 width=110
-									 bgColor=black>
+										src="{{ asset('img/title/mm_player.jpg') }}"></A></TD>
+                            <TD style="vertical-align: top; width: 120px;">
+                              <TABLE style="height: 45px; padding: 2px; width: 110px; background-color: black;">
                                 <TBODY>
                                 <TR>
                                 <TD class=b2 id=createaccountbut
@@ -217,15 +220,15 @@
                               website.<BR><A class=c
 											 href="create/index.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																			class=item>
-                        <TABLE class=itemtable cellSpacing=0 cellPadding=0>
+																						class=item>
+                        <TABLE class=itemtable>
                           <TBODY>
                           <TR>
                             <TD align=middle width=100><A
 									href="screenshots/screenshots.html"><IMG
 										src="{{ asset('img/title/mm2_screenshots.jpg') }}"
-										border=0></A></TD>
-                            <TD vAlign=top width=120>
+									></A></TD>
+                            <TD style="vertical-align: top;" width=120>
                               <TABLE height=45 cellPadding=2 width=110
 									 bgColor=black>
                                 <TBODY>
@@ -240,14 +243,14 @@
                               of images of the game in action.<BR><A class=c
 																	 href="screenshots/screenshots.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																			class=item>
-                        <TABLE class=itemtable cellSpacing=0 cellPadding=0>
+																						class=item>
+                        <TABLE class=itemtable>
                           <TBODY>
                           <TR>
                             <TD align=middle width=100><A
 									href="members/members.html"><IMG
-										src="{{ asset('img/title/mm_members.jpg') }}" border=0></A></TD>
-                            <TD vAlign=top width=120>
+										src="{{ asset('img/title/mm_members.jpg') }}"></A></TD>
+                            <TD style="vertical-align: top;" width=120>
                               <TABLE height=45 cellPadding=2 width=110
 									 bgColor=black>
                                 <TBODY>
@@ -265,15 +268,15 @@
 										class=c
 										href="members/members.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																			class=item>
-                        <TABLE class=itemtable cellSpacing=0 cellPadding=0>
+																						class=item>
+                        <TABLE class=itemtable>
                           <TBODY>
                           <TR>
                             <TD align=middle width=100><A
 									href="howtoplay.html"><IMG
 										height=120 src="{{ asset('img/title/mm_howtoplay.jpg') }}"
-										width=77 border=0></A></TD>
-                            <TD vAlign=top width=120>
+										width=77></A></TD>
+                            <TD style="vertical-align: top;" width=120>
                               <TABLE height=45 cellPadding=2 width=110
 									 bgColor=black>
                                 <TBODY>
@@ -288,14 +291,14 @@
                               info on all aspects of the game.<BR><A class=c
 																	 href="howtoplay.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																			class=item>
-                        <TABLE class=itemtable cellSpacing=0 cellPadding=0>
+																						class=item>
+                        <TABLE class=itemtable>
                           <TBODY>
                           <TR>
                             <TD align=middle width=100><A
 									href="hiscores/hiscores.html"><IMG
-										src="{{ asset('img/title/mm_chalice.jpg') }}" border=0></A></TD>
-                            <TD vAlign=top width=120>
+										src="{{ asset('img/title/mm_chalice.jpg') }}"></A></TD>
+                            <TD style="vertical-align: top;" width=120>
                               <TABLE height=45 cellPadding=2 width=110
 									 bgColor=black>
                                 <TBODY>
@@ -310,15 +313,15 @@
                               your character in the top 500,000?<BR><A class=c
 																	   href="hiscores/hiscores.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																			class=item>
-                        <TABLE class=itemtable cellSpacing=0 cellPadding=0>
+																						class=item>
+                        <TABLE class=itemtable>
                           <TBODY>
                           <TR>
                             <TD align=middle width=100><A
 									href="varrock/varrockindex.html"><IMG
 										height=120 src="{{ asset('img/title/mm_lov.jpg') }}" width=77
-										border=0></A></TD>
-                            <TD vAlign=top width=120>
+									></A></TD>
+                            <TD style="vertical-align: top;" width=120>
                               <TABLE height=45 cellPadding=2 width=110
 									 bgColor=black>
                                 <TBODY>
@@ -335,15 +338,15 @@
                               and letters about RuneScape.<BR><A class=c
 																 href="varrock/varrockindex.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																			class=item>
-                        <TABLE class=itemtable cellSpacing=0 cellPadding=0>
+																						class=item>
+                        <TABLE class=itemtable>
                           <TBODY>
                           <TR>
                             <TD align=middle width=100><A
 									href="worldmap/worldmap.html"><IMG
 										height=120 src="{{ asset('img/title/mm_worldmap.jpg') }}"
-										width=77 border=0></A></TD>
-                            <TD vAlign=top width=120>
+										width=77></A></TD>
+                            <TD style="vertical-align: top;" width=120>
                               <TABLE height=45 cellPadding=2 width=110
 									 bgColor=black>
                                 <TBODY>
@@ -359,8 +362,8 @@
                               for finding your way around.<BR><A class=c
 																 href="worldmap/worldmap.html">Click
                               Here</A> </TD></TR></TBODY></TABLE></SPAN><SPAN
-																			class=item>
-                        <TABLE class=itemtable cellSpacing=0 cellPadding=0>
+																						class=item>
+                        <TABLE class=itemtable>
                           <TBODY>
                           <TR>
                             <TD width=100><IMG height=1
@@ -368,38 +371,38 @@
                             <TD width=120><IMG height=1
 											   src="{{ asset('img/title/blank.gif') }}"
 											   width=110></TD></TR></TBODY></TABLE></SPAN></CENTER>
-																		<BR>
-												</TD>
-												<TD background={{ asset('img/title/fm_right.gif') }}><IMG
-														height=1
-														src="{{ asset('img/title/blank.gif') }}"
-														width=6>
-												</TD>
-											</TR>
-											<TR>
-												<TD><IMG height=6
-														 src="{{ asset('img/title/fm_bottomleft.gif') }}') }}"
-														 width=6></TD>
-												<TD background={{ asset('img/title/fm_bottom2.gif') }}><IMG
-														height=6
-														src="{{ asset('img/title/blank.gif') }}"
-														width=1>
-												</TD>
-												<TD><IMG height=6
-														 src="{{ asset('img/title/fm_bottomright.gif') }}"
-														 width=6></TD>
-											</TR>
-											</TBODY>
-										</TABLE>
-									</DIV>
-									<SPAN
-										style="DISPLAY: inline-block; MARGIN: 0px 7px 10px 0px; WIDTH: 380px">
+																					<BR>
+															</TD>
+															<TD background={{ asset('img/title/fm_right.gif') }}><IMG
+																	height=1
+																	src="{{ asset('img/title/blank.gif') }}"
+																	width=6>
+															</TD>
+														</TR>
+														<TR>
+															<TD><IMG height=6
+																	 src="{{ asset('img/title/fm_bottomleft.gif') }}') }}"
+																	 width=6></TD>
+															<TD background={{ asset('img/title/fm_bottom2.gif') }}><IMG
+																	height=6
+																	src="{{ asset('img/title/blank.gif') }}"
+																	width=1>
+															</TD>
+															<TD><IMG height=6
+																	 src="{{ asset('img/title/fm_bottomright.gif') }}"
+																	 width=6></TD>
+														</TR>
+														</TBODY>
+													</TABLE>
+												</DIV>
+												<SPAN
+													style="DISPLAY: inline-block; MARGIN: 0px 7px 10px 0px; WIDTH: 380px">
                   <TABLE style="DISPLAY: inline; WIDTH: 380px" cellSpacing=0
-						 cellPadding=0>
+				  >
                     <TBODY>
                     <TR>
-                      <TD vAlign=top><BR>
-                        <TABLE cellSpacing=0 cellPadding=0 width=380
+                      <TD style="vertical-align: top;"><BR>
+                        <TABLE width=380
 							   bgColor=black>
                           <TBODY>
                           <TR>
@@ -415,10 +418,10 @@
                             <TD width=368><IMG height=7
 											   src="{{ asset('img/title/blank.gif') }}" width=1><BR>
                               <div style="text-align: center;"><B>Secure Services</B> <BR><BR>
-                              <TABLE cellSpacing=5 cellPadding=0>
+                              <TABLE cellSpacing=5>
                                 <TBODY>
                                 <TR>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -432,12 +435,12 @@
                                 <TD><A
 										href="login.html"><IMG
 											height=75 src="{{ asset('img/title/mms_subscribe.jpg') }}"
-											width=48 border=0></A></TD>
-                                <TD vAlign=top>Start a members subscription
+											width=48></A></TD>
+                                <TD style="vertical-align: top;">Start a members subscription
                                 here.<BR><A class=c
 											href="login.html">Login</A></TD></TR></TBODY></TABLE></TD>
                                 <TD>&nbsp;</TD>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -452,12 +455,12 @@
                                 <TD><A
 										href="login.html"><IMG
 											height=75 src="{{ asset('img/title/mms_accman.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>Manage your Password and Recovery
                                 Details.<BR><A class=c
 											   href="login.html">Login</A></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -472,12 +475,12 @@
                                 <TD><A
 										href="login.html"><IMG
 											height=75 src="{{ asset('img/title/mms_support.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>Questions?<BR>Contact our staff.<BR><A
 												class=c
 												href="login.html">Login</A></TD></TR></TBODY></TABLE></TD>
                                 <TD>&nbsp;</TD>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -492,11 +495,11 @@
                                 <TD><A
 										href="login.html"><IMG
 											height=75 src="{{ asset('img/title/mms_inbox.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>Your messages from our staff.<BR><A class=c
 																		href="login.html">Login</A></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -510,12 +513,12 @@
                                 <TD><A
 										href="login.html"><IMG
 											height=75 src="{{ asset('img/title/mms_forums.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>Discuss the game with fellow players!<BR><A
 											class=c
 											href="login.html">Login</A></TD></TR></TBODY></TABLE></TD>
                                 <TD>&nbsp;</TD>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -530,12 +533,12 @@
                                 <TD><A
 										href="login.html"><IMG
 											height=75 src="{{ asset('img/title/mms_chalice.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>How do you rank compared to your
                                 friends?<BR><A class=c
 											   href="login.html">Login</A></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -550,7 +553,7 @@
                                 <TD><A
 										href="login.html"><IMG
 											height=75 src="{{ asset('img/title/mms_vote.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>What do you enjoy most about Quests? <BR><A
 											class=c
 											href="login.html">Login</A></TD></TR></TBODY></TABLE></TD>
@@ -568,13 +571,13 @@
                             <TD><IMG height=6
 									 src="{{ asset('img/title/fm_bottomright.gif') }}"
 									 width=6></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></SPAN><SPAN
-										style="DISPLAY: inline-block; MARGIN: 0px 0px 10px; WIDTH: 380px">
+													style="DISPLAY: inline-block; MARGIN: 0px 0px 10px; WIDTH: 380px">
                   <TABLE style="DISPLAY: inline; WIDTH: 380px" cellSpacing=0
-						 cellPadding=0>
+				  >
                     <TBODY>
                     <TR>
-                      <TD vAlign=top><BR>
-                        <TABLE cellSpacing=0 cellPadding=0 width=380
+                      <TD style="vertical-align: top;"><BR>
+                        <TABLE width=380
 							   bgColor=black>
                           <TBODY>
                           <TR>
@@ -592,10 +595,10 @@
                             <TD width=368>
                               <div style="text-align: center;"><IMG height=7 src="{{ asset('img/title/lank.gif') }}"
 																	width=1><BR><B>Other Features</B> <BR><BR><!--table to contain options-->
-                              <TABLE cellSpacing=5 cellPadding=0>
+                              <TABLE cellSpacing=5>
                                 <TBODY>
                                 <TR>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -609,12 +612,12 @@
                                 <TD><A
 										href="unsubscribe/unsubscribe.html"><IMG
 											height=75 src="{{ asset('img/title/mms_unsubscribe.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>Cancel your subscription.<BR><A class=c
 																	href="unsubscribe/unsubscribe.html">Click
                                 Here</A></TD></TR></TBODY></TABLE></TD>
                                 <TD>&nbsp;</TD>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -630,13 +633,13 @@
 										href="customersupport/customersupport.html"><IMG
 											height=75
 											src="{{ asset('img/title/mms_passwordsupport.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>If you lose/forget your password help is at
                                 hand.<BR><A class=c
 											href="customersupport/customersupport.html">Click
                                 Here</A></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -650,13 +653,13 @@
                                 <TD><A
 										href="faq/faqindex.html"><IMG
 											height=75 src="{{ asset('img/title/mms_faq.jpg') }}" width=48
-											border=0></A></TD>
+										></A></TD>
                                 <TD>Answers to Frequently Asked Questions.<BR><A
 											class=c
 											href="faq/faqindex.html">Click
                                 Here</A></TD></TR></TBODY></TABLE></TD>
                                 <TD>&nbsp;</TD>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -672,13 +675,13 @@
                                 <TD><A
 										href="guides/guides.html"><IMG
 											height=75 src="{{ asset('img/title/mms_rules.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>Learn our rules and stay safe online.<BR><A
 											class=c
 											href="guides/guides.html">Click
                                 Here</A></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -693,13 +696,13 @@
                                 <TD><A
 										href="files/files.html"><IMG
 											height=75 src="{{ asset('img/title/mms_extrafiles.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>Download optional extras for
                                 RuneScape.<BR><A class=c
 												 href="files/files.html">Click
                                 Here</A></TD></TR></TBODY></TABLE></TD>
                                 <TD>&nbsp;</TD>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE cellPadding=2 width=160 bgColor=black>
                                 <TBODY>
                                 <TR>
@@ -713,12 +716,12 @@
                                 <TD><A
 										href="classic/playclassic.html"><IMG
 											height=75 src="{{ asset('img/title/mms_rsclassic.jpg') }}"
-											width=48 border=0></A></TD>
+											width=48></A></TD>
                                 <TD>RuneScape Classic.<BR><A class=c
 															 href="classic/playclassic.html">Click
                                 Here</A></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE
 									style="BORDER-RIGHT: black 4px solid; BORDER-TOP: black 4px solid; BORDER-LEFT: black 4px solid; BORDER-BOTTOM: black 4px solid"
 									cellPadding=2 width=160 bgColor=black>
@@ -729,12 +732,12 @@
                                 <TBODY>
                                 <TR>
                                 <TD><IMG height=75 src="{{ asset('img/title/blank.gif') }}"
-										 width=48 border=0></TD>
+										 width=48></TD>
                                 <TD style="COLOR: black">What do you enjoy most
                                 about Quests?
                                 <BR>&nbsp;</TD></TR></TBODY></TABLE></TD>
                                 <TD>&nbsp;</TD>
-                                <TD vAlign=top align=middle width=160>
+                                <TD style="vertical-align: top;" align=middle width=160>
                                 <TABLE
 									style="BORDER-RIGHT: black 4px solid; BORDER-TOP: black 4px solid; BORDER-LEFT: black 4px solid; BORDER-BOTTOM: black 4px solid"
 									cellPadding=2 width=160 bgColor=black>
@@ -746,8 +749,8 @@
                                 <TR>
                                 <TD><IMG height=75 src="{{ asset('img/title/blank.gif') }}"
 										 width=48
-										 border=0></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
-												  </CENTER></TD>
+									></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+												  </TD>
                             <TD background={{ asset('img/title/fm_right.gif') }}><IMG
 									height=1 src="{{ asset('img/title/blank.gif') }}"
 									width=6></TD></TR>
@@ -759,154 +762,161 @@
                             <TD><IMG height=6
 									 src="{{ asset('img/title/fm_bottomright.gif') }}"
 									 width=6></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></SPAN><BR>
-										</CENTER>
-							</TD>
-						</TR>
-						</TBODY>
-					</TABLE>
-				</div>
-			</td>
-		</tr>
-	</table>
+										</TD>
+									</TR>
+									</TBODY>
+								</TABLE>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</TD>
+	</TR>
+	</TBODY>
 
 	<!-- Left column -->
-	<!--<div class="col side-left text-info border-secondary border-right">-->
-	<h4 class="pl-3 pr-3">Latest Achievements</h4>
-	<div class="text-primary ml-3 mr-3" style="font-size: 13px;">
-		@foreach ($activityfeed as $activity)
-			<div class="row clickable-row" data-href="../player/{{ $activity->id }}">
-				<div class="col-sm text-info font-weight-bold">
-					<span class="small">{{ Carbon\Carbon::parse($activity->time)->diffForHumans() }}</span>
+	<div class="col side-left text-info border-secondary border-right">
+		<h4 class="pl-3 pr-3">Latest Achievements</h4>
+		<div class="text-primary ml-3 mr-3" style="font-size: 13px;">
+			@foreach ($activityfeed as $activity)
+				<div class="row clickable-row" data-href="../player/{{ $activity->id }}">
+					<div class="col-sm text-info font-weight-bold">
+									<span
+										class="small">{{ Carbon\Carbon::parse($activity->time)->diffForHumans() }}</span>
+					</div>
+					<div class="col-9 pr-1 pl-1">
+						@if($activity->group_id != 10)
+							<img class="mb-1" src="./img/{{ $activity->group_id }}.svg" width="15"
+								 height="15">
+						@endif
+						<img class="pr-2 float-left" src="./img/avatars/{{ $activity->id }}.png"
+							 width="36" height="48">
+						<span class="font-weight-bold">{{ ucfirst($activity->username) }}</span>
+						{!! $activity->message !!}
+					</div>
+					<div class="border-top border-info mt-3"></div>
 				</div>
-				<div class="col-9 pr-1 pl-1">
-					@if($activity->group_id != 10)
-						<img class="mb-1" src="./img/{{ $activity->group_id }}.svg" width="15" height="15">
-					@endif
-					<img class="pr-2 float-left" src="./img/avatars/{{ $activity->id }}.png"
-						 width="36" height="48">
-					<span class="font-weight-bold">{{ ucfirst($activity->username) }}</span>
-					{!! $activity->message !!}
-				</div>
-				<div class="border-top border-info mt-3"></div>
+			@endforeach
+		</div>
+
+
+		<!-- Center column with title text -->
+		<div class="col container text-center">
+			<div class="d-block pt-4">
+				<img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="logo">
 			</div>
-		@endforeach
-	</div>
 
+			<div class="d-block pb-3">
+				<div class="text-white-50">Striving for a replica RSC game and more</div>
+			</div>
 
-	<!-- Center column with title text -->
-	<!--<div class="col container text-center">-->
-	<div class="d-block pt-4">
-		<img src="{{ asset('img/logo.png') }}" class="img-fluid" alt="logo">
-	</div>
+			<div class="d-block pt-1 pb-4">
+				<div class="btn btn-md btn-secondary dropdown-toggle" data-toggle="dropdown"
+					 aria-haspopup="true"
+					 aria-expanded="false">
+					Play Now
+				</div>
+				<div class="dropdown-menu bg-dark" style="padding: 0;">
+					@if ($agent->isAndroid())
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="{{ asset('downloads/openrsc.apk') }}">Android
+							Version</a>
+					@elseif ($agent->isWindows())
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="{{ asset('OpenRSC.exe') }}">Windows Launcher</a>
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="{{ asset('downloads/OpenRSC.jar') }}">Alternative
+							Launcher</a>
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
+							Player Edition</a>
+					@else
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="{{ asset('downloads/OpenRSC.jar') }}">Game
+							Launcher</a>
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="{{ asset('downloads/openrsc.apk') }}">Android
+							Version</a>
+						<a class="dropdown-item text-white-50 bg-dark"
+						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
+							Player</a>
+					@endif
+				</div>
+			</div>
 
-	<div class="d-block pb-3">
-		<div class="text-white-50">Striving for a replica RSC game and more</div>
-	</div>
-
-	<div class="d-block pt-1 pb-4">
-		<div class="btn btn-md btn-secondary dropdown-toggle" data-toggle="dropdown"
-			 aria-haspopup="true"
-			 aria-expanded="false">
-			Play Now
-		</div>
-		<div class="dropdown-menu bg-dark" style="padding: 0;">
-			@if ($agent->isAndroid())
-				<a class="dropdown-item text-white-50 bg-dark"
-				   href="{{ asset('downloads/openrsc.apk') }}">Android
-					Version</a>
-			@elseif ($agent->isWindows())
-				<a class="dropdown-item text-white-50 bg-dark"
-				   href="{{ asset('OpenRSC.exe') }}">Windows Launcher</a>
-				<a class="dropdown-item text-white-50 bg-dark"
-				   href="{{ asset('downloads/OpenRSC.jar') }}">Alternative
-					Launcher</a>
-				<a class="dropdown-item text-white-50 bg-dark"
-				   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
-					Player Edition</a>
-			@else
-				<a class="dropdown-item text-white-50 bg-dark"
-				   href="{{ asset('downloads/OpenRSC.jar') }}">Game
-					Launcher</a>
-				<a class="dropdown-item text-white-50 bg-dark"
-				   href="{{ asset('downloads/openrsc.apk') }}">Android
-					Version</a>
-				<a class="dropdown-item text-white-50 bg-dark"
-				   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
-					Player</a>
-			@endif
-		</div>
-	</div>
-
-	<!--<div class="middle container-fluid border-top border-info">-->
-	<div class="text-left text-primary">
-		<br>
-		<h4 class="text-info">Statistics</h4>
-		<div>
-			Players Online:
-			<a href="{{ route('online') }}">
+			<div class="middle container-fluid border-top border-info">
+				<div class="text-left text-primary">
+					<br>
+					<h4 class="text-info">Statistics</h4>
+					<div>
+						Players Online:
+						<a href="{{ route('online') }}">
                     <span class="text-info float-right">
                         {{ $online }}
                     </span>
-			</a>
-		</div>
-		<div>
-			Server Status:
-			<span class="float-right">
+						</a>
+					</div>
+					<div>
+						Server Status:
+						<span class="float-right">
                     {!! $status !!}
                 </span>
-		</div>
-		<div>
-			Players Created Today:
-			<a href="{{ route('createdtoday') }}">
+					</div>
+					<div>
+						Players Created Today:
+						<a href="{{ route('createdtoday') }}">
                         <span class="text-info float-right">
                             {{ $registrations }}
                         </span>
-			</a>
-		</div>
-		<div>
-			Online Last 48 Hours:
-			<a href="{{ route('logins48') }}">
+						</a>
+					</div>
+					<div>
+						Online Last 48 Hours:
+						<a href="{{ route('logins48') }}">
                         <span class="text-info float-right">
                             {{ $logins }}
                         </span>
-			</a>
-		</div>
-		<div>
-			Unique Players:
-			<a href="{{ route('stats') }}">
+						</a>
+					</div>
+					<div>
+						Unique Players:
+						<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
                             {{ $uniquePlayers }}
                         </span>
-			</a>
-		</div>
-		<div>
-			Total Players:
-			<a href="{{ route('stats') }}">
+						</a>
+					</div>
+					<div>
+						Total Players:
+						<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
                             {{ $totalPlayers }}
                         </span>
-			</a>
-		</div>
-		<div>
-			Sum Gold:
-			<a href="{{ route('stats') }}">
+						</a>
+					</div>
+					<div>
+						Sum Gold:
+						<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
 							{{ number_format($sumgold) }}
 							<img class="mt-n2 ml-n2" src="{{ asset('img/items/10.png') }}"
 								 alt="coins" height="24px" width="32px"/>
                         </span>
-			</a>
-		</div>
-		<div>
-			Cumulative Play:
-			<a href="{{ route('stats') }}">
+						</a>
+					</div>
+					<div>
+						Cumulative Play:
+						<a href="{{ route('stats') }}">
                         <span class="text-info float-right">
                             {{ $totalTime }}
                         </span>
-			</a>
+						</a>
+					</div>
+					<br>
+				</div>
+			</div>
 		</div>
-		<br>
-	</div>
 	</div>
 
 @endsection
