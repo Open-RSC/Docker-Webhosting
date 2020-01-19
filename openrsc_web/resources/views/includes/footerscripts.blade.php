@@ -1,12 +1,12 @@
 <script src="{{ mix('js/app.js') }}"></script>
+
 <script>
     $(document).ready(function ($) {
         $(".clickable-row").click(function () {
             window.location = $(this).data("href");
         });
     });
-</script>
-<script>
+
     function search() {
         // Declare variables
         let input, filter, table, tr, td, i;
@@ -28,8 +28,7 @@
             }
         }
     }
-</script>
-<script>
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
