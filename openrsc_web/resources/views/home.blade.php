@@ -83,7 +83,7 @@
 						  </tr>
                           <tr>
                             <td background="{{ asset('img/title/fm_left.gif') }}">
-								<img height=1 src="img/title/blank.gif" width=6>
+								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
 							</td>
                             <td>
                               <CENTER><img height=7 src="{{ asset('img/title/blank.gif') }}" width=1><BR>
@@ -782,7 +782,7 @@
 							  </CENTER>
 							</td>
                             <td background="{{ asset('img/title/fm_right.gif') }}">
-								<img height=1 src="img/title/blank.gif" width=6>
+								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
 							</td>
 						  </tr>
                           <tr>
@@ -1091,7 +1091,7 @@
 							  </table></CENTER>
 							</td>
                             <td background="{{ asset('img/title/fm_right.gif') }}">
-								<img height=1 src="img/title/blank.gif" width=6>
+								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
 							</td>
 						  </tr>
                           <tr>
