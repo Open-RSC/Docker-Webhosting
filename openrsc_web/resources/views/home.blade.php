@@ -39,7 +39,7 @@
 		<TBODY>
 		<TR>
 			<TD>
-				<CENTER>
+				<div class="justify-content-center row text-center">
 					<TABLE cellSpacing=0 cellPadding=0 border=0>
 						<TBODY>
 						<TR>
@@ -1103,17 +1103,17 @@
 															align=center>
 															This webpage and its contents is copyright 2005 Jagex Ltd
 															<BR>To use our service you must agree to our
-															<A class=c href="terms/terms.html">
-																Terms+Conditions
-															</A>
-															+ <A class=c href="privacy/privacy.html">
-																Privacy policy
-															</A>
+																<A class=c href="terms/terms.html">
+																	Terms+Conditions
+																</A>
+																+ <A class=c href="privacy/privacy.html">
+																	Privacy policy
+																</A>
 														</DIV>
 													</TD>
 												</TR>
 												</TBODY>
-											</TABLE></CENTER>
+											</TABLE></div>
 							</TD>
 						</TR>
 						</TBODY>
@@ -1189,7 +1189,7 @@
 								</div>
 							</div>
 
-							<div class="middle container-fluid border-top border-info">
+							<div class="container-fluid border-top border-info">
 								<div class="text-left text-primary">
 									<br>
 									<h4 class="text-info">Statistics</h4>
