@@ -65,7 +65,7 @@
 								</td>
 								<td class="col text-right">
 									<span>
-										{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage}/4.0)) }}
+										{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage})) }}
 									</span>
 								</td>
 								<td class="col text-left">
