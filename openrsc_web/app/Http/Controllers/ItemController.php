@@ -46,7 +46,7 @@ class ItemController extends Controller
 	 * Show the form for creating a new resource.
 	 *
 	 * @param Request $request
-	 * @return void
+	 * @return Factory|View
 	 */
 	public function autocomplete(Request $request)
 	{
@@ -109,6 +109,11 @@ class ItemController extends Controller
 						['openrsc_bank.id', '=', $id],
 						['openrsc_players.id', '>=', '10'],
 						['openrsc_players.banned', '=', '0'],
+					])
+					->orWhere([
+						['openrsc_bank.id', '=', $id],
+						['openrsc_players.id', '>=', '4'],
+						['openrsc_players.banned', '=', '0'],
 					]);
 			})
 			->sum('amount');
@@ -125,6 +130,11 @@ class ItemController extends Controller
 					->where([
 						['openrsc_invitems.id', '=', $id],
 						['openrsc_players.id', '>=', '10'],
+						['openrsc_players.banned', '=', '0'],
+					])
+					->orWhere([
+						['openrsc_invitems.id', '=', $id],
+						['openrsc_players.id', '>=', '4'],
 						['openrsc_players.banned', '=', '0'],
 					]);
 			})
@@ -152,6 +162,14 @@ class ItemController extends Controller
 						['openrsc_players.login_date', '>=', Carbon::now()
 							->subMonth(3)
 							->timestamp,],
+					])
+					->orWhere([
+						['openrsc_bank.id', '=', $id],
+						['openrsc_players.id', '>=', '4'],
+						['openrsc_players.banned', '=', '0'],
+						['openrsc_players.login_date', '>=', Carbon::now()
+							->subMonth(3)
+							->timestamp,],
 					]);
 			})
 			->sum('amount');
@@ -169,6 +187,14 @@ class ItemController extends Controller
 					->where([
 						['openrsc_invitems.id', '=', $id],
 						['openrsc_players.id', '>=', '10'],
+						['openrsc_players.banned', '=', '0'],
+						['openrsc_players.login_date', '>=', Carbon::now()
+							->subMonth(3)
+							->timestamp,],
+					])
+					->orWhere([
+						['openrsc_invitems.id', '=', $id],
+						['openrsc_players.id', '>=', '4'],
 						['openrsc_players.banned', '=', '0'],
 						['openrsc_players.login_date', '>=', Carbon::now()
 							->subMonth(3)

@@ -81,6 +81,11 @@ class QuestController extends Controller
 				['b.group_id', '=', '10'],
 				['b.highscoreopt', '=', '0'],
 			])
+			->orWhere([
+					['b.banned', '=', '0'],
+					['b.group_id', '=', '4'],
+					['b.highscoreopt', '=', '0'],
+				])
 			->get();*/
 
 		return view('quests/' . $subpage, [

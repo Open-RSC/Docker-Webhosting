@@ -55,6 +55,11 @@ class HomeController extends Controller
 				['A.banned', '=', '0'],
 				['B.time', '>=', 'unix_timestamp(current_date - interval 10 day)'],
 			])
+			->orWhere([
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+				['B.time', '>=', 'unix_timestamp(current_date - interval 10 day)'],
+			])
 			->orderBy('time', 'desc')
 			->limit(20)
 			->get();
@@ -66,6 +71,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$sumgoldinvitems = DB::table('openrsc_invitems as B')
@@ -73,6 +83,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '10'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -260,6 +275,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$sumgoldInvitems = DB::table('openrsc_invitems as B')
@@ -267,6 +287,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '10'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -279,12 +304,22 @@ class HomeController extends Controller
 				['group_id', '=', '10'],
 				['banned', '=', 0],
 			])
+			->orWhere([
+				['combat', '>=', '30'],
+				['group_id', '=', '4'],
+				['banned', '=', 0],
+			])
 			->count();
 
 		$combat50 = DB::table('openrsc_players')
 			->where([
 				['combat', '>=', '50'],
 				['group_id', '=', '10'],
+				['banned', '=', 0],
+			])
+			->orWhere([
+				['combat', '>=', '50'],
+				['group_id', '=', '4'],
 				['banned', '=', 0],
 			])
 			->count();
@@ -295,12 +330,22 @@ class HomeController extends Controller
 				['group_id', '=', '10'],
 				['banned', '=', 0],
 			])
+			->orWhere([
+				['combat', '>=', '80'],
+				['group_id', '=', '4'],
+				['banned', '=', 0],
+			])
 			->count();
 
 		$combat90 = DB::table('openrsc_players')
 			->where([
 				['combat', '>=', '90'],
 				['group_id', '=', '10'],
+				['banned', '=', 0],
+			])
+			->orWhere([
+				['combat', '>=', '90'],
+				['group_id', '=', '4'],
 				['banned', '=', 0],
 			])
 			->count();
@@ -311,6 +356,11 @@ class HomeController extends Controller
 				['group_id', '=', '10'],
 				['banned', '=', 0],
 			])
+			->orWhere([
+				['combat', '>=', '100'],
+				['group_id', '=', '4'],
+				['banned', '=', 0],
+			])
 			->count();
 
 		$combat123 = DB::table('openrsc_players')
@@ -319,12 +369,21 @@ class HomeController extends Controller
 				['group_id', '=', '10'],
 				['banned', '=', 0],
 			])
+			->orWhere([
+				['combat', '>=', '123'],
+				['group_id', '=', '4'],
+				['banned', '=', 0],
+			])
 			->count();
 
 		$startedQuest = DB::table('openrsc_quests as B')
 			->join('openrsc_players AS A', 'A.id', '=', 'B.playerID')
 			->where([
 				['A.group_id', '=', '10'],
+				['A.banned', '=', 0],
+			])
+			->orWhere([
+				['A.group_id', '=', '4'],
 				['A.banned', '=', 0],
 			])
 			->distinct('B.playerID')
@@ -338,6 +397,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '30000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems30 = DB::table('openrsc_invitems as B')
@@ -346,6 +411,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '30000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '30000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -360,6 +431,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '50000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems50 = DB::table('openrsc_invitems as B')
@@ -368,6 +445,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '50000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '50000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -382,6 +465,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '80000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems80 = DB::table('openrsc_invitems as B')
@@ -390,6 +479,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '80000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '80000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -404,6 +499,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '120000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems120 = DB::table('openrsc_invitems as B')
@@ -412,6 +513,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '120000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '120000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -426,6 +533,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '400000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems400 = DB::table('openrsc_invitems as B')
@@ -434,6 +547,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '400000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '400000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -448,6 +567,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '1000000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems1m = DB::table('openrsc_invitems as B')
@@ -456,6 +581,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '1000000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '1000000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -470,6 +601,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '1200000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems12m = DB::table('openrsc_invitems as B')
@@ -478,6 +615,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '1200000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '1200000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -492,6 +635,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '1500000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems15m = DB::table('openrsc_invitems as B')
@@ -500,6 +649,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '1500000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '1500000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -514,6 +669,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '2000000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems2m = DB::table('openrsc_invitems as B')
@@ -522,6 +683,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '2000000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '2000000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -536,6 +703,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '4000000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems4m = DB::table('openrsc_invitems as B')
@@ -544,6 +717,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '4000000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '4000000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -558,6 +737,12 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '10000000'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->count();
 
 		$goldInvitems10m = DB::table('openrsc_invitems as B')
@@ -566,6 +751,12 @@ class HomeController extends Controller
 				['B.id', '=', '10'],
 				['B.amount', '>=', '10000000'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '10'],
+				['B.amount', '>=', '10000000'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->count();
@@ -579,6 +770,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '422'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$pumpkinBank = DB::table('openrsc_invitems as B')
@@ -586,6 +782,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '422'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '422'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -599,6 +800,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '575'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$crackerBank = DB::table('openrsc_invitems as B')
@@ -606,6 +812,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '575'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '575'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -619,6 +830,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '577'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$yellowphatBank = DB::table('openrsc_invitems as B')
@@ -626,6 +842,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '577'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '577'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -639,6 +860,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '581'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$whitephatBank = DB::table('openrsc_invitems as B')
@@ -646,6 +872,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '581'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '581'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -659,6 +890,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '580'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$purplephatBank = DB::table('openrsc_invitems as B')
@@ -666,6 +902,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '580'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '580'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -679,6 +920,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '576'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$redphatBank = DB::table('openrsc_invitems as B')
@@ -686,6 +932,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '576'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '576'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -699,6 +950,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '578'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$bluephatBank = DB::table('openrsc_invitems as B')
@@ -706,6 +962,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '578'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '578'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -719,6 +980,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '579'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$greenphatBank = DB::table('openrsc_invitems as B')
@@ -726,6 +992,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '579'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '579'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -739,6 +1010,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '677'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$eastereggBank = DB::table('openrsc_invitems as B')
@@ -746,6 +1022,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '677'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '677'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -759,6 +1040,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '831'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$redmaskBank = DB::table('openrsc_invitems as B')
@@ -766,6 +1052,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '831'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '831'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -779,6 +1070,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '832'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$bluemaskBank = DB::table('openrsc_invitems as B')
@@ -786,6 +1082,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '832'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '832'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -799,6 +1100,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '828'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$greenmaskBank = DB::table('openrsc_invitems as B')
@@ -806,6 +1112,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '828'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '828'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -819,6 +1130,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '971'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$santahatBank = DB::table('openrsc_invitems as B')
@@ -826,6 +1142,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '971'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '971'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -839,6 +1160,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '1156'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$bunnyearsBank = DB::table('openrsc_invitems as B')
@@ -846,6 +1172,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '1156'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '1156'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -859,6 +1190,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '1289'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$scytheBank = DB::table('openrsc_invitems as B')
@@ -866,6 +1202,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '1289'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '1289'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -879,6 +1220,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '1278'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$dsqBank = DB::table('openrsc_invitems as B')
@@ -886,6 +1232,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '1278'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '1278'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -899,6 +1250,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '795'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$dmedBank = DB::table('openrsc_invitems as B')
@@ -906,6 +1262,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '795'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '795'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -924,6 +1285,16 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '522'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '597'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$dammyBank = DB::table('openrsc_invitems as B')
@@ -938,6 +1309,16 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '522'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '597'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$dammy = $dammyInvitems + $dammyBank;
@@ -949,6 +1330,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '594'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$dbattleBank = DB::table('openrsc_invitems as B')
@@ -956,6 +1342,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '594'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '594'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -969,6 +1360,11 @@ class HomeController extends Controller
 				['A.group_id', '=', '10'],
 				['A.banned', '=', '0'],
 			])
+			->orWhere([
+				['B.id', '=', '593'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
 			->sum('B.amount');
 
 		$dlongBank = DB::table('openrsc_invitems as B')
@@ -976,6 +1372,11 @@ class HomeController extends Controller
 			->where([
 				['B.id', '=', '593'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '593'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -990,8 +1391,18 @@ class HomeController extends Controller
 				['A.banned', '=', '0'],
 			])
 			->orWhere([
+				['B.id', '=', '18'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
 				['B.id', '=', '228'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '228'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -1006,6 +1417,16 @@ class HomeController extends Controller
 			->orWhere([
 				['B.id', '=', '228'],
 				['A.group_id', '=', '10'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '18'],
+				['A.group_id', '=', '4'],
+				['A.banned', '=', '0'],
+			])
+			->orWhere([
+				['B.id', '=', '228'],
+				['A.group_id', '=', '4'],
 				['A.banned', '=', '0'],
 			])
 			->sum('B.amount');
@@ -1073,6 +1494,12 @@ class HomeController extends Controller
 			->where([
 				['banned', '=', '0'],
 				['group_id', '=', '10'],
+				['highscoreopt', '=', '0'],
+				['online', '=', '1'],
+			])
+			->orWhere([
+				['banned', '=', '0'],
+				['group_id', '=', '4'],
 				['highscoreopt', '=', '0'],
 				['online', '=', '1'],
 			])

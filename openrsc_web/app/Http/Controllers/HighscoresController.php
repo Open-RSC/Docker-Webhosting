@@ -86,6 +86,11 @@ class HighscoresController extends Controller
 				['b.group_id', '=', '10'],
 				['b.highscoreopt', '=', '0'],
 			])
+			->orWhere([
+				['b.banned', '=', '0'],
+				['b.group_id', '=', '4'],
+				['b.highscoreopt', '=', '0'],
+			])
 			->groupBy('b.username')
 			->orderBy('b.skill_total', 'desc')
 			->orderBy('total_xp', 'desc')
@@ -141,6 +146,11 @@ class HighscoresController extends Controller
 			->where([
 				['b.banned', '=', '0'],
 				['b.group_id', '=', '10'],
+				['b.highscoreopt', '=', '0'],
+			])
+			->orWhere([
+				['b.banned', '=', '0'],
+				['b.group_id', '=', '4'],
 				['b.highscoreopt', '=', '0'],
 			])
 			->groupBy('b.username')
