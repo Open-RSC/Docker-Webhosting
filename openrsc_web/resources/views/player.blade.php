@@ -4,7 +4,7 @@
 	<div class="text-info">
 		<div class="container">
 			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">
-				@if ($players->first()->group_id < '10')
+				@if ($players->first()->group_id != '10')
 					<img class="mb-3" src="{{ asset('img') }}/{{ $players->first()->group_id }}.svg" height="34px"
 						 width="auto" alt="group {{ $players->first()->group_id }}"/>
 				@endif
