@@ -83,13 +83,8 @@ class HighscoresController extends Controller
 			as total_xp'))
 			->where([
 				['b.banned', '=', '0'],
-				['b.group_id', '=', '10'],
-				['b.highscoreopt', '=', '0'],
-			])
-			->orWhere([
-				['b.banned', '=', '0'],
-				['b.group_id', '=', '4'],
-				['b.highscoreopt', '=', '0'],
+				['b.group_id', '>=', '10'],
+				['b.iron_man', '=', '0'], // no iron man players are displayed
 			])
 			->groupBy('b.username')
 			->orderBy('b.skill_total', 'desc')
@@ -145,13 +140,8 @@ class HighscoresController extends Controller
 			->select('*', DB::raw('a.exp_' . $subpage))
 			->where([
 				['b.banned', '=', '0'],
-				['b.group_id', '=', '10'],
-				['b.highscoreopt', '=', '0'],
-			])
-			->orWhere([
-				['b.banned', '=', '0'],
-				['b.group_id', '=', '4'],
-				['b.highscoreopt', '=', '0'],
+				['b.group_id', '>=', '10'],
+				['b.iron_man', '=', '0'], // no iron man players are displayed
 			])
 			->groupBy('b.username')
 			->orderBy('a.exp_' . $subpage, 'desc')

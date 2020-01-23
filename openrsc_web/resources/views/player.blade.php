@@ -5,7 +5,7 @@
 		<div class="container">
 			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">
 				@if ($players->first()->group_id != '10')
-					<img class="mb-3" src="{{ asset('img') }}/{{ $players->first()->group_id }}.svg" height="34px"
+					<img class="mb-1 mr-3" src="{{ asset('img') }}/{{ $players->first()->group_id }}.svg" height="24px"
 						 width="auto" alt="group {{ $players->first()->group_id }}"/>
 				@endif
 				<span class="ml-n3">{{ ucfirst($players->first()->username) }}</span>
@@ -68,6 +68,8 @@
 										{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->exp_thieving)) }}
 									@elseif ($skill == 'runecraft')
 										{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->exp_runecraft)) }}
+									@elseif ($skill == 'harvesting')
+										{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->exp_harvesting)) }}
 									@else
 										N/A
 									@endif
