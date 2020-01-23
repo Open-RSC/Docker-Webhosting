@@ -5,6 +5,8 @@
 	<div class="justify-content-center row text-center">
 
 		<div class="text-center d-block pt-4">
+
+			<!-- Top row -->
 			<div class="row">
 
 				<!-- Logo and player online count -->
@@ -19,20 +21,23 @@
 				<div class="col-6">
 					<table bgColor=black>
 						<tbody>
-						<tr>
+						<tr style="line-height: 6px">
 							<td>
+								<img src="{{ asset('img/title/fm_topleft.gif') }}" width="6" height="6">
 							</td>
-							<td background="{{ asset('img/title/fm_top2.gif') }}">
+							<td style="background-image: url({{ asset('img/title/fm_top2.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
 							</td>
 							<td>
-								<img src="{{ asset('img/title/fm_topright.gif') }}">
+								<img src="{{ asset('img/title/fm_topright.gif') }}" width="6" height="6">
 							</td>
 						</tr>
 						<tr>
 							<td background="{{ asset('img/title/fm_left.gif') }}">
+								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 							</td>
 							<td>
-								<div class="font-weight-bold d-block pt-3">
+								<div class="font-weight-bold">
 									Latest News and Updates
 								</div>
 								<table bgColor=black>
@@ -118,20 +123,18 @@
 								<A class=c href="news.html">Click Here</A>.
 							</td>
 							<td background="{{ asset('img/title/fm_right.gif') }}">
-								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
+								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 							</td>
 						</tr>
-						<tr>
+						<tr style="line-height: 6px">
 							<td>
-								<img height=6 src="{{ asset('img/title/fm_bottomleft.gif') }}"
-									 width=6>
+								<img src="{{ asset('img/title/fm_bottomleft.gif') }}" alt="left" width="6" height="6">
 							</td>
-							<td background="{{ asset('img/title/fm_bottom2.gif') }}">
-								<img height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
+							<td style="background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
 							</td>
 							<td>
-								<img height=6 src="{{ asset('img/title/fm_bottomright.gif') }}"
-									 width=6>
+								<img src="{{ asset('img/title/fm_bottomright.gif') }}" alt="right" width="6" height="6">
 							</td>
 						</tr>
 						</tbody>
