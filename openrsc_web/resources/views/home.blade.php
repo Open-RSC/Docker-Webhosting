@@ -25,7 +25,7 @@
 							<td>
 								<img src="{{ asset('img/title/fm_topleft.gif') }}" width="6" height="6">
 							</td>
-							<td style="background-image: url({{ asset('img/title/fm_top2.gif') }})">
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_top2.gif') }})">
 								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
 							</td>
 							<td>
@@ -130,7 +130,7 @@
 							<td>
 								<img src="{{ asset('img/title/fm_bottomleft.gif') }}" alt="left" width="6" height="6">
 							</td>
-							<td style="background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
 								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
 							</td>
 							<td>
