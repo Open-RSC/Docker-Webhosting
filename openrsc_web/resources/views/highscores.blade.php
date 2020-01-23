@@ -51,42 +51,82 @@
 						</tr>
 						</thead>
 						<tbody>
-						@foreach ($highscores as $key=>$player)
-							<tr class="row clickable-row" data-href="{{ route('player', $player->id) }}">
-								<td class="col-2 text-right">
+						@if (Config::get('app.authentic') == true)
+							@foreach ($highscores_authentic as $key=>$player)
+								<tr class="row clickable-row" data-href="{{ route('player', $player->id) }}">
+									<td class="col-2 text-right">
 									<span>
-										{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
+										{{ ($highscores_authentic->currentpage()-1) * $highscores_authentic->perpage() + $key + 1 }}
 									</span>
-								</td>
-								<td class="col-sm-3 text-left">
+									</td>
+									<td class="col-sm-3 text-left">
 									<span>
 										{{ ucfirst($player->username) }}
 									</span>
-								</td>
-								<td class="col text-right">
+									</td>
+									<td class="col text-right">
 									<span>
 										{{ number_format($player->skill_total) }}
 									</span>
-								</td>
-								<td class="col text-left">
+									</td>
+									<td class="col text-left">
 									<span>
 										{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)) }}
 									</span>
-								</td>
-								<td class="col-sm-3 text-right">
-									@if($player->login_date != 0)
-										<span>
+									</td>
+									<td class="col-sm-3 text-right">
+										@if($player->login_date != 0)
+											<span>
 											{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
 										</span>
-									@else
-										<span>Never</span>
-									@endif
-								</td>
-							</tr>
-						@endforeach
+										@else
+											<span>Never</span>
+										@endif
+									</td>
+								</tr>
+							@endforeach
+						@else
+							@foreach ($highscores_custom as $key=>$player)
+								<tr class="row clickable-row" data-href="{{ route('player', $player->id) }}">
+									<td class="col-2 text-right">
+									<span>
+										{{ ($highscores_custom->currentpage()-1) * $highscores_custom->perpage() + $key + 1 }}
+									</span>
+									</td>
+									<td class="col-sm-3 text-left">
+									<span>
+										{{ ucfirst($player->username) }}
+									</span>
+									</td>
+									<td class="col text-right">
+									<span>
+										{{ number_format($player->skill_total) }}
+									</span>
+									</td>
+									<td class="col text-left">
+									<span>
+										{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)) }}
+									</span>
+									</td>
+									<td class="col-sm-3 text-right">
+										@if($player->login_date != 0)
+											<span>
+											{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
+										</span>
+										@else
+											<span>Never</span>
+										@endif
+									</td>
+								</tr>
+							@endforeach
+						@endif
 						</tbody>
 					</table>
-					{{ $highscores->links('pagination::bootstrap-4') }}
+					@if (Config::get('app.authentic') == true)
+						{{ $highscores_authentic->links('pagination::bootstrap-4') }}
+					@else
+						{{ $highscores_custom->links('pagination::bootstrap-4') }}
+					@endif
 				</div>
 
 				<!-- right column -->

@@ -53,10 +53,50 @@ class HighscoresController extends Controller
 	{
 		/**
 		 * @return Factory|View
-		 * @var $highscores
+		 * @var $highscores_authentic
 		 * Fetches the table row of the player experience in view and paginates the results
 		 */
-		$highscores = DB::connection()
+		$highscores_authentic = DB::connection()
+			->table('openrsc_experience as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->select('*', DB::raw('
+			(SUM(a.exp_attack +
+			a.exp_defense +
+			a.exp_strength +
+			a.exp_defense +
+			a.exp_hits +
+			a.exp_ranged) +
+			a.exp_prayer +
+			a.exp_magic +
+			a.exp_cooking +
+			a.exp_woodcut +
+			a.exp_fletching +
+			a.exp_fishing +
+			a.exp_firemaking +
+			a.exp_crafting +
+			a.exp_smithing +
+			a.exp_mining +
+			a.exp_herblaw +
+			a.exp_agility +
+			a.exp_thieving
+			/4.0)
+			as total_xp'))
+			->where([
+				['b.banned', '=', '0'],
+				['b.group_id', '>=', '10'],
+				['b.iron_man', '=', '0'], // no iron man players are displayed
+			])
+			->groupBy('b.username')
+			->orderBy('b.skill_total', 'desc')
+			->orderBy('total_xp', 'desc')
+			->paginate(300);
+
+		/**
+		 * @return Factory|View
+		 * @var $highscores_custom
+		 * Fetches the table row of the player experience in view and paginates the results
+		 */
+		$highscores_custom = DB::connection()
 			->table('openrsc_experience as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
 			->select('*', DB::raw('
@@ -95,12 +135,21 @@ class HighscoresController extends Controller
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
 		 */
-		$skill_array = Config::get('app.authentic') == true ? array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft');
+		$skill_array = Config::get('app.authentic') == true ? array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft'); //, 'harvesting');
 
-		return view('highscores', [
-			'skill_array' => $skill_array,
-		])
-			->with(compact('highscores'));
+		if (Config::get('app.authentic') == true) {
+			return view('highscores', [
+				'skill_array' => $skill_array,
+			])
+				->with(compact('highscores_authentic'));
+		}
+		else
+		{
+			return view('highscores', [
+				'skill_array' => $skill_array,
+			])
+				->with(compact('highscores_custom'));
+		}
 	}
 
 	/**
@@ -114,7 +163,7 @@ class HighscoresController extends Controller
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
 		 */
-		$skill_array = Config::get('app.authentic') == true ? array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft');
+		$skill_array = Config::get('app.authentic') == true ? array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft'); //, 'harvesting');
 
 		/**
 		 * @var $subpage
