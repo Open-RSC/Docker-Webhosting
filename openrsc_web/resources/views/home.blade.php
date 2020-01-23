@@ -8,151 +8,130 @@
 			<div class="row">
 
 				<!-- Logo and player online count -->
-				<div class="d-inline-block pt-5" style="width: 312px; margin: 0;">
-					<img style="display: block" height=100 src="{{ asset('img/title/rslogo.gif') }}" width=312>
-					<div class="text-center d-block pt-3">
-					<span style="font-size: 14px">
+				<div class="col-5 mr-1 mt-5">
+					<img src="{{ asset('img/title/rslogo.gif') }}" alt="logo">
+					<div class="pt-3" style="font-size: 14px">
 						There are currently {{ $online }} people playing!
-					</span>
 					</div>
 				</div>
 
 				<!-- Latest news and updates box -->
-				<div class="d-inline-block" style="margin: 0 0 0 20px; width: 430px">
-					<table style="display: inline; width: 430px">
+				<div class="col-6">
+					<table bgColor=black>
 						<tbody>
 						<tr>
-							<td vAlign=top>
+							<td>
+							</td>
+							<td background="{{ asset('img/title/fm_top2.gif') }}">
+							</td>
+							<td>
+								<img src="{{ asset('img/title/fm_topright.gif') }}">
+							</td>
+						</tr>
+						<tr>
+							<td background="{{ asset('img/title/fm_left.gif') }}">
+							</td>
+							<td>
+								<div class="font-weight-bold d-block pt-3">
+									Latest News and Updates
+								</div>
 								<table bgColor=black>
 									<tbody>
 									<tr>
-										<td>
-											<img height=6 src="{{ asset('img/title/fm_topleft.gif') }}"
-												 width=6>
+										<td class="pr-1 pl-1">
+											<A href="news.html">
+												<img src="{{ asset('img/title/mm_scroll.jpg') }}">
+											</A>
 										</td>
-										<td background="{{ asset('img/title/fm_top2.gif') }}">
-											<img height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
-										</td>
-										<td>
-											<img height=6 src="{{ asset('img/title/fm_topright.gif') }}"
-												 width=6>
-										</td>
-									</tr>
-									<tr>
-										<td background="{{ asset('img/title/fm_left.gif') }}">
-											<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
-										</td>
-										<td>
-											<CENTER><img height=7 src="{{ asset('img/title/blank.gif') }}"
-														 width=1><BR>
-													<B>
-														Latest News and Updates
-													</B><BR>
-														<table bgColor=black>
+										<td width=320>
+											<table height=130>
+												<tbody>
+												<tr>
+													<td>
+														<table width=320>
 															<tbody>
-															<tr vAlign=top>
-																<td align=middle width=100>
-																	<A href="news.html">
-																		<img
-																			src="{{ asset('img/title/mm_scroll.jpg') }}"
-																			border=0>
+															<tr>
+																<td class="text-left">
+																	<A class=c
+																	   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=468">
+																		Rogue trader
 																	</A>
 																</td>
-																<td width=320>
-																	<table height=130>
-																		<tbody>
-																		<tr>
-																			<td>
-																				<table width=320>
-																					<tbody>
-																					<tr>
-																						<td>
-																							<A class=c
-																							   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=468">
-																								Rogue trader
-																							</A>
-																						</td>
-																						<td align=right>
-																							15-Aug-2005
-																						</td>
-																					</tr>
-																					<tr>
-																						<td>
-																							<A class=c
-																							   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=466">
-																								Tai Bwo Wannai Clean-Up
-																							</A>
-																						</td>
-																						<td align=right>
-																							9-Aug-2005
-																						</td>
-																					</tr>
-																					<tr>
-																						<td>
-																							<A class=c
-																							   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=465">
-																								Behind The Scenes -
-																								August
-																							</A>
-																						</td>
-																						<td align=right>
-																							8-Aug-2005
-																						</td>
-																					</tr>
-																					<tr>
-																						<td>
-																							<A class=c
-																							   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=464">
-																								New York Servers Online
-																							</A>
-																						</td>
-																						<td align=right>
-																							5-Aug-2005
-																						</td>
-																					</tr>
-																					<tr>
-																						<td>
-																							<A class=c
-																							   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=462">
-																								48 more bank slots for
-																								members
-																							</A>
-																						</td>
-																						<td align=right>
-																							1-Aug-2005
-																						</td>
-																					</tr>
-																					</tbody>
-																				</table>
-																			</td>
-																		</tr>
-																		</tbody>
-																	</table>
+																<td class="text-right pr-1">
+																	15-Aug-2005
 																</td>
+															</tr>
+															<tr>
+																<td class="text-left">
+																	<A class=c
+																	   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=466">
+																		Tai Bwo Wannai Clean-Up
+																	</A>
+																</td>
+																<td class="text-right pr-1">
+																	9-Aug-2005
+																</td>
+															</tr>
+															<tr>
+																<td class="text-left">
+																	<A class=c
+																	   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=465">
+																		Behind The Scenes - August
+																	</A>
+																</td>
+																<td class="text-right pr-1">
+																	8-Aug-2005
+																</td>
+															</tr>
+															<tr>
+																<td class="text-left">
+																	<A class=c
+																	   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=464">
+																		New York Servers Online
+																	</A>
+																</td>
+																<td class="text-right pr-1">
+																	5-Aug-2005
+																</td>
+															</tr>
+															<tr>
+																<td class="text-left">
+																	<A class=c
+																	   href="http://news-web.runescape.com/aff/runescape/newsitem.cgi?id=462">
+																		48 more bank slots for members
+																	</A>
+																</td>
+																<td class="text-right pr-1">
+																	1-Aug-2005
+																</td>
+															</tr>
 															</tbody>
 														</table>
-														To view a full list of news and updates,
-														<A class=c href="news.html">Click Here</A>.
+													</td>
+												</tr>
+												</tbody>
+											</table>
 										</td>
-										<td background="{{ asset('img/title/fm_right.gif') }}">
-											<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<img height=6 src="{{ asset('img/title/fm_bottomleft.gif') }}"
-												 width=6>
-										</td>
-										<td background="{{ asset('img/title/fm_bottom2.gif') }}">
-											<img height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
-										</td>
-										<td>
-											<img height=6 src="{{ asset('img/title/fm_bottomright.gif') }}"
-												 width=6>
-										</td>
-									</tr>
 									</tbody>
 								</table>
+								To view a full list of news and updates,
+								<A class=c href="news.html">Click Here</A>.
+							</td>
+							<td background="{{ asset('img/title/fm_right.gif') }}">
+								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img height=6 src="{{ asset('img/title/fm_bottomleft.gif') }}"
+									 width=6>
+							</td>
+							<td background="{{ asset('img/title/fm_bottom2.gif') }}">
+								<img height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
+							</td>
+							<td>
+								<img height=6 src="{{ asset('img/title/fm_bottomright.gif') }}"
+									 width=6>
 							</td>
 						</tr>
 						</tbody>
