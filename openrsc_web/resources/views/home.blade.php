@@ -33,7 +33,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td background="{{ asset('img/title/fm_left.gif') }}">
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_left.gif') }})">
 								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 							</td>
 							<td>
@@ -122,7 +122,7 @@
 								To view a full list of news and updates,
 								<A class=c href="news.html">Click Here</A>.
 							</td>
-							<td background="{{ asset('img/title/fm_right.gif') }}">
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
 								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 							</td>
 						</tr>
