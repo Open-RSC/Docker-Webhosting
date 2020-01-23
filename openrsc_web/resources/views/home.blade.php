@@ -37,7 +37,7 @@
 								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 							</td>
 							<td>
-								<div class="font-weight-bold">
+								<div class="font-weight-bold pt-2">
 									Latest News and Updates
 								</div>
 								<table bgColor=black>
@@ -119,8 +119,10 @@
 										</td>
 									</tbody>
 								</table>
-								To view a full list of news and updates,
-								<A class=c href="news.html">Click Here</A>.
+								<div class="pb-2">
+									To view a full list of news and updates,
+									<A class=c href="news.html">Click Here</A>.
+								</div>
 							</td>
 							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
 								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
