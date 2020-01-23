@@ -85,6 +85,7 @@ class HighscoresController extends Controller
 				['b.banned', '=', '0'],
 				['b.group_id', '>=', '10'],
 				['b.iron_man', '=', '0'], // no iron man players are displayed
+				['b.highscoreopt', '!=', '1'],
 			])
 			->groupBy('b.username')
 			->orderBy('b.skill_total', 'desc')
@@ -125,6 +126,7 @@ class HighscoresController extends Controller
 				['b.banned', '=', '0'],
 				['b.group_id', '>=', '10'],
 				['b.iron_man', '=', '0'], // no iron man players are displayed
+				['b.highscoreopt', '!=', '1'],
 			])
 			->groupBy('b.username')
 			->orderBy('b.skill_total', 'desc')
@@ -191,6 +193,7 @@ class HighscoresController extends Controller
 				['b.banned', '=', '0'],
 				['b.group_id', '>=', '10'],
 				['b.iron_man', '=', '0'], // no iron man players are displayed
+				['b.highscoreopt', '!=', '1'],
 			])
 			->groupBy('b.username')
 			->orderBy('a.exp_' . $subpage, 'desc')

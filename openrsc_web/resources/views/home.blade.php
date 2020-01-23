@@ -2,44 +2,32 @@
 
 @section('content')
 
-	<div>
-		<table
-			style="width: 100%; padding: 0 15px;min-width: 500px"
-			cellSpacing=0 cellpadding=0>
-			<tbody>
-			<tr>
-				<td>
-					<div class="justify-content-center row text-center">
-						<table cellSpacing=0 cellpadding=0 border=0>
-							<tbody>
-							<tr>
-								<td>
-									<div class="text-center d-block pt-4">
-										<span style="display: inline-block; margin: 0; width: 312px">
-										  <table style="display: inline; width: 312px" cellSpacing=0 cellpadding=0>
-											<tbody>
-											<tr>
-											  <td vAlign=top height=180>
-												  <img style="display: block" height=100
-													   src="{{ asset('img/title/rslogo.gif') }}"
-													   width=312>
-												<div class="text-center d-block pt-3"><span style="font-size: 14px">
+	<div class="justify-content-center row text-center">
+
+		<div class="text-center d-block pt-4">
+						<span style="display: inline-block; margin: 0; width: 312px">
+							<table style="display: inline; width: 312px">
+								<tbody>
+								<tr>
+									<td vAlign=top height=180>
+										<img style="display: block" height=100 src="{{ asset('img/title/rslogo.gif') }}"
+											 width=312>
+												<div class="text-center d-block pt-3">
+													<span style="font-size: 14px">
 														There are currently {{ $online }} people playing!
 													</span>
 												</div>
-													</td>
-												</tr>
-												</tbody>
-											</table>
-											</span>
-										<span style="display: inline-block; margin: 0 0 0 20px; width: 430px">
-									  <table style="display: inline; width: 430px" cellSpacing=0
-											 cellpadding=0>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+						</span>
+			<span style="display: inline-block; margin: 0 0 0 20px; width: 430px">
+									  <table style="display: inline; width: 430px">
 										<tbody>
 										<tr>
 										  <td vAlign=top>
-											<table cellSpacing=0 cellpadding=0 bgColor=black
-												   border=0>
+											<table bgColor=black>
 											  <tbody>
 											  <tr>
 												<td>
@@ -49,8 +37,9 @@
 												<td background="{{ asset('img/title/fm_top2.gif') }}">
 													<img height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
 												</td>
-												<td><img height=6
-														 src="{{ asset('img/title/fm_topright.gif') }}" width=6>
+												<td>
+													<img height=6 src="{{ asset('img/title/fm_topright.gif') }}"
+														 width=6>
 												</td>
 											  </tr>
 											  <tr>
@@ -63,7 +52,7 @@
 															  <B>
 																  Latest News and Updates
 															  </B><BR>
-												  <table cellSpacing=0 cellpadding=0 bgColor=black>
+												  <table bgColor=black>
 													  <tbody>
 													<tr vAlign=top>
 													<td align=middle width=100>
@@ -72,7 +61,6 @@
 														</A>
 													</td>
 													<td width=320>
-													<CENTER>
 													<table height=130>
 													<tbody>
 													<tr>
@@ -139,12 +127,12 @@
 													</td>
 													</tr>
 													</tbody>
-													</table></CENTER>
+													</table>
 													</td>
 													  </tbody>
-												  </table>To view a full list of
-												  news and updates, <A class=c href="news.html">Click
-												  Here</A>. <BR><BR></CENTER>
+												  </table>
+													To view a full list of news and updates,
+													<A class=c href="news.html">Click Here</A>.
 												</td>
 												<td background="{{ asset('img/title/fm_right.gif') }}">
 													<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
@@ -170,38 +158,37 @@
 										</tbody>
 									  </table>
 										</span>
-										<div style="max-width: 770px">
-											<table style="margin-top: 10px; max-width: 770px" cellSpacing=0
-												   cellpadding=0 bgColor=black border=0>
-												<tbody>
-												<tr>
-													<td>
-														<img height=6 src="{{ asset('img/title/fm_topleft.gif') }}"
-															 width=6>
-													</td>
-													<td background="{{ asset('img/title/fm_top2.gif') }}">
-														<img height=6 src="{{ asset('img/title/blank.gif') }}"
-															 width=1>
-													</td>
-													<td>
-														<img height=6 src="{{ asset('img/title/fm_topright.gif') }}"
-															 width=6>
-													</td>
-												</tr>
-												<tr>
-													<td background="{{ asset('img/title/fm_left.gif') }}">
-														<img height=1 src="{{ asset('img/title/blank.gif') }}"
-															 width=6 alt="blank">
-													</td>
-													<td>
-														<CENTER><img height=7
-																	 src="{{ asset('img/title/blank.gif') }}"
-																	 width=505 alt="blank">
-															<div class="d-block pb-2">
-																<span class="font-weight-bold">Main Features</span>
-															</div>
-															<span class=item>
-                        <table class=itemtable cellSpacing=0 cellpadding=0>
+			<div style="max-width: 770px">
+				<table style="margin-top: 10px; max-width: 770px" bgColor=black>
+					<tbody>
+					<tr>
+						<td>
+							<img height=6 src="{{ asset('img/title/fm_topleft.gif') }}"
+								 width=6>
+						</td>
+						<td background="{{ asset('img/title/fm_top2.gif') }}">
+							<img height=6 src="{{ asset('img/title/blank.gif') }}"
+								 width=1>
+						</td>
+						<td>
+							<img height=6 src="{{ asset('img/title/fm_topright.gif') }}"
+								 width=6>
+						</td>
+					</tr>
+					<tr>
+						<td background="{{ asset('img/title/fm_left.gif') }}">
+							<img height=1 src="{{ asset('img/title/blank.gif') }}"
+								 width=6 alt="blank">
+						</td>
+						<td>
+							<img height=7
+								 src="{{ asset('img/title/blank.gif') }}"
+								 width=505 alt="blank">
+							<div class="d-block pb-2">
+								<span class="font-weight-bold">Main Features</span>
+							</div>
+							<span class=item>
+                        <table class=itemtable>
                           <tbody>
                           <tr>
                             <td align=middle width=100>
@@ -215,11 +202,11 @@
                                 <tr>
                                 <td class=b2 id=playgamebut background="{{ asset('img/title/shinystonered.jpg') }}"
 									bgColor=#570700>
-                                <CENTER><A class=whitelink onmouseover="redglow('playgamebut')"
-										   onmouseout="unredglow('playgamebut')" href="detail.html">
+                                <A class=whitelink onmouseover="redglow('playgamebut')"
+								   onmouseout="unredglow('playgamebut')" href="detail.html">
 										<B>Play Game</B>
 										<BR>(Existing&nbsp;User)
-									</A></CENTER>
+									</A>
 								</td>
 								</tr>
 								</tbody>
@@ -232,8 +219,8 @@
 						  </tbody>
 						</table>
 																			</span>
-															<span class=item>
-                        <table class=itemtable cellSpacing=0 cellpadding=0>
+							<span class=item>
+                        <table class=itemtable>
                           <tbody>
                           <tr>
                             <td align=middle width=100>
@@ -265,8 +252,8 @@
 						  </tbody>
 						</table>
 																			</span>
-															<span class=item>
-                        <table class=itemtable cellSpacing=0 cellpadding=0>
+							<span class=item>
+                        <table class=itemtable>
                           <tbody>
                           <tr>
                             <td align=middle width=100>
@@ -299,8 +286,8 @@
 						  </tbody>
 						</table>
 																			</span>
-															<span class=item>
-                        <table class=itemtable cellSpacing=0 cellpadding=0>
+							<span class=item>
+                        <table class=itemtable>
                           <tbody>
                           <tr>
                             <td align=middle width=100>
@@ -332,8 +319,8 @@
 						  </tbody>
 						</table>
 																			</span>
-															<span class=item>
-                        <table class=itemtable cellSpacing=0 cellpadding=0>
+							<span class=item>
+                        <table class=itemtable>
                           <tbody>
                           <tr>
                             <td align=middle width=100>
@@ -365,8 +352,8 @@
 						  </tbody>
 						</table>
 																			</span>
-															<span class=item>
-                        <table class=itemtable cellSpacing=0 cellpadding=0>
+							<span class=item>
+                        <table class=itemtable>
                           <tbody>
                           <tr>
                             <td align=middle width=100>
@@ -399,8 +386,8 @@
 						  </tbody>
 						</table>
 																			</span>
-															<span class=item>
-                        <table class=itemtable cellSpacing=0 cellpadding=0>
+							<span class=item>
+                        <table class=itemtable>
                           <tbody>
                           <tr>
                             <td align=middle width=100>
@@ -430,8 +417,8 @@
 						  </tbody>
 						</table>
 																			</span>
-															<span class=item>
-                        <table class=itemtable cellSpacing=0 cellpadding=0>
+							<span class=item>
+                        <table class=itemtable>
                           <tbody>
                           <tr>
                             <td align=middle width=100>
@@ -462,8 +449,8 @@
 						  </tbody>
 						</table>
 																			</span>
-															<span class=item>
-                        <table class=itemtable cellSpacing=0 cellpadding=0>
+							<span class=item>
+                        <table class=itemtable>
                           <tbody>
                           <tr>
                             <td width=100>
@@ -476,37 +463,37 @@
 						  </tbody>
 						</table>
 																			</span></CENTER>
-														<BR></td>
-													<td background="{{ asset('img/title/fm_right.gif') }}">
-														<img height=1 src="{{ asset('img/title/blank.gif') }}"
-															 width=6>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<img height=6
-															 src="{{ asset('img/title/fm_bottomleft.gif') }}"
-															 width=6>
-													</td>
-													<td background="{{ asset('img/title/fm_bottom2.gif') }}">
-														<img height=6 src="{{ asset('img/title/blank.gif') }}"
-															 width=1>
-													</td>
-													<td>
-														<img height=6
-															 src="{{ asset('img/title/fm_bottomright.gif') }}"
-															 width=6>
-													</td>
-												</tr>
-												</tbody>
-											</table>
-										</div>
-										<span style="display: inline-block; margin: 0 7px 10px 0; width: 380px">
-                  <table style="display: inline; width: 380px" cellSpacing=0 cellpadding=0>
+							<BR></td>
+						<td background="{{ asset('img/title/fm_right.gif') }}">
+							<img height=1 src="{{ asset('img/title/blank.gif') }}"
+								 width=6>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img height=6
+								 src="{{ asset('img/title/fm_bottomleft.gif') }}"
+								 width=6>
+						</td>
+						<td background="{{ asset('img/title/fm_bottom2.gif') }}">
+							<img height=6 src="{{ asset('img/title/blank.gif') }}"
+								 width=1>
+						</td>
+						<td>
+							<img height=6
+								 src="{{ asset('img/title/fm_bottomright.gif') }}"
+								 width=6>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<span style="display: inline-block; margin: 0 7px 10px 0; width: 380px">
+                  <table style="display: inline; width: 380px">
                     <tbody>
                     <tr>
                       <td vAlign=top><BR>
-                        <table cellSpacing=0 cellpadding=0 width=380 bgColor=black>
+                        <table width=380 bgColor=black>
                           <tbody>
                           <tr>
                             <td>
@@ -525,7 +512,8 @@
 							</td>
                             <td width=368>
 								<img height=7 src="{{ asset('img/title/blank.gif') }}" width=1><BR>
-                              <CENTER><B>Secure Services</B> <BR><BR>
+                              <div class="align-content-center col">
+								  <B>Secure Services</B> <BR><BR>
                               <table cellSpacing=5 cellpadding=0>
                                 <tbody>
                                 <tr>
@@ -761,7 +749,7 @@
 								</tr>
 								</tbody>
 							  </table>
-							  </CENTER>
+							  </div>
 							</td>
                             <td background="{{ asset('img/title/fm_right.gif') }}">
 								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
@@ -784,13 +772,14 @@
 					</tr>
 					</tbody>
 				  </table>
-										</span>
-										<span style="display: inline-block; margin: 0 0 10px; width: 380px">
-                  <table style="display: inline; width: 380px" cellSpacing=0 cellpadding=0>
+				</span>
+
+			<span style="display: inline-block; margin: 0 0 10px; width: 380px">
+                  <table style="display: inline; width: 380px">
                     <tbody>
                     <tr>
                       <td vAlign=top><BR>
-                        <table cellSpacing=0 cellpadding=0 width=380 bgColor=black>
+                        <table width=380 bgColor=black>
                           <tbody>
                           <tr>
                             <td>
@@ -808,7 +797,8 @@
 								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
 							</td>
                             <td width=368>
-                              <CENTER><img height=7 src="{{ asset('img/title/lank.gif') }}" width=1><BR>
+                              <div class="align-content-center col">
+								  <img height=7 src="{{ asset('img/title/lank.gif') }}" width=1><BR>
 										  <B>Other Features</B>
 										  <BR><BR>
 												  <!--table to contain options-->
@@ -1019,7 +1009,7 @@
                                 <tr>
                                 <td vAlign=top align=middle width=160>
                                 <table
-									style="border-RIGHT: black 4px solid; border-top: black 4px solid; border-LEFT: black 4px solid; border-bottom: black 4px solid"
+									style="border-right: black 4px solid; border-top: black 4px solid; border-left: black 4px solid; border-bottom: black 4px solid"
 									cellpadding=2 width=160 bgColor=black>
                                 <tbody>
                                 <tr>
@@ -1048,7 +1038,7 @@
 								</td>
                                 <td vAlign=top align=middle width=160>
                                 <table
-									style="border-RIGHT: black 4px solid; border-top: black 4px solid; border-LEFT: black 4px solid; border-bottom: black 4px solid"
+									style="border-right: black 4px solid; border-top: black 4px solid; border-left: black 4px solid; border-bottom: black 4px solid"
 									cellpadding=2 width=160 bgColor=black>
                                 <tbody>
                                 <tr>
@@ -1070,7 +1060,7 @@
 								</td>
 								</tr>
 								</tbody>
-							  </table></CENTER>
+							  </table></div>
 							</td>
                             <td background="{{ asset('img/title/fm_right.gif') }}">
 								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
@@ -1094,19 +1084,10 @@
 					</tbody>
 				  </table>
 				</span>
-										</BR></div>
-								</td>
-							</tr>
-							</tbody>
-						</table>
-					</div>
-				</td>
-			</tr>
-			</tbody>
-		</table>
+		</div>
 	</div>
 
-	<!-- Left column -->
+	<!-- left column -->
 	<!--<div class="text-info">
 		<h4 class="pl-3 pr-3">Latest Achievements</h4>
 		<div class="text-primary ml-3 mr-3" style="font-size: 13px;">
