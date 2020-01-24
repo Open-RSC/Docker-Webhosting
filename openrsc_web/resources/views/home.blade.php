@@ -491,7 +491,7 @@
 								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 							</td>
 							<td>
-								<div class="align-content-center col">
+								<div class="align-content-center col pb-3">
 									<div class="font-weight-bold pt-2 pb-2">
 										Secure Services
 									</div>
@@ -793,7 +793,7 @@
 								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 							</td>
 							<td>
-								<div class="align-content-center col">
+								<div class="align-content-center col pb-4">
 									<div class="font-weight-bold mt-2 mb-2 pt-2">
 										Other Features
 									</div>
