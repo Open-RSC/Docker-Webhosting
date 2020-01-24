@@ -1123,55 +1123,6 @@
 											<td class="align-top" style="width: 160px">
 											</td>
 										</tr>
-										<tr>
-											<td class="align-top" style="width: 160px">
-												<table
-													style="border-right: black 4px solid; border-top: black 4px solid; border-left: black 4px solid; border-bottom: black 4px solid; padding: 2px; width: 160px; background-color: black">
-													<tbody>
-													<tr>
-														<td>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<table>
-													<tbody>
-													<tr>
-														<td>
-															<img src="{{ asset('img/title/blank.gif') }}">
-														</td>
-														<td>
-															<span class="d-block">
-																What do you enjoy most about Quests?
-															</span>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-											</td>
-											<td>
-											</td>
-											<td class="align-top" style="width: 160px">
-												<table
-													style="border-right: black 4px solid; border-top: black 4px solid; border-left: black 4px solid; border-bottom: black 4px solid; padding: 2px; width: 160px; background-color: black">
-													<tbody>
-													<tr>
-														<td>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<table>
-													<tbody>
-													<tr>
-														<td>
-															<img src="{{ asset('img/title/blank.gif') }}" alt="">
-														</td>
-													</tr>
-													</tbody>
-												</table>
-											</td>
-										</tr>
 										</tbody>
 									</table>
 								</div>
