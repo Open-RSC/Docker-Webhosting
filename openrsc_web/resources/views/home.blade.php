@@ -37,7 +37,7 @@
 								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 							<td>
-								<div class="font-weight-bold d-block pt-2">
+								<div class="font-weight-bold pt-2 pb-2 d-block">
 									Latest News and Updates
 								</div>
 								<table style="background-color: black">
@@ -161,285 +161,325 @@
 							<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
 						</td>
 						<td>
-							<div class="font-weight-bold pt-2">
-								<span class="font-weight-bold d-block">
-									Main Features
-								</span>
-							</div>
+							<div class="align-content-center col pb-3">
+								<div class="font-weight-bold pt-2 pb-2 d-block">
+										Main Features
+								</div>
 
-							<!-- Row 1/3 -->
-							<div class="item align-top">
-								<table class="itemtable">
-									<tbody>
-									<tr>
-										<td class="align-middle" style="width: 100px;">
-											<a href="detail.html">
-												<img src="{{ asset('img/title/mm_sword.jpg') }}" alt="play game">
-											</a>
-										</td>
-										<td class="align-top" style="width: 120px;">
-											<table
-												style="height: 45px; width: 110px; padding: 2px; background-color: black">
-												<tbody>
-												<tr>
-													<td class="b text-center" id="playgamebut"
-														background="{{ asset('img/title/shinystonered.jpg') }}">
-														<a class="whitelink" onmouseover="redglow('playgamebut')"
-														   onmouseout="unredglow('playgamebut')" href="detail.html">
+								<!-- Row 1/3 -->
+								<div class="item align-top">
+									<table class="itemtable">
+										<tbody>
+										<tr>
+											<td class="align-middle" style="width: 100px;">
+												<a href="detail.html">
+													<img src="{{ asset('img/title/mm_sword.jpg') }}" alt="play game">
+												</a>
+											</td>
+											<td class="align-top" style="width: 120px;">
+												<table
+													style="height: 45px; width: 110px; padding: 2px; background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center" id="playgamebut"
+															background="{{ asset('img/title/shinystonered.jpg') }}">
+															<a class="whitelink" onmouseover="redglow('playgamebut')"
+															   onmouseout="unredglow('playgamebut')" href="detail.html">
 															<span class="font-weight-bold d-block">
 																Play Game
 															</span>
-															<span class="d-block">
+																<span class="d-block">
 																(Existing User)
 															</span>
-														</a>
-													</td>
-												</tr>
-												</tbody>
-											</table>
-											<span class="font-weight-bold d-block">
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<span class="font-weight-bold d-block">
 												Play RuneScape Classic right now!
 											</span>
-											<span class="d-block">
+												<span class="d-block">
 													<a class=c href="detail.html">
 														<span class="d-block">
 															Click Here
 														</span>
 													</a>
 												</span>
-										</td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
 
-							<div class="item align-top">
-								<table class="itemtable">
-									<tbody>
-									<tr>
-										<td class="align-middle" style="width: 100px;">
-											<a href="create/index.html">
-												<img src="{{ asset('img/title/mm_player.jpg') }}"
-													 alt="create player">
-											</a>
-										</td>
-										<td class="align-top" style="width: 120px;">
-											<table
-												style="height: 45px; width: 110px; padding: 2px; background-color: black">
-												<tbody>
-												<tr>
-													<td class="b text-center" id="createaccountbut"
-														background="{{ asset('img/title/shinystonered.jpg') }}">
-														<a class="whitelink"
-														   onmouseover="redglow('createaccountbut')"
-														   onmouseout="unredglow('createaccountbut')"
-														   href="create/index.html">
+								<div class="item align-top">
+									<table class="itemtable">
+										<tbody>
+										<tr>
+											<td class="align-middle" style="width: 100px;">
+												<a href="create/index.html">
+													<img src="{{ asset('img/title/mm_player.jpg') }}"
+														 alt="create player">
+												</a>
+											</td>
+											<td class="align-top" style="width: 120px;">
+												<table
+													style="height: 45px; width: 110px; padding: 2px; background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center" id="createaccountbut"
+															background="{{ asset('img/title/shinystonered.jpg') }}">
+															<a class="whitelink"
+															   onmouseover="redglow('createaccountbut')"
+															   onmouseout="unredglow('createaccountbut')"
+															   href="create/index.html">
 															<span class="font-weight-bold d-block">
 																Create Account
 															</span>
-															<span class="d-block">
+																<span class="d-block">
 																(New User)
 															</span>
-														</a>
-													</td>
-												</tr>
-												</tbody>
-											</table>
-											<span class="d-block">
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<span class="d-block">
 												Create a free account for both the game & website.
 											</span>
-											<a class="c" href="create/index.html">
+												<a class="c" href="create/index.html">
 												<span class="d-block">
 													Click Here
 												</span>
-											</a>
-										</td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
 
-							<div class="item align-top">
-								<table class="itemtable">
-									<tbody>
-									<tr>
-										<td class="align-middle" style="width: 100px;">
-											<a href="screenshots/screenshots.html">
-												<img src="{{ asset('img/title/mm2_screenshots.jpg') }}">
-											</a>
-										</td>
-										<td class="align-top" style="width: 120px;">
-											<table
-												style="height: 45px; width: 110px; padding: 2px; background-color: black">
-												<tbody>
-												<tr>
-													<td class="b text-center" id="screenshotsbut"
-														background="{{ asset('img/stoneback.gif') }}">
-														<a class="whitelink"
-														   onmouseover="greyglow('screenshotsbut')"
-														   onmouseout="ungreyglow('screenshotsbut')"
-														   href="screenshots/screenshots.html">
+								<div class="item align-top">
+									<table class="itemtable">
+										<tbody>
+										<tr>
+											<td class="align-middle" style="width: 100px;">
+												<a href="screenshots/screenshots.html">
+													<img src="{{ asset('img/title/mm2_screenshots.jpg') }}">
+												</a>
+											</td>
+											<td class="align-top" style="width: 120px;">
+												<table
+													style="height: 45px; width: 110px; padding: 2px; background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center" id="screenshotsbut"
+															background="{{ asset('img/stoneback.gif') }}">
+															<a class="whitelink"
+															   onmouseover="greyglow('screenshotsbut')"
+															   onmouseout="ungreyglow('screenshotsbut')"
+															   href="screenshots/screenshots.html">
 															<span class="font-weight-bold d-block">
 																Screenshots
 															</span>
-														</a>
-													</td>
-												</tr>
-												</tbody>
-											</table>
-											<span class="d-block">
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<span class="d-block">
 													Lots of images of the game in action.
 												</span>
-											<a class="c" href="screenshots/screenshots.html">
+												<a class="c" href="screenshots/screenshots.html">
 													<span class="d-block">
 														Click Here
 													</span>
-											</a>
-										</td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
 
-							<!-- Row 2/3 -->
-							<div class="item align-top">
-								<table class="itemtable">
-									<tbody>
-									<tr>
-										<td class="align-middle" style="width: 100px;">
-											<a href="members/members.html">
-												<img src="{{ asset('img/title/mm_members.jpg') }}" alt="">
-											</a>
-										</td>
-										<td class="align-top" style="width: 120px;">
-											<table
-												style="height: 45px; width: 110px; padding: 2px; background-color: black">
-												<tbody>
-												<tr>
-													<td class="b text-center" id="membersbut"
-														background="{{ asset('img/stoneback.gif') }}">
-														<a class="whitelink"
-														   onmouseover="greyglow('membersbut')"
-														   onmouseout="ungreyglow('membersbut')"
-														   href="members/members.html">
+								<!-- Row 2/3 -->
+								<div class="item align-top">
+									<table class="itemtable">
+										<tbody>
+										<tr>
+											<td class="align-middle" style="width: 100px;">
+												<a href="members/members.html">
+													<img src="{{ asset('img/title/mm_members.jpg') }}" alt="">
+												</a>
+											</td>
+											<td class="align-top" style="width: 120px;">
+												<table
+													style="height: 45px; width: 110px; padding: 2px; background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center" id="membersbut"
+															background="{{ asset('img/stoneback.gif') }}">
+															<a class="whitelink"
+															   onmouseover="greyglow('membersbut')"
+															   onmouseout="ungreyglow('membersbut')"
+															   href="members/members.html">
 															<span class="font-weight-bold d-block">
 																Benefits for Members
 															</span>
-														</a>
-													</td>
-												</tr>
-												</tbody>
-											</table>
-											<span class="d-block">
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<span class="d-block">
 												Find out what extras are available to members.
 											</span>
-											<a class=c href="members/members.html">
+												<a class=c href="members/members.html">
 												<span class="d-block">
 													Click Here
 												</span>
-											</a>
-										</td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
 
-							<div class="item align-top">
-								<table class="itemtable">
-									<tbody>
-									<tr>
-										<td class="align-middle" style="width: 100px;">
-											<a href="howtoplay.html">
-												<img src="{{ asset('img/title/mm_howtoplay.jpg') }}"
-													 alt="how to play">
-											</a>
-										</td>
-										<td class="align-top" style="width: 120px;">
-											<table
-												style="height: 45px; width: 110px; padding: 2px; background-color: black">
-												<tbody>
-												<tr>
-													<td class="b text-center" id="manualbut"
-														background="{{ asset('img/stoneback.gif') }}">
-														<a class="whitelink"
-														   onmouseover="greyglow('manualbut')"
-														   onmouseout="ungreyglow('manualbut')"
-														   href="howtoplay.html">
+								<div class="item align-top">
+									<table class="itemtable">
+										<tbody>
+										<tr>
+											<td class="align-middle" style="width: 100px;">
+												<a href="howtoplay.html">
+													<img src="{{ asset('img/title/mm_howtoplay.jpg') }}"
+														 alt="how to play">
+												</a>
+											</td>
+											<td class="align-top" style="width: 120px;">
+												<table
+													style="height: 45px; width: 110px; padding: 2px; background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center" id="manualbut"
+															background="{{ asset('img/stoneback.gif') }}">
+															<a class="whitelink"
+															   onmouseover="greyglow('manualbut')"
+															   onmouseout="ungreyglow('manualbut')"
+															   href="howtoplay.html">
 															<span class="font-weight-bold d-block">
 																Manual
 															</span>
-														</a>
-													</td>
-												</tr>
-												</tbody>
-											</table>
-											<span class="d-block">
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<span class="d-block">
 												Detailed info on all aspects of the game.
 											</span>
-											<a class="c" href="howtoplay.html">
+												<a class="c" href="howtoplay.html">
 												<span class="d-block">
 													Click Here
 												</span>
-											</a>
-										</td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
 
-							<div class="item align-top">
-								<table class="itemtable">
-									<tbody>
-									<tr>
-										<td class="align-middle" style="width: 100px;">
-											<a href="hiscores/hiscores.html">
-												<img src="{{ asset('img/title/mm_chalice.jpg') }}" alt="">
-											</a>
-										</td>
-										<td class="align-top" style="width: 120px;">
-											<table
-												style="height: 45px; width: 110px; padding: 2px; background-color: black">
-												<tbody>
-												<tr>
-													<td class="b text-center" id="hiscoresbut"
-														background="{{ asset('img/stoneback.gif') }}">
-														<a class="whitelink"
-														   onmouseover="greyglow('hiscoresbut')"
-														   onmouseout="ungreyglow('hiscoresbut')"
-														   href="hiscores/hiscores.html">
+								<div class="item align-top">
+									<table class="itemtable">
+										<tbody>
+										<tr>
+											<td class="align-middle" style="width: 100px;">
+												<a href="hiscores/hiscores.html">
+													<img src="{{ asset('img/title/mm_chalice.jpg') }}" alt="">
+												</a>
+											</td>
+											<td class="align-top" style="width: 120px;">
+												<table
+													style="height: 45px; width: 110px; padding: 2px; background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center" id="hiscoresbut"
+															background="{{ asset('img/stoneback.gif') }}">
+															<a class="whitelink"
+															   onmouseover="greyglow('hiscoresbut')"
+															   onmouseout="ungreyglow('hiscoresbut')"
+															   href="hiscores/hiscores.html">
 															<span class="font-weight-bold d-block">
 																Full
 															</span>
-															<span class="font-weight-bold d-block">
+																<span class="font-weight-bold d-block">
 																Hiscores
 															</span>
-														</a>
-													</td>
-												</tr>
-												</tbody>
-											</table>
-											<span class="d-block">
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<span class="d-block">
 												Is your character in the top 500,000?
 											</span>
-											<a class="c" href="hiscores/hiscores.html">
+												<a class="c" href="hiscores/hiscores.html">
 												<span class="d-block">
 													Click Here
 												</span>
-											</a>
-										</td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
 
-							<!-- Row 3/3 -->
-							<div class="item align-top">
+								<!-- Row 3/3 -->
+								<div class="item align-top">
+									<table class="itemtable">
+										<tbody>
+										<tr>
+											<td class="align-middle" style="width: 100px;">
+												<a href="varrock/varrockindex.html">
+													<img src="{{ asset('img/title/mm_lov.jpg') }}" alt="">
+												</a>
+											</td>
+											<td class="align-top" style="width: 120px;">
+												<table
+													style="height: 45px; width: 110px; padding: 2px; background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center" id="varrockbut"
+															background="{{ asset('img/stoneback.gif') }}" alt="">
+															<a class="whitelink"
+															   onmouseover="greyglow('varrockbut')"
+															   onmouseout="ungreyglow('varrockbut')"
+															   href="varrock/varrockindex.html">
+															<span class="font-weight-bold d-block">
+																Library of Varrock
+															</span>
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<span class="d-block">
+												Stories and letters about RuneScape.
+											</span>
+												<a class="c" href="varrock/varrockindex.html">
+												<span class="d-block">
+													Click Here
+												</span>
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+
 								<table class="itemtable">
 									<tbody>
 									<tr>
 										<td class="align-middle" style="width: 100px;">
-											<a href="varrock/varrockindex.html">
-												<img src="{{ asset('img/title/mm_lov.jpg') }}" alt="">
+											<a href="worldmap/worldmap.html">
+												<img src="{{ asset('img/title/mm_worldmap.jpg') }}" alt="">
 											</a>
 										</td>
 										<td class="align-top" style="width: 120px;">
@@ -447,88 +487,47 @@
 												style="height: 45px; width: 110px; padding: 2px; background-color: black">
 												<tbody>
 												<tr>
-													<td class="b text-center" id="varrockbut"
-														background="{{ asset('img/stoneback.gif') }}" alt="">
-														<a class="whitelink"
-														   onmouseover="greyglow('varrockbut')"
-														   onmouseout="ungreyglow('varrockbut')"
-														   href="varrock/varrockindex.html">
-															<span class="font-weight-bold d-block">
-																Library of Varrock
-															</span>
+													<td class="b text-center" id="worldmapbut"
+														background="{{ asset('img/stoneback.gif') }}">
+														<a class="whitelink" onmouseover="greyglow('worldmapbut')"
+														   onmouseout="ungreyglow('worldmapbut')"
+														   href="worldmap.html">
+														<span class="font-weight-bold d-block">
+															World Map
+														</span>
 														</a>
 													</td>
 												</tr>
 												</tbody>
 											</table>
 											<span class="d-block">
-												Stories and letters about RuneScape.
+											Great for finding your way around.
+										</span>
+											<a class="c" href="worldmap/worldmap.html">
+											<span class="d-block">
+												Click Here
 											</span>
-											<a class="c" href="varrock/varrockindex.html">
-												<span class="d-block">
-													Click Here
-												</span>
 											</a>
 										</td>
 									</tr>
 									</tbody>
 								</table>
-							</div>
 
-							<table class="itemtable">
-								<tbody>
-								<tr>
-									<td class="align-middle" style="width: 100px;">
-										<a href="worldmap/worldmap.html">
-											<img src="{{ asset('img/title/mm_worldmap.jpg') }}" alt="">
-										</a>
-									</td>
-									<td class="align-top" style="width: 120px;">
-										<table
-											style="height: 45px; width: 110px; padding: 2px; background-color: black">
-											<tbody>
-											<tr>
-												<td class="b text-center" id="worldmapbut"
-													background="{{ asset('img/stoneback.gif') }}">
-													<a class="whitelink" onmouseover="greyglow('worldmapbut')"
-													   onmouseout="ungreyglow('worldmapbut')"
-													   href="worldmap.html">
-														<span class="font-weight-bold d-block">
-															World Map
-														</span>
-													</a>
-												</td>
-											</tr>
-											</tbody>
-										</table>
-										<span class="d-block">
-											Great for finding your way around.
-										</span>
-										<a class="c" href="worldmap/worldmap.html">
-											<span class="d-block">
-												Click Here
-											</span>
-										</a>
-									</td>
-								</tr>
-								</tbody>
-							</table>
-
-							<!-- Bottom border -->
-							<div class="item">
-								<table class="itemtable">
-									<tbody>
-									<tr>
-										<td style="width: 100px">
-											<img height=1 src="{{ asset('img/title/blank.gif') }}" width=77 alt="">
-										</td>
-										<td style="width: 120px">
-											<img height=1 src="{{ asset('img/title/blank.gif') }}" width=110 alt="">
-										</td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
+								<!-- Bottom border -->
+								<div class="item">
+									<table class="itemtable">
+										<tbody>
+										<tr>
+											<td style="width: 100px">
+												<img height=1 src="{{ asset('img/title/blank.gif') }}" width=77 alt="">
+											</td>
+											<td style="width: 120px">
+												<img height=1 src="{{ asset('img/title/blank.gif') }}" width=110 alt="">
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
 						</td>
 						<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
 							<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
@@ -573,10 +572,8 @@
 							</td>
 							<td>
 								<div class="align-content-center col pb-3">
-									<div class="font-weight-bold pt-2 pb-2">
-										<span class="d-block">
-											Secure Services
-										</span>
+									<div class="font-weight-bold pt-2 pb-2 d-block">
+										Secure Services
 									</div>
 									<table>
 										<tbody>
@@ -908,8 +905,8 @@
 								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 							<td>
-								<div class="align-content-center col pb-4">
-									<div class="font-weight-bold mt-2 mb-2 pt-2 d-block">
+								<div class="align-content-center col pb-3">
+									<div class="font-weight-bold pt-2 pb-2 d-block">
 										Other Features
 									</div>
 									<table>
