@@ -10,7 +10,7 @@
 			<div class="row">
 
 				<!-- Logo and player online count -->
-				<div class="col-5 mr-1 mt-5">
+				<div class="col mr-1 mt-5">
 					<img src="{{ asset('img/title/rslogo.gif') }}" alt="logo">
 					<div class="pt-3" style="font-size: 14px">
 						There are currently {{ $online }} people playing!
@@ -18,8 +18,8 @@
 				</div>
 
 				<!-- Latest news and updates box -->
-				<div class="col-6">
-					<table bgColor=black>
+				<div class="col">
+					<table style="background-color: black">
 						<tbody>
 						<tr style="line-height: 6px">
 							<td>
@@ -40,7 +40,7 @@
 								<div class="font-weight-bold pt-2">
 									Latest News and Updates
 								</div>
-								<table bgColor=black>
+								<table style="background-color: black">
 									<tbody>
 									<tr>
 										<td class="pr-1 pl-1">
@@ -144,33 +144,27 @@
 				</div>
 			</div>
 
-			<div style="max-width: 770px">
-				<table style="margin-top: 10px; max-width: 770px" bgColor=black>
+			<!-- Main features box -->
+			<div class="pt-3" style="max-width: 797px">
+				<table style="background-color: black">
 					<tbody>
-					<tr>
+					<tr style="line-height: 6px">
 						<td>
-							<img height=6 src="{{ asset('img/title/fm_topleft.gif') }}"
-								 width=6>
+							<img src="{{ asset('img/title/fm_topleft.gif') }}" width="6" height="6">
 						</td>
-						<td background="{{ asset('img/title/fm_top2.gif') }}">
-							<img height=6 src="{{ asset('img/title/blank.gif') }}"
-								 width=1>
+						<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_top2.gif') }})">
+							<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
 						</td>
 						<td>
-							<img height=6 src="{{ asset('img/title/fm_topright.gif') }}"
-								 width=6>
+							<img src="{{ asset('img/title/fm_topright.gif') }}" width="6" height="6">
 						</td>
 					</tr>
 					<tr>
-						<td background="{{ asset('img/title/fm_left.gif') }}">
-							<img height=1 src="{{ asset('img/title/blank.gif') }}"
-								 width=6 alt="blank">
+						<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_left.gif') }})">
+							<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 						</td>
 						<td>
-							<img height=7
-								 src="{{ asset('img/title/blank.gif') }}"
-								 width=505 alt="blank">
-							<div class="d-block pb-2">
+							<div class="font-weight-bold pt-2">
 								<span class="font-weight-bold">Main Features</span>
 							</div>
 							<span class=item>
@@ -186,12 +180,13 @@
                               <table height=45 cellpadding=2 width=110>
                                 <tbody>
                                 <tr>
-                                <td class=b2 id=playgamebut background="{{ asset('img/title/shinystonered.jpg') }}"
+                                <td class="b text-center" 2 id=playgamebut
+									background="{{ asset('img/title/shinystonered.jpg') }}"
 									bgColor=#570700>
-                                <A class=whitelink onmouseover="redglow('playgamebut')"
+                                <A class="whitelink" onmouseover="redglow('playgamebut')"
 								   onmouseout="unredglow('playgamebut')" href="detail.html">
 										<B>Play Game</B>
-										<BR>(Existing&nbsp;User)
+										<BR>(Existing User)
 									</A>
 								</td>
 								</tr>
@@ -215,22 +210,23 @@
 								</A>
 							</td>
                             <td vAlign=top width=120>
-                              <table height=45 cellpadding=2 width=110 bgColor=black>
+                              <table height=45 cellpadding=2 width=110 style="background-color: black">
                                 <tbody>
                                 <tr>
-                                <td class=b2 id=createaccountbut background="{{ asset('img/title/shinystonered.jpg') }}"
+                                <td class="b text-center" 2 id=createaccountbut
+									background="{{ asset('img/title/shinystonered.jpg') }}"
 									bgColor=#570700>
-                                <CENTER><A class=whitelink onmouseover="redglow('createaccountbut')"
-										   onmouseout="unredglow('createaccountbut')" href="create/index.html">
-										<B>Create&nbsp;Account</B><BR>
+                                <A class="whitelink" onmouseover="redglow('createaccountbut')"
+								   onmouseout="unredglow('createaccountbut')" href="create/index.html">
+										<B>Create Account</B><BR>
 											(New User)
-									</A></CENTER>
+									</A>
 								</td>
 								</tr>
 								</tbody>
 							  </table>
 								Create a free account for both the game & website.
-								<BR><A class=c href="create/index.html">
+								<A class="c d-block" href="create/index.html">
 										Click Here
 									</A>
 							</td>
@@ -248,23 +244,23 @@
 								</A>
 							</td>
                             <td vAlign=top width=120>
-                              <table height=45 cellpadding=2 width=110 bgColor=black>
+                              <table height=45 cellpadding=2 width=110 style="background-color: black">
                                 <tbody>
                                 <tr>
-                                <td class=b id=screenshotsbut background="{{ asset('img/stoneback.gif') }}"
+                                <td class="b text-center" id=screenshotsbut
+									background="{{ asset('img/stoneback.gif') }}"
 									bgColor=#474747>
-                                <CENTER><A class=whitelink onmouseover="greyglow('screenshotsbut')"
-										   onmouseout="ungreyglow('screenshotsbut')"
-										   href="screenshots/screenshots.html">
+                                <A class="whitelink" onmouseover="greyglow('screenshotsbut')"
+								   onmouseout="ungreyglow('screenshotsbut')"
+								   href="screenshots/screenshots.html">
 										<B>Screenshots</B>
 									</A>
-								</CENTER>
 								</td>
 								</tr>
 								</tbody>
 							  </table>
 								Lots of images of the game in action.
-								<BR><A class=c href="screenshots/screenshots.html">
+								<A class="c d-block" href="screenshots/screenshots.html">
 										Click Here
 									</A>
 							</td>
@@ -282,16 +278,17 @@
 								</A>
 							</td>
                             <td vAlign=top width=120>
-                              <table height=45 cellpadding=2 width=110 bgColor=black>
+                              <table height=45 cellpadding=2 width=110 style="background-color: black">
                                 <tbody>
                                 <tr>
-                                <td class=b id=membersbut background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   onmouseover="greyglow('membersbut')"
-										   onmouseout="ungreyglow('membersbut')"
-										   href="members/members.html">
+                                <td class="b text-center" id=membersbut background="{{ asset('img/stoneback.gif') }}"
+									bgColor=#474747>
+                                <A class="whitelink"
+								   onmouseover="greyglow('membersbut')"
+								   onmouseout="ungreyglow('membersbut')"
+								   href="members/members.html">
 										<B>Benefits for Members</B>
-									</A></CENTER>
+									</A>
 								</td>
 								</tr>
 								</tbody>
@@ -315,22 +312,23 @@
 								</A>
 							</td>
                             <td vAlign=top width=120>
-                              <table height=45 cellpadding=2 width=110 bgColor=black>
+                              <table height=45 cellpadding=2 width=110 style="background-color: black">
                                 <tbody>
                                 <tr>
-                                <td class=b id=manualbut background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   onmouseover="greyglow('manualbut')"
-										   onmouseout="ungreyglow('manualbut')"
-										   href="howtoplay.html">
+                                <td class="b text-center" id=manualbut background="{{ asset('img/stoneback.gif') }}"
+									bgColor=#474747>
+                                <A class="whitelink"
+								   onmouseover="greyglow('manualbut')"
+								   onmouseout="ungreyglow('manualbut')"
+								   href="howtoplay.html">
 										<B>Manual</B>
-									</A></CENTER>
+									</A>
 								</td>
 								</tr>
 								</tbody>
 							  </table>
 								Detailed info on all aspects of the game.
-								<BR><A class=c href="howtoplay.html">
+								<A class="c d-block" href="howtoplay.html">
 										Click Here
 									</A>
 							</td>
@@ -348,23 +346,23 @@
 								</A>
 							</td>
                             <td vAlign=top width=120>
-                              <table height=45 cellpadding=2 width=110 bgColor=black>
+                              <table height=45 cellpadding=2 width=110 style="background-color: black">
                                 <tbody>
                                 <tr>
-                                <td class=b id=hiscoresbut background="{{ asset('img/stoneback.gif') }}"" bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   onmouseover="greyglow('hiscoresbut')"
-										   onmouseout="ungreyglow('hiscoresbut')"
-										   href="hiscores/hiscores.html">
+                                <td class="b text-center" id=hiscoresbut background="{{ asset('img/stoneback.gif') }}"" bgColor=#474747>
+                                <A class="whitelink"
+								   onmouseover="greyglow('hiscoresbut')"
+								   onmouseout="ungreyglow('hiscoresbut')"
+								   href="hiscores/hiscores.html">
 										<B>Full
 											<BR>Hiscores</B>
-									</A></CENTER>
+									</A>
 									</td>
 								</tr>
 								</tbody>
 							  </table>
 								Is your character in the top 500,000?
-								<BR><A class=c href="hiscores/hiscores.html">
+								<A class="c d-block" href="hiscores/hiscores.html">
 										Click Here
 									</A>
 							</td>
@@ -382,20 +380,21 @@
 								</A>
 							</td>
                             <td vAlign=top width=120>
-                              <table height=45 cellpadding=2 width=110 bgColor=black>
+                              <table height=45 cellpadding=2 width=110 style="background-color: black">
                                 <tbody>
                                 <tr>
-                                <td class=b id=varrockbut background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink onmouseover="greyglow('varrockbut')"
-										   onmouseout="ungreyglow('varrockbut')" href="varrock/varrockindex.html">
+                                <td class="b text-center" id=varrockbut background="{{ asset('img/stoneback.gif') }}"
+									bgColor=#474747>
+                                <A class="whitelink" onmouseover="greyglow('varrockbut')"
+								   onmouseout="ungreyglow('varrockbut')" href="varrock/varrockindex.html">
 										<B>Library of Varrock</B>
-									</A></CENTER>
+									</A>
 								</td>
 								</tr>
 								</tbody>
 							  </table>
 								Stories and letters about RuneScape.
-								<BR><A class=c href="varrock/varrockindex.html">
+								<A class="c d-block" href="varrock/varrockindex.html">
 										Click Here
 									</A>
 							</td>
@@ -413,21 +412,21 @@
 								</A>
 							</td>
                             <td vAlign=top width=120>
-                              <table height=45 cellpadding=2 width=110 bgColor=black>
+                              <table height=45 cellpadding=2 width=110 style="background-color: black">
                                 <tbody>
                                 <tr>
-                                <td class=b id=worldmapbut background="{{ asset('img/stoneback.gif') }}"
+                                <td class="b text-center" id=worldmapbut background="{{ asset('img/stoneback.gif') }}"
 									bgColor=#474747>
-                                <CENTER><A class=whitelink onmouseover="greyglow('worldmapbut')"
-										   onmouseout="ungreyglow('worldmapbut')" href="worldmap.html">
+                                <A class="whitelink" onmouseover="greyglow('worldmapbut')"
+								   onmouseout="ungreyglow('worldmapbut')" href="worldmap.html">
 										<B>World Map</B>
-									</A></CENTER>
+									</A>
 								</td>
 								</tr>
 								</tbody>
 							  </table>
 								Great for finding your way around.
-								<BR><A class=c href="worldmap/worldmap.html">
+								<A class="c d-block" href="worldmap/worldmap.html">
 										Click Here
 									</A>
 							</td>
@@ -448,628 +447,625 @@
 						  </tr>
 						  </tbody>
 						</table>
-																			</span></CENTER>
+																			</span>
 							<BR></td>
-						<td background="{{ asset('img/title/fm_right.gif') }}">
-							<img height=1 src="{{ asset('img/title/blank.gif') }}"
-								 width=6>
+						<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
+							<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 						</td>
 					</tr>
-					<tr>
+					<tr style="line-height: 6px">
 						<td>
-							<img height=6
-								 src="{{ asset('img/title/fm_bottomleft.gif') }}"
-								 width=6>
+							<img src="{{ asset('img/title/fm_bottomleft.gif') }}" alt="left" width="6" height="6">
 						</td>
-						<td background="{{ asset('img/title/fm_bottom2.gif') }}">
-							<img height=6 src="{{ asset('img/title/blank.gif') }}"
-								 width=1>
+						<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
+							<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
 						</td>
 						<td>
-							<img height=6
-								 src="{{ asset('img/title/fm_bottomright.gif') }}"
-								 width=6>
+							<img src="{{ asset('img/title/fm_bottomright.gif') }}" alt="right" width="6" height="6">
 						</td>
 					</tr>
 					</tbody>
 				</table>
 			</div>
-			<span style="display: inline-block; margin: 0 7px 10px 0; width: 380px">
-                  <table style="display: inline; width: 380px">
-                    <tbody>
-                    <tr>
-                      <td vAlign=top><BR>
-                        <table width=380 bgColor=black>
-                          <tbody>
-                          <tr>
-                            <td>
-								<img height=6 src="{{ asset('img/title/fm_topleft.gif') }}" width=6>
-							</td>
-                            <td background="{{ asset('img/title/fm_top2.gif') }}">
-								<img height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
-							</td>
-                            <td>
-								<img height=6 src="{{ asset('img/title/fm_topright.gif') }}" width=6>
-							</td>
-						  </tr>
-                          <tr>
-                            <td background="{{ asset('img/title/fm_left.gif') }}">
-								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
-							</td>
-                            <td width=368>
-								<img height=7 src="{{ asset('img/title/blank.gif') }}" width=1><BR>
-                              <div class="align-content-center col">
-								  <B>Secure Services</B> <BR><BR>
-                              <table cellSpacing=5 cellpadding=0>
-                                <tbody>
-                                <tr>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="login.html">
-										<B>Subscribe</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="login.html">
-										<img height=75 src="{{ asset('img/title/mms_subscribe.jpg') }}" width=48
-											 border=0>
-									</A>
-								</td>
-                                <td vAlign=top>
-									Start a members subscription here.
-									<BR><A class=c href="login.html">
-											Login
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-                                <td>&nbsp;</td>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="login.html">
-										<B>Account Management</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="login.html">
-										<img height=75 src="{{ asset('img/title/mms_accman.jpg') }}" width=48 border=0>
-									</A>
-								</td>
-                                <td>
-									Manage your Password and Recovery Details.
-									<BR><A class=c href="login.html">
-											Login
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-								</tr>
-                                <tr>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="login.html">
-										<B>Customer Support</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="login.html">
-										<img height=75 src="{{ asset('img/title/mms_support.jpg') }}" width=48 border=0>
-									</A>
-								</td>
-                                <td>Questions?
-									<BR>Contact our staff.
-										<BR><A class=c href="login.html">
-												Login
-											</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-                                <td>
-									&nbsp;
-								</td>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="login.html">
-										<B>Message Centre</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="login.html">
-										<img height=75 src="{{ asset('img/title/mms_inbox.jpg') }}" width=48 border=0>
-									</A>
-								</td>
-                                <td>
-									Your messages from our staff.
-									<BR><A class=c href="login.html">
-											Login
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-								</tr>
-                                <tr>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="login.html">
-										<B>Forums</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="login.html">
-										<img height=75 src="{{ asset('img/title/mms_forums.jpg') }}" width=48 border=0>
-									</A>
-								</td>
-                                <td>Discuss the game with fellow players!
-									<BR><A class=c href="login.html">
-											Login
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-                                <td>
-									&nbsp;
-								</td>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="login.html">
-										<B>Personal Hiscores</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="login.html">
-										<img height=75 src="{{ asset('img/title/mms_chalice.jpg') }}" width=48 border=0>
-									</A>
-								</td>
-                                <td>
-									How do you rank compared to your friends?
-									<BR><A class=c href="login.html">
-											Login
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-								</tr>
-                                <tr>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="login.html">
-										<B>Latest Poll</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="login.html">
-										<img height=75 src="{{ asset('img/title/mms_vote.jpg') }}" width=48 border=0>
-									</A>
-								</td>
-                                <td>
-									What do you enjoy most about Quests?
-									<BR><A class=c href="login.html">
-											Login
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-                                <td>
-									&nbsp;
-								</td>
-                                <td>
-									&nbsp;
-								</td>
-								</tr>
-								</tbody>
-							  </table>
-							  </div>
-							</td>
-                            <td background="{{ asset('img/title/fm_right.gif') }}">
-								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
-							</td>
-						  </tr>
-                          <tr>
-                            <td>
-								<img height=6 src="{{ asset('img/title/fm_bottomleft.gif') }}" width=6>
-							</td>
-                            <td background="{{ asset('img/title/fm_bottom2.gif') }}">
-								<img height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
-							</td>
-                            <td>
-								<img height=6 src="{{ asset('img/title/fm_bottomright.gif') }}" width=6>
-							</td>
-						  </tr>
-						  </tbody>
-						</table>
-					  </td>
-					</tr>
-					</tbody>
-				  </table>
-				</span>
 
-			<span style="display: inline-block; margin: 0 0 10px; width: 380px">
-                  <table style="display: inline; width: 380px">
-                    <tbody>
-                    <tr>
-                      <td vAlign=top><BR>
-                        <table width=380 bgColor=black>
-                          <tbody>
-                          <tr>
-                            <td>
-								<img height=6 src="{{ asset('img/title/fm_topleft.gif') }}" width=6>
+			<!-- Bottom row -->
+			<div class="row mt-3 mb-3">
+
+				<!-- Secure Services box -->
+				<div class="col">
+					<table style="background-color: black">
+						<tbody>
+						<tr style="line-height: 6px">
+							<td>
+								<img src="{{ asset('img/title/fm_topleft.gif') }}" width="6" height="6">
 							</td>
-                            <td width="100%" background="{{ asset('img/title/fm_top2.gif') }}">
-								<img height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_top2.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
 							</td>
-                            <td>
-								<img height=6 src="{{ asset('img/title/fm_topright.gif') }}" width=6>
+							<td>
+								<img src="{{ asset('img/title/fm_topright.gif') }}" width="6" height="6">
 							</td>
-						  </tr>
-                          <tr>
-                            <td background="{{ asset('img/title/fm_left.gif') }}">
-								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
+						</tr>
+						<tr>
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_left.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 							</td>
-                            <td width=368>
-                              <div class="align-content-center col">
-								  <img height=7 src="{{ asset('img/title/lank.gif') }}" width=1><BR>
-										  <B>Other Features</B>
-										  <BR><BR>
-												  <!--table to contain options-->
-                              <table cellSpacing=5 cellpadding=0>
-                                <tbody>
-                                <tr>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">
-										<B>Unsubscribe</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">
-										<img height=75 src="{{ asset('img/title/mms_unsubscribe.jpg') }}" width=48
-											 border=0>
-									</A>
-								</td>
-                                <td>
-									Cancel your subscription.
-									<BR><A class=c
-										   href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">
-											Click Here
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-                                <td>
-									&nbsp;
-								</td>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink
-										   href="https://password-web.runescape.com/aff/runescape/index.html">
-										<B>Password Support</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="https://password-web.runescape.com/aff/runescape/index.html">
-										<img height=75 src="{{ asset('img/title/mms_passwordsupport.jpg') }}" width=48
-											 border=0>
-									</A>
-								</td>
-                                <td>
-									If you lose/forget your password help is at hand.
-									<BR><A class=c href="https://password-web.runescape.com/aff/runescape/index.html">
-											Click Here
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-								</tr>
-                                <tr>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="faq/faqindex.html">
-										<B>F.A.Q.</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="faq/faqindex.html">
-										<img height=75 src="{{ asset('img/title/mms_faq.jpg') }}" width=48 border=0>
-									</A>
-								</td>
-                                <td>
-									Answers to Frequently Asked Questions.
-									<BR><A class=c href="faq/faqindex.html">
-											Click Here
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-                                <td>
-									&nbsp;
-								</td>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="guides/guides.html">
-										<B>Rules &amp; Security</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="guides/guides.html">
-										<img height=75 src="{{ asset('img/title/mms_rules.jpg') }}" width=48 border=0>
-									</A>
-								</td>
-                                <td>
-									Learn our rules and stay safe online.
-									<BR><A class=c href="guides/guides.html">
-											Click Here
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-								</tr>
-                                <tr>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="files/files.html">
-										<B>Extra Files</B>
-									</A>
-								</CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<A href="files/files.html">
-										<img height=75 src="{{ asset('img/title/mms_extrafiles.jpg') }}" width=48
-											 border=0>
-									</A>
-								</td>
-                                <td>
-									Download optional extras for RuneScape.
-									<BR><A class=c href="files/files.html">
-											Click Here
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-                                <td>
-									&nbsp;
-								</td>
-                                <td vAlign=top align=middle width=160>
-                                <table cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td class=b background="{{ asset('img/stoneback.gif') }}" bgColor=#474747>
-                                <CENTER><A class=whitelink href="#">
-										<B>RS-Classic</B>
-									</A></CENTER>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td><A href="#">
-										<img height=75 src="{{ asset('img/title/mms_rsclassic.jpg') }}" width=48
-											 border=0>
-									</A>
-								</td>
-                                <td>
-									RuneScape Classic.
-									<BR><A class=c href="#">
-											Click Here
-										</A>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-								</tr>
-                                <tr>
-                                <td vAlign=top align=middle width=160>
-                                <table
-									style="border-right: black 4px solid; border-top: black 4px solid; border-left: black 4px solid; border-bottom: black 4px solid"
-									cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td>
-									<B>&nbsp;</B>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<img height=75 src="{{ asset('img/title/blank.gif') }}" width=48 border=0>
-								</td>
-                                <td style="COLOR: black"
-								>What do you enjoy most about Quests?
-                                <BR>&nbsp;
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-                                <td>
-									&nbsp;
-								</td>
-                                <td vAlign=top align=middle width=160>
-                                <table
-									style="border-right: black 4px solid; border-top: black 4px solid; border-left: black 4px solid; border-bottom: black 4px solid"
-									cellpadding=2 width=160 bgColor=black>
-                                <tbody>
-                                <tr>
-                                <td>
-									<B>&nbsp;</B>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-                                <table>
-                                <tbody>
-                                <tr>
-                                <td>
-									<img height=75 src="{{ asset('img/title/blank.gif') }}" width=48 border=0>
-								</td>
-								</tr>
-								</tbody>
-								</table>
-								</td>
-								</tr>
-								</tbody>
-							  </table></div>
+							<td>
+								<div class="align-content-center col">
+									<div class="font-weight-bold pt-2 pb-2">
+										Secure Services
+									</div>
+									<table cellSpacing=5 cellpadding=0>
+										<tbody>
+										<tr>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink" href="login.html">
+																<B>Subscribe</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="login.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_subscribe.jpg') }}"
+																	 width=48
+																	 border=0>
+															</A>
+														</td>
+														<td vAlign=top>
+															Start a members subscription here.
+															<A class="c d-block" href="login.html">
+																Login
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+											<td>
+												<span class="ml-2 mr-2"></span> <!-- Spreads the columns apart -->
+											</td>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink" href="login.html">
+																<B>Account Management</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="login.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_accman.jpg') }}"
+																	 width=48 border=0>
+															</A>
+														</td>
+														<td>
+															Manage your Password and Recovery Details.
+															<A class="c d-block" href="login.html">
+																Login
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink" href="login.html">
+																<B>Customer Support</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="login.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_support.jpg') }}"
+																	 width=48 border=0>
+															</A>
+														</td>
+														<td>Questions?
+															<BR>Contact our staff.
+																<A class="c d-block" href="login.html">
+																	Login
+																</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+											<td>
+											</td>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink" href="login.html">
+																<B>Message Centre</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="login.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_inbox.jpg') }}"
+																	 width=48 border=0>
+															</A>
+														</td>
+														<td>
+															Your messages from our staff.
+															<A class="c d-block" href="login.html">
+																Login
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink" href="login.html">
+																<B>Forums</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="login.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_forums.jpg') }}"
+																	 width=48 border=0>
+															</A>
+														</td>
+														<td>Discuss the game with fellow players!
+															<A class="c d-block" href="login.html">
+																Login
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+											<td>
+											</td>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink" href="login.html">
+																<B>Personal Hiscores</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="login.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_chalice.jpg') }}"
+																	 width=48 border=0>
+															</A>
+														</td>
+														<td>
+															How do you rank compared to your friends?
+															<A class="c d-block" href="login.html">
+																Login
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink" href="login.html">
+																<B>Latest Poll</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="login.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_vote.jpg') }}"
+																	 width=48 border=0>
+															</A>
+														</td>
+														<td>
+															What do you enjoy most about Quests?
+															<A class="c d-block" href="login.html">
+																Login
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
 							</td>
-                            <td background="{{ asset('img/title/fm_right.gif') }}">
-								<img height=1 src="{{ asset('img/title/blank.gif') }}" width=6>
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
 							</td>
-						  </tr>
-                          <tr>
-                            <td>
-								<img height=6 src="{{ asset('img/title/fm_bottomleft.gif') }}" width=6>
+						</tr>
+						<tr style="line-height: 6px">
+							<td>
+								<img src="{{ asset('img/title/fm_bottomleft.gif') }}" alt="left" width="6" height="6">
 							</td>
-                            <td background="{{ asset('img/title/fm_bottom2.gif') }}">
-								<img height=6 src="{{ asset('img/title/blank.gif') }}" width=1>
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
 							</td>
-                            <td>
-								<img height=6 src="{{ asset('img/title/fm_bottomright.gif') }}" width=6>
+							<td>
+								<img src="{{ asset('img/title/fm_bottomright.gif') }}" alt="right" width="6" height="6">
 							</td>
-						  </tr>
-						  </tbody>
-						</table>
-					  </td>
-					</tr>
-					</tbody>
-				  </table>
-				</span>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!-- Other Features box -->
+				<div class="col">
+					<table style="background-color: black">
+						<tbody>
+						<tr style="line-height: 6px">
+							<td>
+								<img src="{{ asset('img/title/fm_topleft.gif') }}" width="6" height="6">
+							</td>
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_top2.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
+							</td>
+							<td>
+								<img src="{{ asset('img/title/fm_topright.gif') }}" width="6" height="6">
+							</td>
+						</tr>
+						<tr>
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_left.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
+							</td>
+							<td>
+								<div class="align-content-center col">
+									<div class="font-weight-bold mt-2 mb-2 pt-2">
+										Other Features
+									</div>
+									<!--table to contain options-->
+									<table cellSpacing=5 cellpadding=0>
+										<tbody>
+										<tr>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink"
+															   href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">
+																<B>Unsubscribe</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_unsubscribe.jpg') }}"
+																	 width=48
+																	 border=0>
+															</A>
+														</td>
+														<td>
+															Cancel your subscription.
+															<BR><A class=c
+																   href="https://masterb-web.runescape.com/aff/runescape/unsubscribe.html">
+																	Click Here
+																</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+											<td>
+												<span class="ml-2 mr-2"></span> <!-- Spreads the columns apart -->
+											</td>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink"
+															   href="https://password-web.runescape.com/aff/runescape/index.html">
+																<B>Password Support</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="https://password-web.runescape.com/aff/runescape/index.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_passwordsupport.jpg') }}"
+																	 width=48
+																	 border=0>
+															</A>
+														</td>
+														<td>
+															If you lose/forget your password help is at hand.
+															<A class="c d-block"
+															   href="https://password-web.runescape.com/aff/runescape/index.html">
+																Click Here
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink" href="faq/faqindex.html">
+																<B>F.A.Q.</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="faq/faqindex.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_faq.jpg') }}" width=48
+																	 border=0>
+															</A>
+														</td>
+														<td>
+															Answers to Frequently Asked Questions.
+															<A class="c d-block" href="faq/faqindex.html">
+																Click Here
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+											<td>
+											</td>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink" href="guides/guides.html">
+																<B>Rules &amp; Security</B>
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="guides/guides.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_rules.jpg') }}"
+																	 width=48 border=0>
+															</A>
+														</td>
+														<td>
+															Learn our rules and stay safe online.
+															<A class="c d-block" href="guides/guides.html">
+																Click Here
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td vAlign=top align=middle width=160>
+												<table cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}"
+															bgColor=#474747>
+															<A class="whitelink text-center" href="files/files.html">
+																Extra Files
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<A href="files/files.html">
+																<img height=75
+																	 src="{{ asset('img/title/mms_extrafiles.jpg') }}"
+																	 width=48
+																	 border=0>
+															</A>
+														</td>
+														<td>
+															Download optional extras for RuneScape.
+															<A class="c d-block" href="files/files.html">
+																Click Here
+															</A>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+											<td>
+											</td>
+											<td vAlign=top align=middle width=160>
+											</td>
+										</tr>
+										<tr>
+											<td vAlign=top align=middle width=160>
+												<table
+													style="border-right: black 4px solid; border-top: black 4px solid; border-left: black 4px solid; border-bottom: black 4px solid"
+													cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<img height=75 src="{{ asset('img/title/blank.gif') }}"
+																 width=48 border=0>
+														</td>
+														<td style="COLOR: black"
+														>What do you enjoy most about Quests?
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+											<td>
+											</td>
+											<td vAlign=top align=middle width=160>
+												<table
+													style="border-right: black 4px solid; border-top: black 4px solid; border-left: black 4px solid; border-bottom: black 4px solid"
+													cellpadding=2 width=160 style="background-color: black">
+													<tbody>
+													<tr>
+														<td>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<img height=75 src="{{ asset('img/title/blank.gif') }}"
+																 width=48 border=0>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</td>
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1">
+							</td>
+						</tr>
+						<tr style="line-height: 6px">
+							<td>
+								<img src="{{ asset('img/title/fm_bottomleft.gif') }}" alt="left" width="6" height="6">
+							</td>
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
+								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6">
+							</td>
+							<td>
+								<img src="{{ asset('img/title/fm_bottomright.gif') }}" alt="right" width="6" height="6">
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -1150,65 +1146,65 @@
 					<div>
 						Players Online:
 						<a href="{/{ route('online') }}">
-                    <span class="text-info float-right">
-                        {/{ $online }}
-                    </span>
+					<span class="text-info float-right">
+						{/{ $online }}
+					</span>
 						</a>
 					</div>
 					<div>
 						Server Status:
 						<span class="float-right">
-                    {/!! $status !!}
-                </span>
+					{/!! $status !!}
+				</span>
 					</div>
 					<div>
 						Players Created Today:
 						<a href="{/{ route('createdtoday') }}">
-                        <span class="text-info float-right">
-                            {/{ $registrations }}
-                        </span>
+						<span class="text-info float-right">
+							{/{ $registrations }}
+						</span>
 						</a>
 					</div>
 					<div>
 						Online Last 48 Hours:
 						<a href="{/{ route('logins48') }}">
-                        <span class="text-info float-right">
-                            {/{ $logins }}
-                        </span>
+						<span class="text-info float-right">
+							{/{ $logins }}
+						</span>
 						</a>
 					</div>
 					<div>
 						Unique Players:
 						<a href="{/{ route('stats') }}">
-                        <span class="text-info float-right">
-                            {/{ $uniquePlayers }}
-                        </span>
+						<span class="text-info float-right">
+							{/{ $uniquePlayers }}
+						</span>
 						</a>
 					</div>
 					<div>
 						Total Players:
 						<a href="{/{ route('stats') }}">
-                        <span class="text-info float-right">
-                            {/{ $totalPlayers }}
-                        </span>
+						<span class="text-info float-right">
+							{/{ $totalPlayers }}
+						</span>
 						</a>
 					</div>
 					<div>
 						Sum Gold:
 						<a href="{/{ route('stats') }}">
-                        <span class="text-info float-right">
+						<span class="text-info float-right">
 							{/{ number_format($sumgold) }}
 							<img class="mt-n2 ml-n2" src="{/{ asset('img/items/10.png') }}"
 								 alt="coins" height="24px" width="32px"/>
-                        </span>
+						</span>
 						</a>
 					</div>
 					<div>
 						Cumulative Play:
 						<a href="{/{ route('stats') }}">
-                        <span class="text-info float-right">
-                            {/{ $totalTime }}
-                        </span>
+						<span class="text-info float-right">
+							{/{ $totalTime }}
+						</span>
 						</a>
 					</div>
 					<br>
