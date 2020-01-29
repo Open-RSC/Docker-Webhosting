@@ -4,11 +4,12 @@ services:
   nginx:
     environment:
       DEBUG: 'true'
-      VIRTUAL_HOST: localhost
-      NGINX_HOST: localhost
+      VIRTUAL_HOST: ${HOSTNAME},${HOSTNAME2},${HOSTNAME3},${HOSTNAME4},${HOSTNAME5}
+      NGINX_HOST: ${HOSTNAME},${HOSTNAME2},${HOSTNAME3},${HOSTNAME4},${HOSTNAME5}
     ports:
       - '80:80'
-    
+      - '443:443'
+
   php:
     environment:
       - XDEBUG=true

@@ -32,3 +32,6 @@ openrsc_web/public/mix-manifest.json
 openrsc_web/public/js/app.js
 
 openrsc_web/public/sql/tmp/twig/
+inc/certs/
+
+composer.phar
