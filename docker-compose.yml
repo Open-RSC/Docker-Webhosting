@@ -14,7 +14,7 @@ services:
       - "./downloads:/var/www/html/openrsc_web/public/downloads"
 
   php:
-    image: openrsc/php-laravel:latest
+    image: openrsc/php-laravel:7.2
     container_name: php
     ports:
       - "127.0.0.1:9000:9000"
