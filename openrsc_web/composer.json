@@ -13,10 +13,10 @@
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "jenssegers/agent": "^2.6",
-        "laravel/framework": "^6.0",
-        "laravel/scout": "^7.1",
-        "laravel/tinker": "^1.0",
-        "laravel/ui": "^1.0",
+        "laravel/framework": "^6.13",
+        "laravel/scout": "^7.2.1",
+        "laravel/tinker": "^2.1.0",
+        "laravel/ui": "^1.1.2",
         "wildbit/swiftmailer-postmark": "^3.0"
     },
     "require-dev": {
