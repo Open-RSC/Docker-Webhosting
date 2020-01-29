@@ -119,7 +119,9 @@ class HighscoresController extends Controller
 			a.exp_mining +
 			a.exp_herblaw +
 			a.exp_agility +
-			a.exp_thieving
+			a.exp_thieving +
+			a.exp_runecraft +
+			a.exp_harvesting
 			/4.0)
 			as total_xp'))
 			->where([
@@ -137,7 +139,7 @@ class HighscoresController extends Controller
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
 		 */
-		$skill_array = Config::get('app.authentic') == true ? array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft'); //, 'harvesting');
+		$skill_array = Config::get('app.authentic') == true ? array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft', 'harvesting');
 
 		if (Config::get('app.authentic') == true) {
 			return view('highscores', [
@@ -165,7 +167,7 @@ class HighscoresController extends Controller
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
 		 */
-		$skill_array = Config::get('app.authentic') == true ? array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft'); //, 'harvesting');
+		$skill_array = Config::get('app.authentic') == true ? array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('skill_total', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft', 'harvesting');
 
 		/**
 		 * @var $subpage
