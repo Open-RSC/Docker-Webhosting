@@ -17,6 +17,7 @@ services:
       - ./log:/var/log/nginx
       - ./avatars:/var/www/html/openrsc_web/public/img/avatars
       - ./downloads:/var/www/html/openrsc_web/public/downloads
+      - ./downloads:/var/www/html/cabbage_web/public/downloads
       - ./wiki:/var/www/html/openrsc_web/public/wiki
 
   php:
@@ -29,6 +30,7 @@ services:
       - ./openrsc_web:/var/www/html/openrsc_web
       - ./cabbage_web:/var/www/html/cabbage_web
       - ./downloads:/var/www/html/openrsc_web/public/downloads
+      - ./downloads:/var/www/html/cabbage_web/public/downloads
       - ./wiki:/var/www/html/openrsc_web/public/wiki
 
   mysqldb:

@@ -56,10 +56,11 @@ class HighscoresController extends Controller
 		 * @var $highscores_authentic
 		 * Fetches the table row of the player experience in view and paginates the results
 		 */
-		$highscores_authentic = DB::connection()
-			->table('openrsc_experience as a')
-			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('
+		if (Config::get('app.authentic') == true) {
+			$highscores_authentic = DB::connection()
+				->table('openrsc_experience as a')
+				->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+				->select('*', DB::raw('
 			(SUM(a.exp_attack +
 			a.exp_defense +
 			a.exp_strength +
@@ -81,26 +82,28 @@ class HighscoresController extends Controller
 			a.exp_thieving
 			/4.0)
 			as total_xp'))
-			->where([
-				['b.banned', '=', '0'],
-				['b.group_id', '>=', '10'],
-				['b.iron_man', '=', '0'], // no iron man players are displayed
-				['b.highscoreopt', '!=', '1'],
-			])
-			->groupBy('b.username')
-			->orderBy('b.skill_total', 'desc')
-			->orderBy('total_xp', 'desc')
-			->paginate(300);
+				->where([
+					['b.banned', '=', '0'],
+					['b.group_id', '>=', '10'],
+					['b.iron_man', '=', '0'], // no iron man players are displayed
+					['b.highscoreopt', '!=', '1'],
+				])
+				->groupBy('b.username')
+				->orderBy('b.skill_total', 'desc')
+				->orderBy('total_xp', 'desc')
+				->paginate(300);
+		}
 
 		/**
 		 * @return Factory|View
 		 * @var $highscores_custom
 		 * Fetches the table row of the player experience in view and paginates the results
 		 */
-		$highscores_custom = DB::connection()
-			->table('openrsc_experience as a')
-			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('
+		if (Config::get('app.authentic') == false) {
+			$highscores_custom = DB::connection()
+				->table('openrsc_experience as a')
+				->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+				->select('*', DB::raw('
 			(SUM(a.exp_attack +
 			a.exp_defense +
 			a.exp_strength +
@@ -124,16 +127,17 @@ class HighscoresController extends Controller
 			a.exp_harvesting
 			/4.0)
 			as total_xp'))
-			->where([
-				['b.banned', '=', '0'],
-				['b.group_id', '>=', '10'],
-				['b.iron_man', '=', '0'], // no iron man players are displayed
-				['b.highscoreopt', '!=', '1'],
-			])
-			->groupBy('b.username')
-			->orderBy('b.skill_total', 'desc')
-			->orderBy('total_xp', 'desc')
-			->paginate(300);
+				->where([
+					['b.banned', '=', '0'],
+					['b.group_id', '>=', '10'],
+					['b.iron_man', '=', '0'], // no iron man players are displayed
+					['b.highscoreopt', '!=', '1'],
+				])
+				->groupBy('b.username')
+				->orderBy('b.skill_total', 'desc')
+				->orderBy('total_xp', 'desc')
+				->paginate(300);
+		}
 
 		/**
 		 * @var $skill_array
@@ -146,9 +150,7 @@ class HighscoresController extends Controller
 				'skill_array' => $skill_array,
 			])
 				->with(compact('highscores_authentic'));
-		}
-		else
-		{
+		} else {
 			return view('highscores', [
 				'skill_array' => $skill_array,
 			])
