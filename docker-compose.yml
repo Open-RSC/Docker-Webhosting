@@ -13,6 +13,7 @@ services:
       - ./log:/var/log/nginx
       - ./avatars:/var/www/html/openrsc_web/public/img/avatars
       - ./downloads:/var/www/html/openrsc_web/public/downloads
+      - ./wiki:/var/www/html/openrsc_web/public/wiki
 
   php:
     image: openrsc/php-laravel:7.2
@@ -23,6 +24,7 @@ services:
       - ./inc/php.ini:/usr/local/etc/php/conf.d/php.ini
       - ./openrsc_web:/var/www/html/openrsc_web
       - ./downloads:/var/www/html/openrsc_web/public/downloads
+      - ./wiki:/var/www/html/openrsc_web/public/wiki
 
   mysqldb:
     image: mariadb:latest
