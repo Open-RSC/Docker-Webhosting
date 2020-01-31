@@ -93,6 +93,20 @@ class PlayerController extends Controller
 			->limit(30)
 			->get();
 
+		$npc_kills = DB::connection()
+			->table('openrsc_npckills as a')
+			->join('openrsc_players AS b', 'a.playerID', '=', 'b.id')
+			->join('openrsc_npcdef as c', 'a.npcID', '=', 'c.id')
+			->where([
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['b.username', '=', $subpage],
+			])
+			->orderBy('a.killCount', 'desc')
+			->limit(30)
+			->get();
+
 		/**
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
@@ -106,6 +120,7 @@ class PlayerController extends Controller
 			'player_gang' => $player_gang,
 			'totalTime' => $totalTime,
 			'player_feed' => $player_feed,
+			'npc_kills' => $npc_kills,
 		])
 			->with(compact('$banks'));
 	}

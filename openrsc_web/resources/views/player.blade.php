@@ -14,7 +14,7 @@
 			@foreach ($players as $player)
 
 				<div class="sm-stats">
-					<div class="stats row justify-content-center">
+					<div class="row justify-content-center">
 
 						<!-- Avatar -->
 						<div class="mr-4 pt-3 d-inline-block float-left">
@@ -129,8 +129,66 @@
 					</div>
 				</div>
 
+				<!-- Top NPC kills - large view version -->
+				<div class="d-none d-md-block">
+					<div class="h4 text-info">
+						Top NPC Kills
+					</div>
+					<table id="List" class="container table-striped table-both-hover text-primary table-transparent">
+						<tr>
+							@foreach ($npc_kills as $key=>$kills)
+								<td class="text-center clickable-row" data-href="npcdef/{{ $kills->npcID }}"
+									style="border: 1px solid #0F0F0F;">
+									<div class="display-glow pt-1">
+										<img src="{{ asset('img/npc') }}/{{ $kills->npcID }}.png"
+											 alt="{{ $kills->name }}"
+											 style="max-height: 52px; max-width: 65px;"/>
+									</div>
+									<span class="text-capitalize d-block">
+										{{ $kills->name }}
+									</span>
+									<span class="d-block">
+										{{ number_format($kills->killCount) }}
+									</span>
+								</td>
+								@if ($key % 6 == 5)
+						</tr>
+						@endif
+						@endforeach
+					</table>
+				</div>
+
+				<!-- Top NPC kills - mobile view version -->
+				<div class="pl-5 pr-5 d-md-none d-lg-none">
+					<div class="h4 text-info">
+						Top NPC Kills
+					</div>
+					<table id="List" class="container table-striped table-both-hover text-primary table-transparent">
+						<tr>
+							@foreach ($npc_kills as $key=>$kills)
+								<td class="text-center clickable-row" data-href="npcdef/{{ $kills->npcID }}"
+									style="border: 1px solid #0F0F0F;">
+									<div class="display-glow pt-1">
+										<img src="{{ asset('img/npc') }}/{{ $kills->npcID }}.png"
+											 alt="{{ $kills->name }}"
+											 style="max-height: 52px; max-width: 65px;"/>
+									</div>
+									<span class="text-capitalize d-block">
+										{{ $kills->name }}
+									</span>
+									<span class="d-block">
+										{{ number_format($kills->killCount) }}
+									</span>
+								</td>
+								@if ($key % 4 == 3)
+						</tr>
+						@endif
+						@endforeach
+					</table>
+				</div>
+
 				<!-- Accomplishments -->
-				<div class="stats pl-5 pr-5">
+				<div class="pt-4 pl-5 pr-5">
 					<div class="h4 text-info">
 						Recent Accomplishments
 					</div>
