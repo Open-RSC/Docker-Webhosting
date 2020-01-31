@@ -137,7 +137,7 @@
 					<table id="List" class="container table-striped table-both-hover text-primary table-transparent">
 						<tr>
 							@foreach ($npc_kills as $key=>$kills)
-								<td class="text-center clickable-row" data-href="npcdef/{{ $kills->npcID }}"
+								<td class="text-center clickable-row" data-href="/npcdef/{{ $kills->npcID }}"
 									style="border: 1px solid #0F0F0F;">
 									<div class="display-glow pt-1">
 										<img src="{{ asset('img/npc') }}/{{ $kills->npcID }}.png"
@@ -166,7 +166,7 @@
 					<table id="List" class="container table-striped table-both-hover text-primary table-transparent">
 						<tr>
 							@foreach ($npc_kills as $key=>$kills)
-								<td class="text-center clickable-row" data-href="npcdef/{{ $kills->npcID }}"
+								<td class="text-center clickable-row" data-href="/npcdef/{{ $kills->npcID }}"
 									style="border: 1px solid #0F0F0F;">
 									<div class="display-glow pt-1">
 										<img src="{{ asset('img/npc') }}/{{ $kills->npcID }}.png"
