@@ -119,6 +119,7 @@ $wgDiff3 = "/usr/bin/diff3";
 $wgGroupPermissions['*']['createaccount'] = true;
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['user']['edit'] = false;
+$wgGroupPermissions['editor']['edit'] = true;
 $wgGroupPermissions['sysop']['edit'] = true;
 
 ## Default skin: you can change the default skin. Use the internal symbolic
