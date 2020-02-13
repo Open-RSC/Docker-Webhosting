@@ -35,3 +35,6 @@ openrsc_web/public/sql/tmp/twig/
 inc/certs/
 
 composer.phar
+
+downloads/
+!downloads/.gitsave
