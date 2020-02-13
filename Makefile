@@ -1,27 +1,25 @@
-include .env
-
 start:
-	docker-compose up -d
+	sudo docker-compose up -d
 
 start-prod:
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+	sudo docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 stop:
-	@docker-compose down -v
+	sudo docker-compose down -v
 
 restart:
-	@docker-compose down -v
-	docker-compose up -d
+	sudo docker-compose down -v
+	sudo docker-compose up -d
 
 restart-prod:
-	@docker-compose down -v
-	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+	sudo docker-compose down -v
+	sudo docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 ps:
-	docker-compose ps
+	sudo docker-compose ps
 
 logs:
-	@docker-compose logs -f
+	sudo docker-compose logs -f
 
 #
 # Utilize the following with the command, followed by "game=" and specify which game.
@@ -29,49 +27,49 @@ logs:
 # Example 2: sudo make update-laravel game=openrsc
 #
 update-laravel:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && composer install && composer update && php artisan key:generate && php artisan optimize && npm install && npm update && npm audit fix"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && composer install && composer update && php artisan key:generate && php artisan optimize && npm install && npm update && npm audit fix"
 
 clear-all-laravel:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan view:clear && php artisan route:clear && php artisan config:cache"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan view:clear && php artisan route:clear && php artisan config:cache"
 
 migrate-laravel:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan migrate --seed"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan migrate --seed"
 
 make-laravel:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan make:controller MyController"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan make:controller MyController"
 
 list-route:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan route:list"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan route:list"
 
 clear-views:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan view:clear"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan view:clear"
 
 clear-route:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan route:clear"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan route:clear"
 
 migrate:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan migrate"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan migrate"
 
 migrate-refresh:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan migrate:refresh"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan migrate:refresh"
 
 clear-config:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan config:cache"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan config:cache"
 
 publish-pagination:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan vendor:publish --tag=laravel-pagination"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan vendor:publish --tag=laravel-pagination"
 
 version:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan --version"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan --version"
 
 npm-install:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && npm install"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && npm install"
 
 npm-run-dev:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && npm run dev"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && npm run dev"
 
 npm-run-prod:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && npm run prod"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && npm run prod"
 
 npm-run-watch:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && npm run watch"
+	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && npm run watch"
