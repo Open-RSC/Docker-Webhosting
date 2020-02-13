@@ -1,19 +1,12 @@
 start:
 	sudo docker-compose up -d
 
-start-prod:
-	sudo docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
-
 stop:
 	sudo docker-compose down -v
 
 restart:
 	sudo docker-compose down -v
 	sudo docker-compose up -d
-
-restart-prod:
-	sudo docker-compose down -v
-	sudo docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 ps:
 	sudo docker-compose ps
@@ -23,8 +16,8 @@ logs:
 
 #
 # Utilize the following with the command, followed by "game=" and specify which game.
-# Example 1: sudo make update-laravel game=cabbage
-# Example 2: sudo make update-laravel game=openrsc
+# Example 1: make update-laravel game=cabbage
+# Example 2: make update-laravel game=openrsc
 #
 update-laravel:
 	sudo docker exec -i php bash -c "cd /var/www/html/${game}_web && composer install && composer update && php artisan key:generate && php artisan optimize && npm install && npm update && npm audit fix"
