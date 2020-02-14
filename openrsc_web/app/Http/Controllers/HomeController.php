@@ -192,7 +192,7 @@ class HomeController extends Controller
 			[
 				'players' => $players,
 			]
-		)->with(compact('online'));
+		);
 	}
 
 	public function createdtoday()
@@ -212,7 +212,7 @@ class HomeController extends Controller
 			[
 				'players' => $players,
 			]
-		)->with(compact('createdtoday'));
+		);
 	}
 
 	public function logins48()
@@ -231,7 +231,7 @@ class HomeController extends Controller
 			[
 				'players' => $players,
 			]
-		)->with(compact('logins48'));
+		);
 	}
 
 	public function stats()
@@ -1484,7 +1484,7 @@ class HomeController extends Controller
 				'dlong' => $dlong,
 				'cabbage' => $cabbage,
 			]
-		)->with(compact('stats'));
+		);
 	}
 
 	public function worldmap()
@@ -1509,7 +1509,6 @@ class HomeController extends Controller
 
 		return view('worldmap', [
 			'playerPositions' => $playerPositions,
-		])
-			->with(compact('$playerPositions'));
+		]);
 	}
 }

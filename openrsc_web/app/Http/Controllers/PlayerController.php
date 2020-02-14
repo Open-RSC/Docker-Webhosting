@@ -121,8 +121,7 @@ class PlayerController extends Controller
 			'totalTime' => $totalTime,
 			'player_feed' => $player_feed,
 			'npc_kills' => $npc_kills,
-		])
-			->with(compact('$banks'));
+		]);
 	}
 
 	/**
@@ -151,8 +150,7 @@ class PlayerController extends Controller
 
 		return view('bank', [
 			'banks' => $banks,
-		])
-			->with(compact('$banks'));
+		]);
 	}
 
 	/**

@@ -93,7 +93,6 @@ class QuestController extends Controller
 			'quest_array' => $quest_array,
 			'minigame_array' => $minigame_array,
 			'subpage' => $subpage,
-		])
-			->with(compact('quest'));
+		]);
 	}
 }
