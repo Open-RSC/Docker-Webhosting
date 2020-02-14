@@ -20,7 +20,7 @@ services:
       - ./wiki:/var/www/html/openrsc_web/public/wiki
 
   php:
-    image: openrsc/php-laravel:7.2
+    image: openrsc/php-laravel:7.4
     container_name: php
     ports:
       - "127.0.0.1:9000:9000"

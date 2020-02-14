@@ -109,7 +109,7 @@ class HomeController extends Controller
 				'sumgold' => $sumgold,
 				'agent' => $agent
 			]
-		)->with(compact('home'));
+		);
 	}
 
 	/**
