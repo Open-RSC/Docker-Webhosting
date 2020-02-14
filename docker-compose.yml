@@ -5,7 +5,6 @@ services:
     image: nginx:latest
     container_name: nginx
     restart: always
-    hostname: localhost
     ports:
       - '80:80'
       - '443:443'
@@ -32,3 +31,8 @@ services:
       - ./downloads:/var/www/html/openrsc_web/public/downloads
       - ./downloads:/var/www/html/cabbage_web/public/downloads
       - ./wiki:/var/www/html/openrsc_web/public/wiki
+
+networks:
+  default:
+    external:
+      name: database
