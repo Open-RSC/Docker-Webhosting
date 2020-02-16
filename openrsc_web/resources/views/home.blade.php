@@ -11,7 +11,7 @@
 
 				<!-- Logo and player online count -->
 				<div class="col mr-1 mt-5">
-					<img src="{{ asset('img/title/rslogo.gif') }}" alt="logo">
+					<img src="{{ asset('img/title/rslogo.png') }}" alt="logo">
 					<div class="pt-3 d-block" style="font-size: 14px">
 						There are currently {{ $online }} people playing!
 					</div>
@@ -263,7 +263,7 @@
 										<tbody>
 										<tr>
 											<td class="align-middle" style="width: 100px;">
-												<a href="screenshots/screenshots.html">
+												<a href="https://rsc.plus" target="_blank">
 													<img src="{{ asset('img/title/mm2_screenshots.jpg') }}">
 												</a>
 											</td>
@@ -277,9 +277,9 @@
 															<a class="whitelink"
 															   onmouseover="greyglow('screenshotsbut')"
 															   onmouseout="ungreyglow('screenshotsbut')"
-															   href="screenshots/screenshots.html">
+															   href="https://rsc.plus" target="_blank">
 															<span class="font-weight-bold d-block">
-																Screenshots
+																RSC+ Replays
 															</span>
 															</a>
 														</td>
@@ -287,9 +287,9 @@
 													</tbody>
 												</table>
 												<span class="d-block">
-													Lots of images of the game in action.
+													Watch thousands of original RSC recordings!
 												</span>
-												<a class="c" href="screenshots/screenshots.html">
+												<a class="c" href="https://rsc.plus" target="_blank">
 													<span class="d-block">
 														Click Here
 													</span>
@@ -306,7 +306,7 @@
 										<tbody>
 										<tr>
 											<td class="align-middle" style="width: 100px;">
-												<a href="members/members.html">
+												<a href="https://discord.gg/ABdFCqn">
 													<img src="{{ asset('img/title/mm_members.jpg') }}" alt="">
 												</a>
 											</td>
@@ -320,9 +320,9 @@
 															<a class="whitelink"
 															   onmouseover="greyglow('membersbut')"
 															   onmouseout="ungreyglow('membersbut')"
-															   href="members/members.html">
+															   href="https://discord.gg/ABdFCqn">
 															<span class="font-weight-bold d-block">
-																Benefits for Members
+																Discord Invitation
 															</span>
 															</a>
 														</td>
@@ -330,9 +330,9 @@
 													</tbody>
 												</table>
 												<span class="d-block">
-												Find out what extras are available to members.
+												Join our Discord server.
 											</span>
-												<a class=c href="members/members.html">
+												<a class=c href="https://discord.gg/ABdFCqn">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -348,7 +348,7 @@
 										<tbody>
 										<tr>
 											<td class="align-middle" style="width: 100px;">
-												<a href="howtoplay.html">
+												<a href="/wiki">
 													<img src="{{ asset('img/title/mm_howtoplay.jpg') }}"
 														 alt="how to play">
 												</a>
@@ -363,7 +363,8 @@
 															<a class="whitelink"
 															   onmouseover="greyglow('manualbut')"
 															   onmouseout="ungreyglow('manualbut')"
-															   href="howtoplay.html">
+															   target="_blank"
+															   href="/wiki">
 															<span class="font-weight-bold d-block">
 																Manual
 															</span>
@@ -375,7 +376,7 @@
 												<span class="d-block">
 												Detailed info on all aspects of the game.
 											</span>
-												<a class="c" href="howtoplay.html">
+												<a class="c" target="_blank" href="/wiki">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -478,7 +479,7 @@
 									<tbody>
 									<tr>
 										<td class="align-middle" style="width: 100px;">
-											<a href="worldmap/worldmap.html">
+											<a href="{{ route('worldmap') }}">
 												<img src="{{ asset('img/title/mm_worldmap.jpg') }}" alt="">
 											</a>
 										</td>
@@ -491,7 +492,7 @@
 														background="{{ asset('img/stoneback.gif') }}">
 														<a class="whitelink" onmouseover="greyglow('worldmapbut')"
 														   onmouseout="ungreyglow('worldmapbut')"
-														   href="worldmap.html">
+														   href="{{ route('worldmap') }}">
 														<span class="font-weight-bold d-block">
 															World Map
 														</span>
@@ -503,7 +504,7 @@
 											<span class="d-block">
 											Great for finding your way around.
 										</span>
-											<a class="c" href="worldmap/worldmap.html">
+											<a class="c" href="{{ route('worldmap') }}">
 											<span class="d-block">
 												Click Here
 											</span>
@@ -584,9 +585,10 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('img/stoneback.gif') }}">
-															<a class="whitelink" href="login.html">
-																<span class="d-block">
-																	Subscribe
+															<a class="whitelink"
+															   href="#">
+																<span class="font-weight-bold d-block">
+																	Password Support
 																</span>
 															</a>
 														</td>
@@ -597,18 +599,19 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="login.html">
-																<img src="{{ asset('img/title/mms_subscribe.jpg') }}"
-																	 alt="">
+															<a href="#">
+																<img
+																	src="{{ asset('img/title/mms_passwordsupport.jpg') }}"
+																	alt="">
 															</a>
 														</td>
-														<td class="align-top">
+														<td>
 															<span class="d-block">
-																Start a members subscription here.
+																If you lose/forget your password help is at hand.
 															</span>
-															<a class="c" href="login.html">
+															<a class="c" href="#">
 																<span class="d-block">
-																	Login
+																	Click Here
 																</span>
 															</a>
 														</td>
@@ -667,9 +670,9 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('img/stoneback.gif') }}">
-															<a class="whitelink" href="login.html">
-																<span class="d-block">
-																	Customer Support
+															<a class="whitelink" href="guides/guides.html">
+																<span class="d-block font-weight-bold">
+																	Rules & Security
 																</span>
 															</a>
 														</td>
@@ -680,21 +683,17 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="login.html">
-																<img src="{{ asset('img/title/mms_support.jpg') }}"
-																	 alt="">
+															<a href="guides/guides.html">
+																<img src="{{ asset('img/title/mms_rules.jpg') }}">
 															</a>
 														</td>
 														<td>
 															<span class="d-block">
-																Questions?
+																Learn our rules and stay safe online.
 															</span>
-															<span class="d-block">
-																Contact our staff.
-															</span>
-															<a class="c" href="login.html">
+															<a class="c" href="guides/guides.html">
 																<span class="d-block">
-																	Login
+																	Click Here
 																</span>
 															</a>
 														</td>
@@ -751,8 +750,8 @@
 														<td class="b text-center"
 															background="{{ asset('img/stoneback.gif') }}">
 															<a class="whitelink" href="login.html">
-																<span class="font-weight-bold d-block">
-																	Forums
+																<span class="d-block">
+																	Latest Poll
 																</span>
 															</a>
 														</td>
@@ -764,13 +763,12 @@
 													<tr>
 														<td>
 															<a href="login.html">
-																<img src="{{ asset('img/title/mms_forums.jpg') }}"
-																	 alt="">
+																<img src="{{ asset('img/title/mms_vote.jpg') }}" alt="">
 															</a>
 														</td>
 														<td>
 															<span class="d-block">
-																Discuss the game with fellow players!
+																What do you enjoy most about Quests?
 															</span>
 															<a class="c" href="login.html">
 																<span class="d-block">
@@ -811,45 +809,6 @@
 														<td>
 															<span class="d-block">
 																How do you rank compared to your friends?
-															</span>
-															<a class="c" href="login.html">
-																<span class="d-block">
-																	Login
-																</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-											</td>
-										</tr>
-										<tr>
-											<td class="align-top" style="width: 160px">
-												<table style="padding: 2px; width: 160px; background-color: black">
-													<tbody>
-													<tr>
-														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
-															<a class="whitelink" href="login.html">
-																<span class="d-block">
-																	Latest Poll
-																</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<table>
-													<tbody>
-													<tr>
-														<td>
-															<a href="login.html">
-																<img src="{{ asset('img/title/mms_vote.jpg') }}" alt="">
-															</a>
-														</td>
-														<td>
-															<span class="d-block">
-																What do you enjoy most about Quests?
 															</span>
 															<a class="c" href="login.html">
 																<span class="d-block">
@@ -919,9 +878,9 @@
 														<td class="b text-center"
 															background="{{ asset('img/stoneback.gif') }}">
 															<a class="whitelink"
-															   href="#">
+															   href="https://classic.runescape.wiki/" target="_blank">
 																<span class="d-block">
-																	Unsubscribe
+																	RSC Wiki
 																</span>
 															</a>
 														</td>
@@ -932,17 +891,17 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="#">
+															<a href="https://classic.runescape.wiki/" target="_blank">
 																<img height=75
-																	 src="{{ asset('img/title/mms_unsubscribe.jpg') }}"
+																	 src="{{ asset('img/title/mms_subscribe.jpg') }}"
 																	 width=48 alt="">
 															</a>
 														</td>
 														<td>
 															<span class="d-block">
-																Cancel your subscription.
+																Read all about Runescape Classic.
 															</span>
-															<a class="c" href="#">
+															<a class="c" href="https://classic.runescape.wiki/" target="_blank">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -963,10 +922,9 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('img/stoneback.gif') }}">
-															<a class="whitelink"
-															   href="#">
+															<a class="whitelink" href="https://discord.gg/grzEjDB" target="_blank">
 																<span class="font-weight-bold d-block">
-																	Password Support
+																	RSC Discord
 																</span>
 															</a>
 														</td>
@@ -977,17 +935,95 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="#">
-																<img
-																	src="{{ asset('img/title/mms_passwordsupport.jpg') }}"
-																	alt="">
+															<a href="https://discord.gg/grzEjDB" target="_blank">
+																<img src="{{ asset('img/title/mms_forums.jpg') }}"
+																	 alt="">
 															</a>
 														</td>
 														<td>
 															<span class="d-block">
-																If you lose/forget your password help is at hand.
+																Discuss the game with fellow players!
 															</span>
-															<a class="c" href="#">
+															<a class="c" href="https://discord.gg/grzEjDB" target="_blank">
+																<span class="d-block">
+																	Login
+																</span>
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td class="align-top" style="width: 160px">
+												<table style="padding: 2px; width: 160px; background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}">
+															<a class="whitelink" href="https://reddit.com/r/openrsc" target="_blank">
+																<span class="font-weight-bold d-block">
+																	OpenRSC Reddit
+																</span>
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<a href="https://reddit.com/r/openrsc" target="_blank">
+																<img src="{{ asset('img/title/mms_unsubscribe.jpg') }}" alt="">
+															</a>
+														</td>
+														<td>
+															<span class="d-block">
+																Learn all about the project and recent development.
+															</span>
+															<a class="c" href="https://reddit.com/r/openrsc" target="_blank">
+																<span class="d-block">
+																	Click Here
+																</span>
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+											</td>
+											<td>
+											</td>
+											<td class="align-top" style="width: 160px">
+												<table style="padding: 2px; width: 160px; background-color: black">
+													<tbody>
+													<tr>
+														<td class="b text-center"
+															background="{{ asset('img/stoneback.gif') }}">
+															<a class="whitelink" href="https://reddit.com/r/rsc" target="_blank">
+																<span class="d-block">
+																	RSC Reddit
+																</span>
+															</a>
+														</td>
+													</tr>
+													</tbody>
+												</table>
+												<table>
+													<tbody>
+													<tr>
+														<td>
+															<a href="https://reddit.com/r/rsc" target="_blank">
+																<img src="{{ asset('img/title/mms_support.jpg') }}"
+																	 alt="">
+															</a>
+														</td>
+														<td>
+															<span class="d-block">
+																Discuss Runescape Classic topics.
+															</span>
+															<a class="c" href="https://reddit.com/r/rsc" target="_blank">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -1044,45 +1080,6 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('img/stoneback.gif') }}">
-															<a class="whitelink" href="guides/guides.html">
-																<span class="d-block font-weight-bold">
-																	Rules & Security
-																</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<table>
-													<tbody>
-													<tr>
-														<td>
-															<a href="guides/guides.html">
-																<img src="{{ asset('img/title/mms_rules.jpg') }}">
-															</a>
-														</td>
-														<td>
-															<span class="d-block">
-																Learn our rules and stay safe online.
-															</span>
-															<a class="c" href="guides/guides.html">
-																<span class="d-block">
-																	Click Here
-																</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-											</td>
-										</tr>
-										<tr>
-											<td class="align-top" style="width: 160px">
-												<table style="padding: 2px; width: 160px; background-color: black">
-													<tbody>
-													<tr>
-														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
 															<a class="whitelink text-center" href="files/files.html">
 																<span class="d-block">
 																	Extra Files
@@ -1114,10 +1111,6 @@
 													</tr>
 													</tbody>
 												</table>
-											</td>
-											<td>
-											</td>
-											<td class="align-top" style="width: 160px">
 											</td>
 										</tr>
 										</tbody>
