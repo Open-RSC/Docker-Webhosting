@@ -1191,23 +1191,14 @@
 				<div class="dropdown-menu bg-dark" style="padding: 0;">
 					@/if ($agent->isAndroid())
 						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{/{ asset('downloads/openrsc.apk') }}">Android
+						   href="https://game.openrsc.com/downloads/openrsc.apk">Android
 							Version</a>
-					@/elseif ($agent->isWindows())
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{/{ asset('OpenRSC.exe') }}">Windows Launcher</a>
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{/{ asset('downloads/OpenRSC.jar') }}">Alternative
-							Launcher</a>
-						<a class="dropdown-item text-white-50 bg-dark"
-						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
-							Player Edition</a>
 					@/else
 						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{/{ asset('downloads/OpenRSC.jar') }}">Game
+						   href="https://game.openrsc.com/downloads/OpenRSC.jar">Game
 							Launcher</a>
 						<a class="dropdown-item text-white-50 bg-dark"
-						   href="{/{ asset('downloads/openrsc.apk') }}">Android
+						   href="https://game.openrsc.com/downloads/openrsc.apk">Android
 							Version</a>
 						<a class="dropdown-item text-white-50 bg-dark"
 						   href="https://gitlab.openrsc.com/open-rsc/Single-Player/-/releases">Single
