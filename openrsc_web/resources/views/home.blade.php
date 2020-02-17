@@ -13,7 +13,7 @@
 				<div class="col mr-1 mt-5">
 					<img src="{{ asset('img/title/rslogo.png') }}" alt="logo">
 					<div class="pt-3 d-block" style="font-size: 14px">
-						{{ number_format($totalPlayers) }} registered players since July 2018
+						{{ number_format($uniquePlayers) }} people have created {{ number_format($totalPlayers) }} players since 2018
 					</div>
 				</div>
 
