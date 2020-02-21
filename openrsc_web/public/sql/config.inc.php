@@ -11,7 +11,7 @@ $i = 0;
 /* Server: SQL [1] */
 $i++;
 $cfg['Servers'][$i]['verbose'] = 'SQL';
-$cfg['Servers'][$i]['host'] = 'mysql'; //docker version is mysql and native install version is localhost
+$cfg['Servers'][$i]['host'] = 'mariadb'; //docker version is mysql and native install version is localhost
 $cfg['Servers'][$i]['port'] = 3306;
 $cfg['Servers'][$i]['socket'] = '';
 $cfg['Servers'][$i]['auth_type'] = 'cookie';

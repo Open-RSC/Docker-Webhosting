@@ -172,7 +172,7 @@
 										<tbody>
 										<tr>
 											<td class="align-middle" style="width: 100px;">
-												<a href="detail.html">
+												<a href="{{ route('play') }}">
 													<img src="{{ asset('img/title/mm_sword.jpg') }}" alt="play game">
 												</a>
 											</td>
@@ -184,7 +184,7 @@
 														<td class="b text-center" id="playgamebut"
 															background="{{ asset('img/title/shinystonered.jpg') }}">
 															<a class="whitelink" onmouseover="redglow('playgamebut')"
-															   onmouseout="unredglow('playgamebut')" href="detail.html">
+															   onmouseout="unredglow('playgamebut')" href="{{ route('play') }}">
 															<span class="font-weight-bold d-block">
 																Play Game
 															</span>
@@ -200,7 +200,7 @@
 												Play RuneScape Classic right now!
 											</span>
 												<span class="d-block">
-													<a class=c href="detail.html">
+													<a class=c href="{{ route('play') }}">
 														<span class="d-block">
 															Click Here
 														</span>

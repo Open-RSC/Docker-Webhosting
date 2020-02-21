@@ -1511,4 +1511,9 @@ class HomeController extends Controller
 			'playerPositions' => $playerPositions,
 		]);
 	}
+
+	public function play()
+	{
+		return view('play');
+	}
 }
