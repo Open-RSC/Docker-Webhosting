@@ -4,450 +4,77 @@
 
 	<div class="justify-content-center row text-center">
 
-		<div class="pt-4">
+		<div class="pt-4 pb-3">
 
-			<!-- Main features box -->
-			<div class="pt-3" style="max-width: 810px">
-				<table style="background-color: black">
-					<tbody>
-					<tr style="line-height: 6px">
-						<td>
-							<img src="{{ asset('images/title/fm_topleft.gif') }}" width="6" height="6" alt="">
-						</td>
-						<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_top2.gif') }})">
-							<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
-						</td>
-						<td>
-							<img src="{{ asset('images/title/fm_topright.gif') }}" width="6" height="6" alt="">
-						</td>
-					</tr>
-					<tr>
-						<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_left.gif') }})">
-							<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
-						</td>
-						<td>
-							<div class="align-content-center col pb-3">
-								<div class="font-weight-bold pt-2 pb-2 d-block">
-									Main Features
-								</div>
-
-								<!-- Row 1/3 -->
-								<div class="item align-top">
-									<table class="itemtable">
-										<tbody>
-										<tr>
-											<td class="align-middle" style="width: 100px;">
-												<a href="{{ route('play') }}">
-													<img src="{{ asset('images/title/mm_sword.jpg') }}" alt="play game">
-												</a>
-											</td>
-											<td class="align-top" style="width: 120px;">
-												<table
-													style="height: 45px; width: 110px; padding: 2px; background-color: black">
-													<tbody>
-													<tr>
-														<td class="b text-center" id="playgamebut"
-															background="{{ asset('images/title/shinystonered.jpg') }}">
-															<a class="whitelink" onmouseover="redglow('playgamebut')"
-															   onmouseout="unredglow('playgamebut')"
-															   href="{{ route('play') }}">
-															<span class="font-weight-bold d-block">
-																Play Game
-															</span>
-																<span class="d-block">
-																(Existing User)
-															</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<span class="font-weight-bold d-block">
-												Play RuneScape Classic right now!
-											</span>
-												<span class="d-block">
-													<a class=c href="{{ route('play') }}">
-														<span class="d-block">
-															Click Here
-														</span>
-													</a>
-												</span>
-											</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-
-								<div class="item align-top">
-									<table class="itemtable">
-										<tbody>
-										<tr>
-											<td class="align-middle" style="width: 100px;">
-												<a href="create/index.html">
-													<img src="{{ asset('images/title/mm_player.jpg') }}"
-														 alt="create player">
-												</a>
-											</td>
-											<td class="align-top" style="width: 120px;">
-												<table
-													style="height: 45px; width: 110px; padding: 2px; background-color: black">
-													<tbody>
-													<tr>
-														<td class="b text-center" id="createaccountbut"
-															background="{{ asset('images/title/shinystonered.jpg') }}">
-															<a class="whitelink"
-															   onmouseover="redglow('createaccountbut')"
-															   onmouseout="unredglow('createaccountbut')"
-															   href="create/index.html">
-															<span class="font-weight-bold d-block">
-																Create Account
-															</span>
-																<span class="d-block">
-																(New User)
-															</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<span class="d-block">
-												Create a free account for both the game & website.
-											</span>
-												<a class="c" href="create/index.html">
-												<span class="d-block">
-													Click Here
-												</span>
-												</a>
-											</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-
-								<div class="item align-top">
-									<table class="itemtable">
-										<tbody>
-										<tr>
-											<td class="align-middle" style="width: 100px;">
-												<a href="https://rsc.plus" target="_blank">
-													<img src="{{ asset('images/title/mm2_screenshots.jpg') }}">
-												</a>
-											</td>
-											<td class="align-top" style="width: 120px;">
-												<table
-													style="height: 45px; width: 110px; padding: 2px; background-color: black">
-													<tbody>
-													<tr>
-														<td class="b text-center" id="screenshotsbut"
-															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink"
-															   onmouseover="greyglow('screenshotsbut')"
-															   onmouseout="ungreyglow('screenshotsbut')"
-															   href="https://rsc.plus" target="_blank">
-															<span class="font-weight-bold d-block">
-																RSC+ Replays
-															</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<span class="d-block">
-													Watch thousands of original RSC recordings!
-												</span>
-												<a class="c" href="https://rsc.plus" target="_blank">
-													<span class="d-block">
-														Click Here
-													</span>
-												</a>
-											</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-
-								<!-- Row 2/3 -->
-								<div class="item align-top">
-									<table class="itemtable">
-										<tbody>
-										<tr>
-											<td class="align-middle" style="width: 100px;">
-												<a href="https://discord.gg/ABdFCqn">
-													<img src="{{ asset('images/title/mm_members.jpg') }}" alt="">
-												</a>
-											</td>
-											<td class="align-top" style="width: 120px;">
-												<table
-													style="height: 45px; width: 110px; padding: 2px; background-color: black">
-													<tbody>
-													<tr>
-														<td class="b text-center" id="membersbut"
-															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink"
-															   onmouseover="greyglow('membersbut')"
-															   onmouseout="ungreyglow('membersbut')"
-															   href="https://discord.gg/ABdFCqn">
-															<span class="font-weight-bold d-block">
-																Discord Invitation
-															</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<span class="d-block">
-												Join our Discord server.
-											</span>
-												<a class=c href="https://discord.gg/ABdFCqn">
-												<span class="d-block">
-													Click Here
-												</span>
-												</a>
-											</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-
-								<div class="item align-top">
-									<table class="itemtable">
-										<tbody>
-										<tr>
-											<td class="align-middle" style="width: 100px;">
-												<a href="/wiki">
-													<img src="{{ asset('images/title/mm_howtoplay.jpg') }}"
-														 alt="how to play">
-												</a>
-											</td>
-											<td class="align-top" style="width: 120px;">
-												<table
-													style="height: 45px; width: 110px; padding: 2px; background-color: black">
-													<tbody>
-													<tr>
-														<td class="b text-center" id="manualbut"
-															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink"
-															   onmouseover="greyglow('manualbut')"
-															   onmouseout="ungreyglow('manualbut')"
-															   target="_blank"
-															   href="/wiki">
-															<span class="font-weight-bold d-block">
-																Manual
-															</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<span class="d-block">
-												Detailed info on all aspects of the game.
-											</span>
-												<a class="c" target="_blank" href="/wiki">
-												<span class="d-block">
-													Click Here
-												</span>
-												</a>
-											</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-
-								<div class="item align-top">
-									<table class="itemtable">
-										<tbody>
-										<tr>
-											<td class="align-middle" style="width: 100px;">
-												<a href="hiscores/hiscores.html">
-													<img src="{{ asset('images/title/mm_chalice.jpg') }}" alt="">
-												</a>
-											</td>
-											<td class="align-top" style="width: 120px;">
-												<table
-													style="height: 45px; width: 110px; padding: 2px; background-color: black">
-													<tbody>
-													<tr>
-														<td class="b text-center" id="hiscoresbut"
-															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink"
-															   onmouseover="greyglow('hiscoresbut')"
-															   onmouseout="ungreyglow('hiscoresbut')"
-															   href="hiscores/hiscores.html">
-															<span class="font-weight-bold d-block">
-																Full
-															</span>
-																<span class="font-weight-bold d-block">
-																Hiscores
-															</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<span class="d-block">
-												Is your character in the top 500,000?
-											</span>
-												<a class="c" href="hiscores/hiscores.html">
-												<span class="d-block">
-													Click Here
-												</span>
-												</a>
-											</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-
-								<!-- Row 3/3 -->
-								<div class="item align-top">
-									<table class="itemtable">
-										<tbody>
-										<tr>
-											<td class="align-middle" style="width: 100px;">
-												<a href="varrock/varrockindex.html">
-													<img src="{{ asset('images/title/mm_lov.jpg') }}" alt="">
-												</a>
-											</td>
-											<td class="align-top" style="width: 120px;">
-												<table
-													style="height: 45px; width: 110px; padding: 2px; background-color: black">
-													<tbody>
-													<tr>
-														<td class="b text-center" id="varrockbut"
-															background="{{ asset('images/stoneback.gif') }}" alt="">
-															<a class="whitelink"
-															   onmouseover="greyglow('varrockbut')"
-															   onmouseout="ungreyglow('varrockbut')"
-															   href="varrock/varrockindex.html">
-															<span class="font-weight-bold d-block">
-																Library of Varrock
-															</span>
-															</a>
-														</td>
-													</tr>
-													</tbody>
-												</table>
-												<span class="d-block">
-												Stories and letters about RuneScape.
-											</span>
-												<a class="c" href="varrock/varrockindex.html">
-												<span class="d-block">
-													Click Here
-												</span>
-												</a>
-											</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-
-								<table class="itemtable">
-									<tbody>
-									<tr>
-										<td class="align-middle" style="width: 100px;">
-											<a href="{{ route('worldmap') }}">
-												<img src="{{ asset('images/title/mm_worldmap.jpg') }}" alt="">
-											</a>
-										</td>
-										<td class="align-top" style="width: 120px;">
-											<table
-												style="height: 45px; width: 110px; padding: 2px; background-color: black">
-												<tbody>
+			<table width=100% height=100% cellpadding=0 cellspacing=0>
+				<tr>
+					<td valign=middle>
+						<center>
+							<table cellpadding=0 cellspacing=0>
+								<tr>
+									<td valign=top><img src=images/edge_a.jpg width=100 height=43 hspace=0 vspace=0>
+									</td>
+									<td valign=top><img src=images/edge_c.jpg width=400 height=42 hspace=0 vspace=0>
+									</td>
+									<td valign=top><img src=images/edge_d.jpg width=100 height=43 hspace=0 vspace=0>
+									</td>
+								</tr>
+							</table>
+							<table width=600 cellpadding=0 cellspacing=0 border=0 background=images/background2.jpg>
+								<tr>
+									<td valign=bottom>
+										<center>
+											<table width=250 bgcolor=black cellpadding=4>
 												<tr>
-													<td class="b text-center" id="worldmapbut"
-														background="{{ asset('images/stoneback.gif') }}">
-														<a class="whitelink" onmouseover="greyglow('worldmapbut')"
-														   onmouseout="ungreyglow('worldmapbut')"
-														   href="{{ route('worldmap') }}">
-														<span class="font-weight-bold d-block">
-															World Map
-														</span>
-														</a>
+													<td class=e>
+														<center>
+															<b>Play RuneScape</b>
+															<br>
+															<a class="c" href="title.html">Main Menu</a>
+															-
+															<a class="c"
+															   href="detail.html">Detail
+																Select</a>
+														</center>
 													</td>
 												</tr>
-												</tbody>
 											</table>
-											<span class="d-block">
-											Great for finding your way around.
-										</span>
-											<a class="c" href="{{ route('worldmap') }}">
-											<span class="d-block">
-												Click Here
-											</span>
-											</a>
-										</td>
-									</tr>
-									</tbody>
-								</table>
-
-								<!-- Bottom border -->
-								<div class="item">
-									<table class="itemtable">
-										<tbody>
-										<tr>
-											<td style="width: 100px">
-												<img height=1 src="{{ asset('images/title/blank.gif') }}" width=77 alt="">
-											</td>
-											<td style="width: 120px">
-												<img height=1 src="{{ asset('images/title/blank.gif') }}" width=110 alt="">
-											</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-						</td>
-						<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_right.gif') }})">
-							<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
-						</td>
-					</tr>
-					<tr style="line-height: 6px">
-						<td>
-							<img src="{{ asset('images/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
-						</td>
-						<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_bottom2.gif') }})">
-							<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
-						</td>
-						<td>
-							<img src="{{ asset('images/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
-						</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
+											<img src="images/cabbage_logo.png" height="300px" width="300px"/>
+											<table cellpadding=0 cellspacing=0>
+												<tr>
+													<td valign=bottom>
+														<img src=images/edge_g2.jpg width=100 height=82 hspace=0
+															 vspace=0>
+													</td>
+													<td valign=bottom>
+														<div align=center
+															 style="font-family:Arial,Helvetica,sans-serif; font-size:11px;">
+															This webpage and its contents is copyright 2005 Jagex
+															Ltd<br>
+															To use our service you must agree to our <a
+																href="frame2.cgi?page=terms/terms.html" class=c>Terms+Conditions</a>
+															+ <a href="frame2.cgi?page=privacy/privacy.html" class=c>Privacy
+																policy</a>
+														</div>
+														<img src=images/edge_c.jpg width=400 height=42 hspace=0
+															 vspace=0>
+													</td>
+													<td valign=bottom>
+														<img src=images/edge_h2.jpg width=100 height=82 hspace=0
+															 vspace=0>
+													</td>
+												</tr>
+											</table>
+										</center>
+									</td>
+								</tr>
+							</table>
+						</center>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
-
-	<!-- Bottom border -->
-	<div class="item">
-		<table class="itemtable">
-			<tbody>
-			<tr>
-				<td style="width: 100px">
-					<img height=1 src="{{ asset('images/title/blank.gif') }}" width=77 alt="">
-				</td>
-				<td style="width: 120px">
-					<img height=1 src="{{ asset('images/title/blank.gif') }}" width=110 alt="">
-				</td>
-			</tr>
-			</tbody>
-		</table>
-	</div>
-	</td>
-	<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_right.gif') }})">
-		<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
-	</td>
-	</tr>
-	<tr style="line-height: 6px">
-		<td>
-			<img src="{{ asset('images/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
-		</td>
-		<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_bottom2.gif') }})">
-			<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
-		</td>
-		<td>
-			<img src="{{ asset('images/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
-		</td>
-	</tr>
 
 	<!-- Extra large version -->
 	<div class="row align-items-center d-none d-xl-block">
@@ -457,21 +84,24 @@
 	</div>
 
 	<!-- Large version -->
-	<div class="row align-items-center d-none d-md-none d-lg-block d-xl-none">
+	<div
+		class="row align-items-center d-none d-md-none d-lg-block d-xl-none">
 		<div class="col">
 
 		</div>
 	</div>
 
 	<!-- Medium view version -->
-	<div class="row align-items-center pl-5 pr-5 d-none d-md-block d-lg-none d-xl-none">
+	<div
+		class="row align-items-center pl-5 pr-5 d-none d-md-block d-lg-none d-xl-none">
 		<div class="col">
 
 		</div>
 	</div>
 
 	<!-- Mobile view version -->
-	<div class="row align-items-center pl-4 pr-4 d-sm d-md-none d-lg-none">
+	<div
+		class="row align-items-center pl-4 pr-4 d-sm d-md-none d-lg-none">
 		<div class="col">
 			discuss
 		</div>

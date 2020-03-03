@@ -151,7 +151,6 @@ body {
     FONT-FAMILY: Arial, Helvetica, sans-serif;
     color: white;
     background-color: black;
-    background-image: url("images/background.jpg");
 }
 
 a:hover {
@@ -480,11 +479,6 @@ li > a:only-child:after {
     nav ul ul ul a {
         padding: 0 80px;
     }
-
-    //nav a:hover,
-    //nav ul ul ul a {
-    //    background-color: rgba(19, 36, 47, 0.3);
-    //}
 
     nav ul li ul li .toggle,
     nav ul ul a,

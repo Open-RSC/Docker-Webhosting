@@ -1,5 +1,5 @@
 @extends('template')
-
+<body style="background-image: url({{ asset('images/background.jpg') }}); }">
 @section('content')
 
 	<div class="justify-content-center row text-center">
@@ -13,7 +13,8 @@
 				<div class="col mr-1 mt-5">
 					<img src="{{ asset('images/title/rslogo.png') }}" alt="logo">
 					<div class="pt-3 d-block" style="font-size: 14px">
-						{{ number_format($uniquePlayers) }} people have created {{ number_format($totalPlayers) }} players since 2018
+						{{ number_format($uniquePlayers) }} people have created {{ number_format($totalPlayers) }}
+						players since 2018
 					</div>
 				</div>
 
@@ -163,7 +164,7 @@
 						<td>
 							<div class="align-content-center col pb-3">
 								<div class="font-weight-bold pt-2 pb-2 d-block">
-										Main Features
+									Main Features
 								</div>
 
 								<!-- Row 1/3 -->
@@ -184,7 +185,8 @@
 														<td class="b text-center" id="playgamebut"
 															background="{{ asset('images/title/shinystonered.jpg') }}">
 															<a class="whitelink" onmouseover="redglow('playgamebut')"
-															   onmouseout="unredglow('playgamebut')" href="{{ route('play') }}">
+															   onmouseout="unredglow('playgamebut')"
+															   href="{{ route('play') }}">
 															<span class="font-weight-bold d-block">
 																Play Game
 															</span>
@@ -520,10 +522,12 @@
 										<tbody>
 										<tr>
 											<td style="width: 100px">
-												<img height=1 src="{{ asset('images/title/blank.gif') }}" width=77 alt="">
+												<img height=1 src="{{ asset('images/title/blank.gif') }}" width=77
+													 alt="">
 											</td>
 											<td style="width: 120px">
-												<img height=1 src="{{ asset('images/title/blank.gif') }}" width=110 alt="">
+												<img height=1 src="{{ asset('images/title/blank.gif') }}" width=110
+													 alt="">
 											</td>
 										</tr>
 										</tbody>
@@ -763,7 +767,8 @@
 													<tr>
 														<td>
 															<a href="login.html">
-																<img src="{{ asset('images/title/mms_vote.jpg') }}" alt="">
+																<img src="{{ asset('images/title/mms_vote.jpg') }}"
+																	 alt="">
 															</a>
 														</td>
 														<td>
@@ -901,7 +906,8 @@
 															<span class="d-block">
 																Read all about Runescape Classic.
 															</span>
-															<a class="c" href="https://classic.runescape.wiki/" target="_blank">
+															<a class="c" href="https://classic.runescape.wiki/"
+															   target="_blank">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -922,7 +928,8 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink" href="https://discord.gg/grzEjDB" target="_blank">
+															<a class="whitelink" href="https://discord.gg/grzEjDB"
+															   target="_blank">
 																<span class="font-weight-bold d-block">
 																	RSC Discord
 																</span>
@@ -944,7 +951,8 @@
 															<span class="d-block">
 																Discuss the game with fellow players!
 															</span>
-															<a class="c" href="https://discord.gg/grzEjDB" target="_blank">
+															<a class="c" href="https://discord.gg/grzEjDB"
+															   target="_blank">
 																<span class="d-block">
 																	Login
 																</span>
@@ -962,7 +970,8 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink" href="https://reddit.com/r/openrsc" target="_blank">
+															<a class="whitelink" href="https://reddit.com/r/openrsc"
+															   target="_blank">
 																<span class="font-weight-bold d-block">
 																	OpenRSC Reddit
 																</span>
@@ -976,14 +985,17 @@
 													<tr>
 														<td>
 															<a href="https://reddit.com/r/openrsc" target="_blank">
-																<img src="{{ asset('images/title/mms_unsubscribe.jpg') }}" alt="">
+																<img
+																	src="{{ asset('images/title/mms_unsubscribe.jpg') }}"
+																	alt="">
 															</a>
 														</td>
 														<td>
 															<span class="d-block">
 																Learn all about the project and recent development.
 															</span>
-															<a class="c" href="https://reddit.com/r/openrsc" target="_blank">
+															<a class="c" href="https://reddit.com/r/openrsc"
+															   target="_blank">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -1001,7 +1013,8 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink" href="https://reddit.com/r/rsc" target="_blank">
+															<a class="whitelink" href="https://reddit.com/r/rsc"
+															   target="_blank">
 																<span class="d-block">
 																	RSC Reddit
 																</span>
@@ -1023,7 +1036,8 @@
 															<span class="d-block">
 																Discuss Runescape Classic topics.
 															</span>
-															<a class="c" href="https://reddit.com/r/rsc" target="_blank">
+															<a class="c" href="https://reddit.com/r/rsc"
+															   target="_blank">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -1055,7 +1069,8 @@
 													<tr>
 														<td>
 															<a href="faq/faqindex.html">
-																<img src="{{ asset('images/title/mms_faq.jpg') }}" alt="">
+																<img src="{{ asset('images/title/mms_faq.jpg') }}"
+																	 alt="">
 															</a>
 														</td>
 														<td>
@@ -1094,8 +1109,9 @@
 													<tr>
 														<td>
 															<a href="files/files.html">
-																<img src="{{ asset('images/title/mms_extrafiles.jpg') }}"
-																	 alt="">
+																<img
+																	src="{{ asset('images/title/mms_extrafiles.jpg') }}"
+																	alt="">
 															</a>
 														</td>
 														<td>
@@ -1275,3 +1291,4 @@
 	</div>-->
 
 @endsection
+</body>
