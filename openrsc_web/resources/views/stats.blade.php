@@ -104,7 +104,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/575.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/575.png"
 									 alt="Christmas Cracker"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -118,7 +118,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/577.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/577.png"
 									 alt="Yellow Party Hat"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -132,7 +132,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/581.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/581.png"
 									 alt="White Party Hat"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -146,7 +146,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/580.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/580.png"
 									 alt="Purple Party Hat"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -160,7 +160,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/576.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/576.png"
 									 alt="Red Party Hat"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -174,7 +174,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/578.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/578.png"
 									 alt="Blue Party Hat"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -188,7 +188,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/579.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/579.png"
 									 alt="Green Party Hat"/>
 							</td>
 						</tr>
@@ -204,7 +204,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/422.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/422.png"
 									 alt="Pumpkin"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -218,7 +218,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/677.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/677.png"
 									 alt="Easter Egg"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -232,7 +232,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/831.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/831.png"
 									 alt="Red Halloween Mask"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -246,7 +246,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/832.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/832.png"
 									 alt="Blue Halloween Mask"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -260,7 +260,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/828.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/828.png"
 									 alt="Green Halloween Mask"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -274,7 +274,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/971.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/971.png"
 									 alt="Santa's Hat"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -288,7 +288,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/1156.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/1156.png"
 									 alt="Bunny Ears"/>
 							</td>
 						</tr>
@@ -304,7 +304,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/1289.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/1289.png"
 									 alt="Scythe"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -318,7 +318,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/1278.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/1278.png"
 									 alt="Dragon Square Shield"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -332,7 +332,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/795.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/795.png"
 									 alt="Dragon Medium Helmet"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -346,7 +346,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/597.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/597.png"
 									 alt="Dragon Amulet"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -360,7 +360,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/594.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/594.png"
 									 alt="Dragon Axe"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -374,7 +374,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/593.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/593.png"
 									 alt="Dragon Sword"/>
 							</td>
 							<td class="pl-1 pr-1 clickable-row" data-toggle="tooltip"
@@ -388,7 +388,7 @@
 										0
 									@endif
 								</div>
-								<img class="mt-n2" src="{{ asset('img/items') }}/18.png"
+								<img class="mt-n2" src="{{ asset('images/items') }}/18.png"
 									 alt="Cabbage"/>
 							</td>
 						</tr>

@@ -11,7 +11,7 @@
 
 				<!-- Logo and player online count -->
 				<div class="col mr-1 mt-5">
-					<img src="{{ asset('img/title/rslogo.png') }}" alt="logo">
+					<img src="{{ asset('images/title/rslogo.png') }}" alt="logo">
 					<div class="pt-3 d-block" style="font-size: 14px">
 						{{ number_format($uniquePlayers) }} people have created {{ number_format($totalPlayers) }} players since 2018
 					</div>
@@ -23,18 +23,18 @@
 						<tbody>
 						<tr style="line-height: 6px">
 							<td>
-								<img src="{{ asset('img/title/fm_topleft.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_topleft.gif') }}" width="6" height="6" alt="">
 							</td>
-							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_top2.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6" alt="">
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_top2.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
 							</td>
 							<td>
-								<img src="{{ asset('img/title/fm_topright.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_topright.gif') }}" width="6" height="6" alt="">
 							</td>
 						</tr>
 						<tr>
-							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_left.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_left.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 							<td>
 								<div class="font-weight-bold pt-2 pb-2 d-block">
@@ -45,7 +45,7 @@
 									<tr>
 										<td class="pr-1 pl-1">
 											<a href="news.html">
-												<img src="{{ asset('img/title/mm_scroll.jpg') }}" alt="">
+												<img src="{{ asset('images/title/mm_scroll.jpg') }}" alt="">
 											</a>
 										</td>
 										<td style="width: 320px">
@@ -121,19 +121,19 @@
 									</a>
 								</div>
 							</td>
-							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_right.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 						</tr>
 						<tr style="line-height: 6px">
 							<td>
-								<img src="{{ asset('img/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
 							</td>
-							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6" alt="">
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_bottom2.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
 							</td>
 							<td>
-								<img src="{{ asset('img/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
 							</td>
 						</tr>
 						</tbody>
@@ -147,18 +147,18 @@
 					<tbody>
 					<tr style="line-height: 6px">
 						<td>
-							<img src="{{ asset('img/title/fm_topleft.gif') }}" width="6" height="6" alt="">
+							<img src="{{ asset('images/title/fm_topleft.gif') }}" width="6" height="6" alt="">
 						</td>
-						<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_top2.gif') }})">
-							<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6" alt="">
+						<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_top2.gif') }})">
+							<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
 						</td>
 						<td>
-							<img src="{{ asset('img/title/fm_topright.gif') }}" width="6" height="6" alt="">
+							<img src="{{ asset('images/title/fm_topright.gif') }}" width="6" height="6" alt="">
 						</td>
 					</tr>
 					<tr>
-						<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_left.gif') }})">
-							<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
+						<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_left.gif') }})">
+							<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 						</td>
 						<td>
 							<div class="align-content-center col pb-3">
@@ -173,7 +173,7 @@
 										<tr>
 											<td class="align-middle" style="width: 100px;">
 												<a href="{{ route('play') }}">
-													<img src="{{ asset('img/title/mm_sword.jpg') }}" alt="play game">
+													<img src="{{ asset('images/title/mm_sword.jpg') }}" alt="play game">
 												</a>
 											</td>
 											<td class="align-top" style="width: 120px;">
@@ -182,7 +182,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center" id="playgamebut"
-															background="{{ asset('img/title/shinystonered.jpg') }}">
+															background="{{ asset('images/title/shinystonered.jpg') }}">
 															<a class="whitelink" onmouseover="redglow('playgamebut')"
 															   onmouseout="unredglow('playgamebut')" href="{{ route('play') }}">
 															<span class="font-weight-bold d-block">
@@ -218,7 +218,7 @@
 										<tr>
 											<td class="align-middle" style="width: 100px;">
 												<a href="create/index.html">
-													<img src="{{ asset('img/title/mm_player.jpg') }}"
+													<img src="{{ asset('images/title/mm_player.jpg') }}"
 														 alt="create player">
 												</a>
 											</td>
@@ -228,7 +228,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center" id="createaccountbut"
-															background="{{ asset('img/title/shinystonered.jpg') }}">
+															background="{{ asset('images/title/shinystonered.jpg') }}">
 															<a class="whitelink"
 															   onmouseover="redglow('createaccountbut')"
 															   onmouseout="unredglow('createaccountbut')"
@@ -264,7 +264,7 @@
 										<tr>
 											<td class="align-middle" style="width: 100px;">
 												<a href="https://rsc.plus" target="_blank">
-													<img src="{{ asset('img/title/mm2_screenshots.jpg') }}">
+													<img src="{{ asset('images/title/mm2_screenshots.jpg') }}">
 												</a>
 											</td>
 											<td class="align-top" style="width: 120px;">
@@ -273,7 +273,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center" id="screenshotsbut"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink"
 															   onmouseover="greyglow('screenshotsbut')"
 															   onmouseout="ungreyglow('screenshotsbut')"
@@ -307,7 +307,7 @@
 										<tr>
 											<td class="align-middle" style="width: 100px;">
 												<a href="https://discord.gg/ABdFCqn">
-													<img src="{{ asset('img/title/mm_members.jpg') }}" alt="">
+													<img src="{{ asset('images/title/mm_members.jpg') }}" alt="">
 												</a>
 											</td>
 											<td class="align-top" style="width: 120px;">
@@ -316,7 +316,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center" id="membersbut"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink"
 															   onmouseover="greyglow('membersbut')"
 															   onmouseout="ungreyglow('membersbut')"
@@ -349,7 +349,7 @@
 										<tr>
 											<td class="align-middle" style="width: 100px;">
 												<a href="/wiki">
-													<img src="{{ asset('img/title/mm_howtoplay.jpg') }}"
+													<img src="{{ asset('images/title/mm_howtoplay.jpg') }}"
 														 alt="how to play">
 												</a>
 											</td>
@@ -359,7 +359,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center" id="manualbut"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink"
 															   onmouseover="greyglow('manualbut')"
 															   onmouseout="ungreyglow('manualbut')"
@@ -393,7 +393,7 @@
 										<tr>
 											<td class="align-middle" style="width: 100px;">
 												<a href="hiscores/hiscores.html">
-													<img src="{{ asset('img/title/mm_chalice.jpg') }}" alt="">
+													<img src="{{ asset('images/title/mm_chalice.jpg') }}" alt="">
 												</a>
 											</td>
 											<td class="align-top" style="width: 120px;">
@@ -402,7 +402,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center" id="hiscoresbut"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink"
 															   onmouseover="greyglow('hiscoresbut')"
 															   onmouseout="ungreyglow('hiscoresbut')"
@@ -439,7 +439,7 @@
 										<tr>
 											<td class="align-middle" style="width: 100px;">
 												<a href="varrock/varrockindex.html">
-													<img src="{{ asset('img/title/mm_lov.jpg') }}" alt="">
+													<img src="{{ asset('images/title/mm_lov.jpg') }}" alt="">
 												</a>
 											</td>
 											<td class="align-top" style="width: 120px;">
@@ -448,7 +448,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center" id="varrockbut"
-															background="{{ asset('img/stoneback.gif') }}" alt="">
+															background="{{ asset('images/stoneback.gif') }}" alt="">
 															<a class="whitelink"
 															   onmouseover="greyglow('varrockbut')"
 															   onmouseout="ungreyglow('varrockbut')"
@@ -480,7 +480,7 @@
 									<tr>
 										<td class="align-middle" style="width: 100px;">
 											<a href="{{ route('worldmap') }}">
-												<img src="{{ asset('img/title/mm_worldmap.jpg') }}" alt="">
+												<img src="{{ asset('images/title/mm_worldmap.jpg') }}" alt="">
 											</a>
 										</td>
 										<td class="align-top" style="width: 120px;">
@@ -489,7 +489,7 @@
 												<tbody>
 												<tr>
 													<td class="b text-center" id="worldmapbut"
-														background="{{ asset('img/stoneback.gif') }}">
+														background="{{ asset('images/stoneback.gif') }}">
 														<a class="whitelink" onmouseover="greyglow('worldmapbut')"
 														   onmouseout="ungreyglow('worldmapbut')"
 														   href="{{ route('worldmap') }}">
@@ -520,29 +520,29 @@
 										<tbody>
 										<tr>
 											<td style="width: 100px">
-												<img height=1 src="{{ asset('img/title/blank.gif') }}" width=77 alt="">
+												<img height=1 src="{{ asset('images/title/blank.gif') }}" width=77 alt="">
 											</td>
 											<td style="width: 120px">
-												<img height=1 src="{{ asset('img/title/blank.gif') }}" width=110 alt="">
+												<img height=1 src="{{ asset('images/title/blank.gif') }}" width=110 alt="">
 											</td>
 										</tr>
 										</tbody>
 									</table>
 								</div>
 						</td>
-						<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
-							<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
+						<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_right.gif') }})">
+							<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 						</td>
 					</tr>
 					<tr style="line-height: 6px">
 						<td>
-							<img src="{{ asset('img/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
+							<img src="{{ asset('images/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
 						</td>
-						<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
-							<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6" alt="">
+						<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_bottom2.gif') }})">
+							<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
 						</td>
 						<td>
-							<img src="{{ asset('img/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
+							<img src="{{ asset('images/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
 						</td>
 					</tr>
 					</tbody>
@@ -558,18 +558,18 @@
 						<tbody>
 						<tr style="line-height: 6px">
 							<td>
-								<img src="{{ asset('img/title/fm_topleft.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_topleft.gif') }}" width="6" height="6" alt="">
 							</td>
-							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_top2.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6" alt="">
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_top2.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
 							</td>
 							<td>
-								<img src="{{ asset('img/title/fm_topright.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_topright.gif') }}" width="6" height="6" alt="">
 							</td>
 						</tr>
 						<tr>
-							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_left.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_left.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 							<td>
 								<div class="align-content-center col pb-3">
@@ -584,7 +584,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink"
 															   href="#">
 																<span class="font-weight-bold d-block">
@@ -601,7 +601,7 @@
 														<td>
 															<a href="#">
 																<img
-																	src="{{ asset('img/title/mms_passwordsupport.jpg') }}"
+																	src="{{ asset('images/title/mms_passwordsupport.jpg') }}"
 																	alt="">
 															</a>
 														</td>
@@ -629,7 +629,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink" href="login.html">
 																<span class="d-block">
 																	Account Management
@@ -644,7 +644,7 @@
 													<tr>
 														<td>
 															<a href="login.html">
-																<img src="{{ asset('img/title/mms_accman.jpg') }}"
+																<img src="{{ asset('images/title/mms_accman.jpg') }}"
 																	 alt="">
 															</a>
 														</td>
@@ -669,7 +669,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink" href="guides/guides.html">
 																<span class="d-block font-weight-bold">
 																	Rules & Security
@@ -684,7 +684,7 @@
 													<tr>
 														<td>
 															<a href="guides/guides.html">
-																<img src="{{ asset('img/title/mms_rules.jpg') }}">
+																<img src="{{ asset('images/title/mms_rules.jpg') }}">
 															</a>
 														</td>
 														<td>
@@ -708,7 +708,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink" href="login.html">
 																<span class="d-block">
 																	Message Centre
@@ -723,7 +723,7 @@
 													<tr>
 														<td>
 															<a href="login.html">
-																<img src="{{ asset('img/title/mms_inbox.jpg') }}"
+																<img src="{{ asset('images/title/mms_inbox.jpg') }}"
 																	 alt="">
 															</a>
 														</td>
@@ -748,7 +748,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink" href="login.html">
 																<span class="d-block">
 																	Latest Poll
@@ -763,7 +763,7 @@
 													<tr>
 														<td>
 															<a href="login.html">
-																<img src="{{ asset('img/title/mms_vote.jpg') }}" alt="">
+																<img src="{{ asset('images/title/mms_vote.jpg') }}" alt="">
 															</a>
 														</td>
 														<td>
@@ -787,7 +787,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink" href="login.html">
 																<span class="d-block">
 																	Personal Hiscores
@@ -802,7 +802,7 @@
 													<tr>
 														<td>
 															<a href="login.html">
-																<img src="{{ asset('img/title/mms_chalice.jpg') }}"
+																<img src="{{ asset('images/title/mms_chalice.jpg') }}"
 																	 alt="">
 															</a>
 														</td>
@@ -825,19 +825,19 @@
 									</table>
 								</div>
 							</td>
-							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_right.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 						</tr>
 						<tr style="line-height: 6px">
 							<td>
-								<img src="{{ asset('img/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
 							</td>
-							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6" alt="">
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_bottom2.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
 							</td>
 							<td>
-								<img src="{{ asset('img/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
 							</td>
 						</tr>
 						</tbody>
@@ -850,18 +850,18 @@
 						<tbody>
 						<tr style="line-height: 6px">
 							<td>
-								<img src="{{ asset('img/title/fm_topleft.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_topleft.gif') }}" width="6" height="6" alt="">
 							</td>
-							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_top2.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6" alt="">
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_top2.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
 							</td>
 							<td>
-								<img src="{{ asset('img/title/fm_topright.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_topright.gif') }}" width="6" height="6" alt="">
 							</td>
 						</tr>
 						<tr>
-							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_left.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_left.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 							<td>
 								<div class="align-content-center col pb-3">
@@ -876,7 +876,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink"
 															   href="https://classic.runescape.wiki/" target="_blank">
 																<span class="d-block">
@@ -893,7 +893,7 @@
 														<td>
 															<a href="https://classic.runescape.wiki/" target="_blank">
 																<img height=75
-																	 src="{{ asset('img/title/mms_subscribe.jpg') }}"
+																	 src="{{ asset('images/title/mms_subscribe.jpg') }}"
 																	 width=48 alt="">
 															</a>
 														</td>
@@ -921,7 +921,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink" href="https://discord.gg/grzEjDB" target="_blank">
 																<span class="font-weight-bold d-block">
 																	RSC Discord
@@ -936,7 +936,7 @@
 													<tr>
 														<td>
 															<a href="https://discord.gg/grzEjDB" target="_blank">
-																<img src="{{ asset('img/title/mms_forums.jpg') }}"
+																<img src="{{ asset('images/title/mms_forums.jpg') }}"
 																	 alt="">
 															</a>
 														</td>
@@ -961,7 +961,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink" href="https://reddit.com/r/openrsc" target="_blank">
 																<span class="font-weight-bold d-block">
 																	OpenRSC Reddit
@@ -976,7 +976,7 @@
 													<tr>
 														<td>
 															<a href="https://reddit.com/r/openrsc" target="_blank">
-																<img src="{{ asset('img/title/mms_unsubscribe.jpg') }}" alt="">
+																<img src="{{ asset('images/title/mms_unsubscribe.jpg') }}" alt="">
 															</a>
 														</td>
 														<td>
@@ -1000,7 +1000,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink" href="https://reddit.com/r/rsc" target="_blank">
 																<span class="d-block">
 																	RSC Reddit
@@ -1015,7 +1015,7 @@
 													<tr>
 														<td>
 															<a href="https://reddit.com/r/rsc" target="_blank">
-																<img src="{{ asset('img/title/mms_support.jpg') }}"
+																<img src="{{ asset('images/title/mms_support.jpg') }}"
 																	 alt="">
 															</a>
 														</td>
@@ -1040,7 +1040,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink" href="faq/faqindex.html">
 																<span class="font-weight-bold d-block">
 																	F.A.Q.
@@ -1055,7 +1055,7 @@
 													<tr>
 														<td>
 															<a href="faq/faqindex.html">
-																<img src="{{ asset('img/title/mms_faq.jpg') }}" alt="">
+																<img src="{{ asset('images/title/mms_faq.jpg') }}" alt="">
 															</a>
 														</td>
 														<td>
@@ -1079,7 +1079,7 @@
 													<tbody>
 													<tr>
 														<td class="b text-center"
-															background="{{ asset('img/stoneback.gif') }}">
+															background="{{ asset('images/stoneback.gif') }}">
 															<a class="whitelink text-center" href="files/files.html">
 																<span class="d-block">
 																	Extra Files
@@ -1094,7 +1094,7 @@
 													<tr>
 														<td>
 															<a href="files/files.html">
-																<img src="{{ asset('img/title/mms_extrafiles.jpg') }}"
+																<img src="{{ asset('images/title/mms_extrafiles.jpg') }}"
 																	 alt="">
 															</a>
 														</td>
@@ -1117,19 +1117,19 @@
 									</table>
 								</div>
 							</td>
-							<td style="background-repeat: repeat-y; background-image: url({{ asset('img/title/fm_right.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="6" height="1" alt="">
+							<td style="background-repeat: repeat-y; background-image: url({{ asset('images/title/fm_right.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 						</tr>
 						<tr style="line-height: 6px">
 							<td>
-								<img src="{{ asset('img/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_bottomleft.gif') }}" width="6" height="6" alt="">
 							</td>
-							<td style="background-repeat: repeat-x; background-image: url({{ asset('img/title/fm_bottom2.gif') }})">
-								<img src="{{ asset('img/title/blank.gif') }}" width="1" height="6" alt="">
+							<td style="background-repeat: repeat-x; background-image: url({{ asset('images/title/fm_bottom2.gif') }})">
+								<img src="{{ asset('images/title/blank.gif') }}" width="1" height="6" alt="">
 							</td>
 							<td>
-								<img src="{{ asset('img/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
+								<img src="{{ asset('images/title/fm_bottomright.gif') }}" width="6" height="6" alt="">
 							</td>
 						</tr>
 						</tbody>
@@ -1151,10 +1151,10 @@
 					</div>
 					<div class="col-9 pr-1 pl-1">
 						@/if($activity->group_id != 10)
-							<img class="mb-1" src="./img/{/{ $activity->group_id }}.svg" width="15"
+							<img class="mb-1" src="./images/{/{ $activity->group_id }}.svg" width="15"
 								 height="15">
 						@/endif
-						<img class="pr-2 float-left" src="./img/avatars/{/{ $activity->id }}.png"
+						<img class="pr-2 float-left" src="./images/avatars/{/{ $activity->id }}.png"
 							 width="36" height="48">
 						<span class="font-weight-bold">{/{ ucfirst($activity->username) }}</span>
 						{/!! $activity->message !!}
@@ -1168,7 +1168,7 @@
 		</!-- Center column with title text --/>
 		<div class="text-center">
 			<div class="d-block pt-4">
-				<img src="{/{ asset('img/logo.png') }}" class="img-fluid" alt="logo">
+				<img src="{/{ asset('images/logo.png') }}" class="img-fluid" alt="logo">
 			</div>
 
 			<div class="d-block pb-3">
@@ -1255,7 +1255,7 @@
 						<a href="{/{ route('stats') }}">
 						<span class="text-info float-right">
 							{/{ number_format($sumgold) }}
-							<img class="mt-n2 ml-n2" src="{/{ asset('img/items/10.png') }}"
+							<img class="mt-n2 ml-n2" src="{/{ asset('images/items/10.png') }}"
 								 alt="coins" height="24px" width="32px"/>
 						</span>
 						</a>

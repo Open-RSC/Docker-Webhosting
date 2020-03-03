@@ -10,42 +10,42 @@
 			<div class="row align-items-center pb-3">
 				<div class="col-md d-inline-block text-center">
 					<img class="display-glow pb-3" style="transform: scale(1.3);"
-						 src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"/>
+						 src="{{ asset('images/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"/>
 					<span class="col d-inline-block">{{ $npcdef->description }}</span>
 				</div>
 
 				<div class="col-md d-inline-block text-center">
 					@if ($npcdef->attack > 0)
 						<div class="d-block">
-							<img class="mb-1" src="{{ asset('img/skill_icons/attack.svg') }}" alt="attack" height="16px"
+							<img class="mb-1" src="{{ asset('images/skill_icons/attack.svg') }}" alt="attack" height="16px"
 								 width="16px"/>
 							<span class=" text-primary">{{ $npcdef->attack }}</span>
 						</div>
 					@endif
 					@if ($npcdef->defense > 0)
 						<div class="d-block">
-							<img class="mb-1" src="{{ asset('img/skill_icons/defense.svg') }}" alt="defense"
+							<img class="mb-1" src="{{ asset('images/skill_icons/defense.svg') }}" alt="defense"
 								 height="16px" width="16px"/>
 							<span class=" text-primary">{{ $npcdef->defense }}</span>
 						</div>
 					@endif
 					@if ($npcdef->strength > 0)
 						<div class="d-block">
-							<img class="mb-1" src="{{ asset('img/skill_icons/strength.svg') }}" alt="strength"
+							<img class="mb-1" src="{{ asset('images/skill_icons/strength.svg') }}" alt="strength"
 								 height="16px" width="16px"/>
 							<span class=" text-primary">{{ $npcdef->strength }}</span>
 						</div>
 					@endif
 					@if ($npcdef->hits > 0)
 						<div class="d-block">
-							<img class="mb-1" src="{{ asset('img/skill_icons/hits.svg') }}" alt="hits" height="16px"
+							<img class="mb-1" src="{{ asset('images/skill_icons/hits.svg') }}" alt="hits" height="16px"
 								 width="16px"/>
 							<span class=" text-primary">{{ $npcdef->hits }}</span>
 						</div>
 					@endif
 					@if ($npcdef->ranged > 0)
 						<div class="d-block">
-							<img class="mb-1" src="{{ asset('img/skill_icons/ranged.svg') }}" alt="ranged" height="16px"
+							<img class="mb-1" src="{{ asset('images/skill_icons/ranged.svg') }}" alt="ranged" height="16px"
 								 width="16px"/>
 							<span class=" text-primary">{{ $npcdef->ranged }}</span>
 						</div>
@@ -96,7 +96,7 @@
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $npc_drop->dropAmount }}
 										</div>
-										<img class="mt-n2 pb-1" src="{{ asset('img/items').'/'.$npc_drop->itemID }}.png"
+										<img class="mt-n2 pb-1" src="{{ asset('images/items').'/'.$npc_drop->itemID }}.png"
 											 alt="{{ $npc_drop->itemID }}"/>
 										<!--<span class="text-capitalize d-block">
 										{ $npc_drop->itemName }} ({ $npc_drop->itemID }})
@@ -127,7 +127,7 @@
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $npc_drop->dropAmount }}
 										</div>
-										<img class="mt-n2 pb-1" src="{{ asset('img/items').'/'.$npc_drop->itemID }}.png"
+										<img class="mt-n2 pb-1" src="{{ asset('images/items').'/'.$npc_drop->itemID }}.png"
 											 alt="{{ $npc_drop->itemID }}"/>
 										<!--<span class="text-capitalize d-block">
 										{ $npc_drop->itemName }} ({ $npc_drop->itemID }})
@@ -158,7 +158,7 @@
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $npc_drop->dropAmount }}
 										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$npc_drop->itemID }}.png"
+										<img class="mt-n2" src="{{ asset('images/items').'/'.$npc_drop->itemID }}.png"
 											 alt="{{ $npc_drop->itemID }}"/>
 										<!--<span class="text-capitalize d-block">
 										{ $npc_drop->itemName }} ({ $npc_drop->itemID }})
@@ -189,7 +189,7 @@
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $npc_drop->dropAmount }}
 										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$npc_drop->itemID }}.png"
+										<img class="mt-n2" src="{{ asset('images/items').'/'.$npc_drop->itemID }}.png"
 											 alt="{{ $npc_drop->itemID }}"/>
 										<!--<span class="text-capitalize d-block">
 										{ $npc_drop->itemName }} ({ $npc_drop->itemID }})

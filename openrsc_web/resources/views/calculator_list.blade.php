@@ -13,7 +13,7 @@
 						 title="Combat and max hit calculator">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat and Max Hit
@@ -25,7 +25,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -37,7 +37,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -49,7 +49,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -63,7 +63,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -75,7 +75,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -87,7 +87,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -99,7 +99,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -113,7 +113,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -125,7 +125,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -137,7 +137,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -149,7 +149,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -163,7 +163,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -175,7 +175,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -187,7 +187,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat
@@ -199,7 +199,7 @@
 						 title="Reward: 3 quest points and 2500 coins">
 						<span class="d-block">
 							<img class="d-block"
-								 src="{{ asset('img/quests/Black_Knight_Quest_Complete.png') }}"
+								 src="{{ asset('images/quests/Black_Knight_Quest_Complete.png') }}"
 								 style="max-height:150px; max-width: 225px;" alt="quest image">
 							<span class="text-info">
 								Combat

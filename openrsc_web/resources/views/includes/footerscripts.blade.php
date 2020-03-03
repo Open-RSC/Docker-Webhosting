@@ -39,27 +39,27 @@
 		const elem = document.getElementById(id);
 		elem.style.borderColor = '#A70700';
 		elem.style.backgroundColor = '#A70700';
-		elem.style.backgroundImage = '{{ asset('img/title/ssredbright.jpg') }}';
+		elem.style.backgroundImage = '{{ asset('images/title/ssredbright.jpg') }}';
 	}
 
 	function unredglow(id) {
 		const elem = document.getElementById(id);
 		elem.style.borderColor = '#570700';
 		elem.style.backgroundColor = '#570700';
-		elem.style.backgroundImage = '{{ asset('img/title/shinystonered.jpg') }}';
+		elem.style.backgroundImage = '{{ asset('images/title/shinystonered.jpg') }}';
 	}
 
 	function greyglow(id) {
 		const elem = document.getElementById(id);
 		elem.style.borderColor = '#878787';
 		elem.style.backgroundColor = '#777777';
-		elem.style.backgroundImage = '{{ asset('img/title/ssgreybright.png') }}';
+		elem.style.backgroundImage = '{{ asset('images/title/ssgreybright.png') }}';
 	}
 
 	function ungreyglow(id) {
 		const elem = document.getElementById(id);
 		elem.style.borderColor = '#373737';
 		elem.style.backgroundColor = '#474747';
-		elem.style.backgroundImage = '{{ asset('img/stoneback.gif') }}';
+		elem.style.backgroundImage = '{{ asset('images/stoneback.gif') }}';
 	}
 </script>

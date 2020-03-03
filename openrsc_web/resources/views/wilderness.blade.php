@@ -2,6 +2,6 @@
 
 @section('content')
 	<div class="text-center" style="overflow: auto;">
-		<img src="{{ asset('img/wilderness.png') }}" alt="Wilderness Map"/>
+		<img src="{{ asset('images/wilderness.png') }}" alt="Wilderness Map"/>
 	</div>
 @endsection

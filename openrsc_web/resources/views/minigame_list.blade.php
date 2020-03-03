@@ -13,7 +13,7 @@
 						 title="It is considered a 'rite of passage'. To complete it, you must tour all the finest bars and taste the strongest drinks in RuneScape Classic.">
 									<span class="d-block">
 										<img class="d-block" alt="minigame image"
-											 src="{{ asset('img/minigames/Bar_Crawl_Complete.png') }}"
+											 src="{{ asset('images/minigames/Bar_Crawl_Complete.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Bar Crawl
@@ -37,7 +37,7 @@
 						 title="Theoretical maximum experience rate for running the full lap is 16k agility experience per hour. However, this is rarely possible at lower levels so many choose to only repeat Low wall jump for a constant 13.5k agility experience per hour. ">
 									<span class="d-block">
 										<img class="d-block" alt="minigame image"
-											 src="{{ asset('img/minigames/Barb_handholds.png') }}"
+											 src="{{ asset('images/minigames/Barb_handholds.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Barbarian Agility Course
@@ -61,7 +61,7 @@
 						 title="It takes roughly 2 hours for a kitten to mature into a cat. During that time your kitten will demand attention and food.">
 									<span class="d-block">
 										<img class="d-block" alt="minigame image"
-											 src="{{ asset('img/minigames/Kitten_growth.png') }}"
+											 src="{{ asset('images/minigames/Kitten_growth.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Kitten to Cat
@@ -87,7 +87,7 @@
 						 title="You can only get fish that correspond to your fishing level. You will get full XP for any fish you catch on the trawler.">
 									<span class="d-block">
 										<img class="d-block" alt="minigame image"
-											 src="{{ asset('img/minigames/Fishing_trawler_full_net.png') }}"
+											 src="{{ asset('images/minigames/Fishing_trawler_full_net.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Fishing Trawler
@@ -109,7 +109,7 @@
 						 title="There are various methods a player may utilize to smuggle a gnomeball for use outside of the minigame.">
 									<span class="d-block">
 										<img class="d-block" alt="minigame image"
-											 src="{{ asset('img/minigames/Gnome_Ball_Agility_Bonus.png') }}"
+											 src="{{ asset('images/minigames/Gnome_Ball_Agility_Bonus.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Gnome Ball
@@ -133,7 +133,7 @@
 						 title="This is a dangerous Minigame, Death is very possible.">
 									<span class="d-block">
 										<img class="d-block" alt="minigames image"
-											 src="{{ asset('img/minigames/Completeing_MageArena.png') }}"
+											 src="{{ asset('images/minigames/Completeing_MageArena.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Mage Arena
@@ -157,7 +157,7 @@
 						 title="Produce gnome cuisine for Aluft Gianne and be awarded some money and cooking experience per order completed.">
 									<span class="d-block">
 										<img class="d-block" alt="minigames image"
-											 src="{{ asset('img/minigames/Gnome_restaurant_tutorial_done.png') }}"
+											 src="{{ asset('images/minigames/Gnome_restaurant_tutorial_done.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Gnome Restaurant
@@ -181,7 +181,7 @@
 						 title="Prepare gnomish drinks for Blurberry and be awarded some money and cooking experience per order completed.">
 									<span class="d-block">
 										<img class="d-block" alt="minigames image"
-											 src="{{ asset('img/minigames/Blurberry_bar_tutorial_done.png') }}"
+											 src="{{ asset('images/minigames/Blurberry_bar_tutorial_done.png') }}"
 											 style="max-height:150px; max-width: 225px;">
 										<span class="text-info">
 											Blurberry's Bar

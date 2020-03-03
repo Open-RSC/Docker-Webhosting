@@ -2,7 +2,7 @@
 
 @section('content')
 	<!-- loads the crosshairs image to be referenced by javascript -->
-	<img src="{{ asset('img/crosshairs.svg') }}" id="crosshairs" style="display: none;" alt="crosshairs"/>
+	<img src="{{ asset('images/crosshairs.svg') }}" id="crosshairs" style="display: none;" alt="crosshairs"/>
 
 	<div class="text-center" style="overflow: auto;">
 		<script>
@@ -56,7 +56,7 @@
             }
 		</script>
 
-		<canvas style="background-image: url({{ asset('img/worldmap.png') }}" id="canvas" width="2152" height="1007">
+		<canvas style="background-image: url({{ asset('images/worldmap.png') }}" id="canvas" width="2152" height="1007">
 			<script>drawPosition();</script>
 		</canvas>
 	</div>

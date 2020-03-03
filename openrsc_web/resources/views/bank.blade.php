@@ -9,7 +9,7 @@
 
 			<div class="align-items-center pb-3">
 				<div class="pb-0 table-transparent row justify-content-center text-primary">
-					<img class="pl-5" src="{{ asset('img/avatars').'/'.$banks->first()->playerID }}.png"
+					<img class="pl-5" src="{{ asset('images/avatars').'/'.$banks->first()->playerID }}.png"
 						 style="height: 125px;" alt="{{ $banks->first()->username }}">
 					<div class="pl-5 col-6">
 					<span class="sm-stats text-info pt-3">
@@ -62,7 +62,7 @@
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $player->number }}
 										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
+										<img class="mt-n2" src="{{ asset('images/items').'/'.$player->id }}.png"
 											 alt="{{ $player->id }}"/>
 									</td>
 									@if ($key % 18 == 17)
@@ -91,7 +91,7 @@
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $player->number }}
 										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
+										<img class="mt-n2" src="{{ asset('images/items').'/'.$player->id }}.png"
 											 alt="{{ $player->id }}"/>
 									</td>
 									@if ($key % 14 == 13)
@@ -120,7 +120,7 @@
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $player->number }}
 										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
+										<img class="mt-n2" src="{{ asset('images/items').'/'.$player->id }}.png"
 											 alt="{{ $player->id }}"/>
 									</td>
 									@if ($key % 11 == 10)
@@ -149,7 +149,7 @@
 											style="-webkit-text-fill-color: limegreen; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; margin-top: 0; position: relative; color: white; font-size: 13px; font-weight: 900;">
 											{{ $player->number }}
 										</div>
-										<img class="mt-n2" src="{{ asset('img/items').'/'.$player->id }}.png"
+										<img class="mt-n2" src="{{ asset('images/items').'/'.$player->id }}.png"
 											 alt="{{ $player->id }}"/>
 									</td>
 									@if ($key % 8 == 7)

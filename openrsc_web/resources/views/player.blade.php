@@ -18,7 +18,7 @@
 
 						<!-- Avatar -->
 						<div class="mr-4 pt-3 d-inline-block float-left">
-							<img src="{{ asset('img/avatars').'/'.$players->first()->id }}.png"
+							<img src="{{ asset('images/avatars').'/'.$players->first()->id }}.png"
 								 style="height: 125px;" alt="{{ $players->first()->username }}">
 						</div>
 
@@ -27,7 +27,7 @@
 							@foreach ($skill_array as $skill)
 								<a class="text-secondary d-block"
 								   href="/highscores/{{ $skill }}">
-									<img src="{{ asset('img/skill_icons').'/'.$skill }}.svg"
+									<img src="{{ asset('images/skill_icons').'/'.$skill }}.svg"
 										 alt="{{ $skill }}" height="20px"/>
 									{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
 									@if ($skill == 'attack')
@@ -140,7 +140,7 @@
 								<td class="text-center clickable-row" data-href="/npcdef/{{ $kills->npcID }}"
 									style="border: 1px solid #0F0F0F;">
 									<div class="display-glow pt-1">
-										<img src="{{ asset('img/npc') }}/{{ $kills->npcID }}.png"
+										<img src="{{ asset('images/npc') }}/{{ $kills->npcID }}.png"
 											 alt="{{ $kills->name }}"
 											 style="max-height: 52px; max-width: 65px;"/>
 									</div>
@@ -169,7 +169,7 @@
 								<td class="text-center clickable-row" data-href="/npcdef/{{ $kills->npcID }}"
 									style="border: 1px solid #0F0F0F;">
 									<div class="display-glow pt-1">
-										<img src="{{ asset('img/npc') }}/{{ $kills->npcID }}.png"
+										<img src="{{ asset('images/npc') }}/{{ $kills->npcID }}.png"
 											 alt="{{ $kills->name }}"
 											 style="max-height: 52px; max-width: 65px;"/>
 									</div>

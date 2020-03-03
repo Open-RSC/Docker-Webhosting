@@ -14,7 +14,7 @@
 							<td class="text-center clickable-row" data-href="npcdef/{{ $npcdef->id }}"
 								style="border: 1px solid #0F0F0F;">
 								<div class="display-glow pt-1">
-									<img src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"
+									<img src="{{ asset('images/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"
 										 style="max-height: 52px; max-width: 65px;"/>
 								</div>
 								<span class="text-capitalize">
@@ -41,7 +41,7 @@
 							<td class="text-center clickable-row" data-href="npcdef/{{ $npcdef->id }}"
 								style="border: 1px solid #0F0F0F;">
 								<div class="display-glow pt-1">
-									<img src="{{ asset('img/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"
+									<img src="{{ asset('images/npc') }}/{{ $npcdef->id }}.png" alt="{{ $npcdef->name }}"
 										 style="max-height: 52px; max-width: 65px;"/>
 								</div>
 								<span class="text-capitalize">

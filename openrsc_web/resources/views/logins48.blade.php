@@ -34,7 +34,7 @@
 						<td class="text-center">
 							@if ($player->login_date)
 								<img class="display-glow float-center pt-2"
-									 src="{{ asset('img/avatars') }}/{{ $player->id }}.png" height="100px" width="auto"
+									 src="{{ asset('images/avatars') }}/{{ $player->id }}.png" height="100px" width="auto"
 									 alt="{{ $player->username }}"/>
 							@else
 								N/A

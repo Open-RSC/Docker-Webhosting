@@ -32,7 +32,7 @@
 						</td>
 						<td class="text-center">
 							<img class="display-glow pt-2"
-								 src="{{ asset('img/avatars') }}/{{ $player->id }}.png" height="100px" width="auto"
+								 src="{{ asset('images/avatars') }}/{{ $player->id }}.png" height="100px" width="auto"
 								 alt="{{ $player->username }}"/>
 						</td>
 						<td class="text-center">

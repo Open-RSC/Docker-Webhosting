@@ -30,7 +30,7 @@
 						</td>
 						<td class="w-10 text-center pt-1 pb-1">
 							<div class="display-glow">
-								<img src="{{ asset('img/items') }}/{{ $itemdef->id }}.png" alt="{{ $itemdef->name }}"/>
+								<img src="{{ asset('images/items') }}/{{ $itemdef->id }}.png" alt="{{ $itemdef->name }}"/>
 							</div>
 						</td>
 						@if ($itemdef->requiredLevel == 0)
@@ -39,58 +39,58 @@
 						@else
 							<td class="w-10 text-center pt-1 pb-1">
 								@if($itemdef->requiredSkillID == 0)
-									<img class="mb-1" src="{{ asset('img/skill_icons/attack.svg') }}" alt="attack"
+									<img class="mb-1" src="{{ asset('images/skill_icons/attack.svg') }}" alt="attack"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 1)
-									<img class="mb-1" src="{{ asset('img/skill_icons/defense.svg') }}" alt="defense"
+									<img class="mb-1" src="{{ asset('images/skill_icons/defense.svg') }}" alt="defense"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 2)
-									<img class="mb-1" src="{{ asset('img/skill_icons/strength.svg') }}"
+									<img class="mb-1" src="{{ asset('images/skill_icons/strength.svg') }}"
 										 alt="strength" height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 3)
-									<img class="mb-1" src="{{ asset('img/skill_icons/hits.svg') }}" alt="hits"
+									<img class="mb-1" src="{{ asset('images/skill_icons/hits.svg') }}" alt="hits"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 4)
-									<img class="mb-1" src="{{ asset('img/skill_icons/ranged.svg') }}" alt="ranged"
+									<img class="mb-1" src="{{ asset('images/skill_icons/ranged.svg') }}" alt="ranged"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 5)
-									<img class="mb-1" src="{{ asset('img/skill_icons/prayer.svg') }}" alt="prayer"
+									<img class="mb-1" src="{{ asset('images/skill_icons/prayer.svg') }}" alt="prayer"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 6)
-									<img class="mb-1" src="{{ asset('img/skill_icons/magic.svg') }}" alt="magic"
+									<img class="mb-1" src="{{ asset('images/skill_icons/magic.svg') }}" alt="magic"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 7)
-									<img class="mb-1" src="{{ asset('img/skill_icons/cooking.svg') }}" alt="cooking"
+									<img class="mb-1" src="{{ asset('images/skill_icons/cooking.svg') }}" alt="cooking"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 8)
-									<img class="mb-1" src="{{ asset('img/skill_icons/woodcut.svg') }}" alt="woodcut"
+									<img class="mb-1" src="{{ asset('images/skill_icons/woodcut.svg') }}" alt="woodcut"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 9)
-									<img class="mb-1" src="{{ asset('img/skill_icons/fletching.svg') }}"
+									<img class="mb-1" src="{{ asset('images/skill_icons/fletching.svg') }}"
 										 alt="fletching" height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 10)
-									<img class="mb-1" src="{{ asset('img/skill_icons/fishing.svg') }}" alt="fishing"
+									<img class="mb-1" src="{{ asset('images/skill_icons/fishing.svg') }}" alt="fishing"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 11)
-									<img class="mb-1" src="{{ asset('img/skill_icons/firemaking.svg') }}"
+									<img class="mb-1" src="{{ asset('images/skill_icons/firemaking.svg') }}"
 										 alt="firemaking" height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 12)
-									<img class="mb-1" src="{{ asset('img/skill_icons/crafting.svg') }}"
+									<img class="mb-1" src="{{ asset('images/skill_icons/crafting.svg') }}"
 										 alt="crafting" height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 13)
-									<img class="mb-1" src="{{ asset('img/skill_icons/smithing.svg') }}"
+									<img class="mb-1" src="{{ asset('images/skill_icons/smithing.svg') }}"
 										 alt="smithing" height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 14)
-									<img class="mb-1" src="{{ asset('img/skill_icons/mining.svg') }}" alt="mining"
+									<img class="mb-1" src="{{ asset('images/skill_icons/mining.svg') }}" alt="mining"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 15)
-									<img class="mb-1" src="{{ asset('img/skill_icons/herblaw.svg') }}" alt="herblaw"
+									<img class="mb-1" src="{{ asset('images/skill_icons/herblaw.svg') }}" alt="herblaw"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 16)
-									<img class="mb-1" src="{{ asset('img/skill_icons/agility.svg') }}" alt="agility"
+									<img class="mb-1" src="{{ asset('images/skill_icons/agility.svg') }}" alt="agility"
 										 height="16px" width="16px"/>
 								@elseif($itemdef->requiredSkillID == 17)
-									<img class="mb-1" src="{{ asset('img/skill_icons/thieving.svg') }}"
+									<img class="mb-1" src="{{ asset('images/skill_icons/thieving.svg') }}"
 										 alt="thieving" height="16px" width="16px"/>
 								@endif
 								{{ number_format($itemdef->requiredLevel) }}
@@ -98,17 +98,17 @@
 						@endif
 						<td class="text-center pt-1">
 							{{number_format($itemdef->basePrice) }}
-							<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
+							<img class="mb-2 ml-n2" src="{{ asset('images/items/10.png') }}"
 								 alt="coins" height="24px" width="32px"/>
 						</td>
 						<td>
 							<div class="pr-3 float-right pt-1">
 								{{ number_format($itemdef->basePrice * 0.4) }}
-								<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
+								<img class="mb-2 ml-n2" src="{{ asset('images/items/10.png') }}"
 									 alt="coins" height="24px" width="32px"/>
 								<span class="text-secondary">/</span>
 								{{ number_format($itemdef->basePrice * 0.6) }}
-								<img class="mb-2 ml-n2" src="{{ asset('img/items/10.png') }}"
+								<img class="mb-2 ml-n2" src="{{ asset('images/items/10.png') }}"
 									 alt="coins" height="24px" width="32px"/>
 							</div>
 						</td>
