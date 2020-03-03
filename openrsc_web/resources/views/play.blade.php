@@ -5,7 +5,7 @@
 	<div class="justify-content-center row text-center">
 
 		<div class="pt-4 pb-3">
-			<table>
+			<table class="table-responsive">
 				<tr>
 					<td class="align-middle">
 						<table cellpadding="0">
@@ -21,12 +21,12 @@
 								</td>
 							</tr>
 						</table>
-						<table style="background-image: url({{ asset('images/background2.jpg') }});" cellpadding="0">
+						<table class="mx-auto" style="background-image: url({{ asset('images/background2.jpg') }});" cellpadding="0">
 							<tr>
 								<td>
-									<table style="width: 250px; background-color: black" cellpadding=4>
+									<table class="mx-auto" style="width: 250px; background-color: black" cellpadding=4>
 										<tr>
-											<td class=e>
+											<td class="e">
 												<span class="d-block font_weight_bold">
 													Play RuneScape
 												</span>
@@ -48,7 +48,7 @@
 										 alt="alt">
 
 									<!-- End content -->
-									<table cellpadding=0>
+									<table class="mx-auto" cellpadding=0>
 										<tr>
 											<td class="align-bottom">
 												<img src="{{ asset('images/edge_g2.jpg') }}" alt="edge">
