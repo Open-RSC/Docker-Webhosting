@@ -8,25 +8,27 @@
 			<table class="table-responsive">
 				<tr>
 					<td class="align-middle">
-						<table cellpadding="0">
+						<table style="border-spacing: 0">
 							<tr>
-								<td class="align-top">
+								<td class="align-top" style="padding: 0">
 									<img src="{{ asset('images/edge_a.jpg') }}" alt="edge">
 								</td>
-								<td class="align-top">
+								<td class="align-top" style="padding: 0">
 									<img src="{{ asset('images/edge_c.jpg') }}" alt="edge">
 								</td>
-								<td class="align-top">
+								<td class="align-top" style="padding: 0">
 									<img src="{{ asset('images/edge_d.jpg') }}" alt="edge">
 								</td>
 							</tr>
 						</table>
-						<table class="mx-auto" style="background-image: url({{ asset('images/background2.jpg') }});" cellpadding="0">
+						<table class="mx-auto"
+							   style="background-image: url({{ asset('images/background2.jpg') }}); border-spacing: 0">
 							<tr>
-								<td>
-									<table class="mx-auto" style="width: 250px; background-color: black" cellpadding=4>
+								<td style="padding: 0">
+									<table class="mx-auto"
+										   style="width: 250px; background-color: black; border-spacing: 0">
 										<tr>
-											<td class="e">
+											<td class="e" style="padding: 0">
 												<span class="d-block font_weight_bold">
 													Play RuneScape
 												</span>
@@ -48,15 +50,15 @@
 										 alt="alt">
 
 									<!-- End content -->
-									<table class="mx-auto" cellpadding=0>
+									<table class="mx-auto" style="border-spacing: 0">
 										<tr>
-											<td class="align-bottom">
+											<td class="align-bottom" style="padding: 0">
 												<img src="{{ asset('images/edge_g2.jpg') }}" alt="edge">
 											</td>
-											<td class="align-bottom">
+											<td class="align-bottom" style="padding: 0">
 												<img src="{{ asset('images/edge_c.jpg') }}" alt="edge">
 											</td>
-											<td class="align-bottom">
+											<td class="align-bottom" style="padding: 0">
 												<img src="{{ asset('images/edge_h2.jpg') }}" alt="edge">
 											</td>
 										</tr>
