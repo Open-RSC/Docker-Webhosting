@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="pt-3 pb-3 container-fluid">
 	<div class="row text-center">
 		<div class="mx-auto">
 			<table>
