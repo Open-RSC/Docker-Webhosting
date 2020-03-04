@@ -30,8 +30,11 @@ return [
 
 	'game_hostname' => env('GAME_HOSTNAME', 'localhost'),
 	'game_port' => env('GAME_PORT', '43594'),
-
 	'authentic' => env('AUTHENTIC', 'true'),
+	'download_jar' => env('DOWNLOAD_JAR', '/downloads/OpenRSC.jar'),
+	'download_apk' => env('DOWNLOAD_APK', '/downloads/openrsc.apk'),
+	'download_jre' => env('DOWNLOAD_JRE', 'https://adoptopenjdk.net/releases.html?variant=openjdk13&jvmVariant=hotspot'),
+	'download_single_player' => env('DOWNLOAD_SINGLE_PLAYER', 'https://orsc.dev/open-rsc/Single-Player/-/releases'),
 
     'log_sql' => env('LOG_SQL'),
 

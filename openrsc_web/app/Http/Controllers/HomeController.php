@@ -9,6 +9,10 @@ use Jenssegers\Agent\Agent;
 class HomeController extends Controller
 {
 	/**
+	 * @var \Illuminate\Config\Repository
+	 */
+
+	/**
 	 * @function index()
 	 * @return Renderable
 	 * Shows the main home page and associated database queries
@@ -1514,6 +1518,14 @@ class HomeController extends Controller
 
 	public function play()
 	{
-		return view('play');
+		$download_jar = config('app.download_jar');
+		$download_apk = config('app.download_apk');
+		$download_jre = config('app.download_jre');
+		return view('play'
+		, [
+			'download_jar' => $download_jar,
+			'download_apk' => $download_apk,
+			'download_jre' => $download_jre,
+			]);
 	}
 }
