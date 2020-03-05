@@ -2,7 +2,7 @@
 <body style="background-image: url({{ asset('images/background.jpg') }}); }">
 @section('content')
 
-	<div class="justify-content-center row text-center">
+	<div class="justify-content-center row">
 		<div class="pt-3">
 
 			<!-- Top row -->
@@ -37,7 +37,7 @@
 								<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 							<td>
-								<div class="font-weight-bold pt-2 pb-2 d-block">
+								<div class="text-center justify-content-center font-weight-bold pt-2 pb-2 d-block">
 									Latest News and Updates
 								</div>
 								<table style="background-color: black">
@@ -114,7 +114,7 @@
 										</td>
 									</tbody>
 								</table>
-								<div class="pb-2">
+								<div class="text-center justify-content-center pb-2">
 									To view a full list of news and updates,
 									<a class=c href="news.html">
 										Click Here
@@ -161,7 +161,7 @@
 							<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 						</td>
 						<td>
-							<div class="align-content-center col pb-3">
+							<div class="text-center justify-content-center pb-3">
 								<div class="font-weight-bold pt-2 pb-2 d-block">
 									Main Features
 								</div>
@@ -575,7 +575,7 @@
 								<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 							<td>
-								<div class="align-content-center col pb-3">
+								<div class="text-center justify-content-center col pb-3">
 									<div class="font-weight-bold pt-2 pb-2 d-block">
 										Secure Services
 									</div>
@@ -868,7 +868,7 @@
 								<img src="{{ asset('images/title/blank.gif') }}" width="6" height="1" alt="">
 							</td>
 							<td>
-								<div class="align-content-center col pb-3">
+								<div class="text-center justify-content-center col pb-3">
 									<div class="font-weight-bold pt-2 pb-2 d-block">
 										Other Features
 									</div>
