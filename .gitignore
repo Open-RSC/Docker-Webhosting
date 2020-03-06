@@ -38,3 +38,9 @@ composer.phar
 
 downloads/
 !downloads/.gitsave
+forum/config.php
+
+forum/cache/
+!forum/cache/.gitsave
+forum/store/
+!forum/store/.gitsave
