@@ -17,6 +17,10 @@ services:
       - ./avatars:/var/www/html/openrsc_web/public/img/avatars
       - ./downloads:/var/www/html/openrsc_web/public/downloads
       - ./downloads:/var/www/html/cabbage_web/public/downloads
+      - ./forum:/var/www/html/openrsc_web/public/forum
+      - ./forum:/var/www/html/cabbage_web/public/forum
+      - ./sql:/var/www/html/openrsc_web/public/sql
+      - ./sql:/var/www/html/cabbage_web/public/sql
       - ./wiki:/var/www/html/openrsc_web/public/wiki
 
   php:
@@ -30,6 +34,10 @@ services:
       - ./cabbage_web:/var/www/html/cabbage_web
       - ./downloads:/var/www/html/openrsc_web/public/downloads
       - ./downloads:/var/www/html/cabbage_web/public/downloads
+      - ./forum:/var/www/html/openrsc_web/public/forum
+      - ./forum:/var/www/html/cabbage_web/public/forum
+      - ./sql:/var/www/html/openrsc_web/public/sql
+      - ./sql:/var/www/html/cabbage_web/public/sql
       - ./wiki:/var/www/html/openrsc_web/public/wiki
 
 networks:
