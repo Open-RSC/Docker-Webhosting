@@ -1,6 +1,6 @@
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Open Source RuneScape Classic - the massive online adventure game</title>
 	<meta name="description"
 		  content="RuneScape is a massive 3d multiplayer adventure, with monsters to kill, quests to complete, and treasure to win. You control your own character who will improve and become more powerful the more you play.">
@@ -28,10 +28,4 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="{{ asset('images/favicons/ms-icon-144x144.png') }}">
 	<meta name="theme-color" content="#ffffff">
-
-	<!-- JavaScript -->
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/js/all.min.js"></script>
-
-	<!-- CSS -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
 </head>
