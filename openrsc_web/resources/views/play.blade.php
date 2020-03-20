@@ -6,19 +6,27 @@
 		<a class="rsc-link" href="/index.html">Main menu</a>
 	</header>
 	<section class="rsc-game-select-wrap">
-
-		<div class="rsc-game-select rsc-select-free">
-			<a class="rsc-select-button" href="{{ $download_jar }}">
-				<small>Click here for</small>
-				<strong>PC</strong>
-			</a>
-		</div>
-		<div class="rsc-game-select rsc-select-members">
-			<a class="rsc-select-button" href="{{ $download_apk }}">
-				<small>Click here for</small>
-				<strong>Android</strong>
-			</a>
-		</div>
+		@if ($agent->isAndroid())
+			<div class="rsc-game-select rsc-select-members">
+				<a class="rsc-select-button" href="{{ $download_apk }}">
+					<small>Click here for</small>
+					<strong>Android</strong>
+				</a>
+			</div>
+		@else
+			<div class="rsc-game-select rsc-select-free">
+				<a class="rsc-select-button" href="{{ $download_jar }}">
+					<small>Click here for</small>
+					<strong>PC</strong>
+				</a>
+			</div>
+			<div class="rsc-game-select rsc-select-members">
+				<a class="rsc-select-button" href="{{ $download_apk }}">
+					<small>Click here for</small>
+					<strong>Android</strong>
+				</a>
+			</div>
+		@endif
 	</section>
 	<div class="rsc-scroll">
 		<label for="rsc-client-type">

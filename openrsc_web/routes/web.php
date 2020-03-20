@@ -40,15 +40,10 @@ Route::get('/itemdef/{id}', 'ItemController@show')->name('itemdef');
 Route::get('/npcs', 'NpcController@index')->name('npcs');
 Route::get('/npcdef/{id}', 'NpcController@show')->name('npcdef');
 
-// Highscores
-Route::get('/highscores', 'HighscoresController@index')->name('highscores');
-Route::get('/highscores/skill_total', 'HighscoresController@index')->name('highscores');
-Route::get('/highscores/{subpage}', 'HighscoresController@show')->name('highscorestat');
-
 // Highscores Alias
 Route::get('/hiscores', 'HighscoresController@index')->name('hiscores');
-Route::get('/hiscores/skill_total', 'HighscoresController@index')->name('hiscores');
-Route::get('/hiscores/{subpage}', 'HighscoresController@show')->name('hiscores');
+Route::get('/hiscores/overall', 'HighscoresController@index')->name('hiscores');
+Route::get('/hiscores/{subpage}', 'HighscoresController@show')->name('hiscorestat');
 
 // Afman staff zone
 Route::get('/chat_logs', 'StaffController@chat_logs')->middleware('is_admin')->name('chat_logs');

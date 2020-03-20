@@ -1,143 +1,154 @@
-@extends('template')
-
+@extends('templateborder')
 @section('content')
-	<div class="text-info">
-		<div class="container">
-			<h2 class="h2 text-center pt-5 pb-4 text-capitalize display-3">Highscores</h2>
-			<div class="row no-gutters">
 
-				<!-- placeholder left column -->
-				<div class="col"></div>
+	<header class="rsc-box rsc-header">
+		<span class="d-block">RuneScape Hiscores</span>
+		<a class="rsc-link" href="/index.html">Main menu - All Hiscores</a>
+	</header>
 
-				<!-- center column -->
-				<div class="col-auto" style="width: 600px;">
-					<div class="float-left h3 text-white">Overall Skill Total</div>
-
-					<div class="float-right">
-						<nav>
-							<ul class="menu skill-dropdown">
-								<li>
-									<label for="drop-skills" class="toggle">Skills ▾</label>
-									<a href="#" style="padding-top: 0; padding-bottom: 0;">
-										Skills
-									</a>
-									<input type="checkbox" id="drop-skills"/>
-									<ul style="margin-top: -15px; margin-left: -6px;">
-										<li>
-											@foreach ($skill_array as $skill)
-												<a class="dropdown-item text-secondary"
-												   href="/highscores/{{ $skill }}">
-													<img src="{{ asset('images/skill_icons').'/'.$skill }}.svg"
-														 alt="{{ $skill }}" height="20px"/>
-													{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
-												</a>
-											@endforeach
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</nav>
-					</div>
-
-					<table id="List"
-						   class="container-fluid table-striped table-hover text-primary table-transparent">
-						<thead class="border-bottom border-info thead-dark">
-						<tr class="row text-info">
-							<th class="col text-right">Rank</th>
-							<th class="col-sm-3 text-left">Player</th>
-							<th class="col text-right">Total Level</th>
-							<th class="col text-left">Total XP</th>
-							<th class="col-sm-3 text-right">Last Login</th>
+	<div class="justify-content-center row rsc-row">
+		<div style="width: 145px">
+			<h2>Select hiscore table</h2>
+			<div class="rsc-box rsc-hiscores-skills p-0" style="line-height: 1.2rem">
+				<table>
+					@foreach ($skill_array as $skill)
+						<tr>
+							<th class="col-sm1 text-right">
+								@if ($skill != "overall")
+									<img src="{{ asset('images/skill_icons').'/'.$skill }}.svg"
+										 alt="{{ $skill }}" height="20px"/>
+								@endif
+							</th>
+							<th class="col text-left">
+								<a class="rsc-link"
+								   href="/hiscores/{{ $skill }}">
+									<span class="">
+									{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
+									</span>
+								</a>
+							</th>
 						</tr>
-						</thead>
-						<tbody>
-						@if (Config::get('app.authentic') == true)
-							@foreach ($highscores_authentic as $key=>$player)
-								<tr class="row clickable-row" data-href="{{ route('player', $player->id) }}">
-									<td class="col-2 text-right">
+					@endforeach
+				</table>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<h2>Overall Hiscores</h2>
+			<div class="rsc-box rsc-hiscores-ranks p-0">
+				<table>
+					<tr>
+						<th class="rsc-col-rank">Rank</th>
+						<th class="rsc-col-name">Name</th>
+						<th class="rsc-col-level">Level</th>
+						<th class="rsc-col-xp">XP</th>
+					</tr>
+					@if (Config::get('app.authentic') == true)
+						@foreach ($highscores_authentic as $key=>$player)
+							<tr style="line-height: 1.2rem">
+								<td class="rsc-col-rank">
 									<span>
 										{{ ($highscores_authentic->currentpage()-1) * $highscores_authentic->perpage() + $key + 1 }}
 									</span>
-									</td>
-									<td class="col-sm-3 text-left">
-									<span>
-										{{ ucfirst($player->username) }}
-									</span>
-									</td>
-									<td class="col text-right">
+								</td>
+								<td class="rsc-col-name">
+									<a class="rsc-link" href="/player/{{ ucfirst($player->username) }}">
+										<span>
+											{{ ucfirst($player->username) }}
+										</span>
+									</a>
+								</td>
+								<td class="rsc-col-level">
 									<span>
 										{{ number_format($player->skill_total) }}
 									</span>
-									</td>
-									<td class="col text-left">
+								</td>
+								<td class="rsc-col-xp">
 									<span>
 										{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
 									</span>
-									</td>
-									<td class="col-sm-3 text-right">
-										@if($player->login_date != 0)
-											<span>
-											{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
-										</span>
-										@else
-											<span>Never</span>
-										@endif
-									</td>
-								</tr>
-							@endforeach
-						@else
-							@foreach ($highscores_custom as $key=>$player)
-								<tr class="row clickable-row" data-href="{{ route('player', $player->id) }}">
-									<td class="col-2 text-right">
+								</td>
+							</tr>
+						@endforeach
+					@else
+						@foreach ($highscores_custom as $key=>$player)
+							<tr>
+								<td class="rsc-col-rank">
 									<span>
 										{{ ($highscores_custom->currentpage()-1) * $highscores_custom->perpage() + $key + 1 }}
 									</span>
-									</td>
-									<td class="col-sm-3 text-left">
+								</td>
+								<td class="rsc-col-name">
 									<span>
 										{{ ucfirst($player->username) }}
 									</span>
-									</td>
-									<td class="col text-right">
+								</td>
+								<td class="rsc-col-level">
 									<span>
 										{{ number_format($player->skill_total) }}
 									</span>
-									</td>
-									<td class="col text-left">
+								</td>
+								<td class="rsc-col-xp">
 									<span>
 										{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
 									</span>
-									</td>
-									<td class="col-sm-3 text-right">
-										@if($player->login_date != 0)
-											<span>
-											{{ Carbon\Carbon::parse($player->login_date)->diffForHumans() }}
-										</span>
-										@else
-											<span>Never</span>
-										@endif
-									</td>
-								</tr>
-							@endforeach
-						@endif
-						</tbody>
-					</table>
-					@if (Config::get('app.authentic') == true)
-						{{ $highscores_authentic->links('pagination::bootstrap-4') }}
-					@else
-						{{ $highscores_custom->links('pagination::bootstrap-4') }}
+								</td>
+							</tr>
+						@endforeach
 					@endif
-				</div>
+				</table>
+				<!--@/if (Config::get('app.authentic') == true)
+					{/{ $highscores_authentic->links('pagination::bootstrap-4') }}
+				@/else
+					{/{ $highscores_custom->links('pagination::bootstrap-4') }}
+				@/endif-->
+			</div>
+		</div>
+	</div>
 
-				<!-- right column -->
-				<div class="col">
-					<div class="text-center">
-						<label for="inputBox"></label>
-						<input type="text" class="text-center" id="inputBox" onkeyup="search()"
-							   placeholder="Search this page" style="height: 33px;">
+	<div class="justify-content-center row pl-4 pr-4">
+		<div class="row float-left">
+			<div class="flex-column">
+				<div class="rsc-box">
+				<span class="d-block">
+					Login to view your
+				</span>
+					<span class="d-block">
+					personal hiscores and
+				</span>
+					<span class="d-block">
+					see how you compare
+				</span>
+					<span class="d-block">
+					to your friends.
+				</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="row float-right">
+				<div class="flex-column">
+					<div class="rsc-stone-box">
+						<form method="get">
+							<input type="hidden" name="category" value="overall">
+							<label for="rsc-search-rank">Search by rank</label>
+							<input id="rsc-search-rank" name="rank" type="number" min="1">
+							<input type="submit" value="Search">
+						</form>
+					</div>
+				</div>
+				<div class="flex-columm">
+					<div class="rsc-stone-box">
+						<form method="get">
+							<input type="hidden" name="category" value="overall">
+							<label for="rsc-search-name">Search by name</label>
+							<input id="rsc-search-name" name="name" type="text" maxlength="12">
+							<input type="submit" value="Search">
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
 @endsection
