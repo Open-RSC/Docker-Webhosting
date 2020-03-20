@@ -9,7 +9,7 @@
 	<div class="justify-content-center row rsc-row pt-1">
 		<div>
 			<h2>Select hiscore table</h2>
-			<div class="rsc-box rsc-hiscores-skills pl-4 pr-3 pt-1 pb-1" style="line-height: 1.2rem">
+			<div class="rsc-box rsc-hiscores-skills pl-4 pr-3 pt-2 pb-1" style="line-height: 1.2rem">
 				<table>
 					@foreach ($skill_array as $skill)
 						<tr>

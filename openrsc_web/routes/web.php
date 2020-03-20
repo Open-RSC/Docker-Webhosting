@@ -43,7 +43,8 @@ Route::get('/npcdef/{id}', 'NpcController@show')->name('npcdef');
 // Hiscores
 Route::get('/hiscores', 'HighscoresController@index')->name('hiscores');
 Route::get('/hiscores/overall', 'HighscoresController@index')->name('hiscores');
-Route::get('/hiscores/{subpage}', 'HighscoresController@show')->name('hiscorestat');
+Route::get('/hiscores/{subpage}', 'HighscoresController@show')->name('hiscores');
+Route::get('/hiscores/player/{subpage}', 'HighscoresController@player')->name('player');
 
 // Afman staff zone
 Route::get('/chat_logs', 'StaffController@chat_logs')->middleware('is_admin')->name('chat_logs');

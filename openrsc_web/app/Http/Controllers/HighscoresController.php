@@ -229,4 +229,136 @@ class HighscoresController extends Controller
 		])
 			->with('hiscores');
 	}
+
+	public function player($subpage)
+	{
+		/**
+		 * @var $subpage
+		 * Replaces spaces with underlines
+		 * Two instances of this query exist so that the site can support a single template with custom or authentic skills
+		 */
+		$subpage = preg_replace("/[^A-Za-z0-9 ]/", "_", $subpage);
+
+		/**
+		 * @var $highscores_authentic
+		 * Fetches the table row of the player experience in view and paginates the results
+		 */
+		/**
+		 * @var $players
+		 * Fetches the table row of the player experience in view and paginates the results
+		 */
+		$players = DB::connection()
+			->table('openrsc_experience as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->where([
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['b.username', '=', $subpage],
+			])
+			->limit(1)
+			->get();
+		if (!$players) {
+			abort(404);
+		}
+
+		$highscores_authentic = DB::connection()
+			->table('openrsc_experience as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->where([
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['b.username', '=', $subpage],
+			])
+			->limit(1)
+			->get();
+
+		$highscores_custom = DB::connection()
+			->table('openrsc_experience as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->where([
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['b.username', '=', $subpage],
+			])
+			->limit(1)
+			->get();
+
+		$player_gang = DB::connection()
+			->table('openrsc_player_cache as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->select('value')
+			->where([
+				['a.key', '=', 'arrav_gang'],
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['a.key', '=', 'arrav_gang'],
+				['b.username', '=', $subpage],
+			])
+			->limit(1)
+			->get();
+
+		$milliseconds = DB::connection()
+			->table('openrsc_player_cache as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->where([
+				['a.key', '=', 'total_played'],
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['a.key', '=', 'total_played'],
+				['b.username', '=', $subpage],
+			])
+			->sum('value');
+
+		$totalTime = (new HomeController)->secondsToTime(round($milliseconds / 1000));
+
+		$player_feed = DB::connection()
+			->table('openrsc_live_feeds as a')
+			->join('openrsc_players AS b', 'a.username', '=', 'b.username')
+			->where([
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['b.username', '=', $subpage],
+			])
+			->orderBy('a.time', 'desc')
+			->limit(30)
+			->get();
+
+		$npc_kills = DB::connection()
+			->table('openrsc_npckills as a')
+			->join('openrsc_players AS b', 'a.playerID', '=', 'b.id')
+			->join('openrsc_npcdef as c', 'a.npcID', '=', 'c.id')
+			->where([
+				['b.id', '=', $subpage],
+			])
+			->orWhere([
+				['b.username', '=', $subpage],
+			])
+			->orderBy('a.killCount', 'desc')
+			->limit(30)
+			->get();
+
+		/**
+		 * @var $skill_array
+		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
+		 */
+		$skill_array = Config::get('app.authentic') == true ? array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft', 'harvesting');
+
+		return view('hiscores_player', [
+			'subpage' => $subpage,
+			'players' => $players,
+			'highscores_authentic' => $highscores_authentic,
+			'highscores_custom' => $highscores_custom,
+			'skill_array' => $skill_array,
+			'player_gang' => $player_gang,
+			'totalTime' => $totalTime,
+			'player_feed' => $player_feed,
+			'npc_kills' => $npc_kills,
+		]);
+	}
 }
