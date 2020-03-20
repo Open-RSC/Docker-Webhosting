@@ -146,12 +146,12 @@ class HighscoresController extends Controller
 		$skill_array = Config::get('app.authentic') == true ? array('overall', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('overall', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft', 'harvesting');
 
 		if (Config::get('app.authentic') == true) {
-			return view('highscores', [
+			return view('hiscores', [
 				'skill_array' => $skill_array,
 			])
 				->with(compact('highscores_authentic'));
 		} else {
-			return view('highscores', [
+			return view('hiscores', [
 				'skill_array' => $skill_array,
 			])
 				->with(compact('highscores_custom'));
@@ -188,8 +188,9 @@ class HighscoresController extends Controller
 		/**
 		 * @var $highscores
 		 * Fetches the table row of the player experience in view and paginates the results
+		 * Two instances of this query exist so that the site can support a single template with custom or authentic skills
 		 */
-		$highscores = DB::connection()
+		$highscores_authentic = DB::connection()
 			->table('openrsc_experience as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
 			->select('*', DB::raw('a.exp_' . $subpage))
@@ -201,15 +202,31 @@ class HighscoresController extends Controller
 			])
 			->groupBy('b.username')
 			->orderBy('a.exp_' . $subpage, 'desc')
-			->paginate(300);
+			->paginate(21);
+
+		$highscores_custom = DB::connection()
+			->table('openrsc_experience as a')
+			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
+			->select('*', DB::raw('a.exp_' . $subpage))
+			->where([
+				['b.banned', '=', '0'],
+				['b.group_id', '>=', '10'],
+				['b.iron_man', '=', '0'], // no iron man players are displayed
+				['b.highscoreopt', '!=', '1'],
+			])
+			->groupBy('b.username')
+			->orderBy('a.exp_' . $subpage, 'desc')
+			->paginate(21);
 
 		$skill = 'exp_' . $subpage;
 
-		return view('highscoreskill', [
+		return view('hiscores', [
 			'skill_array' => $skill_array,
 			'subpage' => $subpage,
 			'exp_' . $subpage => $skill,
+			'highscores_authentic' => $highscores_authentic,
+			'highscores_custom' => $highscores_custom,
 		])
-			->with(compact('highscores'));
+			->with('hiscores');
 	}
 }

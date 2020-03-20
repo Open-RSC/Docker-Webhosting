@@ -6,27 +6,25 @@
 		<a class="rsc-link" href="/index.html">Main menu - All Hiscores</a>
 	</header>
 
-	<div class="justify-content-center row rsc-row">
-		<div style="width: 145px">
+	<div class="justify-content-center row rsc-row pt-1">
+		<div>
 			<h2>Select hiscore table</h2>
-			<div class="rsc-box rsc-hiscores-skills p-0" style="line-height: 1.2rem">
+			<div class="rsc-box rsc-hiscores-skills pl-4 pr-3 pt-1 pb-1" style="line-height: 1.2rem">
 				<table>
 					@foreach ($skill_array as $skill)
 						<tr>
-							<th class="col-sm1 text-right">
+							<td class="rsc-col-name text-right">
 								@if ($skill != "overall")
 									<img src="{{ asset('images/skill_icons').'/'.$skill }}.svg"
 										 alt="{{ $skill }}" height="20px"/>
 								@endif
-							</th>
-							<th class="col text-left">
+							</td>
+							<td class="rsc-col-name text-left">
 								<a class="rsc-link"
 								   href="/hiscores/{{ $skill }}">
-									<span class="">
 									{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
-									</span>
 								</a>
-							</th>
+							</td>
 						</tr>
 					@endforeach
 				</table>
@@ -34,8 +32,15 @@
 		</div>
 
 		<div class="col-sm-6">
-			<h2>Overall Hiscores</h2>
-			<div class="rsc-box rsc-hiscores-ranks p-0">
+			<h2>
+				@if ($subpage ?? '')
+					{{ ucfirst($subpage ?? '') }}
+				@else
+					Overall
+				@endif
+				Hiscores
+			</h2>
+			<div class="rsc-box rsc-hiscores-ranks">
 				<table>
 					<tr>
 						<th class="rsc-col-rank">Rank</th>
@@ -60,12 +65,20 @@
 								</td>
 								<td class="rsc-col-level">
 									<span>
-										{{ number_format($player->skill_total) }}
+										@if ($subpage ?? '')
+											{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage})) }}
+										@else
+											{{ number_format($player->skill_total) }}
+										@endif
 									</span>
 								</td>
 								<td class="rsc-col-xp">
 									<span>
-										{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
+										@if ($subpage ?? '')
+											{{ number_format($player->${'exp_'.$subpage}/4.0) }}
+										@else
+											{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
+										@endif
 									</span>
 								</td>
 							</tr>
@@ -97,58 +110,51 @@
 						@endforeach
 					@endif
 				</table>
-				<!--@/if (Config::get('app.authentic') == true)
-					{/{ $highscores_authentic->links('pagination::bootstrap-4') }}
-				@/else
-					{/{ $highscores_custom->links('pagination::bootstrap-4') }}
-				@/endif-->
 			</div>
 		</div>
 	</div>
 
-	<div class="justify-content-center row pl-4 pr-4">
-		<div class="row float-left">
-			<div class="flex-column">
-				<div class="rsc-box">
-				<span class="d-block">
-					Login to view your
-				</span>
-					<span class="d-block">
-					personal hiscores and
-				</span>
-					<span class="d-block">
-					see how you compare
-				</span>
-					<span class="d-block">
-					to your friends.
-				</span>
-				</div>
+	<div class="justify-content-center row rsc-row pt-2">
+		<div>
+			<div class="rsc-box rsc-hiscores-skills pl-0 pr-0 pt-2"
+				 style="line-height: 1.2rem; width: 135px; height: 105px">
+				<a class="rsc-link" href="#">
+					Login
+				</a>
+				to view your personal hiscores and see how you compare to your friends.
 			</div>
 		</div>
 
-		<div class="col-sm-6">
-			<div class="row float-right">
-				<div class="flex-column">
-					<div class="rsc-stone-box">
+		<div class="col-sm-6" style="width: 322px">
+			<table>
+				<tr>
+					<td class="rsc-stone-box">
 						<form method="get">
 							<input type="hidden" name="category" value="overall">
 							<label for="rsc-search-rank">Search by rank</label>
 							<input id="rsc-search-rank" name="rank" type="number" min="1">
 							<input type="submit" value="Search">
 						</form>
-					</div>
-				</div>
-				<div class="flex-columm">
-					<div class="rsc-stone-box">
+					</td>
+					<td class="rsc-stone-box">
 						<form method="get">
 							<input type="hidden" name="category" value="overall">
 							<label for="rsc-search-name">Search by name</label>
 							<input id="rsc-search-name" name="name" type="text" maxlength="12">
 							<input type="submit" value="Search">
 						</form>
-					</div>
-				</div>
-			</div>
+					</td>
+				</tr>
+			</table>
 		</div>
+	</div>
+
+	<div class="pt-4">
+		@if (Config::get('app.authentic') == true)
+			{{ $highscores_authentic->links('pagination::bootstrap-4') }}
+		@else
+			{{ $highscores_custom->links('pagination::bootstrap-4') }}
+		@endif
+	</div>
 
 @endsection

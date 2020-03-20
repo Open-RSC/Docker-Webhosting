@@ -40,7 +40,7 @@ Route::get('/itemdef/{id}', 'ItemController@show')->name('itemdef');
 Route::get('/npcs', 'NpcController@index')->name('npcs');
 Route::get('/npcdef/{id}', 'NpcController@show')->name('npcdef');
 
-// Highscores Alias
+// Hiscores
 Route::get('/hiscores', 'HighscoresController@index')->name('hiscores');
 Route::get('/hiscores/overall', 'HighscoresController@index')->name('hiscores');
 Route::get('/hiscores/{subpage}', 'HighscoresController@show')->name('hiscorestat');
