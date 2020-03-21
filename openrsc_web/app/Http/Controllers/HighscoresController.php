@@ -304,7 +304,7 @@ class HighscoresController extends Controller
 			->limit(30)
 			->get();
 
-		$attack_rank = DB::connection()
+		$attack = DB::connection()
 			->table('openrsc_experience as a')
 			->select(DB::raw('X.position AS rank'))
 			->from(DB::raw("(
@@ -336,20 +336,680 @@ class HighscoresController extends Controller
 			"))
 			->get();
 
+		$defense = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_defense
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_defense`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$strength = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_strength
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_strength`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$hits = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_hits
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_hits`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$ranged = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_ranged
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_ranged`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$prayer = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_prayer
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_prayer`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$magic = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_magic
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_magic`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$cooking = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_cooking
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_cooking`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$woodcut = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_woodcut
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_woodcut`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$fletching = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_fletching
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_fletching`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$fishing = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_fishing
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_fishing`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$firemaking = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_firemaking
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_firemaking`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$crafting = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_crafting
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_crafting`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$smithing = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_smithing
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_smithing`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$mining = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_mining
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_mining`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$herblaw = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_herblaw
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_herblaw`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$agility = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_agility
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_agility`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		$thieving = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_thieving
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_thieving`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
+		if (Config::get('app.authentic') == false) {
+			$runecraft = DB::connection()
+				->table('openrsc_experience as a')
+				->select(DB::raw('X.position AS rank'))
+				->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_runecraft
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_runecraft`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+				->get();
+		}
+
+		if (Config::get('app.authentic') == false) {
+			$harvesting = DB::connection()
+				->table('openrsc_experience as a')
+				->select(DB::raw('X.position AS rank'))
+				->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_harvesting
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_harvesting`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+				->get();
+		}
+
 		/**
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
 		 */
 		$skill_array = Config::get('app.authentic') == true ? array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft', 'harvesting');
 
-		return view('hiscores_player', [
-			'subpage' => $subpage,
-			'players' => $players,
-			'skill_array' => $skill_array,
-			'totalTime' => $totalTime,
-			'player_feed' => $player_feed,
-			'npc_kills' => $npc_kills,
-			'attack_rank' => $attack_rank,
-		]);
+		if (Config::get('app.authentic') == true) {
+			return view('hiscores_player', [
+				'subpage' => $subpage,
+				'players' => $players,
+				'skill_array' => $skill_array,
+				'totalTime' => $totalTime,
+				'player_feed' => $player_feed,
+				'npc_kills' => $npc_kills,
+				'attack' => $attack,
+				'defense' => $defense,
+				'strength' => $strength,
+				'hits' => $hits,
+				'ranged' => $ranged,
+				'prayer' => $prayer,
+				'magic' => $magic,
+				'cooking' => $cooking,
+				'woodcut' => $woodcut,
+				'fletching' => $fletching,
+				'fishing' => $fishing,
+				'firemaking' => $firemaking,
+				'crafting' => $crafting,
+				'smithing' => $smithing,
+				'mining' => $mining,
+				'herblaw' => $herblaw,
+				'agility' => $agility,
+				'thieving' => $thieving,
+			]);
+		} else {
+			return view('hiscores_player', [
+				'subpage' => $subpage,
+				'players' => $players,
+				'skill_array' => $skill_array,
+				'totalTime' => $totalTime,
+				'player_feed' => $player_feed,
+				'npc_kills' => $npc_kills,
+				'attack' => $attack,
+				'defense' => $defense,
+				'strength' => $strength,
+				'hits' => $hits,
+				'ranged' => $ranged,
+				'prayer' => $prayer,
+				'magic' => $magic,
+				'cooking' => $cooking,
+				'woodcut' => $woodcut,
+				'fletching' => $fletching,
+				'fishing' => $fishing,
+				'firemaking' => $firemaking,
+				'crafting' => $crafting,
+				'smithing' => $smithing,
+				'mining' => $mining,
+				'herblaw' => $herblaw,
+				'agility' => $agility,
+				'thieving' => $thieving,
+				'runecraft' => $runecraft,
+				'harvesting' => $harvesting,
+			]);
+		}
 	}
 }

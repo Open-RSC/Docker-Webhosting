@@ -37,9 +37,89 @@
 									</span>
 								</td>
 								<td class="rsc-col-xp">
-								<span>
-									{{ $attack_rank }}
-								</span>
+									<span>
+										@if ($skill == 'attack')
+											@foreach ($attack as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'strength')
+											@foreach ($strength as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'defense')
+											@foreach ($defense as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'hits')
+											@foreach ($hits as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'ranged')
+											@foreach ($ranged as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'prayer')
+											@foreach ($prayer as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'magic')
+											@foreach ($magic as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'cooking')
+											@foreach ($cooking as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'woodcut')
+											@foreach ($woodcut as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'fletching')
+											@foreach ($fletching as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'fishing')
+											@foreach ($fishing as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'firemaking')
+											@foreach ($firemaking as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'crafting')
+											@foreach ($crafting as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'smithing')
+											@foreach ($smithing as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'mining')
+											@foreach ($mining as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'herblaw')
+											@foreach ($herblaw as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'agility')
+											@foreach ($agility as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'thieving')
+											@foreach ($thieving as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'runecraft')
+											@foreach ($runecraft as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@elseif ($skill == 'harvesting')
+											@foreach ($harvesting as $rank)
+												{{ $rank->rank }}
+											@endforeach
+										@endif
+									</span>
 								</td>
 								<td class="rsc-col-level">
 									<span>
