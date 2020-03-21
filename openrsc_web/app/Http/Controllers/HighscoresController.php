@@ -262,30 +262,6 @@ class HighscoresController extends Controller
 			abort(404);
 		}
 
-		$highscores_authentic = DB::connection()
-			->table('openrsc_experience as a')
-			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->where([
-				['b.id', '=', $subpage],
-			])
-			->orWhere([
-				['b.username', '=', $subpage],
-			])
-			->limit(1)
-			->get();
-
-		$highscores_custom = DB::connection()
-			->table('openrsc_experience as a')
-			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->where([
-				['b.id', '=', $subpage],
-			])
-			->orWhere([
-				['b.username', '=', $subpage],
-			])
-			->limit(1)
-			->get();
-
 		$player_gang = DB::connection()
 			->table('openrsc_player_cache as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
@@ -352,8 +328,6 @@ class HighscoresController extends Controller
 		return view('hiscores_player', [
 			'subpage' => $subpage,
 			'players' => $players,
-			'highscores_authentic' => $highscores_authentic,
-			'highscores_custom' => $highscores_custom,
 			'skill_array' => $skill_array,
 			'player_gang' => $player_gang,
 			'totalTime' => $totalTime,

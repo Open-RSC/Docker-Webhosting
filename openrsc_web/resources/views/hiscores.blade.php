@@ -3,7 +3,7 @@
 
 	<header class="rsc-box rsc-header">
 		<span class="d-block">RuneScape Hiscores</span>
-		<a class="rsc-link" href="/index.html">Main menu - All Hiscores</a>
+		<a class="rsc-link" href="/">Main menu</a> - <a class="rsc-link" href="/hiscores">All Hiscores</a>
 	</header>
 
 	<div class="justify-content-center row rsc-row pt-1">
@@ -57,7 +57,7 @@
 									</span>
 								</td>
 								<td class="rsc-col-name">
-									<a class="rsc-link" href="/player/{{ ucfirst($player->username) }}">
+									<a class="rsc-link" href="/hiscores/player/{{ ucfirst($player->username) }}">
 										<span>
 											{{ ucfirst($player->username) }}
 										</span>
@@ -149,12 +149,12 @@
 		</div>
 	</div>
 
-	<div class="pt-4">
-		@if (Config::get('app.authentic') == true)
-			{{ $highscores_authentic->links('pagination::bootstrap-4') }}
-		@else
-			{{ $highscores_custom->links('pagination::bootstrap-4') }}
-		@endif
-	</div>
+	<!--<div class="pt-4">
+		@/if (Config::get('app.authentic') == true)
+			{/{ $highscores_authentic->links('pagination::bootstrap-4') }}
+		@/else
+			{/{ $highscores_custom->links('pagination::bootstrap-4') }}
+		@/endif
+	</div>-->
 
 @endsection

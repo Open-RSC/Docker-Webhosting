@@ -3,11 +3,11 @@
 
 	<header class="rsc-box rsc-header">
 		<span class="d-block">RuneScape Hiscores</span>
-		<a class="rsc-link" href="/index.html">Main menu - All Hiscores</a>
+		<a class="rsc-link" href="/">Main menu</a> - <a class="rsc-link" href="/hiscores">All Hiscores</a>
 	</header>
 
 	<div class="justify-content-center row rsc-row pt-1">
-		@foreach ($highscores_authentic as $key=>$player)
+		@foreach ($players as $player)
 			<div style="width: 385px">
 				<div class="rsc-box rsc-hiscores-ranks">
 					<span class="text-center d-block">
@@ -38,8 +38,7 @@
 								</td>
 								<td class="rsc-col-xp">
 								<span>
-									1
-									<!-- {/{ ($highscores_authentic->currentpage()-1) * $highscores_authentic->perpage() + $key + 1 }} -->
+
 								</span>
 								</td>
 								<td class="rsc-col-level">
