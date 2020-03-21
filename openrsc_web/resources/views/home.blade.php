@@ -44,7 +44,7 @@
 									<tbody>
 									<tr>
 										<td class="pr-1 pl-1">
-											<a href="news.html">
+											<a class="rsc-link" href="news.html">
 												<img src="{{ asset('images/title/mm_scroll.jpg') }}" alt="">
 											</a>
 										</td>
@@ -57,7 +57,7 @@
 															<tbody>
 															<tr>
 																<td class="text-left">
-																	<a class=c href="#">
+																	<a class="rsc-link" href="#">
 																		Rogue trader
 																	</a>
 																</td>
@@ -67,7 +67,7 @@
 															</tr>
 															<tr>
 																<td class="text-left">
-																	<a class=c href="#">
+																	<a class="rsc-link" href="#">
 																		Tai Bwo Wannai Clean-Up
 																	</a>
 																</td>
@@ -77,7 +77,7 @@
 															</tr>
 															<tr>
 																<td class="text-left">
-																	<a class=c href="#">
+																	<a class="rsc-link" href="#">
 																		Behind The Scenes - August
 																	</a>
 																</td>
@@ -87,7 +87,7 @@
 															</tr>
 															<tr>
 																<td class="text-left">
-																	<a class=c href="#">
+																	<a class="rsc-link" href="#">
 																		New York Servers Online
 																	</a>
 																</td>
@@ -97,7 +97,7 @@
 															</tr>
 															<tr>
 																<td class="text-left">
-																	<a class=c href="#">
+																	<a class="rsc-link" href="#">
 																		48 more bank slots for members
 																	</a>
 																</td>
@@ -116,7 +116,7 @@
 								</table>
 								<div class="text-center justify-content-center pb-2">
 									To view a full list of news and updates,
-									<a class=c href="news.html">
+									<a class="rsc-link" href="news.html">
 										Click Here
 									</a>
 								</div>
@@ -201,7 +201,7 @@
 												Play RuneScape Classic right now!
 											</span>
 												<span class="d-block">
-													<a class=c href="{{ route('play') }}">
+													<a class="rsc-link" href="{{ route('play') }}">
 														<span class="d-block">
 															Click Here
 														</span>
@@ -248,7 +248,7 @@
 												<span class="d-block">
 												Create a free account for both the game & website.
 											</span>
-												<a class="c" href="create/index.html">
+												<a class="rsc-link" href="create/index.html">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -290,7 +290,7 @@
 												<span class="d-block">
 													Watch thousands of original RSC recordings!
 												</span>
-												<a class="c" href="https://rsc.plus" target="_blank">
+												<a class="rsc-link" href="https://rsc.plus" target="_blank">
 													<span class="d-block">
 														Click Here
 													</span>
@@ -333,7 +333,7 @@
 												<span class="d-block">
 												Join our Discord server.
 											</span>
-												<a class=c href="https://discord.gg/ABdFCqn">
+												<a class="rsc-link" href="https://discord.gg/ABdFCqn">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -377,7 +377,7 @@
 												<span class="d-block">
 												Detailed info on all aspects of the game.
 											</span>
-												<a class="c" target="_blank" href="/wiki">
+												<a class="rsc-link" target="_blank" href="/wiki">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -422,7 +422,7 @@
 												<span class="d-block">
 												Is your character in the top 500,000?
 											</span>
-												<a class="c" href="hiscores/hiscores.html">
+												<a class="rsc-link" href="hiscores/hiscores.html">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -465,7 +465,7 @@
 												<span class="d-block">
 												Stories and letters about RuneScape.
 											</span>
-												<a class="c" href="varrock/varrockindex.html">
+												<a class="rsc-link" href="varrock/varrockindex.html">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -505,7 +505,7 @@
 											<span class="d-block">
 											Great for finding your way around.
 										</span>
-											<a class="c" href="{{ route('worldmap') }}">
+											<a class="rsc-link" href="{{ route('worldmap') }}">
 											<span class="d-block">
 												Click Here
 											</span>
@@ -612,7 +612,7 @@
 															<span class="d-block">
 																If you lose/forget your password help is at hand.
 															</span>
-															<a class="c" href="#">
+															<a class="rsc-link" href="#">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -655,7 +655,7 @@
 															<span class="d-block">
 																Manage your Password and Recovery Details.
 															</span>
-															<a class="c" href="login.html">
+															<a class="rsc-link" href="login.html">
 																<span class="d-block">
 																	Login
 																</span>
@@ -694,7 +694,7 @@
 															<span class="d-block">
 																Learn our rules and stay safe online.
 															</span>
-															<a class="c" href="guides/guides.html">
+															<a class="rsc-link" href="guides/guides.html">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -734,7 +734,7 @@
 															<span class="d-block">
 																Your messages from our staff.
 															</span>
-															<a class="c" href="login.html">
+															<a class="rsc-link" href="login.html">
 																<span class="d-block">
 																	Login
 																</span>
@@ -774,7 +774,7 @@
 															<span class="d-block">
 																What do you enjoy most about Quests?
 															</span>
-															<a class="c" href="login.html">
+															<a class="rsc-link" href="login.html">
 																<span class="d-block">
 																	Login
 																</span>
@@ -814,7 +814,7 @@
 															<span class="d-block">
 																How do you rank compared to your friends?
 															</span>
-															<a class="c" href="login.html">
+															<a class="rsc-link" href="login.html">
 																<span class="d-block">
 																	Login
 																</span>
@@ -905,7 +905,7 @@
 															<span class="d-block">
 																Read all about Runescape Classic.
 															</span>
-															<a class="c" href="https://classic.runescape.wiki/"
+															<a class="rsc-link" href="https://classic.runescape.wiki/"
 															   target="_blank">
 																<span class="d-block">
 																	Click Here
@@ -950,7 +950,7 @@
 															<span class="d-block">
 																Discuss the game with fellow players!
 															</span>
-															<a class="c" href="https://discord.gg/grzEjDB"
+															<a class="rsc-link" href="https://discord.gg/grzEjDB"
 															   target="_blank">
 																<span class="d-block">
 																	Login
@@ -993,7 +993,7 @@
 															<span class="d-block">
 																Learn all about the project and recent development.
 															</span>
-															<a class="c" href="https://reddit.com/r/openrsc"
+															<a class="rsc-link" href="https://reddit.com/r/openrsc"
 															   target="_blank">
 																<span class="d-block">
 																	Click Here
@@ -1035,7 +1035,7 @@
 															<span class="d-block">
 																Discuss Runescape Classic topics.
 															</span>
-															<a class="c" href="https://reddit.com/r/rsc"
+															<a class="rsc-link" href="https://reddit.com/r/rsc"
 															   target="_blank">
 																<span class="d-block">
 																	Click Here
@@ -1076,7 +1076,7 @@
 															<span class="d-block">
 																Answers to Frequently Asked Questions.
 															</span>
-															<a class="c" href="faq/faqindex.html">
+															<a class="rsc-link" href="faq/faqindex.html">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -1117,7 +1117,7 @@
 															<span class="d-block">
 																Download optional extras for RuneScape.
 															</span>
-															<a class="c" href="files/files.html">
+															<a class="rsc-link" href="files/files.html">
 																<span class="d-block">
 																	Click Here
 																</span>

@@ -1518,6 +1518,7 @@ class HomeController extends Controller
 
 	public function play()
 	{
+		$agent = new Agent();
 		$download_jar = config('app.download_jar');
 		$download_apk = config('app.download_apk');
 		$download_jre = config('app.download_jre');
@@ -1526,6 +1527,7 @@ class HomeController extends Controller
 			'download_jar' => $download_jar,
 			'download_apk' => $download_apk,
 			'download_jre' => $download_jre,
+			'agent' => $agent,
 			]);
 	}
 }

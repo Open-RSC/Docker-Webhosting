@@ -262,21 +262,6 @@ class HighscoresController extends Controller
 			abort(404);
 		}
 
-		$player_gang = DB::connection()
-			->table('openrsc_player_cache as a')
-			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('value')
-			->where([
-				['a.key', '=', 'arrav_gang'],
-				['b.id', '=', $subpage],
-			])
-			->orWhere([
-				['a.key', '=', 'arrav_gang'],
-				['b.username', '=', $subpage],
-			])
-			->limit(1)
-			->get();
-
 		$milliseconds = DB::connection()
 			->table('openrsc_player_cache as a')
 			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
@@ -319,6 +304,38 @@ class HighscoresController extends Controller
 			->limit(30)
 			->get();
 
+		$attack_rank = DB::connection()
+			->table('openrsc_experience as a')
+			->select(DB::raw('X.position AS rank'))
+			->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						B.username,
+						A.playerID,
+						A.exp_attack
+					FROM
+						`openrsc_experience` AS A
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players AS B
+				ON
+					A.playerID = B.id
+				WHERE
+					B.banned = 0 AND B.group_id = 10
+				ORDER BY
+					A.`exp_attack`
+				DESC
+				) X
+			WHERE
+				X.username = '" . $subpage . "'
+			OR
+				X.playerID = '" . $subpage . "'
+			LIMIT 1
+			"))
+			->get();
+
 		/**
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
@@ -329,10 +346,10 @@ class HighscoresController extends Controller
 			'subpage' => $subpage,
 			'players' => $players,
 			'skill_array' => $skill_array,
-			'player_gang' => $player_gang,
 			'totalTime' => $totalTime,
 			'player_feed' => $player_feed,
 			'npc_kills' => $npc_kills,
+			'attack_rank' => $attack_rank,
 		]);
 	}
 }

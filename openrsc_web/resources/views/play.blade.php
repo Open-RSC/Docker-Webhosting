@@ -2,7 +2,7 @@
 @section('content')
 
 	<header class="rsc-box rsc-header">
-		<h1>Select Game Type</h1>
+		<h1>Select Game Version</h1>
 		<a class="rsc-link" href="/index.html">Main menu</a>
 	</header>
 	<section class="rsc-game-select-wrap">
@@ -32,11 +32,11 @@
 		<label for="rsc-client-type">
 			Select client version - only change this if the default doesn't work
 		</label>
-		<br>
+		<!--<br>
 		<select id="rsc-client-type">
 			<option value="web">Web Client Using JavaScript (Recommended)</option>
 			<option value="download">Desktop Client Using Java</option>
-		</select>
+		</select>-->
 	</div>
 
 	<div class="d-block">
@@ -44,7 +44,7 @@
 			Having trouble? Try the latest version of Java
 		</span>
 		<span class="d-block">
-			<a href="{{ $download_jre }}">
+			<a class="rsc-link" href="{{ $download_jre }}">
 				Click Here
 			</a>
 		</span>
@@ -53,7 +53,7 @@
 			Android players: please install Gboard
 		</span>
 		<span class="d-block">
-		<a href="https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&hl=en_US">
+		<a class="rsc-link" href="https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&hl=en_US">
 			Click Here
 		</a>
 	</span>

@@ -30,7 +30,7 @@
 									<span>
 										<a class="text-secondary d-block"
 										   href="/hiscores/{{ $skill }}">
-										<img src="{{ asset('images/skill_icons').'/'.$skill }}.svg"
+										<img class="pr-2" src="{{ asset('images/skill_icons').'/'.$skill }}.svg"
 											 alt="{{ $skill }}" height="20px"/>
 										{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
 										</a>
@@ -38,7 +38,7 @@
 								</td>
 								<td class="rsc-col-xp">
 								<span>
-
+									{{ $attack_rank }}
 								</span>
 								</td>
 								<td class="rsc-col-level">
