@@ -106,17 +106,17 @@
 				<tr>
 					<td class="rsc-stone-box">
 						<form method="get">
-							<input type="hidden" name="category" value="overall">
+							{{ csrf_field() }}
 							<label for="rsc-search-rank">Search by rank</label>
-							<input id="rsc-search-rank" name="rank" type="number" min="1">
+							<input id="rsc-search-rank" name="search_rank" type="number" min="1">
 							<input type="submit" value="Search">
 						</form>
 					</td>
 					<td class="rsc-stone-box">
 						<form method="get">
-							<input type="hidden" name="category" value="overall">
+							{{ csrf_field() }}
 							<label for="rsc-search-name">Search by name</label>
-							<input id="rsc-search-name" name="name" type="text" maxlength="12">
+							<input id="rsc-search-name" name="search_name" type="text" maxlength="12">
 							<input type="submit" value="Search">
 						</form>
 					</td>

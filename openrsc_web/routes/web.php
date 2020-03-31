@@ -45,6 +45,7 @@ Route::get('/hiscores', 'HighscoresController@index')->name('hiscores');
 Route::get('/hiscores/overall', 'HighscoresController@index')->name('hiscores');
 Route::get('/hiscores/{subpage}', 'HighscoresController@show')->name('hiscores');
 Route::get('/hiscores/player/{subpage}', 'HighscoresController@player')->name('player');
+Route::get('/hiscores/{subpage}', 'HighscoresController@searchByName')->name('search_name');
 
 // Afman staff zone
 Route::get('/chat_logs', 'StaffController@chat_logs')->middleware('is_admin')->name('chat_logs');
