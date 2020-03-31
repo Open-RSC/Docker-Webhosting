@@ -44,7 +44,7 @@
 									<tbody>
 									<tr>
 										<td class="pr-1 pl-1">
-											<a class="rsc-link" href="news.html">
+											<a class="rsc-link" href="news">
 												<img src="{{ asset('images/title/mm_scroll.jpg') }}" alt="">
 											</a>
 										</td>
@@ -116,7 +116,7 @@
 								</table>
 								<div class="text-center justify-content-center pb-2">
 									To view a full list of news and updates,
-									<a class="rsc-link" href="news.html">
+									<a class="rsc-link" href="news">
 										Click Here
 									</a>
 								</div>
@@ -218,7 +218,7 @@
 										<tbody>
 										<tr>
 											<td class="align-middle" style="width: 100px;">
-												<a href="create/index.html">
+												<a href="register">
 													<img src="{{ asset('images/title/mm_player.jpg') }}"
 														 alt="create player">
 												</a>
@@ -233,7 +233,7 @@
 															<a class="whitelink"
 															   onmouseover="redglow('createaccountbut')"
 															   onmouseout="unredglow('createaccountbut')"
-															   href="create/index.html">
+															   href="register">
 															<span class="font-weight-bold d-block">
 																Create Account
 															</span>
@@ -248,7 +248,7 @@
 												<span class="d-block">
 												Create a free account for both the game & website.
 											</span>
-												<a class="rsc-link" href="create/index.html">
+												<a class="rsc-link" href="register">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -393,7 +393,7 @@
 										<tbody>
 										<tr>
 											<td class="align-middle" style="width: 100px;">
-												<a href="hiscores/hiscores.html">
+												<a href="hiscores">
 													<img src="{{ asset('images/title/mm_chalice.jpg') }}" alt="">
 												</a>
 											</td>
@@ -407,7 +407,7 @@
 															<a class="whitelink"
 															   onmouseover="greyglow('hiscoresbut')"
 															   onmouseout="ungreyglow('hiscoresbut')"
-															   href="hiscores/hiscores.html">
+															   href="hiscores">
 															<span class="font-weight-bold d-block">
 																Full
 															</span>
@@ -422,7 +422,7 @@
 												<span class="d-block">
 												Is your character in the top 500,000?
 											</span>
-												<a class="rsc-link" href="hiscores/hiscores.html">
+												<a class="rsc-link" href="hiscores">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -439,7 +439,7 @@
 										<tbody>
 										<tr>
 											<td class="align-middle" style="width: 100px;">
-												<a href="varrock/varrockindex.html">
+												<a href="varrock">
 													<img src="{{ asset('images/title/mm_lov.jpg') }}" alt="">
 												</a>
 											</td>
@@ -453,7 +453,7 @@
 															<a class="whitelink"
 															   onmouseover="greyglow('varrockbut')"
 															   onmouseout="ungreyglow('varrockbut')"
-															   href="varrock/varrockindex.html">
+															   href="varrock">
 															<span class="font-weight-bold d-block">
 																Library of Varrock
 															</span>
@@ -465,7 +465,7 @@
 												<span class="d-block">
 												Stories and letters about RuneScape.
 											</span>
-												<a class="rsc-link" href="varrock/varrockindex.html">
+												<a class="rsc-link" href="varrock">
 												<span class="d-block">
 													Click Here
 												</span>
@@ -633,7 +633,7 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink" href="login.html">
+															<a class="whitelink" href="login">
 																<span class="d-block">
 																	Account Management
 																</span>
@@ -646,7 +646,7 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="login.html">
+															<a href="login">
 																<img src="{{ asset('images/title/mms_accman.jpg') }}"
 																	 alt="">
 															</a>
@@ -655,7 +655,7 @@
 															<span class="d-block">
 																Manage your Password and Recovery Details.
 															</span>
-															<a class="rsc-link" href="login.html">
+															<a class="rsc-link" href="login">
 																<span class="d-block">
 																	Login
 																</span>
@@ -673,7 +673,7 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink" href="guides/guides.html">
+															<a class="whitelink" href="guides">
 																<span class="d-block font-weight-bold">
 																	Rules & Security
 																</span>
@@ -686,7 +686,7 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="guides/guides.html">
+															<a href="guides">
 																<img src="{{ asset('images/title/mms_rules.jpg') }}">
 															</a>
 														</td>
@@ -694,7 +694,7 @@
 															<span class="d-block">
 																Learn our rules and stay safe online.
 															</span>
-															<a class="rsc-link" href="guides/guides.html">
+															<a class="rsc-link" href="guides">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -712,7 +712,7 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink" href="login.html">
+															<a class="whitelink" href="login">
 																<span class="d-block">
 																	Message Centre
 																</span>
@@ -725,7 +725,7 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="login.html">
+															<a href="login">
 																<img src="{{ asset('images/title/mms_inbox.jpg') }}"
 																	 alt="">
 															</a>
@@ -734,7 +734,7 @@
 															<span class="d-block">
 																Your messages from our staff.
 															</span>
-															<a class="rsc-link" href="login.html">
+															<a class="rsc-link" href="login">
 																<span class="d-block">
 																	Login
 																</span>
@@ -752,7 +752,7 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink" href="login.html">
+															<a class="whitelink" href="login">
 																<span class="d-block">
 																	Latest Poll
 																</span>
@@ -765,7 +765,7 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="login.html">
+															<a href="login">
 																<img src="{{ asset('images/title/mms_vote.jpg') }}"
 																	 alt="">
 															</a>
@@ -774,7 +774,7 @@
 															<span class="d-block">
 																What do you enjoy most about Quests?
 															</span>
-															<a class="rsc-link" href="login.html">
+															<a class="rsc-link" href="login">
 																<span class="d-block">
 																	Login
 																</span>
@@ -792,7 +792,7 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink" href="login.html">
+															<a class="whitelink" href="login">
 																<span class="d-block">
 																	Personal Hiscores
 																</span>
@@ -805,7 +805,7 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="login.html">
+															<a href="login">
 																<img src="{{ asset('images/title/mms_chalice.jpg') }}"
 																	 alt="">
 															</a>
@@ -814,7 +814,7 @@
 															<span class="d-block">
 																How do you rank compared to your friends?
 															</span>
-															<a class="rsc-link" href="login.html">
+															<a class="rsc-link" href="login">
 																<span class="d-block">
 																	Login
 																</span>
@@ -1054,7 +1054,7 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink" href="faq/faqindex.html">
+															<a class="whitelink" href="faq">
 																<span class="font-weight-bold d-block">
 																	F.A.Q.
 																</span>
@@ -1067,7 +1067,7 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="faq/faqindex.html">
+															<a href="faq">
 																<img src="{{ asset('images/title/mms_faq.jpg') }}"
 																	 alt="">
 															</a>
@@ -1076,7 +1076,7 @@
 															<span class="d-block">
 																Answers to Frequently Asked Questions.
 															</span>
-															<a class="rsc-link" href="faq/faqindex.html">
+															<a class="rsc-link" href="faq">
 																<span class="d-block">
 																	Click Here
 																</span>
@@ -1094,7 +1094,7 @@
 													<tr>
 														<td class="b text-center"
 															background="{{ asset('images/stoneback.gif') }}">
-															<a class="whitelink text-center" href="files/files.html">
+															<a class="whitelink text-center" href="files">
 																<span class="d-block">
 																	Extra Files
 																</span>
@@ -1107,7 +1107,7 @@
 													<tbody>
 													<tr>
 														<td>
-															<a href="files/files.html">
+															<a href="files">
 																<img
 																	src="{{ asset('images/title/mms_extrafiles.jpg') }}"
 																	alt="">
@@ -1117,7 +1117,7 @@
 															<span class="d-block">
 																Download optional extras for RuneScape.
 															</span>
-															<a class="rsc-link" href="files/files.html">
+															<a class="rsc-link" href="files">
 																<span class="d-block">
 																	Click Here
 																</span>

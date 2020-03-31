@@ -3,7 +3,7 @@
 
 	<header class="rsc-box rsc-header">
 		<span class="d-block">RuneScape Hiscores</span>
-		<a class="rsc-link" href="/">Main menu</a> - <a class="rsc-link" href="/hiscores">All Hiscores</a>
+		<a class="rsc-link" href="/">Main Menu</a> - <a class="rsc-link" href="/hiscores">All Hiscores</a>
 	</header>
 
 	<div class="justify-content-center row rsc-row pt-1">
@@ -13,7 +13,7 @@
 				<table>
 					@foreach ($skill_array as $skill)
 						<tr>
-							<td class="rsc-col-name text-right">
+							<td class="rsc-col-name text-center">
 								@if ($skill != "overall")
 									<img src="{{ asset('images/skill_icons').'/'.$skill }}.svg"
 										 alt="{{ $skill }}" height="20px"/>
@@ -48,22 +48,21 @@
 						<th class="rsc-col-level">Level</th>
 						<th class="rsc-col-xp">XP</th>
 					</tr>
-					@if (Config::get('app.authentic') == true)
-						@foreach ($highscores_authentic as $key=>$player)
-							<tr style="line-height: 1.2rem">
-								<td class="rsc-col-rank">
+					@foreach ($highscores as $key=>$player)
+						<tr style="line-height: 1.2rem">
+							<td class="rsc-col-rank">
 									<span>
-										{{ ($highscores_authentic->currentpage()-1) * $highscores_authentic->perpage() + $key + 1 }}
+										{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
 									</span>
-								</td>
-								<td class="rsc-col-name">
-									<a class="rsc-link" href="/hiscores/player/{{ ucfirst($player->username) }}">
+							</td>
+							<td class="rsc-col-name">
+								<a class="rsc-link" href="/hiscores/player/{{ ucfirst($player->username) }}">
 										<span>
 											{{ ucfirst($player->username) }}
 										</span>
-									</a>
-								</td>
-								<td class="rsc-col-level">
+								</a>
+							</td>
+							<td class="rsc-col-level">
 									<span>
 										@if ($subpage ?? '')
 											{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage})) }}
@@ -71,8 +70,8 @@
 											{{ number_format($player->skill_total) }}
 										@endif
 									</span>
-								</td>
-								<td class="rsc-col-xp">
+							</td>
+							<td class="rsc-col-xp">
 									<span>
 										@if ($subpage ?? '')
 											{{ number_format($player->${'exp_'.$subpage}/4.0) }}
@@ -80,36 +79,13 @@
 											{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
 										@endif
 									</span>
-								</td>
-							</tr>
-						@endforeach
-					@else
-						@foreach ($highscores_custom as $key=>$player)
-							<tr>
-								<td class="rsc-col-rank">
-									<span>
-										{{ ($highscores_custom->currentpage()-1) * $highscores_custom->perpage() + $key + 1 }}
-									</span>
-								</td>
-								<td class="rsc-col-name">
-									<span>
-										{{ ucfirst($player->username) }}
-									</span>
-								</td>
-								<td class="rsc-col-level">
-									<span>
-										{{ number_format($player->skill_total) }}
-									</span>
-								</td>
-								<td class="rsc-col-xp">
-									<span>
-										{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
-									</span>
-								</td>
-							</tr>
-						@endforeach
-					@endif
+							</td>
+						</tr>
+					@endforeach
 				</table>
+			</div>
+			<div class="pt-2">
+				{{ $highscores->links('pagination::bootstrap-4') }}
 			</div>
 		</div>
 	</div>
@@ -148,13 +124,5 @@
 			</table>
 		</div>
 	</div>
-
-	<!--<div class="pt-4">
-		@/if (Config::get('app.authentic') == true)
-			{/{ $highscores_authentic->links('pagination::bootstrap-4') }}
-		@/else
-			{/{ $highscores_custom->links('pagination::bootstrap-4') }}
-		@/endif
-	</div>-->
 
 @endsection

@@ -3,7 +3,7 @@
 
 	<header class="rsc-box rsc-header">
 		<span class="d-block">RuneScape Hiscores</span>
-		<a class="rsc-link" href="/">Main menu</a> - <a class="rsc-link" href="/hiscores">All Hiscores</a>
+		<a class="rsc-link" href="/">Main Menu</a> - <a class="rsc-link" href="/hiscores">All Hiscores</a>
 	</header>
 
 	<div class="justify-content-center row rsc-row pt-1">
@@ -26,15 +26,17 @@
 
 						@foreach ($skill_array as $skill)
 							<tr style="line-height: 1.2rem">
-								<td class="rsc-col-name">
-									<span>
-										<a class="text-secondary d-block"
-										   href="/hiscores/{{ $skill }}">
-										<img class="pr-2" src="{{ asset('images/skill_icons').'/'.$skill }}.svg"
+								<td class="rsc-col-name text-center">
+									@if ($skill != "overall")
+										<img src="{{ asset('images/skill_icons').'/'.$skill }}.svg"
 											 alt="{{ $skill }}" height="20px"/>
+									@endif
+								</td>
+								<td class="rsc-col-name text-left">
+									<a class="rsc-link"
+									   href="/hiscores/{{ $skill }}">
 										{{ ucwords(preg_replace("/[^A-Za-z0-9 ]/", " ", $skill)) }}
-										</a>
-									</span>
+									</a>
 								</td>
 								<td class="rsc-col-xp">
 									<span>
