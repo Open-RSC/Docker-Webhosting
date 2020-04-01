@@ -331,7 +331,7 @@
 													</tbody>
 												</table>
 												<span class="d-block">
-												Join our Discord server.
+												Join the official Discord server.
 											</span>
 												<a class="rsc-link" href="https://discord.gg/ABdFCqn">
 												<span class="d-block">
@@ -420,7 +420,7 @@
 													</tbody>
 												</table>
 												<span class="d-block">
-												Is your character in the top 500,000?
+												Is your character in the top 50?
 											</span>
 												<a class="rsc-link" href="hiscores">
 												<span class="d-block">
