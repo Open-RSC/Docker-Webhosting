@@ -3,7 +3,7 @@
 
 	<header class="rsc-box rsc-header">
 		<h1>Select Game Version</h1>
-		<a class="rsc-link" href="/index.html">Main menu</a>
+		<a class="rsc-link" href="/">Main Menu</a>
 	</header>
 	<section class="rsc-game-select-wrap">
 		@if ($agent->isAndroid())

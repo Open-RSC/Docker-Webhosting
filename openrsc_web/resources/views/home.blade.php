@@ -1155,4 +1155,3 @@
 	</div>
 
 @endsection
-</body>
