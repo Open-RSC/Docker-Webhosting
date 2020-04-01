@@ -199,7 +199,7 @@
 			<table>
 				<tr>
 					<td class="rsc-stone-box">
-						<form method="get">
+						<form method="get" action="/hiscores">
 							{{ csrf_field() }}
 							<label for="rsc-search-rank">Search by rank</label>
 							<input id="rsc-search-rank" name="search_rank" type="number" min="1">
@@ -207,7 +207,7 @@
 						</form>
 					</td>
 					<td class="rsc-stone-box">
-						<form method="get">
+						<form method="get" action="/hiscores">
 							{{ csrf_field() }}
 							<label for="rsc-search-name">Search by name</label>
 							<input id="rsc-search-name" name="search_name" type="text" maxlength="12">
