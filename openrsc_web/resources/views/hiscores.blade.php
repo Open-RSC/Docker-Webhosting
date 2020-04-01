@@ -52,7 +52,11 @@
 						<tr style="line-height: 1.2rem">
 							<td class="rsc-col-rank">
 								<span>
-									{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
+									@if ($subpage ?? '' ?? '')
+										{{ number_format($player->rank) }}
+									@else
+										{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
+									@endif
 								</span>
 							</td>
 							<td class="rsc-col-name">
@@ -104,7 +108,15 @@
 		<div class="col-sm-6">
 			<table>
 				<tr>
-					<td class="rsc-stone-box" style="width: 644px">
+					<td class="rsc-stone-box">
+						<form method="get">
+							{{ csrf_field() }}
+							<label for="rsc-search-rank">Search by rank</label>
+							<input id="rsc-search-rank" name="search_rank" type="number" min="1" style="text-align: center">
+							<input type="submit" value="Search">
+						</form>
+					</td>
+					<td class="rsc-stone-box">
 						<form method="get">
 							{{ csrf_field() }}
 							<label for="rsc-search-name">Search by name</label>

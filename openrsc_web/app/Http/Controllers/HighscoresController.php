@@ -156,6 +156,7 @@ class HighscoresController extends Controller
 	 */
 	public function show($subpage)
 	{
+		$query_rank = request('search_rank');
 		$query_name = request('search_name');
 		/**
 		 * @var $skill_array
@@ -182,20 +183,80 @@ class HighscoresController extends Controller
 		 * Fetches the table row of the player experience in view and paginates the results
 		 * Two instances of this query exist so that the site can support a single template with custom or authentic skills
 		 */
-		$highscores = DB::connection()
-			->table('openrsc_experience as a')
-			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('a.exp_' . $subpage))
-			->where([
-				['b.banned', '=', '0'],
-				['b.group_id', '>=', '10'],
-				['b.iron_man', '=', '0'], // no iron man players are displayed
-				['b.highscoreopt', '!=', '1'],
-				['b.username', 'LIKE', '%' . $query_name . '%'],
-			])
-			->groupBy('b.username')
-			->orderBy('a.exp_' . $subpage, 'desc')
-			->paginate(21);
+		if ($query_rank) {
+			$highscores = DB::connection()
+				->table('openrsc_experience as a')
+				->join('openrsc_players as b', 'playerID', '=', 'id')
+				->select('*', DB::raw('exp_' . $subpage . ', X.position AS rank'))
+				->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						username,
+						playerID,
+						exp_$subpage
+					FROM
+						openrsc_experience
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players
+				ON
+					openrsc_experience.playerID = openrsc_players.id
+				WHERE
+					banned = 0 AND group_id = 10
+				ORDER BY
+					exp_$subpage
+				DESC
+				) X"))
+				->where([
+					['b.banned', '=', '0'],
+					['b.group_id', '>=', '10'],
+					['b.iron_man', '=', '0'], // no iron man players are displayed
+					['b.highscoreopt', '!=', '1'],
+					['b.username', 'LIKE', '%' . $query_name . '%'],
+					['X.position', '=', $query_rank],
+				])
+				->groupBy('b.username')
+				->orderBy('exp_' . $subpage, 'desc')
+				->paginate(21);
+		} else {
+			$highscores = DB::connection()
+				->table('openrsc_experience as a')
+				->join('openrsc_players as b', 'playerID', '=', 'id')
+				->select('*', DB::raw('exp_' . $subpage . ', X.position AS rank'))
+				->from(DB::raw("(
+				SELECT
+					(@row_number := @row_number +1) AS position,
+						username,
+						playerID,
+						exp_$subpage
+					FROM
+						openrsc_experience
+					JOIN(
+						SELECT
+						@row_number := 0
+					) r
+				LEFT JOIN openrsc_players
+				ON
+					openrsc_experience.playerID = openrsc_players.id
+				WHERE
+					banned = 0 AND group_id = 10
+				ORDER BY
+					exp_$subpage
+				DESC
+				) X"))
+				->where([
+					['b.banned', '=', '0'],
+					['b.group_id', '>=', '10'],
+					['b.iron_man', '=', '0'], // no iron man players are displayed
+					['b.highscoreopt', '!=', '1'],
+					['b.username', 'LIKE', '%' . $query_name . '%'],
+				])
+				->groupBy('b.username')
+				->orderBy('exp_' . $subpage, 'desc')
+				->paginate(21);
+		}
 
 		$skill = 'exp_' . $subpage;
 
