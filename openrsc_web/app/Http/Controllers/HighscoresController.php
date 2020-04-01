@@ -52,7 +52,6 @@ class HighscoresController extends Controller
 	public function index()
 	{
 		$query_name = request('search_name');
-		$query_rank = request('search_rank');
 		/**
 		 * @return Factory|View
 		 * @var $highscores
@@ -90,7 +89,6 @@ class HighscoresController extends Controller
 					['b.iron_man', '=', '0'], // no iron man players are displayed
 					['b.highscoreopt', '!=', '1'],
 					['b.username', 'LIKE', '%' . $query_name . '%'],
-					['b.username', 'LIKE', '%' . $query_rank . '%'],
 				])
 				->groupBy('b.username')
 				->orderBy('b.skill_total', 'desc')
@@ -132,7 +130,6 @@ class HighscoresController extends Controller
 					['b.iron_man', '=', '0'], // no iron man players are displayed
 					['b.highscoreopt', '!=', '1'],
 					['b.username', 'LIKE', '%' . $query_name . '%'],
-					['b.username', 'LIKE', '%' . $query_rank . '%'],
 				])
 				->groupBy('b.username')
 				->orderBy('b.skill_total', 'desc')
@@ -160,7 +157,6 @@ class HighscoresController extends Controller
 	public function show($subpage)
 	{
 		$query_name = request('search_name');
-		$query_rank = request('search_rank');
 		/**
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
@@ -196,7 +192,6 @@ class HighscoresController extends Controller
 				['b.iron_man', '=', '0'], // no iron man players are displayed
 				['b.highscoreopt', '!=', '1'],
 				['b.username', 'LIKE', '%' . $query_name . '%'],
-				['b.username', 'LIKE', '%' . $query_rank . '%'],
 			])
 			->groupBy('b.username')
 			->orderBy('a.exp_' . $subpage, 'desc')
@@ -222,10 +217,6 @@ class HighscoresController extends Controller
 		 */
 		$subpage = preg_replace("/[^A-Za-z0-9 ]/", "_", $subpage);
 
-		/**
-		 * @var $highscores
-		 * Fetches the table row of the player experience in view and paginates the results
-		 */
 		/**
 		 * @var $players
 		 * Fetches the table row of the player experience in view and paginates the results

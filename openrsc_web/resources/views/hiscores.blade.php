@@ -51,34 +51,34 @@
 					@foreach ($highscores as $key=>$player)
 						<tr style="line-height: 1.2rem">
 							<td class="rsc-col-rank">
-									<span>
-										{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
-									</span>
+								<span>
+									{{ ($highscores->currentpage()-1) * $highscores->perpage() + $key + 1 }}
+								</span>
 							</td>
 							<td class="rsc-col-name">
 								<a class="rsc-link" href="/hiscores/player/{{ ucfirst($player->username) }}">
-										<span>
-											{{ ucfirst($player->username) }}
-										</span>
+									<span>
+										{{ ucfirst($player->username) }}
+									</span>
 								</a>
 							</td>
 							<td class="rsc-col-level">
-									<span>
-										@if ($subpage ?? '' ?? '')
-											{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage ?? ''})) }}
-										@else
-											{{ number_format($player->skill_total) }}
-										@endif
-									</span>
+								<span>
+									@if ($subpage ?? '' ?? '')
+										{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage ?? ''})) }}
+									@else
+										{{ number_format($player->skill_total) }}
+									@endif
+								</span>
 							</td>
 							<td class="rsc-col-xp">
-									<span>
-										@if ($subpage ?? '' ?? '')
-											{{ number_format($player->${'exp_'.$subpage ?? ''}/4.0) }}
-										@else
-											{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
-										@endif
-									</span>
+								<span>
+									@if ($subpage ?? '' ?? '')
+										{{ number_format($player->${'exp_'.$subpage ?? ''}/4.0) }}
+									@else
+										{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
+									@endif
+								</span>
 							</td>
 						</tr>
 					@endforeach
@@ -101,22 +101,14 @@
 			</div>
 		</div>
 
-		<div class="col-sm-6" style="width: 322px">
+		<div class="col-sm-6">
 			<table>
 				<tr>
-					<td class="rsc-stone-box">
-						<form method="get">
-							{{ csrf_field() }}
-							<label for="rsc-search-rank">Search by rank</label>
-							<input id="rsc-search-rank" name="search_rank" type="number" min="1">
-							<input type="submit" value="Search">
-						</form>
-					</td>
-					<td class="rsc-stone-box">
+					<td class="rsc-stone-box" style="width: 644px">
 						<form method="get">
 							{{ csrf_field() }}
 							<label for="rsc-search-name">Search by name</label>
-							<input id="rsc-search-name" name="search_name" type="text" maxlength="12">
+							<input id="rsc-search-name" name="search_name" type="text" maxlength="12" style="text-align: center">
 							<input type="submit" value="Search">
 						</form>
 					</td>
