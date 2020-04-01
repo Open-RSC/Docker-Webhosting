@@ -51,6 +51,8 @@ class HighscoresController extends Controller
 	 */
 	public function index()
 	{
+		$query = request('search_name');
+
 		/**
 		 * @return Factory|View
 		 * @var $highscores
@@ -87,6 +89,7 @@ class HighscoresController extends Controller
 					['b.group_id', '>=', '10'],
 					['b.iron_man', '=', '0'], // no iron man players are displayed
 					['b.highscoreopt', '!=', '1'],
+					['b.username', 'LIKE', '%' . $query . '%'],
 				])
 				->groupBy('b.username')
 				->orderBy('b.skill_total', 'desc')
@@ -127,6 +130,7 @@ class HighscoresController extends Controller
 					['b.group_id', '>=', '10'],
 					['b.iron_man', '=', '0'], // no iron man players are displayed
 					['b.highscoreopt', '!=', '1'],
+					['b.username', 'LIKE', '%' . $query . '%'],
 				])
 				->groupBy('b.username')
 				->orderBy('b.skill_total', 'desc')
@@ -984,48 +988,5 @@ class HighscoresController extends Controller
 				'harvesting' => $harvesting,
 			]);
 		}
-	}
-
-	public function searchByName($subpage)
-	{
-		$query = request('search_name');
-
-		$highscores = DB::connection()
-			->table('openrsc_experience as a')
-			->join('openrsc_players as b', 'a.playerID', '=', 'b.id')
-			->select('*', DB::raw('a.exp_' . $subpage))
-			->where([
-				['b.banned', '=', '0'],
-				['b.group_id', '>=', '10'],
-				['b.iron_man', '=', '0'], // no iron man players are displayed
-				['b.highscoreopt', '!=', '1'],
-				['b.username', 'LIKE', '%' . $query . '%'],
-			])
-			->groupBy('b.username')
-			->orderBy('a.exp_' . $subpage, 'desc')
-			->paginate(21);
-
-		/**
-		 * @var $subpage
-		 * Replaces spaces with underlines
-		 */
-		$subpage = preg_replace("/[^A-Za-z0-9 ]/", "_", $subpage);
-
-		$skill_array = Config::get('app.authentic') == true ? array('overall', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving') : array('overall', 'attack', 'strength', 'defense', 'hits', 'ranged', 'prayer', 'magic', 'cooking', 'woodcut', 'fletching', 'fishing', 'firemaking', 'crafting', 'smithing', 'mining', 'herblaw', 'agility', 'thieving', 'runecraft', 'harvesting');
-
-		/**
-		 * @var $subpage
-		 * queries the npc and returns a 404 error if not found in database
-		 */
-		if (!in_array($subpage, $skill_array)) {
-			abort(404);
-		}
-
-		return view('hiscores', [
-			'skill_array' => $skill_array,
-		])
-			->with(compact('highscores'));
-
-		return view('hiscores');
 	}
 }

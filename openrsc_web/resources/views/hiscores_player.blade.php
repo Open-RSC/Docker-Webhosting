@@ -18,7 +18,8 @@
 					</span>
 					<table>
 						<tr>
-							<th class="rsc-col-name">Skill</th>
+							<th class="rsc-col-level text-center">Skill</th>
+							<th class="rsc-col-name"></th>
 							<th class="rsc-col-xp">Rank</th>
 							<th class="rsc-col-level">Level</th>
 							<th class="rsc-col-xp">XP</th>

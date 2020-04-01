@@ -33,7 +33,7 @@
 
 		<div class="col-sm-6">
 			<h2>
-				@if ($subpage ?? '')
+				@if($subpage ?? '')
 					{{ ucfirst($subpage ?? '') }}
 				@else
 					Overall
@@ -64,8 +64,8 @@
 							</td>
 							<td class="rsc-col-level">
 									<span>
-										@if ($subpage ?? '')
-											{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage})) }}
+										@if ($subpage ?? '' ?? '')
+											{{ number_format((new App\Http\Controllers\HighscoresController)->experienceToLevel($player->${'exp_'.$subpage ?? ''})) }}
 										@else
 											{{ number_format($player->skill_total) }}
 										@endif
@@ -73,8 +73,8 @@
 							</td>
 							<td class="rsc-col-xp">
 									<span>
-										@if ($subpage ?? '')
-											{{ number_format($player->${'exp_'.$subpage}/4.0) }}
+										@if ($subpage ?? '' ?? '')
+											{{ number_format($player->${'exp_'.$subpage ?? ''}/4.0) }}
 										@else
 											{{ number_format((new App\Http\Controllers\HighscoresController)->totalXP($player)/4.0) }}
 										@endif
