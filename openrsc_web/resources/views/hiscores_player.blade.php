@@ -202,7 +202,8 @@
 						<form method="get" action="/hiscores">
 							{{ csrf_field() }}
 							<label for="rsc-search-name">Search by name</label>
-							<input id="rsc-search-name" name="search_name" type="text" maxlength="12" style="text-align: center">
+							<input id="rsc-search-name" name="search_name" type="text" maxlength="12"
+								   style="text-align: center">
 							<input type="submit" value="Search">
 						</form>
 					</td>

@@ -215,10 +215,11 @@ class HighscoresController extends Controller
 					['b.iron_man', '=', '0'], // no iron man players are displayed
 					['b.highscoreopt', '!=', '1'],
 					['b.username', 'LIKE', '%' . $query_name . '%'],
-					['X.position', '=', $query_rank],
+					['X.position', '<=', $query_rank + 10],
+					['X.position', '>=', $query_rank - 10],
 				])
 				->groupBy('b.username')
-				->orderBy('exp_' . $subpage, 'desc')
+				->orderBy('X.position', 'asc')
 				->paginate(21);
 		} else {
 			$highscores = DB::connection()
@@ -254,7 +255,7 @@ class HighscoresController extends Controller
 					['b.username', 'LIKE', '%' . $query_name . '%'],
 				])
 				->groupBy('b.username')
-				->orderBy('exp_' . $subpage, 'desc')
+				->orderBy('X.position', 'asc')
 				->paginate(21);
 		}
 

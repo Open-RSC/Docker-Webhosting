@@ -112,7 +112,8 @@
 						<form method="get">
 							{{ csrf_field() }}
 							<label for="rsc-search-rank">Search by rank</label>
-							<input id="rsc-search-rank" name="search_rank" type="number" min="1" style="text-align: center">
+							<input id="rsc-search-rank" name="search_rank" type="number" min="1"
+								   style="text-align: center">
 							<input type="submit" value="Search">
 						</form>
 					</td>
@@ -120,7 +121,8 @@
 						<form method="get">
 							{{ csrf_field() }}
 							<label for="rsc-search-name">Search by name</label>
-							<input id="rsc-search-name" name="search_name" type="text" maxlength="12" style="text-align: center">
+							<input id="rsc-search-name" name="search_name" type="text" maxlength="12"
+								   style="text-align: center">
 							<input type="submit" value="Search">
 						</form>
 					</td>
