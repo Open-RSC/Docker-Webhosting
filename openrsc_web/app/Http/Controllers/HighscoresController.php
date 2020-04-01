@@ -52,7 +52,6 @@ class HighscoresController extends Controller
 	public function index()
 	{
 		$query = request('search_name');
-
 		/**
 		 * @return Factory|View
 		 * @var $highscores
@@ -157,6 +156,7 @@ class HighscoresController extends Controller
 	 */
 	public function show($subpage)
 	{
+		$query = request('search_name');
 		/**
 		 * @var $skill_array
 		 * prevents non-authentic skills from showing if .env DB_DATABASE is named 'openrsc'
@@ -191,6 +191,7 @@ class HighscoresController extends Controller
 				['b.group_id', '>=', '10'],
 				['b.iron_man', '=', '0'], // no iron man players are displayed
 				['b.highscoreopt', '!=', '1'],
+				['b.username', 'LIKE', '%' . $query . '%'],
 			])
 			->groupBy('b.username')
 			->orderBy('a.exp_' . $subpage, 'desc')
