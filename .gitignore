@@ -24,12 +24,13 @@ openrsc_web/public/mix-manifest.json
 openrsc_web/public/js/app.js
 openrsc_web/public/sql/tmp/twig/
 
-nginx/ssl/
-nginx/log/
-
 composer.phar
 
 downloads/
 !downloads/.gitsave
 
 forum/cache/production/
+
+etc/nginx/ssl/
+etc/nginx/log/
+sql/config.inc.php
