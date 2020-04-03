@@ -15,32 +15,21 @@ yarn-error.log
 .DS_Store
 sql/tmp
 
-inc/databases/
-
-log/
-
-sql/tmp/
-
 avatars/
 
 board/cache/production
 
 openrsc_web/public/css/app.css
-
 openrsc_web/public/mix-manifest.json
-
 openrsc_web/public/js/app.js
-
 openrsc_web/public/sql/tmp/twig/
-inc/certs/
+
+nginx/ssl/
+nginx/log/
 
 composer.phar
 
 downloads/
 !downloads/.gitsave
-forum/config.php
 
-forum/cache/
-!forum/cache/.gitsave
-forum/store/
-!forum/store/.gitsave
+forum/cache/production/

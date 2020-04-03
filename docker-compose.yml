@@ -9,11 +9,11 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./inc/default.conf:/etc/nginx/conf.d/default.conf
-      - ./inc/certs:/etc/nginx/ssl
+      - ./nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./nginx/log:/var/log/nginx
       - ./openrsc_web:/var/www/html/openrsc_web
       - ./cabbage_web:/var/www/html/cabbage_web
-      - ./log:/var/log/nginx
       - ./avatars:/var/www/html/openrsc_web/public/images/avatars
       - ./downloads:/var/www/html/openrsc_web/public/downloads
       - ./downloads:/var/www/html/cabbage_web/public/downloads
