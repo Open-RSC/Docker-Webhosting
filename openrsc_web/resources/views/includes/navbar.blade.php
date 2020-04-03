@@ -85,7 +85,7 @@
 			<a href="#">Reports</a>
 			<input type="checkbox" id="drop-5"/>
 			<ul>
-				<li><a href="https://gitlab.openrsc.com/open-rsc/Game/issues" target="_blank">Bug Reports</a></li>
+				<li><a href="https://orsc.dev/open-rsc/Game/-/issues" target="_blank">Bug Reports</a></li>
 			</ul>
 		</li>
 		<li><a href="{{ asset('worldmap') }}">Live Map</a></li>
