@@ -30,8 +30,8 @@ services:
     volumes:
       - ./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini
       - ./portal:/var/www/html/portal
-      - ./openrsc_web:/var/www/html/openrsc # optional
-      - ./cabbage_web:/var/www/html/cabbage # optional
+      - ./openrsc:/var/www/html/openrsc # optional
+      - ./cabbage:/var/www/html/cabbage # optional
       - ./forum:/var/www/html/portal/public/forum
       - ./sql:/var/www/html/portal/public/sql
       - ./etc/nginx/phpmyadmin/config.inc.php:/var/www/html/portal/public/sql/config.inc.php
