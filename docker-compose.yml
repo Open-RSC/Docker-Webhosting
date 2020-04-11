@@ -12,8 +12,9 @@ services:
       - ./etc/nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
       - ./etc/nginx/ssl:/etc/nginx/ssl
       - ./etc/nginx/log:/var/log/nginx
-      - ./openrsc_web:/var/www/html/openrsc # optional
-      - ./cabbage_web:/var/www/html/cabbage # optional
+      - ./portal:/var/www/html/portal
+      - ./openrsc:/var/www/html/openrsc # optional
+      - ./cabbage:/var/www/html/cabbage # optional
       - ./avatars:/var/www/html/openrsc/public/images/avatars # optional
       - ./downloads:/var/www/html/portal/public/downloads
       - ./forum:/var/www/html/portal/public/forum
@@ -28,6 +29,7 @@ services:
       - "127.0.0.1:9000:9000"
     volumes:
       - ./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./portal:/var/www/html/portal
       - ./openrsc_web:/var/www/html/openrsc # optional
       - ./cabbage_web:/var/www/html/cabbage # optional
       - ./forum:/var/www/html/portal/public/forum
