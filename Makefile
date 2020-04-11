@@ -19,50 +19,50 @@ logs:
 # Example 1: make update-laravel game=cabbage
 # Example 2: make update-laravel game=openrsc
 #
-update-laravel:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && composer install && composer update && php artisan key:generate && php artisan optimize && npm install && npm update && npm audit fix"
+upgrade-laravel:
+	docker exec -i php bash -c "cd /var/www/html/${game} && composer install && composer update && php artisan key:generate && php artisan optimize && npm install && npm update && npm audit fix"
 
 clear-all-laravel:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan view:clear && php artisan route:clear && php artisan config:cache"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan view:clear && php artisan route:clear && php artisan config:cache"
 
 migrate-laravel:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan migrate --seed"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan migrate --seed"
 
 make-laravel:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan make:controller MyController"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan make:controller MyController"
 
 list-route:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan route:list"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan route:list"
 
 clear-views:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan view:clear"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan view:clear"
 
 clear-route:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan route:clear"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan route:clear"
 
 migrate:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan migrate"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan migrate"
 
 migrate-refresh:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan migrate:refresh"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan migrate:refresh"
 
 clear-config:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan config:cache"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan config:cache"
 
 publish-pagination:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan vendor:publish --tag=laravel-pagination"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan vendor:publish --tag=laravel-pagination"
 
 version:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && php artisan --version"
+	docker exec -i php bash -c "cd /var/www/html/${game} && php artisan --version"
 
 npm-install:
-	docker exec -i php bash -c "cd /var/www/html/${game}_web && npm install"
+	docker exec -i php bash -c "cd /var/www/html/${game} && npm install"
 
-npm-run-dev:
+npm-dev:
 	docker exec -i php bash -c "cd /var/www/html/${game}_web && npm run dev"
 
-npm-run-prod:
+npm-prod:
 	docker exec -i php bash -c "cd /var/www/html/${game}_web && npm run prod"
 
-npm-run-watch:
+npm-watch:
 	docker exec -i php bash -c "cd /var/www/html/${game}_web && npm run watch"
