@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
+
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -11,7 +14,6 @@
 |
 */
 
-// Best to not leave this enabled by default
 /*Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');*/

@@ -28,16 +28,6 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
-	'game_hostname' => env('GAME_HOSTNAME', 'localhost'),
-	'game_port' => env('GAME_PORT', '43594'),
-	'authentic' => env('AUTHENTIC', 'true'),
-	'download_jar' => env('DOWNLOAD_JAR', '/downloads/OpenRSC.jar'),
-	'download_apk' => env('DOWNLOAD_APK', '/downloads/openrsc.apk'),
-	'download_jre' => env('DOWNLOAD_JRE', 'https://adoptopenjdk.net/releases.html?variant=openjdk13&jvmVariant=hotspot'),
-	'download_single_player' => env('DOWNLOAD_SINGLE_PLAYER', 'https://orsc.dev/open-rsc/Single-Player/-/releases'),
-
-    'log_sql' => env('LOG_SQL'),
-
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -49,7 +39,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', true),
+    'debug' => (bool) env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => env('TIMEZONE', 'America/New_York'),
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -184,8 +174,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-		Laravel\Scout\ScoutServiceProvider::class,
-		Jenssegers\Agent\AgentServiceProvider::class,
 
     ],
 
@@ -202,7 +190,6 @@ return [
 
     'aliases' => [
 
-    	'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -220,6 +207,7 @@ return [
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
+        'Http' => Illuminate\Support\Facades\Http::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
@@ -238,7 +226,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
 
     ],
 
