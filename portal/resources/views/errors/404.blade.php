@@ -1,25 +1,21 @@
 @extends('template')
 @section('content')
 
-	<header class="rsc-box rsc-header">
-		<span class="d-block">Open RuneScape Classic</span>
-		<a class="rsc-link" href="/">Main Menu</a>
-	</header>
+    <div class="rsc-border-top rsc-border-bar"></div>
+    <div class="rsc-wrap">
 
-	<div class="pt-1">
-		<div class="rsc-box rsc-hiscores-ranks text-center">
-			<!-- Full version -->
-			<div class="d-none d-md-block d-lg-block d-xl-block">
-				<img class="d-block pb-1" src="{{ asset('images/apocalypse.png') }}" style="width: 720px" alt="404"/>
-			</div>
+        <header class="rsc-box rsc-header">
+            <span class="d-block">Open RuneScape Classic</span>
+            <a class="rsc-link" href="/">Main Menu</a>
+        </header>
 
-			<!-- Mobile version -->
-			<div class="d-sm d-md-none d-lg-none">
-				<img class="d-block" src="{{ asset('images/apocalypse.png') }}" style="width: 288px" alt="404"/>
-			</div>
+        <!-- Full version -->
+        <div class="d-none d-lg-block">
+            <img class="rsc-logo rounded" src="/images/apocalypse.png" style="height: 180px; width: 570px;"
+                 alt="Open RuneScape Classic logo">
+        </div>
 
-			<span class="h3">404 - Not Found</span>
-		</div>
-	</div>
+        <div class="pt-5 h4">404 - Not Found</div>
+    </div>
 
 @endsection

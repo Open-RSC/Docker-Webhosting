@@ -1,8 +1,9 @@
 <footer class="rsc-footer">
-    This webpage and its contents is copyright 2003 Jagex Ltd
-    <br>
-    To use our service you must agree to our
-    <a class="rsc-link" href="/terms.html">Terms+Conditions</a> +
-    <a class="rsc-link" href="/privacy.html">Privacy policy</a>
+    <div class="d-block">
+        Open RuneScape Classic is in no-way affiliated with <a class="rsc-link" href="https://jagex.com">
+            Jagex Games Studio</a> or their games. Any references are made for identification purposes only.
+        <a class="rsc-link" href="https://runescape.com">RuneScape</a> is a registered trademark of
+        <a class="rsc-link" href="https://jagex.com">Jagex Games Studio</a>.
+    </div>
 </footer>
 <div class="rsc-border-bottom rsc-border-bar"></div>

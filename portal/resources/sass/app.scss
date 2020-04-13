@@ -1,3 +1,9 @@
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
 /* generic elements */
 
 body {
@@ -23,17 +29,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .rsc-link {
-    text-decoration: none;
-    color: #90c040;
+    text-decoration: none !important;
+    color: #90c040 !important;
 }
 
 .rsc-link:hover {
-    text-decoration: underline;
-}
-
-.rsc-player-count {
-    font-size: 14px;
-    margin: 4px auto 4px;
+    text-decoration: underline !important;
 }
 
 .rsc-container {
@@ -227,6 +228,11 @@ h1, h2, h3, h4, h5, h6 {
     margin: -37px -51px;
 }
 
+a.rsc-stone-button:hover {
+    text-decoration: none;
+    color: white;
+}
+
 .rsc-play-button {
     background: url(/images/play-button.png) no-repeat;
     color: #e03010;
@@ -236,6 +242,11 @@ h1, h2, h3, h4, h5, h6 {
     margin: -73px -99px -73px -99px;
     top: 50%;
     width: 198px;
+}
+
+a.rsc-play-button:hover {
+    text-decoration: none;
+    color: #e03010;
 }
 
 .rsc-stone-button:nth-child(2) {

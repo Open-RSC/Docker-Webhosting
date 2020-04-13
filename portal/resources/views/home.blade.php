@@ -4,18 +4,15 @@
     <div class="rsc-border-top rsc-border-bar"></div>
     <div class="rsc-wrap">
 
-        <div class="d-lg-none">hide on screens wider than lg</div>
-        <div class="d-none d-lg-block">hide on screens smaller than lg</div>
-
         <!-- Full version -->
         <div class="d-none d-lg-block">
-            <img class="rsc-logo rounded" src="/images/apocalypse.png" style="height: 180px; width: 570px;" alt="Open RuneScape Classic logo">
+            <img class="rsc-logo rounded" src="/images/apocalypse.png" style="height: 180px; width: 570px;"
+                 alt="Open RuneScape Classic logo">
         </div>
 
         <!-- Mobile version -->
         <div class="d-lg-none">
-            <img class="d-block" src="/images/logo.png" style="height: 130px; width: 130px;" alt="Open RuneScape Classic logo">
-            <div class="d-block">Open RuneScape Classic</div>
+            <div class="d-block h4 pt-3">Open RuneScape Classic</div>
         </div>
 
         <section class="rsc-button-wheel">
