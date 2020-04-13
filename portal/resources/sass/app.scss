@@ -37,6 +37,11 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: underline !important;
 }
 
+.rsc-player-count {
+    font-size: 14px;
+    margin: 4px auto 4px;
+}
+
 .rsc-container {
     background: url(/images/border-left.png) repeat-y,
     url(/images/border-right.png) repeat-y, url(/images/background.png) repeat;

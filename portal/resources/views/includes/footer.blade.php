@@ -1,4 +1,4 @@
-<footer class="rsc-footer">
+<footer class="pt-3 rsc-footer">
     <div class="d-block">
         Open RuneScape Classic is in no-way affiliated with <a class="rsc-link" href="https://jagex.com">
             Jagex Games Studio</a> or their games. Any references are made for identification purposes only.

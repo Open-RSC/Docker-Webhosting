@@ -5,25 +5,28 @@
     <div class="rsc-wrap">
 
         <!-- Full version -->
-        <div class="d-none d-lg-block">
-            <img class="rsc-logo rounded" src="/images/apocalypse.png" style="height: 180px; width: 570px;"
+        <div class="d-none d-sm-block">
+            <img class="rsc-logo" src="/images/logo.png" style="width: 395px;"
                  alt="Open RuneScape Classic logo">
         </div>
 
         <!-- Mobile version -->
-        <div class="d-lg-none">
-            <div class="d-block h4 pt-3">Open RuneScape Classic</div>
+        <div class="d-sm-none">
+            <img class="rsc-logo" src="/images/logo.png" style="width: 250px;"
+                 alt="Open RuneScape Classic logo">
         </div>
 
+        <p class="rsc-player-count">Striving for an authentic Runescape Classic and more.</p>
+
         <section class="rsc-button-wheel">
-            <a class="rsc-button rsc-play-button" href="/play.html">Play Game</a>
-            <a class="rsc-button rsc-stone-button" href="/manual.html">Manual</a>
-            <a class="rsc-button rsc-stone-button" href="/support.html">Customer Support</a>
-            <a class="rsc-button rsc-stone-button" href="/community.html">Community</a>
-            <a class="rsc-button rsc-stone-button" href="/support.html">Message Centre</a>
-            <a class="rsc-button rsc-stone-button" href="/news.html">News &amp; Updates</a>
-            <a class="rsc-button rsc-stone-button" href="/library.html">Library of Varrock</a>
-            <a class="rsc-button rsc-stone-button" href="/hiscores.html">Hiscores</a>
+            <a class="rsc-button rsc-play-button" href="/play">Play Game</a>
+            <a class="rsc-button rsc-stone-button" href="/wiki">Wiki</a>
+            <a class="rsc-button rsc-stone-button" href="https://discord.gg/ABdFCqn">Discord</a>
+            <a class="rsc-button rsc-stone-button" href="/forum">Forum</a>
+            <a class="rsc-button rsc-stone-button" href="https://orsc.dev">Source Code</a>
+            <a class="rsc-button rsc-stone-button" href="https://reddit.com/r/rsc">Reddit</a>
+            <a class="rsc-button rsc-stone-button" href="https://rsc.plus">RSC+</a>
+            <a class="rsc-button rsc-stone-button" href="https://orsc.dev/open-rsc/Single-Player">Single Player</a>
         </section>
     </div>
 
