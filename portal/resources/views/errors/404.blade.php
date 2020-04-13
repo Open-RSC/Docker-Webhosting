@@ -4,16 +4,19 @@
     <div class="rsc-border-top rsc-border-bar"></div>
     <div class="rsc-wrap">
 
-        <header class="rsc-box rsc-header">
-            <span class="d-block">Open RuneScape Classic</span>
-            <a class="rsc-link" href="/">Main Menu</a>
-        </header>
-
         <!-- Full version -->
-        <div class="d-none d-lg-block">
-            <img class="rsc-logo rounded" src="/images/apocalypse.png" style="height: 180px; width: 570px;"
+        <div class="d-none d-sm-block">
+            <img class="rsc-logo" src="/images/logo.png" style="width: 395px;"
                  alt="Open RuneScape Classic logo">
         </div>
+
+        <!-- Mobile version -->
+        <div class="d-sm-none">
+            <img class="rsc-logo" src="/images/logo.png" style="width: 250px;"
+                 alt="Open RuneScape Classic logo">
+        </div>
+
+        <p class="rsc-player-count">Striving for an authentic RuneScape Classic and more.</p>
 
         <div class="pt-5 h4">404 - Not Found</div>
     </div>

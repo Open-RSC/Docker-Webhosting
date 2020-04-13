@@ -16,7 +16,7 @@
                  alt="Open RuneScape Classic logo">
         </div>
 
-        <p class="rsc-player-count">Striving for an authentic Runescape Classic and more.</p>
+        <p class="rsc-player-count">Striving for an authentic RuneScape Classic and more.</p>
 
         <section class="rsc-button-wheel">
             <a class="rsc-button rsc-play-button" href="/play">Play Game</a>
