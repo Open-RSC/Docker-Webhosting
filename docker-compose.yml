@@ -13,9 +13,9 @@ services:
       - ./etc/nginx/ssl:/etc/nginx/ssl
       - ./etc/nginx/log:/var/log/nginx
       - ./portal:/var/www/html/portal
-      - ./openrsc:/var/www/html/openrsc # optional
-      - ./cabbage:/var/www/html/cabbage # optional
-      - ./avatars:/var/www/html/openrsc/public/images/avatars # optional
+      - ./openrsc:/var/www/html/openrsc
+      - ./cabbage:/var/www/html/cabbage
+      - ./avatars:/var/www/html/openrsc/public/images/avatars # public facing
       - ./downloads:/var/www/html/portal/public/downloads
       - ./forum:/var/www/html/portal/public/forum
       - ./sql:/var/www/html/portal/public/sql
@@ -30,8 +30,8 @@ services:
     volumes:
       - ./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini
       - ./portal:/var/www/html/portal
-      - ./openrsc:/var/www/html/openrsc # optional
-      - ./cabbage:/var/www/html/cabbage # optional
+      - ./openrsc:/var/www/html/openrsc
+      - ./cabbage:/var/www/html/cabbage
       - ./forum:/var/www/html/portal/public/forum
       - ./sql:/var/www/html/portal/public/sql
       - ./etc/nginx/phpmyadmin/config.inc.php:/var/www/html/portal/public/sql/config.inc.php
