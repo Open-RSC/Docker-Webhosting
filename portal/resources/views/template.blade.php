@@ -2,7 +2,7 @@
 <html lang="en">
 @include('includes.header')
 <body>
-<!--include('includes.navbar')-->
+@include('includes.navbar')
 <div class="rsc-container">
     <section id="home">
         @yield('content')
