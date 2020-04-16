@@ -19,7 +19,6 @@ services:
       - ./downloads:/var/www/html/portal/public/downloads
       - ./forum:/var/www/html/portal/public/forum
       - ./sql:/var/www/html/portal/public/sql
-      - ./etc/phpmyadmin/config.inc.php:/var/www/html/portal/public/sql/config.inc.php
       - ./wiki:/var/www/html/portal/public/wiki
 
   php:
@@ -34,7 +33,8 @@ services:
       - ./cabbage:/var/www/html/cabbage
       - ./forum:/var/www/html/portal/public/forum
       - ./sql:/var/www/html/portal/public/sql
-      - ./etc/nginx/phpmyadmin/config.inc.php:/var/www/html/portal/public/sql/config.inc.php
+      - ./etc/nginx/phpmyadmin/config.inc.php:/var/www/html/portal/public/sql/config.inc.php # PHPMyAdmin config located in etc
+      - ./etc/wiki/LocalSettings.php:/var/www/html/portal/public/wiki/LocalSettings.php # MediaWiki config located in etc
       - ./wiki:/var/www/html/portal/public/wiki
 
 networks:

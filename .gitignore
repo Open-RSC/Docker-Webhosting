@@ -34,3 +34,5 @@ forum/cache/production/
 etc/nginx/ssl/
 etc/nginx/log/
 sql/config.inc.php
+
+wiki/LocalSettings.php

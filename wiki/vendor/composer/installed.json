@@ -1,62 +1,5 @@
 [
     {
-        "name": "christian-riesen/base32",
-        "version": "1.3.2",
-        "version_normalized": "1.3.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ChristianRiesen/base32.git",
-            "reference": "80ff0e3b2124e61b4b39e2535709452f70bff367"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ChristianRiesen/base32/zipball/80ff0e3b2124e61b4b39e2535709452f70bff367",
-            "reference": "80ff0e3b2124e61b4b39e2535709452f70bff367",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3"
-        },
-        "require-dev": {
-            "php": ">=5.6",
-            "phpunit/phpunit": "^5.0",
-            "satooshi/php-coveralls": "^1.0"
-        },
-        "time": "2018-11-02T09:03:50+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Base32\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Christian Riesen",
-                "email": "chris.riesen@gmail.com",
-                "homepage": "http://christianriesen.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "Base32 encoder/decoder according to RFC 4648",
-        "homepage": "https://github.com/ChristianRiesen/base32",
-        "keywords": [
-            "base32",
-            "decode",
-            "encode",
-            "rfc4648"
-        ]
-    },
-    {
         "name": "composer/semver",
         "version": "1.5.0",
         "version_normalized": "1.5.0.0",
@@ -290,35 +233,39 @@
     },
     {
         "name": "guzzlehttp/psr7",
-        "version": "1.5.2",
-        "version_normalized": "1.5.2.0",
+        "version": "1.6.1",
+        "version_normalized": "1.6.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/psr7.git",
-            "reference": "9f83dded91781a01c63574e387eaa769be769115"
+            "reference": "239400de7a173fe9901b9ac7c06497751f00727a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/psr7/zipball/9f83dded91781a01c63574e387eaa769be769115",
-            "reference": "9f83dded91781a01c63574e387eaa769be769115",
+            "url": "https://api.github.com/repos/guzzle/psr7/zipball/239400de7a173fe9901b9ac7c06497751f00727a",
+            "reference": "239400de7a173fe9901b9ac7c06497751f00727a",
             "shasum": ""
         },
         "require": {
             "php": ">=5.4.0",
             "psr/http-message": "~1.0",
-            "ralouphie/getallheaders": "^2.0.5"
+            "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
         },
         "provide": {
             "psr/http-message-implementation": "1.0"
         },
         "require-dev": {
+            "ext-zlib": "*",
             "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
         },
-        "time": "2018-12-04T20:46:45+00:00",
+        "suggest": {
+            "zendframework/zend-httphandlerrunner": "Emit PSR-7 responses"
+        },
+        "time": "2019-07-01T23:21:34+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.5-dev"
+                "dev-master": "1.6-dev"
             }
         },
         "installation-source": "dist",
@@ -356,48 +303,6 @@
             "uri",
             "url"
         ]
-    },
-    {
-        "name": "jakobo/hotp-php",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Jakobo/hotp-php.git",
-            "reference": "d24e0d021710718cb9104ffb5c6ffb447fce65ab"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Jakobo/hotp-php/zipball/d24e0d021710718cb9104ffb5c6ffb447fce65ab",
-            "reference": "d24e0d021710718cb9104ffb5c6ffb447fce65ab",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^5.3.3 || ^7.0"
-        },
-        "require-dev": {
-            "jakub-onderka/php-console-highlighter": "0.3.2",
-            "jakub-onderka/php-parallel-lint": "1.0.0"
-        },
-        "time": "2019-04-17T19:06:24+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "jakobo\\HOTP\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Jakob Heuser",
-                "email": "jakob@felocity.org"
-            }
-        ],
-        "description": "HOTP simplifies One Time Password systems for PHP Authentication"
     },
     {
         "name": "liuggio/statsd-php-client",
@@ -535,20 +440,20 @@
     },
     {
         "name": "pear/console_getopt",
-        "version": "v1.4.2",
-        "version_normalized": "1.4.2.0",
+        "version": "v1.4.3",
+        "version_normalized": "1.4.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/pear/Console_Getopt.git",
-            "reference": "6c77aeb625b32bd752e89ee17972d103588b90c0"
+            "reference": "a41f8d3e668987609178c7c4a9fe48fecac53fa0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pear/Console_Getopt/zipball/6c77aeb625b32bd752e89ee17972d103588b90c0",
-            "reference": "6c77aeb625b32bd752e89ee17972d103588b90c0",
+            "url": "https://api.github.com/repos/pear/Console_Getopt/zipball/a41f8d3e668987609178c7c4a9fe48fecac53fa0",
+            "reference": "a41f8d3e668987609178c7c4a9fe48fecac53fa0",
             "shasum": ""
         },
-        "time": "2019-02-06T16:52:33+00:00",
+        "time": "2019-11-20T18:27:48+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -565,11 +470,6 @@
         ],
         "authors": [
             {
-                "name": "Greg Beaver",
-                "email": "cellog@php.net",
-                "role": "Helper"
-            },
-            {
                 "name": "Andrei Zmievski",
                 "email": "andrei@php.net",
                 "role": "Lead"
@@ -578,6 +478,11 @@
                 "name": "Stig Bakken",
                 "email": "stig@php.net",
                 "role": "Developer"
+            },
+            {
+                "name": "Greg Beaver",
+                "email": "cellog@php.net",
+                "role": "Helper"
             }
         ],
         "description": "More info available on: http://pear.php.net/package/Console_Getopt"
@@ -809,17 +714,17 @@
     },
     {
         "name": "pear/pear-core-minimal",
-        "version": "v1.10.9",
-        "version_normalized": "1.10.9.0",
+        "version": "v1.10.10",
+        "version_normalized": "1.10.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/pear/pear-core-minimal.git",
-            "reference": "742be8dd68c746a01e4b0a422258e9c9cae1c37f"
+            "reference": "625a3c429d9b2c1546438679074cac1b089116a7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pear/pear-core-minimal/zipball/742be8dd68c746a01e4b0a422258e9c9cae1c37f",
-            "reference": "742be8dd68c746a01e4b0a422258e9c9cae1c37f",
+            "url": "https://api.github.com/repos/pear/pear-core-minimal/zipball/625a3c429d9b2c1546438679074cac1b089116a7",
+            "reference": "625a3c429d9b2c1546438679074cac1b089116a7",
             "shasum": ""
         },
         "require": {
@@ -829,7 +734,7 @@
         "replace": {
             "rsky/pear-core-min": "self.version"
         },
-        "time": "2019-03-13T18:15:44+00:00",
+        "time": "2019-11-19T19:00:24+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -855,17 +760,17 @@
     },
     {
         "name": "pear/pear_exception",
-        "version": "v1.0.0",
-        "version_normalized": "1.0.0.0",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/pear/PEAR_Exception.git",
-            "reference": "8c18719fdae000b690e3912be401c76e406dd13b"
+            "reference": "dbb42a5a0e45f3adcf99babfb2a1ba77b8ac36a7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/8c18719fdae000b690e3912be401c76e406dd13b",
-            "reference": "8c18719fdae000b690e3912be401c76e406dd13b",
+            "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/dbb42a5a0e45f3adcf99babfb2a1ba77b8ac36a7",
+            "reference": "dbb42a5a0e45f3adcf99babfb2a1ba77b8ac36a7",
             "shasum": ""
         },
         "require": {
@@ -874,7 +779,7 @@
         "require-dev": {
             "phpunit/phpunit": "*"
         },
-        "time": "2015-02-10T20:07:52+00:00",
+        "time": "2019-12-10T10:24:42+00:00",
         "type": "class",
         "extra": {
             "branch-alias": {
@@ -883,9 +788,9 @@
         },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "PEAR": ""
-            }
+            "classmap": [
+                "PEAR/"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "include-path": [
@@ -1112,27 +1017,27 @@
     },
     {
         "name": "ralouphie/getallheaders",
-        "version": "2.0.5",
-        "version_normalized": "2.0.5.0",
+        "version": "3.0.3",
+        "version_normalized": "3.0.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ralouphie/getallheaders.git",
-            "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa"
+            "reference": "120b605dfeb996808c31b6477290a714d356e822"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
-            "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+            "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+            "reference": "120b605dfeb996808c31b6477290a714d356e822",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3"
+            "php": ">=5.6"
         },
         "require-dev": {
-            "phpunit/phpunit": "~3.7.0",
-            "satooshi/php-coveralls": ">=1.0"
+            "php-coveralls/php-coveralls": "^2.1",
+            "phpunit/phpunit": "^5 || ^6.5"
         },
-        "time": "2016-02-11T07:05:27+00:00",
+        "time": "2019-03-08T08:55:37+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1252,77 +1157,6 @@
         ],
         "description": "Safe replacement to @ for suppressing warnings.",
         "homepage": "https://www.mediawiki.org/wiki/at-ease"
-    },
-    {
-        "name": "wikimedia/avro",
-        "version": "v1.9.0",
-        "version_normalized": "1.9.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/wikimedia/avro-php.git",
-            "reference": "b2e0c9d750da03d95ba979215397f62a6121ddea"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/wikimedia/avro-php/zipball/b2e0c9d750da03d95ba979215397f62a6121ddea",
-            "reference": "b2e0c9d750da03d95ba979215397f62a6121ddea",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "require-dev": {
-            "jakub-onderka/php-console-highlighter": "0.3.2",
-            "jakub-onderka/php-parallel-lint": "1.0.0",
-            "mediawiki/minus-x": "0.3.1",
-            "phpunit/phpunit": "4.8.36"
-        },
-        "suggest": {
-            "ext-gmp": "Large integer support for 32-bit platforms."
-        },
-        "time": "2019-09-16T15:18:39+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "lib/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Michael Glaesemann",
-                "email": "grzm@seespotcode.net"
-            },
-            {
-                "name": "Andy Wick",
-                "email": "awick@purple.org"
-            },
-            {
-                "name": "Saleem Shafi",
-                "email": "saleemshafi@gmail.com"
-            },
-            {
-                "name": "A B",
-                "email": "abawany@x.com"
-            },
-            {
-                "name": "Doug Cutting",
-                "email": "cutting@apache.org"
-            },
-            {
-                "name": "Tom White",
-                "email": "tom@cloudera.com"
-            }
-        ],
-        "description": "A library for using Apache Avro with PHP.",
-        "homepage": "https://avro.apache.org/",
-        "keywords": [
-            "serialization"
-        ]
     },
     {
         "name": "wikimedia/base-convert",
@@ -1622,55 +1456,6 @@
         ],
         "description": "Efficiently match IP addresses against a set of CIDR specifications.",
         "homepage": "https://www.mediawiki.org/wiki/IPSet"
-    },
-    {
-        "name": "wikimedia/ip-utils",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/wikimedia/mediawiki-libs-IPUtils.git",
-            "reference": "c505b99c0dfab12254d64a5e064bddd13cf066ad"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/wikimedia/mediawiki-libs-IPUtils/zipball/c505b99c0dfab12254d64a5e064bddd13cf066ad",
-            "reference": "c505b99c0dfab12254d64a5e064bddd13cf066ad",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.6.99",
-            "wikimedia/base-convert": "^2.0.0",
-            "wikimedia/ip-set": "^2.0.0"
-        },
-        "require-dev": {
-            "jakub-onderka/php-console-highlighter": "0.3.2",
-            "jakub-onderka/php-parallel-lint": "1.0.0",
-            "mediawiki/mediawiki-codesniffer": "24.0.0",
-            "mediawiki/minus-x": "0.3.1",
-            "ockcyp/covers-validator": "0.5.1 || 0.6.1",
-            "phpunit/phpunit": "4.8.36 || ^6.5"
-        },
-        "time": "2019-06-25T17:43:18+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Wikimedia\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0-or-later"
-        ],
-        "authors": [
-            {
-                "name": "MediaWiki developers",
-                "email": "wikitech-l@lists.wikimedia.org"
-            }
-        ],
-        "description": "Functions and constants to play with IP addresses and ranges",
-        "homepage": "https://www.mediawiki.org/wiki/IPUtils"
     },
     {
         "name": "wikimedia/less.php",

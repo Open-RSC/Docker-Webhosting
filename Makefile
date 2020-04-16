@@ -1,3 +1,6 @@
+#
+# Docker container management
+#
 start:
 	docker-compose up -d
 
@@ -14,10 +17,10 @@ ps:
 logs:
 	docker-compose logs -f
 
+
 #
-# Utilize the following with the command, followed by "site=" and specify which site.
-# Example 1: make update-laravel site=cabbage
-# Example 2: make update-laravel site=openrsc
+# Laravel site management
+# Utilize the commands followed by "site=" and specify the Laravel site. Ex: make update-laravel site=portal
 #
 upgrade-laravel:
 	docker exec -i php bash -c "cd /var/www/html/${site} && composer install && composer update && php artisan key:generate && php artisan optimize && npm install && npm update && npm audit fix"
@@ -66,3 +69,9 @@ npm-prod:
 
 npm-watch:
 	docker exec -i php bash -c "cd /var/www/html/${site} && npm run watch"
+
+#
+# MediaWiki site management
+#
+upgrade-wiki:
+	docker exec -i php bash -c "cd /var/www/html/${site}/public/wiki && composer update --no-dev && php maintenance/update.php"

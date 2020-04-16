@@ -4,25 +4,21 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit_mediawiki_vendor
+class ComposerStaticInit343abfb9c35b402b1c69fe310e820251
 {
     public static $files = array (
         'eccc0347283a01e62f5536bcf76b6e62' => __DIR__ . '/..' . '/wikimedia/at-ease/src/Wikimedia/Functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'c3f7f0e81464740a933532e81fa26cc7' => __DIR__ . '/..' . '/wikimedia/base-convert/src/Functions.php',
         'c50606d667a3fde2b80a955639479d3d' => __DIR__ . '/..' . '/wikimedia/timestamp/src/defines.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'c3f7f0e81464740a933532e81fa26cc7' => __DIR__ . '/..' . '/wikimedia/base-convert/src/Functions.php',
         '4d945db823e5f6ca6dd83ad1f5fbcc43' => __DIR__ . '/..' . '/wikimedia/relpath/src/RelPath/RelPath.php',
         '6513700b70192b7dfd0e5e9fc8082cf3' => __DIR__ . '/..' . '/wikimedia/relpath/src/Wikimedia/RelPath.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'j' => 
-        array (
-            'jakobo\\HOTP\\' => 12,
-        ),
         'W' => 
         array (
             'Wikimedia\\XMPReader\\' => 20,
@@ -58,17 +54,9 @@ class ComposerStaticInit_mediawiki_vendor
             'Composer\\Semver\\' => 16,
             'CLDRPluralRuleParser\\' => 21,
         ),
-        'B' => 
-        array (
-            'Base32\\' => 7,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'jakobo\\HOTP\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/jakobo/hotp-php/src',
-        ),
         'Wikimedia\\XMPReader\\' => 
         array (
             0 => __DIR__ . '/..' . '/wikimedia/xmp-reader/src',
@@ -108,10 +96,9 @@ class ComposerStaticInit_mediawiki_vendor
         'Wikimedia\\' => 
         array (
             0 => __DIR__ . '/..' . '/wikimedia/ip-set/src',
-            1 => __DIR__ . '/..' . '/wikimedia/ip-utils/src',
-            2 => __DIR__ . '/..' . '/wikimedia/object-factory/src',
-            3 => __DIR__ . '/..' . '/wikimedia/scoped-callback/src',
-            4 => __DIR__ . '/..' . '/wikimedia/wrappedstring/src',
+            1 => __DIR__ . '/..' . '/wikimedia/object-factory/src',
+            2 => __DIR__ . '/..' . '/wikimedia/scoped-callback/src',
+            3 => __DIR__ . '/..' . '/wikimedia/wrappedstring/src',
         ),
         'RemexHtml\\' => 
         array (
@@ -153,20 +140,9 @@ class ComposerStaticInit_mediawiki_vendor
         array (
             0 => __DIR__ . '/..' . '/wikimedia/cldr-plural-rule-parser/src',
         ),
-        'Base32\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/christian-riesen/base32/src',
-        ),
     );
 
     public static $prefixesPsr0 = array (
-        'P' => 
-        array (
-            'PEAR' => 
-            array (
-                0 => __DIR__ . '/..' . '/pear/pear_exception',
-            ),
-        ),
         'N' => 
         array (
             'Net' => 
@@ -200,6 +176,18 @@ class ComposerStaticInit_mediawiki_vendor
             array (
                 0 => __DIR__ . '/..' . '/pear/console_getopt',
             ),
+            'ComposerVendorHtaccessCreator' => 
+            array (
+                0 => __DIR__ . '/../..' . '/includes/composer',
+            ),
+            'ComposerPhpunitXmlCoverageEdit' => 
+            array (
+                0 => __DIR__ . '/../..' . '/includes/composer',
+            ),
+            'ComposerHookHandler' => 
+            array (
+                0 => __DIR__ . '/../..' . '/includes/composer',
+            ),
         ),
     );
 
@@ -209,43 +197,6 @@ class ComposerStaticInit_mediawiki_vendor
     );
 
     public static $classMap = array (
-        'Avro' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro.php',
-        'AvroArraySchema' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroDataIO' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/data_file.php',
-        'AvroDataIOException' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/data_file.php',
-        'AvroDataIOReader' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/data_file.php',
-        'AvroDataIOWriter' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/data_file.php',
-        'AvroDebug' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/debug.php',
-        'AvroEnumSchema' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroException' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro.php',
-        'AvroField' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroFile' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/io.php',
-        'AvroFixedSchema' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroGMP' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/gmp.php',
-        'AvroIO' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/io.php',
-        'AvroIOBinaryDecoder' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/datum.php',
-        'AvroIOBinaryEncoder' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/datum.php',
-        'AvroIODatumReader' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/datum.php',
-        'AvroIODatumWriter' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/datum.php',
-        'AvroIOException' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/io.php',
-        'AvroIOSchemaMatchException' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/datum.php',
-        'AvroIOTypeException' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/datum.php',
-        'AvroMapSchema' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroName' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroNamedSchema' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroNamedSchemata' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroNotImplementedException' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro.php',
-        'AvroPrimitiveSchema' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroProtocol' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/protocol.php',
-        'AvroProtocolMessage' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/protocol.php',
-        'AvroProtocolParseException' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/protocol.php',
-        'AvroRecordSchema' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroSchema' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroSchemaParseException' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroStringIO' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/io.php',
-        'AvroUnionSchema' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/schema.php',
-        'AvroUtil' => __DIR__ . '/..' . '/wikimedia/avro/lib/avro/util.php',
-        'Base32\\Base32' => __DIR__ . '/..' . '/christian-riesen/base32/src/Base32.php',
         'CLDRPluralRuleParser\\Converter' => __DIR__ . '/..' . '/wikimedia/cldr-plural-rule-parser/src/Converter.php',
         'CLDRPluralRuleParser\\Converter\\Expression' => __DIR__ . '/..' . '/wikimedia/cldr-plural-rule-parser/src/Converter/Expression.php',
         'CLDRPluralRuleParser\\Converter\\Fragment' => __DIR__ . '/..' . '/wikimedia/cldr-plural-rule-parser/src/Converter/Fragment.php',
@@ -264,6 +215,9 @@ class ComposerStaticInit_mediawiki_vendor
         'Cdb\\Writer' => __DIR__ . '/..' . '/wikimedia/cdb/src/Writer.php',
         'Cdb\\Writer\\DBA' => __DIR__ . '/..' . '/wikimedia/cdb/src/Writer/DBA.php',
         'Cdb\\Writer\\PHP' => __DIR__ . '/..' . '/wikimedia/cdb/src/Writer/PHP.php',
+        'ComposerHookHandler' => __DIR__ . '/../..' . '/includes/composer/ComposerHookHandler.php',
+        'ComposerPhpunitXmlCoverageEdit' => __DIR__ . '/../..' . '/includes/composer/ComposerPhpunitXmlCoverageEdit.php',
+        'ComposerVendorHtaccessCreator' => __DIR__ . '/../..' . '/includes/composer/ComposerVendorHtaccessCreator.php',
         'Composer\\Semver\\Comparator' => __DIR__ . '/..' . '/composer/semver/src/Comparator.php',
         'Composer\\Semver\\Constraint\\AbstractConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/AbstractConstraint.php',
         'Composer\\Semver\\Constraint\\Constraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/Constraint.php',
@@ -490,7 +444,6 @@ class ComposerStaticInit_mediawiki_vendor
         'PEAR_Error' => __DIR__ . '/..' . '/pear/pear-core-minimal/src/PEAR.php',
         'PEAR_ErrorStack' => __DIR__ . '/..' . '/pear/pear-core-minimal/src/PEAR/ErrorStack.php',
         'PEAR_Exception' => __DIR__ . '/..' . '/pear/pear_exception/PEAR/Exception.php',
-        'PEAR_ExceptionTest' => __DIR__ . '/..' . '/pear/pear_exception/tests/PEAR/ExceptionTest.php',
         'Pleo\\BloomFilter\\BitArray' => __DIR__ . '/..' . '/pleonasm/bloom-filter/src/BitArray.php',
         'Pleo\\BloomFilter\\BloomFilter' => __DIR__ . '/..' . '/pleonasm/bloom-filter/src/BloomFilter.php',
         'Pleo\\BloomFilter\\HasherList' => __DIR__ . '/..' . '/pleonasm/bloom-filter/src/HasherList.php',
@@ -615,7 +568,6 @@ class ComposerStaticInit_mediawiki_vendor
         'Wikimedia\\Composer\\Merge\\PluginState' => __DIR__ . '/..' . '/wikimedia/composer-merge-plugin/src/Merge/PluginState.php',
         'Wikimedia\\Composer\\Merge\\StabilityFlags' => __DIR__ . '/..' . '/wikimedia/composer-merge-plugin/src/Merge/StabilityFlags.php',
         'Wikimedia\\IPSet' => __DIR__ . '/..' . '/wikimedia/ip-set/src/IPSet.php',
-        'Wikimedia\\IPUtils' => __DIR__ . '/..' . '/wikimedia/ip-utils/src/IPUtils.php',
         'Wikimedia\\ObjectFactory' => __DIR__ . '/..' . '/wikimedia/object-factory/src/ObjectFactory.php',
         'Wikimedia\\PSquare' => __DIR__ . '/..' . '/wikimedia/running-stat/src/Wikimedia/PSquare.php',
         'Wikimedia\\PasswordBlacklist\\PasswordBlacklist' => __DIR__ . '/..' . '/wikimedia/password-blacklist/src/PasswordBlacklist.php',
@@ -641,19 +593,17 @@ class ComposerStaticInit_mediawiki_vendor
         'Wikimedia\\XMPReader\\Info' => __DIR__ . '/..' . '/wikimedia/xmp-reader/src/Info.php',
         'Wikimedia\\XMPReader\\Reader' => __DIR__ . '/..' . '/wikimedia/xmp-reader/src/Reader.php',
         'Wikimedia\\XMPReader\\Validate' => __DIR__ . '/..' . '/wikimedia/xmp-reader/src/Validate.php',
-        'jakobo\\HOTP\\HOTP' => __DIR__ . '/..' . '/jakobo/hotp-php/src/HOTP.php',
-        'jakobo\\HOTP\\HOTPResult' => __DIR__ . '/..' . '/jakobo/hotp-php/src/HOTPResult.php',
         'lessc' => __DIR__ . '/..' . '/wikimedia/less.php/lessc.inc.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit_mediawiki_vendor::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit_mediawiki_vendor::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit_mediawiki_vendor::$prefixesPsr0;
-            $loader->fallbackDirsPsr0 = ComposerStaticInit_mediawiki_vendor::$fallbackDirsPsr0;
-            $loader->classMap = ComposerStaticInit_mediawiki_vendor::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit343abfb9c35b402b1c69fe310e820251::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit343abfb9c35b402b1c69fe310e820251::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit343abfb9c35b402b1c69fe310e820251::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInit343abfb9c35b402b1c69fe310e820251::$fallbackDirsPsr0;
+            $loader->classMap = ComposerStaticInit343abfb9c35b402b1c69fe310e820251::$classMap;
 
         }, null, ClassLoader::class);
     }
