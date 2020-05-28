@@ -12,32 +12,41 @@ services:
       - ./etc/nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
       - ./etc/nginx/ssl:/etc/nginx/ssl
       - ./etc/nginx/log:/var/log/nginx
-      - ./site:/var/www/html/site
-      - ./avatars:/var/www/html/site/public/images/avatars # public facing
       - ./downloads:/var/www/html/site/public/downloads
-      - ./sql:/var/www/html/site/public/sql
       - ./wiki:/var/www/html/site/public/wiki
 
   php:
     image: openrsc/php-laravel:7.4
     container_name: php
+    restart: always
     ports:
       - "127.0.0.1:9000:9000"
     volumes:
       - ./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini
-      - ./sql:/var/www/html/site/public/sql
-      - ./etc/nginx/phpmyadmin/config.inc.php:/var/www/html/site/public/sql/config.inc.php # PHPMyAdmin config located in etc
       - ./etc/wiki/LocalSettings.php:/var/www/html/site/public/wiki/LocalSettings.php # MediaWiki config located in etc
       - ./wiki:/var/www/html/site/public/wiki
 
   node:
     image: node:latest
     container_name: node
+    restart: always
     ports:
       - "127.0.0.1:3000:3000"
     command: bash -c "cd /var/www/html/site && npm start"
     volumes:
       - ./site:/var/www/html/site
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      - HIDE_PHP_VERSION=true
+      - UPLOAD_LIMIT=10485760
+    ports:
+      - "127.0.0.1:4000:80"
+    volumes:
+      - ./etc/nginx/phpmyadmin/config.inc.php:/etc/phpmyadmin/config.inc.php # PHPMyAdmin config located in etc
 
 networks:
   default:
