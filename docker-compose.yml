@@ -47,7 +47,7 @@ services:
     ports:
       - "4000:80"
     volumes:
-      - ./etc/nginx/phpmyadmin/config.inc.php:/etc/phpmyadmin/config.inc.php # PHPMyAdmin config located in etc
+      - ./etc/nginx/phpmyadmin/config.inc.php:/var/www/html/config.inc.php # PHPMyAdmin config located in etc
 
 networks:
   default:
