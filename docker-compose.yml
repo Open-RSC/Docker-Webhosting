@@ -14,6 +14,8 @@ services:
       - ./etc/nginx/log:/var/log/nginx
       - ./downloads:/var/www/html/site/public/downloads
       - ./wiki:/var/www/html/site/public/wiki
+      - ./site/public/stylesheets:/var/www/html/site/public/stylesheets
+      - ./site/public/images:/var/www/html/site/public/images
 
   php:
     image: openrsc/php-laravel:7.4
@@ -25,6 +27,7 @@ services:
       - ./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini
       - ./etc/wiki/LocalSettings.php:/var/www/html/site/public/wiki/LocalSettings.php # MediaWiki config located in etc
       - ./wiki:/var/www/html/site/public/wiki
+      - ./site:/var/www/html/site
 
   node:
     image: node:latest
