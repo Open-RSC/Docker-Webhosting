@@ -13,21 +13,19 @@ services:
       - ./etc/nginx/ssl:/etc/nginx/ssl
       - ./etc/nginx/log:/var/log/nginx
       - ./downloads:/var/www/html/site/public/downloads
-      - ./wiki:/var/www/html/site/public/wiki
+      - ./wiki/images:/var/www/html/images
       - ./site/public/stylesheets:/var/www/html/site/public/stylesheets
       - ./site/public/images:/var/www/html/site/public/images
 
-  php:
-    image: openrsc/php-laravel:7.4
-    container_name: php
+  mediawiki:
+    image: mediawiki:latest
+    container_name: mediawiki
     restart: always
     ports:
-      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9000:80"
     volumes:
-      - ./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini
-      - ./etc/wiki/LocalSettings.php:/var/www/html/site/public/wiki/LocalSettings.php # MediaWiki config located in etc
-      - ./wiki:/var/www/html/site/public/wiki
-      - ./site:/var/www/html/site
+      - ./etc/wiki/LocalSettings.php:/var/www/html/LocalSettings.php # MediaWiki config located in etc
+      - ./wiki/images:/var/www/html/images
 
   node:
     image: node:latest
