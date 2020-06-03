@@ -12,7 +12,7 @@ services:
       - ./etc/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
       - ./etc/nginx/ssl:/etc/nginx/ssl
       - ./etc/nginx/log:/var/log/nginx
-      - ./wiki/images:/var/www/html/images
+      - ./wiki:/var/www/html/wiki
       - ./site/public/stylesheets:/var/www/html/site/public/stylesheets
       - ./site/public/images:/var/www/html/site/public/images
 
@@ -25,6 +25,7 @@ services:
     volumes:
       - ./etc/wiki/LocalSettings.php:/var/www/html/LocalSettings.php # MediaWiki config located in etc
       - ./wiki/images:/var/www/html/images
+      - ./wiki:/var/www/html
 
   node:
     image: node:latest

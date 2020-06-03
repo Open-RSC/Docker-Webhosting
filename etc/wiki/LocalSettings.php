@@ -134,11 +134,11 @@ require_once( "$IP/skins/Tweeki/Tweeki.php" );
 
 $wgDefaultUserOptions['tweeki-advanced'] = 1;
 $wgTweekiSkinSpecialElements = [
-  'FIRSTHEADING' => 'self::renderFirstHeading', 
-  'TOC' => 'self::renderTOC', 
-  'SEARCH' => 'self::renderSearch', 
-  'LOGO' => 'self::renderLogo', 
-  'LOGIN-EXT' => 'self::renderLoginExt' 
+  'FIRSTHEADING' => 'self::renderFirstHeading',
+  'TOC' => 'self::renderTOC',
+  'SEARCH' => 'self::renderSearch',
+  'LOGO' => 'self::renderLogo',
+  'LOGIN-EXT' => 'self::renderLoginExt'
   ];
 $wgTweekiSkinUseAwesome = true;
 $wgTweekiSkinUseBootstrapTheme = true;
@@ -147,13 +147,13 @@ $wgTweekiSkinUseBtnParser = true;
 
 // make 'sidebar-right' hideable with the #tweekihide parser function
 // (used on the main page)
-$wgTweekiSkinHideable[] = 'sidebar-right'; 
+$wgTweekiSkinHideable[] = 'sidebar-right';
 $wgTweekiSkinHideable = [ 'firstHeading' ];
 
 // hide for logged in users
 $wgTweekiSkinHideLoggedin = [ 'footer-custom' => true, 'LOGIN-EXT' => true ];
 
-// hide the edit button as well as the subnavigation (containing the toolbox 
+// hide the edit button as well as the subnavigation (containing the toolbox
 // and personal links for editors) for anonymous users
 $wgTweekiSkinHideAnon['EDIT-EXT'] = true;
 $wgTweekiSkinHideAnon['subnav'] = true;
