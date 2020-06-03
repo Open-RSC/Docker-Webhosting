@@ -36,3 +36,5 @@ etc/nginx/log/
 sql/config.inc.php
 
 wiki/LocalSettings.php
+
+*.log

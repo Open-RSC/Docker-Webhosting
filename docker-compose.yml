@@ -9,7 +9,7 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./etc/nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
+      - ./etc/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
       - ./etc/nginx/ssl:/etc/nginx/ssl
       - ./etc/nginx/log:/var/log/nginx
       - ./downloads:/var/www/html/site/public/downloads
@@ -33,7 +33,7 @@ services:
     restart: always
     ports:
       - "127.0.0.1:3000:3000"
-    command: bash -c "cd /var/www/html/site && npm start"
+    command: bash -c "cd /var/www/html/site && npm install && npm update && npm start"
     volumes:
       - ./site:/var/www/html/site
 
@@ -44,7 +44,7 @@ services:
     environment:
       - HIDE_PHP_VERSION=true
       - UPLOAD_LIMIT=10485760
-      - PMA_ARBITRARY=1
+      - PMA_HOST=mariadb
     ports:
       - "4000:80"
     volumes:
